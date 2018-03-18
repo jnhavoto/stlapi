@@ -18,8 +18,7 @@ class CreateCoursesTable extends Migration {
 			$table->string('name');
 			$table->text('course_content', 65535);
 			$table->integer('departments_id')->unsigned()->index('fk_courses_departments1_idx');
-			$table->dateTime('created_at')->nullable();
-			$table->dateTime('update_at')->nullable();
+			$table->timestamps();
 			$table->softDeletes();
 		});
 	}

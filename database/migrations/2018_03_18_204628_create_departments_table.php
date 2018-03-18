@@ -16,8 +16,7 @@ class CreateDepartmentsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->text('name', 65535);
-			$table->dateTime('created_at')->nullable();
-			$table->dateTime('update_at')->nullable();
+			$table->timestamps();
 			$table->softDeletes();
 		});
 	}
