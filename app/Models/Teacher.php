@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
-    protected $table = 'teacher';
+
+    protected $primaryKey='id';
+
+    protected $table = 'teachers';
+
     protected $fillable = ['name'];
 
 
