@@ -88,5 +88,93 @@ Route::put('feedback/{id}', 'FeedbackController@update'); // route to update
 Route::delete('feedback/{id}', 'FeedbackController@destroy'); //route to delete
 
 
+/**
+ * FeedbackStudent Routes
+ */
+Route::get('feedback-students', 'FeedbackStudentController@getAllFeedbackStudents'); //route to get all
+Route::get('feedback-student/{id}', 'FeedbackStudentController@getFeedbackStudent'); //route to get a specific
+Route::post('feedback-student', 'FeedbackStudentController@store'); //route to store
+Route::put('feedback-student/{id}', 'FeedbackStudentController@update'); // route to update
+Route::delete('feedback-student/{id}', 'FeedbackStudentController@destroy'); //route to delete
+
+
+/**
+ * GroupAssignment Routes
+ */
+Route::get('group-assignments', 'GroupAssignmentController@getAllGroupAssignments'); //route to get all
+Route::get('group-assignment/{id}', 'GroupAssignmentController@getGroupAssignment'); //route to get a specific
+Route::post('group-assignment', 'GroupAssignmentController@store'); //route to store
+Route::put('group-assignment/{id}', 'GroupAssignmentController@update'); // route to update
+Route::delete('group-assignment/{id}', 'GroupAssignmentController@destroy'); //route to delete
+
+/**
+ * GroupHistory Routes
+ */
+Route::get('group-histories', 'GroupHistoryController@getAllGroupHistories'); //route to get all
+Route::get('group-history/{id}', 'GroupHistoryController@getGroupHistory'); //route to get a specific
+Route::post('group-history', 'GroupHistoryController@store'); //route to store
+Route::put('group-history/{id}', 'GroupHistoryController@update'); // route to update
+Route::delete('group-history/{id}', 'GroupHistoryController@destroy'); //route to delete
+
+
+/**
+ * RatingFeedback Routes
+ */
+Route::get('rating-feedbacks', 'RatingFeedbackController@getAllRatingFeedbacks'); //route to get all
+Route::get('rating-feedback/{id}', 'RatingFeedbackController@getRatingFeedback'); //route to get a specific
+Route::post('rating-feedback', 'RatingFeedbackController@store'); //route to store
+Route::put('rating-feedback/{id}', 'RatingFeedbackController@update'); // route to update
+Route::delete('rating-feedback/{id}', 'RatingFeedbackController@destroy'); //route to delete
+
+
+/**
+ * Schools Routes
+ */
+Route::get('schools', 'SchoolController@getAllSchools'); //route to get all
+Route::get('school/{id}', 'SchoolController@getSchool'); //route to get a specific
+Route::post('school', 'SchoolController@store'); //route to store
+Route::put('school/{id}', 'SchoolController@update'); // route to update
+Route::delete('school/{id}', 'SchoolController@destroy'); //route to delete
+
+/**
+ * SelfAssessmentAssignment Routes
+ */
+Route::get('self-assessment-assignments', 'SelfAssessmentAssignmentController@getAllSelfAssessmentAssignments'); //route to get all
+Route::get('self-assessment-assignment/{id}', 'SelfAssessmentAssignmentController@getSelfAssessmentAssignment'); //route to get a specific
+Route::post('self-assessment-assignment', 'SelfAssessmentAssignmentController@store'); //route to store
+Route::put('self-assessment-assignment/{id}', 'SelfAssessmentAssignmentController@update'); // route to update
+Route::delete('self-assessment-assignment/{id}', 'SelfAssessmentAssignmentController@destroy'); //route to delete
+
+
+/**
+ * SelfAssessment Routes
+ */
+Route::get('self-assessments', 'SelfAssessmentController@getAllSelfAssessment'); //route to get all
+Route::get('self-assessment/{id}', 'SelfAssessmentController@getSelfAssessment'); //route to get a specific
+Route::post('self-assessment', 'SelfAssessmentController@store'); //route to store
+Route::put('self-assessment/{id}', 'SelfAssessmentController@update'); // route to update
+Route::delete('self-assessment/{id}', 'SelfAssessmentController@destroy'); //route to delete
+
+
+/**
+ * Teacher Routes
+ */
+Route::get('teachers', 'TeacherController@getAllSelfAssessment'); //route to get all
+Route::get('teacher/{id}', 'TeacherController@getSelfAssessment'); //route to get a specific
+Route::post('teacher', 'TeacherController@store'); //route to store
+Route::put('teacher/{id}', 'TeacherController@update'); // route to update
+Route::delete('teacher/{id}', 'TeacherController@destroy'); //route to delete
+
+
+/**
+ * TeacherCourse Routes
+ */
+Route::get('teacher-courses', 'TeacherCourseController@getAllTeacherCourse'); //route to get all
+Route::get('teacher-course/{id}', 'TeacherCourseController@getTeacherCourse'); //route to get a specific
+Route::post('teacher-course', 'TeacherCourseController@store'); //route to store
+Route::put('teacher-course/{id}', 'TeacherCourseController@update'); // route to update
+Route::delete('teacher-course/{id}', 'TeacherCourseController@destroy'); //route to delete
+
+
 
 

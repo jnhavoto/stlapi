@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroupHistory extends Model
 {
-    //
+    protected $fillable = [''];
+
 }
