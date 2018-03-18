@@ -13,24 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+/**
+ * Students Routes
+ */
+Route::get('students', 'StudentController@getAllstudents');
+Route::get('student/{id}', 'StudentController@getStudent');
+Route::post('student', 'StudentController@store');
+Route::put('student/{id}', 'StudentController@update');
+Route::delete('student/{id}', 'StudentController@destroy');
 
 
-//Route::resource('user/{id}','UserController');
-Route::resource('student/{id}','StudentController');
-/*Route::get('student/{id}',function($id){
-    $student=DB::table('students')
-        ->join('cities', 'students.city_id', '=', 'cities.city_id')
-        ->join('schools', 'students.school_id', '=', 'schools.school_id')
-        ->join('users', 'students.user_id', '=', 'users.user_id')
-        ->select('students.*','users.first_name','users.last_name','users.email','users.telephone','cities.city_name','schools.school_name')
-        ->where('student_id','=',$id)
-        ->get()->toJson();
-    return response()->header('Content-Type', 'application/json');
-}
-*/
 
 
 

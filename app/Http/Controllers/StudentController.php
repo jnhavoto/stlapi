@@ -9,8 +9,20 @@ use Illuminate\Support\Facades\DB;
 class StudentController extends Controller
 {
 
-    public function index($id)
+    /**
+     * Method to get all students
+     */
+    public function getAllstudents()
     {
+
+    }
+
+    /**
+     * Method to get one specific student
+     */
+    public function getStudent($id)
+    {
+
         $student=DB::table('students')
             ->join('cities', 'students.city_id', '=', 'cities.city_id')
             ->join('schools', 'students.school_id', '=', 'schools.school_id')
@@ -22,35 +34,33 @@ class StudentController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
+    /**
+     * Method to store a student
+     */
     public function store(Request $request)
     {
         //
     }
 
-    public function show($id)
-    {
-        $student=Student::find($id);
-        return response()->json($student,200);
-    }
 
-    public function edit($id)
-    {
-        //
-    }
 
+    /**
+     * Method to update a student data
+     */
     public function update(Request $request, $id)
     {
         //
     }
 
 
+
+    /**
+     * Method to delete a student
+     */
     public function destroy($id)
     {
         //
     }
+
+
 }
