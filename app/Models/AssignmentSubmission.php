@@ -8,7 +8,7 @@ class AssignmentSubmission extends Model
 {
     protected $primaryKey='id';
 
-    protected $table = 'students';
+    protected $table = 'assignment_submissions';
 
     protected $fillable = [
         'students_id', 'courses_id', 'teachers_id', 'group_assignments_id', 'assignment_descriptions_id',
@@ -37,6 +37,6 @@ class AssignmentSubmission extends Model
     public function assignment_description(){
         return $this->belongsTo('App\Models\AssignmentDescription', 'group_assignments_id');
     }
-    
+
 
 }
