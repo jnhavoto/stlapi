@@ -22,7 +22,9 @@ use Faker\Generator as Faker;
 //    ];
 //});
 
-$cursos = ['Computer Science','Network Admin','Database designer']; //array de dados
+
+
+$cursos = ['Computer Science','Network Admin','Database designer']; //array de nomes
 
 $factory->define(\App\Models\Course::class, function (Faker $faker) use ($cursos) {
     return [
