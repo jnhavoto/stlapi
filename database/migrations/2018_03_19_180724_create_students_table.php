@@ -29,6 +29,8 @@ class CreateStudentsTable extends Migration {
 			$table->integer('cities_id')->unsigned()->index('fk_students_cities1_idx');
 			$table->integer('schools_id')->unsigned()->index('fk_students_schools1_idx');
 			$table->integer('users_id')->unsigned()->index('fk_students_users1_idx');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

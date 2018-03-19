@@ -17,6 +17,9 @@ class CreateTeacherCoursesTable extends Migration {
 			$table->increments('id');
 			$table->integer('teachers_id')->unsigned()->index('fk_teacher_courses_teachers1_idx');
 			$table->integer('courses_id')->unsigned()->index('fk_teacher_courses_courses1_idx');
+			$table->timestamps();
+			$table->softDeletes();
+			$table->integer('users_id')->unsigned()->index('fk_teacher_courses_users1_idx');
 		});
 	}
 

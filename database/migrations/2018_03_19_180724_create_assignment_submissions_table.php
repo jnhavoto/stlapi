@@ -39,11 +39,11 @@ class CreateAssignmentSubmissionsTable extends Migration {
 			$table->text('learned_consequence', 65535);
 			$table->text('next_goal', 65535);
 			$table->date('submission_date');
-			$table->integer('students_id')->unsigned()->index('fk_assignment_submissions_students1_idx');
 			$table->integer('courses_id')->unsigned()->index('fk_assignment_submissions_courses1_idx');
 			$table->integer('teachers_id')->unsigned()->index('fk_assignment_submissions_teachers1_idx');
+			$table->timestamps();
+			$table->softDeletes();
 			$table->integer('group_assignments_id')->unsigned()->index('fk_assignment_submissions_group_assignments1_idx');
-			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_assignment_submissions_assignment_descriptions1_idx');
 		});
 	}
 

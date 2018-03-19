@@ -34,6 +34,8 @@ class CreateSelfAssessmentsTable extends Migration {
 			$table->boolean('level1_6');
 			$table->boolean('level2_6');
 			$table->boolean('level3_6');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

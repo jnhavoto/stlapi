@@ -21,6 +21,8 @@ class CreateAssignmentDescriptionsTable extends Migration {
 			$table->date('deadline');
 			$table->date('available_date');
 			$table->integer('teacher_courses_id')->unsigned()->index('fk_assignment_descriptions_teacher_courses1_idx');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

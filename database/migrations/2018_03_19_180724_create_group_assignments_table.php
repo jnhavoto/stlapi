@@ -18,6 +18,9 @@ class CreateGroupAssignmentsTable extends Migration {
 			$table->integer('group_cod')->unsigned();
 			$table->integer('presence')->unsigned();
 			$table->integer('activity_date')->unsigned();
+			$table->timestamps();
+			$table->softDeletes();
+			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_group_assignments_assignment_descriptions1_idx');
 		});
 	}
 

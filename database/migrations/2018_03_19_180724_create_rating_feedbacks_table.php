@@ -23,6 +23,8 @@ class CreateRatingFeedbacksTable extends Migration {
 			$table->date('feedback_rating_date');
 			$table->integer('students_id')->unsigned()->index('fk_rating_feedbacks_students1_idx');
 			$table->integer('feedbacks_id')->unsigned()->index('fk_rating_feedbacks_feedbacks1_idx');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

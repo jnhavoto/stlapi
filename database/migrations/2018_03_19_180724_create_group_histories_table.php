@@ -17,8 +17,9 @@ class CreateGroupHistoriesTable extends Migration {
 			$table->increments('id');
 			$table->date('deadline');
 			$table->integer('group_assignments_id')->unsigned()->index('fk_group_histories_group_assignments1_idx');
-			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_group_histories_assignment_descriptions1_idx');
-			$table->integer('students_id')->unsigned()->index('fk_group_histories_students1_idx');
+			$table->timestamps();
+			$table->softDeletes();
+			$table->integer('groups_id')->index('fk_group_histories_groups1_idx');
 		});
 	}
 

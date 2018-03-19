@@ -14,10 +14,8 @@ class AddForeignKeysToAssignmentSubmissionsTable extends Migration {
 	{
 		Schema::table('assignment_submissions', function(Blueprint $table)
 		{
-			$table->foreign('assignment_descriptions_id', 'fk_assignment_submissions_assignment_descriptions1')->references('id')->on('assignment_descriptions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('courses_id', 'fk_assignment_submissions_courses1')->references('id')->on('courses')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('group_assignments_id', 'fk_assignment_submissions_group_assignments1')->references('id')->on('group_assignments')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('students_id', 'fk_assignment_submissions_students1')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('teachers_id', 'fk_assignment_submissions_teachers1')->references('id')->on('teachers')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
@@ -32,10 +30,8 @@ class AddForeignKeysToAssignmentSubmissionsTable extends Migration {
 	{
 		Schema::table('assignment_submissions', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_assignment_submissions_assignment_descriptions1');
 			$table->dropForeign('fk_assignment_submissions_courses1');
 			$table->dropForeign('fk_assignment_submissions_group_assignments1');
-			$table->dropForeign('fk_assignment_submissions_students1');
 			$table->dropForeign('fk_assignment_submissions_teachers1');
 		});
 	}

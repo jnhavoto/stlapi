@@ -18,6 +18,8 @@ class CreateSelfAssessmentAssigmentsTable extends Migration {
 			$table->date('deadline');
 			$table->integer('self_assessments_id')->unsigned()->index('fk_self_assessment_assigments_self_assessments1_idx');
 			$table->integer('teachers_id')->unsigned()->index('fk_self_assessment_assigments_teachers1_idx');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

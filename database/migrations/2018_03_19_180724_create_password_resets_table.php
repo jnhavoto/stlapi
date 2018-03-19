@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCitiesTable extends Migration {
+class CreatePasswordResetsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,12 @@ class CreateCitiesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('cities', function(Blueprint $table)
+		Schema::create('password_resets', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('city_name', 191);
+			$table->string('email', 191)->index();
+			$table->string('token', 191);
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
@@ -27,7 +29,7 @@ class CreateCitiesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('cities');
+		Schema::drop('password_resets');
 	}
 
 }

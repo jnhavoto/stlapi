@@ -22,6 +22,8 @@ class CreateFeedbacksTable extends Migration {
 			$table->date('feedback_date');
 			$table->integer('assignment_submissions_id')->unsigned()->index('fk_feedbacks_assignment_submissions1_idx');
 			$table->integer('students_id')->unsigned()->index('fk_feedbacks_students1_idx');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
