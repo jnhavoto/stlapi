@@ -69,3 +69,51 @@ $factory->define(\App\Models\User::class, function (Faker $faker) use ($emails,$
         'user_password' => "12345"
     ];
 });
+
+$factory->define(\App\Models\AssignmentDescription::class, function (Faker $faker){
+    return [
+        'case' => $faker->text(15),
+        'instructions' => $faker->text(35),
+        'startdate' => $faker->date('Y-m-d'),
+        'deadline'=> $faker->date('Y-m-d'),
+        'available_date'=> $faker->date('Y-m-d'),
+        'teacher_courses_id' => $faker->unique()->numberBetween(1, \App\models\Course::all()->count()),
+    ];
+});
+
+$teacher_names=['Agélii Genlott Annika','Anna Carlsson','Catherine Mortimer-Hawkins','Cecilia Gustavsson','Ditte O\'Connor'];
+$factory->define(\App\Models\Teacher::class, function (Faker $faker) use ($teacher_names){
+    return [
+        'name' => $faker->unique()->randomElement($teacher_names),
+    ];
+});
+
+
+$factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){
+    return [
+        'teachers_id' => $faker->unique()->numberBetween(1, \App\models\Teacher::all()->count()),
+        'courses_id' => $faker->unique()->numberBetween(1, \App\models\Course::all()->count()),
+        'users_id'=> $faker->unique()->numberBetween(1, \App\models\User::all()->count()),
+    ];
+});
+
+$factory->define(\App\Models\AssignmentDescription::class, function (Faker $faker){
+    return [
+        'case' => $faker->text(15),
+        'instructions' => $faker->text(35),
+        'startdate' => $faker->date('Y-m-d'),
+        'deadline'=> $faker->date('Y-m-d'),
+        'available_date'=> $faker->date('Y-m-d'),
+        'teacher_courses_id' => $faker->unique()->numberBetween(1, \App\models\TeacherCourse::all()->count()),
+    ];
+});
+
+/*
+  $factory->define(\App\Models\AssignmentNotifications::class, function (Faker $faker){
+    return [
+        'message' =>$faker->text(60),
+        'status' => $faker->boolean()->numberBetween(1, \App\models\Course::all()->count()),
+        'users_id'=> $faker->unique()->numberBetween(1, \App\models\User::all()->count()),
+    ];
+});
+ */
