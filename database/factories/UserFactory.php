@@ -85,15 +85,15 @@ $teacher_names=['Agélii Genlott Annika','Anna Carlsson','Catherine Mortimer-Haw
 $factory->define(\App\Models\Teacher::class, function (Faker $faker) use ($teacher_names){
     return [
         'name' => $faker->unique()->randomElement($teacher_names),
+        'users_id' => $faker->numberBetween(1, 5),
     ];
 });
 
 
 $factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){
     return [
-        'teachers_id' => $faker->unique()->numberBetween(1, \App\models\Teacher::all()->count()),
-        'courses_id' => $faker->unique()->numberBetween(1, \App\models\Course::all()->count()),
-        'users_id'=> $faker->unique()->numberBetween(1, \App\models\User::all()->count()),
+        'teachers_id' => $faker->numberBetween(1, \App\models\Teacher::all()->count()),
+        'courses_id' => $faker->numberBetween(1, \App\models\Course::all()->count()),
     ];
 });
 
@@ -111,8 +111,8 @@ $factory->define(\App\Models\AssignmentDescription::class, function (Faker $fake
 $factory->define(\App\Models\AssignmentNotifications::class, function (Faker $faker){
     return [
         'message' =>$faker->text(60),
-        'status' => $faker->boolean()->true,
-        'assignment_descriptions_id'=> $faker->unique()->numberBetween(1, \App\models\AssignmentDescription::all()->count()),
+        'status' => $faker->boolean(50),
+        'assignment_descriptions_id'=> $faker->numberBetween(1, \App\models\AssignmentDescription::all()->count()),
     ];
 });
 
@@ -123,8 +123,8 @@ $factory->define(\App\Models\Feedback::class, function (Faker $faker){
         'advice' => $faker->text(30),
         'comment' => $faker->text(30),
         'feedback_date' => $faker->date('Y-m-d'),
-        'assignment_submissions_id'=> $faker->unique()->numberBetween(1, \App\models\AssignmentSubmission::all()->count()),
-        'students_id'=> $faker->unique()->numberBetween(1, \App\models\Student::all()->count()),
+        'assignment_submissions_id'=> $faker->numberBetween(1, \App\models\AssignmentSubmission::all()->count()),
+        'students_id'=> $faker->numberBetween(1, \App\models\Student::all()->count()),
     ];
 });
 
@@ -154,9 +154,9 @@ $factory->define(\App\Models\AssignmentSubmission::class, function (Faker $faker
         'learned_consequence' => $faker->text(30),
         'next_goal' => $faker->text(30),
         'submission_date' => $faker->date('Y-m-d'),
-        'courses_id'=> $faker->unique()->numberBetween(1, \App\models\Course::all()->count()),
-        'teachers_id'=> $faker->unique()->numberBetween(1, \App\models\Teacher::all()->count()),
-        'group_assignments_id'=> $faker->unique()->numberBetween(1, \App\models\GroupAssignment::all()->count()),
+        'courses_id'=> $faker->numberBetween(1, \App\models\Course::all()->count()),
+        'teachers_id'=> $faker->numberBetween(1, \App\models\Teacher::all()->count()),
+        'group_assignments_id'=> $faker->numberBetween(1, \App\models\GroupAssignment::all()->count()),
     ];
 });
 
@@ -175,7 +175,7 @@ $factory->define(\App\Models\Student::class, function (Faker $faker){
         'technology_use_in_teaching' => $faker->text(30),
         'cities_id'=> $faker->unique()->numberBetween(1, \App\models\City::all()->count()),
         'schools_id'=> $faker->unique()->numberBetween(1, \App\models\School::all()->count()),
-        'users_id'=> $faker->unique()->numberBetween(1, \App\models\User::all()->count()),
+        'users_id'=> $faker->unique()->numberBetween(6, \App\models\User::all()->count()),
     ];
 });
 
