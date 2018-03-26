@@ -16,7 +16,7 @@ class CreateStudentsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->text('digital_tools', 65535);
-			$table->binary('workplace_tools', 65535);
+			$table->string('workplace_tools', 20);
 			$table->text('workplace_tools_othe', 65535);
 			$table->integer('teaching_grade')->unsigned();
 			$table->text('work_methods', 65535);

@@ -163,7 +163,7 @@ $factory->define(\App\Models\AssignmentSubmission::class, function (Faker $faker
 $factory->define(\App\Models\Student::class, function (Faker $faker){
     return [
         'digital_tools' => $faker->text(30),
-        'workplace_tools' => $faker->binary()->true,
+        'workplace_tools' => $faker->boolean,
         'workplace_tools_othe' => $faker->text(30),
         'teaching_grade' => $faker->unique()->numberBetween(1, 12),
         'work_methods' => $faker->text(30),
