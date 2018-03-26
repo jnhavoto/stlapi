@@ -19,8 +19,13 @@ class Student extends Model
 
 
 // ========================================
-//    Relationships
+//   ========== Relationships ===========
 // ========================================
+
+    public function group_students()
+    {
+        return $this->hasMany('App\Models\GroupStudents', 'students_id');
+    }
 
     public function student_teacher_messages()
     {
@@ -42,6 +47,7 @@ class Student extends Model
         return $this->hasMany('App\Models\Feedback', 'students_id');
     }
 
+//    BeLongs
     public function school()
     {
         return $this->belongsTo('App\Models\School', 'schools_id');

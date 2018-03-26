@@ -11,6 +11,18 @@ class TeacherCourse extends Model
 
     protected $table = 'teacher_courses';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'teachers_id', 'courses_id', 'user_id'];
+
+    public function teacher(){
+        return $this->belongsTo('App\Models\Teacher', 'teachers_id');
+    }
+
+    public function course(){
+        return $this->belongsTo('App\Models\Course', 'courses_id');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 
 }

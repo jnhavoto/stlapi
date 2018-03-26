@@ -14,6 +14,10 @@ class AssignmentDescription extends Model
         'case', 'instructions', 'startdate', 'deadline', '	available_date', 'teacher_courses_id'
     ];
 
+//================================
+//    ==== Relationships ===
+//================================
+
     public function teacher_course(){
         return $this->belongsTo('App\Models\TeacherCourse', 'teacher_courses_id');
     }
