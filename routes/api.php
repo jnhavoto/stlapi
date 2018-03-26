@@ -137,7 +137,7 @@ Route::put('school/{id}', 'SchoolController@update'); // route to update
 Route::delete('school/{id}', 'SchoolController@destroy'); //route to delete
 
 /**
- * SelfAssessmentAssignment Routes
+ * SelfAssessment Routes
  */
 Route::get('self-assessment-assignments', 'SelfAssessmentAssignmentController@getAllSelfAssessmentAssignments'); //route to get all
 Route::get('self-assessment-assignment/{id}', 'SelfAssessmentAssignmentController@getSelfAssessmentAssignment'); //route to get a specific

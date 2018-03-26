@@ -18,9 +18,6 @@ class AssignmentSubmission extends Model
         'learned_consequence', 'next_goal', 'submission_date'
     ];
 
-    public function student(){
-        return $this->belongsTo('App\Models\Student', 'students_id');
-    }
 
     public function course(){
         return $this->belongsTo('App\Models\Course', 'courses_id');
@@ -34,8 +31,8 @@ class AssignmentSubmission extends Model
         return $this->belongsTo('App\Models\GroupAssignment', 'group_assignments_id');
     }
 
-    public function assignment_description(){
-        return $this->belongsTo('App\Models\AssignmentDescription', 'group_assignments_id');
+    public function feedbacks(){
+        return $this->hasMany('App\Models\Feedback', 'assignment_submissions_id');
     }
 
 

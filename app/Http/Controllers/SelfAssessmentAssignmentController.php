@@ -16,7 +16,7 @@ class SelfAssessmentAssignmentController extends Controller
     }
 
     /**
-     * Method to get one specific SelfAssessmentAssignment
+     * Method to get one specific SelfAssessment
      */
     public function getSelfAssessmentAssignment($id)
     {
@@ -25,7 +25,7 @@ class SelfAssessmentAssignmentController extends Controller
 
 
     /**
-     * Method to store a SelfAssessmentAssignment
+     * Method to store a SelfAssessment
      */
     public function store(Request $request)
     {
@@ -35,7 +35,7 @@ class SelfAssessmentAssignmentController extends Controller
 
 
     /**
-     * Method to update a SelfAssessmentAssignment data
+     * Method to update a SelfAssessment data
      */
     public function update(Request $request, $id)
     {
@@ -45,7 +45,7 @@ class SelfAssessmentAssignmentController extends Controller
 
 
     /**
-     * Method to delete a SelfAssessmentAssignment
+     * Method to delete a SelfAssessment
      */
     public function destroy($id)
     {
