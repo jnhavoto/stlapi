@@ -15,4 +15,21 @@ class Feedback extends Model
         'goal', 'message', 'advice', 'comment', 'feedback_date', 'assignment_submissions_id', 'students_id'
     ];
 
+//    Relationships
+    public function assignment_submission(){
+        return $this->belongsTo('App\Models\AssignmentSubmission', 'assignment_submissions_id');
+    }
+
+    public function student(){
+        return $this->belongsTo('App\Models\Student', 'students_id');
+    }
+
+    public function feedback_messages(){
+        return $this->hasMany('App\Models\FeedbackMessage', 'feedbacks_id');
+    }
+
+    public function rating_feedback(){
+        return $this->hasOne('App\Models\RatingFeedback', 'feedbacks_id');
+    }
+
 }
