@@ -17,13 +17,14 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\City::class, 10)->create();
         factory(\App\Models\School::class, 10)->create();
         factory(\App\Models\User::class, 10)->create();
+        factory(\App\Models\Student::class, 3)->create();
         factory(\App\Models\Teacher::class, 5)->create();
         factory(\App\Models\TeacherCourse::class, 5)->create();
         factory(\App\Models\AssignmentDescription::class, 3)->create();
         factory(\App\Models\AssignmentNotifications::class, 3)->create();
+        factory(\App\Models\GroupAssignment::class, 3)->create();
         factory(\App\Models\AssignmentSubmission::class, 3)->create();
         factory(\App\Models\Feedback::class, 3)->create();
-        factory(\App\Models\Student::class, 3)->create();
 
         //Student
         //Feedback
