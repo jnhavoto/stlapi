@@ -23,3 +23,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+// Get Department of Course 1
+Route::get('/test', function (){
+  return  \App\Models\Course::find(1)->department()->get();
+});
+
+// Get all courses of department 2
+Route::get('/test2', function (){
+    return  \App\Models\Department::find(2)->courses()->get();
+});
