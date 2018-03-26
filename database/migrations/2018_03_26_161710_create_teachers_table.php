@@ -19,7 +19,6 @@ class CreateTeachersTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->integer('users_id')->unsigned()->index('fk_teachers_users1_idx');
-//			$table->primary(['id','users_id']);
 		});
 	}
 
