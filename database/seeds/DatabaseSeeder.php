@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         //Feedback
         //GroupAssignment
         //GroupStudents
-        //SelfAssessmentAssignment
+        //SelfAssessment
         //StudentTeacherMessages
         //FeedbackMessages
     }

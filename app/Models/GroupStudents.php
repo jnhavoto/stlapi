@@ -9,7 +9,10 @@
 namespace App\Models;
 
 
-class GroupStudents
+use Illuminate\Database\Eloquent\Model;
+
+
+class GroupStudents extends Model
 {
 
     protected $primaryKey='id';
@@ -20,4 +23,13 @@ class GroupStudents
         'groups_id', 'students_id'
     ];
 
+
+
+    public function student(){
+        return $this->belongsTo('App\Models\Student', 'students_id');
+    }
+
+    public function group(){
+        return $this->belongsTo('App\Models\Group', 'groups_id');
+    }
 }

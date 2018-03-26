@@ -11,6 +11,14 @@ class GroupHistory extends Model
 
     protected $table = 'group_histories';
 
-    protected $fillable = ['deadline','group_assignments_id','assignment_descriptions_id','students_id'];
+    protected $fillable = ['deadline','group_assignments_id','groups_id'];
 
+
+    public function group_assignment(){
+        return $this->belongsTo('App\Models\GroupAssignment', 'group_assignments_id');
+    }
+
+    public function group(){
+        return $this->belongsTo('App\Models\Group', 'groups_id');
+    }
 }
