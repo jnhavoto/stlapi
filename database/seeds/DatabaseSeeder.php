@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\Teacher::class, 5)->create();
         factory(\App\Models\TeacherCourse::class, 5)->create();
         factory(\App\Models\AssignmentDescription::class, 3)->create();
-        //Add
+        factory(\App\Models\AssignmentNotifications::class, 3)->create();
+
         //Student
-        //AssignmentNotifications
         //Feedback
         //GroupAssignment
         //GroupStudents
