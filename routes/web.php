@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +38,12 @@ Route::get('/test2', function (){
 Route::get('/test3', function (){
     return  \App\Models\Course::find(1)->teacher_courses->get();
 });
+=======
+/**
+ * As rotas que estavam nesse ficheiro foram
+ * trnaferidas para o ficheiro api.php
+ *
+ * Uma vez que as rotas da API devem ser definidas no
+ * ficheiro api.php
+ */
+>>>>>>> 3ef08a4b3f216f815c45245beb750ff2dfeb3447
