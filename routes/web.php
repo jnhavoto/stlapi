@@ -26,10 +26,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Get Department of Course 1
 Route::get('/test', function (){
-  return  \App\Models\Course::find(1)->department()->get();
+  return  \App\Models\Course::find(1)->department->get();
 });
 
 // Get all courses of department 2
 Route::get('/test2', function (){
-    return  \App\Models\Department::find(2)->courses()->get();
+    return  \App\Models\Department::find(1)->courses()->get();
+});
+
+Route::get('/test3', function (){
+    return  \App\Models\Course::find(1)->teacher_courses->get();
 });
