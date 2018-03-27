@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -12,6 +13,9 @@ class DepartmentController extends Controller
      */
     public function getAllDepartments()
     {
+        $departments= Department::all();
+
+        return response()->json(['departments'=>$departments],200);
 
     }
 

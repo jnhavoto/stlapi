@@ -2,17 +2,6 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 
 /**
  * Students Routes
@@ -65,6 +54,8 @@ Route::delete('assignment-description/{id}', 'AssignmentDescriptionController@de
  */
 Route::get('courses', 'CourseController@getAllCourses'); //route to get all
 Route::get('course/{id}', 'CourseController@getCourse'); //route to get a specific
+Route::post('course', 'CourseController@store'); //route to get a specific
+Route::put('course/{id}', 'CourseController@update'); //route to get a specific
 Route::post('assignment-description', 'CourseController@store'); //route to store
 Route::put('assignment-description/{id}', 'CourseController@update'); // route to update
 Route::delete('assignment-description/{id}', 'CourseController@destroy'); //route to delete
