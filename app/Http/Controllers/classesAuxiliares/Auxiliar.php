@@ -18,12 +18,12 @@ class Auxiliar {
      * @param $status
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function retornarErros($mensagem, $status) {
+    public static function retornarErros($mensagem = '', $status = 404) {
         return response()->json(['mensagem' => $mensagem, 'status' => $status]);
     }
 
 
-    public static function retornarDados($nome_dado, $dado, $status){
+    public static function retornarDados($nome_dado, $dado = [], $status = 200){
        return  response()->json([''.$nome_dado => $dado, 'status' => $status]);
     }
 
