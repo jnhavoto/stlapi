@@ -21,7 +21,14 @@ interface InterfaceController{
      * os seus objectos relacionados.
      * @return lista de todos objectos
      */
-    public function get(Request $completo);
+    public function getAll(Request $completo);
+
+
+    /**
+     * @param $id - do objecto pesquisado
+     * @return $objecto encontrado
+     */
+    public function get($id);
 
 
     /**
@@ -29,7 +36,7 @@ interface InterfaceController{
      * @param Request $objecto - objecto a ser salvo
      * @return $objecto - objecto se for salvo
      */
-    public function save(Request $objecto);
+    public function store(Request $objecto);
 
 
     /**
@@ -37,14 +44,7 @@ interface InterfaceController{
      * @param $id - a chave primaria do objecto
      * @return $objecto se for actualizado
      */
-    public function edit(Request $objecto, $id);
-
-
-    /**
-     * @param $id - do objecto pesquisado
-     * @return $objecto encontrado
-     */
-    public function search($id, Request $completo);
+    public function update(Request $objecto, $id);
 
 
     /**
@@ -52,7 +52,7 @@ interface InterfaceController{
      * @param $id - a chave primaria do objecto
      * @return $objecto se for removido
      */
-    public function remove(Request $objecto, $id);
+    public function destroy(Request $objecto, $id);
 
 
     /**
@@ -61,7 +61,7 @@ interface InterfaceController{
      * @param Request[] $objectos - conjunto de objectos a serem salvos
      * @return $object - conjunto de objectos salvos
      */
-    public function saveTransations(Request $objectos);
+    public function saveTransactions(Request $objectos);
 
 
     /**
