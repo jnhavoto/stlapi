@@ -168,4 +168,25 @@ Route::delete('teacher-course/{id}', 'TeacherCourseController@destroy'); //route
 
 
 
+/**
+ * User Routes
+ */
+Route::get('users', 'UserController@getAll'); //route to get all
+Route::get('user/{id}', 'UserController@get'); //route to get a specific
+Route::post('user', 'UserController@store'); //route to store
+Route::put('user/{id}', 'UserController@update'); // route to update
+Route::delete('user/{id}', 'UserController@destroy'); //route to delete
+
+
+/**
+ * SelfAssessmentAssignment Routes
+ */
+Route::get('self-assessment-assignments', 'SelfAssessmentAssignmentController@getAll'); //route to get all
+Route::get('self-assessment-assignment/{id}', 'SelfAssessmentAssignmentController@get'); //route to get a specific
+Route::post('self-assessment-assignment', 'SelfAssessmentAssignmentController@store'); //route to store
+Route::put('self-assessment-assignment/{id}', 'SelfAssessmentAssignmentController@update'); // route to update
+Route::delete('self-assessment-assignment/{id}', 'SelfAssessmentAssignmentController@destroy'); //route to delete
+
+
+
 
