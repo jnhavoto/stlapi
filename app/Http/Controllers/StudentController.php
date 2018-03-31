@@ -6,21 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 
-class StudentController extends Controller
+class StudentController extends ModelController
 {
 
-    /**
-     * Method to get all students
-     */
-    public function getAllstudents()
-    {
 
-    }
 
-    /**
-     * Method to get one specific student
-     */
-    public function getStudent($id)
+
+
+
+
+
+
+
+    public function get($id)
     {
 
         $student=DB::table('students')
@@ -33,34 +31,6 @@ class StudentController extends Controller
         return response()->json(['resultado'=> $student],200);
     }
 
-
-    /**
-     * Method to store a student
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to update a student data
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to delete a student
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
 
 }
