@@ -18,14 +18,6 @@ class StudentController extends ModelController
     }
 
 
-
-
-
-
-
-
-
-
     public function get($id)
     {
 
