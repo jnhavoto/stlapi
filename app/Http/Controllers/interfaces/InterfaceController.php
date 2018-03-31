@@ -17,11 +17,11 @@ interface InterfaceController{
     /**
      * funcao que busca lista de objectos
      * @param $utilimo - (True or false) Ultimo ou nao
-     * @param $completo - especifica se deve ser retornado o objecto com todos
+     * @param $request - especifica se deve ser retornado o objecto com todos
      * os seus objectos relacionados.
      * @return lista de todos objectos
      */
-    public function getAll(Request $completo);
+    public function getAll(Request $request);
 
 
     /**
@@ -40,11 +40,11 @@ interface InterfaceController{
 
 
     /**
-     * @param Request $objecto - O objecto a ser actualizado
+     * @param Request $object - O objecto a ser actualizado
      * @param $id - a chave primaria do objecto
      * @return $objecto se for actualizado
      */
-    public function update(Request $objecto, $id);
+    public function update(Request $object, $id);
 
 
     /**

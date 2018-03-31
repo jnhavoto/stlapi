@@ -11,10 +11,10 @@ class  ModelController extends Controller implements InterfaceController
 {
 
 
-    protected $objecto;
-    protected $nomeObjecto;
-    protected $nomeObjectos;
-    protected $relacionados;
+    protected $object;
+    protected $objectName;
+    protected $objectNames;
+    protected $relactionships;
 
 
     public function __construct() {
@@ -22,25 +22,25 @@ class  ModelController extends Controller implements InterfaceController
     }
 
 
-    public function getAll(Request $completo) {
+    public function getAll(Request $request) {
 
-        if($completo->exists('paginacao') and ($completo->get('completo') == true)){
-            return Auxiliar::retornarDados($this->nomeObjectos, $this->objecto->with($this->relacionados)->orderBy('id','desc')
-                ->paginate($completo->input('paginacao')), 200);
+        if($request->exists('pagination') and ($request->get('complete') == true)){
+            return Auxiliar::retornarDados($this->objectNames, $this->object->with($this->relactionships)->orderBy('id','desc')
+                ->paginate($request->input('pagination')), 200);
         }
 
-        if ($completo->input('completo') == 'true'){
-            return Auxiliar::retornarDados($this->nomeObjectos, $this->objecto->with($this->relacionados)->orderBy('id','desc')->get(), 200);
+        if ($request->input('complete') == 'true'){
+            return Auxiliar::retornarDados($this->objectNames, $this->object->with($this->relactionships)->orderBy('id','desc')->get(), 200);
         }
 
 
-        if ($completo->exists('paginacao') and $completo->get('paginacao') > 0){
-            return Auxiliar::retornarDados($this->nomeObjectos, $this->objecto->orderBy('id','desc')
-                ->paginate($completo->input('paginacao')), 200);
+        if ($request->exists('pagination') and $request->get('pagination') > 0){
+            return Auxiliar::retornarDados($this->objectNames, $this->object->orderBy('id','desc')
+                ->paginate($request->input('pagination')), 200);
         }
 
         else
-            return Auxiliar::retornarDados($this->nomeObjectos, $this->objecto->orderBy('id','desc')->get(), 200);
+            return Auxiliar::retornarDados($this->objectNames, $this->object->orderBy('id','desc')->get(), 200);
     }
 
 
@@ -48,52 +48,52 @@ class  ModelController extends Controller implements InterfaceController
     public function get($id)
     {
         if(!$id)
-            return Auxiliar::retornarErros('ID invalido ou nao encontrado', 404);
+            return Auxiliar::retornarErros('id not found or undefined', 404);
         else{
-            if(!$objectEncontrado = $this->objecto->find($id))
-                return Auxiliar::retornarErros($this->nomeObjecto.' Nao encontrado(a)', 404);
+            if(!$objectEncontrado = $this->object->find($id))
+                return Auxiliar::retornarErros("object with id=$id does not exists", 404);
             else
-                return Auxiliar::retornarDados($this->nomeObjecto, $objectEncontrado, 200);
+                return Auxiliar::retornarDados($this->objectName, $objectEncontrado, 200);
         }
     }
 
 
     public function store(Request $request) {
 
-        $var_objecto = $this->objecto->create($request->all());
-        if($var_objecto)
-            return Auxiliar::retornarDados($this->nomeObjecto, $var_objecto, 200);
+        $var_object = $this->object->create($request->all());
+        if($var_object)
+            return Auxiliar::retornarDados($this->objectName, $var_object, 200);
         else
-            return Auxiliar::retornarErros('Nao foi possivel salvar o '.$this->nomeObjecto, 404);
+            return Auxiliar::retornarErros("was not possible to store $this->objectName", 404);
     }
 
 
-    public function update(Request $objecto, $id) {
-        $var_objecto = $this->objecto->find($id);
-        if (!$var_objecto)
-            return Auxiliar::retornarErros($this->nomeObjecto.' nao encontrado', 404);
+    public function update(Request $object, $id) {
+        $var_object = $this->object->find($id);
+        if (!$var_object)
+            return Auxiliar::retornarErros($this->objectName.' not found', 404);
 
         else {
-            $var_objecto->update($objecto->all());
-            return Auxiliar::retornarDados($this->nomeObjecto, $var_objecto, 200);
+            $var_object->update($object->all());
+            return Auxiliar::retornarDados($this->objectName, $var_object, 200);
         }
     }
 
     public function search($id, Request $completo) {
-        $var_objecto = $this->objecto->find($id);
+        $var_objecto = $this->object->find($id);
         if (!$var_objecto)
-            return Auxiliar::retornarErros($this->nomeObjecto.' nao foi encontrado', 404);
+            return Auxiliar::retornarErros($this->objectName.' not found', 404);
         else
-            return Auxiliar::retornarDados($this->nomeObjecto, $var_objecto, 200);
+            return Auxiliar::retornarDados($this->objectName, $var_objecto, 200);
     }
 
     public function destroy(Request $objecto, $id) {
-        $var_objecto = $this->objecto->find($id);
+        $var_objecto = $this->object->find($id);
         if (!$var_objecto)
-            return Auxiliar::retornarErros($this->nomeObjecto.' nao encontrado', 404);
+            return Auxiliar::retornarErros($this->objectName.' not found', 404);
         else {
             $var_objecto->delete();
-            return Auxiliar::retornarDados($this->nomeObjecto, $var_objecto, 200);
+            return Auxiliar::retornarDados($this->objectName, $var_objecto, 200);
         }
     }
 
