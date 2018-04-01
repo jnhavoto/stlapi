@@ -11,7 +11,7 @@ class Teacher extends Model
 
     protected $table = 'teachers';
 
-    protected $fillable = ['name', 'user_id'];
+    protected $fillable = ['name', 'users_id'];
 
 
 
@@ -36,6 +36,6 @@ class Teacher extends Model
     }
 
     public function user(){
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'users_id');
     }
 }

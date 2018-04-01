@@ -16,11 +16,16 @@ class User extends Authenticateble
 
 // ==========================
     public function student(){
-        return $this->hasMany('App\Models\Student', 'user_id');
+        return $this->hasMany('App\Models\Student', 'users_id');
     }
 
     public function teacher(){
-        return $this->hasMany('App\Models\Teacher', 'user_id');
+        return $this->hasMany('App\Models\Teacher', 'users_id');
+    }
+
+
+    public function setPasswordAttribute($password) {
+        $this->attributes['password'] = bcrypt($password);
     }
 
 
