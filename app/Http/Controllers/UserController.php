@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\User;
+use JWTAuth;
 
-class UserController extends Controller
+class UserController extends ModelController
 {
 
     public function __construct() {
@@ -16,7 +17,14 @@ class UserController extends Controller
     }
 
 
-    function login(Request $request){
+
+    public function signup(){
+
+    }
+
+
+
+    public function login(Request $request){
 
         $this->validate($request, [
             'email' => 'required',
@@ -26,26 +34,41 @@ class UserController extends Controller
         $credencias = $request->only(['email', 'password']);
 
         try{
-            if(! $token = \Tymon\JWTAuth\JWTAuth::attempt($credencias))
-                return response()->json(['mensagem' => 'Credencias Erradas', 'status' => 401], 401);
+            if(! $token = JWTAuth::attempt($credencias))
+                return response()->json(['mensagem' => 'Credencias Erradas'], 401);
         }catch (JWTException $ex){
-            return response()->json(['mensagem' => 'Erro ao gerar token', 'status' => 500], 500);
+            return response()->json(['mensagem' => 'Erro ao gerar token'], 500);
         }
 
-        $user = $this->getUser(new Request(['token' => $token]));
+        $user = $this->getUserFromToken($token);
+        JWTAuth::authenticate($user);
 
-        return response()->json(['token' => $token, 'user' => $user, 'status' => 200], 200);
-    }
-
-    function signup(){
-
-    }
-
-    function logout(){
-
+        return response()->json(['token' => $token, 'user' => $user], 200);
     }
 
 
 
+    public function logout(){
+
+    }
+
+
+    /**
+     * return the user associated with the token
+     */
+    public function getUserFromToken($token){
+        return $this->getUserKind(JWTAuth::toUser($token));
+    }
+
+
+    /**
+     * Return the user Kind of the user: Teacher or studant
+     */
+    private function getUserKind($user){
+        if($user->teacher)
+            return $user->teacher;
+        else
+            return $user->student;
+    }
 
 }

@@ -171,6 +171,9 @@ Route::delete('teacher-course/{id}', 'TeacherCourseController@destroy'); //route
 /**
  * User Routes
  */
+Route::post('user/login', 'UserController@login'); //route to get all
+Route::get('users', 'UserController@getAll'); //route to get all
+Route::get('users', 'UserController@getAll'); //route to get all
 Route::get('users', 'UserController@getAll'); //route to get all
 Route::get('user/{id}', 'UserController@get'); //route to get a specific
 Route::post('user', 'UserController@store'); //route to store

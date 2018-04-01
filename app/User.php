@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticateble;
 
-class User extends Model
+class User extends Authenticateble
 {
     protected $primaryKey='id';
 
@@ -14,12 +15,12 @@ class User extends Model
 
 
 // ==========================
-    public function students(){
+    public function student(){
         return $this->hasMany('App\Models\Student', 'user_id');
     }
 
-    public function teacher_course(){
-        return $this->hasMany('App\Models\TeacherCourse', 'user_id');
+    public function teacher(){
+        return $this->hasMany('App\Models\Teacher', 'user_id');
     }
 
 
