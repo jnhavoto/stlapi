@@ -13,15 +13,6 @@ Route::put('student/{id}', 'StudentController@update'); // route to update
 Route::delete('student/{id}', 'StudentController@destroy'); //route to delete
 
 /**
- * AssignmentDescriptions Routes
- */
-Route::get('AssignmentDescriptions', 'AssignmentDescriptionController@getAllAssignmentDescriptions'); //route to get all
-Route::get('AssignmentDescription/{id}', 'AssignmentDescriptionController@getAssignmentDescription');//route to get a specific
-Route::post('AssignmentDescription', 'AssignmentDescriptionController@store'); //route to store
-Route::put('AssignmentDescription/{id}', 'AssignmentDescriptionController@update'); // route to update
-Route::delete('AssignmentDescription/{id}', 'AssignmentDescriptionController@destroy');//route to delete
-
-/**
  * AssignmentSubmissions Routes
  */
 Route::get('AssignmentSubmissions', 'AssignmentSubmissionController@getAllAssignmentSubmissions'); //route to get all
