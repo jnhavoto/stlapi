@@ -20,12 +20,6 @@ class UserController extends ModelController
 
 
 
-    public function signup(){
-
-    }
-
-
-
     public function login(Request $request){
 
         $this->validate($request, [
@@ -43,8 +37,6 @@ class UserController extends ModelController
         }
 
         $user = $this->getUserFromToken($token);
-//        JWTAuth::authenticate($user);
-
 
 
         return response()->json(['token' => $token, 'user' => $user], 200);
@@ -73,8 +65,6 @@ class UserController extends ModelController
             return $user->teacher;
         else
             return $user->student;
-        return $user->id;
-//        return Teacher::where('users_id',$user->id)->get();
     }
 
 }

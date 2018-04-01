@@ -50,7 +50,7 @@ class  ModelController extends Controller implements InterfaceController
         if(!$id)
             return Auxiliar::retornarErros('id not found or undefined', 404);
         else{
-            if(!$objectEncontrado = $this->object->find($id))
+            if(!$objectEncontrado = $this->object->with($this->relactionships)->find($id))
                 return Auxiliar::retornarErros("object with id=$id does not exists", 404);
             else
                 return Auxiliar::retornarDados($this->objectName, $objectEncontrado, 200);

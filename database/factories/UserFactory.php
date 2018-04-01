@@ -94,7 +94,7 @@ $teacher_names=['Agélii Genlott Annika','Anna Carlsson','Catherine Mortimer-Haw
 $factory->define(\App\Models\Teacher::class, function (Faker $faker) use ($teacher_names){
     return [
         'name' => $faker->unique()->randomElement($teacher_names),
-        'users_id' => $faker->numberBetween(1, 5),
+        'users_id' => $faker->unique()->numberBetween(1, 5),
     ];
 });
 
@@ -184,7 +184,7 @@ $factory->define(\App\Models\Student::class, function (Faker $faker){
         'technology_use_in_teaching' => $faker->text(30),
         'cities_id'=> $faker->numberBetween(1, \App\models\City::all()->count()),
         'schools_id'=> $faker->numberBetween(1, \App\models\School::all()->count()),
-        'users_id'=> $faker->numberBetween(6, \App\User::all()->count()),
+        'users_id'=> $faker->unique()->numberBetween(6, \App\User::all()->count()),
     ];
 });
 
