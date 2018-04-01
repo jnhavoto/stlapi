@@ -66,7 +66,7 @@ $factory->define(\App\User::class, function (Faker $faker) use ($emails,$telepho
         'telephone' => $faker->unique()->randomElement($telephone),
         'email' => $faker->unique()->randomElement($emails),
         'last_name' => $faker->text(10),
-        'user_password' => "12345"
+        'password' => "12345"
     ];
 });
 
