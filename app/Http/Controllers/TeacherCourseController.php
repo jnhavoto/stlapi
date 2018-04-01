@@ -2,53 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
 
-class TeacherCourseController extends Controller
+class TeacherCourseController extends ModelController
 {
 
-    /**
-     * Method to get all TeacherCourses
-     */
-    public function getAllTeacherCourses()
-    {
-
-    }
-
-    /**
-     * Method to get one specific TeacherCourse
-     */
-    public function getCity($id)
-    {
-
+    public function __construct() {
+        $this->object = new TeacherCourse();
+        $this->objectName = 'teacher_course';
+        $this->objectNames = 'teacher_courses';
+        $this->relactionships = [];
     }
 
 
-    /**
-     * Method to store a TeacherCourse
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to update a TeacherCourse data
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to delete a TeacherCourse
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

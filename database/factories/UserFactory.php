@@ -59,14 +59,14 @@ $factory->define(\App\Models\School::class, function (Faker $faker) use ($school
 $emails=['mbergstrom@instructure.com','ann-christine.thunqvist@nynashamn.se','pia.adolfsson@edu.gislaved.se','camjoh@edu.gislaved.se','anita.lundkvist@upplands-bro.se',
     'anne.erdhage@upplands-bro.se','annette.lundstrom@kalmar.se','peggy.bolin-johansson@kalmar.se','anna.blohm@kalmar.se','marie.horn@kalmar.se'];
 $telephone=['0735430430','0761258772','0730882913','0722220276','0721788074','0721788073','0768679136','0703922936','0706886769','0704524964','0704417723'];
-$factory->define(\App\Models\User::class, function (Faker $faker) use ($emails,$telephone) {
+$factory->define(\App\User::class, function (Faker $faker) use ($emails,$telephone) {
     return [
         'first_name' => $faker->text(10),
         'last_name' => $faker->text(10),
         'telephone' => $faker->unique()->randomElement($telephone),
         'email' => $faker->unique()->randomElement($emails),
         'last_name' => $faker->text(10),
-        'user_password' => "12345"
+        'password' => "12345"
     ];
 });
 
@@ -184,7 +184,7 @@ $factory->define(\App\Models\Student::class, function (Faker $faker){
         'technology_use_in_teaching' => $faker->text(30),
         'cities_id'=> $faker->numberBetween(1, \App\models\City::all()->count()),
         'schools_id'=> $faker->numberBetween(1, \App\models\School::all()->count()),
-        'users_id'=> $faker->numberBetween(6, \App\models\User::all()->count()),
+        'users_id'=> $faker->numberBetween(6, \App\User::all()->count()),
     ];
 });
 

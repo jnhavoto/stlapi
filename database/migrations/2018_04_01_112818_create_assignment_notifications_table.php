@@ -15,7 +15,7 @@ class CreateAssignmentNotificationsTable extends Migration {
 		Schema::create('assignment_notifications', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->text('message');
+			$table->text('message', 65535);
 			$table->boolean('status');
 			$table->timestamps();
 			$table->softDeletes();

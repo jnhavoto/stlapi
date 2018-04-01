@@ -2,54 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssignmentDescription;
 use Illuminate\Http\Request;
 
-class AssignmentDescriptionController extends Controller
+class AssignmentDescriptionController extends ModelController
 {
 
-    /**
-     * Method to get all AssignmentDescription
-     */
-    public function getAllAssignmentDescriptions()
-    {
-
+    public function __construct() {
+        $this->object = new AssignmentDescription();
+        $this->objectName = 'assignment_description';
+        $this->objectNames = 'assignment_description';
+        $this->relactionships = [];
     }
 
-    /**
-     * Method to get one specific AssignmentDescription
-     */
-    public function getAssignmentDescription($id)
-    {
-
-    }
-
-
-    /**
-     * Method to store an AssignmentDescription
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to update an AssignmentDescription data
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to delete an AssignmentDescription
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
 }

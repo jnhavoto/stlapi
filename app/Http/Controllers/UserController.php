@@ -2,86 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\User;
+use JWTAuth;
 
-class UserController extends Controller
+class UserController extends ModelController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($id)
-    {
-        $user=User::find($id);
-        return response()->json($user,200);
+
+    public function __construct() {
+        $this->object = new User();
+        $this->objectName = 'user';
+        $this->objectNames = 'users';
+        $this->relactionships = [];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+
+    public function signup(){
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+
+    public function login(Request $request){
+
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $credencias = $request->only(['email', 'password']);
+
+        try{
+            if(! $token = JWTAuth::attempt($credencias))
+                return response()->json(['mensagem' => 'Credencias Erradas'], 401);
+        }catch (JWTException $ex){
+            return response()->json(['mensagem' => 'Erro ao gerar token'], 500);
+        }
+
+        $user = $this->getUserFromToken($token);
+//        JWTAuth::authenticate($user);
+
+
+
+        return response()->json(['token' => $token, 'user' => $user], 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $user=User::find($id);
-        return response()->json($user,200);
+
+
+    public function logout(){
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * return the user associated with the token
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function getUserFromToken($token){
+        return $this->getUserKind(JWTAuth::toUser($token));
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Return the user Kind of the user: Teacher or studant
      */
-    public function destroy($id)
-    {
-        //
+    private function getUserKind($user){
+        if($user->teacher)
+            return $user->teacher;
+        else
+            return $user->student;
+        return $user->id;
+//        return Teacher::where('users_id',$user->id)->get();
     }
+
 }

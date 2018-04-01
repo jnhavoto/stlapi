@@ -11,7 +11,7 @@ class TeacherCourse extends Model
 
     protected $table = 'teacher_courses';
 
-    protected $fillable = ['name', 'teachers_id', 'courses_id', 'user_id'];
+    protected $fillable = ['name', 'teachers_id', 'courses_id'];
 
     public function teacher(){
         return $this->belongsTo('App\Models\Teacher', 'teachers_id');
@@ -21,8 +21,6 @@ class TeacherCourse extends Model
         return $this->belongsTo('App\Models\Course', 'courses_id');
     }
 
-    public function user(){
-        return $this->belongsTo('App\Models\User', 'user_id');
-    }
+
 
 }

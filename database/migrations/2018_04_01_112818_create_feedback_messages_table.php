@@ -15,7 +15,7 @@ class CreateFeedbackMessagesTable extends Migration {
 		Schema::create('feedback_messages', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->text('message');
+			$table->text('message', 65535);
 			$table->boolean('status');
 			$table->timestamps();
 			$table->softDeletes();

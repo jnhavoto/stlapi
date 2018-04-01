@@ -11,7 +11,7 @@ class Teacher extends Model
 
     protected $table = 'teachers';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'users_id'];
 
 
 
@@ -35,4 +35,7 @@ class Teacher extends Model
         return $this->hasMany('App\Models\SelfAssessment', 'teachers_id');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User', 'users_id');
+    }
 }

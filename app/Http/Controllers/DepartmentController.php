@@ -5,54 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class DepartmentController extends ModelController
 {
 
-    /**
-     * Method to get all department
-     */
-    public function getAllDepartments()
-    {
-        $departments= Department::all();
-
-        return response()->json(['departments'=>$departments],200);
-
-    }
-
-    /**
-     * Method to get one specific department
-     */
-    public function getDepartment($id)
-    {
-
+    public function __construct() {
+        $this->object = new Department();
+        $this->objectName = 'department';
+        $this->objectNames = 'departments';
+        $this->relactionships = [];
     }
 
 
-    /**
-     * Method to store a department
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to update a department data
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to delete a department
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

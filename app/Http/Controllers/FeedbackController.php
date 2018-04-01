@@ -2,53 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 
-class FeedbackController extends Controller
+class FeedbackController extends ModelController
 {
 
-    /**
-     * Method to get all Feedbacks
-     */
-    public function getAllFeedBacks()
-    {
-
+    public function __construct() {
+        $this->object = new Feedback();
+        $this->objectName = 'feedback';
+        $this->objectNames = 'feedbacks';
+        $this->relactionships = [];
     }
 
-    /**
-     * Method to get one specific feedback
-     */
-    public function getFeedback($id)
-    {
-
-    }
-
-
-    /**
-     * Method to store a feedback
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to update a feedback data
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to delete a feedback
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

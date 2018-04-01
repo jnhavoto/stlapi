@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string('last_name', 191);
 			$table->string('telephone', 191);
 			$table->string('email', 191);
-			$table->string('user_password', 191);
+			$table->string('password', 191);
 			$table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 			$table->softDeletes();

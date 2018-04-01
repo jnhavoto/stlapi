@@ -2,53 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GroupAssignment;
 use Illuminate\Http\Request;
 
-class GroupAssignmentController extends Controller
+class GroupAssignmentController extends ModelController
 {
 
-    /**
-     * Method to get all GroupAssignments
-     */
-    public function getAllGroupAssignment()
-    {
-
+    public function __construct() {
+        $this->object = new GroupAssignment();
+        $this->objectName = 'group_assignment';
+        $this->objectNames = 'group_assignments';
+        $this->relactionships = [];
     }
 
-    /**
-     * Method to get one specific GroupAssignment
-     */
-    public function getGroupAssignment($id)
-    {
-
-    }
-
-
-    /**
-     * Method to store a GroupAssignment
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to update a GroupAssignment data
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-
-    /**
-     * Method to delete a GroupAssignment
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
