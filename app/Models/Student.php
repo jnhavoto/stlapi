@@ -17,7 +17,7 @@ class Student extends Model
         'technology_use_in_teaching'
     ];
 
-//    protected $with = ;
+   protected $with = ['city', 'school','user'];
 
 
 // ========================================
