@@ -9,10 +9,12 @@ class AssignmentDescription extends Model
     protected $primaryKey='id';
 
     protected $table = 'assignment_descriptions';
-
+    public $with = ['teacher_course'];
     protected $fillable = [
         'case', 'instructions', 'startdate', 'deadline', '	available_date', 'teacher_courses_id'
     ];
+
+
 
 //================================
 //    ==== Relationships ===

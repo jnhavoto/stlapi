@@ -35,6 +35,7 @@ Route::delete('city/{id}', 'CityController@destroy'); //route to delete
  * AssignmentDescription Routes
  */
 Route::get('assignment-descriptions', 'AssignmentDescriptionController@getAll'); //route to get all
+Route::get('last-assignment-descriptions', 'AssignmentDescriptionController@getByDeadline'); //route to get all
 Route::get('assignment-description/{id}', 'AssignmentDescriptionController@get'); //route to get a specific
 Route::post('assignment-description', 'AssignmentDescriptionController@store'); //route to store
 Route::put('assignment-description/{id}', 'AssignmentDescriptionController@update'); // route to update
