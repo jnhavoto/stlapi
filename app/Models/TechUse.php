@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 24 Apr 2018 18:12:18 +0000.
+ * Date: Tue, 24 Apr 2018 18:12:19 +0000.
  */
 
 namespace App\Models;
@@ -10,40 +10,31 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class School
+ * Class TechUse
  * 
  * @property int $id
- * @property string $school_name
+ * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
- * @property int $cities_id
  * 
- * @property \App\Models\City $city
  * @property \Illuminate\Database\Eloquent\Collection $students
  *
  * @package App\Models
  */
-class School extends Eloquent
+class TechUse extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-
-	protected $casts = [
-		'cities_id' => 'int'
-	];
+	protected $table = 'tech_use';
 
 	protected $fillable = [
-		'school_name',
-		'cities_id'
+		'name'
 	];
-
-	public function city()
-	{
-		return $this->belongsTo(\App\Models\City::class, 'cities_id');
-	}
 
 	public function students()
 	{
-		return $this->hasMany(\App\Models\Student::class, 'schools_id');
+		return $this->belongsToMany(\App\Models\Student::class, 'tech_use_has_students', 'tech_use_id', 'students_id')
+					->withPivot('id', 'deleted_at')
+					->withTimestamps();
 	}
 }

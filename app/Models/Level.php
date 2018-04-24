@@ -10,28 +10,32 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Department
+ * Class Level
  * 
  * @property int $id
- * @property string $name
+ * @property int $level_number
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $courses
+ * @property \Illuminate\Database\Eloquent\Collection $questions
  *
  * @package App\Models
  */
-class Department extends Eloquent
+class Level extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $fillable = [
-		'name'
+	protected $casts = [
+		'level_number' => 'int'
 	];
 
-	public function courses()
+	protected $fillable = [
+		'level_number'
+	];
+
+	public function questions()
 	{
-		return $this->hasMany(\App\Models\Course::class, 'departments_id');
+		return $this->hasMany(\App\Models\Question::class, 'levels_id');
 	}
 }

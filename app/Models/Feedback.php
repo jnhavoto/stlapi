@@ -1,35 +1,71 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Tue, 24 Apr 2018 18:12:18 +0000.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Reliese\Database\Eloquent\Model as Eloquent;
 
-class Feedback extends Model
+/**
+ * Class Feedback
+ * 
+ * @property int $id
+ * @property string $goal
+ * @property string $message
+ * @property string $advice
+ * @property string $comment
+ * @property \Carbon\Carbon $feedback_date
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $deleted_at
+ * @property int $students_id
+ * @property int $assignment_submissions_id
+ * 
+ * @property \App\Models\Student $student
+ * @property \App\Models\AssignmentSubmission $assignment_submission
+ * @property \Illuminate\Database\Eloquent\Collection $rating_feedbacks
+ *
+ * @package App\Models
+ */
+class Feedback extends Eloquent
 {
+	use \Illuminate\Database\Eloquent\SoftDeletes;
+	protected $table = 'feedbacks';
 
-    protected $primaryKey='id';
+	protected $casts = [
+		'students_id' => 'int',
+		'assignment_submissions_id' => 'int'
+	];
 
-    protected $table = 'feedbacks';
+	protected $dates = [
+		'feedback_date'
+	];
 
-    protected $fillable = [
-        'goal', 'message', 'advice', 'comment', 'feedback_date', 'assignment_submissions_id', 'students_id'
-    ];
+	protected $fillable = [
+		'goal',
+		'message',
+		'advice',
+		'comment',
+		'feedback_date',
+		'students_id',
+		'assignment_submissions_id'
+	];
 
-//    Relationships
-    public function assignment_submission(){
-        return $this->belongsTo('App\Models\AssignmentSubmission', 'assignment_submissions_id');
-    }
+	public function student()
+	{
+		return $this->belongsTo(\App\Models\Student::class, 'students_id');
+	}
 
-    public function student(){
-        return $this->belongsTo('App\Models\Student', 'students_id');
-    }
+	public function assignment_submission()
+	{
+		return $this->belongsTo(\App\Models\AssignmentSubmission::class, 'assignment_submissions_id');
+	}
 
-    public function feedback_messages(){
-        return $this->hasMany('App\Models\FeedbackMessage', 'feedbacks_id');
-    }
-
-    public function rating_feedback(){
-        return $this->hasOne('App\Models\RatingFeedback', 'feedbacks_id');
-    }
-
+	public function rating_feedbacks()
+	{
+		return $this->hasMany(\App\Models\RatingFeedback::class, 'feedbacks_id');
+	}
 }

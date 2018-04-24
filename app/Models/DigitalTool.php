@@ -10,40 +10,30 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class School
+ * Class DigitalTool
  * 
  * @property int $id
- * @property string $school_name
+ * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
- * @property int $cities_id
  * 
- * @property \App\Models\City $city
  * @property \Illuminate\Database\Eloquent\Collection $students
  *
  * @package App\Models
  */
-class School extends Eloquent
+class DigitalTool extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $casts = [
-		'cities_id' => 'int'
-	];
-
 	protected $fillable = [
-		'school_name',
-		'cities_id'
+		'name'
 	];
-
-	public function city()
-	{
-		return $this->belongsTo(\App\Models\City::class, 'cities_id');
-	}
 
 	public function students()
 	{
-		return $this->hasMany(\App\Models\Student::class, 'schools_id');
+		return $this->belongsToMany(\App\Models\Student::class, 'digital_tools_has_students', 'digital_tools_id', 'students_id')
+					->withPivot('id', 'deleted_at')
+					->withTimestamps();
 	}
 }

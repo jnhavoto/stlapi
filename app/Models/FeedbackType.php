@@ -10,7 +10,7 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Department
+ * Class FeedbackType
  * 
  * @property int $id
  * @property string $name
@@ -18,20 +18,23 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $courses
+ * @property \Illuminate\Database\Eloquent\Collection $assignment_submissions
  *
  * @package App\Models
  */
-class Department extends Eloquent
+class FeedbackType extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	protected $table = 'feedback_type';
 
 	protected $fillable = [
 		'name'
 	];
 
-	public function courses()
+	public function assignment_submissions()
 	{
-		return $this->hasMany(\App\Models\Course::class, 'departments_id');
+		return $this->belongsToMany(\App\Models\AssignmentSubmission::class, 'feedback_type_assignment_submissions', 'feedback_type_id', 'assignment_submissions_id')
+					->withPivot('id', 'deleted_at')
+					->withTimestamps();
 	}
 }

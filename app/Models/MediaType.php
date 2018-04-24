@@ -10,34 +10,30 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class City
+ * Class MediaType
  * 
  * @property int $id
- * @property string $city_name
+ * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $schools
- * @property \Illuminate\Database\Eloquent\Collection $students
+ * @property \Illuminate\Database\Eloquent\Collection $assignment_submissions
  *
  * @package App\Models
  */
-class City extends Eloquent
+class MediaType extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	protected $table = 'media_type';
 
 	protected $fillable = [
-		'city_name'
+		'name'
 	];
 
-	public function schools()
+	public function assignment_submissions()
 	{
-		return $this->hasMany(\App\Models\School::class, 'cities_id');
-	}
-
-	public function students()
-	{
-		return $this->hasMany(\App\Models\Student::class, 'cities_id');
+		return $this->belongsToMany(\App\Models\AssignmentSubmission::class, 'assignment_submissions_media_type', 'media_type_id', 'assignment_submissions_id')
+					->withPivot('id');
 	}
 }
