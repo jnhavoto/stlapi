@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\Question::class, 3)->create();
         factory(\App\Models\SelfAssessment::class, 3)->create();
         factory(\App\Models\QuestionsSelfAssessment::class, 3)->create();
-
+        factory(\App\Models\StudentsCourse::class, 3)->create();
         factory(\App\Models\AssignmentAnnouncement::class, 3)->create();
 
 
