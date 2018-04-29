@@ -59,6 +59,7 @@ $schools=['Livets hårda skola','Svandammsskolan','Barn-och utbildnings förvalt
 $factory->define(\App\Models\School::class, function (Faker $faker) use ($schools) {
     return [
         'school_name' => $faker->unique()->randomElement($schools),
+        'cities_id' => $faker->unique()->numberBetween(1,\App\Models\City::all()->count()),
     ];
 });
 
@@ -75,16 +76,33 @@ $emails=['mbergstrom@instructure.com','ann-christine.thunqvist@nynashamn.se','pi
 //arry of telephones
 $telephone=['0735430430','0761258772','0730882913','0722220276','0721788074','0721788073','0768679136','0703922936','0706886769','0704524964','019301295'];
 //feeding the DB with emails and telephones
-$factory->define(\App\User::class, function (Faker $faker) use ($firstnames,$lastnames,$emails,$telephone) {
-    for ($i=0; $i<10; $i++){
+//$factory->define(\App\Models\User::class, function (Faker $faker) use ($firstnames,$lastnames,$emails,
+//    $telephone) {
+//    for ($i=0; $i<10; $i++){
+//
+//        $fname = $firstnames[$i];
+//        $lname=$lastnames[$i];
+//        $phone=$telephone[$i];
+//        $e_mail=$emails[$i];
+//        return [
+//            'first_name' => $faker->randomElements($firstnames,$i, false),
+////            'first_name' => $faker->format(string, ),
+//            'last_name' => $faker->randomElements($lastnames,$i, false),
+//            'telephone' => $faker->randomElements($telephone,$i, false),
+//            'email' => $faker->randomElements($emails,$i, false),
+//            //'password' => $faker->randomElement($telephone)
+//        ];
+//    }
+//});
+$factory->define(\App\Models\User::class, function (Faker $faker) use ($firstnames,$lastnames,$emails,
+    $telephone) {
         return [
-            'first_name' => $faker->$firstnames[$i],
-            'last_name' => $faker->$lastnames[$i],
-            'telephone' => $faker->$telephone[$i],
-            'email' => $faker->$emails[$i],
-            'password' => "12345"
+            'first_name' => $faker->randomElement($firstnames),
+            'last_name' => $faker->randomElement($lastnames),
+            'telephone' => $faker->randomElement($telephone),
+            'email' => $faker->randomElement($emails),
+            'password' => '123456',
         ];
-    }
 });
 
 //feeding data with info about assignment description
@@ -95,7 +113,7 @@ $factory->define(\App\Models\AssignmentDescription::class, function (Faker $fake
         'startdate' => $faker->date('Y-m-d'),
         'deadline'=> $faker->date('Y-m-d'),
         'available_date'=> $faker->date('Y-m-d'),
-        'teacher_courses_id' => $faker->unique()->numberBetween(1, \App\Models\TeacherCourse::all()->count()),
+        'group_teachers_id' => $faker->numberBetween(1, \App\Models\GroupTeacher::all()->count()),
     ];
 });
 
@@ -111,7 +129,7 @@ $factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){
 
 $factory->define(\App\Models\Teacher::class, function (Faker $faker){
     return [
-        'users_id' => $faker->unique()->numberBetween(11, 14),
+        'users_id' => $faker->numberBetween(1, \App\Models\User::all()->count()),
     ];
 });
 
@@ -168,9 +186,9 @@ $factory->define(\App\Models\SelfAssessment::class, function (Faker $faker){
 //feeding StudentsCourse
 $factory->define(\App\Models\StudentsCourse::class, function (Faker $faker){
     return [
-        'student_id' => $faker->numberBetween(1, \App\Models\Student::all()->count()),
-        'course_id'=>$faker->numberBetween(1, \App\Models\Course::all()->count()),
-        'star_tdate' => $faker->date('Y-m-d'),
+        'students_id' => $faker->numberBetween(1, \App\Models\Student::all()->count()),
+        'courses_id'=>$faker->numberBetween(1, \App\Models\Course::all()->count()),
+        'start_date' => $faker->date('Y-m-d'),
         'end_date'=> $faker->date('Y-m-d'),
         'status'=> $faker->numberBetween(1,2),
     ];
@@ -179,15 +197,14 @@ $factory->define(\App\Models\StudentsCourse::class, function (Faker $faker){
 //feeding Student
 $factory->define(\App\Models\Student::class, function (Faker $faker){
     return [
-        'teaching_grade' => $faker->unique()->numberBetween(1, 12),
-        'years_as_teacher' => $faker->unique()->numberBetween(1, 50),
+        'teaching_grade' => $faker->numberBetween(1, 12),
+        'years_as_teacher' => $faker->numberBetween(1, 50),
         'technical_support' => $faker->boolean(50),
         'student_to_student_feedback' => $faker->boolean(50),
         'student_to_student_feedback_other' => $faker->text(30),
-        'users_id'=> $faker->unique()->numberBetween(1, 10),
+        'users_id'=> $faker->numberBetween(1, \App\Models\User::all()->count()),
         'schools_id'=> $faker->numberBetween(1, \App\Models\School::all()->count()),
         'cities_id'=> $faker->numberBetween(1, \App\Models\City::all()->count()),
-
 /*        'digital_tools' => $faker->text(30),
         'workplace_tools' => $faker->boolean,
         'workplace_tools_othe' => $faker->text(30),
@@ -204,7 +221,7 @@ $factory->define(\App\Models\AssignmentAnnouncement::class, function (Faker $fak
         'assignment_descriptions_id'=>$faker->numberBetween(1, \App\Models\AssignmentDescription::all()->count()),
         'teacher_members_id'=>$faker->numberBetween(1, \App\Models\TeacherMember::all()->count()),
         'message' =>$faker->text(60),
-        'subject' =>$faker->text(60),
+        'subject' =>$faker->text(20),
     ];
 });
 
@@ -241,21 +258,21 @@ $factory->define(\App\Models\Feedback::class, function (Faker $faker){
 $factory->define(\App\Models\AssignmentSubmission::class, function (Faker $faker){
     return [
         'area' => $faker->text(30),
-        'grade' => $faker->unique()->numberBetween(1, 12),
-        'number_of_students' => $faker->unique()->numberBetween(5, 30),
+        'grade' => $faker->numberBetween(1, 12),
+        'number_of_students' => $faker->numberBetween(5, 30),
         'start_date_of_lecture' => $faker->date('Y-m-d'),
         'end_date_of_lecture' => $faker->date('Y-m-d'),
         'purpose' => $faker->text(30),
         'curriculum_requirement' => $faker->text(30),
         'preview_text' => $faker->text(30),
         'preview_check' => $faker->text(10),
-        'inspiration_choice' => $faker->boolean(50),
-        'inspiraction_text' => $faker->text(15),
+        'inspiration_choiche' => $faker->boolean(50),
+        'inspiration_text' => $faker->text(15),
         'text_types' => $faker->text(30),
         'task_formulation' => $faker->text(30),
         'feedback_text' => $faker->text(30),
         'assessment' => $faker->text(30),
-        'analysis_measure' => $faker->text(10),
+        'analysis_measure' => $faker->numberBetween(1,10),
         'analysis_text' => $faker->text(30),
         'good_experience' => $faker->text(30),
         'bad_experience' => $faker->text(30),
