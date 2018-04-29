@@ -24,6 +24,7 @@ class CreateFeedbacksTable extends Migration {
 			$table->softDeletes();
 			$table->integer('students_id')->unsigned()->index('fk_feedbacks_students1_idx');
 			$table->integer('assignment_submissions_id')->unsigned()->index('fk_feedbacks_assignment_submissions1_idx');
+			$table->integer('status')->nullable();
 		});
 	}
 

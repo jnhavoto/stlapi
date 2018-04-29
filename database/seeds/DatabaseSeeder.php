@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\AssignmentDescription::class, 3)->create();
         factory(\App\Models\Group::class, 3)->create();
         factory(\App\Models\GroupsAssignmentDescription::class, 3)->create();
-        factory(\App\Models\Level::class, 3)->create();
+        factory(\App\Models\Level::class, 6)->create();
         factory(\App\Models\Question::class, 3)->create();
         factory(\App\Models\StudentsCourse::class, 3)->create();
         factory(\App\Models\SelfAssessment::class, 3)->create();

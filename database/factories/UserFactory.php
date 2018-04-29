@@ -154,7 +154,7 @@ $factory->define(\App\Models\GroupsAssignmentDescription::class, function (Faker
 //$levelnumber=['1','2','3'];
 $factory->define(\App\Models\Level::class, function (Faker $faker){
     return [
-        'level_number' => $faker->numberBetween(1, 3),
+        'level_number' => $faker->numberBetween(1, 6),
     ];
 });
 

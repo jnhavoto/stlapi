@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 24 Apr 2018 18:12:18 +0000.
+ * Date: Sun, 29 Apr 2018 16:56:48 +0000.
  */
 
 namespace App\Models;
@@ -23,6 +23,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $deleted_at
  * @property int $students_id
  * @property int $assignment_submissions_id
+ * @property int $status
  * 
  * @property \App\Models\Student $student
  * @property \App\Models\AssignmentSubmission $assignment_submission
@@ -37,7 +38,8 @@ class Feedback extends Eloquent
 
 	protected $casts = [
 		'students_id' => 'int',
-		'assignment_submissions_id' => 'int'
+		'assignment_submissions_id' => 'int',
+		'status' => 'int'
 	];
 
 	protected $dates = [
@@ -51,7 +53,8 @@ class Feedback extends Eloquent
 		'comment',
 		'feedback_date',
 		'students_id',
-		'assignment_submissions_id'
+		'assignment_submissions_id',
+		'status'
 	];
 
 	public function student()
