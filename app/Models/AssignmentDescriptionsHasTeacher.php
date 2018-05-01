@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 29 Apr 2018 16:56:48 +0000.
+ * Date: Tue, 01 May 2018 15:38:10 +0000.
  */
 
 namespace App\Models;
@@ -27,10 +27,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class AssignmentDescriptionsHasTeacher extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-	public $incrementing = false;
 
 	protected $casts = [
-		'id' => 'int',
 		'assignment_descriptions_id' => 'int',
 		'teachers_id' => 'int'
 	];

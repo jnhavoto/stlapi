@@ -14,7 +14,7 @@ class CreateAssignmentDescriptionsHasTeachersTable extends Migration {
 	{
 		Schema::create('assignment_descriptions_has_teachers', function(Blueprint $table)
 		{
-			$table->integer('id')->primary();
+			$table->integer('id', true);
 			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_assignment_descriptions_has_teachers_assignment_descript_idx');
 			$table->integer('teachers_id')->unsigned()->index('fk_assignment_descriptions_has_teachers_teachers1_idx');
 			$table->timestamps();

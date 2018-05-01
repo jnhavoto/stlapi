@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 29 Apr 2018 16:56:48 +0000.
+ * Date: Tue, 01 May 2018 15:38:10 +0000.
  */
 
 namespace App\Models;
@@ -12,9 +12,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class AssignmentSubmissionsMediaType
  * 
+ * @property int $id
  * @property int $assignment_submissions_id
  * @property int $media_type_id
- * @property int $id
  * 
  * @property \App\Models\AssignmentSubmission $assignment_submission
  * @property \App\Models\MediaType $media_type
@@ -24,13 +24,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class AssignmentSubmissionsMediaType extends Eloquent
 {
 	protected $table = 'assignment_submissions_media_type';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
 		'assignment_submissions_id' => 'int',
-		'media_type_id' => 'int',
-		'id' => 'int'
+		'media_type_id' => 'int'
 	];
 
 	protected $fillable = [

@@ -14,9 +14,9 @@ class CreateAssignmentSubmissionsMediaTypeTable extends Migration {
 	{
 		Schema::create('assignment_submissions_media_type', function(Blueprint $table)
 		{
+			$table->integer('id', true);
 			$table->integer('assignment_submissions_id')->unsigned()->index('fk_assignment_submissions_has_media_type_assignment_submiss_idx');
 			$table->integer('media_type_id')->index('fk_assignment_submissions_has_media_type_media_type1_idx');
-			$table->integer('id')->unsigned()->primary();
 		});
 	}
 

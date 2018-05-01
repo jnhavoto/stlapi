@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\TeacherCourse::class, 5)->create();
         factory(\App\Models\GroupTeacher::class, 3)->create();
         factory(\App\Models\AssignmentDescription::class, 3)->create();
+        factory(\App\Models\AssignmentDescriptionsHasTeacher::class, 3)->create();
         factory(\App\Models\Group::class, 3)->create();
+        factory(\App\Models\StudentMember::class, 3)->create();
         factory(\App\Models\GroupsAssignmentDescription::class, 3)->create();
         factory(\App\Models\Level::class, 6)->create();
         factory(\App\Models\Question::class, 3)->create();
@@ -33,13 +35,23 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\AssignmentAnnouncement::class, 3)->create();
         factory(\App\Models\AssignmentSubmission::class, 3)->create();
         factory(\App\Models\Feedback::class, 3)->create();
-
-        //Student
-        //Feedback
-        //GroupAssignment
-        //GroupStudents
-        //SelfAssessment
-        //StudentTeacherMessages
-        //FeedbackMessages
+        factory(\App\Models\RatingFeedback::class, 3)->create();
+        factory(\App\Models\MediaType::class, 3)->create();
+        factory(\App\Models\GroupMessage::class, 3)->create();
+        factory(\App\Models\FeedbackType::class, 3)->create();
+        factory(\App\Models\FeedbackTypeAssignmentSubmission::class, 3)->create();
+        factory(\App\Models\FeedbackMessage::class, 3)->create();
+        factory(\App\Models\DigitalTool::class, 3)->create();
+        factory(\App\Models\DigitalToolsHasStudent::class, 3)->create();
+        factory(\App\Models\AssignmentSubmissionsMediaType::class, 3)->create();
+        factory(\App\Models\StudentNotificationStatus::class, 3)->create();
+        factory(\App\Models\Subject::class, 3)->create();
+        factory(\App\Models\SubjectsHasStudent::class, 3)->create();
+        factory(\App\Models\TechUse::class, 3)->create();
+        factory(\App\Models\TechUseHasStudent::class, 3)->create();
+        factory(\App\Models\WorkMethod::class, 3)->create();
+        factory(\App\Models\WorkMethodsHasStudent::class, 3)->create();
+        factory(\App\Models\WorkplaceTool::class, 3)->create();
+        factory(\App\Models\WorkplaceToolsHasStudent::class, 3)->create();
     }
 }

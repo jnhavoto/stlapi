@@ -282,16 +282,173 @@ $factory->define(\App\Models\AssignmentSubmission::class, function (Faker $faker
         'students_id'=> $faker->numberBetween(1, \App\Models\Student::all()->count()),
         'assignment_descriptions_id'=> $faker->numberBetween(1, \App\models\AssignmentDescription::all()->count()),
 
-/*        'media_type' => $faker->text(10),
+/*
         'media_type_other' => $faker->text(30),
         'feedback_check' => $faker->text(10),
 */
     ];
 });
 
+//feeding MediaType
+$factory->define(\App\Models\MediaType::class, function (Faker $faker){
+    return [
+        'name' => $faker->text(30),
+    ];
+});
 
+//feeding GroupMessage
+$factory->define(\App\Models\GroupMessage::class, function (Faker $faker){
+    return [
+        'member_id' => $faker->numberBetween(1,\App\Models\StudentMember::all()->count()),
+        'groups_assignment_descriptions_id' => $faker->numberBetween(1,\App\Models\GroupsAssignmentDescription::all()
+            ->count()),
+        'mensagem' => $faker->text(30),
+        'status' => $faker->boolean(50),
+    ];
+});
 
+//feeding FeedbackType
+$factory->define(\App\Models\FeedbackType::class, function (Faker $faker){
+    return [
+        'name' => $faker->text(30),
+    ];
+});
 
+//feeding FeedbackTypeAssignmentSubmission
+$factory->define(\App\Models\FeedbackTypeAssignmentSubmission::class, function (Faker $faker){
+    return [
+        'feedback_type_id' => $faker->numberBetween(1,\App\Models\FeedbackType::all()->count()),
+        'assignment_submissions_id' => $faker->numberBetween(1,\App\Models\AssignmentSubmission::all()->count()),
+    ];
+});
 
+//feeding FeedbackMessage
+$factory->define(\App\Models\FeedbackMessage::class, function (Faker $faker){
+    return [
+        'students_sender' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+        'students_reciever' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+        'mensagem' => $faker->text(30),
+        'status' => $faker->boolean(50),
+    ];
+});
 
+//feeding DigitalToolsHasStudent
+$factory->define(\App\Models\DigitalToolsHasStudent::class, function (Faker $faker){
+    return [
+        'digital_tools_id' => $faker->numberBetween(1,\App\Models\DigitalTool::all()->count()),
+        'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+    ];
+});
 
+//feeding DigitalTool
+$factory->define(\App\Models\DigitalTool::class, function (Faker $faker){
+    return [
+        'name' => $faker->text(30),
+    ];
+});
+
+//feeding AssignmentDescriptionsHasTeacher
+$factory->define(\App\Models\AssignmentDescriptionsHasTeacher::class, function (Faker $faker){
+    return [
+        'assignment_descriptions_id' => $faker->numberBetween(1,\App\Models\AssignmentDescription::all()->count()),
+        'teachers_id' => $faker->numberBetween(1,\App\Models\Teacher::all()->count()),
+    ];
+});
+
+//feeding AssignmentSubmissionsMediaType
+$factory->define(\App\Models\AssignmentSubmissionsMediaType::class, function (Faker $faker){
+    return [
+        'assignment_submissions_id' => $faker->numberBetween(1,\App\Models\AssignmentSubmission::all()->count()),
+        'media_type_id' => $faker->numberBetween(1,\App\Models\MediaType::all()->count()),
+    ];
+});
+
+//feeding RatingFeedback
+$factory->define(\App\Models\RatingFeedback::class, function (Faker $faker){
+    return [
+        'goal' => $faker->text(50),
+        'timing' => $faker->boolean(50),
+        'message' => $faker->text(50),
+        'advice' => $faker->text(50),
+        'comment' => $faker->text(50),
+        'feedback_rating_date' => $faker->date('Y-m-d'),
+        'feedbacks_id' => $faker->numberBetween(1,\App\Models\Feedback::all()->count()),
+    ];
+});
+
+//feeding StudentMember
+$factory->define(\App\Models\StudentMember::class, function (Faker $faker){
+    return [
+        'groups_id' => $faker->numberBetween(1,\App\Models\Group::all()->count()),
+        'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+        'status' => $faker->boolean(50),
+    ];
+});
+
+//feeding StudentNotificationStatus
+$factory->define(\App\Models\StudentNotificationStatus::class, function (Faker $faker){
+    return [
+        'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+        'assignment_notifications_id' => $faker->numberBetween(1,\App\Models\AssignmentAnnouncement::all()->count()),
+    ];
+});
+
+//feeding Subject
+$factory->define(\App\Models\Subject::class, function (Faker $faker){
+    return [
+        'name' => $faker->text(30),
+    ];
+});
+
+//feeding SubjectsHasStudent
+$factory->define(\App\Models\SubjectsHasStudent::class, function (Faker $faker){
+    return [
+        'subjects_id' => $faker->numberBetween(1,\App\Models\Subject::all()->count()),
+        'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+    ];
+});
+
+//feeding TechUse
+$factory->define(\App\Models\TechUse::class, function (Faker $faker){
+    return [
+        'name' => $faker->text(30),
+    ];
+});
+
+//feeding TechUseHasStudent
+$factory->define(\App\Models\TechUseHasStudent::class, function (Faker $faker){
+    return [
+        'tech_use_id' => $faker->numberBetween(1,\App\Models\TechUse::all()->count()),
+        'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+    ];
+});
+
+//feeding WorkMethod
+$factory->define(\App\Models\WorkMethod::class, function (Faker $faker){
+    return [
+        'name' => $faker->text(30),
+    ];
+});
+
+//feeding WorkMethodsHasStudent
+$factory->define(\App\Models\WorkMethodsHasStudent::class, function (Faker $faker){
+    return [
+        'work_methods_id' => $faker->numberBetween(1,\App\Models\WorkMethod::all()->count()),
+        'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+    ];
+});
+
+//feeding WorkplaceTool
+$factory->define(\App\Models\WorkplaceTool::class, function (Faker $faker){
+    return [
+        'name' => $faker->text(30),
+    ];
+});
+
+//feeding WorkplaceToolsHasStudent
+$factory->define(\App\Models\WorkplaceToolsHasStudent::class, function (Faker $faker){
+    return [
+        'workplace_tools_id' => $faker->numberBetween(1,\App\Models\WorkplaceTool::all()->count()),
+        'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+    ];
+});
