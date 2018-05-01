@@ -58,7 +58,7 @@ Route::delete('assignment-submission/{id}', 'AssignmentSubmissionController@dest
  */
 Route::get('assignment-submissions-media-types', 'AssignmentSubmissionMediaTypeController@getAll'); //route to get all
 Route::get('assignment-submissions-media-types/{id}', 'AssignmentSubmissionMediaTypeController@get'); //route to get a specific
-Route::post('assignment-submissions-media-types', 'AssignmentSubmissionMediaTypeController@store'); //route to store
+Route::post('assignment-submissions-media-type', 'AssignmentSubmissionMediaTypeController@store'); //route to store
 Route::put('assignment-submissions-media-types/{id}', 'AssignmentSubmissionMediaTypeController@update'); // route to update
 Route::delete('assignment-submissions-media-types/{id}', 'AssignmentSubmissionMediaTypeController@destroy'); //route to delete
 
@@ -97,7 +97,7 @@ Route::delete('department/{id}', 'DepartmentController@destroy'); //route to del
  */
 Route::get('digital-tools', 'DigitalToolController@getAll'); //route to get all
 Route::get('digital-tools/{id}', 'DigitalToolController@get'); //route to get a specific
-Route::post('digital-tools', 'DigitalToolController@store'); //route to store
+Route::post('digital-tool', 'DigitalToolController@store'); //route to store
 Route::put('digital-tools/{id}', 'DigitalToolController@update'); // route to update
 Route::delete('digital-tools/{id}', 'DigitalToolController@destroy'); //route to delete
 
@@ -106,7 +106,7 @@ Route::delete('digital-tools/{id}', 'DigitalToolController@destroy'); //route to
  */
 Route::get('digital-tools-students', 'DigitalToolsStudentController@getAll'); //route to get all
 Route::get('digital-tools-students/{id}', 'DigitalToolsStudentController@get'); //route to get a specific
-Route::post('digital-tools-students', 'DigitalToolsStudentController@store'); //route to store
+Route::post('digital-tools-student', 'DigitalToolsStudentController@store'); //route to store
 Route::put('digital-tools-students/{id}', 'DigitalToolsStudentController@update'); // route to update
 Route::delete('digital-tools-students/{id}', 'DigitalToolsStudentController@destroy'); //route to delete
 
@@ -125,7 +125,7 @@ Route::delete('feedback/{id}', 'FeedbackController@destroy'); //route to delete
  */
 Route::get('feedback-messages', 'FeedbackMessageController@getAll'); //route to get all
 Route::get('feedback-messages/{id}', 'FeedbackMessageController@get'); //route to get a specific
-Route::post('feedback-messages', 'FeedbackMessageController@store'); //route to store
+Route::post('feedback-message', 'FeedbackMessageController@store'); //route to store
 Route::put('feedback-messages/{id}', 'FeedbackMessageController@update'); // route to update
 Route::delete('feedback-messages/{id}', 'FeedbackMessageController@destroy'); //route to delete
 
@@ -172,7 +172,7 @@ Route::delete('group-message/{id}', 'GroupMessageController@destroy'); //route t
  */
 Route::get('group-assignments-descriptions', 'GroupsAssignmetDescriptionController@getAll'); //route to get all
 Route::get('group-assignments-descriptions/{id}', 'GroupsAssignmetDescriptionController@get'); //route to get a specific
-Route::post('group-assignments-descriptions', 'GroupsAssignmetDescriptionController@store'); //route to store
+Route::post('group-assignments-description', 'GroupsAssignmetDescriptionController@store'); //route to store
 Route::put('group-assignments-descriptions/{id}', 'GroupsAssignmetDescriptionController@update'); // route to update
 Route::delete('group-assignments-descriptions/{id}', 'GroupsAssignmetDescriptionController@destroy'); //route to delete
 
