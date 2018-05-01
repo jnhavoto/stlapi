@@ -133,7 +133,7 @@ Route::delete('feedback-messages/{id}', 'FeedbackMessageController@destroy'); //
 /**
  * FeedbackTypeAssignmentSubmission Routes
  */
-Route::get('feedback-type-assignment-submission', 'FeedbackTypeAssignmentSubmissionController@getAll'); //route to get all
+Route::get('feedback-type-assignment-submissions', 'FeedbackTypeAssignmentSubmissionController@getAll'); //route to get all
 Route::get('feedback-type-assignment-submission/{id}', 'FeedbackTypeAssignmentSubmissionController@get'); //route to get a specific
 Route::post('feedback-type-assignment-submission', 'FeedbackTypeAssignmentSubmissionController@store'); //route to store
 Route::put('feedback-type-assignment-submission/{id}', 'FeedbackTypeAssignmentSubmissionController@update'); // route to update
