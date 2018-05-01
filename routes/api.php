@@ -39,7 +39,7 @@ Route::delete('assignment-description/{id}', 'AssignmentDescriptionController@de
 Route::get('assignment-descriptions-teachers', 'AssignmentDescriptionTeacherController@getAll'); //route to get all
 Route::get('last-assignment-descriptions-teachers', 'AssignmentDescriptionTeacherController@getByDeadline'); //route to get all
 Route::get('assignment-description-teachers/{id}', 'AssignmentDescriptionTeacherController@get'); //route to get a specific
-Route::post('assignment-description-teachers', 'AssignmentDescriptionTeacherController@store'); //route to store
+Route::post('assignment-description-teacher', 'AssignmentDescriptionTeacherController@store'); //route to store
 Route::put('assignment-description-teachers/{id}', 'AssignmentDescriptionTeacherController@update'); // route to update
 Route::delete('assignment-description-teachers/{id}', 'AssignmentDescriptionTeacherController@destroy'); //route to delete
 
