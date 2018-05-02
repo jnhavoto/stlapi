@@ -23,6 +23,7 @@ class CreateAssignmentDescriptionsTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->integer('group_teachers_id')->index('fk_assignment_descriptions_group_teachers1_idx');
+			$table->integer('status')->nullable()->default(0);
 		});
 	}
 

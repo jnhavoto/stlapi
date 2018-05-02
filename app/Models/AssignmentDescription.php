@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 01 May 2018 15:38:10 +0000.
+ * Date: Wed, 02 May 2018 15:35:33 +0000.
  */
 
 namespace App\Models;
@@ -22,6 +22,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * @property int $group_teachers_id
+ * @property int $status
  * 
  * @property \App\Models\GroupTeacher $group_teacher
  * @property \Illuminate\Database\Eloquent\Collection $assignment_announcements
@@ -36,7 +37,8 @@ class AssignmentDescription extends Eloquent
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'group_teachers_id' => 'int'
+		'group_teachers_id' => 'int',
+		'status' => 'int'
 	];
 
 	protected $dates = [
@@ -51,7 +53,8 @@ class AssignmentDescription extends Eloquent
 		'startdate',
 		'deadline',
 		'available_date',
-		'group_teachers_id'
+		'group_teachers_id',
+		'status'
 	];
 
 	public function group_teacher()

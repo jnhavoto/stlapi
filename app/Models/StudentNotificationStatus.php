@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 01 May 2018 15:38:10 +0000.
+ * Date: Wed, 02 May 2018 15:35:34 +0000.
  */
 
 namespace App\Models;
@@ -12,9 +12,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class StudentNotificationStatus
  * 
+ * @property int $id
  * @property int $students_id
  * @property int $assignment_notifications_id
- * @property int $id
+ * @property int $status
  * 
  * @property \App\Models\Student $student
  * @property \App\Models\AssignmentAnnouncement $assignment_announcement
@@ -28,12 +29,14 @@ class StudentNotificationStatus extends Eloquent
 
 	protected $casts = [
 		'students_id' => 'int',
-		'assignment_notifications_id' => 'int'
+		'assignment_notifications_id' => 'int',
+		'status' => 'int'
 	];
 
 	protected $fillable = [
 		'students_id',
-		'assignment_notifications_id'
+		'assignment_notifications_id',
+		'status'
 	];
 
 	public function student()
