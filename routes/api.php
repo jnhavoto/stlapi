@@ -163,7 +163,7 @@ Route::delete('teacher-course/{id}', 'TeacherCourseController@destroy'); //route
 /**
  * User Routes
  */
-Route::post('user/login', 'UserController@login'); //route to get all
+Route::post('user/login', 'UserController@login');
 Route::post('user/logout', 'UserController@logout');
 Route::post('get-user-token/{token}', 'UserController@getUserFromToken');
 Route::get('users', 'UserController@getAll'); //route to get all
