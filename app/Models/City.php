@@ -1,24 +1,43 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Wed, 02 May 2018 15:35:33 +0000.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Reliese\Database\Eloquent\Model as Eloquent;
 
-class City extends Model
+/**
+ * Class City
+ * 
+ * @property int $id
+ * @property string $city_name
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $deleted_at
+ * 
+ * @property \Illuminate\Database\Eloquent\Collection $schools
+ * @property \Illuminate\Database\Eloquent\Collection $students
+ *
+ * @package App\Models
+ */
+class City extends Eloquent
 {
-    protected $primaryKey = 'id';
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-    protected $table = 'cities';
+	protected $fillable = [
+		'city_name'
+	];
 
-    protected $fillable = [
-        'city_name'
-    ];
+	public function schools()
+	{
+		return $this->hasMany(\App\Models\School::class, 'cities_id');
+	}
 
-
-    public function students()
-    {
-        return $this->hasMany('App\Models\Student', 'cities_id');
-    }
-
-
+	public function students()
+	{
+		return $this->hasMany(\App\Models\Student::class, 'cities_id');
+	}
 }

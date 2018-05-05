@@ -11,7 +11,7 @@ class AssignmentSubmissionController extends ModelController
     public function __construct() {
         $this->object = new AssignmentSubmission();
         $this->objectName = 'assignment_submission';
-        $this->objectNames = 'assignment_submission';
+        $this->objectNames = 'assignment_submissions';
         $this->relactionships = [];
     }
 
