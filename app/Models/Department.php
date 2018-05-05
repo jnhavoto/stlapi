@@ -1,20 +1,37 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Wed, 02 May 2018 15:35:33 +0000.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Reliese\Database\Eloquent\Model as Eloquent;
 
-class Department extends Model
+/**
+ * Class Department
+ * 
+ * @property int $id
+ * @property string $name
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $deleted_at
+ * 
+ * @property \Illuminate\Database\Eloquent\Collection $courses
+ *
+ * @package App\Models
+ */
+class Department extends Eloquent
 {
-    protected $primaryKey='id';
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-    protected $table = 'departments';
+	protected $fillable = [
+		'name'
+	];
 
-    protected $fillable = [
-        'name'
-    ];
-
-    public function courses(){
-        return $this->hasMany('App\Models\Course', 'departments_id');
-    }
+	public function courses()
+	{
+		return $this->hasMany(\App\Models\Course::class, 'departments_id');
+	}
 }

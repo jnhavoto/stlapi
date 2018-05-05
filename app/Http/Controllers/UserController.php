@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\User;
-use JWTAuth;
 
-class UserController extends ModelController
+class UserController extends  ModelController
 {
 
     public function __construct() {
@@ -71,3 +68,4 @@ class UserController extends ModelController
     }
 
 }
+

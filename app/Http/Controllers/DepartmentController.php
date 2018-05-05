@@ -15,5 +15,4 @@ class DepartmentController extends ModelController
         $this->relactionships = [];
     }
 
-
 }

@@ -1,26 +1,50 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Wed, 02 May 2018 15:35:34 +0000.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Reliese\Database\Eloquent\Model as Eloquent;
 
-class TeacherCourse extends Model
+/**
+ * Class TeacherCourse
+ * 
+ * @property int $id
+ * @property int $teachers_id
+ * @property int $courses_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $deleted_at
+ * 
+ * @property \App\Models\Teacher $teacher
+ * @property \App\Models\Course $course
+ *
+ * @package App\Models
+ */
+class TeacherCourse extends Eloquent
 {
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-    protected $primaryKey='id';
+	protected $casts = [
+		'teachers_id' => 'int',
+		'courses_id' => 'int'
+	];
 
-    protected $table = 'teacher_courses';
+	protected $fillable = [
+		'teachers_id',
+		'courses_id'
+	];
 
-    protected $fillable = ['name', 'teachers_id', 'courses_id'];
+	public function teacher()
+	{
+		return $this->belongsTo(\App\Models\Teacher::class, 'teachers_id');
+	}
 
-    public function teacher(){
-        return $this->belongsTo('App\Models\Teacher', 'teachers_id');
-    }
-
-    public function course(){
-        return $this->belongsTo('App\Models\Course', 'courses_id');
-    }
-
-
-
+	public function course()
+	{
+		return $this->belongsTo(\App\Models\Course::class, 'courses_id');
+	}
 }

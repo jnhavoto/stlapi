@@ -15,5 +15,4 @@ class TeacherController extends ModelController
         $this->relactionships = [];
     }
 
-
 }
