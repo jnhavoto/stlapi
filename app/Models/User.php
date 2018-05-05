@@ -55,4 +55,11 @@ class User extends Eloquent
 	{
 		return $this->hasMany(\App\Models\Teacher::class, 'users_id');
 	}
+
+
+	public function setPasswordAttribute($valor){
+	    $this->attributes['password'] = bcrypt($valor);
+    }
+
+
 }
