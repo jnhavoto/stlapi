@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use JWTAuth;
 use Illuminate\Http\Request;
 
 class UserController extends  ModelController
