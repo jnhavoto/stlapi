@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -87,4 +88,17 @@ class AssignmentDescription extends Eloquent
 					->withPivot('id', 'deleted_at')
 					->withTimestamps();
 	}
+
+
+	public function getDeadLineAttribute($deadline){
+        $carbonated_date = Carbon::parse($deadline);
+        $diff_date = $carbonated_date->diffForHumans(Carbon::now());
+        return $diff_date;
+    }
+
+
+    public function getCaseAttribute($case){
+	    return strtoupper($case);
+    }
+
 }
