@@ -12,7 +12,7 @@ class StudentMemberController extends ModelController
         $this->object = new StudentMember();
         $this->objectName = 'student_member';
         $this->objectNames = 'student_members';
-        $this->relactionships = [];
+        $this->relactionships = ["student"];
     }
 
 }

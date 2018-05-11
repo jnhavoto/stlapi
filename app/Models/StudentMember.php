@@ -42,6 +42,8 @@ class StudentMember extends Eloquent
 		'status'
 	];
 
+	protected $with = ["student"];
+
 	public function group()
 	{
 		return $this->belongsTo(\App\Models\Group::class, 'groups_id');

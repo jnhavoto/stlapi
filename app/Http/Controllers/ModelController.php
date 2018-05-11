@@ -40,7 +40,9 @@ class  ModelController extends Controller implements InterfaceController
         }
 
         else
-            return Auxiliar::retornarDados($this->objectNames, $this->object->orderBy('id','desc')->get(), 200);
+            return Auxiliar::retornarDados($this->objectNames, $this->object->with($this->relactionships)->orderBy('id','desc')->get
+            (),
+                200);
     }
 
 

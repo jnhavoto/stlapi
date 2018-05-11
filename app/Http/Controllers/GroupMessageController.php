@@ -12,7 +12,9 @@ class GroupMessageController extends ModelController
         $this->object = new GroupMessage();
         $this->objectName = 'group_message';
         $this->objectNames = 'group_messages';
-        $this->relactionships = [];
+        $this->relactionships = ["student_member"];
     }
+
+
 
 }
