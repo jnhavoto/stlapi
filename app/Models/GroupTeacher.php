@@ -31,6 +31,9 @@ class GroupTeacher extends Eloquent
 		'group_name'
 	];
 
+
+	protected $with = ['teacher_members'];
+
 	public function assignment_descriptions()
 	{
 		return $this->hasMany(\App\Models\AssignmentDescription::class, 'group_teachers_id');

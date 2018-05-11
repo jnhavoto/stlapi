@@ -16,6 +16,7 @@ class AssignmentDescriptionController extends ModelController
         $this->relactionships = [];
     }
 
+
     public function getByDeadline()
     {
         $lastAssignment = AssignmentDescription::orderBy('deadline','desc')->first();

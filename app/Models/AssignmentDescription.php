@@ -57,6 +57,8 @@ class AssignmentDescription extends Eloquent
 		'status'
 	];
 
+	protected $with = ['group_teacher', 'assignment_announcements', 'teachers', 'assignment_submissions' ,'groups'];
+
 	public function group_teacher()
 	{
 		return $this->belongsTo(\App\Models\GroupTeacher::class, 'group_teachers_id');
