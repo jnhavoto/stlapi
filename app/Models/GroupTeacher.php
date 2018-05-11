@@ -27,7 +27,9 @@ class GroupTeacher extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $fillable = [
+    protected $with = ['teacher_members'];
+
+    protected $fillable = [
 		'group_name'
 	];
 

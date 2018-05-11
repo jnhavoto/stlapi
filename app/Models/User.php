@@ -37,6 +37,7 @@ class User extends Eloquent
 		'remember_token'
 	];
 
+    protected $with = ['students','teachers' ];
 	protected $fillable = [
 		'first_name',
 		'last_name',

@@ -37,6 +37,7 @@ class AssignmentAnnouncement extends Eloquent
 		'teacher_members_id' => 'int'
 	];
 
+
 	protected $fillable = [
 		'assignment_descriptions_id',
 		'teacher_members_id',

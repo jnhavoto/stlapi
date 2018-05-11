@@ -40,6 +40,7 @@ class AssignmentDescription extends Eloquent
 		'group_teachers_id' => 'int',
 		'status' => 'int'
 	];
+    protected $with = ['group_teacher','assignment_announcements' ];
 
 	protected $dates = [
 		'startdate',
