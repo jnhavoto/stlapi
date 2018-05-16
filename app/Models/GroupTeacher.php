@@ -32,7 +32,8 @@ class GroupTeacher extends Eloquent
 	];
 
 
-	protected $with = ['teacher_members'];
+
+    protected $with = ['teacher_members'];
 
 	public function assignment_descriptions()
 	{

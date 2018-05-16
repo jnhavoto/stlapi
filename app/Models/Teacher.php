@@ -36,8 +36,10 @@ class Teacher extends Eloquent
 	protected $fillable = [
 		'users_id'
 	];
+        protected $with = ['user','courses'];
 
-	public function user()
+
+    public function user()
 	{
 		return $this->belongsTo(\App\Models\User::class, 'users_id');
 	}
