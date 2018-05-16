@@ -35,8 +35,6 @@ class TeacherMember extends Eloquent
 	];
     protected $with = ['teacher'];
 
-    protected $with = ['teacher'];
-
 
     protected $fillable = [
 		'group_teachers_id',
