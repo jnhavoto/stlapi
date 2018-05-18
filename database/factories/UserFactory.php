@@ -94,7 +94,7 @@ $telephone=['0735430430','0761258772','0730882913','0722220276','0721788074','07
 //        ];
 //    }
 //});
-$factory->define(\App\Models\User::class, function (Faker $faker) use ($firstnames,$lastnames,$emails,
+$factory->define(\App\User::class, function (Faker $faker) use ($firstnames,$lastnames,$emails,
     $telephone) {
         return [
             'first_name' => $faker->randomElement($firstnames),
@@ -129,7 +129,7 @@ $factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){
 
 $factory->define(\App\Models\Teacher::class, function (Faker $faker){
     return [
-        'users_id' => $faker->numberBetween(1, \App\Models\User::all()->count()),
+        'users_id' => $faker->unique()->numberBetween(1, 15),
     ];
 });
 
@@ -202,7 +202,7 @@ $factory->define(\App\Models\Student::class, function (Faker $faker){
         'technical_support' => $faker->boolean(50),
         'student_to_student_feedback' => $faker->boolean(50),
         'student_to_student_feedback_other' => $faker->text(30),
-        'users_id'=> $faker->numberBetween(1, \App\Models\User::all()->count()),
+        'users_id'=> $faker->unique()->numberBetween(16, \App\User::all()->count()),
         'schools_id'=> $faker->numberBetween(1, \App\Models\School::all()->count()),
         'cities_id'=> $faker->numberBetween(1, \App\Models\City::all()->count()),
 /*        'digital_tools' => $faker->text(30),

@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\Course::class, 5)->create();
         factory(\App\Models\City::class, 10)->create();
         factory(\App\Models\School::class, 10)->create();
-        factory(\App\Models\User::class, 10)->create();
-        factory(\App\Models\Student::class, 5)->create();
+        factory(\App\User::class, 30)->create();
         factory(\App\Models\Teacher::class, 5)->create();
+        factory(\App\Models\Student::class, 5)->create();
         factory(\App\Models\TeacherCourse::class, 5)->create();
         factory(\App\Models\GroupTeacher::class, 3)->create();
         factory(\App\Models\AssignmentDescription::class, 3)->create();

@@ -38,6 +38,7 @@ class User extends Eloquent
 	];
 
     protected $with = ['students','teachers' ];
+
 	protected $fillable = [
 		'first_name',
 		'last_name',
