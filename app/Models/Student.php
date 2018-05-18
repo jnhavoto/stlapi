@@ -67,11 +67,11 @@ class Student extends Eloquent
 		'cities_id'
 	];
 
-    protected $with = ["user"];
+    protected $with = ["user", 'school'];
 
 	public function user()
 	{
-		return $this->belongsTo(\App\Models\User::class, 'users_id');
+		return $this->belongsTo(\App\User::class, 'users_id');
 	}
 
 	public function school()
