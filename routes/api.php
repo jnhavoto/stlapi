@@ -12,6 +12,7 @@ Route::post('student', 'StudentController@store'); //route to store
 Route::put('student/{id}', 'StudentController@update'); // route to update
 Route::delete('student/{id}', 'StudentController@destroy'); //route to delete
 
+Route::get('user/{id}/student/last-assignment-description', 'StudentController@getLastAssignmentDescription'); //route to get all
 /**
  * AssignmentAnnouncement Routes
  */
