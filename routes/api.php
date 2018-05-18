@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 
 Route::get('testeApi', function (){
-    return true;
+    return ['response' => true];
 });
 
 
