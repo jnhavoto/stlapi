@@ -94,13 +94,12 @@ $telephone=['0735430430','0761258772','0730882913','0722220276','0721788074','07
 //        ];
 //    }
 //});
-$factory->define(\App\User::class, function (Faker $faker) use ($firstnames,$lastnames,$emails,
-    $telephone) {
+$factory->define(\App\User::class, function (Faker $faker) {
         return [
-            'first_name' => $faker->randomElement($firstnames),
-            'last_name' => $faker->randomElement($lastnames),
-            'telephone' => $faker->randomElement($telephone),
-            'email' => $faker->randomElement($emails),
+            'first_name' => $faker->firstName,
+            'last_name' => $faker->lastName,
+            'telephone' => $faker->phoneNumber,
+            'email' => $faker->unique()->email,
             'password' => '123456',
         ];
 });

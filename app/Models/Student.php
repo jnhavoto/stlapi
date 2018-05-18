@@ -67,7 +67,7 @@ class Student extends Eloquent
 		'cities_id'
 	];
 
-//    protected $with = ["user"];
+    protected $with = ["user"];
 
 	public function user()
 	{
