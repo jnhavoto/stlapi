@@ -16,11 +16,11 @@ class User extends Authenticateble
 
 // ==========================
     public function student(){
-        return $this->hasMany('App\Models\Student', 'users_id');
+        return $this->hasOne('App\Models\Student', 'users_id');
     }
 
     public function teacher(){
-        return $this->hasMany('App\Models\Teacher', 'users_id');
+        return $this->hasOne('App\Models\Teacher', 'users_id');
     }
 
 
