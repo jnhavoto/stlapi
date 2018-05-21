@@ -48,7 +48,11 @@ class SubjectStudentController extends ModelController
         }
 
 
-        return ['subjects' => $studentSubjects = SubjectsHasStudent::where('students_id', '=', $request->get('student_id'))->get()];
+        return [
+                'subjects' =>  SubjectsHasStudent::where('students_id', '=', $request->get('student_id'))
+                            ->join('subjects', 'subjects_has_students.subjects_id', '=', 'subjects.id')
+                            ->get()
+        ];
 
     }
 
