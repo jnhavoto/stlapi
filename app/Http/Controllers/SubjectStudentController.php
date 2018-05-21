@@ -43,7 +43,7 @@ class SubjectStudentController extends ModelController
             }
 
             if(!$contains)
-                SubjectsHasStudent::create($subject);
+                SubjectsHasStudent::create(['students_id' => $request->student_id, 'subjects_id' => $subject['id']]);
 
         }
 
