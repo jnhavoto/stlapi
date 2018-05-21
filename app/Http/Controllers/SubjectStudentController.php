@@ -20,7 +20,7 @@ class SubjectStudentController extends ModelController
 
     public function store(Request $request)
     {
-       $studentSubjects = SubjectsHasStudent::where('student_id', '=', $request->get('student_id'))->get();
+       $studentSubjects = SubjectsHasStudent::where('students_id', '=', $request->get('student_id'))->get();
 
 
         foreach ($studentSubjects as $studentSubject){
@@ -48,7 +48,7 @@ class SubjectStudentController extends ModelController
         }
 
 
-        return ['subjects' => $studentSubjects = SubjectsHasStudent::where('student_id', '=', $request->get('student_id'))->get()];
+        return ['subjects' => $studentSubjects = SubjectsHasStudent::where('students_id', '=', $request->get('student_id'))->get()];
 
     }
 
