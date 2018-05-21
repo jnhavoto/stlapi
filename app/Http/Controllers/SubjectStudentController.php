@@ -25,7 +25,7 @@ class SubjectStudentController extends ModelController
 
         foreach ($studentSubjects as $studentSubject){
            $contains = false;
-            foreach ($request->get('subject') as $subject){
+            foreach ($request->get('subjects') as $subject){
                if($studentSubjects['subjects_id'] == $subject['subjects_id'])
                    $contains = true;
            }
