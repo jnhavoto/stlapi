@@ -14,6 +14,7 @@ class User extends Authenticateble
     protected $fillable = ['first_name', 'last_name', 'telephone', 'email', 'password', 'remember_token'];
 
 
+
 // ==========================
     public function student(){
         return $this->hasOne('App\Models\Student', 'users_id');

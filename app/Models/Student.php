@@ -67,7 +67,7 @@ class Student extends Eloquent
 		'cities_id'
 	];
 
-    protected $with = ["user", 'school',
+    protected $with = ['user', 'school',
                         'city', 'assignment_submissions', 'digital_tools', 'tech_uses','student_notification_statuses',
                         'feedback_messages', 'feedback', 'courses', 'subjects', 'work_methods', 'workplace_tools'];
 

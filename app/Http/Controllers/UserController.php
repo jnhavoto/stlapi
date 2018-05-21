@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\User;
 use JWTAuth;
 use Illuminate\Http\Request;
 
@@ -59,7 +59,7 @@ class UserController extends  ModelController
      * Return the user Kind of the user: Teacher or studant
      */
     private function getUserKind($user){
-        if(!$user->teacher)
+        if($user->teacher)
             return $user->teacher;
 
         else{
