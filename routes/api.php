@@ -15,6 +15,7 @@ Route::get('testeApi', function (){
  */
 Route::get('students', 'StudentController@getAll'); //route to get all
 Route::get('student/{id}', 'StudentController@get'); //route to get a specific
+Route::get('student/{student_id}/assignment-submission/{assignment_id}', 'StudentController@getStudantAssigment'); //route to get a specific
 Route::post('student', 'StudentController@store'); //route to store
 Route::put('student/{id}', 'StudentController@update'); // route to update
 Route::delete('student/{id}', 'StudentController@destroy'); //route to delete
@@ -55,7 +56,7 @@ Route::delete('assignment-description-teachers/{id}', 'AssignmentDescriptionTeac
  * AssignmentSubmissions Routes
  */
 Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll'); //route to get all
-Route::get('assignment-submission/{id}', 'AssignmentSubmissionController@get'); //route to get a specific
+Route::post('assignment-submission/student/{id}', 'AssignmentSubmissionController@store'); //route to store
 Route::post('assignment-submission', 'AssignmentSubmissionController@store'); //route to store
 Route::put('assignment-submission/{id}', 'AssignmentSubmissionController@update'); // route to update
 Route::delete('assignment-submission/{id}', 'AssignmentSubmissionController@destroy'); //route to delete

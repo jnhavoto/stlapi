@@ -41,4 +41,12 @@ class StudentController extends ModelController
 
     }
 
+
+    public function getStudantAssigment($student_id, $assignment_id){
+        $assignmentSubmition = Student::find($student_id)
+            ->join('assignment_submissions', 'students.id', 'assignment_submissions.students_id')
+            ->where('assignment_submissions.id', '=', $assignment_id);
+    }
+
+
 }

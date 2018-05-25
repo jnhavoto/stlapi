@@ -15,4 +15,15 @@ class AssignmentSubmissionController extends ModelController
         $this->relactionships = [];
     }
 
+
+    public function store(Request $request){
+
+
+        return $request->all();
+
+
+    }
+
+
+
 }
