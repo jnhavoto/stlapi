@@ -20,10 +20,10 @@ class CreateAssignmentDescriptionsTable extends Migration {
 			$table->date('startdate');
 			$table->date('deadline');
 			$table->date('available_date')->nullable();
+			$table->integer('status')->default(0);
+			$table->integer('group_teachers_id')->index('fk_assignment_descriptions_group_teachers1_idx');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->integer('group_teachers_id')->index('fk_assignment_descriptions_group_teachers1_idx');
-			$table->integer('status')->nullable()->default(0);
 		});
 	}
 

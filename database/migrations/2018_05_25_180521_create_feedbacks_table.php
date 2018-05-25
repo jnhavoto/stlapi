@@ -15,11 +15,11 @@ class CreateFeedbacksTable extends Migration {
 		Schema::create('feedbacks', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->text('goal', 65535);
-			$table->text('message', 65535);
-			$table->text('advice', 65535);
-			$table->text('comment', 65535);
-			$table->date('feedback_date');
+			$table->text('goal', 65535)->nullable();
+			$table->text('message', 65535)->nullable();
+			$table->text('advice', 65535)->nullable();
+			$table->text('comment', 65535)->nullable();
+			$table->date('feedback_date')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 			$table->integer('students_id')->unsigned()->index('fk_feedbacks_students1_idx');

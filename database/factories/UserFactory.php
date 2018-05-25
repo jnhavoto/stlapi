@@ -105,13 +105,15 @@ $factory->define(\App\User::class, function (Faker $faker) {
 });
 
 //feeding data with info about assignment description
-$factory->define(\App\Models\AssignmentDescription::class, function (Faker $faker){
+$assignmentStatus = [0,1,2];
+$factory->define(\App\Models\AssignmentDescription::class, function (Faker $faker) use ($assignmentStatus){
     return [
         'case' => $faker->text(15),
         'instructions' => $faker->text(35),
         'startdate' => $faker->date('Y-m-d'),
         'deadline'=> $faker->date('Y-m-d'),
         'available_date'=> $faker->date('Y-m-d'),
+        'status' => $faker->unique()->randomElement($assignmentStatus),
         'group_teachers_id' => $faker->numberBetween(1, \App\Models\GroupTeacher::all()->count()),
     ];
 });

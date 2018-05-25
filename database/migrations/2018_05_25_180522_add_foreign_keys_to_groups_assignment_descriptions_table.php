@@ -14,8 +14,8 @@ class AddForeignKeysToGroupsAssignmentDescriptionsTable extends Migration {
 	{
 		Schema::table('groups_assignment_descriptions', function(Blueprint $table)
 		{
-			$table->foreign('groups_id', 'fk_groups_has_assignment_descriptions_groups1')->references('id')->on('groups')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('assignment_descriptions_id', 'fk_groups_has_assignment_descriptions_assignment_descriptions1')->references('id')->on('assignment_descriptions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('groups_id', 'fk_groups_has_assignment_descriptions_groups1')->references('id')->on('groups')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToGroupsAssignmentDescriptionsTable extends Migration {
 	{
 		Schema::table('groups_assignment_descriptions', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_groups_has_assignment_descriptions_groups1');
 			$table->dropForeign('fk_groups_has_assignment_descriptions_assignment_descriptions1');
+			$table->dropForeign('fk_groups_has_assignment_descriptions_groups1');
 		});
 	}
 
