@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
+use App\Models\AssignmentSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,4 +23,6 @@ class AssignmentDescriptionController extends ModelController
         $lastAssignment = AssignmentDescription::orderBy('deadline','desc')->first();
         return response()->json(['lastAssignment'=>$lastAssignment]);
     }
+
+
 }
