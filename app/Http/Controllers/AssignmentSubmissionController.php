@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignmentSubmission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class AssignmentSubmissionController extends ModelController
 {
@@ -26,27 +27,21 @@ class AssignmentSubmissionController extends ModelController
      * @param Request $request
      * Cria um novo assignment na base de dados ou actualiza caso ja exista
      */
-    public function store(Request $request){
-        return ['retorno' => $request->all()];
+    public function salvarOrUpdateAssignment(Request $request){
+        return response()->json(['retorno' => $request->all()]);
 
-//       $assignemnt = AssignmentSubmission::updateOrCreate(
-//        [
-//            'id' => $request->get('assignment')['id']
-//        ],
-//
-//        [
-//            $request->get('assignment')
-//        ]
-//        );
-//
-//       return ['assignment_submition' => $assignemnt];
+       $assignemnt = AssignmentSubmission::updateOrCreate(
+        [
+            'id' => $request->get('assignment')['id']
+        ],
 
-    }
+        [
+            $request->get('assignment')
+        ]
+        );
 
+       return ['assignment_submition' => $assignemnt];
 
-
-    public function teste(Request $request){
-        return ['retorno' => $request->all()];
     }
 
 

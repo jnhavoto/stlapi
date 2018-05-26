@@ -57,8 +57,8 @@ Route::delete('assignment-description-teachers/{id}', 'AssignmentDescriptionTeac
  */
 Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll'); //route to get all
 Route::get('assignment-submissions/student/{student_id}/assignment-desc/{assignment_desc_id}', 'AssignmentSubmissionController@getAssignmentSubmition');
-Route::post('assignment-submission/student/{id}', 'AssignmentSubmissionController@store'); //route to store
-Route::post('assignment-submission', 'AssignmentSubmissionController@teste'); //route to store
+//Route::post('assignment-submission/student/{id}', 'AssignmentSubmissionController@store'); //route to store
+Route::post('assignment-submission', 'AssignmentSubmissionController@salvarOrUpdateAssignment'); //route to store
 Route::put('assignment-submission/{id}', 'AssignmentSubmissionController@update'); // route to update
 Route::delete('assignment-submission/{id}', 'AssignmentSubmissionController@destroy'); //route to delete
 
