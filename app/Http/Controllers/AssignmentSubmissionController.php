@@ -16,11 +16,9 @@ class AssignmentSubmissionController extends ModelController
     }
 
 
-
-
     public function getAssignmentSubmition($student_id, $assignment_desc_id){
-        $assignment_sub =  AssignmentSubmission::where('assignment_descriptions_id', '=', $assignment_desc_id)->where('students_id', '=', $student_id)->get();
-        return ['assignmnent_submition' => $assignment_sub];
+        $assignment_sub =  AssignmentSubmission::where('assignment_descriptions_id', '=', $assignment_desc_id)->where('students_id', '=', $student_id)->first();
+        return ['assignment_submition' => $assignment_sub];
     }
 
 
