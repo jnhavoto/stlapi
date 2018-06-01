@@ -28,17 +28,12 @@ class AssignmentSubmissionController extends ModelController
      * Cria um novo assignment na base de dados ou actualiza caso ja exista
      */
     public function salvarOrUpdateAssignment(Request $request){
-        return response()->json(['retorno' => $request->all()]);
 
-       $assignemnt = AssignmentSubmission::updateOrCreate(
-        [
-            'id' => $request->get('assignment')['id']
-        ],
-
-        [
-            $request->get('assignment')
-        ]
-        );
+        if($request->get('assignment')['id'] == null){
+            $assignemnt = AssignmentSubmission::create($request->get('assignment'));
+        }else{
+            $assignemnt = AssignmentSubmission::find($request->get('assignment')['id'])->update($request->get('assignment'));
+        }
 
        return ['assignment_submition' => $assignemnt];
 
