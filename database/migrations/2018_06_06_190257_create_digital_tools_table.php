@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSelfAssessmentsTable extends Migration {
+class CreateDigitalToolsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class CreateSelfAssessmentsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('self_assessments', function(Blueprint $table)
+		Schema::create('digital_tools', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('students_courses_id')->index('fk_self_assessments_students_courses1_idx');
+			$table->string('name', 45)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -29,7 +29,7 @@ class CreateSelfAssessmentsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('self_assessments');
+		Schema::drop('digital_tools');
 	}
 
 }

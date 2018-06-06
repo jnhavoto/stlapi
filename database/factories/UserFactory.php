@@ -180,6 +180,8 @@ $factory->define(\App\Models\QuestionsSelfAssessment::class, function (Faker $fa
 $factory->define(\App\Models\SelfAssessment::class, function (Faker $faker){
     return [
         'students_courses_id'=>$faker->numberBetween(1, \App\Models\StudentsCourse::all()->count()),
+        'status'=> $faker->numberBetween(1,2),
+        'submission_date' => $faker->date('Y-m-d'),
     ];
 });
 
