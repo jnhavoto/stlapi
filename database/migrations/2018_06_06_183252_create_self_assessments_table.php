@@ -15,11 +15,9 @@ class CreateSelfAssessmentsTable extends Migration {
 		Schema::create('self_assessments', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('questions_id')->index('fk_students_has_questions_questions1_idx');
-			$table->boolean('response')->nullable();
+			$table->integer('students_courses_id')->index('fk_self_assessments_students_courses1_idx');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->integer('students_courses_id')->index('fk_self_assessments_students_courses1_idx');
 		});
 	}
 

@@ -17,6 +17,7 @@ class CreateQuestionsSelfAssessmentsTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('questions_id')->index('fk_questions_has_self_assessments_questions1_idx');
 			$table->integer('self_assessments_id')->index('fk_questions_has_self_assessments_self_assessments1_idx');
+			$table->boolean('response')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

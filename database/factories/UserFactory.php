@@ -172,14 +172,13 @@ $factory->define(\App\Models\QuestionsSelfAssessment::class, function (Faker $fa
     return [
         'questions_id' => $faker->numberBetween(1, \App\Models\Question::all()->count()),
         'self_assessments_id'=>$faker->numberBetween(1, \App\Models\SelfAssessment::all()->count()),
+        'response'=>$faker->boolean(50),
     ];
 });
 
 //feeding SelfAssessment
 $factory->define(\App\Models\SelfAssessment::class, function (Faker $faker){
     return [
-        'questions_id' => $faker->numberBetween(1, \App\Models\Question::all()->count()),
-        'response'=>$faker->boolean(50),
         'students_courses_id'=>$faker->numberBetween(1, \App\Models\StudentsCourse::all()->count()),
     ];
 });
