@@ -280,6 +280,7 @@ $factory->define(\App\Models\AssignmentSubmission::class, function (Faker $faker
         'bad_experience' => $faker->text(30),
         'learned_consequence' => $faker->text(30),
         'next_goal' => $faker->text(30),
+        'status'=> $faker->numberBetween(1,2),
         'submission_date' => $faker->date('Y-m-d'),
         'students_id'=> $faker->numberBetween(1, \App\Models\Student::all()->count()),
         'assignment_descriptions_id'=> $faker->numberBetween(1, \App\models\AssignmentDescription::all()->count()),
