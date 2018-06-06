@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration {
 		Schema::create('questions', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('description', 200)->nullable();
+			$table->string('description', 500)->nullable();
 			$table->integer('levels_id')->index('fk_questions_levels1_idx');
 			$table->timestamps();
 			$table->softDeletes();
