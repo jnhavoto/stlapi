@@ -69,8 +69,7 @@ class Student extends Eloquent
 
     protected $with = ['user', 'school',
                         'city', 'assignment_submissions', 'digital_tools', 'tech_uses','student_notification_statuses',
-                        'feedback_messages', 'feedback', 'courses', 'subjects', 'work_methods', 'workplace_tools'];
-
+                        'feedback_messages', 'feedback', 'courses', 'subjects', 'work_methods', 'workplace_tools','self_assessments'];
 
 	public function user()
 	{
@@ -152,4 +151,12 @@ class Student extends Eloquent
 					->withPivot('id', 'deleted_at')
 					->withTimestamps();
 	}
+
+    public function self_assessments()
+    {
+        return $this->belongsToMany(\App\Models\SelfAssessment::class, 'questions_self_assessments',
+            'questions_id','self_assessments_id')
+            ->withPivot('id', 'deleted_at')
+            ->withTimestamps();
+    }
 }
