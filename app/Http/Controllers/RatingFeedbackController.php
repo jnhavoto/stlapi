@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\RatingFeedback;
 use Illuminate\Http\Request;
 

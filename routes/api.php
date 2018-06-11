@@ -123,6 +123,7 @@ Route::delete('digital-tools-students/{id}', 'DigitalToolsStudentController@dest
  * Feedback Routes
  */
 Route::get('feedbacks', 'FeedbackController@getAll'); //route to get all
+Route::get('feedbacks/student/{student_id}', 'FeedbackController@getFeedbackForStudent');
 Route::get('feedback/{id}', 'FeedbackController@get'); //route to get a specific
 Route::post('feedback', 'FeedbackController@store'); //route to store
 Route::put('feedback/{id}', 'FeedbackController@update'); // route to update

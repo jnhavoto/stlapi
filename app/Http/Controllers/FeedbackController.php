@@ -15,4 +15,19 @@ class FeedbackController extends ModelController
         $this->relactionships = [];
     }
 
+
+
+    /**
+     * Retorna os feedbacks de uma Feitos para um estudante
+     * @param $id
+     */
+    public function getFeedbackForStudent($student_id){
+        $feedbacks = Feedback::with('student')
+            ->join('assignment_submissions', 'feedbacks.assignment_submissions_id', '=', 'assignment_submissions.id')
+            ->where('assignment_submissions.students_id', '=', $student_id)
+            ->select('feedbacks.*')->get();
+
+        return ['feedbacks' => $feedbacks];
+    }
+
 }
