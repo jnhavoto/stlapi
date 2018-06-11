@@ -369,11 +369,11 @@ $factory->define(\App\Models\AssignmentSubmissionsMediaType::class, function (Fa
 //feeding RatingFeedback
 $factory->define(\App\Models\RatingFeedback::class, function (Faker $faker){
     return [
-        'goal' => $faker->text(50),
-        'timing' => $faker->boolean(50),
-        'message' => $faker->text(50),
-        'advice' => $faker->text(50),
-        'comment' => $faker->text(50),
+        'goal' => $faker->numberBetween(0,5),
+        'timing' => $faker->numberBetween(0, 5),
+        'message' => $faker->numberBetween(0,5),
+        'advice' => $faker->numberBetween(0,5),
+        'comment' => $faker->text(150),
         'feedback_rating_date' => $faker->date('Y-m-d'),
         'feedbacks_id' => $faker->numberBetween(1,\App\Models\Feedback::all()->count()),
     ];
