@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssignmentDescription;
 use App\Models\AssignmentSubmission;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class AssignmentSubmissionController extends ModelController
 {
@@ -28,6 +28,10 @@ class AssignmentSubmissionController extends ModelController
      * Cria um novo assignment na base de dados ou actualiza caso ja exista
      */
     public function salvarOrUpdateAssignment(Request $request){
+
+        if($request->get('operation') == 'save'){
+            AssignmentDescription::find($request->get('assignment')['assignment_descriptions_id'])->update(['status' => 1]);
+        }
 
         if($request->get('assignment')['id'] == null){
             $assignemnt = AssignmentSubmission::create($request->get('assignment'));
