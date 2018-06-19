@@ -34,8 +34,8 @@
 <script src="{{ asset('theme/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
 
 <!-- Custom Js -->
-<script src="js/admin.js') }}"></script>
-<script src="js/pages/index.js') }}"></script>
+<script src="{{ asset('theme/js/admin.js') }}"></script>
+<script src="{{ asset('theme/js/pages/index.js') }}"></script>
 
 <!-- Demo Js -->
-<script src="js/demo.js') }}"></script>
+<script src="{{ asset('theme/js/demo.js') }}"></script>

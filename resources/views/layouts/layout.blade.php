@@ -10,9 +10,6 @@
 
     <title>{{ config('app.name', 'Stl-Teacher') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
@@ -24,7 +21,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
     <link href="{{ asset('theme/plugins/node-waves/waves.css') }}" rel="stylesheet"/>
