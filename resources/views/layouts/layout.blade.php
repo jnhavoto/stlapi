@@ -42,6 +42,8 @@
 <body class="theme-red">
 <div id="app">
 
+    @include('layouts.preloader-search')
+
     @include('layouts.cabecalho')
 
     <main class="py-4">
