@@ -42,7 +42,7 @@
     <link href="{{ asset('theme/css/themes/all-themes.css') }}" rel="stylesheet"/>
 
 </head>
-<body>
+<body class="theme-red">
 <div id="app">
 
     @include('layouts.cabecalho')
