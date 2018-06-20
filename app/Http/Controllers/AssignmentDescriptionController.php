@@ -25,4 +25,13 @@ class AssignmentDescriptionController extends ModelController
     }
 
 
+//    public function getgetByDeadline_()
+//    {
+//
+//        $latest = $this->getgetByDeadline();
+//
+//        return view('','');
+//
+//    }
+
 }

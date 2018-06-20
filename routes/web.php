@@ -22,9 +22,13 @@ Route::get('/teste', function () {
 });
 
 
-Route::get('/ass', function () {
-    return view('assigments.index');
-});
+
+Route::get('/ass', 'test@index');
+
+
+//Route::get('/ass', function () {
+//    return view('assigments.index');
+//});
 
 Route::get('/newass', function () {
     return view('assigments.newassigment');

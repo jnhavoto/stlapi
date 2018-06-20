@@ -48,5 +48,10 @@ class StudentController extends ModelController
             ->where('assignment_submissions.id', '=', $assignment_id);
     }
 
+//    public function getAllStudents(){
+//
+//
+//        return view('',['one'=>'','second'=>'second']);
+//    }
 
 }
