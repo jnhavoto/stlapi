@@ -36,6 +36,27 @@
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">widgets</i>
+                    <span>Sutdents</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <span>Cards</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="">Basic</a>
+                            </li>
+                            <li>
+                                <a href="">Colored</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">widgets</i>
                     <span>Courses</span>
                 </a>
                 <ul class="ml-menu">
