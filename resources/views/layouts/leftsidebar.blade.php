@@ -28,7 +28,7 @@
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active">
-                <a href="index.html">
+                <a href="/">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
@@ -36,7 +36,7 @@
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">widgets</i>
-                    <span>Widgets</span>
+                    <span>Courses</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
@@ -57,21 +57,21 @@
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">perm_media</i>
-                    <span>Medias</span>
+                    <span>Assignents</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="pages/medias/image-gallery.html">Image Gallery</a>
+                        <a href="/newass">New Assignemnt</a>
                     </li>
                     <li>
-                        <a href="pages/medias/carousel.html">Carousel</a>
+                        <a href="/listass">List of Assignments</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" class="menu-toggle">
+                <a href="javascript:void(0);" href="/" class="menu-toggle">
                     <i class="material-icons">pie_chart</i>
-                    <span>Charts</span>
+                    <span>Messages</span>
                 </a>
                 <ul class="ml-menu">
                     <li>

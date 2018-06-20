@@ -29,3 +29,7 @@ Route::get('/ass', function () {
 Route::get('/newass', function () {
     return view('assigments.newassigment');
 });
+
+Route::get('/listass', function () {
+    return view('assigments.listassignments');
+});

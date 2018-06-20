@@ -1,4 +1,4 @@
-<section class="content">
+{{--<section class="content">--}}
     <div class="container-fluid">
         <div class="block-header">
             <h2>STL-TEACHER</h2>
@@ -308,4 +308,4 @@
             <!-- #END# Browser Usage -->
         </div>
     </div>
-</section>
+{{--</section>--}}
