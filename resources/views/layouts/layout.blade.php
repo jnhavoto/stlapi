@@ -46,9 +46,20 @@
 
     @include('layouts.cabecalho')
 
-    <main class="py-4">
+
+
+    <session>
+        @include('layouts.leftsidebar')
+    </session>
+
+
+
+    <section class=" content">
+
+
         @yield('content')
-    </main>
+
+    </section>
 
     @include('layouts.js-links')
 </div>
