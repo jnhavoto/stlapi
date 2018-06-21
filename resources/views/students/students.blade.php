@@ -26,16 +26,16 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Assignment</th>
+                                <th>Task</th>
                                 <th>Status</th>
-                                <th>Instructors</th>
+                                <th>Manager</th>
                                 <th>Progress</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Assignment 1</td>
+                                <td>Task A</td>
                                 <td><span class="label bg-green">Doing</span></td>
                                 <td>John Doe</td>
                                 <td>
@@ -46,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Assignment 2</td>
+                                <td>Task B</td>
                                 <td><span class="label bg-blue">To Do</span></td>
                                 <td>John Doe</td>
                                 <td>
@@ -57,7 +57,7 @@
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Assignment 3</td>
+                                <td>Task C</td>
                                 <td><span class="label bg-light-blue">On Hold</span></td>
                                 <td>John Doe</td>
                                 <td>
@@ -68,7 +68,7 @@
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Assignment 4</td>
+                                <td>Task D</td>
                                 <td><span class="label bg-orange">Wait Approvel</span></td>
                                 <td>John Doe</td>
                                 <td>
@@ -79,7 +79,7 @@
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>Assignment 5</td>
+                                <td>Task E</td>
                                 <td>
                                     <span class="label bg-red">Suspended</span>
                                 </td>

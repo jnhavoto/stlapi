@@ -34,25 +34,10 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:void(0);" class="menu-toggle">
+                <a href="/students">
                     <i class="material-icons">widgets</i>
-                    <span>Sutdents</span>
+                    <span>Students</span>
                 </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <span>Cards</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="">Basic</a>
-                            </li>
-                            <li>
-                                <a href="">Colored</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -61,17 +46,12 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <span>Cards</span>
+                        <a href="/addcourse">
+                            <span>Add Course</span>
                         </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="">Basic</a>
-                            </li>
-                            <li>
-                                <a href="">Colored</a>
-                            </li>
-                        </ul>
+                        <a href="/listcourses">
+                            <span>List Courses</span>
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -82,78 +62,18 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="/newass">New Assignemnt</a>
+                        <a href="/newass">Add Assignemnt</a>
                     </li>
                     <li>
-                        <a href="/listass">List of Assignments</a>
+                        <a href="/listass">List Assignments</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" href="/" class="menu-toggle">
+                <a href="/messages" href="/">
                     <i class="material-icons">pie_chart</i>
                     <span>Messages</span>
                 </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="pages/charts/morris.html">Morris</a>
-                    </li>
-                    <li>
-                        <a href="pages/charts/flot.html">Flot</a>
-                    </li>
-                    <li>
-                        <a href="pages/charts/chartjs.html">ChartJS</a>
-                    </li>
-                    <li>
-                        <a href="pages/charts/sparkline.html">Sparkline</a>
-                    </li>
-                    <li>
-                        <a href="pages/charts/jquery-knob.html">Jquery Knob</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">content_copy</i>
-                    <span>Example Pages</span>
-                </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="pages/examples/sign-in.html">Sign In</a>
-                    </li>
-                    <li>
-                        <a href="pages/examples/sign-up.html">Sign Up</a>
-                    </li>
-                    <li>
-                        <a href="pages/examples/forgot-password.html">Forgot Password</a>
-                    </li>
-                    <li>
-                        <a href="pages/examples/blank.html">Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="pages/examples/404.html">404 - Not Found</a>
-                    </li>
-                    <li>
-                        <a href="pages/examples/500.html">500 - Server Error</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">map</i>
-                    <span>Maps</span>
-                </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="pages/maps/google.html">Google Map</a>
-                    </li>
-                    <li>
-                        <a href="pages/maps/yandex.html">YandexMap</a>
-                    </li>
-                    <li>
-                        <a href="pages/maps/jvectormap.html">jVectorMap</a>
-                    </li>
-                </ul>
             </li>
         </ul>
     </div>
@@ -161,10 +81,10 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy;2018 <a href="javascript:void(0);">Stl-Teacher</a>.
+            &copy;2018 <a href="javascript:void(0);">STL-Teacher</a>.
         </div>
         <div class="version">
-            <b>Version: </b> 1.0.5
+            <b>Version: </b> 1.0.0
         </div>
     </div>
     <!-- #Footer -->
