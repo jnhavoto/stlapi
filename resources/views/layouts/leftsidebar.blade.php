@@ -70,10 +70,18 @@
                 </ul>
             </li>
             <li>
-                <a href="/messages" href="/">
+                <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">pie_chart</i>
                     <span>Messages</span>
                 </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a>Send to All</a>
+                    </li>
+                    <li>
+                        <a href="/messages">All Messages</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
