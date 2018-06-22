@@ -48,9 +48,9 @@
 
     @include('layouts.cabecalho')
 
-    {{--<session>--}}
-        {{--@include('layouts.leftsidebar')--}}
-    {{--</session>--}}
+    <session>
+        @include('layouts.leftsidebar')
+    </session>
 
     <section class=" content">
 
