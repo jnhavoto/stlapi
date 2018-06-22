@@ -48,10 +48,14 @@ class StudentController extends ModelController
             ->where('assignment_submissions.id', '=', $assignment_id);
     }
 
-//    public function getAllStudents(){
-//
-//
-//        return view('',['one'=>'','second'=>'second']);
-//    }
+    public function getAllStudentsProfile(){
+        $students = Student::all();
+        return view('students.students', ['profileData'=> $students]);
+    }
+
+    public function getAllStudents(){
+        $students = Student::all();
+        return view('students.students', ['students'=> $students, 'test'=>'test']);
+    }
 
 }

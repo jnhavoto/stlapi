@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('initial-page.index');
 });
 
-Route::get('/students', function () {
-    return view('students.students');
-});
+Route::get('/students', 'StudentController@getAllStudents');
 
 Route::get('/addcourse', function () {
     return view('courses.addcourse');
@@ -53,4 +51,12 @@ Route::get('/listass', function () {
 
 Route::get('/messages', function () {
     return view('messages.messages');
+});
+
+Route::get('/instructorprofile', function () {
+    return view('students.instructorprofile');
+});
+
+Route::get('/studentprofile', function () {
+    return view('students.studentprofile');
 });
