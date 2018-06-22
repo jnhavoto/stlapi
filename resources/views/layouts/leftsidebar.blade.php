@@ -24,28 +24,28 @@
     </div>
     <!-- #User Info -->
     <!-- Menu -->
-    <div class="menu">
+    <div id="menu_container" class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
+            <li class="active menu_item">
                 <a href="/">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
             </li>
-            <li>
+            <li class="menu_item">
                 <a href="/students">
-                    <i class="material-icons">widgets</i>
+                    <i class="material-icons">people</i>
                     <span>Students</span>
                 </a>
             </li>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">widgets</i>
+                    <i class="material-icons">bookmark</i>
                     <span>Courses</span>
                 </a>
                 <ul class="ml-menu">
-                    <li>
+                    <li class="menu_item">
                         <a href="/addcourse">
                             <span>Add Course</span>
                         </a>
@@ -57,7 +57,7 @@
             </li>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">perm_media</i>
+                    <i class="material-icons">assignment</i>
                     <span>Assignents</span>
                 </a>
                 <ul class="ml-menu">
@@ -71,15 +71,29 @@
             </li>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">pie_chart</i>
-                    <span>Messages</span>
+                    <i class="material-icons">assessment</i>
+                    <span>Assessments</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a>Send to All</a>
+                        <a href="/newass">Settings</a>
                     </li>
                     <li>
-                        <a href="/messages">All Messages</a>
+                        <a href="/listass">List Assessments</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">pie_chart</i>
+                    <span>Communications</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a>Announcements</a>
+                    </li>
+                    <li>
+                        <a href="/messages">Messages</a>
                     </li>
                 </ul>
             </li>
@@ -98,3 +112,20 @@
     <!-- #Footer -->
 </aside>
 <!-- #END# Left Sidebar -->
+<script>
+    // Get the container element
+    var divContainer = document.getElementById("menu_container");
+
+    // Get all buttons with class="btn" inside the container
+    var items = divContainer.getElementsByClassName("menu_item");
+
+    // Loop through the buttons and add the active class to the current/clicked button
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener("click", function() {
+            alert('Clicked')
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>

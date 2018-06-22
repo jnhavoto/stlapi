@@ -38,6 +38,8 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('theme/css/themes/all-themes.css') }}" rel="stylesheet"/>
 
+    <link href="{{ asset('theme/css/themes/menu_css.css') }}" rel="stylesheet"/>
+
 </head>
 <body class="theme-red">
 <div id="app">
@@ -46,13 +48,9 @@
 
     @include('layouts.cabecalho')
 
-
-
-    <session>
-        @include('layouts.leftsidebar')
-    </session>
-
-
+    {{--<session>--}}
+        {{--@include('layouts.leftsidebar')--}}
+    {{--</session>--}}
 
     <section class=" content">
 

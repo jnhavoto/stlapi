@@ -1,0 +1,5 @@
+/* Style the active class (and buttons on mouse-over) */
+.active, #menu_container>li:hover {
+    background-color: #660e14;
+    color: white;
+}
