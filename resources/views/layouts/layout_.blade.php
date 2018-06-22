@@ -41,21 +41,13 @@
     <link href="{{ asset('theme/css/themes/menu_css.css') }}" rel="stylesheet"/>
 
 </head>
-<body class="theme-red">
-<div id="app">
+<body class="fp-page">
 
-    @include('layouts.preloader-search')
+@include('layouts.preloader-search')
 
-    @include('layouts.cabecalho_')
+@yield('content')
 
-    <section class="">
+@include('layouts.js-links')
 
-
-        @yield('content')
-
-    </section>
-
-    @include('layouts.js-links')
-</div>
 </body>
 </html>
