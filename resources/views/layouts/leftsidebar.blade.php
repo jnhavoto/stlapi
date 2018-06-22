@@ -122,7 +122,7 @@
     // Loop through the buttons and add the active class to the current/clicked button
     for (var i = 0; i < items.length; i++) {
         items[i].addEventListener("click", function() {
-            alert('Clicked')
+//            alert('Clicked')
             var current = document.getElementsByClassName("active");
             current[0].className = current[0].className.replace(" active", "");
             this.className += " active";
