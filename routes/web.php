@@ -15,7 +15,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
     return view('initial-page.index');
-});
+})->middleware('auth');
 
 Route::get('/students', function () {
     return view('students.students');
@@ -32,7 +32,6 @@ Route::get('/listcourses', function () {
 Route::get('/teste', function () {
     return view('login');
 });
-
 
 
 Route::get('/ass', 'test@index');
