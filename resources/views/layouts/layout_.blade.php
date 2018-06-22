@@ -48,7 +48,7 @@
 
     @include('layouts.cabecalho_')
 
-    <section class=" content">
+    <section class="">
 
 
         @yield('content')

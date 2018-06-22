@@ -4,7 +4,6 @@
 
     <div class="login-page">
 
-
         <div class="login-box">
             <div class="logo">
                 <a href="javascript:void(0);">Admin <b>STL</b></a>
@@ -32,6 +31,7 @@
                                        required>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-xs-8 p-t-5">
                                 <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
