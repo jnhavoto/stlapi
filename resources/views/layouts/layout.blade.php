@@ -28,16 +28,18 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
 </head>
-<body>
+<body class="fix-header fix-sidebar card-no-border">
 
-<div id="app" class="fix-header fix-sidebar">
+
+<div class="blue-theme">
 
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+        </svg>
     </div>
 
     @include('layouts.header')
@@ -45,6 +47,7 @@
     @yield('content')
 
 </div>
+
 
 <!-- Scripts -->
 
