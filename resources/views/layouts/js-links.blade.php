@@ -3,11 +3,11 @@
 <script src="{{ asset('theme/plugins/popper/popper.min.js') }}"></script>
 <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
-<script src="js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('theme/js/jquery.slimscroll.js') }}"></script>
 <!--Wave Effects -->
-<script src="js/waves.js') }}"></script>
+<script src="{{ asset('theme/js/waves.js') }}"></script>
 <!--Menu sidebar -->
-<script src="js/sidebarmenu.js') }}"></script>
+<script src="{{ asset('theme/js/sidebarmenu.js') }}"></script>
 <!--stickey kit -->
 <script src="{{ asset('theme/plugins/sticky-kit-master/dist/sticky-kit.min.js') }}"></script>
 <script src="{{ asset('theme/plugins/sparkline/jquery.sparkline.min.js') }}"></script>

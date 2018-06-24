@@ -20,23 +20,19 @@
     <!--This page css - Morris CSS -->
     <link href="{{ asset('theme/plugins/c3-master/c3.min.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="css/colors/blue.css') }}" id="theme" rel="stylesheet">
+    <link href="{{ asset('theme/css/colors/blue.css') }}" id="theme" rel="stylesheet">
 
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}') }}" rel="stylesheet">
 </head>
 <body>
-<div id="app">
+<div id="app" class="fix-header fix-sidebar card-no-border">
 
-
-    <main class="py-4">
-        @yield('content')
-    </main>
+    @yield('content')
+    
 </div>
 
 <!-- Scripts -->
