@@ -14,8 +14,8 @@
 
                         <div class="box-body">
                             <div class="col-sm-6">
-                                <div  align="center"> <img alt="User Pic"
-                                                           src=".../assets/img/avatar_male.jpg"
+                                <div  align="center"> <img alt="User Pic" style="height: 100px; width: 100px"
+                                                           src="{{ asset('img/avatar_male.jpg') }}"
                                                            id="profile-image1"
                                                            class="img-circle img-responsive">
 

@@ -56,6 +56,8 @@ class StudentController extends ModelController
     public function getAllStudents(){
         $students = Student::all();
         return view('students.students', ['students'=> $students, 'test'=>'test']);
+
+//        return $students;
     }
 
 }

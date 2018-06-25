@@ -37,9 +37,9 @@
                             @foreach( $students as $student )
                             <tr>
                                 <td>{{ $student->id }}</td>
-                                <td>{{ $student->teaching_grade }}</td>
-                                <td> Telephone </td>
-                                <td>Email</td>
+                                <td>{{ $student->user->first_name.' '.$student->user->last_name }}</td>
+                                <td> {{ $student->user->telephone }} </td>
+                                <td>{{ $student->user->email }}</td>
                                 {{--<td>--}}
                                     {{--<div class="progress">--}}
                                         {{--<div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>--}}
