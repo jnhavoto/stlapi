@@ -17,7 +17,8 @@
                 <!-- User profile -->
                 <div class="user-profile" style="background: url({{ asset('theme/images/background/user-info.jpg') }}) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="{{ asset('theme/images/users/profile.png') }}" alt="user" /> </div>
+                    <div class="profile-img"> <img src="{{ asset('theme/images/users/profile.jpg') }}" alt="user" />
+                    </div>
                     <!-- User profile text-->
                     <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe</a>
                         <div class="dropdown-menu animated flipInY"> <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a> <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
