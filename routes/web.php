@@ -11,3 +11,8 @@ Route::get('/', function () {
 Route::get('/calendar', function () {
     return view('communications.calendar');
 });
+
+
+Route::get('/test', function () {
+    return view('test');
+});
