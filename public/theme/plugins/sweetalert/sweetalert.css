@@ -1,6 +1,10 @@
 body.stop-scrolling {
   height: 100%;
+<<<<<<< HEAD
   overflow: hidden; }
+=======
+  overflow: visible; }
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
 
 .sweet-overlay {
   background-color: black;
@@ -21,7 +25,11 @@ body.stop-scrolling {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 478px;
   padding: 17px;
+<<<<<<< HEAD
   border-radius: 5px;
+=======
+  border-radius: 2px;
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
   text-align: center;
   position: fixed;
   left: 50%;
@@ -176,8 +184,13 @@ body.stop-scrolling {
     box-shadow: none;
     font-size: 17px;
     font-weight: 500;
+<<<<<<< HEAD
     -webkit-border-radius: 4px;
     border-radius: 5px;
+=======
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
     padding: 10px 32px;
     margin: 26px 5px 0 5px;
     cursor: pointer; }
@@ -360,7 +373,11 @@ body.stop-scrolling {
           transform: rotate(-45deg); }
     .sweet-alert .sa-icon.sa-custom {
       background-size: contain;
+<<<<<<< HEAD
       border-radius: 0;
+=======
+      border-radius: 50%;
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
       border: none;
       background-position: center center;
       background-repeat: no-repeat; }

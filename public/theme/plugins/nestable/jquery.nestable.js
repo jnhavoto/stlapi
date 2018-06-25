@@ -4,7 +4,11 @@
  */
 ;(function($, window, document, undefined)
 {
+<<<<<<< HEAD
     var hasTouch = 'ontouchstart' in document;
+=======
+    var hasTouch = 'ontouchstart' in window;
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
 
     /**
      * Detect CSS pointer-events property
@@ -26,6 +30,14 @@
         return !!supports;
     })();
 
+<<<<<<< HEAD
+=======
+    var eStart  = hasTouch ? 'touchstart'  : 'mousedown',
+        eMove   = hasTouch ? 'touchmove'   : 'mousemove',
+        eEnd    = hasTouch ? 'touchend'    : 'mouseup';
+        eCancel = hasTouch ? 'touchcancel' : 'mouseup';
+
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
     var defaults = {
             listNodeName    : 'ol',
             itemNodeName    : 'li',
@@ -47,7 +59,11 @@
 
     function Plugin(element, options)
     {
+<<<<<<< HEAD
         this.w  = $(document);
+=======
+        this.w  = $(window);
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
         this.el = $(element);
         this.options = $.extend({}, defaults, options);
         this.init();
@@ -70,7 +86,11 @@
             });
 
             list.el.on('click', 'button', function(e) {
+<<<<<<< HEAD
                 if (list.dragEl) {
+=======
+                if (list.dragEl || (!hasTouch && e.button !== 0)) {
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
                     return;
                 }
                 var target = $(e.currentTarget),
@@ -93,6 +113,7 @@
                     }
                     handle = handle.closest('.' + list.options.handleClass);
                 }
+<<<<<<< HEAD
 
                 if (!handle.length || list.dragEl) {
                     return;
@@ -105,13 +126,24 @@
 
                 e.preventDefault();
                 list.dragStart(e.touches ? e.touches[0] : e);
+=======
+                if (!handle.length || list.dragEl || (!hasTouch && e.button !== 0) || (hasTouch && e.touches.length !== 1)) {
+                    return;
+                }
+                e.preventDefault();
+                list.dragStart(hasTouch ? e.touches[0] : e);
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
             };
 
             var onMoveEvent = function(e)
             {
                 if (list.dragEl) {
                     e.preventDefault();
+<<<<<<< HEAD
                     list.dragMove(e.touches ? e.touches[0] : e);
+=======
+                    list.dragMove(hasTouch ? e.touches[0] : e);
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
                 }
             };
 
@@ -119,11 +151,16 @@
             {
                 if (list.dragEl) {
                     e.preventDefault();
+<<<<<<< HEAD
                     list.dragStop(e.touches ? e.touches[0] : e);
+=======
+                    list.dragStop(hasTouch ? e.touches[0] : e);
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
                 }
             };
 
             if (hasTouch) {
+<<<<<<< HEAD
                 list.el[0].addEventListener('touchstart', onStartEvent, false);
                 window.addEventListener('touchmove', onMoveEvent, false);
                 window.addEventListener('touchend', onEndEvent, false);
@@ -134,6 +171,18 @@
             list.w.on('mousemove', onMoveEvent);
             list.w.on('mouseup', onEndEvent);
 
+=======
+                list.el[0].addEventListener(eStart, onStartEvent, false);
+                window.addEventListener(eMove, onMoveEvent, false);
+                window.addEventListener(eEnd, onEndEvent, false);
+                window.addEventListener(eCancel, onEndEvent, false);
+            } else {
+                list.el.on(eStart, onStartEvent);
+                list.w.on(eMove, onMoveEvent);
+                list.w.on(eEnd, onEndEvent);
+            }
+
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
         },
 
         serialize: function()
@@ -187,7 +236,10 @@
                 distAxX   : 0,
                 distAxY   : 0
             };
+<<<<<<< HEAD
             this.isTouch    = false;
+=======
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
             this.moving     = false;
             this.dragEl     = null;
             this.dragRootEl = null;
@@ -265,6 +317,11 @@
             this.dragEl = $(document.createElement(this.options.listNodeName)).addClass(this.options.listClass + ' ' + this.options.dragClass);
             this.dragEl.css('width', dragItem.width());
 
+<<<<<<< HEAD
+=======
+            // fix for zepto.js
+            //dragItem.after(this.placeEl).detach().appendTo(this.dragEl);
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
             dragItem.after(this.placeEl);
             dragItem[0].parentNode.removeChild(dragItem[0]);
             dragItem.appendTo(this.dragEl);
@@ -287,6 +344,11 @@
 
         dragStop: function(e)
         {
+<<<<<<< HEAD
+=======
+            // fix for zepto.js
+            //this.placeEl.replaceWith(this.dragEl.children(this.options.itemNodeName + ':first').detach());
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
             var el = this.dragEl.children(this.options.itemNodeName).first();
             el[0].parentNode.removeChild(el[0]);
             this.placeEl.replaceWith(el);
@@ -481,4 +543,8 @@
         return retval || lists;
     };
 
+<<<<<<< HEAD
 })(window.jQuery || window.Zepto, window, document);
+=======
+})(window.jQuery || window.Zepto, window, document);
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1

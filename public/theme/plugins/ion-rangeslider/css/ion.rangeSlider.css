@@ -119,6 +119,7 @@
     background: rgba(0,0,0,0.0);
     z-index: 2;
 }
+<<<<<<< HEAD
 .lt-ie9 .irs-disable-mask {
     background: #000;
     filter: alpha(opacity=0);
@@ -128,6 +129,14 @@
 .irs-disabled {
     opacity: 0.4;
 }
+=======
+.irs-disabled {
+    opacity: 0.4;
+}
+.lt-ie9 .irs-disabled {
+    filter: alpha(opacity=40);
+}
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
 
 
 .irs-hidden-input {
@@ -141,7 +150,10 @@
     line-height: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
+<<<<<<< HEAD
     overflow: hidden;
+=======
+>>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
     outline: none !important;
     z-index: -9999 !important;
     background: none !important;
