@@ -52,6 +52,7 @@
 <!-- Scripts -->
 
 @include('layouts.js-links')
+@include('layouts.leftsidebar')
 
 </body>
 </html>
