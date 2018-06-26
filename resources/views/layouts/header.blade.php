@@ -321,8 +321,8 @@
                                     <div class="u-img"><img src="{{ asset('theme/images/users/ake.jpg') }}" alt="user">
                                     </div>
                                     <div class="u-text">
-                                        <h4>Åke Grönlund</h4>
-                                        <p class="text-muted">ake.grounglund@oru.se</p>
+                                        <h4>{{$user->first_name.' '.$user->last_name}}</h4>
+                                        <p class="text-muted">{{$user->email}}</p>
                                         <a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
                                     </div>
                                 </div>

@@ -8,7 +8,8 @@
             </div>
             <!-- User profile text-->
             <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown"
-                                          role="button" aria-haspopup="true" aria-expanded="true">Åke Grönlund</a>
+                                          role="button" aria-haspopup="true" aria-expanded="true">{{
+                                          $user->first_name.' '.$user->last_name}}</a>
                 <div class="dropdown-menu animated flipInY">
                     <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                     {{--<a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>--}}
@@ -37,7 +38,7 @@
                 {{--<li class="nav-small-cap">PERSONAL</li>--}}
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="index.html">General Overview</a></li>
+                        <li><a href="/">General Overview</a></li>
                         <li><a href="index2.html">Statistics</a></li>
                     </ul>
                 </li>
@@ -54,7 +55,7 @@
                                 class="mdi mdi-bullseye"></i><span class="hide-menu">Communications</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/calendar">Calendar</a></li>
-                        <li><a href="app-contact.html">Contacts</a></li>
+                        <li><a href="/contacts">Contacts</a></li>
                         <li><a href="app-email.html">Notifications</a></li>
                         <li><a href="app-chat.html">Chats</a></li>
                     </ul>

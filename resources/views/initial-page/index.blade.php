@@ -317,7 +317,7 @@
                             <img class="card-img-top" src="{{ asset('theme/images/background/profile-bg.jpg') }}" alt="Card image cap">
                             <div class="card-body little-profile text-center">
                                 <div class="pro-img"><img src="{{ asset('theme/images/users/4.jpg') }}" alt="user" /></div>
-                                <h3 class="m-b-0">Ake gronlung</h3>
+                                <h3 class="m-b-0">{{$user->first_name.' '.$user->last_name}}</h3>
                                 <p>Instructor</p>
                                 {{--<a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Follow</a>--}}
                                 <div class="row text-center m-t-20">
@@ -427,7 +427,7 @@
                                             <div class="sl-item">
                                                 <div class="sl-left"> <img src="{{ asset('theme/images/users/4.jpg') }}" alt="user" class="img-circle"> </div>
                                                 <div class="sl-right">
-                                                    <div><a href="#" class="link">Ake Gronlund</a> <span
+                                                    <div><a href="#" class="link">{{$user->first_name.' '.$user->last_name}}</a> <span
                                                                 class="sl-date">5
                                                             minutes ago</span>
                                                         <blockquote class="m-t-10">
@@ -445,20 +445,20 @@
                                         <div class="row">
                                             <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
                                                 <br>
-                                                <p class="text-muted">Ake Gronlund</p>
+                                                <p class="text-muted">{{$user->first_name.' '.$user->last_name}}</p>
                                             </div>
                                             <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
                                                 <br>
-                                                <p class="text-muted">(123) 456 7890</p>
+                                                <p class="text-muted">{{$user->telephone}}</p>
                                             </div>
                                             <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
                                                 <br>
-                                                <p class="text-muted">ake.granlund@oru.se</p>
+                                                <p class="text-muted">{{$user->email}}</p>
                                             </div>
-                                            <div class="col-md-3 col-xs-6"> <strong>Location</strong>
-                                                <br>
-                                                <p class="text-muted">Orebro</p>
-                                            </div>
+                                            {{--<div class="col-md-3 col-xs-6"> <strong>Location</strong>--}}
+                                                {{--<br>--}}
+                                                {{--<p class="text-muted">{{$user->first_name.' '.$user->last_name}}</p>--}}
+                                            {{--</div>--}}
                                         </div>
                                         <hr>
                                         <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
@@ -519,17 +519,17 @@
                                                     <textarea rows="5" class="form-control form-control-line"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12">Select City</label>
-                                                <div class="col-sm-12">
-                                                    <select class="form-control form-control-line">
-                                                        <option>Orebro</option>
-                                                        <option>Stockholm</option>
-                                                        <option>Uppsala</option>
-                                                        <option>Lund</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                            {{--<div class="form-group">--}}
+                                                {{--<label class="col-sm-12">Select City</label>--}}
+                                                {{--<div class="col-sm-12">--}}
+                                                    {{--<select class="form-control form-control-line">--}}
+                                                        {{--<option>Orebro</option>--}}
+                                                        {{--<option>Stockholm</option>--}}
+                                                        {{--<option>Uppsala</option>--}}
+                                                        {{--<option>Lund</option>--}}
+                                                    {{--</select>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                             <div class="form-group">
                                                 <div class="col-sm-12">
                                                     <button class="btn btn-success">Update Profile</button>
