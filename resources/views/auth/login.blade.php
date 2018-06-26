@@ -47,8 +47,9 @@
 
                                     <label for="checkbox-signup"> Remember me </label>
                                 </div>
-                                <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i
-                                            class="fa fa-lock m-r-5"></i> Forgot password?</a></div>
+                                <a href="{{ route('password.request') }})" id="to-recover" class="text-dark pull-right"><i
+                                            class="fa fa-lock m-r-5"></i> Forgot password?</a>
+                            </div>
                         </div>
                         <div class="form-group text-center m-t-20">
                             <div class="col-xs-12">
