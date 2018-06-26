@@ -31,3 +31,11 @@ Route::get('/home', function () {
 
 Route::get('/contacts','TeacherController@listContacts');
 
+Route::get('/contact-details', function () {
+    return view('communications.contact-details');
+});
+//    ->middleware(['auth2','teacher']);
+
+Route::get('/chats', function () {
+    return view('communications.chats');
+});
