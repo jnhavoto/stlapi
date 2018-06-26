@@ -12,17 +12,17 @@
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
                     <img src="{{ asset('theme/images/stl-logo.png') }}" alt="homepage" class="dark-logo"/>
-                    {{--<img src="{{ asset('theme/images/logo-icon.png') }}" alt="homepage" class="dark-logo"/>--}}
-                    <!-- Light Logo icon -->
+                {{--<img src="{{ asset('theme/images/logo-icon.png') }}" alt="homepage" class="dark-logo"/>--}}
+                <!-- Light Logo icon -->
                     <img src="{{ asset('theme/images/stl-logo.png') }}" alt="homepage" class="light-logo"/>
                     {{--<img src="{{ asset('theme/images/logo-light-icon.png') }}" alt="homepage" class="light-logo"/>--}}
                 </b>
                 <!--End Logo icon -->
-                <!-- Logo text --><span>
-                         <!-- dark Logo text -->
-                         {{--<img src="{{ asset('theme/images/logo-text.png') }}" alt="homepage" class="dark-logo"/>--}}
-                    <!-- Light Logo text -->
-                         {{--<img src="{{ asset('theme/images/logo-light-text.png') }}" class="light-logo" alt="homepage"/></span>--}}
+                <!-- Logo text -->
+                <!-- dark Logo text -->
+            {{--<img src="{{ asset('theme/images/logo-text.png') }}" alt="homepage" class="dark-logo"/>--}}
+            <!-- Light Logo text -->
+                {{--<img src="{{ asset('theme/images/logo-light-text.png') }}" class="light-logo" alt="homepage"/></span>--}}
             </a>
         </div>
         <!-- ============================================================== -->
@@ -334,7 +334,17 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-power-off"></i> Logout
+                                </a>
+                            </li>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </ul>
                     </div>
                 </li>
