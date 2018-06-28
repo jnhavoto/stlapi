@@ -36,6 +36,4 @@ Route::get('/contact-details', function () {
 });
 //    ->middleware(['auth2','teacher']);
 
-Route::get('/chats', function () {
-    return view('communications.chats',['user' => \Illuminate\Support\Facades\Auth::user()]);
-});
+Route::get('/chats', 'ContactController@chats');
