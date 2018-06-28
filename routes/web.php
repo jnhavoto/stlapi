@@ -32,10 +32,10 @@ Route::get('/home', function () {
 Route::get('/contacts','TeacherController@listContacts');
 
 Route::get('/contact-details', function () {
-    return view('communications.contact-details');
+    return view('communications.contact-details',['user' => \Illuminate\Support\Facades\Auth::user()]);
 });
 //    ->middleware(['auth2','teacher']);
 
 Route::get('/chats', function () {
-    return view('communications.chats');
+    return view('communications.chats',['user' => \Illuminate\Support\Facades\Auth::user()]);
 });
