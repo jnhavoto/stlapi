@@ -167,7 +167,7 @@
                                                 </td>
                                                 <td>{{$teacher->user->email}}</td>
                                                 <td>{{$teacher->user->telephone}}</td>
-                                                <td><span class="label label-success">Teacher</span> </td>
+                                                <td><span class="label label-success">Instructor</span> </td>
                                                 {{--<td>23</td>--}}
                                                 <td>{{$teacher->user->created_at}}</td>
                                                 {{--<td>$1200</td>--}}
