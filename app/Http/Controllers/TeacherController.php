@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends ModelController
 {
@@ -25,7 +26,8 @@ class TeacherController extends ModelController
 //        $contacts = Tel
 
 
-        return view('communications.contacts',['teachers'=>$teachers,'students'=> $students]);
+
+        return view('communications.contacts',['teachers'=>$teachers,'students'=> $students, 'user' => Auth::user()]);
     }
 
 }
