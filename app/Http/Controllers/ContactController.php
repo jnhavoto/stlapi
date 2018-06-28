@@ -10,4 +10,9 @@ class contactController extends Controller
     {
         return view('communications.chats',['user' => Auth::user()]);
     }
+
+    public function listChats()
+    {
+
+    }
 }
