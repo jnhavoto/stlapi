@@ -1,46 +1,46 @@
-<<<<<<< HEAD
-<!-- Jquery Core Js -->
-<script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
+{{--<<<<<<< HEAD--}}
+{{--<!-- Jquery Core Js -->--}}
+{{--<script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>--}}
 
-<!-- Bootstrap Core Js -->
-<script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>
+{{--<!-- Bootstrap Core Js -->--}}
+{{--<script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>--}}
 
-<!-- Select Plugin Js -->
-<script src="{{ asset('theme/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
+{{--<!-- Select Plugin Js -->--}}
+{{--<script src="{{ asset('theme/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>--}}
 
-<!-- Slimscroll Plugin Js -->
-<script src="{{ asset('theme/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+{{--<!-- Slimscroll Plugin Js -->--}}
+{{--<script src="{{ asset('theme/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>--}}
 
-<!-- Waves Effect Plugin Js -->
-<script src="{{ asset('theme/plugins/node-waves/waves.js') }}"></script>
+{{--<!-- Waves Effect Plugin Js -->--}}
+{{--<script src="{{ asset('theme/plugins/node-waves/waves.js') }}"></script>--}}
 
-<!-- Jquery CountTo Plugin Js -->
-<script src="{{ asset('theme/plugins/jquery-countto/jquery.countTo.js') }}"></script>
+{{--<!-- Jquery CountTo Plugin Js -->--}}
+{{--<script src="{{ asset('theme/plugins/jquery-countto/jquery.countTo.js') }}"></script>--}}
 
-<!-- Morris Plugin Js -->
-<script src="{{ asset('theme/plugins/raphael/raphael.min.js') }}"></script>
-<script src="{{ asset('theme/plugins/morrisjs/morris.js') }}"></script>
+{{--<!-- Morris Plugin Js -->--}}
+{{--<script src="{{ asset('theme/plugins/raphael/raphael.min.js') }}"></script>--}}
+{{--<script src="{{ asset('theme/plugins/morrisjs/morris.js') }}"></script>--}}
 
-<!-- ChartJs -->
-<script src="{{ asset('theme/plugins/chartjs/Chart.bundle.js') }}"></script>
+{{--<!-- ChartJs -->--}}
+{{--<script src="{{ asset('theme/plugins/chartjs/Chart.bundle.js') }}"></script>--}}
 
-<!-- Flot Charts Plugin Js -->
-<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.js') }}"></script>
-<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.resize.js') }}"></script>
-<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.pie.js') }}"></script>
-<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.categories.js') }}"></script>
-<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.time.js') }}"></script>
+{{--<!-- Flot Charts Plugin Js -->--}}
+{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.js') }}"></script>--}}
+{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.resize.js') }}"></script>--}}
+{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.pie.js') }}"></script>--}}
+{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.categories.js') }}"></script>--}}
+{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.time.js') }}"></script>--}}
 
-<!-- Sparkline Chart Plugin Js -->
-<script src="{{ asset('theme/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
+{{--<!-- Sparkline Chart Plugin Js -->--}}
+{{--<script src="{{ asset('theme/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>--}}
 
-<!-- Custom Js -->
-<script src="{{ asset('theme/js/admin.js') }}"></script>
-<script src="{{ asset('theme/js/pages/index.js') }}"></script>
+{{--<!-- Custom Js -->--}}
+{{--<script src="{{ asset('theme/js/admin.js') }}"></script>--}}
+{{--<script src="{{ asset('theme/js/pages/index.js') }}"></script>--}}
 
-<!-- Demo Js -->
-<script src="{{ asset('theme/js/demo.js') }}"></script>
-=======
+{{--<!-- Demo Js -->--}}
+{{--<script src="{{ asset('theme/js/demo.js') }}"></script>--}}
+{{--=======--}}
 <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{ asset('theme/plugins/popper/popper.min.js') }}"></script>
@@ -71,4 +71,4 @@
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="{{ asset('theme/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
->>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1
+{{-->>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1--}}
