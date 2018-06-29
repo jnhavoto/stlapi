@@ -20,12 +20,12 @@
                     {{--<a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>--}}
                     {{--<li>--}}
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById
-                        ('logout-form').submit();" class="dropdown-item">
+                        ('logout-form-top').submit();" class="dropdown-item">
                             <i class="mdi mdi-power"></i> Logout
                         </a>
                     {{--</li>--}}
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form-top" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </div>
@@ -72,8 +72,9 @@
         <!-- item--><a href="#" class="link" data-toggle="tooltip" title="Chat"><i class="mdi mdi-wechat"></i></a>
         {{--<!-- item--><a href="#" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>--}}
         <!-- item--><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById
-                        ('logout-form').submit();" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>       {{--</li>--}}
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        ('logout-form-bottom').submit();" class="link" data-toggle="tooltip" title="Logout"><i
+                    class="mdi mdi-power"></i></a>       {{--</li>--}}
+        <form id="logout-form-bottom" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
     </div>
