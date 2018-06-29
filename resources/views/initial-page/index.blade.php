@@ -3,6 +3,13 @@
 @section('content')
 
 
+    {{--@include('initial-page.leftsidebar')--}}
+
+    {{--@include('initial-page.content-center')--}}
+
+{{--@endsection --}}
+
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -622,3 +629,4 @@
     <!-- End Wrapper -->
 
 @endsection
+

@@ -13,6 +13,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
+
     <!-- Custom CSS -->
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
