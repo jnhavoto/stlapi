@@ -12,8 +12,8 @@ class contactController extends Controller
         return view('communications.chats',['user' => Auth::user()]);
     }
 
-    public function listChats()
-    {
-
-    }
+//    public function listChats()
+//    {
+//        return view('communications.chats',[])
+//    }
 }
