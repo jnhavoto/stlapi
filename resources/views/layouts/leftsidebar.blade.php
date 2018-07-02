@@ -56,7 +56,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/calendar">Calendar</a></li>
                         <li><a href="/contacts">Contacts</a></li>
-                        <li><a href="app-email.html">Notifications</a></li>
+                        <li><a href="/notifications">Notifications</a></li>
                         <li><a href="/chats">Chats</a></li>
                     </ul>
                 </li>

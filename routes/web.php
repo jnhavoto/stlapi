@@ -14,10 +14,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/', function () {
 //     return view('initial-page.index');
 
-Route::get('/calendar', function () {
-	return view('communications.calendar');
-
-})->middleware(['auth2', 'teacher']);
+//Route::get('/calendar', function () {
+//	return view('communications.calendar');
+//})->middleware(['auth2', 'teacher']);
 
 // Route::get('/home', function () {
 //     return view('test');
@@ -33,5 +32,16 @@ Route::get('/contact-details', function () {
 	return view('communications.contact-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 });
 //    ->middleware(['auth2','teacher']);
+//get Chats
+Route::get('/chats', 'ChatController@getAllChats');
+//get calendar
+Route::get('/calendar', 'CalendarController@getCalendar');
+//get Notifications
+Route::get('/notifications', 'NotificationsController@getNotifications');
 
-Route::get('/chats', 'ContactController@chats');
+//get Courses
+Route::get('/courses', 'TeacherController@getAllCourses');
+
+Route::get('/assignments', 'TeacherController@getAllAssignments');
+
+

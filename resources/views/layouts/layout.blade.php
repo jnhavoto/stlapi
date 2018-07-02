@@ -22,6 +22,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
+    <!-- Calendar CSS -->
+    <link href="{{ asset('theme/plugins/calendar/dist/fullcalendar.css')}}" rel="stylesheet" />
 
     <!-- Footable CSS -->
     <link href="{{ asset('theme/plugins/footable/css/footable.core.css') }}" rel="stylesheet">

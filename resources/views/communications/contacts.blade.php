@@ -10,10 +10,10 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+                    <h3 class="text-themecolor m-b-0 m-t-0">Contacts</h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">Communications</li>
                     </ol>
                 </div>
                 <div class="col-md-7 col-4 align-self-center">
@@ -134,9 +134,11 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                         @foreach ($students as $student)
                                             <tr>
-                                                <td>{{$student->id}}</td>
+                                                {{--<td>{{$student->id}}</td>--}}
+                                                <td> {{ $loop->index + 1 }}</td>
                                                 <td>
                                                     <a href="/contact-details"><img src="{{asset
                                                     ("theme/images/users/1.jpg")}}
@@ -157,7 +159,7 @@
                                         @endforeach
                                         @foreach ($teachers as $teacher)
                                             <tr>
-                                                <td>{{$teacher->id}}</td>
+                                                <td>{{ $loop->index + count($students)+1}}</td>
                                                 <td>
                                                     <a href="/contact-details"><img src="{{asset
                                                     ("theme/images/users/1.jpg")}}

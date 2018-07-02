@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class contactController extends Controller
 {
-    public function Chats()
+    public function getAllContacts()
     {
-        return view('communications.chats',['user' => Auth::user()]);
+        return view('communications.contacts',['user' => Auth::user(),'i' => 0]);
+
     }
 
-//    public function listChats()
-//    {
-//        return view('communications.chats',[])
-//    }
 }

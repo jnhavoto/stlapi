@@ -58,7 +58,7 @@ class AssignmentDescription extends Eloquent
 		'status'
 	];
 
-	protected $with = ['group_teacher', 'assignment_announcements', 'teachers', 'assignment_submissions' ,'groups'];
+	protected $with = ['assignment_announcements', 'teachers', 'assignment_submissions' ,'groups'];
 
 	public function group_teacher()
 	{
