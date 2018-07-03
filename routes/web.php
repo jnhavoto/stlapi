@@ -44,4 +44,8 @@ Route::get('/courses', 'TeacherController@getAllCourses');
 
 Route::get('/assignments', 'TeacherController@getAllAssignments');
 
+Route::post('/submit_assignment', 'TeacherController@submitAssignment');
+
+
+
 

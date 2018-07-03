@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssignmentDescription;
 use App\Models\GroupTeacher;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -54,6 +55,19 @@ class TeacherController extends ModelController
     }
 
         return view('activities.assignment',['assignments'=>$assignments,'user' => Auth::user()]);
+    }
+
+    public function submitAssignment(Request $request)
+    {
+        return $request;
+//        $assignment = new AssignmentDescription();
+//            $assignment ->case=$request->case;
+//            $assignment ->instructions=$request->instructions;
+//            $assignment ->startdate=$request->startdate;
+//            $assignment ->deadline=$request->deadline;
+//            $assignment ->available_date=$request->available_date;
+//        return $assignment;
+
     }
 
 }
