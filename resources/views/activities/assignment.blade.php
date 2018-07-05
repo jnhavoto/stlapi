@@ -145,7 +145,7 @@
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $assignment->id }}</td>
                                                 <td>
-                                                    <a href="/course-details">
+                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails">
                                                         {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
                                                         {{$assignment->case}}
                                                     </a>
@@ -171,6 +171,8 @@
                                                     Assignment
                                                 </button>
                                             </td>
+
+
                                             <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -195,20 +197,27 @@
                                                                 <div class="form-group">
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <input name="case" type="text" class="form-control" placeholder="Type case name">
+                                                                        <input name="case" type="text"
+                                                                               class="form-control"
+                                                                               placeholder="Type case name">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <input name="instructions" type="textarea" class="form-control" rows="3" placeholder="Instrutions">
+                                                                        <input name="instructions" type="textarea"
+                                                                               class="form-control" rows="3"
+                                                                               placeholder="Instrutions">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <input name="startdate" type="date" class="form-control" placeholder="Start date">
+                                                                        <input name="startdate" type="date"
+                                                                               class="form-control"
+                                                                               placeholder="Start date">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
                                                                         <input name="deadline"
-                                                                               type="date"class="form-control" placeholder="Due date">
+                                                                               type="date" class="form-control"
+                                                                               placeholder="Due date">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
@@ -255,5 +264,20 @@
             </div>
         </div>
     </div>
+
+    <div id="testetetetet">
+
+    </div>
+
+    @include('activities.modals.assignment-details')
+
+
+
+    <script>
+
+        alert('Hello World'+$('#testetetetet'));
+
+    </script>
+
 
 @endsection

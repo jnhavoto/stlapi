@@ -89,12 +89,12 @@ class AssignmentDescription extends Eloquent
 					->withTimestamps();
 	}
 
-
-	public function getDeadLineAttribute($deadline){
-        $carbonated_date = Carbon::parse($deadline);
-        $diff_date = $carbonated_date->diffForHumans(Carbon::now());
-        return $diff_date;
-    }
+//
+//	public function getDeadLineAttribute($deadline){
+//        $carbonated_date = Carbon::parse($deadline);
+//        $diff_date = $carbonated_date->diffForHumans(Carbon::now());
+//        return $diff_date;
+//    }
 
 
     public function getCaseAttribute($case){

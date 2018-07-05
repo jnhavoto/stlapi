@@ -84,7 +84,7 @@ class TeacherController extends ModelController
         $group_teacher = GroupTeacher::create(
 
             [
-                'group_name' => $request->case,
+                'group_name' => 'Default Name',
             ]
 
         );
@@ -113,7 +113,7 @@ class TeacherController extends ModelController
                     'instructions' => $request->instructions,
                     'startdate' => $request->startdate,
                     'deadline' => $request->deadline,
-                    'available_date' => $request->available_date,
+                    'available_date' => $request->availabledate,
                     'group_teachers_id' => $group_teacher->id,
                 ]
 
@@ -125,7 +125,7 @@ class TeacherController extends ModelController
 
             DB::commit();
 
-            redirect('/assignments');
+            return redirect('/assignments');
 
         } else {
             DB::rollBack();
