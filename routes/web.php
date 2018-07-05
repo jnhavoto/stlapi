@@ -26,25 +26,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 //    return view('communications.contacts');
 //});
 
-Route::get('/contacts', 'TeacherController@listContacts');
+Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
 
 Route::get('/contact-details', function () {
 	return view('communications.contact-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
-});
+})->middleware(['teacher']);
 //    ->middleware(['auth2','teacher']);
 //get Chats
-Route::get('/chats', 'ChatController@getAllChats');
+Route::get('/chats', 'ChatController@getAllChats')->middleware(['teacher']);
 //get calendar
-Route::get('/calendar', 'CalendarController@getCalendar');
+Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
 //get Notifications
-Route::get('/notifications', 'NotificationsController@getNotifications');
+Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
 
 //get Courses
-Route::get('/courses', 'TeacherController@getAllCourses');
+Route::get('/courses', 'TeacherController@getAllCourses')->middleware(['teacher']);
 
-Route::get('/assignments', 'TeacherController@getAllAssignments');
+Route::get('/assignments', 'TeacherController@getAllAssignments')->middleware(['teacher']);
 
-Route::post('/submit_assignment', 'TeacherController@submitAssignment');
+Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
 
 
 

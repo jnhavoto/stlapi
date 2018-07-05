@@ -20,7 +20,9 @@
                     <div class="d-flex m-t-10 justify-content-end">
                         <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                             <div class="chart-text m-r-10">
-                                <h6 class="m-b-0"><small>THIS MONTH</small></h6>
+                                <h6 class="m-b-0">
+                                    <small>THIS MONTH</small>
+                                </h6>
                                 <h4 class="m-t-0 text-info">$58,356</h4></div>
                             <div class="spark-chart">
                                 <div id="monthchart"></div>
@@ -28,14 +30,17 @@
                         </div>
                         <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                             <div class="chart-text m-r-10">
-                                <h6 class="m-b-0"><small>LAST MONTH</small></h6>
+                                <h6 class="m-b-0">
+                                    <small>LAST MONTH</small>
+                                </h6>
                                 <h4 class="m-t-0 text-primary">$48,356</h4></div>
                             <div class="spark-chart">
                                 <div id="lastmonthchart"></div>
                             </div>
                         </div>
                         <div class="">
-                            <button class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                            <button class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10">
+                                <i class="ti-settings text-white"></i></button>
                         </div>
                     </div>
                 </div>
@@ -52,73 +57,75 @@
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
                             <!-- .left-aside-column-->
-                            {{--<div class="left-aside">--}}
-                                {{--<ul class="list-style-none">--}}
-                                    {{--<li class="box-label"><a href="javascript:void(0)">All Assignments <span>--}}
-                                           {{--{{ count($assignments)}} </span></a></li>--}}
-                                    {{--<li class="divider"></li>--}}
-                                    {{--<li><a href="javascript:void(0)">Courses <span>{{ count($courses)--}}
-                                    {{--}}</span></a></li>--}}
+                        {{--<div class="left-aside">--}}
+                        {{--<ul class="list-style-none">--}}
+                        {{--<li class="box-label"><a href="javascript:void(0)">All Assignments <span>--}}
+                        {{--{{ count($assignments)}} </span></a></li>--}}
+                        {{--<li class="divider"></li>--}}
+                        {{--<li><a href="javascript:void(0)">Courses <span>{{ count($courses)--}}
+                        {{--}}</span></a></li>--}}
 
-                                    {{--<li><a href="javascript:void(0)">Friends <span>623</span></a></li>--}}
-                                    {{--<li><a href="javascript:void(0)">Private <span>53</span></a></li>--}}
-                                    {{--<li class="box-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">+ Create New Label</a></li>--}}
-                                    {{--<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
-                                    {{--<div class="modal-dialog">--}}
-                                    {{--<div class="modal-content">--}}
-                                    {{--<div class="modal-header">--}}
-                                    {{--<div class="d-flex no-block align-items-center">--}}
-                                    {{--<h4 class="modal-title" id="myModalLabel">Add Lable</h4>--}}
-                                    {{--<div class="ml-auto">--}}
-                                    {{--<button type="button" class="close float-right" data-dismiss="modal" aria-hidden="true">×</button>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="modal-body">--}}
-                                    {{--<from class="form-horizontal">--}}
-                                    {{--<div class="form-group">--}}
-                                    {{--<label class="col-md-12">Name of Label</label>--}}
-                                    {{--<div class="col-md-12">--}}
-                                    {{--<input type="text" class="form-control" placeholder="type name"> </div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="form-group">--}}
-                                    {{--<label class="col-md-12">Select Number of people</label>--}}
-                                    {{--<div class="col-md-12">--}}
-                                    {{--<select class="form-control">--}}
-                                    {{--<option>All Contacts</option>--}}
-                                    {{--<option>10</option>--}}
-                                    {{--<option>20</option>--}}
-                                    {{--<option>30</option>--}}
-                                    {{--<option>40</option>--}}
-                                    {{--<option>Custome</option>--}}
-                                    {{--</select>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--</from>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="modal-footer">--}}
-                                    {{--<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>--}}
-                                    {{--<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<!-- /.modal-content -->--}}
-                                    {{--</div>--}}
-                                    {{--<!-- /.modal-dialog -->--}}
-                                    {{--</div>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                            <!-- /.left-aside-column-->
+                        {{--<li><a href="javascript:void(0)">Friends <span>623</span></a></li>--}}
+                        {{--<li><a href="javascript:void(0)">Private <span>53</span></a></li>--}}
+                        {{--<li class="box-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">+ Create New Label</a></li>--}}
+                        {{--<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
+                        {{--<div class="modal-dialog">--}}
+                        {{--<div class="modal-content">--}}
+                        {{--<div class="modal-header">--}}
+                        {{--<div class="d-flex no-block align-items-center">--}}
+                        {{--<h4 class="modal-title" id="myModalLabel">Add Lable</h4>--}}
+                        {{--<div class="ml-auto">--}}
+                        {{--<button type="button" class="close float-right" data-dismiss="modal" aria-hidden="true">×</button>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="modal-body">--}}
+                        {{--<from class="form-horizontal">--}}
+                        {{--<div class="form-group">--}}
+                        {{--<label class="col-md-12">Name of Label</label>--}}
+                        {{--<div class="col-md-12">--}}
+                        {{--<input type="text" class="form-control" placeholder="type name"> </div>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                        {{--<label class="col-md-12">Select Number of people</label>--}}
+                        {{--<div class="col-md-12">--}}
+                        {{--<select class="form-control">--}}
+                        {{--<option>All Contacts</option>--}}
+                        {{--<option>10</option>--}}
+                        {{--<option>20</option>--}}
+                        {{--<option>30</option>--}}
+                        {{--<option>40</option>--}}
+                        {{--<option>Custome</option>--}}
+                        {{--</select>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</from>--}}
+                        {{--</div>--}}
+                        {{--<div class="modal-footer">--}}
+                        {{--<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>--}}
+                        {{--<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<!-- /.modal-content -->--}}
+                        {{--</div>--}}
+                        {{--<!-- /.modal-dialog -->--}}
+                        {{--</div>--}}
+                        {{--</ul>--}}
+                        {{--</div>--}}
+                        <!-- /.left-aside-column-->
                             <div class="right-aside">
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">Assignment List </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search contacts" class="form-control"> </div>
+                                            <input type="text" id="demo-input-search2" placeholder="search contacts"
+                                                   class="form-control"></div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"
+                                           data-page-size="10">
                                         <thead>
                                         <tr>
                                             <th>No</th>
@@ -148,7 +155,10 @@
                                                 <td>{{$assignment->deadline}}</td>
                                                 <td>{{$assignment->available_date}}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                            data-toggle="tooltip" data-original-title="Delete"><i
+                                                                class="ti-close" aria-hidden="true"></i></button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -158,50 +168,69 @@
                                             <td colspan="2">
                                                 <button type="button" class="btn btn-info btn-rounded"
                                                         data-toggle="modal" data-target="#add-contact">Add New
-                                                    Assignment</button>
+                                                    Assignment
+                                                </button>
                                             </td>
-                                            <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog"
+                                                 aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h4 class="modal-title" id="myModalLabel">Add New
                                                                 Assignment</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-hidden="true">×
+                                                            </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <from class="form-horizontal form-material"
+
+                                                            {{--=========================================================================--}}
+                                                            {{--============================= FORM  ====================================--}}
+                                                            {{--=========================================================================--}}
+                                                            <form class="form-horizontal form-material"
                                                                   action="/submit_assignment" method="post">
+
+                                                                {{csrf_field()}}
+
                                                                 <div class="form-group">
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <input name="case" type="text"
-                                                                               class="form-control"
-                                                                               placeholder="Type case name"> </div>
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <input name="instructions" type="textarea"
-                                                                               class="form-control" rows="3"
-                                                                               placeholder="Instrutions"> </div>
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <input name="startdate" type="date"
-                                                                               class="form-control"
-                                                                               placeholder="Start date"> </div>
+                                                                        <input name="case" type="text" class="form-control" placeholder="Type case name">
+                                                                    </div>
+
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <input name="duedate" type="date"
-                                                                               class="form-control"
-                                                                               placeholder="Due date"> </div>
+                                                                        <input name="instructions" type="textarea" class="form-control" rows="3" placeholder="Instrutions">
+                                                                    </div>
+
                                                                     <div class="col-md-12 m-b-20">
+                                                                        <input name="startdate" type="date" class="form-control" placeholder="Start date">
+                                                                    </div>
+
+                                                                    <div class="col-md-12 m-b-20">
+                                                                        <input name="deadline"
+                                                                               type="date"class="form-control" placeholder="Due date">
+                                                                    </div>
+
+                                                                    <div class="col-md-12 m-b-20">
+
                                                                         <input name="availabledate" type="date"
                                                                                class="form-control"
                                                                                placeholder="Available date">
+
                                                                     </div>
 
                                                                 </div>
-                                                                <input type="submit">
-                                                            </from>
+                                                                <input class="btn btn-primary" type="submit">
+                                                            </form>
+                                                            {{--=========================================================================--}}
+                                                            {{--============================= //FORM ====================================--}}
+                                                            {{--=========================================================================--}}
                                                         </div>
                                                         <div class="modal-footer">
 
-                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-default waves-effect"
+                                                                    data-dismiss="modal">Cancel
+                                                            </button>
                                                         </div>
                                                     </div>
                                                     <!-- /.modal-content -->
@@ -210,7 +239,7 @@
                                             </div>
                                             <td colspan="7">
                                                 <div class="text-right">
-                                                    <ul class="pagination"> </ul>
+                                                    <ul class="pagination"></ul>
                                                 </div>
                                             </td>
                                         </tr>
