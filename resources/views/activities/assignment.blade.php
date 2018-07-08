@@ -56,64 +56,8 @@
                     <div class="card">
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
-                            <!-- .left-aside-column-->
-                        {{--<div class="left-aside">--}}
-                        {{--<ul class="list-style-none">--}}
-                        {{--<li class="box-label"><a href="javascript:void(0)">All Assignments <span>--}}
-                        {{--{{ count($assignments)}} </span></a></li>--}}
-                        {{--<li class="divider"></li>--}}
-                        {{--<li><a href="javascript:void(0)">Courses <span>{{ count($courses)--}}
-                        {{--}}</span></a></li>--}}
 
-                        {{--<li><a href="javascript:void(0)">Friends <span>623</span></a></li>--}}
-                        {{--<li><a href="javascript:void(0)">Private <span>53</span></a></li>--}}
-                        {{--<li class="box-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">+ Create New Label</a></li>--}}
-                        {{--<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
-                        {{--<div class="modal-dialog">--}}
-                        {{--<div class="modal-content">--}}
-                        {{--<div class="modal-header">--}}
-                        {{--<div class="d-flex no-block align-items-center">--}}
-                        {{--<h4 class="modal-title" id="myModalLabel">Add Lable</h4>--}}
-                        {{--<div class="ml-auto">--}}
-                        {{--<button type="button" class="close float-right" data-dismiss="modal" aria-hidden="true">×</button>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="modal-body">--}}
-                        {{--<from class="form-horizontal">--}}
-                        {{--<div class="form-group">--}}
-                        {{--<label class="col-md-12">Name of Label</label>--}}
-                        {{--<div class="col-md-12">--}}
-                        {{--<input type="text" class="form-control" placeholder="type name"> </div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                        {{--<label class="col-md-12">Select Number of people</label>--}}
-                        {{--<div class="col-md-12">--}}
-                        {{--<select class="form-control">--}}
-                        {{--<option>All Contacts</option>--}}
-                        {{--<option>10</option>--}}
-                        {{--<option>20</option>--}}
-                        {{--<option>30</option>--}}
-                        {{--<option>40</option>--}}
-                        {{--<option>Custome</option>--}}
-                        {{--</select>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</from>--}}
-                        {{--</div>--}}
-                        {{--<div class="modal-footer">--}}
-                        {{--<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>--}}
-                        {{--<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<!-- /.modal-content -->--}}
-                        {{--</div>--}}
-                        {{--<!-- /.modal-dialog -->--}}
-                        {{--</div>--}}
-                        {{--</ul>--}}
-                        {{--</div>--}}
-                        <!-- /.left-aside-column-->
-                            <div class="right-aside">
+                            <div class="pl-4">
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
@@ -143,9 +87,10 @@
                                         @foreach ($assignments as $assignment)
                                             <tr>
                                                 {{--<td>{{$student->id}}</td>--}}
-                                                <td> {{ $assignment->id }}</td>
+                                                <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails">
+                                                    <a href="/assignment_details">
+                                                    {{--<a href="/" data-toggle="modal" data-target="#modalsAssDetails">--}}
                                                         {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
                                                         {{$assignment->case}}
                                                     </a>
@@ -197,50 +142,61 @@
                                                                 <div class="form-group">
 
                                                                     <div class="col-md-12 m-b-20">
+                                                                        <label class="control-label">Case name</label>
                                                                         <input name="case" type="text"
-                                                                               class="form-control"
-                                                                               placeholder="Type case name">
+                                                                               class="form-control">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
+                                                                        <label
+                                                                                class="control-label">Instructions</label>
                                                                         <input name="instructions" type="textarea"
-                                                                               class="form-control" rows="3"
-                                                                               placeholder="Instrutions">
+                                                                               class="form-control" rows="3">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
+                                                                        <label class="control-label">Start date</label>
                                                                         <input name="startdate" type="date"
-                                                                               class="form-control"
-                                                                               placeholder="Start date">
+                                                                               class="form-control">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
+                                                                        <label class="control-label">Due date</label>
                                                                         <input name="deadline"
-                                                                               type="date" class="form-control"
-                                                                               placeholder="Due date">
+                                                                               type="date" class="form-control">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
-
+                                                                        <label class="control-label">Available
+                                                                            date</label>
                                                                         <input name="availabledate" type="date"
-                                                                               class="form-control"
-                                                                               placeholder="Available date">
+                                                                               class="form-control">
 
                                                                     </div>
 
                                                                 </div>
-                                                                <input class="btn btn-primary" type="submit">
+                                                                {{--<input class="btn btn-primary" type="submit">--}}
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <button type="submit" class="btn
+                                                                        btn-success btn-block">Submit</button>
+                                                                        <button type="button" class="btn btn-default
+                                                                        btn-block waves-effect"
+                                                                                data-dismiss="modal">Cancel
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
                                                             </form>
                                                             {{--=========================================================================--}}
                                                             {{--============================= //FORM ====================================--}}
                                                             {{--=========================================================================--}}
                                                         </div>
-                                                        <div class="modal-footer">
+                                                        {{--<div class="modal-footer">--}}
 
-                                                            <button type="button" class="btn btn-default waves-effect"
-                                                                    data-dismiss="modal">Cancel
-                                                            </button>
-                                                        </div>
+                                                            {{--<button type="button" class="btn btn-default waves-effect"--}}
+                                                                    {{--data-dismiss="modal">Cancel--}}
+                                                            {{--</button>--}}
+                                                        {{--</div>--}}
                                                     </div>
                                                     <!-- /.modal-content -->
                                                 </div>

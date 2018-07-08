@@ -10,8 +10,43 @@
             </div>
 
             <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Case name  </h4>
+                        <p class="control-label">text hare!  </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Instrutions  </h4>
+                        <p class="control-label">text hare!  </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Start date  </h4>
+                        <p class="control-label">date hare!  </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Due date  </h4>
+                        <p class="control-label">date hare!  </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Available date  </h4>
+                        <p class="control-label">date hare!  </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Instructors  </h4>
+                        <p class="control-label">list hare!  </p>
+                    </div>
 
-
+                </div>
                 <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
                     <option value="AL">Alabama</option>
                     ...

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
+use App\Models\Course;
+use App\Models\Department;
 use App\Models\GroupTeacher;
 use App\Models\Student;
+use App\Models\StudentsCourse;
 use App\Models\Teacher;
+use App\Models\TeacherCourse;
 use App\Models\TeacherMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,13 +76,17 @@ class TeacherController extends ModelController
 
     }
 
+    public function getAssignmentDetails()
+    {
+
+    }
+
 
     public function submitAssignment(Request $request)
     {
-
+        //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
-
-
+        //Begin transaction
         DB::beginTransaction();
 
         $group_teacher = GroupTeacher::create(
@@ -130,6 +138,57 @@ class TeacherController extends ModelController
         } else {
             DB::rollBack();
             return "Error when save Assignment Description or Teacher Member";
+
+        }
+
+    }
+
+    public function submitCourse(Request $request){
+        //get teacher ID: who logged in
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //Begin transaction
+        DB::beginTransaction();
+
+        //get the department name from the user
+        $department = Department::Where('name',$request->name);
+        //create the course with content from the form
+        $course = Course::create(
+            [
+                'name' => $request->name,
+                'course_content' => $request->course_content,
+                //get the department id from the name the user chose in the form
+//                'department_id' => $request->$department->id,
+                'departments_id' => 1,
+            ]
+        );
+        //associate the course with the teacher
+        $teacher_course = TeacherCourse::create(
+            [
+                'teachers_id' => $teacher->id,
+                'courses_id' => $course->id,
+            ]
+
+        );
+        //enrol all student on this course
+        $students = Student::all();
+        foreach ($students as $student)
+        {
+            $student_course = StudentsCourse::create(
+                [
+                    'students_id' => $student->id,
+                    'courses_id' => $course->id,
+                    'start_date' => $request->start_date,
+                    'end_date' => $request->end_date,
+                    'status' => 1,
+                ]
+            );
+        }
+        //check if course and tecaher_course have any error: if not, then write on the DB
+        if ($course and $teacher_course and $student_course) {
+
+            DB::commit();
+
+            return redirect('/courses');
 
         }
 

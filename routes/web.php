@@ -46,6 +46,10 @@ Route::get('/assignments', 'TeacherController@getAllAssignments')->middleware(['
 
 Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
 
+Route::post('/submit_course', 'TeacherController@submitCourse')->middleware(['teacher']);
+
+Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
+
 
 
 
