@@ -89,9 +89,8 @@
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/assignment_details">
-                                                    {{--<a href="/" data-toggle="modal" data-target="#modalsAssDetails">--}}
-                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                    {{--<a href="/assignment_details">--}}
+                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails">
                                                         {{$assignment->case}}
                                                     </a>
                                                 </td>
