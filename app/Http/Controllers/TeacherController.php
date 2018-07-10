@@ -180,7 +180,7 @@ class TeacherController extends ModelController
                     'courses_id' => $course->id,
                     'start_date' => $request->start_date,
                     'end_date' => $request->end_date,
-                    'status' => 1,
+                    'status' => 0,
                 ]
             );
         }
