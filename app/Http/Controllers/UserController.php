@@ -68,7 +68,7 @@ class UserController extends  ModelController
             return $user->student;
 
         else{
-            throw new \Exception(['mensagem' => 'This User is not of a Student!'], 500);
+            throw new \Exception( 'This User is not of a Student!', 500);
         }
             
     }
