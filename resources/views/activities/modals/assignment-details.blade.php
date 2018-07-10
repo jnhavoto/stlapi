@@ -19,19 +19,19 @@
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
                         <h4 class="control-label">Instrutions  </h4>
-                        <p class="control-label">text hare!  </p>
+                        <p id="instructions" class="control-label">text hare!  </p>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
                         <h4 class="control-label">Start date  </h4>
-                        <p class="control-label">date hare!  </p>
+                        <p id="startdate" class="control-label">date hare!  </p>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
                         <h4 class="control-label">Due date  </h4>
-                        <p class="control-label">date hare!  </p>
+                        <p ide="duedate" class="control-label">date hare!  </p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -47,10 +47,17 @@
                     </div>
 
                 </div>
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Add instructors  </h4>
+                        {{--<p class="control-label">list hare!  </p>--}}
+                    </div>
+                </div>
                 <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
-                    <option value="AL">Alabama</option>
-                    ...
-                    <option value="WY">Wyoming</option>
+                    @foreach($teachers as  $teacher)
+                    <option value="{{$teacher->id}}">{{$teacher->user->first_name.' '
+                    .$teacher->user->last_name}}</option>
+                        @endforeach
                 </select>
             </div>
 

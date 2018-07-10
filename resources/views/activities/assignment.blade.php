@@ -236,7 +236,10 @@
           var  assignment = assignment;
 
             $("#case").html(assignment.case);
-
+            $("#instructions").html(assignment.instructions);
+            $("#startdate").html(assignment.startdate);
+            $("#duedate").html(assignment.deadline);
+            console.log(assignment);
         }
 
     </script>

@@ -47,6 +47,7 @@ class TeacherController extends ModelController
     {
 //        $teacher = Teacher::Where('users_id',Auth::user()->id)->first();
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        $teachers = Teacher::all();
         $teachers_members = TeacherMember::Where('teachers_id', $teacher->id)->get();
         $assignments = collect();
 //        return $teachers_members[0];
@@ -60,7 +61,9 @@ class TeacherController extends ModelController
             }
         }
 
-        return view('activities.assignment', ['assignments' => $assignments, 'user' => Auth::user()]);
+        return view('activities.assignment', ['assignments' => $assignments, 'teachers'=>$teachers, 'user' =>
+            Auth::user
+    ()]);
     }
 
     public function submitAssignment2(Request $request)
