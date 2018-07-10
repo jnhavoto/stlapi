@@ -49,7 +49,6 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/courses">Courses</a></li>
                         <li><a href="/assignments">Assignments </a></li>
-                        <li><a href="/assignments">Self-Assessments </a></li>
                         <li><a href="#" class="has-arrow" aria-expanded="false">Submissions </a>
                                 <ul aria-expanded="false" class="collapse">
                                 <li><a href="/assignment_submissions" >Assignments</a></li>
