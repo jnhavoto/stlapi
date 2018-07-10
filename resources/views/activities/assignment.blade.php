@@ -90,7 +90,8 @@
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
                                                     {{--<a href="/assignment_details">--}}
-                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails">
+                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
+                                                       onclick="assignDetails({{$assignment}})">
                                                         {{$assignment->case}}
                                                     </a>
                                                 </td>
@@ -228,9 +229,15 @@
 
 
 
+
     <script>
 
-//        alert('Hello World'+$('#testetetetet'));
+        function assignDetails(assignment) {
+          var  assignment = assignment;
+
+            $("#case").html(assignment.case);
+
+        }
 
     </script>
 

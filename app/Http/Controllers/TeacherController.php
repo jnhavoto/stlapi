@@ -82,6 +82,7 @@ class TeacherController extends ModelController
     }
 
 
+
     public function submitAssignment(Request $request)
     {
         //get teacher ID: who logged in

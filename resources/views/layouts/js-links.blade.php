@@ -72,3 +72,6 @@
 <!-- ============================================================== -->
 <script src="{{ asset('theme/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
 {{-->>>>>>> 295d75aa0c2291c9160945b1239640761e56ecc1--}}
+<script src="{{ asset('js/select2.min.js')}}"></script>
+
+<script src="{{ asset('js/select2.js')}}"></script>

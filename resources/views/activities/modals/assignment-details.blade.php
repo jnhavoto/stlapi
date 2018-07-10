@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
                         <h4 class="control-label">Case name  </h4>
-                        <p class="control-label">text hare!  </p>
+                        <p id="case" class="control-label">text hare!  </p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -47,7 +47,7 @@
                     </div>
 
                 </div>
-                <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
+                <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
                     <option value="AL">Alabama</option>
                     ...
                     <option value="WY">Wyoming</option>
@@ -59,3 +59,5 @@
     </div>
 
 </div>
+
+
