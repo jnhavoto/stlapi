@@ -20,6 +20,7 @@ class CreateCoursesTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->integer('departments_id')->unsigned()->index('fk_courses_departments1_idx');
+			$table->integer('status')->nullable();
 		});
 	}
 

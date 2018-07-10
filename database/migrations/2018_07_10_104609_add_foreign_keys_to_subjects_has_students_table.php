@@ -14,8 +14,8 @@ class AddForeignKeysToSubjectsHasStudentsTable extends Migration {
 	{
 		Schema::table('subjects_has_students', function(Blueprint $table)
 		{
-			$table->foreign('students_id', 'fk_subjects_has_students_students1')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('subjects_id', 'fk_subjects_has_students_subjects1')->references('id')->on('subjects')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('students_id', 'fk_subjects_has_students_students1')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToSubjectsHasStudentsTable extends Migration {
 	{
 		Schema::table('subjects_has_students', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_subjects_has_students_students1');
 			$table->dropForeign('fk_subjects_has_students_subjects1');
+			$table->dropForeign('fk_subjects_has_students_students1');
 		});
 	}
 

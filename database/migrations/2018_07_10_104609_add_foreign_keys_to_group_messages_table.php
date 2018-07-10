@@ -14,8 +14,8 @@ class AddForeignKeysToGroupMessagesTable extends Migration {
 	{
 		Schema::table('group_messages', function(Blueprint $table)
 		{
-			$table->foreign('groups_assignment_descriptions_id', 'fk_member_has_groups_assignment_descriptions_groups_assignmen1')->references('id')->on('groups_assignment_descriptions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('member_id', 'fk_member_has_groups_assignment_descriptions_member1')->references('id')->on('student_members')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('groups_assignment_descriptions_id', 'fk_member_has_groups_assignment_descriptions_groups_assignmen1')->references('id')->on('groups_assignment_descriptions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToGroupMessagesTable extends Migration {
 	{
 		Schema::table('group_messages', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_member_has_groups_assignment_descriptions_groups_assignmen1');
 			$table->dropForeign('fk_member_has_groups_assignment_descriptions_member1');
+			$table->dropForeign('fk_member_has_groups_assignment_descriptions_groups_assignmen1');
 		});
 	}
 

@@ -44,7 +44,7 @@ class UserController extends  ModelController
 
     public function logout(Request $request){
         try{
-        return response()->json(['logout' => JWTAuth::invalidate($request->get('token'))]);
+            return response()->json(['logout' => JWTAuth::invalidate($request->get('token'))]);
         }catch (JWTException $ex){
             return response()->json(['message' => $ex], 500);
         }

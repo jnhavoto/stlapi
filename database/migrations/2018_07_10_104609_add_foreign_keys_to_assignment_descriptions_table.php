@@ -15,6 +15,7 @@ class AddForeignKeysToAssignmentDescriptionsTable extends Migration {
 		Schema::table('assignment_descriptions', function(Blueprint $table)
 		{
 			$table->foreign('group_teachers_id', 'fk_assignment_descriptions_group_teachers1')->references('id')->on('group_teachers')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('courses_id', 'fk_assignment_descriptions_courses1')->references('id')->on('courses')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,6 +30,7 @@ class AddForeignKeysToAssignmentDescriptionsTable extends Migration {
 		Schema::table('assignment_descriptions', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_assignment_descriptions_group_teachers1');
+			$table->dropForeign('fk_assignment_descriptions_courses1');
 		});
 	}
 

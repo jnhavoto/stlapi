@@ -115,6 +115,7 @@ $factory->define(\App\Models\AssignmentDescription::class, function (Faker $fake
         'available_date'=> $faker->date('Y-m-d'),
         'status' => $faker->unique()->randomElement($assignmentStatus),
         'group_teachers_id' => $faker->numberBetween(1, \App\Models\GroupTeacher::all()->count()),
+        'courses_id' => $faker->numberBetween(1, \App\Models\Course::all()->count()),
     ];
 });
 
