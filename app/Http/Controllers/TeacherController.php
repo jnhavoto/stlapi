@@ -128,6 +128,7 @@ class TeacherController extends ModelController
                     'available_date' => $request->availabledate,
                     'group_teachers_id' => $group_teacher->id,
                     'courses_id' => 1,
+                    //cousees_id is selectable
                 ]
 
             );
