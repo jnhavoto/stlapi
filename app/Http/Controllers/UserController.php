@@ -59,11 +59,11 @@ class UserController extends  ModelController
      * Return the user Kind of the user: Teacher or studant
      */
     private function getUserKind($user){
-        if($user->teacher)
-            return $user->teacher;
+        if($user->student)
+            return $user->student;
 
         else{
-            return $user->student;
+            return response()->json(['mensagem' => 'This User is not of a Student!'], 500);
         }
             
     }

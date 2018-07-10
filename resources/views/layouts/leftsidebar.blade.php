@@ -49,6 +49,14 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/courses">Courses</a></li>
                         <li><a href="/assignments">Assignments </a></li>
+                        <li><a href="/assignments">Self-Assessments </a></li>
+                        <li><a href="#" class="has-arrow" aria-expanded="false">Submissions </a>
+                                <ul aria-expanded="false" class="collapse">
+                                <li><a href="/assignment_submissions" >Assignments</a></li>
+                                <li><a href="/selfass_submissions" >Self-Assessments</a></li>
+                                <li><a href="/feedback_submissions" >Feedbacks</a></li>
+                            </ul>
+                            </li>
                         <li><a href="/calendar">Calendar</a></li>
                     </ul>
                 </li>
