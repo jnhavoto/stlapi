@@ -24,8 +24,7 @@ class CreateAssignmentDescriptionsTable extends Migration {
 			$table->integer('group_teachers_id')->index('fk_assignment_descriptions_group_teachers1_idx');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->integer('courses_id')->unsigned()->index('fk_assignment_descriptions_courses1_idx');
-			$table->primary(['id','courses_id']);
+			$table->integer('courses_id')->index('fk_assignment_descriptions_courses1_idx');
 		});
 	}
 
