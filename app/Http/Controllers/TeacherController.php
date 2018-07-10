@@ -127,6 +127,7 @@ class TeacherController extends ModelController
                     'deadline' => $request->deadline,
                     'available_date' => $request->availabledate,
                     'group_teachers_id' => $group_teacher->id,
+                    'courses_id' => 1,
                 ]
 
             );
