@@ -142,7 +142,8 @@
                                                                 <div class="form-group">
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Case name</label>
+                                                                        <label class="control-label">Assignment
+                                                                            name</label>
                                                                         <input name="case" type="text"
                                                                                class="form-control">
                                                                     </div>

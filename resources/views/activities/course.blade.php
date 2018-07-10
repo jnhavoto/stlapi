@@ -147,7 +147,7 @@
                                                                                class="form-control">
                                                                     </div>
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Due date</label>
+                                                                        <label class="control-label">End date</label>
                                                                         <input name="end_date" type="date"
                                                                                class="form-control">
                                                                     </div>
