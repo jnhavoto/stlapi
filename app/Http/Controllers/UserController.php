@@ -29,9 +29,9 @@ class UserController extends  ModelController
 
         try{
             if(! $token = JWTAuth::attempt($credencias))
-                return response()->json(['mensagem' => 'Credencias Erradas'], 401);
+                return response()->json(['mensage' => 'Credencias Erradas'], 401);
         }catch (JWTException $ex){
-            return response()->json(['mensagem' => 'Erro ao gerar token'], 500);
+            return response()->json(['mensage' => 'Erro ao gerar token'], 500);
         }
 
         $user = $this->getUserFromToken($token);
@@ -46,7 +46,7 @@ class UserController extends  ModelController
         try{
         return response()->json(['logout' => JWTAuth::invalidate($request->get('token'))]);
         }catch (JWTException $ex){
-            return response()->json(['mensagem' => $ex], 500);
+            return response()->json(['mensage' => $ex], 500);
         }
 
     }
@@ -68,7 +68,7 @@ class UserController extends  ModelController
             return $user->student;
 
         else{
-            throw new \Exception( 'This User is not of a Student!', 500);
+            throw new \Exception( 'Not a Student!', 500);
         }
             
     }
