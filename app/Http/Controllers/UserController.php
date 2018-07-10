@@ -29,9 +29,9 @@ class UserController extends  ModelController
 
         try{
             if(! $token = JWTAuth::attempt($credencias))
-                return response()->json(['message' => 'Credencias Erradas'], 401);
+                return response()->json(['message' => 'Wrong Username or Password!'], 401);
         }catch (JWTException $ex){
-            return response()->json(['message' => 'Erro ao gerar token'], 500);
+            return response()->json(['message' => 'Server error!'], 500);
         }
 
         $user = $this->getUserFromToken($token);
