@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
+use App\Models\AssignmentSubmission;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\GroupTeacher;
@@ -35,35 +36,65 @@ class TeacherController extends ModelController
         return view('communications.contacts', ['teachers' => $teachers, 'students' => $students, 'user' => Auth::user()]);
     }
 
-    public function getAllCourses()
+    public function getCourses()
     {
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
-        $courses = $teacher->courses;
+        $teacherCourses = $teacher->courses;
 
-        return view('activities.course', ['courses' => $courses, 'user' => Auth::user()]);
+        $allcourses = Course::all();
+
+        return view('activities.course',
+            ['courses' => $allcourses,
+                'teacherCourses'=>$teacherCourses,
+                'user' => Auth::user()]);
     }
 
-    public function getAllAssignments()
+    public function getAllAssignments(){
+        //get all existing assignments
+        $assignments = AssignmentDescription::all();
+        //get all existing teachers
+        $teachers = Teacher::all();
+        //pass values to the view
+        return view('activities.assignment',['assignments' => $assignments, 'teachers'=>$teachers, 'user' =>
+            Auth::user()]);
+    }
+
+    //get all assignments and teacher assignments
+    public function getAssignments()
     {
-//        $teacher = Teacher::Where('users_id',Auth::user()->id)->first();
+        //first get all assignments
+        $allassignments = AssignmentDescription::all();
+        //all courses
+        $courses = Course::all();
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         $teachers = Teacher::all();
         $teachers_members = TeacherMember::Where('teachers_id', $teacher->id)->get();
-        $assignments = collect();
+        $teacher_assignments = collect();
 //        return $teachers_members[0];
 //
         for ($j = 0; $j < count($teachers_members); $j++) {
 
             $list = $teachers_members[$j]->group_teacher->assignment_descriptions;
             for ($i = 0; $i < count($list); $i++) {
-                $assignments->push($list[$i]);
+                $teacher_assignments->push($list[$i]);
 //                return $assignments;
             }
         }
-
-        return view('activities.assignment', ['assignments' => $assignments, 'teachers'=>$teachers, 'user' =>
-            Auth::user
+        return view('activities.assignment',
+            ['allassignments' => $allassignments,
+            'teacher_assignments' => $teacher_assignments,
+            'teachers' => $teachers,
+            'courses' => $courses,
+            'user' => Auth::user
     ()]);
+    }
+
+    public function getAllAssignmentSubmissions()
+    {
+        $allAssSubmission = AssignmentSubmission::all();
+        return view('activities.assignment-submissions',['allAssSubmission' => $allAssSubmission,
+        'user' =>
+        Auth::user()]);
     }
 
     public function submitAssignment2(Request $request)
@@ -79,13 +110,6 @@ class TeacherController extends ModelController
 
     }
 
-    public function getAssignmentDetails()
-    {
-
-    }
-
-
-
     public function submitAssignment(Request $request)
     {
         //get teacher ID: who logged in
@@ -94,34 +118,28 @@ class TeacherController extends ModelController
         DB::beginTransaction();
 
         $group_teacher = GroupTeacher::create(
-
             [
                 'group_name' => 'Default Name',
             ]
-
         );
 
 
         if (!$group_teacher) {
-
             DB::rollBack();
             return ['Error when save GroupTeacher'];
-
         } else {
 
             $teacher_member = TeacherMember::create(
-
                 [
                     'teachers_id' => $teacher->id,
                     'group_teachers_id' => $group_teacher->id,
                 ]
-
             );
 
             $assigment = AssignmentDescription::create(
-
                 [
                     'case' => $request->case,
+                    'number' => $request->number,
                     'instructions' => $request->instructions,
                     'startdate' => $request->startdate,
                     'deadline' => $request->deadline,
@@ -130,23 +148,16 @@ class TeacherController extends ModelController
                     'courses_id' => 1,
                     //cousees_id is selectable
                 ]
-
             );
-
         }
 
         if ($assigment and $teacher_member) {
-
             DB::commit();
-
             return redirect('/assignments');
-
         } else {
             DB::rollBack();
             return "Error when save Assignment Description or Teacher Member";
-
         }
-
     }
 
     public function submitCourse(Request $request){
@@ -173,7 +184,6 @@ class TeacherController extends ModelController
                 'teachers_id' => $teacher->id,
                 'courses_id' => $course->id,
             ]
-
         );
         //enrol all student on this course
         $students = Student::all();
@@ -191,13 +201,9 @@ class TeacherController extends ModelController
         }
         //check if course and tecaher_course have any error: if not, then write on the DB
         if ($course and $teacher_course and $student_course) {
-
             DB::commit();
-
             return redirect('/courses');
-
         }
-
     }
 
 

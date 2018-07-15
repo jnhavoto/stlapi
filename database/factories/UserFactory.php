@@ -110,6 +110,7 @@ $factory->define(\App\Models\AssignmentDescription::class, function (Faker $fake
     return [
         'case' => $faker->text(15),
         'instructions' => $faker->text(35),
+        'number' => $faker->numberBetween(1, 10),
         'startdate' => $faker->date('Y-m-d'),
         'deadline'=> $faker->date('Y-m-d'),
         'available_date'=> $faker->date('Y-m-d'),
@@ -118,6 +119,7 @@ $factory->define(\App\Models\AssignmentDescription::class, function (Faker $fake
         'courses_id' => $faker->numberBetween(1, \App\Models\Course::all()->count()),
     ];
 });
+
 
 //feeding TeacherCourse
 $factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){

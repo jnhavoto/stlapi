@@ -8,17 +8,22 @@
                         aria-hidden="true">×
                 </button>
             </div>
-
             <div class="modal-body">
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Case name  </h4>
+                        <h4 class="control-label">Assignment name  </h4>
                         <p id="case" class="control-label">text hare!  </p>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Instrutions  </h4>
+                        <h4 class="control-label">Assignment number  </h4>
+                        <p id="number" class="control-label">text hare!  </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Instructions  </h4>
                         <p id="instructions" class="control-label">text hare!  </p>
                     </div>
                 </div>
@@ -30,41 +35,36 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Due date  </h4>
-                        <p ide="duedate" class="control-label">date hare!  </p>
+                        <h4 class="control-label">End date  </h4>
+                        <p id="duedate" class="control-label">date hare!  </p>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
                         <h4 class="control-label">Available date  </h4>
-                        <p class="control-label">date hare!  </p>
+                        <p id="availabledate" class="control-label">date hare!  </p>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Instructors  </h4>
-                        <p class="control-label">list hare!  </p>
+                        <h4 class="control-label">Instructor(s)  </h4>
+                        @foreach($assignment->teachers as $assign)
+                            <p class="control-label"> {{$assign->user->first_name.' '
+                    .$assign->user->last_name}} </p>
+                            @endforeach
                     </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
+                                data-target="#copy-assignment" onclick="assignDetails({{$assignment}})">Copy this
+                            Assignment</button>
 
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Add instructors  </h4>
-                        {{--<p class="control-label">list hare!  </p>--}}
                     </div>
                 </div>
-                <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
-                    @foreach($teachers as  $teacher)
-                    <option value="{{$teacher->id}}">{{$teacher->user->first_name.' '
-                    .$teacher->user->last_name}}</option>
-                        @endforeach
-                </select>
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 

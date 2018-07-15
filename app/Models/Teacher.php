@@ -36,7 +36,8 @@ class Teacher extends Eloquent
 	protected $fillable = [
 		'users_id'
 	];
-        protected $with = ['user','courses'];
+
+	protected $with = ['user','courses'];
 
 
     public function user()

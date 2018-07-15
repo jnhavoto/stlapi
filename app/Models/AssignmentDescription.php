@@ -39,7 +39,9 @@ class AssignmentDescription extends Eloquent
 
 	protected $casts = [
 		'group_teachers_id' => 'int',
-		'status' => 'int'
+		'status' => 'int',
+        'courses_id' => 'int',
+        'number' => 'int'
 	];
 
 	protected $dates = [
@@ -50,15 +52,17 @@ class AssignmentDescription extends Eloquent
 
 	protected $fillable = [
 		'case',
+        'number',
 		'instructions',
 		'startdate',
 		'deadline',
 		'available_date',
 		'group_teachers_id',
-		'status'
+		'status',
+        'courses_id'
 	];
 
-	protected $with = ['assignment_announcements', 'teachers', 'assignment_submissions' ,'groups'];
+	protected $with = ['assignment_announcements', 'teachers', 'assignment_submissions' ,'groups', 'courses'];
 
 	public function group_teacher()
 	{
@@ -89,13 +93,29 @@ class AssignmentDescription extends Eloquent
 					->withTimestamps();
 	}
 
-//
+    public function courses()
+    {
+        return $this->hasMany(\App\Models\Course::class, 'departments_id');
+    }
+
+    //formatting dates
 //	public function getDeadLineAttribute($deadline){
 //        $carbonated_date = Carbon::parse($deadline);
 //        $diff_date = $carbonated_date->diffForHumans(Carbon::now());
 //        return $diff_date;
 //    }
-
+	public function getDeadLineAttribute($deadline){
+        $carbonated_date = Carbon::parse($deadline)->format('Y-m-d');
+        return $carbonated_date;
+    }
+    public function getStartDateAttribute($startdate){
+        $carbonated_date = Carbon::parse($startdate)->format('Y-m-d');
+        return $carbonated_date;
+    }
+    public function getAvailableDateAttribute($available_date){
+        $carbonated_date = Carbon::parse($available_date)->format('Y-m-d');
+        return $carbonated_date;
+    }
 
     public function getCaseAttribute($case){
 	    return strtoupper($case);

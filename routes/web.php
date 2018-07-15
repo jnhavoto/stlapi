@@ -40,9 +40,14 @@ Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher'
 Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
 
 //get Courses
-Route::get('/courses', 'TeacherController@getAllCourses')->middleware(['teacher']);
+Route::get('/courses', 'TeacherController@getCourses')->middleware(['teacher']);
 
-Route::get('/assignments', 'TeacherController@getAllAssignments')->middleware(['teacher']);
+//Route::get('/assignments', 'TeacherController@getTeacherAssignments')->middleware(['teacher']);
+//Route::get('/assignments', 'TeacherController@getAllAssignments')->middleware(['teacher']);
+//calling all asignment and teacher assignments
+Route::get('/assignments', 'TeacherController@getAssignments')->middleware(['teacher']);
+
+Route::get('/assignment_submissions', 'TeacherController@getAllAssignmentSubmissions')->middleware(['teacher']);
 
 Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
 
