@@ -6,6 +6,7 @@ use App\Models\AssignmentDescription;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
 use App\Models\Department;
+use App\Models\Feedback;
 use App\Models\GroupTeacher;
 use App\Models\Student;
 use App\Models\StudentsCourse;
@@ -91,10 +92,14 @@ class TeacherController extends ModelController
 
     public function getAllAssignmentSubmissions()
     {
-        $allAssSubmission = AssignmentSubmission::all();
-        return view('activities.assignment-submissions',['allAssSubmission' => $allAssSubmission,
-        'user' =>
-        Auth::user()]);
+//        $student = Student::Where('students_id', $teacher->id)->get();
+        $allSubmitted = AssignmentSubmission::Where('status',1)->get();
+        $allOnProgress = AssignmentSubmission::Where('status',1)->get();
+        $allLate = AssignmentSubmission::Where('status',0)->get();
+        return view('activities.assignment-submissions',['allAssSubmissions' => $allSubmitted,
+        'allOnProgress' => $allOnProgress,
+        'allLate' => $allLate,
+        'user' => Auth::user()]);
     }
 
     public function submitAssignment2(Request $request)
@@ -205,6 +210,14 @@ class TeacherController extends ModelController
             return redirect('/courses');
         }
     }
+
+    public function getAllFeedbacks()
+    {
+        $feedbacks = Feedback::all();
+        return view('activities.feedbacks',['feedbacks' => $feedbacks,
+            'user' => Auth::user()]);
+    }
+
 
 
 }

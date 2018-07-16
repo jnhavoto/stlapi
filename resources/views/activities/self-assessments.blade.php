@@ -33,7 +33,7 @@
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">Assignment Submissions List </h4></div>
+                                            <h4 class="card-title m-t-10">Self-Assessments List </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search contacts"
                                                    class="form-control"></div>
@@ -46,7 +46,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Student id</th>
-                                            <th>Assignment id</th>
+                                            <th>Course id</th>
                                             <th>Submission Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -60,7 +60,7 @@
                                                     <img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"
                                                          class="img-circle" /> <a href="/contact-details"
                                                                                   onclick="submissionDetails({{$submission}})">
-                                                    {{ $submission->id}}
+                                                        {{ $submission->id}}
                                                     </a>
                                                 </td>
                                                 <td>
@@ -82,121 +82,121 @@
                                         </tbody>
                                         <tfoot>
                                         {{--<tr>--}}
-                                            {{--<td colspan="2">--}}
-                                                {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                                        {{--data-toggle="modal" data-target="#add-new-assignment">Add New--}}
-                                                    {{--Assignment--}}
-                                                {{--</button>--}}
-                                            {{--</td>--}}
+                                        {{--<td colspan="2">--}}
+                                        {{--<button type="button" class="btn btn-info btn-rounded"--}}
+                                        {{--data-toggle="modal" data-target="#add-new-assignment">Add New--}}
+                                        {{--Assignment--}}
+                                        {{--</button>--}}
+                                        {{--</td>--}}
 
 
-                                            {{--<div id="add-new-assignment" class="modal fade in" tabindex="-1" role="dialog"--}}
-                                                 {{--aria-labelledby="myModalLabel" aria-hidden="true">--}}
-                                                {{--<div class="modal-dialog">--}}
-                                                    {{--<div class="modal-content">--}}
-                                                        {{--<div class="modal-header">--}}
-                                                            {{--<h4 class="modal-title" id="myModalLabel">Add New--}}
-                                                                {{--Assignment</h4>--}}
-                                                            {{--<button type="button" class="close" data-dismiss="modal"--}}
-                                                                    {{--aria-hidden="true">×--}}
-                                                            {{--</button>--}}
-                                                        {{--</div>--}}
-                                                        {{--<div class="modal-body">--}}
+                                        {{--<div id="add-new-assignment" class="modal fade in" tabindex="-1" role="dialog"--}}
+                                        {{--aria-labelledby="myModalLabel" aria-hidden="true">--}}
+                                        {{--<div class="modal-dialog">--}}
+                                        {{--<div class="modal-content">--}}
+                                        {{--<div class="modal-header">--}}
+                                        {{--<h4 class="modal-title" id="myModalLabel">Add New--}}
+                                        {{--Assignment</h4>--}}
+                                        {{--<button type="button" class="close" data-dismiss="modal"--}}
+                                        {{--aria-hidden="true">×--}}
+                                        {{--</button>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="modal-body">--}}
 
-                                                            {{--=========================================================================--}}
-                                                            {{--============================= FORM  ====================================--}}
-                                                            {{--=========================================================================--}}
-                                                            {{--<form class="form-horizontal form-material"--}}
-                                                                  {{--action="/submit_assignment" method="post">--}}
+                                        {{--=========================================================================--}}
+                                        {{--============================= FORM  ====================================--}}
+                                        {{--=========================================================================--}}
+                                        {{--<form class="form-horizontal form-material"--}}
+                                        {{--action="/submit_assignment" method="post">--}}
 
-                                                                {{--{{csrf_field()}}--}}
+                                        {{--{{csrf_field()}}--}}
 
-                                                                {{--<div class="form-group">--}}
+                                        {{--<div class="form-group">--}}
 
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">Assignment--}}
-                                                                            {{--name</label>--}}
-                                                                        {{--<input name="case" type="text"--}}
-                                                                               {{--class="form-control">--}}
-                                                                    {{--</div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">Assignment--}}
-                                                                            {{--number</label>--}}
-                                                                        {{--<input name="number" type="number"--}}
-                                                                               {{--class="form-control">--}}
-                                                                    {{--</div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label--}}
-                                                                                {{--class="control-label">Instructions</label>--}}
-                                                                        {{--<input name="instructions" type="textarea"--}}
-                                                                               {{--class="form-control" rows="3">--}}
-                                                                    {{--</div>--}}
+                                        {{--<div class="col-md-12 m-b-20">--}}
+                                        {{--<label class="control-label">Assignment--}}
+                                        {{--name</label>--}}
+                                        {{--<input name="case" type="text"--}}
+                                        {{--class="form-control">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-12 m-b-20">--}}
+                                        {{--<label class="control-label">Assignment--}}
+                                        {{--number</label>--}}
+                                        {{--<input name="number" type="number"--}}
+                                        {{--class="form-control">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-12 m-b-20">--}}
+                                        {{--<label--}}
+                                        {{--class="control-label">Instructions</label>--}}
+                                        {{--<input name="instructions" type="textarea"--}}
+                                        {{--class="form-control" rows="3">--}}
+                                        {{--</div>--}}
 
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">Start date</label>--}}
-                                                                        {{--<input name="startdate" type="date"--}}
-                                                                               {{--class="form-control">--}}
-                                                                    {{--</div>--}}
+                                        {{--<div class="col-md-12 m-b-20">--}}
+                                        {{--<label class="control-label">Start date</label>--}}
+                                        {{--<input name="startdate" type="date"--}}
+                                        {{--class="form-control">--}}
+                                        {{--</div>--}}
 
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">End date</label>--}}
-                                                                        {{--<input name="deadline"--}}
-                                                                               {{--type="date" class="form-control">--}}
-                                                                    {{--</div>--}}
+                                        {{--<div class="col-md-12 m-b-20">--}}
+                                        {{--<label class="control-label">End date</label>--}}
+                                        {{--<input name="deadline"--}}
+                                        {{--type="date" class="form-control">--}}
+                                        {{--</div>--}}
 
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">Available--}}
-                                                                            {{--date</label>--}}
-                                                                        {{--<input name="availabledate" type="date"--}}
-                                                                               {{--class="form-control">--}}
+                                        {{--<div class="col-md-12 m-b-20">--}}
+                                        {{--<label class="control-label">Available--}}
+                                        {{--date</label>--}}
+                                        {{--<input name="availabledate" type="date"--}}
+                                        {{--class="form-control">--}}
 
-                                                                    {{--</div>--}}
-                                                                    {{--<div class="form-group">--}}
-                                                                        {{--<div class="col-md-12 m-b-20">--}}
-                                                                            {{--<h4 class="control-label">Select course  </h4>--}}
-                                                                        {{--</div>--}}
-                                                                    {{--</div>--}}
-                                                                    {{--<select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">--}}
-                                                                        {{--@foreach($courses as  $course)--}}
-                                                                            {{--<option--}}
-                                                                                    {{--name="id"--}}
-                                                                                    {{--value="{{$course->id}}">{{$course->name}}</option>--}}
-                                                                        {{--@endforeach--}}
-                                                                    {{--</select>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<div class="col-md-12 m-b-20">--}}
+                                        {{--<h4 class="control-label">Select course  </h4>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">--}}
+                                        {{--@foreach($courses as  $course)--}}
+                                        {{--<option--}}
+                                        {{--name="id"--}}
+                                        {{--value="{{$course->id}}">{{$course->name}}</option>--}}
+                                        {{--@endforeach--}}
+                                        {{--</select>--}}
 
-                                                                {{--</div>--}}
-                                                                {{--<input class="btn btn-primary" type="submit">--}}
-                                                                {{--<div class="form-group">--}}
-                                                                    {{--<div>--}}
-                                                                        {{--<button type="submit" class="btn--}}
-                                                                        {{--btn-success btn-rounded">Submit</button>--}}
-                                                                        {{--<button type="button" class="btn btn-default--}}
-                                                                        {{--btn-rounded waves-effect"--}}
-                                                                                {{--data-dismiss="modal">Cancel--}}
-                                                                        {{--</button>--}}
-                                                                    {{--</div>--}}
-                                                                {{--</div>--}}
-                                                            {{--</form>--}}
-                                                            {{--=========================================================================--}}
-                                                            {{--============================= //FORM ====================================--}}
-                                                            {{--=========================================================================--}}
-                                                        {{--</div>--}}
-                                                        {{--<div class="modal-footer">--}}
+                                        {{--</div>--}}
+                                        {{--<input class="btn btn-primary" type="submit">--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<div>--}}
+                                        {{--<button type="submit" class="btn--}}
+                                        {{--btn-success btn-rounded">Submit</button>--}}
+                                        {{--<button type="button" class="btn btn-default--}}
+                                        {{--btn-rounded waves-effect"--}}
+                                        {{--data-dismiss="modal">Cancel--}}
+                                        {{--</button>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--</form>--}}
+                                        {{--=========================================================================--}}
+                                        {{--============================= //FORM ====================================--}}
+                                        {{--=========================================================================--}}
+                                        {{--</div>--}}
+                                        {{--<div class="modal-footer">--}}
 
-                                                        {{--<button type="button" class="btn btn-default waves-effect"--}}
-                                                        {{--data-dismiss="modal">Cancel--}}
-                                                        {{--</button>--}}
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-                                                    {{--<!-- /.modal-content -->--}}
-                                                {{--</div>--}}
-                                                {{--<!-- /.modal-dialog -->--}}
-                                            {{--</div>--}}
-                                            <td colspan="7">
-                                                <div class="text-right">
-                                                    <ul class="pagination"></ul>
-                                                </div>
-                                            </td>
+                                        {{--<button type="button" class="btn btn-default waves-effect"--}}
+                                        {{--data-dismiss="modal">Cancel--}}
+                                        {{--</button>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<!-- /.modal-content -->--}}
+                                        {{--</div>--}}
+                                        {{--<!-- /.modal-dialog -->--}}
+                                        {{--</div>--}}
+                                        <td colspan="7">
+                                            <div class="text-right">
+                                                <ul class="pagination"></ul>
+                                            </div>
+                                        </td>
                                         </tr>
                                         </tfoot>
                                     </table>
@@ -296,7 +296,7 @@
                                                     </div>
 
                                                     {{--<div class="progress m-t-20">--}}
-                                                        {{--<div class="progress-bar bg-success" style="width: 75%; height:15px;" role="progressbar">75%</div>--}}
+                                                    {{--<div class="progress-bar bg-success" style="width: 75%; height:15px;" role="progressbar">75%</div>--}}
                                                     {{--</div>--}}
                                                 </td>
                                                 <td>
@@ -433,7 +433,7 @@
                     </div>
                 </div>
             </div>
-              <!-- ============================================================== -->
+            <!-- ============================================================== -->
             <!-- End of Assignment - Courst List -->
             <!-- ============================================================== -->
         </div>
