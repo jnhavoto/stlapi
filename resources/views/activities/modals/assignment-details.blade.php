@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
+                        <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-dismiss="modal"
                                 data-target="#copy-assignment" onclick="assignDetails({{$assignment}})">Copy this
                             Assignment</button>
 
