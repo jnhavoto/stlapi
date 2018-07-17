@@ -24,7 +24,7 @@ use Faker\Generator as Faker;
 
 
 //array of course names
-$courses = ['STL Blended Group 1','STL Blended Group 2','STL Blended Group 3','STL Blended Group 4','STL MASTER'];
+$courses = ['STL 2016','STL 2017','STL 2018','STL 2015','STL 2019'];
 //Feeding the database(DB) with info from arry of courses
 $factory->define(\App\Models\Course::class, function (Faker $faker) use ($courses) {
     return [
