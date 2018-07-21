@@ -15,4 +15,9 @@ class CourseController extends  ModelController
         $this->relactionships = [];
     }
 
+    public function getAllCourses()
+    {
+        $courses = Course::with('user')->get();
+        return view('activities.course',['courses'=>$courses,'user' => Auth::user()]);
+    }
 }

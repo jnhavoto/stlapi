@@ -29,9 +29,9 @@ class UserController extends  ModelController
 
         try{
             if(! $token = JWTAuth::attempt($credencias))
-                return response()->json(['mensagem' => 'Credencias Erradas'], 401);
+                return response()->json(['message' => 'Wrong Username or Password!'], 401);
         }catch (JWTException $ex){
-            return response()->json(['mensagem' => 'Erro ao gerar token'], 500);
+            return response()->json(['message' => 'Server error!'], 500);
         }
 
         $user = $this->getUserFromToken($token);
@@ -43,7 +43,12 @@ class UserController extends  ModelController
 
 
     public function logout(Request $request){
-        return response()->json(['logout' => JWTAuth::invalidate($request->get('token'))]);
+        try{
+            return response()->json(['logout' => JWTAuth::invalidate($request->get('token'))]);
+        }catch (JWTException $ex){
+            return response()->json(['message' => $ex], 500);
+        }
+
     }
 
 
@@ -59,11 +64,11 @@ class UserController extends  ModelController
      * Return the user Kind of the user: Teacher or studant
      */
     private function getUserKind($user){
-        if($user->teacher)
-            return $user->teacher;
+        if($user->student)
+            return $user->student;
 
         else{
-            return $user->student;
+            throw new \Exception( 'Not a Student!', 500);
         }
             
     }

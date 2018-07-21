@@ -11,10 +11,10 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor m-b-0 m-t-0">Icon</h3>
+                    <h3 class="text-themecolor m-b-0 m-t-0">Calendar</h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Icon</li>
+                        <li class="breadcrumb-item active">Communications</li>
                     </ol>
                 </div>
                 <div class="col-md-7 col-4 align-self-center">
@@ -167,28 +167,36 @@
                         <ul class="m-t-20 chatonline">
                             <li><b>Chat option</b></li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/1.jpg')}}"
+                                alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/2.jpg')}}"
+                                                                  alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/3.jpg')}}"
+                                                                  alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/4.jpg')}}"
+                                                                  alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/5.jpg')}}"
+                                                                  alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/6.jpg')}}"
+                                                                  alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/7.jpg')}}"
+                                                                  alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/8.jpg')}}"
+                                                                  alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
                             </li>
                         </ul>
                     </div>
@@ -214,4 +222,28 @@
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
     <!-- ============================================================== -->
+
+    <script src="{{asset('theme/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('theme/plugins/calendar/jquery-ui.min.js')}}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{asset('theme/plugins/popper/popper.min.js')}}"></script>
+    <script src="{{asset('theme/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{asset('theme/js/jquery.slimscroll.js')}}"></script>
+    <!--Wave Effects -->
+    <script src="{{asset('theme/js/waves.js')}}"></script>
+    <!--Menu sidebar -->
+    <script src="{{asset('theme/js/sidebarmenu.js')}}"></script>
+    <!--stickey kit -->
+    <script src="{{asset('theme/plugins/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
+    <script src="{{asset('theme/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{asset('theme/js/custom.min.js')}}"></script>
+    <!-- Calendar JavaScript -->
+    <script src="{{asset('theme/plugins/calendar/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('theme/plugins/moment/moment.js')}}"></script>
+    <script src="{{asset('theme/plugins/calendar/dist/fullcalendar.min.js')}}"></script>
+    <script src="{{asset('theme/plugins/calendar/dist/cal-init.js')}}"></script>
+
+
 @endsection

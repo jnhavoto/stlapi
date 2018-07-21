@@ -33,7 +33,7 @@ class TeacherMember extends Eloquent
 		'group_teachers_id' => 'int',
 		'teachers_id' => 'int'
 	];
-    protected $with = ['teacher'];
+    protected $with = ['teacher','group_teacher'];
 
 
     protected $fillable = [

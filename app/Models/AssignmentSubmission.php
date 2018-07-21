@@ -98,6 +98,8 @@ class AssignmentSubmission extends Eloquent
 		'assignment_descriptions_id'
 	];
 
+//    protected $with = ['student','assignment_description'];
+
 	public function student()
 	{
 		return $this->belongsTo(\App\Models\Student::class, 'students_id');

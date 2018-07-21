@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -43,6 +44,10 @@ class Course extends Eloquent
 	protected $dates = [
 		'startdate'
 	];
+
+    protected $dates = [
+        'created_at',
+    ];
 
 	protected $fillable = [
 		'startdate',
@@ -84,4 +89,9 @@ class Course extends Eloquent
 					->withPivot('id', 'deleted_at')
 					->withTimestamps();
 	}
+
+    public function getCreatedAtAttribute($created_at){
+        $carbonated_date = Carbon::parse($created_at)->format('Y-m-d');
+        return $carbonated_date;
+    }
 }

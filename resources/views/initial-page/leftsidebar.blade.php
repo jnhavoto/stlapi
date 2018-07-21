@@ -140,7 +140,7 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy;2018 <a href="javascript:void(0);">Stl-Teacher</a>.
+            &copy;2018 <a href="javascript:void(0);">STL</a>.
         </div>
         <div class="version">
             <b>Version: </b> 1.0.5

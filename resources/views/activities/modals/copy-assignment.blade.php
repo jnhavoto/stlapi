@@ -1,0 +1,87 @@
+<div id="copy-assignment" class="modal fade in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Assignment</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+            </div>
+            <div class="modal-body">
+
+                {{--=========================================================================--}}
+                {{--============================= FORM  ====================================--}}
+                {{--=========================================================================--}}
+                <form class="form-horizontal form-material"
+                      action="/submit_assignment" method="post">
+
+                    {{csrf_field()}}
+
+                    <div class="form-group">
+
+                        <div class="col-md-12 m-b-20">
+                            <label class="control-label">Assignment
+                                name</label>
+                            <input name="case" id="case" type="text"
+                                   class="form-control">
+                        </div>
+                        <div class="col-md-12 m-b-20">
+                            <label class="control-label">Assignment
+                                number</label>
+                            <input name="number" id="number" type="number"
+                                   class="form-control">
+                        </div>
+                        <div class="col-md-12 m-b-20">
+                            <label
+                                    class="control-label">Instructions</label>
+                            <input name="instructions" id="instructions" type="textarea"
+                                   class="form-control" rows="3">
+                        </div>
+
+                        <div class="col-md-12 m-b-20">
+                            <label class="control-label">Start date</label>
+                            <input name="startdate" type="date"
+                                   class="form-control">
+                        </div>
+
+                        <div class="col-md-12 m-b-20">
+                            <label class="control-label">End date</label>
+                            <input name="deadline"
+                                   type="date" class="form-control">
+                        </div>
+
+                        <div class="col-md-12 m-b-20">
+                            <label class="control-label">Available
+                                date</label>
+                            <input name="availabledate" type="date"
+                                   class="form-control">
+
+                        </div>
+
+                    </div>
+                    {{--<input class="btn btn-primary" type="submit">--}}
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn btn-info btn-rounded">Submit</button>
+                            <button type="button" class="btn btn-default btn-rounded waves-effect"
+                                    data-dismiss="modal">Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                {{--=========================================================================--}}
+                {{--============================= //FORM ====================================--}}
+                {{--=========================================================================--}}
+            </div>
+            {{--<div class="modal-footer">--}}
+
+            {{--<button type="button" class="btn btn-default waves-effect"--}}
+            {{--data-dismiss="modal">Cancel--}}
+            {{--</button>--}}
+            {{--</div>--}}
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
