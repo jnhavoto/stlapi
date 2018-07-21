@@ -55,8 +55,6 @@ class AssignmentDescription extends Eloquent
 	];
 
 	protected $fillable = [
-
-
 		'startdate',
 		'deadline',
 		'available_date',
