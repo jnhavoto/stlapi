@@ -24,9 +24,9 @@
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
                         <h4 class="control-label">Course Name(s)  </h4>
-                        @foreach($assignment->teachers as $course)
-                            <p class="control-label"> {{$course->name}}  </p>
-                        @endforeach
+                        {{--@foreach($assignment->teachers as $course)--}}
+                            {{--<p class="control-label"> {{$course->name}}  </p>--}}
+                        {{--@endforeach--}}
                     </div>
                 </div>
                 <div class="form-group">
@@ -50,10 +50,10 @@
                 <div class="form-group">
                     <div class="col-md-12 m-b-20">
                         <h4 class="control-label">Instructor(s)  </h4>
-                        @foreach($assignment->teachers as $instructor)
-                            <p class="control-label"> {{$instructor->user->first_name.' '
-                    .$instructor->user->last_name}} </p>
-                        @endforeach
+                        {{--@foreach($assignment->teachers as $instructor)--}}
+                            {{--<p class="control-label"> {{$instructor->user->first_name.' '--}}
+                    {{--.$instructor->user->last_name}} </p>--}}
+                        {{--@endforeach--}}
                     </div>
                 </div>
                 {{--<div class="form-group">--}}

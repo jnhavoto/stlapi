@@ -27,39 +27,12 @@
                         <p id="instructions" class="control-label">text hare!  </p>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Start date  </h4>
-                        <p id="startdate" class="control-label">date hare!  </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">End date  </h4>
-                        <p id="duedate" class="control-label">date hare!  </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Available date  </h4>
-                        <p id="availabledate" class="control-label">date hare!  </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Instructor(s)  </h4>
-                        @foreach($assignment->teachers as $assign)
-                            <p class="control-label"> {{$assign->user->first_name.' '
-                    .$assign->user->last_name}} </p>
-                            @endforeach
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <div>
                         <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-dismiss="modal"
                                 data-target="#copy-assignment" onclick="assignDetails({{$assignment}})">Copy this
                             Assignment</button>
-
                     </div>
                 </div>
             </div>

@@ -130,7 +130,7 @@ $factory->define(\App\Models\AssignmentTemplate::class, function (Faker $faker){
     return [
         'case' => $faker->text(15),
         'number' => $faker->numberBetween(1, 10),
-        'instructions' => $faker->text(100),
+        'instructions' => $faker->text,
     ];
 });
 

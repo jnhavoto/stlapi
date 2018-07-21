@@ -61,7 +61,7 @@
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">Assignment List </h4></div>
+                                            <h4 class="card-title m-t-10">Assignment Template List </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search contacts"
                                                    class="form-control"></div>
@@ -75,16 +75,10 @@
                                             <th>Number</th>
                                             <th>Assignment name</th>
                                             <th>Instructions</th>
-                                            <th>Date of Start</th>
-                                            <th>Due Date</th>
-                                            <th>Available from</th>
-                                            {{--<th>Joining date</th>--}}
-                                            {{--<th>Salery</th>--}}
-                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($allassignments as $assignment)
+                                        @foreach ($assTemplates as $assignment)
                                             <tr>
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $assignment->number}}</td>
@@ -96,15 +90,12 @@
                                                     </a>
                                                 </td>
                                                 <td>{{substr($assignment->instructions, 0, 45) }}</td>
-                                                <td>{{$assignment->startdate}}</td>
-                                                <td>{{$assignment->deadline}}</td>
-                                                <td>{{$assignment->available_date}}</td>
-                                                <td>
-                                                    <button type="button"
-                                                            class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
-                                                            data-toggle="tooltip" data-original-title="Delete"><i
-                                                                class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
+                                                {{--<td>--}}
+                                                    {{--<button type="button"--}}
+                                                            {{--class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"--}}
+                                                            {{--data-toggle="tooltip" data-original-title="Delete"><i--}}
+                                                                {{--class="ti-close" aria-hidden="true"></i></button>--}}
+                                                {{--</td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -381,11 +372,12 @@
                                                                             <h4 class="control-label">Select course  </h4>
                                                                         </div>
                                                                     </div>
-                                                                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
+                                                                    <select class=""
+                                                                            name="courses"
+                                                                            style="width: 100%">
                                                                         @foreach($courses as  $course)
                                                                             <option
-                                                                                    name="selectTag"
-                                                                                    value="{{$course->id}}">{{$course->name}}</option>
+                                                                                    value="{{$course->id}}">{{$course->id}}</option>
                                                                         @endforeach
                                                                     </select>
 
@@ -459,10 +451,8 @@
             $("#case").html(assignment.case);
             $("#number").html(assignment.number);
             $("#instructions").html(assignment.instructions);
-            $("#startdate").html(assignment.startdate);
-            $("#duedate").html(assignment.deadline);
-            $("#availabledate").html(assignment.available_date);
             console.log(assignment);
+            console.log(courses);
         }
 
         function assignCourseDetails(assignment) {
@@ -486,6 +476,7 @@
             $("#created").html(course.created_at);
             console.log(course)
         }
+        
 
     </script>
 

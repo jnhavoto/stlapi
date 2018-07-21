@@ -49,13 +49,12 @@
                                             <th>No</th>
                                             <th>Name</th>
                                             <th>Content</th>
-                                            <th>Created on</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
 
-                                        @foreach ($courses as $course)
+                                        @foreach ($courseTemplates as $course)
                                             <tr>
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
@@ -67,10 +66,11 @@
                                                     </a>
                                                 </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
-                                                <td>{{$course->created_at}}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
+                                                <td> <a href="/" data-toggle="modal" data-target="#copy-course"
+                                                        onclick="courseDetails({{$course}})">
+                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                        Copy
+                                                    </a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -191,7 +191,7 @@
                                             <th>Name</th>
                                             <th>Content</th>
                                             <th>Date of Start</th>
-                                            <th>Action</th>
+                                            <th>Status</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -208,9 +208,12 @@
                                                     </a>
                                                 </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
-                                                <td>{{$course->created_at}}</td>
+                                                <td>{{$course->startdate}}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
+                                                    @if($course->status == 0)Active
+                                                    @else
+                                                        Disactive
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -321,15 +324,20 @@
             var course = course;
             $("#name").html(course.name);
             $("#course_content").html(course.course_content);
-            $("#created").html(course.created_at);
+
+            $("#c_course_name").val(course.name);
+            $("#c_course_content").val(course.course_content);
+            $("#c_course_id").val(course.id);
+
+
+            //            storage.setItem('couse_name', course.name);
+            //             storage.setItem('couse_content', course.course_content);
             console.log(course)
         }
         function copyCourse(course) {
-            var course = course;
-            $("#name").html(course.name);
-            $("#course_content").html(course.course_content);
-            $("#created").html(course.created_at);
-            console.log(course)
+
+
+             //    $("#modalCourseDetails").hide()
         }
     </script>
 @endsection

@@ -22,16 +22,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-12 m-b-20">
-                        <h4 class="control-label">Created on  </h4>
-                        <p id="created" class="control-label">date hare!  </p>
-                    </div>
-                </div>
-                <div class="form-group">
                     <div>
                         <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
-                                data-target="#copy-course" onclick="copyCourse({{$course}})">Copy this
-                            Assignment</button>
+                                data-target="#copy-course" onclick="copyCourse()" data-dismiss="modal"
+                                aria-hidden="true">Copy this
+                            Course</button>
                     </div>
                 </div>
             </div>
@@ -39,8 +34,13 @@
     </div>
 </div>
 
+
+
+
 <script>
-    console.log($course);
+    if ( $('[type="date"]').prop('type') != 'date' ) {
+        $('[type="date"]').datepicker();
+    }
 </script>
 
 

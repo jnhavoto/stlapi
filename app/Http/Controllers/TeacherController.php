@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
 use App\Models\AssignmentSubmission;
+use App\Models\AssignmentTemplate;
 use App\Models\Course;
+use App\Models\CoursesTemplate;
 use App\Models\Department;
 use App\Models\Feedback;
 use App\Models\GroupTeacher;
@@ -41,11 +43,11 @@ class TeacherController extends ModelController
     {
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         $teacherCourses = $teacher->courses;
-
-        $allcourses = Course::all();
+//return $teacherCourses;
+        $coursesTemplates = CoursesTemplate::all();
 
         return view('activities.course',
-            ['courses' => $allcourses,
+            ['courseTemplates' => $coursesTemplates,
                 'teacherCourses'=>$teacherCourses,
                 'user' => Auth::user()]);
     }
@@ -64,7 +66,7 @@ class TeacherController extends ModelController
     public function getAssignments()
     {
         //first get all assignments
-        $allassignments = AssignmentDescription::all();
+        $assTemplates = AssignmentTemplate::all();
         //all courses
         $courses = Course::all();
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
@@ -81,8 +83,10 @@ class TeacherController extends ModelController
 //                return $assignments;
             }
         }
+
+//        return $courses;
         return view('activities.assignment',
-            ['allassignments' => $allassignments,
+            ['assTemplates' => $assTemplates,
             'teacher_assignments' => $teacher_assignments,
             'teachers' => $teachers,
             'courses' => $courses,
@@ -176,10 +180,13 @@ class TeacherController extends ModelController
         //create the course with content from the form
         $course = Course::create(
             [
-                'name' => $request->name,
-                'course_content' => $request->course_content,
+//                'name' => $request->name,
+//                'course_content' => $request->course_content,
+                'startdate' => $request->startdate,
+
                 //get the department id from the name the user chose in the form
 //                'department_id' => $request->$department->id,
+                'courses_template_id' => $request->course_template_id,
                 'departments_id' => 1,
             ]
         );

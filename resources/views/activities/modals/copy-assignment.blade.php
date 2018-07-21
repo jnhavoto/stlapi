@@ -56,8 +56,20 @@
                                 date</label>
                             <input name="availabledate" type="date"
                                    class="form-control">
-
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 m-b-20">
+                                <h4 class="control-label">Select course  </h4>
+                            </div>
+                        </div>
+                        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
+                            @foreach($courses as  $course)
+                                <option
+                                        name="selectTag"
+                                        value="{{$course->id}}">{{$course->name}}</option>
+                            @endforeach
+                        </select>
 
                     </div>
                     {{--<input class="btn btn-primary" type="submit">--}}
