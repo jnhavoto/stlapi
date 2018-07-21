@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 02 May 2018 15:35:33 +0000.
+ * Date: Sat, 21 Jul 2018 12:59:27 +0000.
  */
 
 namespace App\Models;
@@ -34,12 +34,13 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $bad_experience
  * @property string $learned_consequence
  * @property string $next_goal
+ * @property int $status
  * @property \Carbon\Carbon $submission_date
+ * @property int $students_id
+ * @property int $assignment_descriptions_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
- * @property int $students_id
- * @property int $assignment_descriptions_id
  * 
  * @property \App\Models\Student $student
  * @property \App\Models\AssignmentDescription $assignment_description
@@ -58,6 +59,7 @@ class AssignmentSubmission extends Eloquent
 		'number_of_students' => 'int',
 		'inspiration_choiche' => 'bool',
 		'analysis_measure' => 'int',
+		'status' => 'int',
 		'students_id' => 'int',
 		'assignment_descriptions_id' => 'int'
 	];
@@ -90,6 +92,7 @@ class AssignmentSubmission extends Eloquent
 		'bad_experience',
 		'learned_consequence',
 		'next_goal',
+		'status',
 		'submission_date',
 		'students_id',
 		'assignment_descriptions_id'

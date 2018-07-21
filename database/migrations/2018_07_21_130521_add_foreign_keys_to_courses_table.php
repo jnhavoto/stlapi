@@ -15,6 +15,7 @@ class AddForeignKeysToCoursesTable extends Migration {
 		Schema::table('courses', function(Blueprint $table)
 		{
 			$table->foreign('departments_id', 'fk_courses_departments1')->references('id')->on('departments')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('courses_template_id', 'fk_courses_courses_template1')->references('id')->on('courses_template')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,6 +30,7 @@ class AddForeignKeysToCoursesTable extends Migration {
 		Schema::table('courses', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_courses_departments1');
+			$table->dropForeign('fk_courses_courses_template1');
 		});
 	}
 

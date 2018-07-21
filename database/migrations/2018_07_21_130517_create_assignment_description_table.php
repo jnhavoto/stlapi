@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAssignmentDescriptionsTable extends Migration {
+class CreateAssignmentDescriptionTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,17 @@ class CreateAssignmentDescriptionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('assignment_descriptions', function(Blueprint $table)
+		Schema::create('assignment_description', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->text('case', 65535);
-			$table->text('instructions', 65535);
 			$table->date('startdate');
 			$table->date('deadline');
 			$table->date('available_date')->nullable();
-			$table->integer('status')->default(0);
+			$table->integer('status')->default(0)->comment('0=active
+1=disactive');
+			$table->integer('assignment_template_id')->unsigned()->index('fk_assignment_description_assignment_template1_idx');
 			$table->integer('group_teachers_id')->index('fk_assignment_descriptions_group_teachers1_idx');
+			$table->integer('courses_id')->unsigned()->index('fk_assignment_descriptions_courses1_idx');
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -35,7 +36,7 @@ class CreateAssignmentDescriptionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('assignment_descriptions');
+		Schema::drop('assignment_description');
 	}
 
 }

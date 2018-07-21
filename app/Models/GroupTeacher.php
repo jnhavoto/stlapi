@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 02 May 2018 15:35:34 +0000.
+ * Date: Sat, 21 Jul 2018 12:59:27 +0000.
  */
 
 namespace App\Models;
@@ -27,9 +27,7 @@ class GroupTeacher extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-    protected $with = ['teacher_members'];
-
-    protected $fillable = [
+	protected $fillable = [
 		'group_name'
 	];
 

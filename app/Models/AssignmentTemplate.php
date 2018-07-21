@@ -10,32 +10,37 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Level
+ * Class AssignmentTemplate
  * 
  * @property int $id
- * @property int $level_number
+ * @property string $case
+ * @property int $number
+ * @property string $instructions
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $questions
+ * @property \Illuminate\Database\Eloquent\Collection $assignment_descriptions
  *
  * @package App\Models
  */
-class Level extends Eloquent
+class AssignmentTemplate extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	protected $table = 'assignment_template';
 
 	protected $casts = [
-		'level_number' => 'int'
+		'number' => 'int'
 	];
 
 	protected $fillable = [
-		'level_number'
+		'case',
+		'number',
+		'instructions'
 	];
 
-	public function questions()
+	public function assignment_descriptions()
 	{
-		return $this->hasMany(\App\Models\Question::class, 'levels_id');
+		return $this->hasMany(\App\Models\AssignmentDescription::class);
 	}
 }

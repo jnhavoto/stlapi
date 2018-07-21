@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 02 May 2018 15:35:33 +0000.
+ * Date: Sat, 21 Jul 2018 12:59:27 +0000.
  */
 
 namespace App\Models;
@@ -36,7 +36,6 @@ class AssignmentAnnouncement extends Eloquent
 		'assignment_descriptions_id' => 'int',
 		'teacher_members_id' => 'int'
 	];
-
 
 	protected $fillable = [
 		'assignment_descriptions_id',

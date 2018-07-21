@@ -36,7 +36,8 @@ class CreateAssignmentSubmissionsTable extends Migration {
 			$table->text('bad_experience', 65535)->nullable();
 			$table->text('learned_consequence', 65535)->nullable();
 			$table->text('next_goal', 65535)->nullable();
-			$table->integer('status')->nullable();
+			$table->integer('status')->nullable()->comment('0=active
+1=submitted');
 			$table->date('submission_date')->nullable();
 			$table->integer('students_id')->unsigned()->index('fk_assignment_submissions_students1_idx');
 			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_assignment_submissions_assignment_descriptions1_idx');
