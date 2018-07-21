@@ -26,16 +26,25 @@ use Faker\Generator as Faker;
 //array of course names
 $courses = ['STL 2016','STL 2017','STL 2018','STL 2015','STL 2019'];
 //Feeding the database(DB) with info from arry of courses
-$factory->define(\App\Models\Course::class, function (Faker $faker) use ($courses) {
+$factory->define(\App\Models\CoursesTemplate::class, function (Faker $faker) use ($courses) {
     return [
         'name' => $faker->unique()->randomElement($courses),
         'course_content' => $faker->text,
+    ];
+});
+
+//Feeding the database(DB) with info from arry of courses
+$factory->define(\App\Models\Course::class, function (Faker $faker) use ($courses) {
+    return [
+        'startdate' => $faker->date('Y-m-d'),
+        'status' => $faker->numberBetween(1, 2),
         'departments_id' => $faker->numberBetween(1, \App\models\Department::all()->count()),
+        'courses_template_id' => $faker->numberBetween(1, \App\models\CoursesTemplate::all()->count()),
     ];
 });
 
 //arry of department names
-$department_names = ['Science','Health']; //array of department names
+$department_names = ['Science','Health','Education']; //array of department names
 //feeding the DB with info from arry of departments
 $factory->define(\App\Models\Department::class, function (Faker $faker) use ($department_names) {
     return [
@@ -108,18 +117,30 @@ $factory->define(\App\User::class, function (Faker $faker) {
 $assignmentStatus = [0,1,2];
 $factory->define(\App\Models\AssignmentDescription::class, function (Faker $faker) use ($assignmentStatus){
     return [
-        'case' => $faker->text(15),
-        'instructions' => $faker->text(35),
-        'number' => $faker->numberBetween(1, 10),
         'startdate' => $faker->date('Y-m-d'),
         'deadline'=> $faker->date('Y-m-d'),
         'available_date'=> $faker->date('Y-m-d'),
-        'status' => $faker->unique()->randomElement($assignmentStatus),
+        'status' => $faker->randomElement($assignmentStatus),
+        'assignment_template_id' => $faker->numberBetween(1, \App\Models\AssignmentTemplate::all()->count()),
         'group_teachers_id' => $faker->numberBetween(1, \App\Models\GroupTeacher::all()->count()),
-        'courses_id' => $faker->numberBetween(1, \App\Models\Course::all()->count()),
     ];
 });
 
+$factory->define(\App\Models\AssignmentTemplate::class, function (Faker $faker){
+    return [
+        'case' => $faker->text(15),
+        'number' => $faker->numberBetween(1, 10),
+        'instructions' => $faker->text(100),
+    ];
+});
+
+//
+$factory->define(\App\Models\AssignmentDescriptionsHasCourse::class, function (Faker $faker){
+    return [
+        'assignment_descriptions_id' => $faker->numberBetween(1, \App\Models\AssignmentDescription::all()->count()),
+        'courses_id' => $faker->numberBetween(1, \App\Models\Course::all()->count()),
+    ];
+});
 
 //feeding TeacherCourse
 $factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){

@@ -45,10 +45,6 @@ class Course extends Eloquent
 		'startdate'
 	];
 
-    protected $dates = [
-        'created_at',
-    ];
-
 	protected $fillable = [
 		'startdate',
 		'status',
