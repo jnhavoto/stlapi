@@ -15,16 +15,18 @@ class CreateAssignmentDescriptionTable extends Migration {
 		Schema::create('assignment_description', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->text('case', 65535)->nullable();
+			$table->integer('number')->nullable();
+			$table->text('instructions', 65535)->nullable();
 			$table->date('startdate');
 			$table->date('deadline');
 			$table->date('available_date')->nullable();
 			$table->integer('status')->default(0)->comment('0=active
 1=disactive');
-			$table->integer('assignment_template_id')->unsigned()->index('fk_assignment_description_assignment_template1_idx');
 			$table->integer('group_teachers_id')->index('fk_assignment_descriptions_group_teachers1_idx');
-			$table->integer('courses_id')->unsigned()->index('fk_assignment_descriptions_courses1_idx');
 			$table->timestamps();
 			$table->softDeletes();
+			$table->integer('courses_id')->unsigned()->index('fk_assignment_description_courses1_idx');
 		});
 	}
 

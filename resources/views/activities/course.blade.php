@@ -37,7 +37,7 @@
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">Course List </h4></div>
+                                            <h4 class="card-title m-t-10">Course Template List </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search contacts" class="form-control"> </div>
                                     </div>
@@ -66,7 +66,7 @@
                                                     </a>
                                                 </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
-                                                <td> <a href="/" data-toggle="modal" data-target="#copy-course"
+                                                <td> <a href="/" data-toggle="modal" data-target="#create-course"
                                                         onclick="courseDetails({{$course}})">
                                                         {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
                                                         Copy
@@ -82,69 +82,61 @@
                                                     {{--Course</button>--}}
                                             {{--</td>--}}
 
-                                            <div id="add-course" class="modal fade in" tabindex="-1" role="dialog"
-                                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Add New
-                                                                Course</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
+                                            {{--<div id="add-course" class="modal fade in" tabindex="-1" role="dialog"--}}
+                                                 {{--aria-labelledby="myModalLabel" aria-hidden="true">--}}
+                                                {{--<div class="modal-dialog">--}}
+                                                    {{--<div class="modal-content">--}}
+                                                        {{--<div class="modal-header">--}}
+                                                            {{--<h4 class="modal-title" id="myModalLabel">Add New--}}
+                                                                {{--Course</h4>--}}
+                                                            {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="modal-body">--}}
                                                             {{--=========================================================================--}}
                                                             {{--============================= FORM  ====================================--}}
                                                             {{--=========================================================================--}}
-                                                            <form class="form-horizontal form-material"
-                                                                  action="/submit_course" method="post">
-                                                                {{csrf_field()}}
-                                                                <div class="form-group">
+                                                            {{--<form class="form-horizontal form-material"--}}
+                                                                  {{--action="/submit_course" method="post">--}}
+                                                                {{--{{csrf_field()}}--}}
+                                                                {{--<div class="form-group">--}}
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Course name</label>
-                                                                        <div>
-                                                                            <input name="name" type="text" class="form-control input-lg" value="">
-                                                                        </div>
-                                                                    </div>
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">Course name</label>--}}
+                                                                        {{--<div>--}}
+                                                                            {{--<input name="name" type="text" class="form-control input-lg" value="">--}}
+                                                                        {{--</div>--}}
+                                                                    {{--</div>--}}
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Course
-                                                                            Content</label>
-                                                                        <input name="course_content" type="textarea"
-                                                                               class="form-control" rows="3">
-                                                                    </div>
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">Course Content</label>--}}
+                                                                        {{--<input name="course_content" type="textarea"--}}
+                                                                               {{--class="form-control" rows="3">--}}
+                                                                    {{--</div>--}}
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Star date</label>
-                                                                        <input name="start_date" type="date"
-                                                                               class="form-control">
-                                                                    </div>
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">End date</label>
-                                                                        <input name="end_date" type="date"
-                                                                               class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <button type="submit" class="btn
-                                                                        btn-success btn-rounded">Submit</button>
-                                                                    <button type="button" class="btn btn-default
-                                                                        btn-rounded waves-effect"
-                                                                            data-dismiss="modal">Cancel
-                                                                    </button>
-                                                                </div>
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">Start date</label>--}}
+                                                                        {{--<input name="startdate" type="date"--}}
+                                                                               {{--class="form-control">--}}
+                                                                    {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="form-group">--}}
+                                                                    {{--<button type="submit" class="btn btn-success btn-rounded">Submit</button>--}}
+                                                                    {{--<button type="button" class="btn btn-default btn-rounded waves-effect"--}}
+                                                                            {{--data-dismiss="modal">Cancel--}}
+                                                                    {{--</button>--}}
+                                                                {{--</div>--}}
                                                                 {{--<input class="btn btn-primary " type="submit">--}}
-                                                            </form>
+                                                            {{--</form>--}}
                                                             {{--=========================================================================--}}
                                                             {{--============================= //FORM ====================================--}}
                                                             {{--=========================================================================--}}
 
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                    {{--<!-- /.modal-content -->--}}
+                                                {{--</div>--}}
+                                                {{--<!-- /.modal-dialog -->--}}
+                                            {{--</div>--}}
                                             <td colspan="7">
                                                 <div class="text-right">
                                                     <ul class="pagination"> </ul>
@@ -201,16 +193,17 @@
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/" data-toggle="modal" data-target="#modalCourseDetails"
-                                                       onclick="courseDetails({{$course}})">
+                                                    {{$course->name}}
+                                                    {{--<a href="/" data-toggle="modal" data-target="#modalCourseDetails"--}}
+                                                       {{--onclick="courseDetails({{$course}})">--}}
                                                         {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                        {{$course->name}}
-                                                    </a>
+                                                        {{--{{$course->name}}--}}
+                                                    {{--</a>--}}
                                                 </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
                                                 <td>{{$course->startdate}}</td>
                                                 <td>
-                                                    @if($course->status == 0)Active
+                                                    @if($course->status == 0)Active.
                                                     @else
                                                         Disactive
                                                     @endif
@@ -221,74 +214,13 @@
                                         <tfoot>
                                         <tr>
                                             <td colspan="2">
-                                                <button type="button" class="btn btn-info btn-rounded"
-                                                        data-toggle="modal" data-target="#add-course">Add New
+                                                <button type="button" onclick="courseCleanDetails()" class="btn
+                                                btn-info btn-rounded"
+                                                        data-toggle="modal" data-target="#create-course">Add New
                                                     Course</button>
                                             </td>
 
-                                            <div id="add-course" class="modal fade in" tabindex="-1" role="dialog"
-                                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Add New
-                                                                Course</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            {{--=========================================================================--}}
-                                                            {{--============================= FORM  ====================================--}}
-                                                            {{--=========================================================================--}}
-                                                            <form class="form-horizontal form-material"
-                                                                  action="/submit_course" method="post">
-                                                                {{csrf_field()}}
-                                                                <div class="form-group">
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Course name</label>
-                                                                        <div>
-                                                                            <input name="name" type="text" class="form-control input-lg" value="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Course
-                                                                            Content</label>
-                                                                        <input name="course_content" type="textarea"
-                                                                               class="form-control" rows="3">
-                                                                    </div>
-
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Star date</label>
-                                                                        <input name="start_date" type="date"
-                                                                               class="form-control">
-                                                                    </div>
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">End date</label>
-                                                                        <input name="end_date" type="date"
-                                                                               class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <button type="submit" class="btn
-                                                                        btn-success btn-rounded">Submit</button>
-                                                                    <button type="button" class="btn btn-default
-                                                                        btn-rounded waves-effect"
-                                                                            data-dismiss="modal">Cancel
-                                                                    </button>
-                                                                </div>
-                                                                {{--<input class="btn btn-primary " type="submit">--}}
-                                                            </form>
-                                                            {{--=========================================================================--}}
-                                                            {{--============================= //FORM ====================================--}}
-                                                            {{--=========================================================================--}}
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
                                             <td colspan="7">
                                                 <div class="text-right">
                                                     <ul class="pagination"> </ul>
@@ -317,7 +249,7 @@
     <!--Modal for course details-->
     @include('activities.modals.course-details')
     <!--Modal for copping a course-->
-    @include('activities.modals.copy-course')
+    @include('activities.modals.create-course')
 
     <script>
         function courseDetails(course) {
@@ -328,16 +260,21 @@
             $("#c_course_name").val(course.name);
             $("#c_course_content").val(course.course_content);
             $("#c_course_id").val(course.id);
-
-
             //            storage.setItem('couse_name', course.name);
             //             storage.setItem('couse_content', course.course_content);
             console.log(course)
         }
-        function copyCourse(course) {
 
+        function courseCleanDetails() {
+            $("#name").html("");
+            $("#course_content").html("");
 
-             //    $("#modalCourseDetails").hide()
+            $("#c_course_name").val("");
+            $("#c_course_content").val("");
+            $("#c_course_id").val("");
+            //            storage.setItem('couse_name', course.name);
+            //             storage.setItem('couse_content', course.course_content);
+            console.log(course)
         }
     </script>
 @endsection

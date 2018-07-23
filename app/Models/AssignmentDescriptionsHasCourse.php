@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 21 Jul 2018 12:59:27 +0000.
+ * Date: Mon, 23 Jul 2018 14:08:49 +0000.
  */
 
 namespace App\Models;
@@ -12,6 +12,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class AssignmentDescriptionsHasCourse
  * 
+ * @property int $id
  * @property int $assignment_descriptions_id
  * @property int $courses_id
  * 
@@ -22,12 +23,16 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class AssignmentDescriptionsHasCourse extends Eloquent
 {
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
 		'assignment_descriptions_id' => 'int',
 		'courses_id' => 'int'
+	];
+
+	protected $fillable = [
+		'assignment_descriptions_id',
+		'courses_id'
 	];
 
 	public function assignment_description()

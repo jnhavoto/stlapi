@@ -22,9 +22,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div>
+                    <div id="copy-button1">
                         <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
-                                data-target="#copy-course" onclick="copyCourse()" data-dismiss="modal"
+                                data-target="#create-course" onclick="copyCourse()" data-dismiss="modal"
                                 aria-hidden="true">Copy this
                             Course</button>
                     </div>

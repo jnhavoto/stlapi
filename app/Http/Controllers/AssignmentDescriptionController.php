@@ -13,7 +13,7 @@ class AssignmentDescriptionController extends ModelController
     public function __construct() {
         $this->object = new AssignmentDescription();
         $this->objectName = 'assignment_description';
-        $this->objectNames = 'assignment_description';
+        $this->objectNames = 'assignment_descriptions';
         $this->relactionships = [];
     }
 

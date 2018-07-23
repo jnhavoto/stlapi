@@ -15,11 +15,12 @@ class CreateCoursesTable extends Migration {
 		Schema::create('courses', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->text('name', 65535)->nullable();
+			$table->text('course_content', 65535)->nullable();
 			$table->date('startdate');
 			$table->integer('status')->nullable()->default(0)->comment('0=active
 1=disactive');
 			$table->integer('departments_id')->unsigned()->index('fk_courses_departments1_idx');
-			$table->integer('courses_template_id')->unsigned()->index('fk_courses_courses_template1_idx');
 			$table->timestamps();
 			$table->softDeletes();
 		});

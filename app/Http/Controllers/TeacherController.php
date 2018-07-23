@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
+use App\Models\AssignmentDescriptionsHasCourse;
+use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentSubmission;
 use App\Models\AssignmentTemplate;
 use App\Models\Course;
@@ -42,6 +44,7 @@ class TeacherController extends ModelController
     public function getCourses()
     {
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        $teachers = Teacher::all();
         $teacherCourses = $teacher->courses;
 //return $teacherCourses;
         $coursesTemplates = CoursesTemplate::all();
@@ -49,6 +52,7 @@ class TeacherController extends ModelController
         return view('activities.course',
             ['courseTemplates' => $coursesTemplates,
                 'teacherCourses'=>$teacherCourses,
+                'teachers' => $teachers,
                 'user' => Auth::user()]);
     }
 
@@ -68,13 +72,18 @@ class TeacherController extends ModelController
         //first get all assignments
         $assTemplates = AssignmentTemplate::all();
         //all courses
-        $courses = Course::all();
+//        $courses = Course::all();
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         $teachers = Teacher::all();
+        //getting the ist of members where the teacher is part of
         $teachers_members = TeacherMember::Where('teachers_id', $teacher->id)->get();
+        $assignmentTeacher = AssignmentDescriptionsHasTeacher::Where('teachers_id',$teacher->id)->get();
         $teacher_assignments = collect();
+        //getting teacher courses
+        $teacherCourses = $teacher->courses;
 //        return $teachers_members[0];
 //
+
         for ($j = 0; $j < count($teachers_members); $j++) {
 
             $list = $teachers_members[$j]->group_teacher->assignment_descriptions;
@@ -84,12 +93,14 @@ class TeacherController extends ModelController
             }
         }
 
+//        return ($teacher_assignments);
+
 //        return $courses;
         return view('activities.assignment',
             ['assTemplates' => $assTemplates,
             'teacher_assignments' => $teacher_assignments,
             'teachers' => $teachers,
-            'courses' => $courses,
+            'teacherCourses' => $teacherCourses,
             'user' => Auth::user
     ()]);
     }
@@ -97,12 +108,9 @@ class TeacherController extends ModelController
     public function getAllAssignmentSubmissions()
     {
 //        $student = Student::Where('students_id', $teacher->id)->get();
-        $allSubmitted = AssignmentSubmission::Where('status',1)->get();
-        $allOnProgress = AssignmentSubmission::Where('status',1)->get();
-        $allLate = AssignmentSubmission::Where('status',0)->get();
-        return view('activities.assignment-submissions',['allAssSubmissions' => $allSubmitted,
-        'allOnProgress' => $allOnProgress,
-        'allLate' => $allLate,
+        $assignSubmissions = AssignmentSubmission::all();
+//        return $assignSubmissions;
+        return view('activities.assignment-submissions',['assSubmissions' => $assignSubmissions,
         'user' => Auth::user()]);
     }
 
@@ -154,13 +162,23 @@ class TeacherController extends ModelController
                     'deadline' => $request->deadline,
                     'available_date' => $request->availabledate,
                     'group_teachers_id' => $group_teacher->id,
-                    'courses_id' => 1,
+                    'courses_id' => $request->course_id,
                     //cousees_id is selectable
                 ]
             );
+
+            $teacher1 = Teacher::Where('users_id', Auth::user()->id)->first();
+
+            $assignHasTeacher = AssignmentDescriptionsHasTeacher::create(
+                [
+                    'assignment_descriptions_id' => $assigment->id,
+                    'teachers_id' => $teacher1->id,
+                ]
+            );
+
         }
 
-        if ($assigment and $teacher_member) {
+        if ($assigment and $teacher_member and $assignHasTeacher) {
             DB::commit();
             return redirect('/assignments');
         } else {
@@ -180,13 +198,10 @@ class TeacherController extends ModelController
         //create the course with content from the form
         $course = Course::create(
             [
-//                'name' => $request->name,
-//                'course_content' => $request->course_content,
+                'name' => $request->name,
+                'course_content' => $request->course_content,
                 'startdate' => $request->startdate,
-
                 //get the department id from the name the user chose in the form
-//                'department_id' => $request->$department->id,
-                'courses_template_id' => $request->course_template_id,
                 'departments_id' => 1,
             ]
         );
@@ -211,6 +226,37 @@ class TeacherController extends ModelController
                 ]
             );
         }
+        //createing group_teacher
+        $group_teacher = GroupTeacher::create(
+            [
+                'group_name' => 'Default Name',
+            ]
+        );
+        //adding instructors to the course
+        $instructors = $request->instructors;
+
+
+//return $request->instructors[1];
+
+//        return ($test);
+
+//        for ($i=0; $i< sizeof($instrutors); $i++)
+        foreach ($instructors as $instructor)
+
+        {
+            $teacher_member = TeacherMember::create(
+                [
+                    'group_teachers_id' => $group_teacher->id,
+                    'teachers_id' => $instructor,
+//                    'teachers_id' => $instrutors[$i],
+                ]
+            );
+        }
+
+        if (!$teacher_member){
+            return "Qualquer coisa";
+        }else
+
         //check if course and tecaher_course have any error: if not, then write on the DB
         if ($course and $teacher_course and $student_course) {
             DB::commit();

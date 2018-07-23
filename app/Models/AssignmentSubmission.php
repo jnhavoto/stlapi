@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 21 Jul 2018 12:59:27 +0000.
+ * Date: Mon, 23 Jul 2018 14:08:50 +0000.
  */
 
 namespace App\Models;
@@ -64,7 +64,10 @@ class AssignmentSubmission extends Eloquent
 		'assignment_descriptions_id' => 'int'
 	];
 
-	protected $dates = [
+    protected $with = ['assignment_description'];
+
+
+    protected $dates = [
 		'start_date_of_lecture',
 		'end_date_of_lecture',
 		'submission_date'
@@ -97,8 +100,6 @@ class AssignmentSubmission extends Eloquent
 		'students_id',
 		'assignment_descriptions_id'
 	];
-
-//    protected $with = ['student','assignment_description'];
 
 	public function student()
 	{

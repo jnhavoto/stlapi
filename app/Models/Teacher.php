@@ -37,7 +37,7 @@ class Teacher extends Eloquent
 		'users_id'
 	];
 
-	protected $with = ['user','courses'];
+	protected $with = ['user'];
 
 
     public function user()

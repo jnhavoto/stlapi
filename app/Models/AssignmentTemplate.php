@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 21 Jul 2018 12:59:27 +0000.
+ * Date: Mon, 23 Jul 2018 14:08:50 +0000.
  */
 
 namespace App\Models;
@@ -19,8 +19,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
- * 
- * @property \Illuminate\Database\Eloquent\Collection $assignment_descriptions
  *
  * @package App\Models
  */
@@ -38,9 +36,4 @@ class AssignmentTemplate extends Eloquent
 		'number',
 		'instructions'
 	];
-
-	public function assignment_descriptions()
-	{
-		return $this->hasMany(\App\Models\AssignmentDescription::class);
-	}
 }

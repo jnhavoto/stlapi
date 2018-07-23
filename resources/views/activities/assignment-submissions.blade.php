@@ -52,32 +52,34 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($allAssSubmissions as $submission)
-                                            <tr>
-                                                {{--<td> {{ $assignment->students_id}}</td>--}}
-                                                <td> {{ $loop->index + 1 }}</td>
-                                                <td>
-                                                    <img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"
-                                                         class="img-circle" /> <a href="/contact-details"
-                                                                                  onclick="submissionDetails({{$submission}})">
-                                                    {{ $submission->id}}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    {{--<a href="/assignment_details">--}}
-                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
-                                                       onclick="submissionDetails({{$submission}})">
-                                                        {{$submission->assignment_descriptions_id}}
-                                                    </a>
-                                                </td>
-                                                <td>{{$submission->submission_date}}</td>
-                                                <td>
-                                                    <button type="button"
-                                                            class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
-                                                            data-toggle="tooltip" data-original-title="Delete"><i
-                                                                class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
+                                        @foreach ($assSubmissions as $submission)
+                                            @if($submission->status == 1)
+                                                <tr>
+                                                    {{--<td> {{ $assignment->students_id}}</td>--}}
+                                                    <td> {{ $loop->index + 1 }}</td>
+                                                    <td>
+                                                        <img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"
+                                                             class="img-circle" /> <a href="/contact-details"
+                                                                                      onclick="submissionDetails({{$submission}})">
+                                                            {{ $submission->user->first_name}}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {{--<a href="/assignment_details">--}}
+                                                        <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
+                                                           onclick="submissionDetails({{$submission}})">
+                                                            {{$submission->assignment_descriptions_id}}
+                                                        </a>
+                                                    </td>
+                                                    {{--<td>{{$submission->submission_date}}</td>--}}
+                                                    <td>
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </td>
+                                                    <td>
+                                                        {{$submission->updated_at}}
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                         </tbody>
                                         <tfoot>
@@ -242,7 +244,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($allOnProgress as $submission)
+                                        @foreach ($assSubmissions as $submission)
+                                            @if($submission->status != 1)
                                             <tr>
                                                 {{--<td> {{ $assignment->students_id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
@@ -268,42 +271,9 @@
                                                     {{$submission->updated_at}}
                                                 </td>
                                             </tr>
+                                            @endif
                                         @endforeach
-                                        @foreach ($allLate as $submission)
-                                            <tr>
-                                                {{--<td> {{ $assignment->students_id}}</td>--}}
-                                                <td> {{ $loop->index + 1+count($allOnProgress) }}</td>
-                                                <td>
-                                                    <img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"
-                                                         class="img-circle" /> <a href="/contact-details"
-                                                                                  onclick="submissionDetails({{$submission}})">
-                                                        {{ $submission->id}}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    {{--<a href="/assignment_details">--}}
-                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
-                                                       onclick="submissionDetails({{$submission}})">
-                                                        {{$submission->assignment_descriptions_id}}
-                                                    </a>
-                                                </td>
-                                                {{--<td>{{$submission->submission_date}}</td>--}}
-                                                <td>
-                                                    <h4 class="card-title">Default Progress bars <a class="get-code" data-toggle="collapse" href="#pgr2" aria-expanded="true"><i class="fa fa-code" title="Get Code" data-toggle="tooltip"></i></a></h4>
-                                                    <div class="collapse m-t-15" id="pgr2"> <pre class="line-numbers language-javascript"><code>&lt;div class="progress"&gt;<br/>&lt;div class="progress-bar bg-success" role="progressbar" style="width: 75%;height:15px;" role="progressbar""&gt; 75% &lt;/div&gt;<br/>&lt;/div&gt;</code></pre> </div>
-                                                    <div class="progress m-t-20">
-                                                        <div class="progress-bar bg-success" style="width: 75%; height:15px;" role="progressbar">75%</div>
-                                                    </div>
 
-                                                    {{--<div class="progress m-t-20">--}}
-                                                        {{--<div class="progress-bar bg-success" style="width: 75%; height:15px;" role="progressbar">75%</div>--}}
-                                                    {{--</div>--}}
-                                                </td>
-                                                <td>
-                                                    {{$submission->updated_at}}
-                                                </td>
-                                            </tr>
-                                        @endforeach
                                         </tbody>
                                         <tfoot>
                                         {{--<tr>--}}

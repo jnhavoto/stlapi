@@ -14,9 +14,9 @@ class CreateAssignmentDescriptionsHasCoursesTable extends Migration {
 	{
 		Schema::create('assignment_descriptions_has_courses', function(Blueprint $table)
 		{
+			$table->integer('id', true);
 			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_assignment_descriptions_has_courses_assignment_descripti_idx');
 			$table->integer('courses_id')->unsigned()->index('fk_assignment_descriptions_has_courses_courses1_idx');
-			$table->primary(['assignment_descriptions_id','courses_id']);
 		});
 	}
 
