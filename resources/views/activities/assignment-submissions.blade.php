@@ -45,8 +45,8 @@
                                         <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Student id</th>
-                                            <th>Assignment id</th>
+                                            <th>Student name</th>
+                                            <th>Assignment name</th>
                                             <th>Submission Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -74,136 +74,31 @@
                                                     </td>
                                                     <td>
                                                         {{--<a href="/assignment_details">--}}
-                                                        <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
+                                                        <a href="/" data-toggle="modal"
+                                                           data-target="#modalAssignmentDetails"
                                                            onclick="submissionDetails({{$submission}})">
                                                             {{$submission->assignment_description->case}}
                                                         </a>
                                                     </td>
                                                     {{--<td>{{$submission->submission_date}}</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--<div class="progress-bar bg-success" role="progressbar"--}}
+                                                             {{--style="width: 85%; height: 6px;" aria-valuenow="25"--}}
+                                                             {{--aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                                    {{--</td>--}}
                                                     <td>
-                                                        <div class="progress-bar bg-success" role="progressbar"
-                                                             style="width: 85%; height: 6px;" aria-valuenow="25"
-                                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                                        {{$submission->submission_date}}
                                                     </td>
-                                                    <td>
-                                                        {{$submission->updated_at}}
+                                                    <td> <a href="/" data-toggle="modal"
+                                                            data-target="#modalsSubmissionDetails"
+                                                            onclick="submissionDetails({{$submission}})"> View
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endif
                                         @endforeach
                                         </tbody>
                                         <tfoot>
-                                        {{--<tr>--}}
-                                        {{--<td colspan="2">--}}
-                                        {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                        {{--data-toggle="modal" data-target="#add-new-assignment">Add New--}}
-                                        {{--Assignment--}}
-                                        {{--</button>--}}
-                                        {{--</td>--}}
-
-
-                                        {{--<div id="add-new-assignment" class="modal fade in" tabindex="-1" role="dialog"--}}
-                                        {{--aria-labelledby="myModalLabel" aria-hidden="true">--}}
-                                        {{--<div class="modal-dialog">--}}
-                                        {{--<div class="modal-content">--}}
-                                        {{--<div class="modal-header">--}}
-                                        {{--<h4 class="modal-title" id="myModalLabel">Add New--}}
-                                        {{--Assignment</h4>--}}
-                                        {{--<button type="button" class="close" data-dismiss="modal"--}}
-                                        {{--aria-hidden="true">×--}}
-                                        {{--</button>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="modal-body">--}}
-
-                                        {{--=========================================================================--}}
-                                        {{--============================= FORM  ====================================--}}
-                                        {{--=========================================================================--}}
-                                        {{--<form class="form-horizontal form-material"--}}
-                                        {{--action="/submit_assignment" method="post">--}}
-
-                                        {{--{{csrf_field()}}--}}
-
-                                        {{--<div class="form-group">--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Assignment--}}
-                                        {{--name</label>--}}
-                                        {{--<input name="case" type="text"--}}
-                                        {{--class="form-control">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Assignment--}}
-                                        {{--number</label>--}}
-                                        {{--<input name="number" type="number"--}}
-                                        {{--class="form-control">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label--}}
-                                        {{--class="control-label">Instructions</label>--}}
-                                        {{--<input name="instructions" type="textarea"--}}
-                                        {{--class="form-control" rows="3">--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Start date</label>--}}
-                                        {{--<input name="startdate" type="date"--}}
-                                        {{--class="form-control">--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">End date</label>--}}
-                                        {{--<input name="deadline"--}}
-                                        {{--type="date" class="form-control">--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Available--}}
-                                        {{--date</label>--}}
-                                        {{--<input name="availabledate" type="date"--}}
-                                        {{--class="form-control">--}}
-
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<h4 class="control-label">Select course  </h4>--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">--}}
-                                        {{--@foreach($courses as  $course)--}}
-                                        {{--<option--}}
-                                        {{--name="id"--}}
-                                        {{--value="{{$course->id}}">{{$course->name}}</option>--}}
-                                        {{--@endforeach--}}
-                                        {{--</select>--}}
-
-                                        {{--</div>--}}
-                                        {{--<input class="btn btn-primary" type="submit">--}}
-                                        {{--<div class="form-group">--}}
-                                        {{--<div>--}}
-                                        {{--<button type="submit" class="btn--}}
-                                        {{--btn-success btn-rounded">Submit</button>--}}
-                                        {{--<button type="button" class="btn btn-default--}}
-                                        {{--btn-rounded waves-effect"--}}
-                                        {{--data-dismiss="modal">Cancel--}}
-                                        {{--</button>--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--</form>--}}
-                                        {{--=========================================================================--}}
-                                        {{--============================= //FORM ====================================--}}
-                                        {{--=========================================================================--}}
-                                        {{--</div>--}}
-                                        {{--<div class="modal-footer">--}}
-
-                                        {{--<button type="button" class="btn btn-default waves-effect"--}}
-                                        {{--data-dismiss="modal">Cancel--}}
-                                        {{--</button>--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<!-- /.modal-content -->--}}
-                                        {{--</div>--}}
-                                        {{--<!-- /.modal-dialog -->--}}
-                                        {{--</div>--}}
                                         <td colspan="7">
                                             <div class="text-right">
                                                 <ul class="pagination"></ul>
@@ -247,8 +142,8 @@
                                         <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Student id</th>
-                                            <th>Assignment id</th>
+                                            <th>Student name</th>
+                                            <th>Assignment name</th>
                                             <th>Progress</th>
                                             <th>Last update</th>
                                         </tr>
@@ -263,16 +158,25 @@
                                                         <img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"
                                                              class="img-circle"/> <a href="/contact-details"
                                                                                      onclick="submissionDetails({{$submission}})">
-                                                            {{ $submission->id}}
+                                                            @php
+                                                                $student = \App\Models\Student::find
+                                                                ($submission->students_id);
+                                                            @endphp
+
+                                                            {{  $student->user->first_name }}
+                                                            {{  $student ->user->last_name }}
+
                                                         </a>
                                                     </td>
+
                                                     <td>
                                                         {{--<a href="/assignment_details">--}}
                                                         <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
                                                            onclick="submissionDetails({{$submission}})">
-                                                            {{$submission->assignment_descriptions_id}}
+                                                            {{$submission->assignment_description->case}}
                                                         </a>
                                                     </td>
+
                                                     {{--<td>{{$submission->submission_date}}</td>--}}
                                                     <td>
                                                         <div class="progress-bar bg-success" role="progressbar"
@@ -428,14 +332,14 @@
 
     <script>
 
-        function submissionDetails($submission) {
-//            var  assignment = assignment;
-//            $("#case").html(assignment.case);
-//            $("#number").html(assignment.number);
-//            $("#instructions").html(assignment.instructions);
-//            $("#startdate").html(assignment.startdate);
-//            $("#duedate").html(assignment.deadline);
-//            $("#availabledate").html(assignment.available_date);
+        function submissionDetails(submission) {
+            var  submission = submission;
+            $("#case").html(assignment.case);
+            $("#number").html(assignment.number);
+            $("#instructions").html(assignment.instructions);
+            $("#startdate").html(assignment.startdate);
+            $("#duedate").html(assignment.deadline);
+            $("#availabledate").html(assignment.available_date);
             console.log($submission);
         }
 
