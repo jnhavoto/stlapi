@@ -55,7 +55,11 @@ Route::post('/submit_course', 'TeacherController@submitCourse')->middleware(['te
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
 
-Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll'); //route to get all
+Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll')->middleware(['teacher']); //route to get all
+
+Route::get('/submission-details', function () {
+    return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
+})->middleware(['teacher']);
 
 //Route::get('/feedbacks', 'FeedbackController@getAll')->middleware(['teacher']);; //route to get all
 

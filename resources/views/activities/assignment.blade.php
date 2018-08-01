@@ -35,7 +35,7 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">Assignment Template List </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search contacts"
+                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
                                                    class="form-control"></div>
                                     </div>
                                 </div>
@@ -47,6 +47,7 @@
                                             <th>Number</th>
                                             <th>Assignment name</th>
                                             <th>Instructions</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -62,12 +63,12 @@
                                                     </a>
                                                 </td>
                                                 <td>{{substr($assignment->instructions, 0, 45) }}</td>
-                                                {{--<td>--}}
-                                                    {{--<button type="button"--}}
-                                                            {{--class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"--}}
-                                                            {{--data-toggle="tooltip" data-original-title="Delete"><i--}}
-                                                                {{--class="ti-close" aria-hidden="true"></i></button>--}}
-                                                {{--</td>--}}
+                                                <td>
+                                                    <a href="/" data-toggle="modal" data-target="#copy-assignment"
+                                                       onclick="assignDetails({{$assignment}})">
+                                                        Copy
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -214,7 +215,7 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">My Assignment List </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search contacts"
+                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
                                                    class="form-control"></div>
                                     </div>
                                 </div>
@@ -336,7 +337,7 @@
 
             $("#case2").html(assignment.case);
             $("#instructions2").html(assignment.instructions);
-//            $("#coursename").html(assignment.courses.name);
+            $("#coursename2").html(assignment.course.name);
             $("#startdate2").html(assignment.startdate);
             $("#duedate2").html(assignment.deadline);
             $("#availabledate2").html(assignment.available_date);
@@ -349,7 +350,7 @@
             var course = assignment;
             $("#name").html(assignment.course.name);
             $("#course_content").html(assignment.course.course_content);
-            $("#created").html(course.created_at);
+            $("#course_startdate").html(assignment.course.startdate);
             $("#copy-button1").hide();
 
             //

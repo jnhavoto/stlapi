@@ -39,7 +39,8 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">Course Template List </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search contacts" class="form-control"> </div>
+                                            <input type="text" id="demo-input-search2" placeholder="search courses"
+                                                   class="form-control"> </div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -59,11 +60,12 @@
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/" data-toggle="modal" data-target="#modalCourseDetails"
-                                                       onclick="courseDetails({{$course}})">
+                                                    {{--<a href="/" data-toggle="modal" data-target="#modalCourseDetails"--}}
+                                                       {{--onclick="courseDetails({{$course}})">--}}
                                                         {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                        {{$course->name}}
-                                                    </a>
+                                                        {{--{{$course->name}}--}}
+                                                    {{--</a>--}}
+                                                    {{$course->name}}
                                                 </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
                                                 <td> <a href="/" data-toggle="modal" data-target="#create-course"
@@ -172,7 +174,8 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">My Course List </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search contacts" class="form-control"> </div>
+                                            <input type="text" id="demo-input-search2" placeholder="search courses"
+                                                   class="form-control"> </div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -203,7 +206,7 @@
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
                                                 <td>{{$course->startdate}}</td>
                                                 <td>
-                                                    @if($course->status == 0)Active.
+                                                    @if($course->status == 0)Active
                                                     @else
                                                         Disactive
                                                     @endif

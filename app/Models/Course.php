@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -80,4 +81,10 @@ class Course extends Eloquent
 					->withPivot('id', 'deleted_at')
 					->withTimestamps();
 	}
+
+    public function getStartDateAttribute($startdate){
+        $carbonated_date = Carbon::parse($startdate)->format('Y-m-d');
+        return $carbonated_date;
+    }
+
 }

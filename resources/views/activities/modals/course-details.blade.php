@@ -22,6 +22,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                        <h4 class="control-label">Course Start date  </h4>
+                        <p id="course_startdate" class="control-label">text hare!  </p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div id="copy-button1">
                         <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
                                 data-target="#create-course" onclick="copyCourse()" data-dismiss="modal"
