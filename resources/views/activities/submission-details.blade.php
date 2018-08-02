@@ -1,5 +1,8 @@
 @extends('layouts.layout')
 @section('content')
+
+    {{$submssion}}
+
     <div class="page-wrapper">
         <!-- ============================================================== -->
         <!-- Container fluid  -->

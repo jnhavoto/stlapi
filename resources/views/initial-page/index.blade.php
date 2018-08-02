@@ -92,7 +92,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">Dashboard</h3>
+                        <h3 class="text-themecolor">   {{ __('strings.Dashboard') }} </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
@@ -138,7 +138,7 @@
                                     <div class="col-12">
                                         <div class="d-flex flex-wrap">
                                             <div>
-                                                <h3 class="card-title">Assignment Overview</h3>
+                                                <h3 class="card-title">  {{ __('strings.assignment _overview') }}</h3>
                                                 <h6 class="card-subtitle">Finished vs Ongoing</h6> </div>
                                             <div class="ml-auto">
                                                 <ul class="list-inline">

@@ -73,10 +73,11 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        {{--<a href="/assignment_details">--}}
-                                                        <a href="/" data-toggle="modal"
-                                                           data-target="#modalsSubmissionDetails"
-                                                           onclick="submissionDetails({{$submission}})">
+{{--                                                        <a href="/sub-details/{{$submission}}">--}}
+                                                            <a href="/sub-details/{{$submission->id}}">
+                                                        {{--<a href="/" data-toggle="modal"--}}
+                                                           {{--data-target="#modalsSubmissionDetails"--}}
+{{--                                                           onclick="submissionDetails({{$submission}})">--}}
                                                             {{$submission->assignment_description->case}}
                                                         </a>
                                                         {{--<a href="/submission-details"--}}

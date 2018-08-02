@@ -1,5 +1,8 @@
 <?php
 
+use  \Illuminate\Support\Facades\App;
+use \Illuminate\Support\Facades\Session;
+
 Auth::routes();
 
 Route::get('/', function () {
@@ -61,11 +64,30 @@ Route::get('/submission-details', function () {
     return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
 
+
+Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails');
+
+
+//Route::get('/feedbacks', 'FeedbackController@getAll')->middleware(['teacher']);; //route to get all
 //Route::get('/feedbacks', 'FeedbackController@getAll')->middleware(['teacher']);; //route to get all
 
 Route::get('/feedbacks', 'TeacherController@getAllFeedbacks')->middleware(['teacher']);
 
 
+
+
+//Translates Tests
+
+Route::get('locale', function () {
+    return App::getLocale();
+});
+
+Route::get('locale/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::view('/test-translate', 'test-translate');
 
 
 

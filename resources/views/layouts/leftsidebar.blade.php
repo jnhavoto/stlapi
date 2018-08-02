@@ -41,7 +41,7 @@
                                 class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/">General Overview</a></li>
-                        <li><a href="index2.html">Statistics</a></li>
+                        <li><a href="index2.html"> {{ __('strings.Statistics') }}</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i

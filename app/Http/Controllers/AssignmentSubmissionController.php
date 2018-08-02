@@ -43,6 +43,16 @@ class AssignmentSubmissionController extends ModelController
 
     }
 
+    public function subDetails(Request $request){
+
+        $submission = AssignmentSubmission::Where('id','=',$request->id);
+
+        return redirect('activities.submission-details');
+
+//        return $request->testttt;
+
+    }
+
 
 
 
