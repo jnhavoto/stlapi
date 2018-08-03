@@ -13,7 +13,11 @@ return [
     'Assignment' => 'Uppdrag',
     'Dashboard' => 'instrumentbräda',
     'assignment _overview'=> 'Uppdragsöversikt',
-    'Statistics' => 'Statistik'
+    'Statistics' => 'Statistik',
+    'General' => 'Generell',
+    'Overview' => 'Översikt,
+    
+'
 
 
 ];

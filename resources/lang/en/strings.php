@@ -13,5 +13,8 @@ return [
     'Assignment' => 'Assignment',
     'Dashboard' => 'Dashboard',
     'assignment _overview'=> 'Assignment Overview',
-    'Statistics'=> 'Statistics'
+    'Statistics'=> 'Statistics',
+    'General' => 'General',
+    'Overview' => 'Overview',
+    
 ];
