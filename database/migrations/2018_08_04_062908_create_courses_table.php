@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration {
 			$table->text('name', 65535)->nullable();
 			$table->text('course_content', 65535)->nullable();
 			$table->date('startdate');
+			$table->date('available_date')->nullable();
 			$table->integer('status')->nullable()->default(0)->comment('0=active
 1=disactive');
 			$table->integer('departments_id')->unsigned()->index('fk_courses_departments1_idx');

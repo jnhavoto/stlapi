@@ -41,13 +41,15 @@ class Course extends Eloquent
 	];
 
 	protected $dates = [
-		'startdate'
+		'startdate',
+		'available_date',
 	];
 
 	protected $fillable = [
 		'name',
 		'course_content',
 		'startdate',
+		'available_date',
 		'status',
 		'departments_id'
 	];
@@ -84,6 +86,11 @@ class Course extends Eloquent
 
     public function getStartDateAttribute($startdate){
         $carbonated_date = Carbon::parse($startdate)->format('Y-m-d');
+        return $carbonated_date;
+    }
+
+    public function getAvailableDateAttribute($available_date){
+        $carbonated_date = Carbon::parse($available_date)->format('Y-m-d');
         return $carbonated_date;
     }
 

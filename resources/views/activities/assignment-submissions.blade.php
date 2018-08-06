@@ -142,7 +142,8 @@
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"
+                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped"
                                            data-page-size="10">
                                         <thead>
                                         <tr>
@@ -188,9 +189,12 @@
                                                              {{--style="width: 85%; height: 6px;" aria-valuenow="25"--}}
                                                              {{--aria-valuemin="0" aria-valuemax="100"></div>--}}
                                                         <div class="progress">
-                                                            <div class="progress-bar bg-success" role="progressbar"
-                                                                 aria-valuenow="40" aria-valuemin="0"
-                                                                 aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
+                                                            {{--<div class="progress-bar bg-success" role="progressbar"--}}
+                                                                 {{--aria-valuenow="40" aria-valuemin="0"--}}
+                                                                 {{--aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>--}}
+                                                            <div class="progress progress-xs margin-vertical-10 ">
+                                                                <div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>
+                                                            </div>
                                                         </div>
                                                     </td>
                                                     <td>

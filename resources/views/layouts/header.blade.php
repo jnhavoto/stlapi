@@ -292,17 +292,17 @@
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="#"><i class="ti-user"></i> {{ __('strings.Profile') }}</a></li>
                             {{--<li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>--}}
-                            <li><a href="#"><i class="mdi mdi-wechat"></i> Chats</a></li>
+                            <li><a href="#"><i class="mdi mdi-wechat"></i> {{ __('strings.Chats') }}</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a href="#"><i class="ti-settings"></i> {{ __('strings.account') }} </a></li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <i class="mdi mdi-power"></i> Logout
+                                    <i class="mdi mdi-power"></i> {{ __('strings.Logout') }}
                                 </a>
                             </li>
 
@@ -320,7 +320,7 @@
                         <i class="flag-icon flag-icon-us"></i></a>
 
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="locale/se">
-                        <i class="flag-icon flag-icon-in"></i></a>
+                        <i class="flag-icon flag-icon-se"></i></a>
 
                     {{--<div class="dropdown-menu dropdown-menu-right scale-up">--}}
 

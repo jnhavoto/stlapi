@@ -40,6 +40,7 @@ $factory->define(\App\Models\Course::class, function (Faker $faker) use ($course
         'name' => $faker->randomElement($courses),
         'course_content' => $faker->text,
         'startdate' => $faker->date('Y-m-d'),
+        'available_date' => $faker->date('Y-m-d'),
         'status' => $faker->numberBetween(1, 2),
         'departments_id' => $faker->numberBetween(1, \App\models\Department::all()->count()),
     ];

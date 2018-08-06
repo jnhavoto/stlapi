@@ -12,17 +12,27 @@
                                          role="button" aria-haspopup="true" aria-expanded="true">{{
                                           $user->first_name.' '.$user->last_name}}</a>
                 <div class="dropdown-menu animated flipInY">
-                    <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                    {{--<a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>--}}
-                    <a href="#" class="dropdown-item"><i class="mdi mdi-wechat"></i> Chats</a>
+                    <a href="#" class="dropdown-item"><i class="ti-user"></i>
+                        {{ __('strings.my_profile') }}
+                        {{--My Profile--}}
+                    </a>
+                    <a href="#" class="dropdown-item"><i class="mdi mdi-wechat"></i>
+                        {{ __('strings.Chats') }}
+                        {{--Chats--}}
+                    </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                    <a href="#" class="dropdown-item"><i class="ti-settings"></i>
+                        {{ __('strings.account') }}
+                        {{--Account Setting--}}
+                    </a>
                     <div class="dropdown-divider"></div>
                     {{--<a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>--}}
                     {{--<li>--}}
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById
                         ('logout-form-top').submit();" class="dropdown-item">
-                        <i class="mdi mdi-power"></i> Logout
+                        <i class="mdi mdi-power"></i>
+                        {{ __('strings.Logout') }}
+                        {{--Logout--}}
                     </a>
                     {{--</li>--}}
 
@@ -38,47 +48,89 @@
             <ul id="sidebarnav">
                 {{--<li class="nav-small-cap">PERSONAL</li>--}}
                 <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                                class="mdi mdi-gauge"></i><span class="hide-menu">
+                            {{ __('strings.Dashboard') }}
+                            {{--Dashboard --}}
+                        </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/">General Overview</a></li>
+                        <li><a href="/">
+                                {{ __('strings.general_overview') }}
+                                {{--General Overview--}}
+                            </a></li>
                         <li><a href="index2.html"> {{ __('strings.Statistics') }}</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                class="mdi mdi-email"></i><span class="hide-menu">Activities</span></a>
+                                class="mdi mdi-email"></i><span class="hide-menu">
+                            {{ __('strings.Activities') }}
+                            {{--Activities--}}
+                        </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="/courses">Courses</a></li>
-                        <li><a href="/assignments">Assignments </a></li>
-                        <li><a href="#" class="has-arrow" aria-expanded="false">Submissions </a>
-                                <ul aria-expanded="false" class="collapse">
-                                <li><a href="/assignment_submissions" >Assignments</a></li>
-                                <li><a href="/selfass_submissions" >Self-Assessments</a></li>
-                                <li><a href="/feedbacks" >Feedbacks</a></li>
-                            </ul>
-                            </li>
-                        <li><a href="/calendar">Calendar</a></li>
-                    </ul>
-                </li>
-                <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                class="mdi mdi-bullseye"></i><span class="hide-menu">Communications</span></a>
-                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/courses">
+                            {{ __('strings.Courses') }}
+                            {{--Courses--}}
+                        </a></li>
+                    <li><a href="/assignments">
+                            {{ __('strings.Assignments') }}
+                            {{--Assignments--}}
+                        </a></li>
+                    <li><a href="#" class="has-arrow" aria-expanded="false">
+                            {{ __('strings.Submissions') }}
+                            {{--Submissions--}}
+                        </a>
+                            <ul aria-expanded="false" class="collapse">
+                            <li><a href="/assignment_submissions" >
+                                    {{ __('strings.Assignments') }}
+                                    {{--Assignments--}}
+                                </a></li>
+                            <li><a href="/selfass_submissions" >
+                                    {{ __('strings.Self_Assesssments') }}
+                                    {{--Self-Assessments--}}
+                                </a></li>
+                            <li><a href="/feedbacks" >
+                                    {{ __('strings.Feedbacks') }}
+                                    {{--Feedbacks--}}
+                                </a></li>
+                        </ul>
+                        </li>
+                    <li><a href="/calendar">
+                            {{ __('strings.Calendar') }}
+                            {{--Calendar--}}
+                        </a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                            class="mdi mdi-bullseye"></i><span class="hide-menu">
+                        {{ __('strings.Communications') }}
+                        {{--Communications--}}
+                    </span></a>
+                <ul aria-expanded="false" class="collapse">
 
-                        <li><a href="/contacts">Contacts</a></li>
-                        <li><a href="/notifications">Notifications</a></li>
-                        <li><a href="/chats">Chats</a></li>
-                    </ul>
-                </li>
+                    <li><a href="/contacts">
+                            {{ __('strings.Contacts') }}
+                            {{--Contacts--}}
+                        </a></li>
+                    <li><a href="/notifications">
+                            {{ __('strings.Notifications') }}
+                            {{--Notifications--}}
+                        </a></li>
+                    <li><a href="/chats">
+                            {{ __('strings.chats') }}
+                            {{--Chats--}}
+                        </a></li>
+                </ul>
+            </li>
 
-            </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-    </div>
-    <!-- End Sidebar scroll-->
-    <!-- Bottom points-->
-    <div class="sidebar-footer">
-        <!-- item--><a href="#" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-        <!-- item--><a href="#" class="link" data-toggle="tooltip" title="Chat"><i class="mdi mdi-wechat"></i></a>
-    {{--<!-- item--><a href="#" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>--}}
+        </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+</div>
+<!-- End Sidebar scroll-->
+<!-- Bottom points-->
+<div class="sidebar-footer">
+    <!-- item--><a href="#" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+    <!-- item--><a href="#" class="link" data-toggle="tooltip" title="Chat"><i class="mdi mdi-wechat"></i></a>
+{{--<!-- item--><a href="#" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>--}}
     <!-- item--><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById
                         ('logout-form-bottom').submit();" class="link" data-toggle="tooltip" title="Logout"><i
                     class="mdi mdi-power"></i></a> {{--</li>--}}

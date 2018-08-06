@@ -10,10 +10,19 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor m-b-0 m-t-0">Assignments</h3>
+                    <h3 class="text-themecolor m-b-0 m-t-0">
+                        {{ __('strings.Assignments') }}
+                        {{--Assignments--}}
+                    </h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Activities</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">
+                                {{ __('strings.Home') }}
+                                {{--Home--}}
+                            </a></li>
+                        <li class="breadcrumb-item active">
+                            {{ __('strings.Activities') }}
+                            {{--Activities--}}
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -33,21 +42,37 @@
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">Assignment Template List </h4></div>
+                                            <h4 class="card-title m-t-10">
+                                                {{ __('strings.AssignmentTemplateList') }}
+                                                {{--Assignment Template List--}}
+                                            </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search assignments"
                                                    class="form-control"></div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"
+                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table muted-table"
                                            data-page-size="10">
                                         <thead>
                                         <tr>
-                                            <th>Number</th>
-                                            <th>Assignment name</th>
-                                            <th>Instructions</th>
-                                            <th>Action</th>
+                                            <th>
+                                                {{ __('strings.Number') }}
+                                                {{--Number--}}
+                                            </th>
+                                            <th>
+                                                {{ __('strings.AssignmentName') }}
+                                                {{--Assignment name--}}
+                                            </th>
+                                            <th>
+                                                {{ __('strings.Instructions') }}
+                                                {{--Instructions--}}
+                                            </th>
+                                            <th>
+                                                {{ __('strings.Action') }}
+                                                {{--Action--}}
+                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -86,8 +111,10 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Add New
-                                                                Assignment</h4>
+                                                            <h4 class="modal-title" id="myModalLabel">
+                                                                {{ __('strings.AddNewAssignment') }}
+                                                                {{--Add New Assignment--}}
+                                                            </h4>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-hidden="true">×
                                                             </button>
@@ -98,52 +125,67 @@
                                                             {{--=========================================================================--}}
                                                             <form class="form-horizontal form-material"
                                                                   action="/submit_assignment" method="post">
-
                                                                 {{csrf_field()}}
-
                                                                 <div class="form-group">
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Assignment
-                                                                            name</label>
+                                                                        <label class="control-label">
+                                                                            {{ __('strings.AssignmentName') }}
+                                                                            {{--Assignment name--}}
+                                                                        </label>
                                                                         <input name="case" type="text"
                                                                                class="form-control">
                                                                     </div>
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Assignment
-                                                                            number</label>
+                                                                        <label class="control-label">
+                                                                            {{ __('strings.AssignmentNumber') }}
+                                                                            {{--Assignment number--}}
+                                                                        </label>
                                                                         <input name="number" type="number"
                                                                                class="form-control">
                                                                     </div>
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label
-                                                                                class="control-label">Instructions</label>
+                                                                        <label class="control-label">
+                                                                            {{ __('strings.Instructions') }}
+                                                                            {{--Instructions--}}
+                                                                        </label>
                                                                         <input name="instructions" type="textarea"
                                                                                class="form-control" rows="3">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Start date</label>
+                                                                        <label class="control-label">
+                                                                            {{ __('strings.StartDate') }}
+                                                                            {{--Start date--}}
+                                                                        </label>
                                                                         <input name="startdate" type="date"
                                                                                class="form-control">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">End date</label>
+                                                                        <label class="control-label">
+                                                                            {{ __('strings.EndDate') }}
+                                                                            {{--End date--}}
+                                                                        </label>
                                                                         <input name="deadline"
                                                                                type="date" class="form-control">
                                                                     </div>
 
                                                                     <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">Available
-                                                                            date</label>
+                                                                        <label class="control-label">
+                                                                            {{ __('strings.AvailableDate') }}
+                                                                            {{--Available date--}}
+                                                                        </label>
                                                                         <input name="availabledate" type="date"
                                                                                class="form-control">
 
                                                                     </div>
                                                                     <div class="form-group">
                                                                     <div class="col-md-12 m-b-20">
-                                                                    <h4 class="control-label">Select course  </h4>
+                                                                    <h4 class="control-label">
+                                                                        {{ __('strings.SelectCourse') }}
+                                                                        {{--Select course --}}
+                                                                    </h4>
                                                                     </div>
                                                                     </div>
                                                                     <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
@@ -159,10 +201,15 @@
                                                                 <div class="form-group">
                                                                     <div>
                                                                         <button type="submit" class="btn
-                                                                        btn-success btn-rounded">Submit</button>
+                                                                        btn-success btn-rounded">
+                                                                            {{ __('strings.Submit') }}
+                                                                            {{--Submit--}}
+                                                                        </button>
                                                                         <button type="button" class="btn btn-default
                                                                         btn-rounded waves-effect"
-                                                                                data-dismiss="modal">Cancel
+                                                                                data-dismiss="modal">
+                                                                            {{ __('strings.Cancel') }}
+                                                                            {{--Cancel--}}
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -213,27 +260,47 @@
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">My Assignment List </h4></div>
+                                            <h4 class="card-title m-t-10">
+                                                {{ __('strings.MyAssignmentList') }}
+                                                {{--My Assignment List--}}
+                                            </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search assignments"
                                                    class="form-control"></div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"
+                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table muted-table"
                                            data-page-size="10">
                                         <thead>
                                         <tr>
-                                            <th>Number</th>
-                                            <th>Assignment name</th>
-                                            <th>Course name</th>
-                                            <th>Instructions</th>
-                                            <th>Date of Start</th>
-                                            <th>Due Date</th>
-                                            <th>Available from</th>
+                                            <th> {{ __('strings.Number') }}
+                                                {{--Number--}}
+                                            </th>
+                                            <th>{{ __('strings.AssignmentName') }}
+                                                {{--Assignment name--}}
+                                            </th>
+                                            <th>{{ __('strings.CourseName') }}
+                                                {{--Course name--}}
+                                            </th>
+                                            <th>{{ __('strings.Instructions') }}
+                                                {{--Instructions--}}
+                                            </th>
+                                            <th>{{ __('strings.StartDate') }}
+                                                {{--Date of Start--}}
+                                            </th>
+                                            <th>{{ __('strings.EndDate') }}
+                                                {{--Due Date--}}
+                                            </th>
+                                            <th>{{ __('strings.AvailableFrom') }}
+                                                {{--Available from--}}
+                                            </th>
                                             {{--<th>Joining date</th>--}}
                                             {{--<th>Salery</th>--}}
-                                            <th>Status</th>
+                                            <th>{{ __('strings.Status') }}
+                                                {{--Status--}}
+                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -262,9 +329,12 @@
                                                 <td>{{$t_assignment->deadline}}</td>
                                                 <td>{{$t_assignment->available_date}}</td>
                                                 <td>
-                                                    @if($t_assignment->status == 0)Active
+                                                    @if($t_assignment->status == 0)
+                                                        {{ __('strings.Active') }}
+                                                        {{--Active--}}
                                                     @else
-                                                        Disactive
+                                                        {{ __('strings.Disactive') }}
+                                                        {{--Disactive--}}
                                                     @endif
                                                 </td>
                                             </tr>
@@ -274,8 +344,9 @@
                                         <tr>
                                             <td colspan="2">
                                                 <button type="button" class="btn btn-info btn-rounded"
-                                                        data-toggle="modal" data-target="#create-assignment">Add New
-                                                    Assignment
+                                                        data-toggle="modal" data-target="#create-assignment">
+                                                    {{ __('strings.AddNewAssignment') }}
+                                                    {{--Add New Assignment--}}
                                                 </button>
                                             </td>
                                             {{--Calling create modal--}}
