@@ -69,7 +69,6 @@ return [
 //    Assignments page
     'AssignmentTemplateList' => 'Assignment Template List',
     'Number' => 'Number',
-    'Number' => 'Number',
     'AssignmentName' => 'Assignment Name',
     'Instructions' => 'Instructions',
     'AddNewAssignment' => 'Add New Assignment',

@@ -60,9 +60,10 @@ return [
     'CourseOverview' => 'Course Overview',
     'CourseDetails' => 'Course Details',
     'CourseAssignments' => 'Course Assignments',
-
-
-
+    'AssignmentProgress' => 'Assignment Progress',
+    'LastUpdate' => 'Last update',
+    'StudentName' => 'Student Name',
+    'Progress' => 'Progress',
 
 //    Assignments page
     'AssignmentTemplateList' => 'Assignment Template List',
