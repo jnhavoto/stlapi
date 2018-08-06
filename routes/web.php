@@ -65,9 +65,9 @@ Route::get('/submission-details', function () {
 })->middleware(['teacher']);
 
 
-Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails');
+Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->middleware(['teacher']);
 
-Route::get('/course-overview/{id}','CourseController@courseOverview');
+Route::get('/course-overview/{id}','CourseController@courseOverview')->middleware(['teacher']);
 
 
 //Route::get('/feedbacks', 'FeedbackController@getAll')->middleware(['teacher']);; //route to get all

@@ -115,7 +115,7 @@
                             {{--Notifications--}}
                         </a></li>
                     <li><a href="/chats">
-                            {{ __('strings.chats') }}
+                            {{ __('strings.Chats') }}
                             {{--Chats--}}
                         </a></li>
                 </ul>
