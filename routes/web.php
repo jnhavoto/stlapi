@@ -5,9 +5,13 @@ use \Illuminate\Support\Facades\Session;
 
 Auth::routes();
 
+//==============================================================
+//Start Dashboard
+//==============================================================
+
 Route::get('/', function () {
 	$user = \Illuminate\Support\Facades\Auth::user();
-	return view('initial-page.index', ['user' => $user]);
+	return view('dashboard.index', ['user' => $user]);
 })->middleware(['teacher']);
 
 Auth::routes();
@@ -15,7 +19,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //==============================================================
-//Comunications
+//End Dashboard
+//==============================================================
+
+
+//==============================================================
+//Start Comunications
 //==============================================================
 
 Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
@@ -30,9 +39,13 @@ Route::get('/chats', 'ChatController@getAllChats')->middleware(['teacher']);
 //get Notifications
 Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
 
+//==============================================================
+//End Comunications
+//==============================================================
+
 
 //==============================================================
-//Design
+//Start Design
 //==============================================================
 
 //get Courses
@@ -48,9 +61,12 @@ Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middlew
 Route::post('/submit_course', 'TeacherController@submitCourse')->middleware(['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
+//==============================================================
+//End Design
+//==============================================================
 
 //==============================================================
-//Monitoring
+//Start Monitoring
 //==============================================================
 
 //Individual course overview
@@ -69,10 +85,12 @@ Route::get('/submission-details', function () {
     return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
 Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->middleware(['teacher']);
-
+//==============================================================
+//End Monitoring
+//==============================================================
 
 //==============================================================
-//App Translation
+//Start App Translation
 //==============================================================
 
 Route::get('locale', function () {
@@ -86,5 +104,8 @@ Route::get('locale/{locale}', function ($locale) {
 
 Route::view('/test-translate', 'test-translate');
 
+//==============================================================
+//End App Translation
+//==============================================================
 
 

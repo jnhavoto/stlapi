@@ -3,9 +3,9 @@
 @section('content')
 
 
-    {{--@include('initial-page.leftsidebar')--}}
+    {{--@include('dashboard.leftsidebar')--}}
 
-    {{--@include('initial-page.content-center')--}}
+    {{--@include('dashboard.content-center')--}}
 
 {{--@endsection --}}
 
