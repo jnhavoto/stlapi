@@ -44,9 +44,10 @@ class CourseController extends  ModelController
         foreach ($courseAssignemts as $assignment )
         {
             $submission = AssignmentSubmission::where('assignment_descriptions_id',$assignment->id)->get();
+//            $submission = AssignmentSubmission::where('assignment_descriptions_id',5)->get();
             $submissions ->push($submission);
         }
-//        return $submissions;
+        return $submissions;
 
         return view('activities.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
