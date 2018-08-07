@@ -11,7 +11,7 @@
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">
-                        {{ __('strings.Assignments') }}
+                        {{ __('strings.AssignmentDesign') }}
                         {{--Assignments--}}
                     </h3>
                     <ol class="breadcrumb">
@@ -20,7 +20,7 @@
                                 {{--Home--}}
                             </a></li>
                         <li class="breadcrumb-item active">
-                            {{ __('strings.Activities') }}
+                            {{ __('strings.Design') }}
                             {{--Activities--}}
                         </li>
                     </ol>
@@ -97,8 +97,8 @@
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
+                                        {{--<tfoot>--}}
+                                        {{--<tr>--}}
                                             {{--<td colspan="2">--}}
                                                 {{--<button type="button" class="btn btn-info btn-rounded"--}}
                                                         {{--data-toggle="modal" data-target="#add-new-assignment">Add New--}}
@@ -106,136 +106,136 @@
                                                 {{--</button>--}}
                                             {{--</td>--}}
 
-                                            <div id="add-new-assignment" class="modal fade in" tabindex="-1" role="dialog"
-                                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">
-                                                                {{ __('strings.AddNewAssignment') }}
+                                            {{--<div id="add-new-assignment" class="modal fade in" tabindex="-1" role="dialog"--}}
+                                                 {{--aria-labelledby="myModalLabel" aria-hidden="true">--}}
+                                                {{--<div class="modal-dialog">--}}
+                                                    {{--<div class="modal-content">--}}
+                                                        {{--<div class="modal-header">--}}
+                                                            {{--<h4 class="modal-title" id="myModalLabel">--}}
+                                                                {{--{{ __('strings.AddNewAssignment') }}--}}
                                                                 {{--Add New Assignment--}}
-                                                            </h4>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
+                                                            {{--</h4>--}}
+                                                            {{--<button type="button" class="close" data-dismiss="modal"--}}
+                                                                    {{--aria-hidden="true">×--}}
+                                                            {{--</button>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="modal-body">--}}
                                                             {{--=========================================================================--}}
                                                             {{--============================= FORM  ====================================--}}
                                                             {{--=========================================================================--}}
-                                                            <form class="form-horizontal form-material"
-                                                                  action="/submit_assignment" method="post">
-                                                                {{csrf_field()}}
-                                                                <div class="form-group">
+                                                            {{--<form class="form-horizontal form-material"--}}
+                                                                  {{--action="/submit_assignment" method="post">--}}
+                                                                {{--{{csrf_field()}}--}}
+                                                                {{--<div class="form-group">--}}
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">
-                                                                            {{ __('strings.AssignmentName') }}
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">--}}
+                                                                            {{--{{ __('strings.AssignmentName') }}--}}
                                                                             {{--Assignment name--}}
-                                                                        </label>
-                                                                        <input name="case" type="text"
-                                                                               class="form-control">
-                                                                    </div>
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">
-                                                                            {{ __('strings.AssignmentNumber') }}
+                                                                        {{--</label>--}}
+                                                                        {{--<input name="case" type="text"--}}
+                                                                               {{--class="form-control">--}}
+                                                                    {{--</div>--}}
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">--}}
+                                                                            {{--{{ __('strings.AssignmentNumber') }}--}}
                                                                             {{--Assignment number--}}
-                                                                        </label>
-                                                                        <input name="number" type="number"
-                                                                               class="form-control">
-                                                                    </div>
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">
-                                                                            {{ __('strings.Instructions') }}
+                                                                        {{--</label>--}}
+                                                                        {{--<input name="number" type="number"--}}
+                                                                               {{--class="form-control">--}}
+                                                                    {{--</div>--}}
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">--}}
+                                                                            {{--{{ __('strings.Instructions') }}--}}
                                                                             {{--Instructions--}}
-                                                                        </label>
-                                                                        <input name="instructions" type="textarea"
-                                                                               class="form-control" rows="3">
-                                                                    </div>
+                                                                        {{--</label>--}}
+                                                                        {{--<input name="instructions" type="textarea"--}}
+                                                                               {{--class="form-control" rows="3">--}}
+                                                                    {{--</div>--}}
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">
-                                                                            {{ __('strings.StartDate') }}
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">--}}
+                                                                            {{--{{ __('strings.StartDate') }}--}}
                                                                             {{--Start date--}}
-                                                                        </label>
-                                                                        <input name="startdate" type="date"
-                                                                               class="form-control">
-                                                                    </div>
+                                                                        {{--</label>--}}
+                                                                        {{--<input name="startdate" type="date"--}}
+                                                                               {{--class="form-control">--}}
+                                                                    {{--</div>--}}
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">
-                                                                            {{ __('strings.EndDate') }}
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">--}}
+                                                                            {{--{{ __('strings.EndDate') }}--}}
                                                                             {{--End date--}}
-                                                                        </label>
-                                                                        <input name="deadline"
-                                                                               type="date" class="form-control">
-                                                                    </div>
+                                                                        {{--</label>--}}
+                                                                        {{--<input name="deadline"--}}
+                                                                               {{--type="date" class="form-control">--}}
+                                                                    {{--</div>--}}
 
-                                                                    <div class="col-md-12 m-b-20">
-                                                                        <label class="control-label">
-                                                                            {{ __('strings.AvailableDate') }}
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                        {{--<label class="control-label">--}}
+                                                                            {{--{{ __('strings.AvailableDate') }}--}}
                                                                             {{--Available date--}}
-                                                                        </label>
-                                                                        <input name="availabledate" type="date"
-                                                                               class="form-control">
+                                                                        {{--</label>--}}
+                                                                        {{--<input name="availabledate" type="date"--}}
+                                                                               {{--class="form-control">--}}
 
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                    <div class="col-md-12 m-b-20">
-                                                                    <h4 class="control-label">
-                                                                        {{ __('strings.SelectCourse') }}
+                                                                    {{--</div>--}}
+                                                                    {{--<div class="form-group">--}}
+                                                                    {{--<div class="col-md-12 m-b-20">--}}
+                                                                    {{--<h4 class="control-label">--}}
+                                                                        {{--{{ __('strings.SelectCourse') }}--}}
                                                                         {{--Select course --}}
-                                                                    </h4>
-                                                                    </div>
-                                                                    </div>
-                                                                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
-                                                                    @foreach($teacherCourses as  $course)
-                                                                    <option
-                                                                            name="selectTag"
-                                                                            value="{{$course->id}}">{{$course->name}}</option>
-                                                                    @endforeach
-                                                                    </select>
+                                                                    {{--</h4>--}}
+                                                                    {{--</div>--}}
+                                                                    {{--</div>--}}
+                                                                    {{--<select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">--}}
+                                                                    {{--@foreach($teacherCourses as  $course)--}}
+                                                                    {{--<option--}}
+                                                                            {{--name="selectTag"--}}
+                                                                            {{--value="{{$course->id}}">{{$course->name}}</option>--}}
+                                                                    {{--@endforeach--}}
+                                                                    {{--</select>--}}
 
-                                                                </div>
+                                                                {{--</div>--}}
                                                                 {{--<input class="btn btn-primary" type="submit">--}}
-                                                                <div class="form-group">
-                                                                    <div>
-                                                                        <button type="submit" class="btn
-                                                                        btn-success btn-rounded">
-                                                                            {{ __('strings.Submit') }}
+                                                                {{--<div class="form-group">--}}
+                                                                    {{--<div>--}}
+                                                                        {{--<button type="submit" class="btn--}}
+                                                                        {{--btn-success btn-rounded">--}}
+                                                                            {{--{{ __('strings.Submit') }}--}}
                                                                             {{--Submit--}}
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-default
-                                                                        btn-rounded waves-effect"
-                                                                                data-dismiss="modal">
-                                                                            {{ __('strings.Cancel') }}
+                                                                        {{--</button>--}}
+                                                                        {{--<button type="button" class="btn btn-default--}}
+                                                                        {{--btn-rounded waves-effect"--}}
+                                                                                {{--data-dismiss="modal">--}}
+                                                                            {{--{{ __('strings.Cancel') }}--}}
                                                                             {{--Cancel--}}
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
+                                                                        {{--</button>--}}
+                                                                    {{--</div>--}}
+                                                                {{--</div>--}}
+                                                            {{--</form>--}}
                                                             {{--=========================================================================--}}
                                                             {{--============================= //FORM ====================================--}}
                                                             {{--=========================================================================--}}
-                                                        </div>
+                                                        {{--</div>--}}
                                                         {{--<div class="modal-footer">--}}
 
                                                             {{--<button type="button" class="btn btn-default waves-effect"--}}
                                                                     {{--data-dismiss="modal">Cancel--}}
                                                             {{--</button>--}}
                                                         {{--</div>--}}
-                                                    </div>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
-                                            <td colspan="7">
-                                                <div class="text-right">
-                                                    <ul class="pagination"></ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </tfoot>
+                                                    {{--</div>--}}
+                                                    {{--<!-- /.modal-content -->--}}
+                                                {{--</div>--}}
+                                                {{--<!-- /.modal-dialog -->--}}
+                                            {{--</div>--}}
+                                            {{--<td colspan="7">--}}
+                                                {{--<div class="text-right">--}}
+                                                    {{--<ul class="pagination"></ul>--}}
+                                                {{--</div>--}}
+                                            {{--</td>--}}
+                                        {{--</tr>--}}
+                                        {{--</tfoot>--}}
                                     </table>
                                 </div>
                                 <!-- .left-aside-column-->
@@ -350,7 +350,7 @@
                                                 </button>
                                             </td>
                                             {{--Calling create modal--}}
-                                            @include('activities.modals.create-assignment')
+                                            @include('design.modals.create-assignment')
 
                                             <td colspan="7">
                                                 <div class="text-right">
@@ -378,12 +378,12 @@
 
     </div>
     <!--Modal for Assignment List-->
-    @include('activities.modals.assignment-details')
-    @include('activities.modals.course-details')
+    @include('design.modals.assignment-details')
+    @include('design.modals.course-details')
     <!--Modal for Assignment Course List-->
-    @include('activities.modals.assignmentCourse-details')
+    @include('design.modals.assignmentCourse-details')
     {{--Modal for copying an assignment--}}
-    @include('activities.modals.copy-assignment')
+    @include('design.modals.copy-assignment')
 
 
 

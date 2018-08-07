@@ -32,15 +32,7 @@ class CourseController extends  ModelController
         $courseAssignemts = AssignmentDescription::where('courses_id',$request->id)->get();
 //        get all submitted assignments of this course
         $submissions = collect();
-//        for ($j = 0; $j < count($courseAssignemts); $j++) {
-//            //get current Assignmentdescription id
-//            $assignDescrID = AssignmentDescription::where('id',$)
-//            $assignSubmission = AssignmentSubmission::where('assignment_descriptions_id',);
-//            for ($i = 0; $i < count($list); $i++) {
-//                $teacher_assignments->push($list[$i]);
-////                return $assignments;
-//            }
-//        }
+
         foreach ($courseAssignemts as $assignment )
         {
             $submission = AssignmentSubmission::where('assignment_descriptions_id',$assignment->id)->get();
@@ -49,8 +41,19 @@ class CourseController extends  ModelController
         }
         return $submissions;
 
-        return view('activities.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
+        return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
+            'user'=>Auth::user()]);
+    }
+
+    public function coursesOverview()
+    {
+        //get all teacher courses
+        //get all teacher assignments
+        return view('monitoring.courses-overview',
+            [
+//                'courses' => $courses, 'courseAssignments' => $courseAssignemts,
+//            'submissions' => $submissions,
             'user'=>Auth::user()]);
     }
 }

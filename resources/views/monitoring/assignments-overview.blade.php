@@ -332,6 +332,72 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-8 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex flex-wrap">
+                                            <div>
+                                                <h3 class="card-title">  {{ __('strings.AssignmentsOverview') }}</h3>
+                                                <h6 class="card-subtitle">Finished vs Ongoing</h6> </div>
+                                            <div class="ml-auto">
+                                                <ul class="list-inline">
+                                                    <li>
+                                                        <h6 class="text-muted text-success"><i class="fa fa-circle
+                                                    font-10 m-r-10 "></i>Finished</h6> </li>
+                                                    <li>
+                                                        <h6 class="text-muted  text-info"><i class="fa fa-circle font-10
+                                                    m-r-10"></i>Ongoing</h6> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="amp-pxl" style="height: 360px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ __('strings.Courses') }}
+                                    {{--All Assignments --}}
+                                </h3>
+                                <h6 class="card-subtitle">Different stages</h6>
+                                <div id="visitor" style="height:290px; width:100%;"></div>
+                            </div>
+                            <div>
+                                <hr class="m-t-0 m-b-0">
+                            </div>
+                            <div class="card-body text-center ">
+                                <ul class="list-inline m-b-0">
+                                    <li>
+                                        <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10 "></i>Finihsed</h6>
+                                    </li>
+                                    <li>
+                                        <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10
+                                        m-r-10"></i>
+                                            {{ __('strings.Ongoing') }}
+                                            {{--Ongoing--}}
+                                        </h6>
+                                    </li>
+                                    <li>
+                                        <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10
+                                        m-r-10"></i>
+                                            {{ __('strings.Late') }}
+                                        </h6>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- End of Assignment - Courst List -->
@@ -343,7 +409,7 @@
 
     </div>
 
-    @include('activities.modals.submission-details')
+    @include('design.modals.submission-details')
 
 
     <script>

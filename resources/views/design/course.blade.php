@@ -11,7 +11,7 @@
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">
-                        {{ __('strings.Courses') }}
+                        {{ __('strings.CourseDesign') }}
                         {{--Courses--}}
                     </h3>
                     <ol class="breadcrumb">
@@ -20,7 +20,7 @@
                                 {{--Home--}}
                             </a></li>
                         <li class="breadcrumb-item active">
-                            {{ __('strings.Activities') }}
+                            {{ __('strings.Design') }}
                             {{--Activities--}}
                         </li>
                     </ol>
@@ -230,9 +230,9 @@
     </div>
 
     <!--Modal for course details-->
-    @include('activities.modals.course-details')
+    @include('design.modals.course-details')
     <!--Modal for copping a course-->
-    @include('activities.modals.create-course')
+    @include('design.modals.create-course')
 
     <script>
         function courseDetails(course) {

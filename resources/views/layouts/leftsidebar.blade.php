@@ -60,45 +60,86 @@
                         <li><a href="index2.html"> {{ __('strings.Statistics') }}</a></li>
                     </ul>
                 </li>
+                {{--<li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i--}}
+                                {{--class="mdi mdi-email"></i><span class="hide-menu">--}}
+                            {{--{{ __('strings.Activities') }}--}}
+                            {{--Activities--}}
+                        {{--</span></a>--}}
+                    {{--<ul aria-expanded="false" class="collapse">--}}
+                        {{--<li><a href="/courses">--}}
+                            {{--{{ __('strings.Courses') }}--}}
+                            {{--Courses--}}
+                        {{--</a></li>--}}
+                    {{--<li><a href="/assignments">--}}
+                            {{--{{ __('strings.Assignments') }}--}}
+                            {{--Assignments--}}
+                        {{--</a></li>--}}
+                    {{--<li><a href="#" class="has-arrow" aria-expanded="false">--}}
+                            {{--{{ __('strings.Submissions') }}--}}
+                            {{--Submissions--}}
+                        {{--</a>--}}
+                            {{--<ul aria-expanded="false" class="collapse">--}}
+                            {{--<li><a href="/assignment_submissions" >--}}
+                                    {{--{{ __('strings.Assignments') }}--}}
+                                    {{--Assignments--}}
+                                {{--</a></li>--}}
+                            {{--<li><a href="/selfass_submissions" >--}}
+                                    {{--{{ __('strings.Self_Assesssments') }}--}}
+                                    {{--Self-Assessments--}}
+                                {{--</a></li>--}}
+                            {{--<li><a href="/feedbacks" >--}}
+                                    {{--{{ __('strings.Feedbacks') }}--}}
+                                    {{--Feedbacks--}}
+                                {{--</a></li>--}}
+                        {{--</ul>--}}
+                        {{--</li>--}}
+                    {{--<li><a href="/calendar">--}}
+                            {{--{{ __('strings.Calendar') }}--}}
+                            {{--Calendar--}}
+                        {{--</a></li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
                 <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                 class="mdi mdi-email"></i><span class="hide-menu">
-                            {{ __('strings.Activities') }}
+                            {{ __('strings.Design') }}
                             {{--Activities--}}
                         </span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/courses">
-                            {{ __('strings.Courses') }}
-                            {{--Courses--}}
-                        </a></li>
-                    <li><a href="/assignments">
-                            {{ __('strings.Assignments') }}
-                            {{--Assignments--}}
-                        </a></li>
-                    <li><a href="#" class="has-arrow" aria-expanded="false">
-                            {{ __('strings.Submissions') }}
-                            {{--Submissions--}}
-                        </a>
-                            <ul aria-expanded="false" class="collapse">
-                            <li><a href="/assignment_submissions" >
+                                {{ __('strings.Courses') }}
+                                {{--Courses--}}
+                            </a></li>
+                        <li><a href="/assignments">
+                                {{ __('strings.Assignments') }}
+                                {{--Assignments--}}
+                            </a></li>
+                        <li><a href="/calendar">
+                                {{ __('strings.Calendar') }}
+                                {{--Calendar--}}
+                            </a></li>
+                    </ul>
+                </li>
+                <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                class="mdi mdi-email"></i><span class="hide-menu">
+                            {{ __('strings.Monitoring') }}
+                            {{--Activities--}}
+                        </span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/courses-overview" >
+                                {{ __('strings.Courses') }}
+                            </a></li>
+                            <li><a href="/assignments-overview" >
                                     {{ __('strings.Assignments') }}
-                                    {{--Assignments--}}
                                 </a></li>
-                            <li><a href="/selfass_submissions" >
+                            <li><a href="/selfassessments-overview" >
                                     {{ __('strings.Self_Assesssments') }}
-                                    {{--Self-Assessments--}}
                                 </a></li>
-                            <li><a href="/feedbacks" >
+                            <li><a href="/feedbacks-overview" >
                                     {{ __('strings.Feedbacks') }}
-                                    {{--Feedbacks--}}
                                 </a></li>
                         </ul>
-                        </li>
-                    <li><a href="/calendar">
-                            {{ __('strings.Calendar') }}
-                            {{--Calendar--}}
-                        </a></li>
-                </ul>
-            </li>
+                </li>
+
             <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                             class="mdi mdi-bullseye"></i><span class="hide-menu">
                         {{ __('strings.Communications') }}

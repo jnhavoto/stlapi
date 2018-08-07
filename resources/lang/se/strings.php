@@ -39,6 +39,8 @@ return [
     'Notifications' => 'Notifications',
     'Course_TList' => 'Course Template List',
     'Assignments' => 'Assignments',
+    'Design' => 'Design',
+    'Monitoring' => 'Monitoring',
 
 //    Courses page
     'No' => 'No', //No=Number

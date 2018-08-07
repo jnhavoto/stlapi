@@ -14,43 +14,34 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('/', function () {
-//     return view('initial-page.index');
-
-//Route::get('/calendar', function () {
-//	return view('communications.calendar');
-//})->middleware(['auth2', 'teacher']);
-
-// Route::get('/home', function () {
-//     return view('test');
-// });
-
-//Route::get('/contacts', function () {
-//    return view('communications.contacts');
-//});
+//==============================================================
+//Comunications
+//==============================================================
 
 Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
 
 Route::get('/contact-details', function () {
 	return view('communications.contact-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
-//    ->middleware(['auth2','teacher']);
+
 //get Chats
 Route::get('/chats', 'ChatController@getAllChats')->middleware(['teacher']);
-//get calendar
-Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
+
 //get Notifications
 Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
+
+
+//==============================================================
+//Design
+//==============================================================
 
 //get Courses
 Route::get('/courses', 'TeacherController@getCourses')->middleware(['teacher']);
 
-//Route::get('/assignments', 'TeacherController@getTeacherAssignments')->middleware(['teacher']);
-//Route::get('/assignments', 'TeacherController@getAllAssignments')->middleware(['teacher']);
-//calling all asignment and teacher assignments
-Route::get('/assignments', 'TeacherController@getAssignments')->middleware(['teacher']);
+//get calendar
+Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
 
-Route::get('/assignment_submissions', 'TeacherController@getAllAssignmentSubmissions')->middleware(['teacher']);
+Route::get('/assignments', 'TeacherController@getAssignments')->middleware(['teacher']);
 
 Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
 
@@ -58,27 +49,31 @@ Route::post('/submit_course', 'TeacherController@submitCourse')->middleware(['te
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
 
-Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll')->middleware(['teacher']); //route to get all
+//==============================================================
+//Monitoring
+//==============================================================
 
+//Individual course overview
+Route::get('/course-overview/{id}','CourseController@courseOverview')->middleware(['teacher']);
+
+//General courses overview
+Route::get('/courses-overview','CourseController@coursesOverview')->middleware(['teacher']);
+
+Route::get('/assignments-overview', 'TeacherController@getAllAssignmentSubmissions')->middleware(['teacher']);
+
+//Feedback overview
+Route::get('/feedbacks-overview', 'TeacherController@getAllFeedbacks')->middleware(['teacher']);
+
+Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll')->middleware(['teacher']); //route to get all
 Route::get('/submission-details', function () {
     return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
-
-
 Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->middleware(['teacher']);
 
-Route::get('/course-overview/{id}','CourseController@courseOverview')->middleware(['teacher']);
 
-
-//Route::get('/feedbacks', 'FeedbackController@getAll')->middleware(['teacher']);; //route to get all
-//Route::get('/feedbacks', 'FeedbackController@getAll')->middleware(['teacher']);; //route to get all
-
-Route::get('/feedbacks', 'TeacherController@getAllFeedbacks')->middleware(['teacher']);
-
-
-
-
-//Translates Tests
+//==============================================================
+//App Translation
+//==============================================================
 
 Route::get('locale', function () {
     return App::getLocale();

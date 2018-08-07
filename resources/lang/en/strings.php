@@ -38,10 +38,16 @@ return [
     'Communications' => 'Comunications',
     'Contacts' => 'Contacts',
     'Notifications' => 'Notifications',
-    'Course_TList' => 'Course Template List',
     'Assignments' => 'Assignments',
+    'Design' => 'Design',
+    'Monitoring' => 'Monitoring',
+
+
+//============ Design =================
 
 //    Courses page
+    'CourseDesign' => 'Course Design',
+    'Course_TList' => 'Course Template List',
     'No' => 'No', //No=Number
     'Full_Name' => 'Full Name',
     'CourseName' => 'Course Name',
@@ -66,6 +72,15 @@ return [
     'StudentName' => 'Student Name',
     'Progress' => 'Progress',
 
+//    Assignments
+    'AssignmentDesign' => 'Assignment Design',
+
+//    Courses overview
+    'CourseList' => 'Course List',
+    'AllCourses' => 'All Courses',
+    'CoursesOverview' => 'Courses Overview',
+
+
 //    Assignments page
     'AssignmentTemplateList' => 'Assignment Template List',
     'Number' => 'Number',
@@ -78,6 +93,9 @@ return [
     'SelectCourse' => 'Select Course',
     'MyAssignmentList' => 'My Assignment List',
 
-
+//============== Monitoring ===================
+//==== Assignments
+    'AssignmentsOverview' => 'Assignments Overview',
+    'AssignmentOverview' => 'Assignment Overview',
 
 ];

@@ -49,7 +49,7 @@ class TeacherController extends ModelController
 //return $teacherCourses;
         $coursesTemplates = CoursesTemplate::all();
 
-        return view('activities.course',
+        return view('design.course',
             ['courseTemplates' => $coursesTemplates,
                 'teacherCourses'=>$teacherCourses,
                 'teachers' => $teachers,
@@ -96,7 +96,7 @@ class TeacherController extends ModelController
 //        return ($teacher_assignments);
 
 //        return $courses;
-        return view('activities.assignment',
+        return view('design.assignment',
             ['assTemplates' => $assTemplates,
             'teacher_assignments' => $teacher_assignments,
             'teachers' => $teachers,
@@ -110,7 +110,7 @@ class TeacherController extends ModelController
 //        $student = Student::Where('students_id', $teacher->id)->get();
         $assignSubmissions = AssignmentSubmission::all();
 //        return $assignSubmissions;
-        return view('activities.assignment-submissions',['assSubmissions' => $assignSubmissions,
+        return view('monitoring.assignments-overview',['assSubmissions' => $assignSubmissions,
         'user' => Auth::user()]);
     }
 
