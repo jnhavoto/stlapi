@@ -59,7 +59,7 @@ Route::get('/course-overview/{id}','CourseController@courseOverview')->middlewar
 //General courses overview
 Route::get('/courses-overview','CourseController@coursesOverview')->middleware(['teacher']);
 
-Route::get('/assignments-overview', 'TeacherController@getAllAssignmentSubmissions')->middleware(['teacher']);
+Route::get('/assignments-overview', 'TeacherController@getAssignmentsOverview')->middleware(['teacher']);
 
 //Feedback overview
 Route::get('/feedbacks-overview', 'TeacherController@getAllFeedbacks')->middleware(['teacher']);

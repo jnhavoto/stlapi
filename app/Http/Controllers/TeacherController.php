@@ -71,8 +71,6 @@ class TeacherController extends ModelController
     {
         //first get all assignments
         $assTemplates = AssignmentTemplate::all();
-        //all courses
-//        $courses = Course::all();
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         $teachers = Teacher::all();
         //getting the ist of members where the teacher is part of
@@ -103,6 +101,42 @@ class TeacherController extends ModelController
             'teacherCourses' => $teacherCourses,
             'user' => Auth::user
     ()]);
+    }
+
+//    Assignments Overview
+    public function getAssignmentsOverview()
+    {
+        //first get all assignments
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        $teachers = Teacher::all();
+        //getting the ist of members where the teacher is part of
+        $teachers_members = TeacherMember::Where('teachers_id', $teacher->id)->get();
+        $assignmentTeacher = AssignmentDescriptionsHasTeacher::Where('teachers_id',$teacher->id)->get();
+        $teacher_assignments = collect();
+        //getting teacher courses
+        $teacherCourses = $teacher->courses;
+//        return $teachers_members[0];
+//
+
+        for ($j = 0; $j < count($teachers_members); $j++) {
+
+            $list = $teachers_members[$j]->group_teacher->assignment_descriptions;
+            for ($i = 0; $i < count($list); $i++) {
+                $teacher_assignments->push($list[$i]);
+//                return $assignments;
+            }
+        }
+
+//        return ($teacher_assignments);
+
+//        return $courses;
+        return view('monitoring.assignments-overview',
+            [
+                'teacher_assignments' => $teacher_assignments,
+                'teachers' => $teachers,
+                'teacherCourses' => $teacherCourses,
+                'user' => Auth::user()
+            ]);
     }
 
     public function getAllAssignmentSubmissions()
@@ -268,7 +302,7 @@ class TeacherController extends ModelController
     public function getAllFeedbacks()
     {
         $feedbacks = Feedback::all();
-        return view('activities.feedbacks',['feedbacks' => $feedbacks,
+        return view('monitoring.feedbacks',['feedbacks' => $feedbacks,
             'user' => Auth::user()]);
     }
 

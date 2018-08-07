@@ -95,6 +95,7 @@ return [
 
 //============== Monitoring ===================
 //==== Assignments
+    'Monitoring' => 'Monitoring',
     'AssignmentsOverview' => 'Assignments Overview',
     'AssignmentOverview' => 'Assignment Overview',
 

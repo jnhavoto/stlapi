@@ -10,18 +10,23 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor m-b-0 m-t-0">Assignments</h3>
+                    <h3 class="text-themecolor m-b-0 m-t-0">{{ __('strings.AssignmentsOverview') }}</h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Activities</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">
+                                {{ __('strings.Home') }}
+                                Home</a></li>
+                        <li class="breadcrumb-item active">
+                            {{ __('strings.Monitoring') }}
+                        </li>
                     </ol>
                 </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
+
             <!-- ============================================================== -->
-            <!-- Start of Assignment List -->
+            <!-- Start Assignment List -->
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
@@ -33,84 +38,86 @@
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">Assignment Submissions List </h4></div>
+                                            <h4 class="card-title m-t-10">
+                                                {{ __('strings.MyAssignmentList') }}
+                                                {{--My Assignment List--}}
+                                            </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search assignments"
                                                    class="form-control"></div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"
+                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table muted-table"
                                            data-page-size="10">
                                         <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Student name</th>
-                                            <th>Assignment name</th>
-                                            <th>Submission Date</th>
-                                            <th>Action</th>
+                                            <th> {{ __('strings.Number') }}
+                                                {{--Number--}}
+                                            </th>
+                                            <th>{{ __('strings.AssignmentName') }}
+                                                {{--Assignment name--}}
+                                            </th>
+                                            <th>{{ __('strings.CourseName') }}
+                                                {{--Course name--}}
+                                            </th>
+                                            <th>{{ __('strings.Instructions') }}
+                                                {{--Instructions--}}
+                                            </th>
+                                            <th>{{ __('strings.StartDate') }}
+                                                {{--Date of Start--}}
+                                            </th>
+                                            <th>{{ __('strings.EndDate') }}
+                                                {{--Due Date--}}
+                                            </th>
+                                            <th>{{ __('strings.AvailableFrom') }}
+                                                {{--Available from--}}
+                                            </th>
+                                            {{--<th>Joining date</th>--}}
+                                            {{--<th>Salery</th>--}}
+                                            <th>{{ __('strings.Status') }}
+                                                {{--Status--}}
+                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($assSubmissions as $submission)
-                                            @if($submission->status == 1)
-                                                <tr>
-                                                    {{--<td> {{ $assignment->students_id}}</td>--}}
-                                                    <td> {{ $loop->index + 1 }}</td>
-                                                    <td>
-                                                        <img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"
-                                                             class="img-circle"/> <a href="/contact-details"
-                                                                                     onclick="submissionDetails({{$submission}})">
-
-                                                            @php
-                                                                $student = \App\Models\Student::find
-                                                                ($submission->students_id);
-                                                            @endphp
-
-                                                            {{  $student->user->first_name }}
-                                                            {{  $student ->user->last_name }}
-
-                                                        </a>
-                                                    </td>
-                                                    <td>
-{{--                                                        <a href="/sub-details/{{$submission}}">--}}
-                                                            <a href="/sub-details/{{$submission->id}}">
-                                                        {{--<a href="/" data-toggle="modal"--}}
-                                                           {{--data-target="#modalsSubmissionDetails"--}}
-{{--                                                           onclick="submissionDetails({{$submission}})">--}}
-                                                            {{$submission->assignment_description->case}}
-                                                        </a>
-                                                        {{--<a href="/submission-details"--}}
-                                                           {{--onclick="submissionDetails({{$submission}})">--}}
-                                                            {{--{{$submission->assignment_description->case}}--}}
-                                                        {{--</a>--}}
-                                                    </td>
-                                                    {{--<td>{{$submission->submission_date}}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--<div class="progress-bar bg-success" role="progressbar"--}}
-                                                             {{--style="width: 85%; height: 6px;" aria-valuenow="25"--}}
-                                                             {{--aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                                    {{--</td>--}}
-                                                    <td>
-                                                        {{$submission->submission_date}}
-                                                    </td>
-                                                    <td> <a href="/" data-toggle="modal"
-                                                            data-target="#modalsSubmissionDetails"
-                                                            onclick="submissionDetails({{$submission}})"> View
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endif
+                                        @foreach ($teacher_assignments as $t_assignment)
+                                            <tr>
+                                                {{--<td>{{$student->id}}</td>--}}
+                                                <td> {{ $t_assignment->number}}</td>
+                                                {{--<td> {{ $t_assignment->name}}</td>--}}
+                                                <td>
+                                                    {{--<a href="/assignment_details">--}}
+                                                    <a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"
+                                                       onclick="assignCourseDetails({{$t_assignment}})">
+                                                        {{$t_assignment->case}}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {{--list details of a course--}}
+                                                    <a href="/" data-toggle="modal" data-target="#modalCourseDetails"
+                                                       onclick="courseDetails({{$t_assignment}})">
+                                                        {{$t_assignment->course->name}}
+                                                    </a>
+                                                </td>
+                                                {{--courseDetails($t_assignment->courses)--}}
+                                                <td>{{substr($t_assignment->instructions, 0, 45) }}</td>
+                                                <td>{{$t_assignment->startdate}}</td>
+                                                <td>{{$t_assignment->deadline}}</td>
+                                                <td>{{$t_assignment->available_date}}</td>
+                                                <td>
+                                                    @if($t_assignment->status == 0)
+                                                        {{ __('strings.Active') }}
+                                                        {{--Active--}}
+                                                    @else
+                                                        {{ __('strings.Disactive') }}
+                                                        {{--Disactive--}}
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <td colspan="7">
-                                            <div class="text-right">
-                                                <ul class="pagination"></ul>
-                                            </div>
-                                        </td>
-                                        </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                                 <!-- .left-aside-column-->
@@ -121,91 +128,195 @@
                 </div>
             </div>
             <!-- ============================================================== -->
+            <!-- End Assignment List -->
+            <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+            <!-- Start of Assignment List -->
+            <!-- ============================================================== -->
+            {{--<div class="row">--}}
+                {{--<div class="col-12">--}}
+                    {{--<div class="card">--}}
+                        {{--<!-- .left-right-aside-column-->--}}
+                        {{--<div class="contact-page-aside">--}}
+
+                            {{--<div class="pl-4">--}}
+                                {{--<div class="right-page-header">--}}
+                                    {{--<div class="d-flex">--}}
+                                        {{--<div class="align-self-center">--}}
+                                            {{--<h4 class="card-title m-t-10">Assignment Submissions List </h4></div>--}}
+                                        {{--<div class="ml-auto">--}}
+                                            {{--<input type="text" id="demo-input-search2" placeholder="search assignments"--}}
+                                                   {{--class="form-control"></div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="table-responsive">--}}
+                                    {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"--}}
+                                           {{--data-page-size="10">--}}
+                                        {{--<thead>--}}
+                                        {{--<tr>--}}
+                                            {{--<th>No</th>--}}
+                                            {{--<th>Student name</th>--}}
+                                            {{--<th>Assignment name</th>--}}
+                                            {{--<th>Submission Date</th>--}}
+                                            {{--<th>Action</th>--}}
+                                        {{--</tr>--}}
+                                        {{--</thead>--}}
+                                        {{--<tbody>--}}
+                                        {{--@foreach ($assSubmissions as $submission)--}}
+                                            {{--@if($submission->status == 1)--}}
+                                                {{--<tr>--}}
+                                                    {{--<td> {{ $assignment->students_id}}</td>--}}
+                                                    {{--<td> {{ $loop->index + 1 }}</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"--}}
+                                                             {{--class="img-circle"/> <a href="/contact-details"--}}
+                                                                                     {{--onclick="submissionDetails({{$submission}})">--}}
+
+                                                            {{--@php--}}
+                                                                {{--$student = \App\Models\Student::find--}}
+                                                                {{--($submission->students_id);--}}
+                                                            {{--@endphp--}}
+
+                                                            {{--{{  $student->user->first_name }}--}}
+                                                            {{--{{  $student ->user->last_name }}--}}
+
+                                                        {{--</a>--}}
+                                                    {{--</td>--}}
+                                                    {{--<td>--}}
+{{--                                                        <a href="/sub-details/{{$submission}}">--}}
+                                                            {{--<a href="/sub-details/{{$submission->id}}">--}}
+                                                        {{--<a href="/" data-toggle="modal"--}}
+                                                           {{--data-target="#modalsSubmissionDetails"--}}
+{{--                                                           onclick="submissionDetails({{$submission}})">--}}
+                                                            {{--{{$submission->assignment_description->case}}--}}
+                                                        {{--</a>--}}
+                                                        {{--<a href="/submission-details"--}}
+                                                           {{--onclick="submissionDetails({{$submission}})">--}}
+                                                            {{--{{$submission->assignment_description->case}}--}}
+                                                        {{--</a>--}}
+                                                    {{--</td>--}}
+                                                    {{--<td>{{$submission->submission_date}}</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--<div class="progress-bar bg-success" role="progressbar"--}}
+                                                             {{--style="width: 85%; height: 6px;" aria-valuenow="25"--}}
+                                                             {{--aria-valuemin="0" aria-valuemax="100"></div>--}}
+                                                    {{--</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--{{$submission->submission_date}}--}}
+                                                    {{--</td>--}}
+                                                    {{--<td> <a href="/" data-toggle="modal"--}}
+                                                            {{--data-target="#modalsSubmissionDetails"--}}
+                                                            {{--onclick="submissionDetails({{$submission}})"> View--}}
+                                                        {{--</a>--}}
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        {{--</tbody>--}}
+                                        {{--<tfoot>--}}
+                                        {{--<td colspan="7">--}}
+                                            {{--<div class="text-right">--}}
+                                                {{--<ul class="pagination"></ul>--}}
+                                            {{--</div>--}}
+                                        {{--</td>--}}
+                                        {{--</tr>--}}
+                                        {{--</tfoot>--}}
+                                    {{--</table>--}}
+                                {{--</div>--}}
+                                {{--<!-- .left-aside-column-->--}}
+                            {{--</div>--}}
+                            {{--<!-- /.left-right-aside-column-->--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            <!-- ============================================================== -->
             <!-- End of Assignment List -->
             <!-- ============================================================== -->
             <!-- Start Assignment Course List Content -->
             <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <!-- .left-right-aside-column-->
-                        <div class="contact-page-aside">
+            {{--<div class="row">--}}
+                {{--<div class="col-12">--}}
+                    {{--<div class="card">--}}
+                        {{--<!-- .left-right-aside-column-->--}}
+                        {{--<div class="contact-page-aside">--}}
 
-                            <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">Students Progress </h4></div>
-                                        <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
-                                                   class="form-control"></div>
-                                    </div>
-                                </div>
-                                <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped"
-                                           data-page-size="10">
-                                        <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Student name</th>
-                                            <th>Assignment name</th>
-                                            <th>Progress</th>
-                                            <th>Last update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($assSubmissions as $submission)
-                                            @if($submission->status != 1)
-                                                <tr>
+                            {{--<div class="pl-4">--}}
+                                {{--<div class="right-page-header">--}}
+                                    {{--<div class="d-flex">--}}
+                                        {{--<div class="align-self-center">--}}
+                                            {{--<h4 class="card-title m-t-10">Students Progress </h4></div>--}}
+                                        {{--<div class="ml-auto">--}}
+                                            {{--<input type="text" id="demo-input-search2" placeholder="search assignments"--}}
+                                                   {{--class="form-control"></div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="table-responsive">--}}
+                                    {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list--}}
+                                    {{--table-striped"--}}
+                                           {{--data-page-size="10">--}}
+                                        {{--<thead>--}}
+                                        {{--<tr>--}}
+                                            {{--<th>No</th>--}}
+                                            {{--<th>Student name</th>--}}
+                                            {{--<th>Assignment name</th>--}}
+                                            {{--<th>Progress</th>--}}
+                                            {{--<th>Last update</th>--}}
+                                        {{--</tr>--}}
+                                        {{--</thead>--}}
+                                        {{--<tbody>--}}
+                                        {{--@foreach ($assSubmissions as $submission)--}}
+                                            {{--@if($submission->status != 1)--}}
+                                                {{--<tr>--}}
                                                     {{--<td> {{ $assignment->students_id}}</td>--}}
-                                                    <td> {{ $loop->index + 1 }}</td>
-                                                    <td>
-                                                        <img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"
-                                                             class="img-circle"/> <a href="/contact-details"
-                                                                                     onclick="submissionDetails({{$submission}})">
-                                                            @php
-                                                                $student = \App\Models\Student::find
-                                                                ($submission->students_id);
-                                                            @endphp
+                                                    {{--<td> {{ $loop->index + 1 }}</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"--}}
+                                                             {{--class="img-circle"/> <a href="/contact-details"--}}
+                                                                                     {{--onclick="submissionDetails({{$submission}})">--}}
+                                                            {{--@php--}}
+                                                                {{--$student = \App\Models\Student::find--}}
+                                                                {{--($submission->students_id);--}}
+                                                            {{--@endphp--}}
 
-                                                            {{  $student->user->first_name }}
-                                                            {{  $student ->user->last_name }}
+                                                            {{--{{  $student->user->first_name }}--}}
+                                                            {{--{{  $student ->user->last_name }}--}}
 
-                                                        </a>
-                                                    </td>
+                                                        {{--</a>--}}
+                                                    {{--</td>--}}
 
-                                                    <td>
+                                                    {{--<td>--}}
                                                         {{--<a href="/assignment_details">--}}
-                                                        <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
-                                                           onclick="submissionDetails({{$submission}})">
-                                                            {{$submission->assignment_description->case}}
-                                                        </a>
-                                                    </td>
+                                                        {{--<a href="/" data-toggle="modal" data-target="#modalsAssDetails"--}}
+                                                           {{--onclick="submissionDetails({{$submission}})">--}}
+                                                            {{--{{$submission->assignment_description->case}}--}}
+                                                        {{--</a>--}}
+                                                    {{--</td>--}}
 
                                                     {{--<td>{{$submission->submission_date}}</td>--}}
-                                                    <td>
+                                                    {{--<td>--}}
                                                         {{--<div class="progress-bar bg-success" role="progressbar"--}}
                                                              {{--style="width: 85%; height: 6px;" aria-valuenow="25"--}}
                                                              {{--aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                                        <div class="progress">
+                                                        {{--<div class="progress">--}}
                                                             {{--<div class="progress-bar bg-success" role="progressbar"--}}
                                                                  {{--aria-valuenow="40" aria-valuemin="0"--}}
                                                                  {{--aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>--}}
-                                                            <div class="progress progress-xs margin-vertical-10 ">
-                                                                <div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        {{$submission->updated_at}}
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
+                                                            {{--<div class="progress progress-xs margin-vertical-10 ">--}}
+                                                                {{--<div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--{{$submission->updated_at}}--}}
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
 
-                                        </tbody>
-                                        <tfoot>
+                                        {{--</tbody>--}}
+                                        {{--<tfoot>--}}
                                         {{--<tr>--}}
                                         {{--<td colspan="2">--}}
                                         {{--<button type="button" class="btn btn-info btn-rounded"--}}
@@ -317,22 +428,25 @@
                                         {{--</div>--}}
                                         {{--<!-- /.modal-dialog -->--}}
                                         {{--</div>--}}
-                                        <td colspan="7">
-                                            <div class="text-right">
-                                                <ul class="pagination"></ul>
-                                            </div>
-                                        </td>
-                                        </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <!-- .left-aside-column-->
-                            </div>
-                            <!-- /.left-right-aside-column-->
-                        </div>
-                    </div>
-                </div>
+                                        {{--<td colspan="7">--}}
+                                            {{--<div class="text-right">--}}
+                                                {{--<ul class="pagination"></ul>--}}
+                                            {{--</div>--}}
+                                        {{--</td>--}}
+                                        {{--</tr>--}}
+                                        {{--</tfoot>--}}
+                                    {{--</table>--}}
+                                {{--</div>--}}
+                                {{--<!-- .left-aside-column-->--}}
+                            {{--</div>--}}
+                            {{--<!-- /.left-right-aside-column-->--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
+            <!-- ============================================================== -->
+            <!-- Start General Overview -->
+            <!-- ============================================================== -->
                 <div class="row">
                     <!-- Column -->
                     <div class="col-lg-8 col-md-7">
@@ -400,7 +514,7 @@
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- End of Assignment - Courst List -->
+            <!-- End General Overview -->
             <!-- ============================================================== -->
         </div>
     </div>
