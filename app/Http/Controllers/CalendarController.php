@@ -9,6 +9,6 @@ class CalendarController extends Controller
 {
     public function getCalendar()
     {
-        return view('communications.calendar',['user' => Auth::user()]);
+        return view('design.calendar',['user' => Auth::user()]);
     }
 }

@@ -12,16 +12,6 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-//
-//$factory->define(App\User::class, function (Faker $faker) {
-//    return [
-//        'name' => $faker->name,
-//        'email' => $faker->unique()->safeEmail,
-//        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-//        'remember_token' => str_random(10),
-//    ];
-//});
-
 
 //array of course names
 $courses = ['STL 2016','STL 2017','STL 2018','STL 2015','STL 2019'];
@@ -483,5 +473,17 @@ $factory->define(\App\Models\WorkplaceToolsHasStudent::class, function (Faker $f
     return [
         'workplace_tools_id' => $faker->numberBetween(1,\App\Models\WorkplaceTool::all()->count()),
         'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
+    ];
+});
+
+//feeding calendar
+$colors=['Success','Danger','Info','Primary','Warning','Inverse'];
+
+$factory->define(\App\Calendar::class, function (Faker $faker) use ($colors){
+    return [
+        'eventname' => $faker->text(12),
+        'eventdate' => $faker->date('Y-m-d'),
+        'color' => $faker->randomElement($colors),
+        'users_id' => $faker->numberBetween(1,\App\User::all()->count()),
     ];
 });

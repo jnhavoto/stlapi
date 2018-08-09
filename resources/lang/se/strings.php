@@ -28,7 +28,7 @@ return [
     'Ongoing' => 'Ongoing',
     'Late' => 'Late',
 
-//    Left side menu
+    //    Left side menu
     'Courses' => 'Courses',
     'Submissions' => 'Submissions',
     'Self_Assesssments' => 'Self Assesssments',
@@ -37,12 +37,16 @@ return [
     'Communications' => 'Comunications',
     'Contacts' => 'Contacts',
     'Notifications' => 'Notifications',
-    'Course_TList' => 'Course Template List',
     'Assignments' => 'Assignments',
     'Design' => 'Design',
     'Monitoring' => 'Monitoring',
 
+
+//============ Design =================
+
 //    Courses page
+    'CourseDesign' => 'Course Design',
+    'Course_TList' => 'Course Template List',
     'No' => 'No', //No=Number
     'Full_Name' => 'Full Name',
     'CourseName' => 'Course Name',
@@ -66,8 +70,17 @@ return [
     'LastUpdate' => 'Last update',
     'StudentName' => 'Student Name',
     'Progress' => 'Progress',
+    'CreateNewCourse' => 'Create New course',
+    'UpdateCourse' => 'Update Course',
+    'Members' => 'Members',
 
-//    Assignments page
+//    Courses overview
+    'CourseList' => 'Course List',
+    'AllCourses' => 'All Courses',
+    'CoursesOverview' => 'Courses Overview',
+
+
+//    Assignments
     'AssignmentTemplateList' => 'Assignment Template List',
     'Number' => 'Number',
     'AssignmentName' => 'Assignment Name',
@@ -78,4 +91,21 @@ return [
     'AvailableDate' => 'Available Date',
     'SelectCourse' => 'Select Course',
     'MyAssignmentList' => 'My Assignment List',
+    'AssignmentDesign' => 'Assignment Design',
+    'UpdateAssignment' => 'Update Assignment',
+
+    //Calendar
+    'Calendar' => 'Calendar',
+    'DragDrop' => 'Drag and Drop Your Event',
+
+
+
+
+//============== Monitoring ===================
+//==== Assignments
+    'Monitoring' => 'Monitoring',
+    'AssignmentsOverview' => 'Assignments Overview',
+    'AssignmentOverview' => 'Assignment Overview',
+
+
 ];

@@ -56,5 +56,6 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\WorkMethodsHasStudent::class, 3)->create();
         factory(\App\Models\WorkplaceTool::class, 3)->create();
         factory(\App\Models\WorkplaceToolsHasStudent::class, 3)->create();
+        factory(\App\Calendar::class, 10)->create();
     }
 }

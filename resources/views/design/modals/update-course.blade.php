@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">
-                    {{ __('strings.CreateNewCourse') }}
+                    {{ __('strings.UpdateCourse') }}
                     {{--Create New Course--}}
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -14,15 +14,12 @@
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
-                      action="/submit_course" method="post">
+                      action="/submit_course" method="put">
                     {{csrf_field()}}
                     <div class="form-group">
 
                         <div class="col-md-12 m-b-20">
-                            <label class="control-label">
-                                {{ __('strings.CourseName') }}
-                                {{--Course name--}}
-                            </label>
+                            <label class="control-label"> {{ __('strings.CourseName') }} </label>
                             <div>
                                 <input name="name" type="text" class="form-control input-lg"
                                        id="c_course_name">
@@ -30,10 +27,7 @@
                         </div>
 
                         <div class="col-md-12 m-b-20">
-                            <label class="control-label">
-                                {{ __('strings.CourseContent') }}
-                                {{--Course Content--}}
-                            </label>
+                            <label class="control-label"> {{ __('strings.CourseContent') }} </label>
                             <textarea name="course_content"  type="text"
                                       class="form-control" rows="3" id="c_course_content"> </textarea>
                         </div>
@@ -41,10 +35,7 @@
                         <input id="c_course_id" type="hidden" name="course_template_id">
 
                         <div class="col-md-12 m-b-20">
-                            <label class="control-label">
-                                {{ __('strings.StartDate') }}
-                                {{--Start date--}}
-                            </label>
+                            <label class="control-label"> {{ __('strings.StartDate') }} </label>
                             <input name="startdate" type="date" id="c_course_startdates"
                                    class="form-control">
                         </div>
@@ -52,19 +43,13 @@
                         <h2 id="sfdhafhgafshgafshgafsgafsh"></h2>
 
                         <div class="col-md-12 m-b-20">
-                            <label class="control-label">
-                                {{ __('strings.AvailableFrom') }}
-                                {{--Avaialble from--}}
-                            </label>
+                            <label class="control-label"> {{ __('strings.AvailableFrom') }} </label>
                             <input name="available_date" type="date" id="c_course_available_date"
                                    class="form-control">
                         </div>
                         <div class="form-group">
                             <div class="col-md-12 m-b-20">
-                                <h4 class="control-label">
-                                    {{ __('strings.SelectInstructors') }}
-                                    {{--Select Instructor(s)--}}
-                                </h4>
+                                <h4 class="control-label"> {{ __('strings.SelectInstructors') }} </h4>
                             </div>
                             <select class="js-example-basic-multiple" name="instructors[]" multiple="multiple"
                                     style="width: 100%">

@@ -71,9 +71,9 @@ return [
     'LastUpdate' => 'Last update',
     'StudentName' => 'Student Name',
     'Progress' => 'Progress',
-
-//    Assignments
-    'AssignmentDesign' => 'Assignment Design',
+    'CreateNewCourse' => 'Create New course',
+    'UpdateCourse' => 'Update Course',
+    'Members' => 'Members',
 
 //    Courses overview
     'CourseList' => 'Course List',
@@ -81,7 +81,7 @@ return [
     'CoursesOverview' => 'Courses Overview',
 
 
-//    Assignments page
+//    Assignments
     'AssignmentTemplateList' => 'Assignment Template List',
     'Number' => 'Number',
     'AssignmentName' => 'Assignment Name',
@@ -92,6 +92,15 @@ return [
     'AvailableDate' => 'Available Date',
     'SelectCourse' => 'Select Course',
     'MyAssignmentList' => 'My Assignment List',
+    'AssignmentDesign' => 'Assignment Design',
+    'UpdateAssignment' => 'Update Assignment',
+
+    //Calendar
+    'Calendar' => 'Calendar',
+    'DragDrop' => 'Drag and Drop Your Event',
+
+
+
 
 //============== Monitoring ===================
 //==== Assignments

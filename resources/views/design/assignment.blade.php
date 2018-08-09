@@ -71,7 +71,6 @@
                                             </th>
                                             <th>
                                                 {{ __('strings.Action') }}
-                                                {{--Action--}}
                                             </th>
                                         </tr>
                                         </thead>
@@ -275,32 +274,15 @@
                                            data-page-size="10">
                                         <thead>
                                         <tr>
-                                            <th> {{ __('strings.Number') }}
-                                                {{--Number--}}
-                                            </th>
-                                            <th>{{ __('strings.AssignmentName') }}
-                                                {{--Assignment name--}}
-                                            </th>
-                                            <th>{{ __('strings.CourseName') }}
-                                                {{--Course name--}}
-                                            </th>
-                                            <th>{{ __('strings.Instructions') }}
-                                                {{--Instructions--}}
-                                            </th>
-                                            <th>{{ __('strings.StartDate') }}
-                                                {{--Date of Start--}}
-                                            </th>
-                                            <th>{{ __('strings.EndDate') }}
-                                                {{--Due Date--}}
-                                            </th>
-                                            <th>{{ __('strings.AvailableFrom') }}
-                                                {{--Available from--}}
-                                            </th>
-                                            {{--<th>Joining date</th>--}}
-                                            {{--<th>Salery</th>--}}
-                                            <th>{{ __('strings.Status') }}
-                                                {{--Status--}}
-                                            </th>
+                                            <th> {{ __('strings.Number') }} </th>
+                                            <th>{{ __('strings.AssignmentName') }} </th>
+                                            <th>{{ __('strings.CourseName') }} </th>
+                                            <th>{{ __('strings.Instructions') }} </th>
+                                            <th>{{ __('strings.StartDate') }} </th>
+                                            <th>{{ __('strings.EndDate') }} </th>
+                                            <th>{{ __('strings.AvailableFrom') }} </th>
+                                            <th>{{ __('strings.Status') }} </th>
+                                            <th>{{ __('strings.Action') }} </th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -335,6 +317,19 @@
                                                     @else
                                                         {{ __('strings.Disactive') }}
                                                         {{--Disactive--}}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        $currentdate = Carbon\Carbon::now();
+                                                    @endphp
+                                                    @if($t_assignment->available_date > $currentdate)
+                                                        <a href="/" data-toggle="modal" data-target="#update-assignment"
+                                                           onclick="updateAssignment({{$t_assignment}})">
+                                                            Edit
+                                                        </a>
+                                                    @else
+                                                        Edit
                                                     @endif
                                                 </td>
                                             </tr>
@@ -384,6 +379,7 @@
     @include('design.modals.assignmentCourse-details')
     {{--Modal for copying an assignment--}}
     @include('design.modals.copy-assignment')
+    @include('design.modals.update-assignment')
 
 
 
@@ -391,14 +387,27 @@
 
         function assignDetails(assignment) {
             var  assignment = assignment;
-
             $("#case").html(assignment.case);
             $("#number").html(assignment.number);
             $("#instructions").html(assignment.instructions);
-
+            //copy assignment
             $("#c_assign_case").val(assignment.case);
             $("#c_assign_number").val(assignment.number);
             $("#c_assign_instructions").val(assignment.instructions);
+            $("#c_assign_id").val(assignment.id);
+            console.log(assignment);
+        }
+//Update assignment: getting values
+        function updateAssignment(assignment) {
+            var  assignment = assignment;
+            var startDate01 = formatDate(assignment.startdate);
+            var deadline01 = formatDate(assignment.deadline);
+            $("#c_assignment_name").val(assignment.case);
+            $("#c_assignment_number").val(assignment.number);
+            $("#c_assignment_instructions").val(assignment.instructions);
+            $("#c_assignment_startdate").val(startDate01);
+            $("#c_assignment_enddate").val(deadline01);
+            $("#c_assignment_availabledate").val(assignment.available_date);
             $("#c_assign_id").val(assignment.id);
             console.log(assignment);
         }
@@ -423,9 +432,18 @@
             $("#course_content").html(assignment.course.course_content);
             $("#course_startdate").html(assignment.course.startdate);
             $("#copy-button1").hide();
-
-            //
             console.log(course)
+        }
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
         }
         
 

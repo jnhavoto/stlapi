@@ -156,6 +156,9 @@
                                             <th>{{ __('strings.Content') }}
                                                 {{--Content--}}
                                             </th>
+                                            <th>{{ __('strings.Members') }}
+                                                {{--Content--}}
+                                            </th>
                                             <th>{{ __('strings.StartDate') }}
                                                 {{--Date of Start--}}
                                             </th>
@@ -163,6 +166,9 @@
                                                 {{--Date of Start--}}
                                             </th>
                                             <th>{{ __('strings.Status') }}
+                                                {{--Status--}}
+                                            </th>
+                                            <th>{{ __('strings.Action') }}
                                                 {{--Status--}}
                                             </th>
                                         </tr>
@@ -179,6 +185,17 @@
                                                     </a>
                                                 </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
+                                                <td>
+                                                    @php
+                                                        $courseMembers = \App\Models\TeacherCourse::find
+                                                        ($course->courses_id);
+                                                    @endphp
+                                                    {{$courseMembers}}
+                                                    {{--@foreach($courseMembers as $members)--}}
+                                                        {{--{{  $members->user->first_name }}--}}
+                                                        {{--{{  $members->user->last_name }}--}}
+                                                    {{--@endforeach--}}
+                                                </td>
                                                 <td>{{$course->startdate}}</td>
                                                 <td>{{$course->available_date}}</td>
                                                 <td>
@@ -187,6 +204,19 @@
                                                     @else
                                                         {{ __('strings.Disactive') }}
                                                         {{--Disactive--}}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        $currentdate = Carbon\Carbon::now();
+                                                    @endphp
+                                                    @if($course->available_date > $currentdate)
+                                                        <a href="/" data-toggle="modal" data-target="#update-course"
+                                                           onclick="courseDetails({{$course}})">
+                                                            Edit
+                                                        </a>
+                                                    @else
+                                                        Edit
                                                     @endif
                                                 </td>
                                             </tr>
@@ -237,11 +267,17 @@
     <script>
         function courseDetails(course) {
             var course = course;
+
+            var startDate01 = formatDate(course.startdate);
+
             $("#name").html(course.name);
             $("#course_content").html(course.course_content);
             $("#c_course_name").val(course.name);
             $("#c_course_content").val(course.course_content);
+            $("#c_course_startdates").val(startDate01);
+            $("#c_course_available_date").val(course.available_date);
             $("#c_course_id").val(course.id);
+
             console.log(course)
         }
 
@@ -252,6 +288,18 @@
             $("#c_course_content").val("");
             $("#c_course_id").val("");
             console.log(course)
+        }
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
         }
     </script>
 @endsection

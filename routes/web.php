@@ -48,8 +48,11 @@ Route::get('/notifications', 'NotificationsController@getNotifications')->middle
 //Start Design
 //==============================================================
 
-//get Courses
+//get all Courses
 Route::get('/courses', 'TeacherController@getCourses')->middleware(['teacher']);
+
+//get members of a course
+//Route::get('/courses/{id}', 'TeacherController@getCourseMembers')->middleware(['teacher']);
 
 //get calendar
 Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
@@ -59,6 +62,12 @@ Route::get('/assignments', 'TeacherController@getAssignments')->middleware(['tea
 Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
 
 Route::post('/submit_course', 'TeacherController@submitCourse')->middleware(['teacher']);
+
+//update course
+Route::post('/update_course', 'TeacherController@updateCourse')->middleware(['teacher']);
+
+//update assignment
+Route::post('/update_assignment', 'TeacherController@updateAssignment')->middleware(['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
 //==============================================================
