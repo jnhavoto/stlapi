@@ -178,7 +178,7 @@
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/course-overview/{{$course->id}}" >
+                                                    <a href="/coursedesign-overview/{{$course->id}}" >
                                                         {{$course->name}}
                                                     </a>
                                                 </td>

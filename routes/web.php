@@ -70,6 +70,9 @@ Route::post('/update_course', 'TeacherController@updateCourse')->middleware(['te
 Route::post('/update_assignment', 'TeacherController@updateAssignment')->middleware(['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
+
+//Individual course overview
+Route::get('/coursedesign-overview/{id}','CourseController@courseDesignOverview')->middleware(['teacher']);
 //==============================================================
 //End Design
 //==============================================================

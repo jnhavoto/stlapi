@@ -41,7 +41,31 @@ class CourseController extends  ModelController
         }
 //        return $submissions;
 
-        //get all students 
+        //get all students
+        return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
+            'submissions' => $submissions,
+            'user'=>Auth::user()]);
+
+    }
+
+    public function courseDesignOverview(Request $request)
+    {
+        //get course details
+        $course = Course::where('id', $request->id)->get();
+        //get all assignments of this course
+        $courseAssignemts = AssignmentDescription::where('courses_id',$request->id)->get();
+//        get all submitted assignments of this course
+        $submissions = collect();
+
+        foreach ($courseAssignemts as $assignment )
+        {
+            $submission = AssignmentSubmission::where('assignment_descriptions_id',$assignment->id)->get();
+//            $submission = AssignmentSubmission::where('assignment_descriptions_id',5)->get();
+            $submissions ->push($submission);
+        }
+//        return $submissions;
+
+        //get all students
         return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
             'user'=>Auth::user()]);
