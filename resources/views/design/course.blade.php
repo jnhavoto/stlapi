@@ -127,8 +127,6 @@
                     <div class="card">
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
-
-
                             <div class="pl-4">
                                 <div class="right-page-header">
                                     <div class="d-flex">

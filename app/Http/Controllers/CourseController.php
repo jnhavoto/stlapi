@@ -39,11 +39,13 @@ class CourseController extends  ModelController
 //            $submission = AssignmentSubmission::where('assignment_descriptions_id',5)->get();
             $submissions ->push($submission);
         }
-        return $submissions;
+//        return $submissions;
 
+        //get all students 
         return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
             'user'=>Auth::user()]);
+
     }
 
     public function coursesOverview()

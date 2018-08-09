@@ -235,7 +235,7 @@ class TeacherController extends ModelController
                 'name' => $request->name,
                 'course_content' => $request->course_content,
                 'startdate' => $request->startdate,
-                'available_tdate' => $request->available_date,
+                'available_date' => $request->available_date,
                 //get the department id from the name the user chose in the form
                 'departments_id' => 1,
             ]
