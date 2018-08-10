@@ -1,4 +1,4 @@
-<div id="create-course" class="modal fade in" tabindex="-1" role="dialog"
+<div id="update-course" class="modal fade in" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

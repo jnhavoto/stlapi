@@ -99,8 +99,6 @@ return [
     'DragDrop' => 'Drag and Drop Your Event',
 
 
-
-
 //============== Monitoring ===================
 //==== Assignments
     'Monitoring' => 'Monitoring',

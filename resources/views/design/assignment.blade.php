@@ -277,7 +277,7 @@
                                             <th> {{ __('strings.Number') }} </th>
                                             <th>{{ __('strings.AssignmentName') }} </th>
                                             <th>{{ __('strings.CourseName') }} </th>
-                                            <th>{{ __('strings.Instructions') }} </th>
+                                            {{--<th>{{ __('strings.Instructions') }} </th>--}}
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.EndDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
@@ -306,7 +306,7 @@
                                                     </a>
                                                 </td>
                                                 {{--courseDetails($t_assignment->courses)--}}
-                                                <td>{{substr($t_assignment->instructions, 0, 45) }}</td>
+                                                {{--<td>{{substr($t_assignment->instructions, 0, 45) }}</td>--}}
                                                 <td>{{$t_assignment->startdate}}</td>
                                                 <td>{{$t_assignment->deadline}}</td>
                                                 <td>{{$t_assignment->available_date}}</td>
@@ -320,17 +320,17 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @php
-                                                        $currentdate = Carbon\Carbon::now();
-                                                    @endphp
-                                                    @if($t_assignment->available_date > $currentdate)
+                                                    {{--@php--}}
+                                                        {{--$currentdate = Carbon\Carbon::now();--}}
+                                                    {{--@endphp--}}
+                                                    {{--@if($t_assignment->available_date > $currentdate)--}}
                                                         <a href="/" data-toggle="modal" data-target="#update-assignment"
                                                            onclick="updateAssignment({{$t_assignment}})">
                                                             Edit
                                                         </a>
-                                                    @else
-                                                        Edit
-                                                    @endif
+                                                    {{--@else--}}
+                                                        {{--Edit--}}
+                                                    {{--@endif--}}
                                                 </td>
                                             </tr>
                                         @endforeach

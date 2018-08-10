@@ -208,14 +208,14 @@
                                                     @php
                                                         $currentdate = Carbon\Carbon::now();
                                                     @endphp
-                                                    @if($course->available_date > $currentdate)
+                                                    {{--@if($course->available_date > $currentdate)--}}
                                                         <a href="/" data-toggle="modal" data-target="#update-course"
                                                            onclick="courseDetails({{$course}})">
                                                             Edit
                                                         </a>
-                                                    @else
-                                                        Edit
-                                                    @endif
+                                                    {{--@else--}}
+                                                        {{--Edit--}}
+                                                    {{--@endif--}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -261,6 +261,7 @@
     @include('design.modals.course-details')
     <!--Modal for copping a course-->
     @include('design.modals.create-course')
+    @include('design.modals.update-course')
 
     <script>
         function courseDetails(course) {
