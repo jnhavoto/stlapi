@@ -22,21 +22,21 @@
                             <label class="control-label"> {{ __('strings.CourseName') }} </label>
                             <div>
                                 <input name="name" type="text" class="form-control input-lg"
-                                       id="c_course_name">
+                                       id="c_course_name01">
                             </div>
                         </div>
 
                         <div class="col-md-12 m-b-20">
-                            <label class="control-label"> {{ __('strings.CourseContent') }} </label>
+                            <label class="control-label"> {{ __('strings.CourseDescription') }} </label>
                             <textarea name="course_content"  type="text"
-                                      class="form-control" rows="3" id="c_course_content"> </textarea>
+                                      class="form-control" rows="3" id="c_course_content01"> </textarea>
                         </div>
 
                         <input id="c_course_id" type="hidden" name="course_template_id">
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label"> {{ __('strings.StartDate') }} </label>
-                            <input name="startdate" type="date" id="c_course_startdates"
+                            <input name="startdate" type="date" id="c_course_startdate01"
                                    class="form-control">
                         </div>
 
@@ -44,7 +44,7 @@
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label"> {{ __('strings.AvailableFrom') }} </label>
-                            <input name="available_date" type="date" id="c_course_available_date"
+                            <input name="available_date" type="date" id="c_course_available_date01"
                                    class="form-control">
                         </div>
                         <div class="form-group">

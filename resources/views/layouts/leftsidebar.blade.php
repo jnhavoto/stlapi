@@ -151,8 +151,8 @@
                             {{ __('strings.Contacts') }}
                             {{--Contacts--}}
                         </a></li>
-                    <li><a href="/notifications">
-                            {{ __('strings.Notifications') }}
+                    <li><a href="/announcements">
+                            {{ __('strings.Announcements') }}
                             {{--Notifications--}}
                         </a></li>
                     <li><a href="/chats">

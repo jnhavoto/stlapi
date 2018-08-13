@@ -37,7 +37,10 @@ Route::get('/contact-details', function () {
 Route::get('/chats', 'ChatController@getAllChats')->middleware(['teacher']);
 
 //get Notifications
-Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
+//Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
+
+Route::get('/announcements', 'AssignmentAnnouncementController@getAnnouncements')->middleware(['teacher']);
+
 
 //==============================================================
 //End Comunications

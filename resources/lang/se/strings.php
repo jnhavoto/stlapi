@@ -106,4 +106,11 @@ return [
     'AssignmentOverview' => 'Assignment Overview',
 
 
+    //100818
+    'CourseDescription' => 'Course Description',
+    'CourseMaterial' => 'Course Material',
+    'SeeAllChats' => 'See All Chats',
+    'Announcements' => 'Announcements',
+
+
 ];

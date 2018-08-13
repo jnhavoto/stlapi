@@ -262,8 +262,9 @@
                                 </div>
                             </li>
                             <li>
-                                <a class="nav-link text-center" href="javascript:void(0);"> <strong>See all
-                                        e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
+                                <a class="nav-link text-center" href="/chats"> <strong>
+                                        {{ __('strings.SeeAllChats') }}
+                                    </strong> <i class="fa fa-angle-right"></i> </a>
                             </li>
                         </ul>
                     </div>

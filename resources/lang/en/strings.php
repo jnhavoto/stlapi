@@ -75,6 +75,7 @@ return [
     'UpdateCourse' => 'Update Course',
     'Members' => 'Members',
 
+
 //    Courses overview
     'CourseList' => 'Course List',
     'AllCourses' => 'All Courses',
@@ -108,4 +109,10 @@ return [
     'AssignmentsOverview' => 'Assignments Overview',
     'AssignmentOverview' => 'Assignment Overview',
 
+
+    //100818
+    'CourseDescription' => 'Course Description',
+    'CourseMaterial' => 'Course Material',
+    'SeeAllChats' => 'See All Chats',
+    'Announcements' => 'Announcements',
 ];

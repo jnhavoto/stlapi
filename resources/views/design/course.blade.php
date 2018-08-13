@@ -67,7 +67,7 @@
                                             <th>{{ __('strings.CourseName') }}
                                                 {{--Full Name--}}
                                             </th>
-                                            <th>{{ __('strings.CourseContent') }}
+                                            <th>{{ __('strings.CourseDescription') }}
                                                 {{--Content--}}
                                             </th>
                                             <th>{{ __('strings.Action') }}
@@ -151,7 +151,7 @@
                                             <th>{{ __('strings.CourseName') }}
                                                 {{--Full Name--}}
                                             </th>
-                                            <th>{{ __('strings.Content') }}
+                                            <th>{{ __('strings.CourseDescription') }}
                                                 {{--Content--}}
                                             </th>
                                             <th>{{ __('strings.Members') }}
@@ -210,7 +210,7 @@
                                                     @endphp
                                                     {{--@if($course->available_date > $currentdate)--}}
                                                         <a href="/" data-toggle="modal" data-target="#update-course"
-                                                           onclick="courseDetails({{$course}})">
+                                                           onclick="updateCourseDetails({{$course}})">
                                                             Edit
                                                         </a>
                                                     {{--@else--}}
@@ -266,9 +266,7 @@
     <script>
         function courseDetails(course) {
             var course = course;
-
             var startDate01 = formatDate(course.startdate);
-
             $("#name").html(course.name);
             $("#course_content").html(course.course_content);
             $("#c_course_name").val(course.name);
@@ -276,7 +274,18 @@
             $("#c_course_startdates").val(startDate01);
             $("#c_course_available_date").val(course.available_date);
             $("#c_course_id").val(course.id);
+            console.log(course)
+        }
 
+        function updateCourseDetails(course) {
+            var course = course;
+            var startDate01 = formatDate(course.startdate);
+            var availableDate01 = formatDate(course.available_date);
+            $("#c_course_name01").val(course.name);
+            $("#c_course_content01").val(course.course_content);
+            $("#c_course_startdate01").val(startDate01);
+            $("#c_course_available_date01").val(availableDate01);
+            $("#c_course_id").val(course.id);
             console.log(course)
         }
 

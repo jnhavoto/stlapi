@@ -56,7 +56,7 @@
                                         <tr>
                                             <th> #</th>
                                             <th>{{ __('strings.CourseName') }} </th>
-                                            <th>{{ __('strings.CourseContent') }} </th>
+                                            <th>{{ __('strings.CourseDescription') }} </th>
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
                                             <th>{{ __('strings.Status') }}
