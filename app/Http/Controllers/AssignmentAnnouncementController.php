@@ -27,15 +27,21 @@ class AssignmentAnnouncementController  extends ModelController
         //get all announcements where the teacher/instructor is a mmember
          $announcements = collect();
 
+//        return $memberof;
+
         foreach ($memberof as $membership)
         {
-            $announcementasmember = AssignmentAnnouncement::where('teacher_members_id', $membership->id)->get();
-            $assignment_extended = TeacherMember::where('teachers_id', $teacherid->id)->get()
-            ->union($announcementasmember);
-            return $assignment_extended;
-            $announcements ->push($announcementasmember);
-        }
+//            $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
+//                $membership->id)
+//                ->get();
+            $assignment_extended = TeacherMember::where('teachers_id', $teacherid->id)
+            ->join('assignment_announcement','teacher_members.id','=','assignment_announcement.teacher_members_id')
+            ->join('teachers', 'teacher_members.teachers_id', '=', 'teachers.id')
+            ->get();
 
+            $announcements ->push($assignment_extended);
+        }
+        return $announcements;
         //$teachermembers = $memberof->teacher;
         $announcementsDetails = $announcements->merge($memberof);
         //testing the collection

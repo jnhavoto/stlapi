@@ -10,7 +10,7 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class StudentNotificationStatus
+ * Class StudentAnnouncementsStatus
  * 
  * @property int $id
  * @property int $students_id
@@ -22,7 +22,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class StudentNotificationStatus extends Eloquent
+class StudentAnnouncementsStatus extends Eloquent
 {
 	protected $table = 'student_notification_status';
 	public $timestamps = false;

@@ -114,7 +114,7 @@ class Student extends Eloquent
 
 	public function student_notification_statuses()
 	{
-		return $this->hasMany(\App\Models\StudentNotificationStatus::class, 'students_id');
+		return $this->hasMany(\App\Models\StudentAnnouncementsStatus::class, 'students_id');
 	}
 
 	public function courses()

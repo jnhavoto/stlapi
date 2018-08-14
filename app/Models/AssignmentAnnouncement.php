@@ -56,6 +56,6 @@ class AssignmentAnnouncement extends Eloquent
 
 	public function student_notification_statuses()
 	{
-		return $this->hasMany(\App\Models\StudentNotificationStatus::class, 'assignment_notifications_id');
+		return $this->hasMany(\App\Models\StudentAnnouncementsStatus::class, 'assignment_notifications_id');
 	}
 }

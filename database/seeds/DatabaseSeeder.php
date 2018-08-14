@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\DigitalTool::class, 3)->create();
         factory(\App\Models\DigitalToolsHasStudent::class, 3)->create();
         factory(\App\Models\AssignmentSubmissionsMediaType::class, 3)->create();
-        factory(\App\Models\StudentNotificationStatus::class, 3)->create();
+        factory(\App\Models\StudentAnnouncementsStatus::class, 3)->create();
         factory(\App\Models\Subject::class, 3)->create();
         factory(\App\Models\SubjectsHasStudent::class, 3)->create();
         factory(\App\Models\TechUse::class, 3)->create();

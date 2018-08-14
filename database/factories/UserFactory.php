@@ -408,8 +408,8 @@ $factory->define(\App\Models\StudentMember::class, function (Faker $faker){
     ];
 });
 
-//feeding StudentNotificationStatus
-$factory->define(\App\Models\StudentNotificationStatus::class, function (Faker $faker){
+//feeding StudentAnnouncementsStatus
+$factory->define(\App\Models\StudentAnnouncementsStatus::class, function (Faker $faker){
     return [
         'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
         'assignment_notifications_id' => $faker->numberBetween(1,\App\Models\AssignmentAnnouncement::all()->count()),
