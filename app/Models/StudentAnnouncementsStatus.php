@@ -24,7 +24,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class StudentAnnouncementsStatus extends Eloquent
 {
-	protected $table = 'student_notification_status';
+	protected $table = 'student_announcements_status';
 	public $timestamps = false;
 
 	protected $casts = [

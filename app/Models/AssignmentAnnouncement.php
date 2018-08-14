@@ -37,11 +37,16 @@ class AssignmentAnnouncement extends Eloquent
 		'teacher_members_id' => 'int'
 	];
 
+    protected $dates = [
+        'date',
+    ];
+
 	protected $fillable = [
 		'assignment_descriptions_id',
 		'teacher_members_id',
 		'message',
-		'subject'
+		'subject',
+        'status'
 	];
 
 	public function assignment_description()

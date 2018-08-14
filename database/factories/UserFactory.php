@@ -244,6 +244,8 @@ $factory->define(\App\Models\AssignmentAnnouncement::class, function (Faker $fak
         'teacher_members_id'=>$faker->numberBetween(1, \App\Models\TeacherMember::all()->count()),
         'message' =>$faker->text(60),
         'subject' =>$faker->text(20),
+        'status' => $faker->numberBetween(0,1),
+        'date' => $faker->date('Y-m-d')
     ];
 });
 
@@ -413,6 +415,7 @@ $factory->define(\App\Models\StudentAnnouncementsStatus::class, function (Faker 
     return [
         'students_id' => $faker->numberBetween(1,\App\Models\Student::all()->count()),
         'assignment_notifications_id' => $faker->numberBetween(1,\App\Models\AssignmentAnnouncement::all()->count()),
+        'status'  => $faker->numberBetween(1,2),
     ];
 });
 
@@ -478,12 +481,37 @@ $factory->define(\App\Models\WorkplaceToolsHasStudent::class, function (Faker $f
 
 //feeding calendar
 $colors=['Success','Danger','Info','Primary','Warning','Inverse'];
-
-$factory->define(\App\Calendar::class, function (Faker $faker) use ($colors){
+$factory->define(\App\Models\Calendar::class, function (Faker $faker) use ($colors){
     return [
         'eventname' => $faker->text(12),
-        'eventdate' => $faker->date('Y-m-d'),
+        'event_startdate' => $faker->date('Y-m-d'),
+        'event_enddate' => $faker->date('Y-m-d'),
         'color' => $faker->randomElement($colors),
         'users_id' => $faker->numberBetween(1,\App\User::all()->count()),
+    ];
+});
+
+//feeding Course Announcements
+$factory->define(\App\Models\CourseAnnouncement::class, function (Faker $faker) use ($colors){
+    return [
+        'courses_id' => $faker->numberBetween(1,\App\Models\Course::all()->count()),
+        'teacher_members_id'  => $faker->numberBetween(1,\App\Models\TeacherMember::all()->count()),
+        'message'  =>  $faker->text(45),
+        'subject'  =>  $faker->text(15),
+        'status' => $faker->numberBetween(0,1),
+        'date' => $faker->date('Y-m-d'),
+    ];
+});
+
+//feeding User Chats
+$factory->define(\App\Models\UsersChat::class, function (Faker $faker) use ($colors){
+    return [
+        'message'  =>  $faker->text(45),
+        'subject'  =>  $faker->text(15),
+        'status' => $faker->numberBetween(1,2),
+        'sender_id'  => $faker->numberBetween(1,\App\User::all()->count()),
+        'receiver_id'  => $faker->numberBetween(1,\App\User::all()->count()),
+        'courses_id' => $faker->numberBetween(1,\App\Models\Course::all()->count()),
+        'assignment_description_id' => $faker->numberBetween(1,\App\Models\AssignmentDescription::all()->count()),
     ];
 });

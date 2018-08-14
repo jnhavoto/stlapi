@@ -40,6 +40,8 @@ Route::get('/chats', 'ChatController@getAllChats')->middleware(['teacher']);
 //Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
 
 Route::get('/announcements', 'AssignmentAnnouncementController@getAnnouncements')->middleware(['teacher']);
+Route::get('/announcements/sent', 'AssignmentAnnouncementController@getSentAnnouncements')->middleware(['teacher']);
+Route::get('/announcements/inbox', 'AssignmentAnnouncementController@getInboxAnnouncements')->middleware(['teacher']);
 
 
 //==============================================================
