@@ -185,14 +185,14 @@
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
                                                 <td>
                                                     @php
-                                                        $courseMembers = \App\Models\TeacherCourse::find
-                                                        ($course->courses_id);
+                                                        $courseMembers = \App\Models\Course::find($course->id)->teachers;
                                                     @endphp
-                                                    {{$courseMembers}}
-                                                    {{--@foreach($courseMembers as $members)--}}
-                                                        {{--{{  $members->user->first_name }}--}}
-                                                        {{--{{  $members->user->last_name }}--}}
-                                                    {{--@endforeach--}}
+                                                    @foreach($courseMembers as $members)
+                                                        {{  $members->user->first_name .' '.
+                                                        $members->user->last_name }}
+
+                                                        {{'\n'}}
+                                                    @endforeach
                                                 </td>
                                                 <td>{{$course->startdate}}</td>
                                                 <td>{{$course->available_date}}</td>

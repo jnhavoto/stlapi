@@ -151,7 +151,7 @@
                             {{ __('strings.Contacts') }}
                             {{--Contacts--}}
                         </a></li>
-                    <li><a href="/announcements">
+                    <li><a href="/announcements/inbox">
                             {{ __('strings.Announcements') }}
                             {{--Notifications--}}
                         </a></li>

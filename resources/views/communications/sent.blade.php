@@ -17,11 +17,13 @@
                                 </td>
                                 <td style="width:40px" class="hidden-xs-down"><i class="fa fa-star-o"></i></td>
                                 <td class="hidden-xs-down"> {{$announcement->teacher_member->teacher
-                                                    ->user->first_name}}
-                                    Roshan</td>
+                                                    ->user->first_name.' '.$announcement->teacher_member->teacher
+                                                    ->user->last_name}}
+                                    </td>
                                 <td class="max-texts"> <a href="/announcement-details" /><span
                                             class="label
-                                                    label-info m-r-10">Work</span> {{$announcement->message}}</td>
+                                                    label-info m-r-10">{{$announcement->courses_id ?
+                                                        'Course' : 'Assignment'}}</span> {{$announcement->subject}}</td>
                                 <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
                                 <td class="text-right"> {{$announcement->created_at}} </td>
                             </tr>

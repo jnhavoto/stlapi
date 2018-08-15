@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentAnnouncement;
+use App\Models\CourseAnnouncement;
 use App\Models\Teacher;
 use App\Models\TeacherMember;
 use Illuminate\Http\Request;
@@ -73,12 +74,19 @@ class AssignmentAnnouncementController  extends ModelController
                 $membership->id)
                 ->get();
 
+            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+                $membership->id)
+                ->get();
+
             if(count($announcementasmember) > 0){
                 $sent_announcements ->push($announcementasmember);
             }
+            if(count($course_announcementasmember) > 0){
+                $sent_announcements ->push($course_announcementasmember);
+            }
 
         }
-//        return $announcements;
+//        return $sent_announcements;
 
         return view('communications.sent', ['sent_announcements' => $sent_announcements, 'label' => 'sent', 'count_inbox'
         => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),
@@ -105,9 +113,15 @@ class AssignmentAnnouncementController  extends ModelController
                 $membership->id)
                 ->get();
 
+            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+                $membership->id)
+                ->get();
 
             if(count($announcementasmember) > 0){
                 $inbox_announcements ->push($announcementasmember);
+            }
+            if(count($course_announcementasmember) > 0){
+                $inbox_announcements ->push($course_announcementasmember);
             }
         }
 
@@ -128,7 +142,6 @@ class AssignmentAnnouncementController  extends ModelController
             $memberof = TeacherMember::where('teachers_id', $teacherid->id)->get();
 
         //get all announcements where the teacher/instructor is a mmember
-        $inbox_announcements = collect();
 
 //        return $memberof;
         foreach ($memberof as $membership)
@@ -137,10 +150,12 @@ class AssignmentAnnouncementController  extends ModelController
                 $membership->id)
                 ->get();
 
+            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+                $membership->id)
+                ->get();
 
-            if(count($announcementasmember) > 0){
-                $inbox_announcements ->push($announcementasmember);
-                $count_annouc += count($announcementasmember);
+            if(count($announcementasmember) > 0 || count($course_announcementasmember) > 0){
+                $count_annouc += count($announcementasmember)+count($course_announcementasmember);
             }
         }
 
