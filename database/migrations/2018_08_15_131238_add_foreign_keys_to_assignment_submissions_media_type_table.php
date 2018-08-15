@@ -14,8 +14,8 @@ class AddForeignKeysToAssignmentSubmissionsMediaTypeTable extends Migration {
 	{
 		Schema::table('assignment_submissions_media_type', function(Blueprint $table)
 		{
-			$table->foreign('media_type_id', 'fk_assignment_submissions_has_media_type_media_type1')->references('id')->on('media_type')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('assignment_submissions_id', 'fk_assignment_submissions_has_media_type_assignment_submissio1')->references('id')->on('assignment_submissions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('media_type_id', 'fk_assignment_submissions_has_media_type_media_type1')->references('id')->on('media_type')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToAssignmentSubmissionsMediaTypeTable extends Migration {
 	{
 		Schema::table('assignment_submissions_media_type', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_assignment_submissions_has_media_type_media_type1');
 			$table->dropForeign('fk_assignment_submissions_has_media_type_assignment_submissio1');
+			$table->dropForeign('fk_assignment_submissions_has_media_type_media_type1');
 		});
 	}
 

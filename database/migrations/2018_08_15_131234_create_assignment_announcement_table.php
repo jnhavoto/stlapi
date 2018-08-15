@@ -21,6 +21,11 @@ class CreateAssignmentAnnouncementTable extends Migration {
 			$table->string('subject', 45)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
+			$table->integer('status')->nullable()->comment('0=saved
+1=sent
+');
+			$table->date('date');
+			$table->primary(['id','date']);
 		});
 	}
 

@@ -15,9 +15,9 @@ class CreateCourseMaterialTable extends Migration {
 		Schema::create('course_material', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->text('description', 65535)->nullable();
+			$table->text('description')->nullable();
 			$table->string('file_name', 90)->nullable();
-			$table->text('path', 65535)->nullable();
+			$table->text('path')->nullable();
 			$table->integer('courses_id')->unsigned()->index('fk_course_material_courses1_idx');
 		});
 	}

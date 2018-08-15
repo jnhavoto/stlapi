@@ -15,7 +15,7 @@ class CreateCoursesTemplateTable extends Migration {
 		Schema::create('courses_template', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name', 191);
+			$table->string('name');
 			$table->text('course_content', 65535);
 			$table->timestamps();
 			$table->softDeletes();

@@ -14,8 +14,8 @@ class AddForeignKeysToDigitalToolsHasStudentsTable extends Migration {
 	{
 		Schema::table('digital_tools_has_students', function(Blueprint $table)
 		{
-			$table->foreign('students_id', 'fk_digital_tools_has_students_students1')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('digital_tools_id', 'fk_digital_tools_has_students_digital_tools1')->references('id')->on('digital_tools')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('students_id', 'fk_digital_tools_has_students_students1')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToDigitalToolsHasStudentsTable extends Migration {
 	{
 		Schema::table('digital_tools_has_students', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_digital_tools_has_students_students1');
 			$table->dropForeign('fk_digital_tools_has_students_digital_tools1');
+			$table->dropForeign('fk_digital_tools_has_students_students1');
 		});
 	}
 

@@ -14,8 +14,8 @@ class AddForeignKeysToFeedbackMessagesTable extends Migration {
 	{
 		Schema::table('feedback_messages', function(Blueprint $table)
 		{
-			$table->foreign('students_reciever', 'fk_students_has_students_students2')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('students_sender', 'fk_students_has_students_students1')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('students_reciever', 'fk_students_has_students_students2')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToFeedbackMessagesTable extends Migration {
 	{
 		Schema::table('feedback_messages', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_students_has_students_students2');
 			$table->dropForeign('fk_students_has_students_students1');
+			$table->dropForeign('fk_students_has_students_students2');
 		});
 	}
 
