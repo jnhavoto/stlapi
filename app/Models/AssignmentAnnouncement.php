@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 16 Aug 2018 10:45:38 +0000.
+ * Date: Thu, 16 Aug 2018 11:04:27 +0000.
  */
 
 namespace App\Models;
@@ -12,8 +12,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class AssignmentAnnouncement
  * 
- * @property int $assignment_descriptions_id
- * @property int $teacher_members_id
  * @property int $id
  * @property string $message
  * @property string $subject
@@ -22,6 +20,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $deleted_at
  * @property int $status
  * @property \Carbon\Carbon $date
+ * @property int $assignment_descriptions_id
+ * @property int $teacher_members_id
  * 
  * @property \App\Models\AssignmentDescription $assignment_description
  * @property \App\Models\TeacherMember $teacher_member
@@ -35,9 +35,9 @@ class AssignmentAnnouncement extends Eloquent
 	protected $table = 'assignment_announcement';
 
 	protected $casts = [
+		'status' => 'int',
 		'assignment_descriptions_id' => 'int',
-		'teacher_members_id' => 'int',
-		'status' => 'int'
+		'teacher_members_id' => 'int'
 	];
 
 	protected $dates = [
@@ -45,12 +45,12 @@ class AssignmentAnnouncement extends Eloquent
 	];
 
 	protected $fillable = [
-		'assignment_descriptions_id',
-		'teacher_members_id',
 		'message',
 		'subject',
 		'status',
-		'date'
+		'date',
+		'assignment_descriptions_id',
+		'teacher_members_id'
 	];
 
 	public function assignment_description()

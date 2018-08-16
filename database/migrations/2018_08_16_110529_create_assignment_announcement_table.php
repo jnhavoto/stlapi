@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCourseAnnouncementsTable extends Migration {
+class CreateAssignmentAnnouncementTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,9 @@ class CreateCourseAnnouncementsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('course_announcements', function(Blueprint $table)
+		Schema::create('assignment_announcement', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('courses_id')->unsigned()->index('fk_course_announcements_courses1_idx');
-			$table->integer('teacher_members_id')->index('fk_course_announcements_teacher_members1_idx');
 			$table->text('message', 65535)->nullable();
 			$table->string('subject', 45)->nullable();
 			$table->timestamps();
@@ -25,6 +23,8 @@ class CreateCourseAnnouncementsTable extends Migration {
 1=sent
 ');
 			$table->date('date')->nullable();
+			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_assignment_descriptions_has_teacher_members_assignment_d_idx');
+			$table->integer('teacher_members_id')->index('fk_assignment_descriptions_has_teacher_members_teacher_memb_idx');
 		});
 	}
 
@@ -36,7 +36,7 @@ class CreateCourseAnnouncementsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('course_announcements');
+		Schema::drop('assignment_announcement');
 	}
 
 }
