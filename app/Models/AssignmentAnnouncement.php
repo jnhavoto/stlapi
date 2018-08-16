@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 23 Jul 2018 14:08:49 +0000.
+ * Date: Thu, 16 Aug 2018 10:45:38 +0000.
  */
 
 namespace App\Models;
@@ -20,10 +20,12 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
+ * @property int $status
+ * @property \Carbon\Carbon $date
  * 
  * @property \App\Models\AssignmentDescription $assignment_description
  * @property \App\Models\TeacherMember $teacher_member
- * @property \Illuminate\Database\Eloquent\Collection $student_notification_statuses
+ * @property \Illuminate\Database\Eloquent\Collection $student_announcements_statuses
  *
  * @package App\Models
  */
@@ -34,19 +36,21 @@ class AssignmentAnnouncement extends Eloquent
 
 	protected $casts = [
 		'assignment_descriptions_id' => 'int',
-		'teacher_members_id' => 'int'
+		'teacher_members_id' => 'int',
+		'status' => 'int'
 	];
 
-    protected $dates = [
-        'date',
-    ];
+	protected $dates = [
+		'date'
+	];
 
 	protected $fillable = [
 		'assignment_descriptions_id',
 		'teacher_members_id',
 		'message',
 		'subject',
-        'status'
+		'status',
+		'date'
 	];
 
 	public function assignment_description()
@@ -59,7 +63,7 @@ class AssignmentAnnouncement extends Eloquent
 		return $this->belongsTo(\App\Models\TeacherMember::class, 'teacher_members_id');
 	}
 
-	public function student_notification_statuses()
+	public function student_announcements_statuses()
 	{
 		return $this->hasMany(\App\Models\StudentAnnouncementsStatus::class, 'assignment_notifications_id');
 	}
