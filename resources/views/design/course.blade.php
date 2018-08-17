@@ -188,10 +188,9 @@
                                                         $courseMembers = \App\Models\Course::find($course->id)->teachers;
                                                     @endphp
                                                     @foreach($courseMembers as $members)
-                                                        {{  $members->user->first_name .' '.
-                                                        $members->user->last_name }}
-
-                                                        {{'\n'}}
+                                                    {{
+                                                        nl2br(e($members->user->first_name .' '.
+                                                        $members->user->last_name)) }}
                                                     @endforeach
                                                 </td>
                                                 <td>{{$course->startdate}}</td>

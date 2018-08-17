@@ -40,8 +40,13 @@ Route::get('/chats', 'ChatController@getAllChats')->middleware(['teacher']);
 //Route::get('/notifications', 'NotificationsController@getNotifications')->middleware(['teacher']);
 
 Route::get('/announcements', 'AssignmentAnnouncementController@getAnnouncements')->middleware(['teacher']);
-Route::get('/announcements/sent', 'AssignmentAnnouncementController@getSentAnnouncements')->middleware(['teacher']);
+Route::get('/announcements-details/{id}', 'AssignmentAnnouncementController@getAnnouncementDetails')->middleware(['teacher']);
+/* Route::get('announcdetails/{announcID}/types/{type}', 
+    ['as'=> 'announcements-details', 
+    'uses' =>'AssignmentAnnouncementController@getAnnouncementDetails'])->middleware(['teacher']); */
 Route::get('/announcements/inbox', 'AssignmentAnnouncementController@getInboxAnnouncements')->middleware(['teacher']);
+Route::get('/announcements/sent', 'AssignmentAnnouncementController@getSentAnnouncements')->middleware(['teacher']);
+Route::get('/announcements/draft', 'AssignmentAnnouncementController@getDraftAnnouncements')->middleware(['teacher']);
 
 
 //==============================================================

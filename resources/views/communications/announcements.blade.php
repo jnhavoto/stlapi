@@ -17,22 +17,17 @@
                                 <div class="card-body inbox-panel"><a href="app-compose.html" class="btn btn-danger m-b-20 p-10 btn-block waves-effect waves-light">Compose</a>
                                     <ul class="list-group list-group-full">
                                         <li class="list-group-item {{$label == 'inbox' ? 'active' : ''}}">
-                                            <a href="/announcements/inbox"> <i class="mdi mdi-file-document-box"></i>
-                                                Inbox </a>
-                                            <span class="badge
-                                                        badge-success ml-auto">{{$count_inbox
-                                                        }}</span>
+                                            <a href="/announcements/inbox"> <i class="mdi mdi-file-document-box"></i> Inbox </a>
+                                            <span class="badge badge-success ml-auto">{{$count_inbox}}</span>
                                         </li>
-                                        <li class="list-group-item {{$label == 'sent' ? 'active' : ''}}"> <a
-                                                    href="/announcements/sent"><i
-                                                        class="mdi mdi-gmail"></i> Sent </a>
-                                            <span class="badge badge-success ml-auto">{{ $count_sent
-                                            }}</span>
+                                        <li class="list-group-item {{$label == 'sent' ? 'active' : ''}}"> 
+                                        <a href="/announcements/sent"><i class="mdi mdi-gmail"></i> Sent </a>
+                                            <span class="badge badge-success ml-auto">{{ $count_sent }}</span>
                                         </li>
-
-                                        <li class="list-group-item">
-                                            <a href="javascript:void(0)"> <i class="mdi mdi-send"></i> Draft </a><span class="badge badge-danger ml-auto">3</span></li>
-
+                                        <li class="list-group-item {{$label == 'draft' ? 'active' : ''}}">
+                                            <a href="/announcements/draft"> <i class="mdi mdi-send"></i> Draft </a>
+                                            <span class="badge badge-danger ml-auto"> {{ $count_draft}} </span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -133,7 +128,7 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer"> © 2018 Material Pro Admin by wrappixel.com </footer>
+        <!-- <footer class="footer"> © 2018 Material Pro Admin by wrappixel.com </footer> -->
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
