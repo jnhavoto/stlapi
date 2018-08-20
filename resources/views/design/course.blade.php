@@ -188,9 +188,10 @@
                                                         $courseMembers = \App\Models\Course::find($course->id)->teachers;
                                                     @endphp
                                                     @foreach($courseMembers as $members)
-                                                    {{
-                                                        nl2br(e($members->user->first_name .' '.
-                                                        $members->user->last_name)) }}
+                                                        <a href="/contact-details-other/{{$members->user->id}}">{{
+                                                        $members->user->first_name .' '.$members->user->last_name
+                                                    }}</a>
+                                                     <br/>
                                                     @endforeach
                                                 </td>
                                                 <td>{{$course->startdate}}</td>
@@ -209,7 +210,7 @@
                                                     @endphp
                                                     {{--@if($course->available_date > $currentdate)--}}
                                                         <a href="/" data-toggle="modal" data-target="#update-course"
-                                                           onclick="updateCourseDetails({{$course}})">
+                                                           onclick="updateCourseDetails({{$course}}, {{$courseMembers}})">
                                                             Edit
                                                         </a>
                                                     {{--@else--}}
@@ -229,13 +230,11 @@
                                                     {{--Add New Course--}}
                                                 </button>
                                             </td>
-
-
-                                            <td colspan="7">
-                                                <div class="text-right">
-                                                    <ul class="pagination"> </ul>
-                                                </div>
-                                            </td>
+                                            {{--<td colspan="7">--}}
+                                                {{--<div class="text-right">--}}
+                                                    {{--<ul class="pagination"> </ul>--}}
+                                                {{--</div>--}}
+                                            {{--</td>--}}
                                         </tr>
                                         </tfoot>
                                     </table>
@@ -276,7 +275,7 @@
             console.log(course)
         }
 
-        function updateCourseDetails(course) {
+        function updateCourseDetails(course, member) {
             var course = course;
             var startDate01 = formatDate(course.startdate);
             var availableDate01 = formatDate(course.available_date);
@@ -285,6 +284,12 @@
             $("#c_course_startdate01").val(startDate01);
             $("#c_course_available_date01").val(availableDate01);
             $("#c_course_id").val(course.id);
+
+
+            member.forEach(function(valor, chave){
+
+            });
+
             console.log(course)
         }
 
@@ -308,5 +313,14 @@
 
             return [year, month, day].join('-');
         }
+
+
+
+        $(document).ready(function() {
+            console.log($('#select-members').val());
+        })
+
+
+
     </script>
 @endsection

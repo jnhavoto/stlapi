@@ -40,4 +40,12 @@ class GroupTeacher extends Eloquent
 	{
 		return $this->hasMany(\App\Models\TeacherMember::class, 'group_teachers_id');
 	}
+
+	public function teachers()
+	{
+		return $this->hasMany(\App\Models\Teacher::class, 'group_teachers_id', 'teachers_id');
+	}
+
+
+
 }

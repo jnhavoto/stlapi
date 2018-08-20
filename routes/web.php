@@ -29,8 +29,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
 
-Route::get('/contact-details', function () {
-	return view('communications.contact-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
+Route::get('/contact-details/{id}', function ($id) {
+	return view('communications.contact-details', ['user' => \App\User::find($id)]);
+})->middleware(['teacher']);
+
+Route::get('/contact-details-other/{id}', function ($id) {
+    return view('communications.contact-details-other', ['user' => \App\User::find($id)]);
 })->middleware(['teacher']);
 
 //get Chats
@@ -59,7 +63,7 @@ Route::get('/announcements/draft', 'AssignmentAnnouncementController@getDraftAnn
 //==============================================================
 
 //get all Courses
-Route::get('/courses', 'TeacherController@getCourses')->middleware(['teacher']);
+Route::get('/courses', 'CourseController@getCourses')->middleware(['teacher']);
 
 //get members of a course
 //Route::get('/courses/{id}', 'TeacherController@getCourseMembers')->middleware(['teacher']);
@@ -71,10 +75,10 @@ Route::get('/assignments', 'TeacherController@getAssignments')->middleware(['tea
 
 Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
 
-Route::post('/submit_course', 'TeacherController@submitCourse')->middleware(['teacher']);
+Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['teacher']);
 
 //update course
-Route::post('/update_course', 'TeacherController@updateCourse')->middleware(['teacher']);
+Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
 
 //update assignment
 Route::post('/update_assignment', 'TeacherController@updateAssignment')->middleware(['teacher']);

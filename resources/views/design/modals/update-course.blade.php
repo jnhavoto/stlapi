@@ -14,7 +14,7 @@
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
-                      action="/submit_course" method="put">
+                      action="/update_course" method="put">
                     {{csrf_field()}}
                     <div class="form-group">
 
@@ -52,13 +52,17 @@
                                 <h4 class="control-label"> {{ __('strings.SelectInstructors') }} </h4>
                             </div>
                             <select class="js-example-basic-multiple" name="instructors[]" multiple="multiple"
+                                    id="select-members"
                                     style="width: 100%">
                                 @foreach($teachers as  $teacher)
+                                    @if($teacher->id != \Illuminate\Support\Facades\Auth::user()->teacher->id)
                                     <option
                                             name="selectTag"
+
                                             value="{{$teacher->id}}">{{$teacher->user->first_name}}
                                         {{$teacher->user->last_name}}
                                     </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -151,3 +155,15 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
+
+<script>
+
+
+
+
+
+
+
+</script>

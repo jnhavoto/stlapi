@@ -35,7 +35,8 @@
                                 {{--Course Content--}}
                             </label>
                             <textarea name="course_content"  type="text"
-                                      class="form-control" rows="3" id="c_course_content"> </textarea>
+                                      class="form-control" rows="3" id="c_course_content">
+                            </textarea>
                         </div>
 
                         <div class="col-md-12 m-b-20">
@@ -43,8 +44,8 @@
                                 {{ __('strings.CourseMaterial') }}
                                 {{--Course Content--}}
                             </label>
-                            <textarea name="course_content"  type="text"
-                                      class="form-control" rows="3" id="c_course_content"> </textarea>
+                            <textarea name="course_material"  type="text"
+                                      class="form-control" rows="3" id="c_course_material"> </textarea>
                         </div>
 
                         <input id="c_course_id" type="hidden" name="course_template_id">
@@ -78,11 +79,13 @@
                             <select class="js-example-basic-multiple" name="instructors[]" multiple="multiple"
                                     style="width: 100%">
                                 @foreach($teachers as  $teacher)
+                                    @if($teacher->id != \Illuminate\Support\Facades\Auth::user()->teacher->id)
                                     <option
                                             name="selectTag"
                                             value="{{$teacher->id}}">{{$teacher->user->first_name}}
                                         {{$teacher->user->last_name}}
                                     </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
