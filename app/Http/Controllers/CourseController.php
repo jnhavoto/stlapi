@@ -177,83 +177,93 @@ class CourseController extends  ModelController
 
     }
 
-    public function updateCourse(Request $value){
+    public function updateCourse(Request $request, $id=0){
         //get teacher ID: who logged in
+        //$id = $request->input("id");
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //Begin transaction
         DB::beginTransaction();
-
+//        $course = Course::find($id);
+        return $request->id;
         //get the department name from the user
-        $department = Department::Where('name',$value->name);
+//        $department = Department::Where('name',$values->name);
         //create the course with content from the form
-        $course = Course::update(
-            [
-                'name' => $value->name,
-                'course_content' => $value->course_content,
-                'startdate' => $value->startdate,
-                'available_date' => $value->available_date,
-                //get the department id from the name the user chose in the form
-                'departments_id' => 1,
-            ]
-        );
+//        $course = Course::update(
+//            [
+//                'name' => $values->name,
+//                'course_content' => $values->course_content,
+//                'startdate' => $values->startdate,
+//                'available_date' => $values->available_date,
+//                //get the department id from the name the user chose in the form
+//                'departments_id' => 1,
+//            ]
+//        );
+
+//        $course->name = $values->name;
+//        $course->course_content = $values->course_content;
+//        $course->startdate = $values->startdate;
+//        $course->available_date = $values->available_date;
+//        $course->save();
+
+//        $course->update($request->all());
         //return $request->course_content;
         //associate the course with the teacher
-        $teacher_course = TeacherCourse::create(
-            [
-                'teachers_id' => $teacher->id,
-                'courses_id' => $course->id,
-            ]
-        );
-        //enrol all student on this course
-        $students = Student::all();
-        foreach ($students as $student)
-        {
-            $student_course = StudentsCourse::create(
-                [
-                    'students_id' => $student->id,
-                    'courses_id' => $course->id,
-                    'start_date' => $value->start_date,
-                    'end_date' => $value->end_date,
-                    'status' => 0,
-                ]
-            );
-        }
-        //createing group_teacher
-        $group_teacher = GroupTeacher::create(
-            [
-                'group_name' => 'Default Name',
-            ]
-        );
-        //adding instructors to the course
-        $instructors = $value->instructors;
-
-
-//return $request->instructors[1];
-
-//        return ($test);
-
-//        for ($i=0; $i< sizeof($instrutors); $i++)
-        foreach ($instructors as $instructor)
-
-        {
-            $teacher_member = TeacherMember::create(
-                [
-                    'group_teachers_id' => $group_teacher->id,
-                    'teachers_id' => $instructor,
-//                    'teachers_id' => $instrutors[$i],
-                ]
-            );
-        }
-
-        if (!$teacher_member){
-            return "Qualquer coisa";
-        }else
-
-            //check if course and tecaher_course have any error: if not, then write on the DB
-            if ($course and $teacher_course and $student_course) {
-                DB::commit();
-                return redirect('/courses');
-            }
+//        $teacher_course = TeacherCourse::create(
+//            [
+//                'teachers_id' => $teacher->id,
+//                'courses_id' => $course->id,
+//            ]
+//        );
+//        //enrol all student on this course
+//        $students = Student::all();
+//        foreach ($students as $student)
+//        {
+//            $student_course = StudentsCourse::create(
+//                [
+//                    'students_id' => $student->id,
+//                    'courses_id' => $course->id,
+//                    'start_date' => $values->start_date,
+//                    'end_date' => $values->end_date,
+//                    'status' => 0,
+//                ]
+//            );
+//        }
+//        //createing group_teacher
+//        $group_teacher = GroupTeacher::create(
+//            [
+//                'group_name' => 'Default Name',
+//            ]
+//        );
+//        //adding instructors to the course
+//        $instructors = $values->instructors;
+//
+//
+////return $request->instructors[1];
+//
+////        return ($test);
+//
+////        for ($i=0; $i< sizeof($instrutors); $i++)
+//        foreach ($instructors as $instructor)
+//
+//        {
+//            $teacher_member = TeacherMember::create(
+//                [
+//                    'group_teachers_id' => $group_teacher->id,
+//                    'teachers_id' => $instructor,
+////                    'teachers_id' => $instrutors[$i],
+//                ]
+//            );
+//        }
+//
+//        if (!$teacher_member){
+//            return "Qualquer coisa";
+//        }else
+//
+//            //check if course and tecaher_course have any error: if not, then write on the DB
+//            if ($course and $teacher_course and $student_course) {
+//                DB::commit();
+//                return redirect('/courses');
+//            }
     }
 
     public function courseDesignOverview(Request $request)

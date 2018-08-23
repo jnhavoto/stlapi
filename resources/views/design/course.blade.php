@@ -209,8 +209,9 @@
                                                         $currentdate = Carbon\Carbon::now();
                                                     @endphp
                                                     {{--@if($course->available_date > $currentdate)--}}
-                                                        <a href="/" data-toggle="modal" data-target="#update-course"
-                                                           onclick="updateCourseDetails({{$course}}, {{$courseMembers}})">
+                                                        <a href="/" data-toggle="modal"
+                                                           data-target="#update-course"
+                                                           onclick="updateCourseDetails({{$course}})">
                                                             Edit
                                                         </a>
                                                     {{--@else--}}
@@ -275,7 +276,25 @@
             console.log(course)
         }
 
-        function updateCourseDetails(course, member) {
+//        function updateCourseDetails(course, member) {
+//            var course = course;
+//            var startDate01 = formatDate(course.startdate);
+//            var availableDate01 = formatDate(course.available_date);
+//            $("#c_course_name01").val(course.name);
+//            $("#c_course_content01").val(course.course_content);
+//            $("#c_course_startdate01").val(startDate01);
+//            $("#c_course_available_date01").val(availableDate01);
+//            $("#c_course_id").val(course.id);
+//
+//
+//            member.forEach(function(valor, chave){
+//
+//            });
+//
+//            console.log(course)
+//        }
+
+        function updateCourseDetails(course) {
             var course = course;
             var startDate01 = formatDate(course.startdate);
             var availableDate01 = formatDate(course.available_date);
@@ -283,14 +302,9 @@
             $("#c_course_content01").val(course.course_content);
             $("#c_course_startdate01").val(startDate01);
             $("#c_course_available_date01").val(availableDate01);
-            $("#c_course_id").val(course.id);
-
-
-            member.forEach(function(valor, chave){
-
-            });
-
-            console.log(course)
+//            $("#c_course_id").val(course.id);
+            document.getElementById('c_course_id').value = course.id;
+            console.log(document.getElementById('c_course_id').value)
         }
 
         function courseCleanDetails() {
