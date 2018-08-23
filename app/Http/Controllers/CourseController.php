@@ -180,7 +180,7 @@ class CourseController extends  ModelController
     public function updateCourse(Request $request, $id=0){
         //get teacher ID: who logged in
         //$id = $request->input("id");
-        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //$teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //Begin transaction
         DB::beginTransaction();
 //        $course = Course::find($id);
