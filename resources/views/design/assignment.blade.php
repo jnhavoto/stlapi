@@ -88,10 +88,12 @@
                                                 </td>
                                                 <td>{{substr($assignment->instructions, 0, 45) }}</td>
                                                 <td>
-                                                    <a href="/" data-toggle="modal" data-target="#copy-assignment"
-                                                       onclick="assignDetails({{$assignment}})">
-                                                        Copy
-                                                    </a>
+                                                    <button type="button" class="btn btn-info btn-circle btn-lg m-r-5"
+                                                            href="/" data-toggle="modal" data-target="#copy-assignment"
+                                                            onclick="assignDetails({{$assignment}})">
+                                                        <i class="ti-clipboard"></i>
+                                                    </button>
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -408,7 +410,8 @@
             $("#c_assignment_startdate").val(startDate01);
             $("#c_assignment_enddate").val(deadline01);
             $("#c_assignment_availabledate").val(assignment.available_date);
-            $("#c_assign_id").val(assignment.id);
+            $("#assignment_id").val(assignment.id);
+
             console.log(assignment);
         }
 

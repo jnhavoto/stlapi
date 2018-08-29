@@ -52,7 +52,7 @@
                                             </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search courses"
-                                                   class="form-control"> </div>
+                                                   class="form-control"></div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -77,24 +77,21 @@
                                         </thead>
                                         <tbody>
 
-                                        @foreach ($courseTemplates as $course)
+                                        @foreach ($coursesTemplates as $course)
                                             <tr>
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    {{--<a href="/" data-toggle="modal" data-target="#modalCourseDetails"--}}
-                                                       {{--onclick="courseDetails({{$course}})">--}}
-                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                        {{--{{$course->name}}--}}
-                                                    {{--</a>--}}
                                                     {{$course->name}}
                                                 </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
-                                                <td> <a href="/" data-toggle="modal" data-target="#create-course"
-                                                        onclick="courseDetails({{$course}})">
-                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                        Copy
-                                                    </a></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-circle btn-lg m-r-5"
+                                                            href="/" data-toggle="modal" data-target="#create-course"
+                                                            onclick="copyCourse({{$course}})">
+                                                        <i class="ti-clipboard"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -102,7 +99,7 @@
                                         <tr>
                                             <td colspan="7">
                                                 <div class="text-right">
-                                                    <ul class="pagination"> </ul>
+                                                    <ul class="pagination"></ul>
                                                 </div>
                                             </td>
                                         </tr>
@@ -137,7 +134,7 @@
                                             </h4></div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="search courses"
-                                                   class="form-control"> </div>
+                                                   class="form-control"></div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -178,26 +175,28 @@
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/coursedesign-overview/{{$course->id}}" >
-                                                        {{$course->name}}
+                                                    <a href="/coursedesign-overview/{{$course->course->id}}">
+                                                        {{$course->course->name}}
                                                     </a>
                                                 </td>
-                                                <td>{{substr($course->course_content, 0, 45) }}</td>
+                                                <td>{{substr($course->course->course_content, 0, 45) }}</td>
                                                 <td>
                                                     @php
-                                                        $courseMembers = \App\Models\Course::find($course->id)->teachers;
+                                                        $courseMembers = \App\Models\TeacherCourse::with('teacher')->where
+                                                        ('courses_id',$course->course->id)->get();
                                                     @endphp
                                                     @foreach($courseMembers as $members)
-                                                        <a href="/contact-details-other/{{$members->user->id}}">{{
-                                                        $members->user->first_name .' '.$members->user->last_name
+                                                        <a
+                                                                href="/contact-details-other/{{$members->teacher->user->id}}">{{
+                                                        $members->teacher->user->first_name .' '.$members->teacher->user->last_name
                                                     }}</a>
-                                                     <br/>
+                                                        <br/>
                                                     @endforeach
                                                 </td>
-                                                <td>{{$course->startdate}}</td>
-                                                <td>{{$course->available_date}}</td>
+                                                <td>{{$course->course->startdate}}</td>
+                                                <td>{{$course->course->available_date}}</td>
                                                 <td>
-                                                    @if($course->status == 0) {{ __('strings.Active') }}
+                                                    @if($course->course->status == 0) {{ __('strings.Active') }}
                                                     {{--Active--}}
                                                     @else
                                                         {{ __('strings.Disactive') }}
@@ -209,14 +208,25 @@
                                                         $currentdate = Carbon\Carbon::now();
                                                     @endphp
                                                     {{--@if($course->available_date > $currentdate)--}}
-                                                        <a href="/" data-toggle="modal"
-                                                           data-target="#update-course"
-                                                           onclick="updateCourseDetails({{$course}})">
-                                                            Edit
-                                                        </a>
-                                                    {{--@else--}}
-                                                        {{--Edit--}}
-                                                    {{--@endif--}}
+                                                    {{--Change course status: active vs disactive--}}
+                                                    <button type="button" class="btn btn-info btn-circle
+                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
+                                                    {{--Update/Edit course--}}
+                                                    <button type="button" class="btn btn-info btn-circle btn-lg"
+                                                            href="/"
+                                                            data-toggle="modal"
+                                                            data-target="#update-course"
+                                                            data-cod="{{ $course->course->id }}"
+                                                            onclick="updateCourseDetails({{$course->course}})">
+                                                        <i text-md-center class="ti-pencil-alt"></i>
+
+                                                    </button>
+                                                    {{--Delete/Destroy the course--}}
+                                                    <button type="button" class="btn btn-info btn-circle
+                                                    btn-lg" href="/" data-toggle="modal" data-target="#delete-course"
+                                                            onclick="deleteCourse({{$course->course}})">
+                                                        <i text-md-center class="ti-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -231,11 +241,6 @@
                                                     {{--Add New Course--}}
                                                 </button>
                                             </td>
-                                            {{--<td colspan="7">--}}
-                                                {{--<div class="text-right">--}}
-                                                    {{--<ul class="pagination"> </ul>--}}
-                                                {{--</div>--}}
-                                            {{--</td>--}}
                                         </tr>
                                         </tfoot>
                                     </table>
@@ -261,9 +266,10 @@
     <!--Modal for copping a course-->
     @include('design.modals.create-course')
     @include('design.modals.update-course')
+    @include('design.modals.delete-course')
 
     <script>
-        function courseDetails(course) {
+        function copyCourse(course) {
             var course = course;
             var startDate01 = formatDate(course.startdate);
             $("#name").html(course.name);
@@ -276,35 +282,86 @@
             console.log(course)
         }
 
-//        function updateCourseDetails(course, member) {
-//            var course = course;
-//            var startDate01 = formatDate(course.startdate);
-//            var availableDate01 = formatDate(course.available_date);
-//            $("#c_course_name01").val(course.name);
-//            $("#c_course_content01").val(course.course_content);
-//            $("#c_course_startdate01").val(startDate01);
-//            $("#c_course_available_date01").val(availableDate01);
-//            $("#c_course_id").val(course.id);
-//
-//
-//            member.forEach(function(valor, chave){
-//
-//            });
-//
-//            console.log(course)
-//        }
-
         function updateCourseDetails(course) {
+
+            $('.update-course').val("");
+
             var course = course;
             var startDate01 = formatDate(course.startdate);
             var availableDate01 = formatDate(course.available_date);
-            $("#c_course_name01").val(course.name);
-            $("#c_course_content01").val(course.course_content);
-            $("#c_course_startdate01").val(startDate01);
-            $("#c_course_available_date01").val(availableDate01);
-//            $("#c_course_id").val(course.id);
-            document.getElementById('c_course_id').value = course.id;
-            console.log(document.getElementById('c_course_id').value)
+            $("#update_course_name01").val(course.name);
+            $("#update_course_content01").val(course.course_content);
+            $("#update_course_startdate01").val(startDate01);
+            $("#update_course_available_date01").val(availableDate01);
+            $("#course_id").val(course.id);
+            //console.log(document.getElementById('c_course_id').value)
+
+
+//            // Set up the Select2 control
+//            $('.update-course').select2({
+//                ajax: {
+//                    url: '/instructors'
+//                }
+//            });
+
+            $('.update-course').select2({
+                ajax: {
+                    url: "/instructors",
+                    processResults: function (data) {
+                        // Tranforms the top-level key of the response object from 'items' to 'results'
+
+                        return {
+                            results: $.map(data, function (item) {
+                                console.log(item['user']['first_name']);
+                                return {
+                                    text: item.user.first_name + ' ' + item.user.last_name,
+                                    id: item.id,
+
+                                }
+                            })
+                        }
+                    }
+                    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+                }
+            });
+
+
+// Fetch the preselected item, and add to the control
+            var studentSelect = $('.update-course');
+            $.ajax({
+                type: 'GET',
+                url: "/instructors/" + course.id
+            }).then(function (data) {
+
+                $.map(data, function (item) {
+
+                    console.log(item);
+
+                    // create the option and append to Select2
+                    var option = new Option(item.user.first_name + ' ' + item.user.last_name, item['id'], true, true);
+                    studentSelect.append(option).trigger('change');
+
+                    // manually trigger the `select2:select` event
+                    studentSelect.trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: item
+                        }
+                    });
+
+
+                })
+
+
+            });
+
+
+        }
+
+        function deleteCourse(course) {
+            var course = course;
+            $("#deletecourse_id").val(course.id);
+            //console.log(document.getElementById('c_course_id').value)
         }
 
         function courseCleanDetails() {
@@ -329,12 +386,17 @@
         }
 
 
+        //        $(document).ready(function() {
+        //            console.log($('#select-members').val());
+        //        })
 
-        $(document).ready(function() {
-            console.log($('#select-members').val());
-        })
-
-
+        $('#update-course').on('shown.bs.modal', function () {
+            var button = $(event.relatedTarget)
+            var codigo = button.data('cod')
+            var modal = $(this)
+            console.log(codigo)
+            modal.find('.modal-body #course_id').val(codigo)
+        });
 
     </script>
 @endsection

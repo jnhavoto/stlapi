@@ -24,5 +24,24 @@ class AssignmentDescriptionController extends ModelController
         return response()->json(['lastAssignment'=>$lastAssignment]);
     }
 
+    public function updateAssignment(Request $request){
+        //get an assignment by id
+        $assignment = AssignmentDescription::find($request->assignment_id);
+
+        $assignment->case = $request->case;
+        $assignment->number = $request->number;
+        $assignment->instructions = $request->instructions;
+        $assignment->startdate = $request->startdate;
+        $assignment->deadline = $request->deadline;
+        $assignment->available_date = $request->availabledate;
+        $assignment->course_id = $request->course_id;
+        $assignment->save();
+
+        return  redirect('/assignments');
+
+
+
+    }
+
 
 }

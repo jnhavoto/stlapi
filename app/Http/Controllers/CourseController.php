@@ -19,10 +19,11 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class CourseController extends  ModelController
+class CourseController extends ModelController
 {
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->object = new Course();
         $this->objectName = 'course';
         $this->objectNames = 'courses';
@@ -32,42 +33,50 @@ class CourseController extends  ModelController
     public function getAllCourses()
     {
         $courses = Course::with('user')->get();
-        return view('activities.course',['courses'=>$courses,'user' => Auth::user()]);
+        return view('activities.course', ['courses' => $courses, 'user' => Auth::user()]);
     }
 
     public function getCourses()
     {
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         $teachers = Teacher::all();
-        $teacherCourses = $teacher->courses;
-        $teacherMembers = TeacherMember::where('teachers_id',$teacher->id)->get();
-        $allTeacherMembers = Collect();
-        foreach ($teacherMembers as $member)
-        {
-            $teacher = TeacherMember::where('group_teachers_id',$member->group_teachers_id)->get();
-//            $teacher = GroupTeacher::where('id',$member->group_teachers_id)->teachers;
-            $allTeacherMembers->push($teacher);
-        }
-
-//        return $allTeacherMembers;
+        $teacherCourses = TeacherCourse::with('course')->where('teachers_id', $teacher->id)->get();
         $coursesTemplates = CoursesTemplate::all();
-
 //        return $teacherMembers;
         return view('design.course',
-            ['courseTemplates' => $coursesTemplates,
-                'teacherCourses'=>$teacherCourses,
+            ['coursesTemplates' => $coursesTemplates,
+                'teacherCourses' => $teacherCourses,
                 'teachers' => $teachers,
                 'user' => Auth::user()]);
     }
 
-    public function submitCourse(Request $request){
+    public function getInstructorsByCourseId($id)
+    {
+//        $courseIntructors = TeacherCourse::where('courses_id',$id)->get();
+        $courseIntructors = TeacherCourse::with('teacher')->where('courses_id', $id)->get();
+
+
+        $instructors = collect();
+
+        foreach ($courseIntructors as $instructor) {
+//            $instructors->push(Teacher::where('id', $instructor->teachers_id)->get());
+            $instructors->push($instructor->teachers_id);
+        }
+
+        $response = Teacher::whereIn('id', $instructors)->get();
+
+        return $response;
+    }
+
+    public function submitCourse(Request $request)
+    {
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //Begin transaction
         DB::beginTransaction();
 
         //get the department name from the user
-        $department = Department::Where('name',$request->name);
+        $department = Department::Where('name', $request->name);
         //create the course with content from the form
         $course = Course::create(
             [
@@ -81,17 +90,16 @@ class CourseController extends  ModelController
         );
         //return $request->course_content;
         //associate the course with the teacher
-        $teacher_course = TeacherCourse::create(
-            [
-                'teachers_id' => $teacher->id,
-                'courses_id' => $course->id,
-            ]
-        );
+//        $teacher_course = TeacherCourse::create(
+//            [
+//                'teachers_id' => $teacher->id,
+//                'courses_id' => $course->id,
+//            ]
+//        );
 
         //enrol all student on this course
         $students = Student::all();
-        foreach ($students as $student)
-        {
+        foreach ($students as $student) {
             $student_course = StudentsCourse::create(
                 [
                     'students_id' => $student->id,
@@ -116,17 +124,16 @@ class CourseController extends  ModelController
 
 //        return ($test);
 
-        $teacher_member = TeacherMember::create(
-            [
-                'group_teachers_id' => $group_teacher->id,
-                'teachers_id' => $teacher->id,
-//                    'teachers_id' => $instrutors[$i],
-            ]
-        );
+//        $teacher_member = TeacherMember::create(
+//            [
+//                'group_teachers_id' => $group_teacher->id,
+//                'teachers_id' => $teacher->id,
+////                    'teachers_id' => $instrutors[$i],
+//            ]
+//        );
 
 //        for ($i=0; $i< sizeof($instrutors); $i++)
-        foreach ($instructors as $instructor)
-        {
+        foreach ($instructors as $instructor) {
             $teacher_member = TeacherMember::create(
                 [
                     'group_teachers_id' => $group_teacher->id,
@@ -142,14 +149,18 @@ class CourseController extends  ModelController
             );
         }
 
-        if (!$teacher_member){
+        if (!$teacher_member) {
             return "Qualquer coisa";
-        }else
+        } else
 
             //check if course and tecaher_course have any error: if not, then write on the DB
             if ($course and $teacher_course and $student_course) {
                 DB::commit();
+                $coursedetails = Course::where('id', $course->id)->get();
+                //return $coursedetails;
                 return redirect('/courses');
+//                view('course-details', ['coursedetails' => $coursedetails,
+//                    'user'=>Auth::user()]);
             }
     }
 
@@ -158,112 +169,86 @@ class CourseController extends  ModelController
         //get course details
         $course = Course::where('id', $request->id)->get();
         //get all assignments of this course
-        $courseAssignemts = AssignmentDescription::where('courses_id',$request->id)->get();
+        $courseAssignemts = AssignmentDescription::where('courses_id', $request->id)->get();
 //        get all submitted assignments of this course
         $submissions = collect();
 
-        foreach ($courseAssignemts as $assignment )
-        {
-            $submission = AssignmentSubmission::where('assignment_descriptions_id',$assignment->id)->get();
+        foreach ($courseAssignemts as $assignment) {
+            $submission = AssignmentSubmission::where('assignment_descriptions_id', $assignment->id)->get();
 //            $submission = AssignmentSubmission::where('assignment_descriptions_id',5)->get();
-            $submissions ->push($submission);
+            $submissions->push($submission);
         }
 //        return $submissions;
 
         //get all students
         return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
-            'user'=>Auth::user()]);
+            'user' => Auth::user()]);
 
     }
 
-    public function updateCourse(Request $request, $id=0){
+    public function updateCourse(Request $request)
+    {
         //get teacher ID: who logged in
-        //$id = $request->input("id");
-        //$teacher = Teacher::Where('users_id', Auth::user()->id)->first();
-        //Begin transaction
-        DB::beginTransaction();
-//        $course = Course::find($id);
-        return $request->id;
-        //get the department name from the user
-//        $department = Department::Where('name',$values->name);
-        //create the course with content from the form
-//        $course = Course::update(
-//            [
-//                'name' => $values->name,
-//                'course_content' => $values->course_content,
-//                'startdate' => $values->startdate,
-//                'available_date' => $values->available_date,
-//                //get the department id from the name the user chose in the form
-//                'departments_id' => 1,
-//            ]
-//        );
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //get the course by id;
+        $course = Course::find($request->course_id);
+        //return $course;
+        //get all current instructors
+        $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
+        //get the group_teachers_id of this course and delete them
+        TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
+        //remove all the OLD teachers
 
-//        $course->name = $values->name;
-//        $course->course_content = $values->course_content;
-//        $course->startdate = $values->startdate;
-//        $course->available_date = $values->available_date;
-//        $course->save();
-
-//        $course->update($request->all());
-        //return $request->course_content;
-        //associate the course with the teacher
-//        $teacher_course = TeacherCourse::create(
-//            [
-//                'teachers_id' => $teacher->id,
-//                'courses_id' => $course->id,
-//            ]
-//        );
-//        //enrol all student on this course
-//        $students = Student::all();
-//        foreach ($students as $student)
-//        {
-//            $student_course = StudentsCourse::create(
+        //return $course_teachers;
+        //get the current values and save them in the DB
+        $course->name = $request->name;
+        $course->course_content = $request->course_content;
+        $course->startdate = $request->startdate;
+        $course->available_date = $request->available_date;
+        $course->save();
+        //return $course;
+        $instructors = $request->instructors; //get instructors from the form
+        //recreate instructors
+//        return ($instructors);
+//            TeacherCourse::create(
 //                [
-//                    'students_id' => $student->id,
+//                    'teachers_id' => $teacher->id,
 //                    'courses_id' => $course->id,
-//                    'start_date' => $values->start_date,
-//                    'end_date' => $values->end_date,
-//                    'status' => 0,
 //                ]
 //            );
-//        }
-//        //createing group_teacher
-//        $group_teacher = GroupTeacher::create(
-//            [
-//                'group_name' => 'Default Name',
-//            ]
-//        );
-//        //adding instructors to the course
-//        $instructors = $values->instructors;
-//
-//
-////return $request->instructors[1];
-//
-////        return ($test);
-//
-////        for ($i=0; $i< sizeof($instrutors); $i++)
-//        foreach ($instructors as $instructor)
-//
-//        {
-//            $teacher_member = TeacherMember::create(
-//                [
-//                    'group_teachers_id' => $group_teacher->id,
-//                    'teachers_id' => $instructor,
-////                    'teachers_id' => $instrutors[$i],
-//                ]
-//            );
-//        }
-//
-//        if (!$teacher_member){
-//            return "Qualquer coisa";
-//        }else
-//
-//            //check if course and tecaher_course have any error: if not, then write on the DB
+        foreach ($instructors as $instructor) {
+            TeacherCourse::create(
+                [
+                    'teachers_id' => $instructor,
+                    'courses_id' => $course->id,
+                ]
+            );
+        }
+        return redirect('/courses');
+//        return view('design.course',
+//            [   'courseInstructors'=>$courseInstructors,
+//                'user' => Auth::user()]);
+        //check if course and tecaher_course have any error: if not, then write on the DB
 //            if ($course and $teacher_course and $student_course) {
 //                DB::commit();
 //                return redirect('/courses');
 //            }
+    }
+
+    public function deleteCourse(Request $request)
+    {
+
+        //get teacher of this course
+        $teachers = TeacherCourse::where('courses_id', $request->deletecourse_id)->get();
+        //delele these theachers
+        foreach ($teachers as $teacher) {
+            $teacherCourse = TeacherCourse::find($teacher->id);
+            $teacherCourse->delete();
+        }
+        //get the course and delete
+        Course::where('id', $request->deletecourse_id)->get()->each->delete();
+        return redirect('courses'); //go back to course list
     }
 
     public function courseDesignOverview(Request $request)
@@ -271,23 +256,35 @@ class CourseController extends  ModelController
         //get course details
         $course = Course::where('id', $request->id)->get();
         //get all assignments of this course
-        $courseAssignemts = AssignmentDescription::where('courses_id',$request->id)->get();
+        $courseAssignemts = AssignmentDescription::where('courses_id', $request->id)->get();
 //        get all submitted assignments of this course
         $submissions = collect();
 
-        foreach ($courseAssignemts as $assignment )
-        {
-            $submission = AssignmentSubmission::where('assignment_descriptions_id',$assignment->id)->get();
+        foreach ($courseAssignemts as $assignment) {
+            $submission = AssignmentSubmission::where('assignment_descriptions_id', $assignment->id)->get();
 //            $submission = AssignmentSubmission::where('assignment_descriptions_id',5)->get();
-            $submissions ->push($submission);
+            $submissions->push($submission);
         }
 //        return $submissions;
 
         //get all students
         return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
-            'user'=>Auth::user()]);
+            'user' => Auth::user()]);
 
+    }
+
+    public function getCourseDetails()
+    {
+        return view('design.course-details', [
+            'user' => Auth::user()]);
+    }
+
+
+    public function getInstructors()
+    {
+        $instructors = Teacher::all();
+        return $instructors;
     }
 
     public function coursesOverview()
@@ -298,6 +295,6 @@ class CourseController extends  ModelController
             [
 //                'courses' => $courses, 'courseAssignments' => $courseAssignemts,
 //            'submissions' => $submissions,
-            'user'=>Auth::user()]);
+                'user' => Auth::user()]);
     }
 }

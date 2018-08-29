@@ -39,15 +39,6 @@
                             </textarea>
                         </div>
 
-                        <div class="col-md-12 m-b-20">
-                            <label class="control-label" >
-                                {{ __('strings.CourseMaterial') }}
-                                {{--Course Content--}}
-                            </label>
-                            <textarea name="course_material"  type="text"
-                                      class="form-control" rows="3" id="c_course_material"> </textarea>
-                        </div>
-
                         <input id="c_course_id" type="hidden" name="course_template_id">
 
                         <div class="col-md-12 m-b-20">
@@ -58,8 +49,6 @@
                             <input name="startdate" type="date" id="c_course_startdates"
                                    class="form-control">
                         </div>
-
-                        <h2 id="sfdhafhgafshgafshgafsgafsh"></h2>
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">
@@ -79,12 +68,17 @@
                             <select class="js-example-basic-multiple" name="instructors[]" multiple="multiple"
                                     style="width: 100%">
                                 @foreach($teachers as  $teacher)
-                                    @if($teacher->id != \Illuminate\Support\Facades\Auth::user()->teacher->id)
-                                    <option
-                                            name="selectTag"
-                                            value="{{$teacher->id}}">{{$teacher->user->first_name}}
-                                        {{$teacher->user->last_name}}
-                                    </option>
+                                    @if($teacher->id == \Illuminate\Support\Facades\Auth::user()->teacher->id)
+                                        <option name="selectTag" value="{{$teacher->id}}" selected="selected">
+                                            {{$teacher->user->first_name}}
+                                            {{$teacher->user->last_name}}
+                                        </option>
+                                    @else
+                                        <option
+                                                name="selectTag"
+                                                value="{{$teacher->id}}">{{$teacher->user->first_name}}
+                                            {{$teacher->user->last_name}}
+                                        </option>
                                     @endif
                                 @endforeach
                             </select>

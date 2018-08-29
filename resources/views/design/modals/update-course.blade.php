@@ -14,32 +14,30 @@
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
-                      action="/update_course" method="post" >
+                      action="/update_course" method="post">
                     {{csrf_field()}}
-                    {{method_field('post')}}
                     {{--<input id="c_course_id" type="hidden" name="course_template_id">--}}
-                    <input id="c_course_id" type="hidden" name="id" value="1">
+                    <input type="hidden" id="course_id" name="course_id" value="">
                     <div class="form-group">
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label"> {{ __('strings.CourseName') }} </label>
                             <div>
                                 <input name="name" type="text" class="form-control input-lg"
-                                       id="c_course_name01">
+                                       id="update_course_name01">
                             </div>
                         </div>
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label"> {{ __('strings.CourseDescription') }} </label>
-                            <textarea name="course_content"  type="text"
-                                      class="form-control" rows="3" id="c_course_content01"> </textarea>
+                            <textarea name="course_content" type="text"
+                                      class="form-control" rows="3" id="update_course_content01"> </textarea>
                         </div>
-
 
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label"> {{ __('strings.StartDate') }} </label>
-                            <input name="startdate" type="date" id="c_course_startdate01"
+                            <input name="startdate" type="date" id="update_course_startdate01"
                                    class="form-control">
                         </div>
 
@@ -47,39 +45,25 @@
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label"> {{ __('strings.AvailableFrom') }} </label>
-                            <input name="available_date" type="date" id="c_course_available_date01"
+                            <input name="available_date" type="date" id="update_course_available_date01"
                                    class="form-control">
                         </div>
                         <div class="form-group">
                             <div class="col-md-12 m-b-20">
                                 <h4 class="control-label"> {{ __('strings.SelectInstructors') }} </h4>
                             </div>
-                            <select class="js-example-basic-multiple" name="instructors[]" multiple="multiple"
+
+                            <select class="update-course" name="instructors[]" multiple="multiple"
                                     id="select-members"
                                     style="width: 100%">
-                                @foreach($teachers as  $teacher)
-                                    @if($teacher->id != \Illuminate\Support\Facades\Auth::user()->teacher->id)
-                                    <option
-                                            name="selectTag"
-
-                                            value="{{$teacher->id}}">{{$teacher->user->first_name}}
-                                        {{$teacher->user->last_name}}
-                                    </option>
-                                    @endif
-                                @endforeach
                             </select>
                         </div>
 
                     </div>
                     <div class="form-group" align-items-center>
-                        <button type="submit" class="btn btn-success btn-rounded">
-                            {{ __('strings.Submit') }}
-                            {{--Submit--}}
-                        </button>
-                        <button type="button" class="btn btn-default btn-rounded waves-effect"
-                                data-dismiss="modal">
+                        <button type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
+                        <button type="button" class="btn btn-default btn-rounded waves-effect" data-dismiss="modal">
                             {{ __('strings.Cancel') }}
-                            {{--Cancel--}}
                         </button>
                     </div>
                     {{--<input class="btn btn-primary " type="submit">--}}
@@ -97,11 +81,6 @@
 
 
 <script>
-
-
-
-
-
 
 
 </script>

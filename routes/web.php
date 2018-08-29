@@ -65,8 +65,16 @@ Route::get('/announcements/draft', 'AssignmentAnnouncementController@getDraftAnn
 //get all Courses
 Route::get('/courses', 'CourseController@getCourses')->middleware(['teacher']);
 
+Route::get('/instructors/{id}', 'CourseController@getInstructorsByCourseId')->middleware(['teacher']);
 //get members of a course
 //Route::get('/courses/{id}', 'TeacherController@getCourseMembers')->middleware(['teacher']);
+
+//course details
+
+
+Route::get('/instructors', 'CourseController@getInstructors')->middleware(['teacher']);
+
+Route::get('/course-details', 'CourseController@getCourseDetails')->middleware(['teacher']);
 
 //get calendar
 Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
@@ -79,9 +87,11 @@ Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['tea
 
 //update course
 Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
+//delete a course
+Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
 
 //update assignment
-Route::post('/update_assignment', 'TeacherController@updateAssignment')->middleware(['teacher']);
+Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware(['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
 
@@ -133,5 +143,8 @@ Route::view('/test-translate', 'test-translate');
 //==============================================================
 //End App Translation
 //==============================================================
+
+
+
 
 

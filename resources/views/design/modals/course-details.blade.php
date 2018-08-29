@@ -43,10 +43,10 @@
 
 
 
-<script>
-    if ( $('[type="date"]').prop('type') != 'date' ) {
-        $('[type="date"]').datepicker();
-    }
-</script>
+{{--<script>--}}
+    {{--if ( $('[type="date"]').prop('type') != 'date' ) {--}}
+        {{--$('[type="date"]').datepicker();--}}
+    {{--}--}}
+{{--</script>--}}
 
 

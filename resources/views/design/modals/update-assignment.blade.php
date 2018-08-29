@@ -16,7 +16,7 @@
                       action="/update_assignment" method="post">
 
                     {{csrf_field()}}
-
+                    <input type="hidden" name="assignment_id" id="assignment_id" value="">
                     <div class="form-group">
 
                         <div class="col-md-12 m-b-20">

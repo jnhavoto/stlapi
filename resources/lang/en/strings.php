@@ -115,4 +115,7 @@ return [
     'CourseMaterial' => 'Course Material',
     'SeeAllChats' => 'See All Chats',
     'Announcements' => 'Announcements',
+    'Actions' => 'Actions',
+    'SureDelete' => 'Are you sure?',
+    'Yes' => 'Yes',
 ];
