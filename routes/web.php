@@ -69,9 +69,7 @@ Route::get('/instructors/{id}', 'CourseController@getInstructorsByCourseId')->mi
 //get members of a course
 //Route::get('/courses/{id}', 'TeacherController@getCourseMembers')->middleware(['teacher']);
 
-//course details
-
-
+//get all instructors
 Route::get('/instructors', 'CourseController@getInstructors')->middleware(['teacher']);
 
 Route::get('/course-details', 'CourseController@getCourseDetails')->middleware(['teacher']);
@@ -79,7 +77,7 @@ Route::get('/course-details', 'CourseController@getCourseDetails')->middleware([
 //get calendar
 Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
 
-Route::get('/assignments', 'TeacherController@getAssignments')->middleware(['teacher']);
+Route::get('/assignments', 'AssignmentdescriptionController@getAssignments')->middleware(['teacher']);
 
 Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
 

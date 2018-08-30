@@ -93,7 +93,6 @@
                                                             onclick="assignDetails({{$assignment}})">
                                                         <i class="ti-clipboard"></i>
                                                     </button>
-                                                    
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -304,11 +303,9 @@
                                                     {{--list details of a course--}}
                                                     <a href="/" data-toggle="modal" data-target="#modalCourseDetails"
                                                        onclick="courseDetails({{$t_assignment}})">
-                                                        {{$t_assignment->course->name}}
+                                                        {{$t_assignment->name}}
                                                     </a>
                                                 </td>
-                                                {{--courseDetails($t_assignment->courses)--}}
-                                                {{--<td>{{substr($t_assignment->instructions, 0, 45) }}</td>--}}
                                                 <td>{{$t_assignment->startdate}}</td>
                                                 <td>{{$t_assignment->deadline}}</td>
                                                 <td>{{$t_assignment->available_date}}</td>
@@ -326,13 +323,27 @@
                                                         {{--$currentdate = Carbon\Carbon::now();--}}
                                                     {{--@endphp--}}
                                                     {{--@if($t_assignment->available_date > $currentdate)--}}
-                                                        <a href="/" data-toggle="modal" data-target="#update-assignment"
-                                                           onclick="updateAssignment({{$t_assignment}})">
-                                                            Edit
-                                                        </a>
-                                                    {{--@else--}}
-                                                        {{--Edit--}}
-                                                    {{--@endif--}}
+                                                    <button type="button" class="btn btn-info btn-circle
+                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
+                                                    {{--Update/Edit course--}}
+                                                    <button type="button" class="btn btn-info btn-circle btn-lg"
+                                                            href="/"
+                                                            data-toggle="modal"
+                                                            data-target="#update-assignment"
+                                                            data-cod="{{ $t_assignment->id }}"
+                                                            onclick="updateAssignment({{$t_assignment}})">
+                                                        <i text-md-center class="ti-pencil-alt"></i>
+
+                                                    </button>
+                                                    {{--Delete/Destroy the course--}}
+                                                    <button type="button" class="btn btn-info btn-circle
+                                                    btn-lg"
+                                                            href="/"
+                                                            data-toggle="modal"
+                                                            data-target="#delete-assignment"
+                                                            onclick="deleteCourse({{$t_assignment}})">
+                                                        <i text-md-center class="ti-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
