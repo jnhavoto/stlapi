@@ -33,7 +33,7 @@
                             <h4 class="card-title">Editing the Assignment</h4>
                             <h6 class="card-subtitle">You can change the content
                             </h6>
-                            <form class="form-material m-t-40">
+                            <form class="form-horizontal m-t-40">
                                 <div class="col-md-12 m-b-20">
                                     <label>Assignment name</label>
                                     <input type="text" class="form-control form-control-line"

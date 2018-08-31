@@ -94,7 +94,7 @@ return [
     'AvailableDate' => 'Tillgänglig-datum',
     'SelectCourse' => 'Välj kurs',
     'MyAssignmentList' => 'Mina uppgifter',
-    'AssignmentDesign' => 'Uppgift-design',
+    'AssignmentDesign' => 'Uppgiftsdesign',
     'UpdateAssignment' => 'Redigera uppgift',
 
     //Calendar
@@ -115,7 +115,7 @@ return [
     'CourseDescription' => 'Kursbeskrivning',
     'CourseMaterial' => 'Kursmaterial',
     'SeeAllChats' => 'Se all diskussion',
-    'Announcements' => 'Meddelande',
+    'Announcements' => 'Meddelanden',
     'Actions' => 'Aktiviteter',
     'SureDelete' => 'Är du säker?',
     'Yes' => 'Ja',
