@@ -139,8 +139,8 @@
                                         <tr>
                                             <th> {{ __('strings.Number') }} </th>
                                             <th>{{ __('strings.AssignmentName') }} </th>
-                                            {{--<th>{{ __('strings.CourseName') }} </th>--}}
-                                            <th>{{ __('strings.Instructions') }} </th>
+                                            <th>{{ __('strings.CourseName') }} </th>
+                                            {{--<th>{{ __('strings.Instructions') }} </th>--}}
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.EndDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
@@ -161,18 +161,18 @@
                                                         {{$assignment->assignment_description->case}}
                                                     </a>
                                                 </td>
-                                                <td>
-                                                    {{substr($assignment->assignment_description->instructions, 0, 15)
-                                                    }}{{$assignment->assignment_description->startdate}}
-                                                </td>
+                                                {{----}}<td>--}}
+                                                    {{--{{substr($assignment->assignment_description->instructions, 0, 15)--}}
+                                                    {{--}}{{$assignment->assignment_description->startdate}}--}}
+                                                    {{--</td>
 
-                                                <td>{{$assignment->assignment_description->startdate}}</td>
-                                                <td>{{$assignment->assignment_description->deadline}}</td>
-                                                <td>{{$assignment->assignment_description->available_date}}</td>
-                                                <td>
-                                                    @if($assignment->assignment_description->status == 0)
-                                                        {{ __('strings.Active') }}
-                                                        {{--Active--}}
+                                                    <td>{{$assignment->assignment_description->startdate}}</td>
+                                                    <td>{{$assignment->assignment_description->deadline}}</td>
+                                                    <td>{{$assignment->assignment_description->available_date}}</td>
+                                                    <td>
+                                                        @if($assignment->assignment_description->status == 0)
+                                                            {{ __('strings.Active') }}
+                                                            {{--Active--}}
                                                     @else
                                                         {{ __('strings.Disactive') }}
                                                         {{--Disactive--}}
