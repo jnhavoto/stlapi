@@ -34,36 +34,36 @@
                             <h6 class="card-subtitle">You can change the content
                             </h6>
                             <form class="form-horizontal m-t-40">
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-6 m-b-20">
                                     <label>Assignment name</label>
                                     <input type="text" class="form-control form-control-line"
                                            value="{{ $assignment->case }}">
                                 </div>
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-6 m-b-20">
                                     <label class="control-label">Assignment
                                         number</label>
                                     <input type="text" class="form-control form-control-line" value="{{
                                     $assignment->number }}">
                                 </div>
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-6 m-b-20">
                                     <label>Instructions</label>
                                     <textarea class="form-control" rows="5"> {{ $assignment->instructions }}</textarea>
                                 </div>
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-4 m-b-20">
                                     <label class="control-label">Start date</label>
                                     <input name="startdate" type="date"
                                            class="form-control" value="{{
                                     $assignment->startdate }}">
                                 </div>
 
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-4 m-b-20">
                                     <label class="control-label">End date</label>
                                     <input name="deadline"
                                            type="date" class="form-control" value="{{
                                     $assignment->deadline }}">
                                 </div>
 
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-4 m-b-20">
                                     <label class="control-label">Available
                                         date</label>
                                     <input name="availabledate" type="date"
@@ -71,7 +71,7 @@
                                     $assignment->available_date }}">
                                 </div>
 
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-4 m-b-20">
                                     <h4 class="card-title">Select course </h4>
                                 </div>
                                 <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
