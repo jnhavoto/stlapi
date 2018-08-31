@@ -77,9 +77,9 @@ Route::get('/course-details', 'CourseController@getCourseDetails')->middleware([
 //get calendar
 Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
 
-Route::get('/assignments', 'AssignmentdescriptionController@getAssignments')->middleware(['teacher']);
+Route::get('/assignments', 'AssignmentDescriptionController@getAssignments')->middleware(['teacher']);
 
-Route::post('/create_assignment', 'AssignmentdescriptionController@createAssignment')->middleware(['teacher']);
+Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignment')->middleware(['teacher']);
 
 Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['teacher']);
 
