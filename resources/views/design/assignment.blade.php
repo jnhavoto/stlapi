@@ -161,18 +161,18 @@
                                                         {{$assignment->assignment_description->case}}
                                                     </a>
                                                 </td>
-                                                {{----}}<td>--}}
+                                                {{--<td>--}}
                                                     {{--{{substr($assignment->assignment_description->instructions, 0, 15)--}}
                                                     {{--}}{{$assignment->assignment_description->startdate}}--}}
-                                                    {{--</td>
+                                                {{--</td>--}}
 
-                                                    <td>{{$assignment->assignment_description->startdate}}</td>
-                                                    <td>{{$assignment->assignment_description->deadline}}</td>
-                                                    <td>{{$assignment->assignment_description->available_date}}</td>
-                                                    <td>
-                                                        @if($assignment->assignment_description->status == 0)
-                                                            {{ __('strings.Active') }}
-                                                            {{--Active--}}
+                                                <td>{{$assignment->assignment_description->startdate}}</td>
+                                                <td>{{$assignment->assignment_description->deadline}}</td>
+                                                <td>{{$assignment->assignment_description->available_date}}</td>
+                                                <td>
+                                                    @if($assignment->assignment_description->status == 0)
+                                                        {{ __('strings.Active') }}
+                                                        {{--Active--}}
                                                     @else
                                                         {{ __('strings.Disactive') }}
                                                         {{--Disactive--}}
