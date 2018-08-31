@@ -39,6 +39,7 @@ class AssignmentDescriptionController extends ModelController
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
 
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
+//        return  $teacherCourses;
 //        $assignment->case = $request->case;
 //        $assignment->number = $request->number;
 //        $assignment->instructions = $request->instructions;
@@ -109,7 +110,8 @@ class AssignmentDescriptionController extends ModelController
         $teacherAssignment = AssignmentDescriptionsHasTeacher::with('assignment_description')->
             where('teachers_id',$teacher->id)->get();
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
-        //return $teacherAssignment;
+//        return $teacherCourses;
+//        return $teacherAssignment;
         //getting the list of members where the teacher is part of
 //        $teachers_members = TeacherMember::Where('teachers_id', $teacher->id)->get();
 

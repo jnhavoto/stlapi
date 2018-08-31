@@ -67,7 +67,7 @@
                             @foreach($teacherCourses as  $course)
                                 <option
                                         name="selectTag"
-                                        value="{{$course->id}}">{{$course->name}}
+                                        value="{{$course->course->id}}">{{$course->course->name}}
                                 </option>
                             @endforeach
                         </select>
