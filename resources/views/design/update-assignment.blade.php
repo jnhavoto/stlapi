@@ -74,14 +74,16 @@
                                 <div class="col-md-4 m-b-20">
                                     <h4 class="card-title">Select course </h4>
                                 </div>
-                                <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
-                                    @foreach($teacherCourses as  $course)
-                                        <option
-                                                name="selectTag"
-                                                value="{{$course->course->id}}">{{$course->course->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <div class="col-md-4 m-b-20">
+                                    <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
+                                        @foreach($teacherCourses as  $course)
+                                            <option
+                                                    name="selectTag"
+                                                    value="{{$course->course->id}}">{{$course->course->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-md-12 m-b-20">
                                     <h4 class="card-title"> Assignment Material </h4>
                                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
