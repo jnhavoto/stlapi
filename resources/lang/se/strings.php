@@ -22,7 +22,7 @@ return [
         'Activities' => 'Aktiviteter',
         'Profile' => 'Profil',
         'Settings' => 'Inställningar',
-        'account' => ‘Konto,
+        'account' => 'Konto',
         'my_profile'=>'Min profil',
         'Chats'=> 'Diskussioner',
         'Logout' => 'Logga uy',
