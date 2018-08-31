@@ -82,7 +82,7 @@
                                                 <td>
                                                     {{--<a href="/assignment_details">--}}
                                                     <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
-                                                       onclick="assignDetails({{$assignment}})">
+                                                       onclick="showAssignmentDetails({{$assignment}})">
                                                         {{$assignment->case}}
                                                     </a>
                                                 </td>
@@ -90,152 +90,14 @@
                                                 <td>
                                                     <button type="button" class="btn btn-info btn-circle btn-lg m-r-5"
                                                             href="/" data-toggle="modal" data-target="#copy-assignment"
-                                                            onclick="assignDetails({{$assignment}})">
+                                                            onclick="createAssignmentFromTemplate({{$assignment}})">
                                                         <i class="ti-clipboard"></i>
                                                     </button>
                                                 </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        {{--<tfoot>--}}
-                                        {{--<tr>--}}
-                                            {{--<td colspan="2">--}}
-                                                {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                                        {{--data-toggle="modal" data-target="#add-new-assignment">Add New--}}
-                                                    {{--Assignment--}}
-                                                {{--</button>--}}
-                                            {{--</td>--}}
 
-                                            {{--<div id="add-new-assignment" class="modal fade in" tabindex="-1" role="dialog"--}}
-                                                 {{--aria-labelledby="myModalLabel" aria-hidden="true">--}}
-                                                {{--<div class="modal-dialog">--}}
-                                                    {{--<div class="modal-content">--}}
-                                                        {{--<div class="modal-header">--}}
-                                                            {{--<h4 class="modal-title" id="myModalLabel">--}}
-                                                                {{--{{ __('strings.AddNewAssignment') }}--}}
-                                                                {{--Add New Assignment--}}
-                                                            {{--</h4>--}}
-                                                            {{--<button type="button" class="close" data-dismiss="modal"--}}
-                                                                    {{--aria-hidden="true">×--}}
-                                                            {{--</button>--}}
-                                                        {{--</div>--}}
-                                                        {{--<div class="modal-body">--}}
-                                                            {{--=========================================================================--}}
-                                                            {{--============================= FORM  ====================================--}}
-                                                            {{--=========================================================================--}}
-                                                            {{--<form class="form-horizontal form-material"--}}
-                                                                  {{--action="/submit_assignment" method="post">--}}
-                                                                {{--{{csrf_field()}}--}}
-                                                                {{--<div class="form-group">--}}
-
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">--}}
-                                                                            {{--{{ __('strings.AssignmentName') }}--}}
-                                                                            {{--Assignment name--}}
-                                                                        {{--</label>--}}
-                                                                        {{--<input name="case" type="text"--}}
-                                                                               {{--class="form-control">--}}
-                                                                    {{--</div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">--}}
-                                                                            {{--{{ __('strings.AssignmentNumber') }}--}}
-                                                                            {{--Assignment number--}}
-                                                                        {{--</label>--}}
-                                                                        {{--<input name="number" type="number"--}}
-                                                                               {{--class="form-control">--}}
-                                                                    {{--</div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">--}}
-                                                                            {{--{{ __('strings.Instructions') }}--}}
-                                                                            {{--Instructions--}}
-                                                                        {{--</label>--}}
-                                                                        {{--<input name="instructions" type="textarea"--}}
-                                                                               {{--class="form-control" rows="3">--}}
-                                                                    {{--</div>--}}
-
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">--}}
-                                                                            {{--{{ __('strings.StartDate') }}--}}
-                                                                            {{--Start date--}}
-                                                                        {{--</label>--}}
-                                                                        {{--<input name="startdate" type="date"--}}
-                                                                               {{--class="form-control">--}}
-                                                                    {{--</div>--}}
-
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">--}}
-                                                                            {{--{{ __('strings.EndDate') }}--}}
-                                                                            {{--End date--}}
-                                                                        {{--</label>--}}
-                                                                        {{--<input name="deadline"--}}
-                                                                               {{--type="date" class="form-control">--}}
-                                                                    {{--</div>--}}
-
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<label class="control-label">--}}
-                                                                            {{--{{ __('strings.AvailableDate') }}--}}
-                                                                            {{--Available date--}}
-                                                                        {{--</label>--}}
-                                                                        {{--<input name="availabledate" type="date"--}}
-                                                                               {{--class="form-control">--}}
-
-                                                                    {{--</div>--}}
-                                                                    {{--<div class="form-group">--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                    {{--<h4 class="control-label">--}}
-                                                                        {{--{{ __('strings.SelectCourse') }}--}}
-                                                                        {{--Select course --}}
-                                                                    {{--</h4>--}}
-                                                                    {{--</div>--}}
-                                                                    {{--</div>--}}
-                                                                    {{--<select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">--}}
-                                                                    {{--@foreach($teacherCourses as  $course)--}}
-                                                                    {{--<option--}}
-                                                                            {{--name="selectTag"--}}
-                                                                            {{--value="{{$course->id}}">{{$course->name}}</option>--}}
-                                                                    {{--@endforeach--}}
-                                                                    {{--</select>--}}
-
-                                                                {{--</div>--}}
-                                                                {{--<input class="btn btn-primary" type="submit">--}}
-                                                                {{--<div class="form-group">--}}
-                                                                    {{--<div>--}}
-                                                                        {{--<button type="submit" class="btn--}}
-                                                                        {{--btn-success btn-rounded">--}}
-                                                                            {{--{{ __('strings.Submit') }}--}}
-                                                                            {{--Submit--}}
-                                                                        {{--</button>--}}
-                                                                        {{--<button type="button" class="btn btn-default--}}
-                                                                        {{--btn-rounded waves-effect"--}}
-                                                                                {{--data-dismiss="modal">--}}
-                                                                            {{--{{ __('strings.Cancel') }}--}}
-                                                                            {{--Cancel--}}
-                                                                        {{--</button>--}}
-                                                                    {{--</div>--}}
-                                                                {{--</div>--}}
-                                                            {{--</form>--}}
-                                                            {{--=========================================================================--}}
-                                                            {{--============================= //FORM ====================================--}}
-                                                            {{--=========================================================================--}}
-                                                        {{--</div>--}}
-                                                        {{--<div class="modal-footer">--}}
-
-                                                            {{--<button type="button" class="btn btn-default waves-effect"--}}
-                                                                    {{--data-dismiss="modal">Cancel--}}
-                                                            {{--</button>--}}
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-                                                    {{--<!-- /.modal-content -->--}}
-                                                {{--</div>--}}
-                                                {{--<!-- /.modal-dialog -->--}}
-                                            {{--</div>--}}
-                                            {{--<td colspan="7">--}}
-                                                {{--<div class="text-right">--}}
-                                                    {{--<ul class="pagination"></ul>--}}
-                                                {{--</div>--}}
-                                            {{--</td>--}}
-                                        {{--</tr>--}}
-                                        {{--</tfoot>--}}
                                     </table>
                                 </div>
                                 <!-- .left-aside-column-->
@@ -277,8 +139,8 @@
                                         <tr>
                                             <th> {{ __('strings.Number') }} </th>
                                             <th>{{ __('strings.AssignmentName') }} </th>
-                                            <th>{{ __('strings.CourseName') }} </th>
-                                            {{--<th>{{ __('strings.Instructions') }} </th>--}}
+                                            {{--<th>{{ __('strings.CourseName') }} </th>--}}
+                                            <th>{{ __('strings.Instructions') }} </th>
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.EndDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
@@ -287,30 +149,28 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($teacher_assignments as $t_assignment)
+                                        @foreach ($teacherAssignment as $assignment)
                                             <tr>
                                                 {{--<td>{{$student->id}}</td>--}}
-                                                <td> {{ $t_assignment->number}}</td>
+                                                <td> {{ $assignment->assignment_description->number}}</td>
                                                 {{--<td> {{ $t_assignment->name}}</td>--}}
-                                                <td>
-                                                    {{--<a href="/assignment_details">--}}
-                                                    <a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"
-                                                       onclick="assignCourseDetails({{$t_assignment}})">
-                                                        {{$t_assignment->case}}
-                                                    </a>
-                                                </td>
                                                 <td>
                                                     {{--list details of a course--}}
                                                     <a href="/" data-toggle="modal" data-target="#modalCourseDetails"
-                                                       onclick="courseDetails({{$t_assignment}})">
-                                                        {{$t_assignment->name}}
+                                                       onclick="assignmentDetails({{$assignment}})">
+                                                        {{$assignment->assignment_description->case}}
                                                     </a>
                                                 </td>
-                                                <td>{{$t_assignment->startdate}}</td>
-                                                <td>{{$t_assignment->deadline}}</td>
-                                                <td>{{$t_assignment->available_date}}</td>
                                                 <td>
-                                                    @if($t_assignment->status == 0)
+                                                    {{substr($assignment->assignment_description->instructions, 0, 15)
+                                                    }}{{$assignment->assignment_description->startdate}}
+                                                </td>
+
+                                                <td>{{$assignment->assignment_description->startdate}}</td>
+                                                <td>{{$assignment->assignment_description->deadline}}</td>
+                                                <td>{{$assignment->assignment_description->available_date}}</td>
+                                                <td>
+                                                    @if($assignment->assignment_description->status == 0)
                                                         {{ __('strings.Active') }}
                                                         {{--Active--}}
                                                     @else
@@ -326,22 +186,34 @@
                                                     <button type="button" class="btn btn-info btn-circle
                                                      btn-lg m-r-5"><i class="ti-key"></i></button>
                                                     {{--Update/Edit course--}}
-                                                    <button type="button" class="btn btn-info btn-circle btn-lg"
-                                                            href="/"
-                                                            data-toggle="modal"
-                                                            data-target="#update-assignment"
-                                                            data-cod="{{ $t_assignment->id }}"
-                                                            onclick="updateAssignment({{$t_assignment}})">
+                                                    {{--<a href="{{ url('/update_assignmentpage' . $problem->id . '/edit') }}" class="btn btn-xs btn-info pull-right">--}}
+                                                        {{--Edit--}}
+                                                    {{--</a>--}}
+                                                    <a href="{{ url('/update_assignment/'
+                                                    .$assignment->assignment_description->id)}}" class="btn btn-info
+                                                     btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
+                                                    </a>
 
-                                                    </button>
+
+                                                    {{--<button class="btn btn-info btn-circle btn-lg"--}}
+                                                            {{--onclick="Location.href='{{url('update-assignment')}}'"--}}
+                                                            {{--href="/update-assignment/{{$assignment->assignment_description}}"--}}
+                                                            {{--data-toggle="modal"--}}
+                                                            {{--data-target="#update-assignment"--}}
+                                                            {{--data-cod="{{ $assignment->id }}"--}}
+                                                            {{--onclick="updateAssignment({{$assignment}})"--}}
+
+                                                    {{--> <i text-md-center class="ti-pencil-alt"></i>--}}
+
+                                                    {{--</button>--}}
                                                     {{--Delete/Destroy the course--}}
                                                     <button type="button" class="btn btn-info btn-circle
                                                     btn-lg"
                                                             href="/"
                                                             data-toggle="modal"
                                                             data-target="#delete-assignment"
-                                                            onclick="deleteCourse({{$t_assignment}})">
+                                                            onclick="deteleAssignment({{$assignment->assignment_description}})">
                                                         <i text-md-center class="ti-trash"></i>
                                                     </button>
                                                 </td>
@@ -393,21 +265,26 @@
     {{--Modal for copying an assignment--}}
     @include('design.modals.copy-assignment')
     @include('design.modals.update-assignment')
+    @include('design.modals.delete-assignment')
 
 
 
     <script>
-
-        function assignDetails(assignment) {
+        //show details in the modals.assignment-details
+        function showAssignmentDetails(assignment) {
             var  assignment = assignment;
             $("#case").html(assignment.case);
             $("#number").html(assignment.number);
             $("#instructions").html(assignment.instructions);
-            //copy assignment
-            $("#c_assign_case").val(assignment.case);
-            $("#c_assign_number").val(assignment.number);
-            $("#c_assign_instructions").val(assignment.instructions);
-            $("#c_assign_id").val(assignment.id);
+        }
+
+        //show copied details in the modals.copy-assignment
+        function createAssignmentFromTemplate(assignment) {
+            var  assignment = assignment;
+            $("#c_case").val(assignment.case);
+            $("#c_number").val(assignment.number);
+            $("#c_instructions").html(assignment.instructions);
+            $("#assignment_id").val(assignment.id);
             console.log(assignment);
         }
 //Update assignment: getting values
@@ -448,6 +325,13 @@
             $("#copy-button1").hide();
             console.log(course)
         }
+
+        function deteleAssignment(assignment) {
+            var assignment = assignment;
+            $("#deleteassignment_id").val(assignment.id);
+            console.log(assignment.id)
+        }
+
 
         function formatDate(date) {
             var d = new Date(date),

@@ -15,7 +15,6 @@
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
                       action="/submit_assignment" method="post">
-
                     {{csrf_field()}}
 
                     <div class="form-group">

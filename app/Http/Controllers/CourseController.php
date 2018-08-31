@@ -238,7 +238,6 @@ class CourseController extends ModelController
 
     public function deleteCourse(Request $request)
     {
-
         //get teacher of this course
         $teachers = TeacherCourse::where('courses_id', $request->deletecourse_id)->get();
         //delele these theachers

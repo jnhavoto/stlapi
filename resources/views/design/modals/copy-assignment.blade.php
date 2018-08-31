@@ -14,7 +14,7 @@
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
-                      action="/submit_assignment" method="post">
+                      action="/create_assignment" method="post">
 
                     {{csrf_field()}}
 
@@ -23,19 +23,19 @@
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">Assignment
                                 name</label>
-                            <input name="case" id="c_assign_case" type="text"
+                            <input name="case" id="c_case" type="text"
                                    class="form-control">
                         </div>
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">Assignment
                                 number</label>
-                            <input name="number" id="c_assign_number" type="number"
+                            <input name="number" id="c_number" type="number"
                                    class="form-control">
                         </div>
                         <div class="col-md-12 m-b-20">
                             <label
                                     class="control-label">Instructions</label>
-                            <textarea name="instructions" id="c_assign_instructions" type="text"
+                            <textarea name="instructions" id="c_instructions" type="text"
                                    class="form-control" rows="5"> </textarea>
                         </div>
 

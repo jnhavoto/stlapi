@@ -79,7 +79,7 @@ Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher'
 
 Route::get('/assignments', 'AssignmentdescriptionController@getAssignments')->middleware(['teacher']);
 
-Route::post('/submit_assignment', 'TeacherController@submitAssignment')->middleware(['teacher']);
+Route::post('/create_assignment', 'AssignmentdescriptionController@createAssignment')->middleware(['teacher']);
 
 Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['teacher']);
 
@@ -88,8 +88,25 @@ Route::post('/update_course', 'CourseController@updateCourse')->middleware(['tea
 //delete a course
 Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
 
+//delete an assignment
+Route::post('/delete-assignment', 'AssignmentDescriptionController@deleteAssignment')->middleware(['teacher']);
+
 //update assignment
 Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware(['teacher']);
+
+//Route::get('/update_assignment/{id}', function () {
+//    return view('design.update-assignment', ['user' => \Illuminate\Support\Facades\Auth::user()]);
+//})->middleware(['teacher']);
+//
+Route::get('/update_assignment/{id}','AssignmentDescriptionController@updateAssignment')->middleware(['teacher']);
+
+
+Route::get('/update-assignment/{course}', function ($course) {
+    return view('design.update-assignment');
+})->middleware(['teacher']);
+
+//update assignment by id
+Route::post('/update_assignment/{course}', 'AssignmentDescriptionController@updateAssignmentByID')->middleware(['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
 
@@ -118,6 +135,7 @@ Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll')->m
 Route::get('/submission-details', function () {
     return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
+
 Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->middleware(['teacher']);
 //==============================================================
 //End Monitoring
