@@ -84,7 +84,8 @@ Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignm
 Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['teacher']);
 
 //update course
-Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
+//Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
+Route::get('/update_course/{id}', 'CourseController@updateCourseNew')->middleware(['teacher']);
 //delete a course
 Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
 
@@ -100,10 +101,10 @@ Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignm
 //
 Route::get('/update_assignment/{id}','AssignmentDescriptionController@updateAssignment')->middleware(['teacher']);
 
-
-Route::get('/update-assignment/{course}', function ($course) {
-    return view('design.update-assignment');
-})->middleware(['teacher']);
+//
+//Route::get('/update-assignment/{course}', function ($course) {
+//    return view('design.update-assignment');
+//})->middleware(['teacher']);
 
 //update assignment by id
 Route::post('/update_assignment/{course}', 'AssignmentDescriptionController@updateAssignmentByID')->middleware(['teacher']);

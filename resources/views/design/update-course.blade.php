@@ -11,7 +11,7 @@
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">
-                        {{ __('strings.AssignmentDesign') }}
+                        {{ __('strings.CourseDesign') }}
                         {{--Assignments--}}
                     </h3>
                     <ol class="breadcrumb">
@@ -30,58 +30,48 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Editing the Assignment</h4>
+                            <h4 class="card-title">Edit Course</h4>
                             <h6 class="card-subtitle">You can change the content
                             </h6>
                             <form class="form-horizontal m-t-40">
                                 <div class="col-md-6 m-b-20">
-                                    <label>Assignment name</label>
+                                    <label>Course name</label>
                                     <input type="text" class="form-control form-control-line"
-                                           value="{{ $assignment->case }}">
+                                           value="{{ $course->name }}">
                                 </div>
                                 <div class="col-md-6 m-b-20">
-                                    <label class="control-label">Assignment
-                                        number</label>
-                                    <input type="text" class="form-control form-control-line" value="{{
-                                    $assignment->number }}">
-                                </div>
-                                <div class="col-md-6 m-b-20">
-                                    <label>Instructions</label>
-                                    <textarea class="form-control" rows="5"> {{ $assignment->instructions }}</textarea>
+                                    <label class="control-label">Course description</label>
+                                    <textarea class="form-control" rows="5"> {{ $course->course_content  }}</textarea>
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">Start date</label>
-                                    <input name="startdate" type="text"
+                                    <input name="startdate" type="date"
                                            class="form-control" value="{{
-                                    $assignment->startdate }}">
+                                    $course->startdate }}">
                                 </div>
-
-                                <div class="col-md-4 m-b-20">
-                                    <label class="control-label">End date</label>
-                                    <input name="deadline"
-                                           type="date" class="form-control" value="{{
-                                    $assignment->deadline }}">
-                                </div>
-
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">Available
                                         date</label>
                                     <input name="availabledate" type="date"
                                            class="form-control" value="{{
-                                    $assignment->available_date }}">
+                                    $course->available_date }}">
                                 </div>
 
                                 <div class="col-md-4 m-b-20">
-                                    <h4 class="card-title">Select course </h4>
+                                    <h4 class="card-title">Select instructors </h4>
                                 </div>
                                 <div class="col-md-4 m-b-20">
-                                    <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
-                                        @foreach($teacherCourses as  $course)
-                                            <option
-                                                    name="selectTag"
-                                                    value="{{$course->course->id}}">{{$course->course->name}}
-                                            </option>
-                                        @endforeach
+                                    <select class="courseInstrutors" name="instructors[]" style="width: 100%"
+                                            multiple="multiple"
+                                    id="select-members">
+                                        {{--@foreach($courseInstructors as  $instructor)--}}
+                                            {{--<option--}}
+                                                    {{--name="selectTag"--}}
+                                                    {{--value="{{$instructor->teacher->id}}">--}}
+                                                {{--{{$instructor->teacher->user->first_name.' '.--}}
+                                                {{--$instructor->teacher->user->last_name}}--}}
+                                            {{--</option>--}}
+                                        {{--@endforeach--}}
                                     </select>
                                 </div>
                                 <div class="col-md-12 m-b-20">

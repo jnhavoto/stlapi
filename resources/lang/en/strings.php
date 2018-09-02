@@ -109,8 +109,6 @@ return [
     'AssignmentsOverview' => 'Assignments Overview',
     'AssignmentOverview' => 'Assignment Overview',
 
-
-    //100818
     'CourseDescription' => 'Course Description',
     'CourseMaterial' => 'Course Material',
     'SeeAllChats' => 'See All Chats',
@@ -118,4 +116,9 @@ return [
     'Actions' => 'Actions',
     'SureDelete' => 'Are you sure?',
     'Yes' => 'Yes',
+
+    //010918
+    'AddCourseMaterial' => 'Add Course Material',
+    'Now' => 'Now',
+    'Later' => 'Later',
 ];

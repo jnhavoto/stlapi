@@ -19,7 +19,6 @@
                     {{csrf_field()}}
 
                     <div class="form-group">
-
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">Assignment
                                 name</label>

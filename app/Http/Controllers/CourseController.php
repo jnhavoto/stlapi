@@ -88,15 +88,6 @@ class CourseController extends ModelController
                 'departments_id' => 1,
             ]
         );
-        //return $request->course_content;
-        //associate the course with the teacher
-//        $teacher_course = TeacherCourse::create(
-//            [
-//                'teachers_id' => $teacher->id,
-//                'courses_id' => $course->id,
-//            ]
-//        );
-
         //enrol all student on this course
         $students = Student::all();
         foreach ($students as $student) {
@@ -119,20 +110,6 @@ class CourseController extends ModelController
         //adding instructors to the course
         $instructors = $request->instructors;
 
-
-//return $request->instructors[1];
-
-//        return ($test);
-
-//        $teacher_member = TeacherMember::create(
-//            [
-//                'group_teachers_id' => $group_teacher->id,
-//                'teachers_id' => $teacher->id,
-////                    'teachers_id' => $instrutors[$i],
-//            ]
-//        );
-
-//        for ($i=0; $i< sizeof($instrutors); $i++)
         foreach ($instructors as $instructor) {
             $teacher_member = TeacherMember::create(
                 [
@@ -156,11 +133,7 @@ class CourseController extends ModelController
             //check if course and tecaher_course have any error: if not, then write on the DB
             if ($course and $teacher_course and $student_course) {
                 DB::commit();
-                $coursedetails = Course::where('id', $course->id)->get();
-                //return $coursedetails;
                 return redirect('/courses');
-//                view('course-details', ['coursedetails' => $coursedetails,
-//                    'user'=>Auth::user()]);
             }
     }
 
@@ -209,14 +182,8 @@ class CourseController extends ModelController
         $course->save();
         //return $course;
         $instructors = $request->instructors; //get instructors from the form
+
         //recreate instructors
-//        return ($instructors);
-//            TeacherCourse::create(
-//                [
-//                    'teachers_id' => $teacher->id,
-//                    'courses_id' => $course->id,
-//                ]
-//            );
         foreach ($instructors as $instructor) {
             TeacherCourse::create(
                 [
@@ -226,14 +193,51 @@ class CourseController extends ModelController
             );
         }
         return redirect('/courses');
-//        return view('design.course',
-//            [   'courseInstructors'=>$courseInstructors,
-//                'user' => Auth::user()]);
-        //check if course and tecaher_course have any error: if not, then write on the DB
-//            if ($course and $teacher_course and $student_course) {
-//                DB::commit();
-//                return redirect('/courses');
-//            }
+    }
+
+    public function updateCourseNew($id)
+    {
+        //get teacher ID: who logged in
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //get the course by id;
+        $course = Course::findOrFail($id);
+        //return $course;
+        //get the list of all intructors
+//        §instructors =
+        $courseInstructors = TeacherCourse::with('teacher')->where('courses_id', '=', $id)->get();
+        //return $courseInstructors;
+        //get all current instructors
+//        $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
+//        //get the group_teachers_id of this course and delete them
+//        TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
+        //remove all the OLD teachers
+
+        //return $course_teachers;
+        //get the current values and save them in the DB
+//        $course->name = $request->name;
+//        $course->course_content = $request->course_content;
+//        $course->startdate = $request->startdate;
+//        $course->available_date = $request->available_date;
+//        $course->save();
+//        //return $course;
+//        $instructors = $request->instructors; //get instructors from the form
+//
+//        //recreate instructors
+//        foreach ($instructors as $instructor) {
+//            TeacherCourse::create(
+//                [
+//                    'teachers_id' => $instructor,
+//                    'courses_id' => $course->id,
+//                ]
+//            );
+//        }
+//
+        return view('design.update-course', [
+                'course' => $course,
+                'courseInstructors' => $courseInstructors,
+                'user' => Auth::user()
+        ]);
+
     }
 
     public function deleteCourse(Request $request)

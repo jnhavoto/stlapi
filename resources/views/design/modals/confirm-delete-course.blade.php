@@ -1,4 +1,4 @@
-<div id="delete-assignment" class="modal fade in" tabindex="-1" role="dialog"
+<div id="confirm-delete-course" class="modal fade in" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -14,9 +14,9 @@
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
-                      action="/delete-assignment" method="post">
+                      action="/delete-course" method="post">
                     {{csrf_field()}}
-                    <input type="hidden" id="deleteassignment_id"  name="deleteassignment_id" value="1">
+                    <input type="hidden" id="deletecourse_id"  name="deletecourse_id" value="1">
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-rounded">
                             {{ __('strings.Yes') }}

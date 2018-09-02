@@ -1,10 +1,10 @@
-<div id="delete-course" class="modal fade in" tabindex="-1" role="dialog"
+<div id="confirm-submit-newcourse" class="modal fade in" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">
-                    {{ __('strings.SureDelete') }}
+                    {{ __('strings.AddCourseMaterial') }}
                     {{--Create New Course--}}
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -14,19 +14,23 @@
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
-                      action="/delete-course" method="post">
+                      action="/submit-course" method="post">
                     {{csrf_field()}}
-                    <input type="hidden" id="deletecourse_id"  name="deletecourse_id" value="">
+                    <input type="hidden" id="deletecourse_id"  name="deletecourse_id" value="1">
+
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-rounded">
-                            {{ __('strings.Yes') }}
-                            {{--Submit--}}
-                        </button>
                         <button type="button" class="btn btn-default btn-rounded waves-effect"
-                                data-dismiss="modal">
-                            {{ __('strings.No') }}
+                                href="/create-courseWithMaterial"
+                                {{--data-dismiss="modal"--}}
+                        >
+                            {{ __('strings.Now') }}
                             {{--Cancel--}}
                         </button>
+                        <button type="submit" class="btn btn-success btn-rounded">
+                            {{ __('strings.Later') }}
+                            {{--Submit--}}
+                        </button>
+
                     </div>
                     {{--<input class="btn btn-primary " type="submit">--}}
                 </form>

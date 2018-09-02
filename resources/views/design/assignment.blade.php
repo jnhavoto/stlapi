@@ -12,16 +12,12 @@
                 <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">
                         {{ __('strings.AssignmentDesign') }}
-                        {{--Assignments--}}
                     </h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">
-                                {{ __('strings.Home') }}
-                                {{--Home--}}
-                            </a></li>
-                        <li class="breadcrumb-item active">
-                            {{ __('strings.Design') }}
-                            {{--Activities--}}
+                        <li class="breadcrumb-item">
+                            <a href="/">  {{ __('strings.Home') }} </a>
+                        </li>
+                        <li class="breadcrumb-item active"> {{ __('strings.Design') }}
                         </li>
                     </ol>
                 </div>
@@ -57,27 +53,15 @@
                                            data-page-size="10">
                                         <thead>
                                         <tr>
-                                            <th>
-                                                {{ __('strings.Number') }}
-                                                {{--Number--}}
-                                            </th>
-                                            <th>
-                                                {{ __('strings.AssignmentName') }}
-                                                {{--Assignment name--}}
-                                            </th>
-                                            <th>
-                                                {{ __('strings.Instructions') }}
-                                                {{--Instructions--}}
-                                            </th>
-                                            <th>
-                                                {{ __('strings.Action') }}
-                                            </th>
+                                            <th> {{ __('strings.Number') }} </th>
+                                            <th> {{ __('strings.AssignmentName') }} </th>
+                                            <th> {{ __('strings.Instructions') }} </th>
+                                            <th> {{ __('strings.Action') }} </th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($assTemplates as $assignment)
                                             <tr>
-                                                {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $assignment->number}}</td>
                                                 <td>
                                                     {{--<a href="/assignment_details">--}}
@@ -212,7 +196,7 @@
                                                     btn-lg"
                                                             href="/"
                                                             data-toggle="modal"
-                                                            data-target="#delete-assignment"
+                                                            data-target="#confirm-delete-assignment"
                                                             onclick="deteleAssignment({{$assignment->assignment_description}})">
                                                         <i text-md-center class="ti-trash"></i>
                                                     </button>
@@ -224,7 +208,8 @@
                                         <tr>
                                             <td colspan="2">
                                                 <button type="button" class="btn btn-info btn-rounded"
-                                                        data-toggle="modal" data-target="#create-assignment">
+                                                        data-toggle="modal"
+                                                        data-target="#create-assignment">
                                                     {{ __('strings.AddNewAssignment') }}
                                                     {{--Add New Assignment--}}
                                                 </button>
@@ -265,7 +250,7 @@
     {{--Modal for copying an assignment--}}
     @include('design.modals.copy-assignment')
     @include('design.modals.update-assignment')
-    @include('design.modals.delete-assignment')
+    @include('design.modals.confirm-delete-assignment')
 
 
 

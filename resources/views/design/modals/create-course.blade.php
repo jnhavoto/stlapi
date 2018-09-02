@@ -7,22 +7,18 @@
                     {{ __('strings.CreateNewCourse') }}
                     {{--Create New Course--}}
                 </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
             </div>
             <div class="modal-body">
                 {{--=========================================================================--}}
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
-                <form class="form-horizontal form-material"
+                <form class="form-horizontal m-t-40"
                       action="/submit_course" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
-
                         <div class="col-md-12 m-b-20">
-                            <label class="control-label">
-                                {{ __('strings.CourseName') }}
-                                {{--Course name--}}
-                            </label>
+                            <label class="control-label"> {{ __('strings.CourseName') }} </label>
                             <div>
                                 <input name="name" type="text" class="form-control input-lg"
                                        id="c_course_name">
@@ -46,7 +42,8 @@
                                 {{ __('strings.StartDate') }}
                                 {{--Start date--}}
                             </label>
-                            <input name="startdate" type="date" id="c_course_startdates"
+                            <input name="startdate" type="text" onblur="validateDateInput(this, 'startDate')" id="startDate"
+                                   placeholder="YYYY-MM-DD"
                                    class="form-control">
                         </div>
 
@@ -55,17 +52,18 @@
                                 {{ __('strings.AvailableFrom') }}
                                 {{--Avaialble from--}}
                             </label>
-                            <input name="available_date" type="date" id="c_course_available_date"
+                            <input name="available_date" type="text" id="availableDate"
+                                   onblur="validateDateInput(this, 'availableDate')" placeholder="YYYY-MM-DD"
                                    class="form-control">
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-12 m-b-20">
-                                <h4 class="control-label">
-                                    {{ __('strings.SelectInstructors') }}
-                                    {{--Select Instructor(s)--}}
-                                </h4>
-                            </div>
-                            <select class="js-example-basic-multiple" name="instructors[]" multiple="multiple"
+                        <div class="col-md-12 m-b-20">
+                            <h4 class="control-label">
+                                {{ __('strings.SelectInstructors') }}
+                                {{--Select Instructor(s)--}}
+                            </h4>
+                        </div>
+                        <div class="col-md-12 m-b-20">
+                            <select class="select_courses" name="instructors[]" multiple="multiple"
                                     style="width: 100%">
                                 @foreach($teachers as  $teacher)
                                     @if($teacher->id == \Illuminate\Support\Facades\Auth::user()->teacher->id)
@@ -83,13 +81,20 @@
                                 @endforeach
                             </select>
                         </div>
-
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-rounded">
+                        <button type="button" class="btn btn-success btn-rounded"
+                                href="/" data-toggle="modal"
+                                data-target="#confirm-submit-newcourse"
+                                onclick="confirmSubmit()"
+                                data-dismiss="modal" >
                             {{ __('strings.Submit') }}
-                            {{--Submit--}}
                         </button>
+                        
+                        {{--<button type="submit" class="btn btn-success btn-rounded">--}}
+                            {{--{{ __('strings.Submit') }}--}}
+                            {{--Submit--}}
+                        {{--</button>--}}
                         <button type="button" class="btn btn-default btn-rounded waves-effect"
                                 data-dismiss="modal">
                             {{ __('strings.Cancel') }}
@@ -109,3 +114,34 @@
     <!-- /.modal-dialog -->
 </div>
 
+<script>
+    
+    function confirmSubmit() {
+        
+    }
+
+    function validateDateInput(data, id) {
+        var cont = 0;
+        var validateDate = false;
+
+        var format  = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/g;
+        if(cont < 1) {
+            console.log($(data).val());
+            console.log($(data).val().match(format));
+
+            if ($(data).val().match(format) == null) {
+                $('#'+id).css("color", "red");
+                validateDate = true;
+
+            }else{
+                $('#'+id).css("color", "black");
+                validateDate = false;
+            }
+            cont++;
+        }
+    }
+
+
+
+
+</script>
