@@ -14,19 +14,19 @@
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
                 <form class="form-horizontal form-material"
-                      action="/submit-course" method="post">
+                      action="/submit_course" method="post">
                     {{csrf_field()}}
-                    <input type="hidden" id="deletecourse_id"  name="deletecourse_id" value="1">
+                    <input type="hidden" id="c_course_id"  name="c_course_id" value="1">
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-default btn-rounded waves-effect"
+                        <button type="button" class="btn btn-success btn-rounded"
                                 href="/create-courseWithMaterial"
                                 {{--data-dismiss="modal"--}}
                         >
                             {{ __('strings.Now') }}
                             {{--Cancel--}}
                         </button>
-                        <button type="submit" class="btn btn-success btn-rounded">
+                        <button type="submit" class="btn btn-default btn-rounded waves-effect">
                             {{ __('strings.Later') }}
                             {{--Submit--}}
                         </button>

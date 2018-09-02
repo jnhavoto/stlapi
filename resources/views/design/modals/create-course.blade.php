@@ -57,13 +57,11 @@
                                    class="form-control">
                         </div>
                         <div class="col-md-12 m-b-20">
-                            <h4 class="control-label">
+                            <label class="control-label">
                                 {{ __('strings.SelectInstructors') }}
                                 {{--Select Instructor(s)--}}
-                            </h4>
-                        </div>
-                        <div class="col-md-12 m-b-20">
-                            <select class="select_courses" name="instructors[]" multiple="multiple"
+                            </label>
+                            <select class="select_courses" name="instructors[]" multiple="multiple" class="form-control"
                                     style="width: 100%">
                                 @foreach($teachers as  $teacher)
                                     @if($teacher->id == \Illuminate\Support\Facades\Auth::user()->teacher->id)
@@ -86,8 +84,9 @@
                         <button type="button" class="btn btn-success btn-rounded"
                                 href="/" data-toggle="modal"
                                 data-target="#confirm-submit-newcourse"
-                                onclick="confirmSubmit()"
-                                data-dismiss="modal" >
+                                onclick="confirmSubmit(course)"
+                                {{--data-dismiss="modal" --}}
+                        >
                             {{ __('strings.Submit') }}
                         </button>
                         
@@ -114,11 +113,11 @@
     <!-- /.modal-dialog -->
 </div>
 
+@include('design.modals.confirm-submit-newcourse')
+
 <script>
     
-    function confirmSubmit() {
-        
-    }
+
 
     function validateDateInput(data, id) {
         var cont = 0;
@@ -128,11 +127,9 @@
         if(cont < 1) {
             console.log($(data).val());
             console.log($(data).val().match(format));
-
             if ($(data).val().match(format) == null) {
                 $('#'+id).css("color", "red");
                 validateDate = true;
-
             }else{
                 $('#'+id).css("color", "black");
                 validateDate = false;

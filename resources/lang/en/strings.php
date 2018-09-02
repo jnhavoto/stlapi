@@ -118,7 +118,7 @@ return [
     'Yes' => 'Yes',
 
     //010918
-    'AddCourseMaterial' => 'Add Course Material',
+    'AddCourseMaterial' => 'Add Course Material?',
     'Now' => 'Now',
     'Later' => 'Later',
 ];

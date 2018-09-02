@@ -234,6 +234,16 @@
             console.log(course)
         }
 
+        function confirmSubmit(course) {
+            $("#name").html(course.name);
+            $("#course_content").html(course.course_content);
+            $("#startdate").html(startdate);
+            $("#available_date").html(available_date);
+            $("#instructors").html(instructors);
+            $("#c_course_id").val(course.id);
+            console.log(startdate);
+        }
+
         function courseCleanDetails() {
             $("#name").html("");
             $("#course_content").html("");
