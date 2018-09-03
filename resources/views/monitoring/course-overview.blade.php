@@ -56,7 +56,7 @@
                                         <tr>
                                             <th> #</th>
                                             <th>{{ __('strings.CourseName') }} </th>
-                                            <th>{{ __('strings.CourseContent') }} </th>
+                                            {{--<th>{{ __('strings.CourseContent') }} </th>--}}
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
                                             <th>{{ __('strings.Status') }}
@@ -67,8 +67,14 @@
                                         @foreach ($course as $course)
                                             <tr>
                                                 <td> {{ $course->id}}</td>
-                                                <td> {{ $course->name }} </td>
-                                                <td> {{substr($course->course_content, 0, 45) }} </td>
+                                                <td>
+                                                    <a href="/" data-toggle="modal"
+                                                       data-target="#modalAssCourseDetails">
+                                                        {{ $course->name }}
+                                                    </a>
+
+                                                </td>
+                                                {{--<td> {{substr($course->course_content, 0, 45) }} </td>--}}
                                                 <td> {{ $course->startdate}}</td>
                                                 <td> {{ $course->available_date}}</td>
                                                 <td>
@@ -140,8 +146,8 @@
                                             <th>#</th>
                                             {{--<th> {{ __('strings.AssignmentNumber') }} </th>--}}
                                             <th> {{ __('strings.AssignmentName') }} </th>
-                                            <th> {{ __('strings.Instructions') }} </th>
-                                            </th>
+                                            {{--<th> {{ __('strings.Instructions') }} </th>--}}
+                                            {{--</th>--}}
                                             <th> {{ __('strings.StartDate') }}</th>
                                             <th> {{ __('strings.EndDate') }} </th>
                                             <th> {{ __('strings.AvailableFrom') }}</th>
@@ -153,12 +159,18 @@
                                         @foreach ($courseAssignments as $assignment)
                                             <tr>
                                                 <td> {{ $assignment->number }}</td>
-                                                <td> {{ $assignment->case }}</td>
+                                                <td>
+                                                    <a href="/" data-toggle="modal"
+                                                       data-target="#modalAssCourseDetails">
+                                                        {{ $assignment->case }}
+                                                    </a>
+
+                                                </td>
                                                 <td>
                                                     {{--<a href="/assignment_details">--}}
                                                     {{--<a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"--}}
                                                     {{--onclick="assignCourseDetails({{$t_assignment}})">--}}
-                                                    {{substr($assignment->instructions, 0, 45) }}
+                                                    {{--{{substr($assignment->instructions, 0, 45) }}--}}
                                                     {{--</a>--}}
                                                 </td>
                                                 <td>{{$assignment->startdate}}</td>
