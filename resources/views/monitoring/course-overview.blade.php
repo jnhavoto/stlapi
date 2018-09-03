@@ -166,13 +166,13 @@
                                                     </a>
 
                                                 </td>
-                                                <td>
+                                                {{--<td>--}}
                                                     {{--<a href="/assignment_details">--}}
                                                     {{--<a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"--}}
                                                     {{--onclick="assignCourseDetails({{$t_assignment}})">--}}
                                                     {{--{{substr($assignment->instructions, 0, 45) }}--}}
                                                     {{--</a>--}}
-                                                </td>
+                                                {{--</td>--}}
                                                 <td>{{$assignment->startdate}}</td>
                                                 <td>{{$assignment->deadline}}</td>
                                                 <td>{{$assignment->available_date}}</td>
