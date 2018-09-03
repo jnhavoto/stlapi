@@ -145,6 +145,7 @@ return [
     'AssignmentMaterial' => 'Assignment Material',
     'AddMaterial' => 'Add Material',
     'SearchCourses' => 'search courses',
+    'SearchAssignments' => 'search assignments',
 
 
 

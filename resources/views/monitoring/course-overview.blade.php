@@ -113,8 +113,22 @@
                                                 {{--Course Assignments--}}
                                             </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
-                                                   class="form-control"></div>
+                                            <td colspan="2">
+                                                <button type="button" class="btn btn-info btn-rounded"
+                                                        data-toggle="modal"
+                                                        {{--data-target="#create-assignment"--}}
+                                                        {{--onclick="createAssignmentCleanDetails()"--}}
+                                                >
+                                                    {{ __('strings.AddNewAssignment') }}
+                                                    {{--Add New Assignment--}}
+                                                </button>
+                                            </td>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings.SearchAssignments') }}"
+                                                   class="form-control">
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -180,16 +194,7 @@
                                         </tbody>
                                         <tfoot>
                                         <tr>
-                                            <td colspan="2">
-                                                <button type="button" class="btn btn-info btn-rounded"
-                                                        data-toggle="modal"
-                                                        {{--data-target="#create-assignment"--}}
-                                                        {{--onclick="createAssignmentCleanDetails()"--}}
-                                                >
-                                                    {{ __('strings.AddNewAssignment') }}
-                                                    {{--Add New Assignment--}}
-                                                </button>
-                                            </td>
+
                                             {{--Calling create modal--}}
                                             {{--@include('design.modals.create-assignment')--}}
 

@@ -151,6 +151,7 @@ return [
     'AssignmentMaterial' => 'Material till uppgift',
     'AddMaterial' => 'Lägg till kursmaterial',
     'SearchCourses' => 'Sök kurs',
+    'SearchAssignments' => 'Sök uppgift',
 
 
 ];
