@@ -157,56 +157,49 @@
                                                         {{ __('strings.Disactive') }}
                                                     @endif
                                                 </td>
-                                                <button type="button" class="btn btn-info btn-circle
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-circle
                                                      btn-lg m-r-5"><i class="ti-key"></i></button>
-                                                <a href="{{ url('/update_assignment/'
+                                                    <a href="{{ url('/update_assignment/'
                                                     .$assignment->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
-                                                    <i text-md-center class="ti-pencil-alt"></i>
-                                                </a>
-
-
-                                                {{--<button class="btn btn-info btn-circle btn-lg"--}}
-                                                {{--onclick="Location.href='{{url('update-assignment')}}'"--}}
-                                                {{--href="/update-assignment/{{$assignment->assignment_description}}"--}}
-                                                {{--data-toggle="modal"--}}
-                                                {{--data-target="#update-assignment"--}}
-                                                {{--data-cod="{{ $assignment->id }}"--}}
-                                                {{--onclick="updateAssignment({{$assignment}})"--}}
-
-                                                {{--> <i text-md-center class="ti-pencil-alt"></i>--}}
-
-                                                {{--</button>--}}
-                                                {{--Delete/Destroy the course--}}
-                                                <button type="button" class="btn btn-info btn-circle
+                                                        <i text-md-center class="ti-pencil-alt"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-info btn-circle
                                                     btn-lg"
-                                                        href="/"
-                                                        data-toggle="modal"
-                                                        data-target="#confirm-delete-assignment"
-                                                        onclick="deteleAssignment({{$assignment->assignment_description}})">
-                                                    <i text-md-center class="ti-trash"></i>
-                                                </button>
+                                                            href="/"
+                                                            data-toggle="modal"
+                                                            {{--data-target="#confirm-delete-assignment"--}}
+                                                            {{--onclick="deteleAssignment({{$assignment->assignment_description}})">--}}
+                                                        <i text-md-center class="ti-trash"></i>
+                                                    </button>
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        {{--<tfoot>--}}
-                                        {{--<tr>--}}
-                                        {{--<td colspan="2">--}}
-                                        {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                        {{--data-toggle="modal" data-target="#create-assignment">--}}
-                                        {{--{{ __('strings.AddnewAssignment') }}--}}
-                                        {{--</button>--}}
-                                        {{--</td>--}}
-                                        {{--Calling create modal--}}
-                                        {{--@include('activities.modals.create-assignment')--}}
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="2">
+                                                <button type="button" class="btn btn-info btn-rounded"
+                                                        data-toggle="modal"
+                                                        {{--data-target="#create-assignment"--}}
+                                                        {{--onclick="createAssignmentCleanDetails()"--}}
+                                                >
+                                                    {{ __('strings.AddNewAssignment') }}
+                                                    {{--Add New Assignment--}}
+                                                </button>
+                                            </td>
+                                            {{--Calling create modal--}}
+                                            {{--@include('design.modals.create-assignment')--}}
 
-                                        {{--<td colspan="7">--}}
-                                        {{--<div class="text-right">--}}
-                                        {{--<ul class="pagination"></ul>--}}
-                                        {{--</div>--}}
-                                        {{--</td>--}}
-                                        {{--</tr>--}}
-                                        {{--</tfoot>--}}
+                                            <td colspan="7">
+                                                <div class="text-right">
+                                                    <ul class="pagination"></ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                                 <!-- .left-aside-column-->
@@ -315,7 +308,16 @@
         </div>
         {{--Showing Assignment Status--}}
     </div>
+    {{--@include('design.modals.create-assignment')--}}
 
+    <script>
+        function createAssignmentCleanDetails() {
+            $("#case").html("");
+            $("#number").html("");
+            $("#instructions").val("");
+            $("#assignment_id").val("");
+        }
+    </script>
     {{--<!--Modal for Assignment List-->--}}
     {{--@include('activities.modals.course-details')--}}
     {{--<!--Modal for Assignment Course List-->--}}
