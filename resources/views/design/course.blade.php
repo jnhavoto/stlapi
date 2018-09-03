@@ -107,6 +107,16 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10"> {{ __('strings.MyCList') }} </h4>
                                         </div>
+                                        <tr>
+                                            <td colspan="2">
+                                                <button type="button" onclick="courseCleanDetails()" class="btn
+                                                btn-info btn-rounded"
+                                                        data-toggle="modal" data-target="#create-course">
+                                                    {{ __('strings.AddNewCourse') }}
+                                                    {{--Add New Course--}}
+                                                </button>
+                                            </td>
+                                        </tr>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2"
                                                    placeholder="{{ __('strings.SearchCourses') }}"
@@ -194,18 +204,9 @@
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <td colspan="2">
-                                                <button type="button" onclick="courseCleanDetails()" class="btn
-                                                btn-info btn-rounded"
-                                                        data-toggle="modal" data-target="#create-course">
-                                                    {{ __('strings.AddNewCourse') }}
-                                                    {{--Add New Course--}}
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        </tfoot>
+                                        {{--<tfoot>--}}
+                                       {{----}}
+                                        {{--</tfoot>--}}
                                     </table>
                                 </div>
                                 <!-- .left-aside-column-->
