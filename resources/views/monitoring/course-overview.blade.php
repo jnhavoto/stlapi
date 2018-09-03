@@ -183,8 +183,9 @@
                                                     btn-lg"
                                                             href="/"
                                                             data-toggle="modal"
-                                                            {{--data-target="#confirm-delete-assignment"--}}
-                                                            {{--onclick="deteleAssignment({{$assignment->assignment_description}})">--}}
+                                                            data-target="#confirm-delete-assignment"
+                                                            {{--onclick="deteleAssignment({{$assignment->assignment_description}})"--}}
+                                                    >
                                                         <i text-md-center class="ti-trash"></i>
                                                     </button>
                                                 </td>
