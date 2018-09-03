@@ -150,5 +150,7 @@ return [
     'UpdateField' => 'Uppdatera fält',
     'AssignmentMaterial' => 'Material till uppgift',
     'AddMaterial' => 'Lägg till kursmaterial',
+    'SearchCourses' => 'Sök kurs',
+
 
 ];

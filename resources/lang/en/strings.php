@@ -144,6 +144,7 @@ return [
     'UpdateField' => 'You can update any field',
     'AssignmentMaterial' => 'Assignment Material',
     'AddMaterial' => 'Add Material',
+    'SearchCourses' => 'search courses',
 
 
 
