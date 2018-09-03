@@ -20,7 +20,7 @@
                                 {{--Home--}}
                             </a></li>
                         <li class="breadcrumb-item active">
-                            {{ __('strings.CoursesDetails') }}
+                            {{ __('strings.CourseDetails') }}
                             {{--Course details--}}
                         </li>
                     </ol>
@@ -113,7 +113,8 @@
                                                 {{--Course Assignments--}}
                                             </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
+                                            <input type="text" id="demo-input-search2"
+                                                   placeholder="{{ __('strings.SearchAssignments') }}"
                                                    class="form-control"></div>
                                     </div>
                                 </div>

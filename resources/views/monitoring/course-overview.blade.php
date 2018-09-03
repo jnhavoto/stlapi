@@ -17,11 +17,9 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">
                                 {{ __('strings.Home') }}
-                                {{--Home--}}
                             </a></li>
                         <li class="breadcrumb-item active">
                             {{ __('strings.CourseDetails') }}
-                            {{--Course details--}}
                         </li>
                     </ol>
                 </div>

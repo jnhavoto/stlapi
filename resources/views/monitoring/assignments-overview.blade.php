@@ -62,7 +62,7 @@
                                             <th>{{ __('strings.CourseName') }}
                                                 {{--Course name--}}
                                             </th>
-                                            <th>{{ __('strings.Instructions') }}
+                                            <th>{{ __('strings.Progress') }}
                                                 {{--Instructions--}}
                                             </th>
                                             <th>{{ __('strings.StartDate') }}
@@ -102,7 +102,7 @@
                                                     </a>
                                                 </td>
                                                 {{--courseDetails($t_assignment->courses)--}}
-                                                <td>{{substr($t_assignment->instructions, 0, 45) }}</td>
+                                                <td>Show a BAR</td>
                                                 <td>{{$t_assignment->startdate}}</td>
                                                 <td>{{$t_assignment->deadline}}</td>
                                                 <td>{{$t_assignment->available_date}}</td>
