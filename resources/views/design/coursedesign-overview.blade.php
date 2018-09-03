@@ -60,6 +60,7 @@
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
                                             <th>{{ __('strings.Status') }}
+
                                             </th>
                                         </tr>
                                         </thead>
@@ -132,6 +133,7 @@
                                             <th> {{ __('strings.EndDate') }} </th>
                                             <th> {{ __('strings.AvailableFrom') }}</th>
                                             <th> {{ __('strings.Status') }} </th>
+                                            <th>{{ __('strings.Action') }}
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -156,6 +158,21 @@
                                                         {{ __('strings.Disactive') }}
                                                     @endif
                                                 </td>
+                                                <button type="button" class="btn btn-info btn-circle
+                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
+                                                <a href="{{ url('/update_assignment/'
+                                                    .$assignment->id)}}" class="btn btn-info
+                                                     btn-circle btn-lg">
+                                                    <i text-md-center class="ti-pencil-alt"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-info btn-circle
+                                                    btn-lg"
+                                                        href="/"
+                                                        data-toggle="modal"
+                                                        data-target="#confirm-delete-assignment"
+                                                        onclick="deteleAssignment({{$assignment->id}})">
+                                                    <i text-md-center class="ti-trash"></i>
+                                                </button>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -190,48 +207,48 @@
         <!-- End of Assignment - Courst List -->
             <!-- ============================================================== -->
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <!-- .left-right-aside-column-->
-                        <div class="contact-page-aside">
+            {{--<div class="row">--}}
+                {{--<div class="col-12">--}}
+                    {{--<div class="card">--}}
+                        {{--<!-- .left-right-aside-column-->--}}
+                        {{--<div class="contact-page-aside">--}}
 
-                            <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">
-                                                {{ __('strings.AssignmentProgress') }}
+                            {{--<div class="pl-4">--}}
+                                {{--<div class="right-page-header">--}}
+                                    {{--<div class="d-flex">--}}
+                                        {{--<div class="align-self-center">--}}
+                                            {{--<h4 class="card-title m-t-10">--}}
+                                                {{--{{ __('strings.AssignmentProgress') }}--}}
                                                 {{--Course Assignments--}}
-                                            </h4></div>
-                                        <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
-                                                   class="form-control"></div>
-                                    </div>
-                                </div>
-                                <div class="table-responsive">
-                                    @if(count($submissions)==0)
+                                            {{--</h4></div>--}}
+                                        {{--<div class="ml-auto">--}}
+                                            {{--<input type="text" id="demo-input-search2" placeholder="search assignments"--}}
+                                                   {{--class="form-control"></div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="table-responsive">--}}
+                                    {{--@if(count($submissions)==0)--}}
 
-                                        <h1>Test</h1>
-                                    @else
+                                        {{--<h1>Test</h1>--}}
+                                    {{--@else--}}
 
                                         {{--=======================ELSE====================--}}
 
-                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped color-table success-table"
-                                               data-page-size="10">
-                                            <thead>
-                                            <tr>
-                                                <th> {{ __('strings.StudentName') }} </th>
-                                                <th>{{ __('strings.AssignmentNumber') }}</th>
-                                                <th> {{ __('strings.Progress') }} </th>
-                                                </th>
-                                                <th> {{ __('strings.LastUpdate') }}</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach ($submissions as $submission)
-                                                <tr>
+                                        {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list--}}
+                                    {{--table-striped color-table success-table"--}}
+                                               {{--data-page-size="10">--}}
+                                            {{--<thead>--}}
+                                            {{--<tr>--}}
+                                                {{--<th> {{ __('strings.StudentName') }} </th>--}}
+                                                {{--<th>{{ __('strings.AssignmentNumber') }}</th>--}}
+                                                {{--<th> {{ __('strings.Progress') }} </th>--}}
+                                                {{--</th>--}}
+                                                {{--<th> {{ __('strings.LastUpdate') }}</th>--}}
+                                            {{--</tr>--}}
+                                            {{--</thead>--}}
+                                            {{--<tbody>--}}
+                                            {{--@foreach ($submissions as $submission)--}}
+                                                {{--<tr>--}}
                                                     {{--<td> {{ $submission->area }}</td>--}}
                                                     {{--<td> {{ $submission->grade }}</td>--}}
                                                 {{--<td>{{$assignment->startdate}}</td>--}}
@@ -244,9 +261,9 @@
                                                         {{--{{ __('strings.Disactive') }}--}}
                                                     {{--@endif--}}
                                                 {{--</td>--}}
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
+                                                {{--</tr>--}}
+                                            {{--@endforeach--}}
+                                            {{--</tbody>--}}
                                             {{--<tfoot>--}}
                                             {{--<tr>--}}
                                             {{--<td colspan="2">--}}
@@ -265,23 +282,23 @@
                                             {{--</td>--}}
                                             {{--</tr>--}}
                                             {{--</tfoot>--}}
-                                        </table>
+                                        {{--</table>--}}
 
 
                                         {{--====================================================--}}
 
 
-                                    @endif
+                                    {{--@endif--}}
 
 
-                                </div>
-                                <!-- .left-aside-column-->
-                            </div>
-                            <!-- /.left-right-aside-column-->
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                {{--</div>--}}
+                                {{--<!-- .left-aside-column-->--}}
+                            {{--</div>--}}
+                            {{--<!-- /.left-right-aside-column-->--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
         {{--Showing Assignment Status--}}
     </div>

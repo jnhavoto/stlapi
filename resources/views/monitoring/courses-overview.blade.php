@@ -20,7 +20,7 @@
                                 {{--Home--}}
                             </a></li>
                         <li class="breadcrumb-item active">
-                            {{ __('strings.CoursesDetails') }}
+                            {{ __('strings.CourseDetails') }}
                             {{--Course details--}}
                         </li>
                     </ol>
@@ -56,7 +56,6 @@
                                         <tr>
                                             <th> #</th>
                                             <th>{{ __('strings.CourseName') }} </th>
-                                            <th>{{ __('strings.CourseContent') }} </th>
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
                                             <th>{{ __('strings.Status') }}
@@ -113,7 +112,8 @@
                                                 {{--Course Assignments--}}
                                             </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
+                                            <input type="text" id="demo-input-search2"
+                                                   placeholder="{{ __('strings.SearchAssignments') }}"
                                                    class="form-control"></div>
                                     </div>
                                 </div>
@@ -126,8 +126,6 @@
                                             <th>#</th>
                                             {{--<th> {{ __('strings.AssignmentNumber') }} </th>--}}
                                             <th> {{ __('strings.AssignmentName') }} </th>
-                                            <th> {{ __('strings.Instructions') }} </th>
-                                            </th>
                                             <th> {{ __('strings.StartDate') }}</th>
                                             <th> {{ __('strings.EndDate') }} </th>
                                             <th> {{ __('strings.AvailableFrom') }}</th>

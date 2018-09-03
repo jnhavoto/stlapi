@@ -73,7 +73,7 @@ return [
     'Progress' => 'Progress',
     'CreateNewCourse' => 'Create New course',
     'UpdateCourse' => 'Update Course',
-    'Members' => 'Members',
+    'Members' => 'Instructors',
 
 
 //    Courses overview
@@ -140,10 +140,12 @@ return [
     'Inbox' => 'Inbox',
     'Sent' => 'Sent',
     'Draft' => 'Draft',
-    'Compose' => 'Compose',
+    'Compose' => 'Compose message',
     'UpdateField' => 'You can update any field',
     'AssignmentMaterial' => 'Assignment Material',
     'AddMaterial' => 'Add Material',
+    'SearchCourses' => 'search courses',
+    'SearchAssignments' => 'search assignments',
 
 
 

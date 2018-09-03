@@ -318,11 +318,14 @@ class CourseController extends ModelController
 //            $submission = AssignmentSubmission::where('assignment_descriptions_id',5)->get();
             $submissions->push($submission);
         }
+
+        $teacherCourses = Teacher::all();
 //        return $submissions;
 
         //get all students
         return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
+            'teacherCourses' => $teacherCourses,
             'user' => Auth::user()]);
 
     }

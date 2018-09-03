@@ -17,11 +17,9 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">
                                 {{ __('strings.Home') }}
-                                {{--Home--}}
                             </a></li>
                         <li class="breadcrumb-item active">
                             {{ __('strings.CourseDetails') }}
-                            {{--Course details--}}
                         </li>
                     </ol>
                 </div>
@@ -56,7 +54,7 @@
                                         <tr>
                                             <th> #</th>
                                             <th>{{ __('strings.CourseName') }} </th>
-                                            <th>{{ __('strings.CourseContent') }} </th>
+                                            {{--<th>{{ __('strings.CourseContent') }} </th>--}}
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
                                             <th>{{ __('strings.Status') }}
@@ -67,8 +65,14 @@
                                         @foreach ($course as $course)
                                             <tr>
                                                 <td> {{ $course->id}}</td>
-                                                <td> {{ $course->name }} </td>
-                                                <td> {{substr($course->course_content, 0, 45) }} </td>
+                                                <td>
+                                                    <a href="/" data-toggle="modal"
+                                                       data-target="#modalAssCourseDetails">
+                                                        {{ $course->name }}
+                                                    </a>
+
+                                                </td>
+                                                {{--<td> {{substr($course->course_content, 0, 45) }} </td>--}}
                                                 <td> {{ $course->startdate}}</td>
                                                 <td> {{ $course->available_date}}</td>
                                                 <td>
@@ -113,8 +117,22 @@
                                                 {{--Course Assignments--}}
                                             </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
-                                                   class="form-control"></div>
+                                            <td colspan="2">
+                                                <button type="button" class="btn btn-info btn-rounded"
+                                                        data-toggle="modal"
+                                                        {{--data-target="#create-assignment"--}}
+                                                        {{--onclick="createAssignmentCleanDetails()"--}}
+                                                >
+                                                    {{ __('strings.AddNewAssignment') }}
+                                                    {{--Add New Assignment--}}
+                                                </button>
+                                            </td>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings.SearchAssignments') }}"
+                                                   class="form-control">
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -126,26 +144,33 @@
                                             <th>#</th>
                                             {{--<th> {{ __('strings.AssignmentNumber') }} </th>--}}
                                             <th> {{ __('strings.AssignmentName') }} </th>
-                                            <th> {{ __('strings.Instructions') }} </th>
-                                            </th>
+                                            {{--<th> {{ __('strings.Instructions') }} </th>--}}
+                                            {{--</th>--}}
                                             <th> {{ __('strings.StartDate') }}</th>
                                             <th> {{ __('strings.EndDate') }} </th>
                                             <th> {{ __('strings.AvailableFrom') }}</th>
                                             <th> {{ __('strings.Status') }} </th>
+                                            <th> {{ __('strings.Action') }} </th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($courseAssignments as $assignment)
                                             <tr>
                                                 <td> {{ $assignment->number }}</td>
-                                                <td> {{ $assignment->case }}</td>
                                                 <td>
+                                                    <a href="/" data-toggle="modal"
+                                                       data-target="#modalAssCourseDetails">
+                                                        {{ $assignment->case }}
+                                                    </a>
+
+                                                </td>
+                                                {{--<td>--}}
                                                     {{--<a href="/assignment_details">--}}
                                                     {{--<a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"--}}
                                                     {{--onclick="assignCourseDetails({{$t_assignment}})">--}}
-                                                    {{substr($assignment->instructions, 0, 45) }}
+                                                    {{--{{substr($assignment->instructions, 0, 45) }}--}}
                                                     {{--</a>--}}
-                                                </td>
+                                                {{--</td>--}}
                                                 <td>{{$assignment->startdate}}</td>
                                                 <td>{{$assignment->deadline}}</td>
                                                 <td>{{$assignment->available_date}}</td>
@@ -156,27 +181,41 @@
                                                         {{ __('strings.Disactive') }}
                                                     @endif
                                                 </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-circle
+                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
+                                                    <a href="{{ url('/update_assignment/'
+                                                    .$assignment->id)}}" class="btn btn-info
+                                                     btn-circle btn-lg">
+                                                        <i text-md-center class="ti-pencil-alt"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-info btn-circle
+                                                    btn-lg"
+                                                            href="/"
+                                                            data-toggle="modal"
+                                                            data-target="#confirm-delete-assignment"
+                                                            {{--onclick="deteleAssignment({{$assignment->assignment_description}})"--}}
+                                                    >
+                                                        <i text-md-center class="ti-trash"></i>
+                                                    </button>
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        {{--<tfoot>--}}
-                                        {{--<tr>--}}
-                                        {{--<td colspan="2">--}}
-                                        {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                        {{--data-toggle="modal" data-target="#create-assignment">--}}
-                                        {{--{{ __('strings.AddnewAssignment') }}--}}
-                                        {{--</button>--}}
-                                        {{--</td>--}}
-                                        {{--Calling create modal--}}
-                                        {{--@include('activities.modals.create-assignment')--}}
+                                        <tfoot>
+                                        <tr>
 
-                                        {{--<td colspan="7">--}}
-                                        {{--<div class="text-right">--}}
-                                        {{--<ul class="pagination"></ul>--}}
-                                        {{--</div>--}}
-                                        {{--</td>--}}
-                                        {{--</tr>--}}
-                                        {{--</tfoot>--}}
+                                            {{--Calling create modal--}}
+                                            {{--@include('design.modals.create-assignment')--}}
+
+                                            <td colspan="7">
+                                                <div class="text-right">
+                                                    <ul class="pagination"></ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                                 <!-- .left-aside-column-->
@@ -190,48 +229,48 @@
         <!-- End of Assignment - Courst List -->
             <!-- ============================================================== -->
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <!-- .left-right-aside-column-->
-                        <div class="contact-page-aside">
+            {{--<div class="row">--}}
+                {{--<div class="col-12">--}}
+                    {{--<div class="card">--}}
+                        {{--<!-- .left-right-aside-column-->--}}
+                        {{--<div class="contact-page-aside">--}}
 
-                            <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">
-                                                {{ __('strings.AssignmentProgress') }}
+                            {{--<div class="pl-4">--}}
+                                {{--<div class="right-page-header">--}}
+                                    {{--<div class="d-flex">--}}
+                                        {{--<div class="align-self-center">--}}
+                                            {{--<h4 class="card-title m-t-10">--}}
+                                                {{--{{ __('strings.AssignmentProgress') }}--}}
                                                 {{--Course Assignments--}}
-                                            </h4></div>
-                                        <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
-                                                   class="form-control"></div>
-                                    </div>
-                                </div>
-                                <div class="table-responsive">
-                                    @if(count($submissions)==0)
+                                            {{--</h4></div>--}}
+                                        {{--<div class="ml-auto">--}}
+                                            {{--<input type="text" id="demo-input-search2" placeholder="search assignments"--}}
+                                                   {{--class="form-control"></div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="table-responsive">--}}
+                                    {{--@if(count($submissions)==0)--}}
 
-                                        <h1>Test</h1>
-                                    @else
+                                        {{--<h1>Test</h1>--}}
+                                    {{--@else--}}
 
                                         {{--=======================ELSE====================--}}
 
-                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped color-table success-table"
-                                               data-page-size="10">
-                                            <thead>
-                                            <tr>
-                                                <th> {{ __('strings.StudentName') }} </th>
-                                                <th>{{ __('strings.AssignmentNumber') }}</th>
-                                                <th> {{ __('strings.Progress') }} </th>
-                                                </th>
-                                                <th> {{ __('strings.LastUpdate') }}</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach ($submissions as $submission)
-                                                <tr>
+                                        {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list--}}
+                                    {{--table-striped color-table success-table"--}}
+                                               {{--data-page-size="10">--}}
+                                            {{--<thead>--}}
+                                            {{--<tr>--}}
+                                                {{--<th> {{ __('strings.StudentName') }} </th>--}}
+                                                {{--<th>{{ __('strings.AssignmentNumber') }}</th>--}}
+                                                {{--<th> {{ __('strings.Progress') }} </th>--}}
+                                                {{--</th>--}}
+                                                {{--<th> {{ __('strings.LastUpdate') }}</th>--}}
+                                            {{--</tr>--}}
+                                            {{--</thead>--}}
+                                            {{--<tbody>--}}
+                                            {{--@foreach ($submissions as $submission)--}}
+                                                {{--<tr>--}}
                                                     {{--<td> {{ $submission->area }}</td>--}}
                                                     {{--<td> {{ $submission->grade }}</td>--}}
                                                 {{--<td>{{$assignment->startdate}}</td>--}}
@@ -244,9 +283,9 @@
                                                         {{--{{ __('strings.Disactive') }}--}}
                                                     {{--@endif--}}
                                                 {{--</td>--}}
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
+                                                {{--</tr>--}}
+                                            {{--@endforeach--}}
+                                            {{--</tbody>--}}
                                             {{--<tfoot>--}}
                                             {{--<tr>--}}
                                             {{--<td colspan="2">--}}
@@ -265,27 +304,36 @@
                                             {{--</td>--}}
                                             {{--</tr>--}}
                                             {{--</tfoot>--}}
-                                        </table>
+                                        {{--</table>--}}
 
 
                                         {{--====================================================--}}
 
 
-                                    @endif
+                                    {{--@endif--}}
 
 
-                                </div>
-                                <!-- .left-aside-column-->
-                            </div>
-                            <!-- /.left-right-aside-column-->
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                {{--</div>--}}
+                                {{--<!-- .left-aside-column-->--}}
+                            {{--</div>--}}
+                            {{--<!-- /.left-right-aside-column-->--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
         {{--Showing Assignment Status--}}
     </div>
+    {{--@include('design.modals.create-assignment')--}}
 
+    <script>
+        function createAssignmentCleanDetails() {
+            $("#case").html("");
+            $("#number").html("");
+            $("#instructions").val("");
+            $("#assignment_id").val("");
+        }
+    </script>
     {{--<!--Modal for Assignment List-->--}}
     {{--@include('activities.modals.course-details')--}}
     {{--<!--Modal for Assignment Course List-->--}}
