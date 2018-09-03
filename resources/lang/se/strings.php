@@ -120,7 +120,31 @@ return [
     'SureDelete' => 'Är du säker?',
     'Yes' => 'Ja',
 
-
-
-
+///030918
+    'AddCourseMaterial' => 'Add Course Material?',
+    'AddAssignmentMaterial' => 'Add Assignment Material?',
+    'Now' => 'Now',
+    'Later' => 'Later',
+    'AddNewEvent' => 'Add New Event',
+    'ChatMessage' => 'Chat Message',
+    'SearchContact' => 'Search Contact',
+    'TypeMessage' => 'Type your message here',
+    'Participants' => 'Participants',
+    'Instructors' => 'Instructors',
+    'ContactsList' => 'Contacts List',
+    'searchcontacts' => 'search contacts',
+    'Name' => 'Name',
+    'Email' => 'Email',
+    'Phone' => 'Phone',
+    'Role' => 'Role',
+    'Joiningdate' => 'Joining date',
+    'Action' => 'Action',
+    'AllContacts' => 'All Contacts',
+    'Inbox' => 'Inbox',
+    'Sent' => 'Sent',
+    'Draft' => 'Draft',
+    'Compose' => 'Compose',
+    'UpdateField' => 'You can update any field',
+    'AssignmentMaterial' => 'Assignment Material',
+    'AddMaterial' => 'Add Material',
 ];

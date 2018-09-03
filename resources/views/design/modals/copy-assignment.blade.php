@@ -70,21 +70,6 @@
                                 </option>
                             @endforeach
                         </select>
-
-                        {{--<div class="form-group">--}}
-                            {{--<div class="col-md-12 m-b-20">--}}
-                                {{--<h4 class="control-label">Select Instructor(s)  </h4>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<select class="js-example-basic-multiple" name="course_id" style="width: 100%">--}}
-                            {{--@foreach($teacherCourses as  $course)--}}
-                                {{--<option--}}
-                                        {{--name="selectTag"--}}
-                                        {{--value="{{$course->id}}">{{$course->name}}--}}
-                                {{--</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-
                     </div>
                     {{--<input class="btn btn-primary" type="submit">--}}
                     <div class="form-group">

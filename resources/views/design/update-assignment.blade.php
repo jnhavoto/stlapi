@@ -15,7 +15,7 @@
                         {{--Assignments--}}
                     </h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">
+                        <li class="breadcrumb-item"><a href="/">
                                 {{ __('strings.Home') }}
                                 {{--Home--}}
                             </a></li>
@@ -30,49 +30,46 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Editing the Assignment</h4>
-                            <h6 class="card-subtitle">You can change the content
-                            </h6>
+                            <h4 class="card-title">{{ __('strings.UpdateAssignment') }}</h4>
+                            <h6 class="card-subtitle">{{ __('strings.UpdateField') }} </h6>
                             <form class="form-horizontal m-t-40">
                                 <div class="col-md-6 m-b-20">
-                                    <label>Assignment name</label>
+                                    <label>{{ __('strings.AssignmentName') }}</label>
                                     <input type="text" class="form-control form-control-line"
                                            value="{{ $assignment->case }}">
                                 </div>
                                 <div class="col-md-6 m-b-20">
-                                    <label class="control-label">Assignment
-                                        number</label>
+                                    <label class="control-label">{{ __('strings.AssignmentNumber') }}</label>
                                     <input type="text" class="form-control form-control-line" value="{{
                                     $assignment->number }}">
                                 </div>
                                 <div class="col-md-6 m-b-20">
-                                    <label>Instructions</label>
+                                    <label>{{ __('strings.Instructions') }}</label>
                                     <textarea class="form-control" rows="5"> {{ $assignment->instructions }}</textarea>
                                 </div>
                                 <div class="col-md-4 m-b-20">
-                                    <label class="control-label">Start date</label>
+                                    <label class="control-label">{{ __('strings.StartDate') }}</label>
                                     <input name="startdate" type="text"
                                            class="form-control" value="{{
                                     $assignment->startdate }}">
                                 </div>
 
                                 <div class="col-md-4 m-b-20">
-                                    <label class="control-label">End date</label>
+                                    <label class="control-label">{{ __('strings.EndDate') }}</label>
                                     <input name="deadline"
                                            type="date" class="form-control" value="{{
                                     $assignment->deadline }}">
                                 </div>
 
                                 <div class="col-md-4 m-b-20">
-                                    <label class="control-label">Available
-                                        date</label>
+                                    <label class="control-label">{{ __('strings.AvailableDate') }}</label>
                                     <input name="availabledate" type="date"
                                            class="form-control" value="{{
                                     $assignment->available_date }}">
                                 </div>
 
                                 <div class="col-md-4 m-b-20">
-                                    <h4 class="card-title">Select course </h4>
+                                    <h4 class="card-title">{{ __('strings.SelectCourse') }} </h4>
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
@@ -85,7 +82,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12 m-b-20">
-                                    <h4 class="card-title"> Assignment Material </h4>
+                                    <label class="card-title"> {{ __('strings.AssignmentMaterial') }} </label>
                                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                         <div class="form-control" data-trigger="fileinput"><i
                                                     class="glyphicon glyphicon-file fileinput-exists"></i> <span

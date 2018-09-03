@@ -41,7 +41,6 @@
 {{--<!-- Demo Js -->--}}
 {{--<script src="{{ asset('theme/js/demo.js') }}"></script>--}}
 {{--=======--}}
-<script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{ asset('theme/plugins/popper/popper.min.js') }}"></script>
 <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -60,8 +59,10 @@
 <!-- This page plugins -->
 <!-- ============================================================== -->
 <!-- chartist chart -->
+
 <script src="{{ asset('theme/plugins/chartist-js/dist/chartist.min.js') }}"></script>
 <script src="{{ asset('theme/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') }}"></script>
+
 <!--c3 JavaScript -->
 <script src="{{ asset('theme/plugins/d3/d3.min.js') }}"></script>
 <script src="{{ asset('theme/plugins/c3-master/c3.min.js') }}"></script>
@@ -75,3 +76,4 @@
 <script src="{{ asset('js/select2.min.js')}}"></script>
 
 <script src="{{ asset('js/select2.js')}}"></script>
+

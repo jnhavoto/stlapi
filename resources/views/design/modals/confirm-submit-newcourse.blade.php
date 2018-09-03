@@ -19,15 +19,18 @@
                     <input type="hidden" id="c_course_id"  name="c_course_id" value="1">
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-success btn-rounded"
-                                href="/create-courseWithMaterial"
+                        <button type="button" class="btn btn-success btn-rounded" onclick="submitCourse(1)"
+                                href="/update_course/"
                                 {{--data-dismiss="modal"--}}
                         >
                             {{ __('strings.Now') }}
+
                             {{--Cancel--}}
                         </button>
-                        <button type="submit" class="btn btn-default btn-rounded waves-effect">
+                        <button type="button" class="btn btn-default btn-rounded waves-effect" onclick="submitCourse
+                        (0)">
                             {{ __('strings.Later') }}
+
                             {{--Submit--}}
                         </button>
 

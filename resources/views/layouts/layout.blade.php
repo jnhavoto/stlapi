@@ -5,6 +5,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- chartist CSS -->
@@ -32,6 +34,10 @@
 
     {{--SELECT 2--}}
     <link href="{{ asset('css/select2.min.css')}}" rel="stylesheet"/>
+
+    <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
+
+    {{--<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">--}}
 
 </head>
 <body class="fix-header fix-sidebar card-no-border">

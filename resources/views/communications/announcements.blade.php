@@ -14,18 +14,22 @@
                     <div class="card">
                         <div class="row">
                             <div class="col-xlg-2 col-lg-4 col-md-4">
-                                <div class="card-body inbox-panel"><a href="app-compose.html" class="btn btn-danger m-b-20 p-10 btn-block waves-effect waves-light">Compose</a>
+                                <div class="card-body inbox-panel">
+                                    <a href="app-compose.html"
+                                       class="btn btn-danger m-b-20 p-10 btn-block waves-effect waves-light">
+                                        {{ __('strings.Compose') }}
+                                    </a>
                                     <ul class="list-group list-group-full">
                                         <li class="list-group-item {{$label == 'inbox' ? 'active' : ''}}">
-                                            <a href="/announcements/inbox"> <i class="mdi mdi-file-document-box"></i> Inbox </a>
+                                            <a href="/announcements/inbox"> <i class="mdi mdi-file-document-box"></i> {{ __('strings.Inbox') }} </a>
                                             <span class="badge badge-success ml-auto">{{$count_inbox}}</span>
                                         </li>
                                         <li class="list-group-item {{$label == 'sent' ? 'active' : ''}}"> 
-                                        <a href="/announcements/sent"><i class="mdi mdi-gmail"></i> Sent </a>
+                                        <a href="/announcements/sent"><i class="mdi mdi-gmail"></i> {{ __('strings.Sent') }} </a>
                                             <span class="badge badge-success ml-auto">{{ $count_sent }}</span>
                                         </li>
                                         <li class="list-group-item {{$label == 'draft' ? 'active' : ''}}">
-                                            <a href="/announcements/draft"> <i class="mdi mdi-send"></i> Draft </a>
+                                            <a href="/announcements/draft"> <i class="mdi mdi-send"></i> {{ __('strings.Draft') }} </a>
                                             <span class="badge badge-danger ml-auto"> {{ $count_draft}} </span>
                                         </li>
                                     </ul>

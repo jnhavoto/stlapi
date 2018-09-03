@@ -122,6 +122,10 @@ class TeacherController extends ModelController
             'user' => Auth::user()]);
     }
 
+    public function updateTeacher($id)
+    {
+        $teacher = Teacher::where('id',$id)->get()->each->delele();
+    }
 
 
 }

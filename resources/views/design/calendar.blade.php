@@ -45,7 +45,7 @@
                                         </label>
                                     </div>
                                     <a href="#" data-toggle="modal" data-target="#add-new-event" class="btn btn-lg m-t-40 btn-danger btn-block waves-effect waves-light">
-                                        <i class="ti-plus"></i> Add New Event
+                                        <i class="ti-plus"></i> {{ __('strings.AddNewEvent') }}
                                     </a>
                                 </div>
                             </div>

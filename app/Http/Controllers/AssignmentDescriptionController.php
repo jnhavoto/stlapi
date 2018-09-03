@@ -110,8 +110,9 @@ class AssignmentDescriptionController extends ModelController
         $teacherAssignment = AssignmentDescriptionsHasTeacher::with('assignment_description')->
             where('teachers_id',$teacher->id)->get();
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
-//        return $teacherCourses;
-//        return $teacherAssignment;
+        //return $teacherAssignment;
+//        $course = \App\Models\Course::where('id',24)->get();
+//        return $course;
         //getting the list of members where the teacher is part of
 //        $teachers_members = TeacherMember::Where('teachers_id', $teacher->id)->get();
 

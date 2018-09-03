@@ -70,6 +70,7 @@ class CourseController extends ModelController
 
     public function submitCourse(Request $request)
     {
+
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //Begin transaction
@@ -133,7 +134,11 @@ class CourseController extends ModelController
             //check if course and tecaher_course have any error: if not, then write on the DB
             if ($course and $teacher_course and $student_course) {
                 DB::commit();
-                return redirect('/courses');
+
+               if($request->submitNow == 0)
+                    return redirect('/courses');
+               else
+                   return redirect('/update_course/'.$course->id);
             }
     }
 

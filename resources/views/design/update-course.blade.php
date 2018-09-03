@@ -15,7 +15,7 @@
                         {{--Assignments--}}
                     </h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">
+                        <li class="breadcrumb-item"><a href="/">
                                 {{ __('strings.Home') }}
                                 {{--Home--}}
                             </a></li>
@@ -30,42 +30,45 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Edit Course</h4>
-                            <h6 class="card-subtitle">You can change the content
+                            <h4 class="card-title">{{ __('strings.UpdateCourse') }} </h4>
+                            <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
                             </h6>
-                            <form class="form-horizontal m-t-40">
+                            <form class="form-horizontal m-t-40" method="post" action="/update_course">
+                                {{csrf_field()}}
+                                <input type="hidden" id="course_id" name="course_id" value="{{$course->id}}"/>
+
                                 <div class="col-md-6 m-b-20">
-                                    <label>Course name</label>
-                                    <input type="text" class="form-control form-control-line"
+                                    <label>{{ __('strings.CourseName') }}</label>
+                                    <input name="name" type="text" class="form-control form-control-line"
                                            value="{{ $course->name }}">
                                 </div>
                                 <div class="col-md-6 m-b-20">
-                                    <label class="control-label">Course description</label>
-                                    <textarea class="form-control" rows="5"> {{ $course->course_content  }}</textarea>
+                                    <label class="control-label">{{ __('strings.CourseDescription') }}</label>
+                                    <textarea name="course_content" class="form-control" rows="5"> {{ $course->course_content
+                                    }}</textarea>
                                 </div>
                                 <div class="col-md-4 m-b-20">
-                                    <label class="control-label">Start date</label>
+                                    <label class="control-label">{{ __('strings.StartDate') }}</label>
                                     <input name="startdate" type="date"
                                            class="form-control" value="{{
                                     $course->startdate }}">
                                 </div>
                                 <div class="col-md-4 m-b-20">
-                                    <label class="control-label">Available
-                                        date</label>
+                                    <label class="control-label">{{ __('strings.AvailableDate') }}</label>
                                     <input name="availabledate" type="date"
                                            class="form-control" value="{{
                                     $course->available_date }}">
                                 </div>
 
-                                <div class="col-md-4 m-b-20">
-                                    <h4 class="card-title">Select instructors </h4>
-                                </div>
-                                <div class="col-md-4 m-b-20">
+                                <div class="col-md-6 m-b-20">
+                                    <label class="control-label">{{ __('strings.SelectInstructors') }} </label>
+
                                     <select class="courseInstrutors" name="instructors[]" style="width: 100%"
                                             multiple="multiple"
                                     id="select-members">
                                         {{--@foreach($courseInstructors as  $instructor)--}}
                                             {{--<option--}}
+                                                    {{--selected="selected"--}}
                                                     {{--name="selectTag"--}}
                                                     {{--value="{{$instructor->teacher->id}}">--}}
                                                 {{--{{$instructor->teacher->user->first_name.' '.--}}
@@ -75,7 +78,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12 m-b-20">
-                                    <h4 class="card-title"> Assignment Material </h4>
+                                    <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
                                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                         <div class="form-control" data-trigger="fileinput"><i
                                                     class="glyphicon glyphicon-file fileinput-exists"></i> <span
@@ -102,4 +105,63 @@
             </div>
         </div>
     </div>
+
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>--}}
+
+    <script>
+
+        function selectedCourseID(course) {
+//            $("#c_course_content").val(course.id);
+            return course;
+        }
+
+        $(document).ready(function(){
+
+            var course_id = selectedCourseID({{$course->id}});
+            console.log(course_id);
+            $('.courseInstrutors').val("");
+
+            $('.courseInstrutors').select2({
+                ajax: {
+                    url: "/instructors",
+                    processResults: function (data) {
+                        // Transforms the top-level key of the response object from 'items' to 'results'
+                        return {
+                            results: $.map(data, function (item) {
+//                                console.log(item['user']['first_name']);
+                                return {
+                                    text: item.user.first_name + ' ' + item.user.last_name,
+                                    id: item.id,
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+
+// Fetch the preselected item, and add to the control
+            var studentSelect = $('.courseInstrutors');
+            $.ajax({
+                type: 'GET',
+                url: "/instructors/" + course_id
+             }).then(function (data) {
+                $.map(data, function (item) {
+                    console.log(item);
+                    // create the option and append to Select2
+                    var option = new Option(item.user.first_name + ' ' + item.user.last_name, item['id'], true, true);
+                    studentSelect.append(option).trigger('change');
+
+                    // manually trigger the `select2:select` event
+                    studentSelect.trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: item
+                        }
+                    });
+                })
+            });
+
+        });
+    </script>
 @endsection

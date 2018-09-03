@@ -13,9 +13,9 @@
                 {{--=========================================================================--}}
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
-                <form class="form-horizontal m-t-40"
-                      action="/submit_course" method="post">
+                <form id="form_submit_course" class="form-horizontal m-t-40" action="/submit_course" method="post">
                     {{csrf_field()}}
+                    <input type="hidden" id="submitNow" name="submitNow" value="0"/>
                     <div class="form-group">
                         <div class="col-md-12 m-b-20">
                             <label class="control-label"> {{ __('strings.CourseName') }} </label>
@@ -61,7 +61,7 @@
                                 {{ __('strings.SelectInstructors') }}
                                 {{--Select Instructor(s)--}}
                             </label>
-                            <select class="select_courses" name="instructors[]" multiple="multiple" class="form-control"
+                            <select class="select-courses" name="instructors[]" multiple="multiple"
                                     style="width: 100%">
                                 @foreach($teachers as  $teacher)
                                     @if($teacher->id == \Illuminate\Support\Facades\Auth::user()->teacher->id)
@@ -82,10 +82,10 @@
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-success btn-rounded"
-                                href="/" data-toggle="modal"
+                                href="/"
+                                data-dismiss="modal"
+                                data-toggle="modal"
                                 data-target="#confirm-submit-newcourse"
-                                onclick="confirmSubmit(course)"
-                                {{--data-dismiss="modal" --}}
                         >
                             {{ __('strings.Submit') }}
                         </button>
@@ -116,7 +116,13 @@
 @include('design.modals.confirm-submit-newcourse')
 
 <script>
-    
+
+
+    function submitCourse(submitType) {
+        $('#form_submit_course #submitNow').val(submitType);
+        $('#form_submit_course').submit();
+        console.log('curso subteido');
+    }
 
 
     function validateDateInput(data, id) {

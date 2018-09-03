@@ -73,7 +73,7 @@
                                                 <td>{{substr($assignment->instructions, 0, 45) }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-info btn-circle btn-lg m-r-5"
-                                                            href="/" data-toggle="modal" data-target="#copy-assignment"
+                                                            href="/" data-toggle="modal" data-target="#create-assignment"
                                                             onclick="createAssignmentFromTemplate({{$assignment}})">
                                                         <i class="ti-clipboard"></i>
                                                     </button>
@@ -145,10 +145,16 @@
                                                         {{$assignment->assignment_description->case}}
                                                     </a>
                                                 </td>
-                                                {{--<td>--}}
-                                                    {{--{{substr($assignment->assignment_description->instructions, 0, 15)--}}
-                                                    {{--}}{{$assignment->assignment_description->startdate}}--}}
-                                                {{--</td>--}}
+                                                <td>
+                                                    @php
+                                                        $course = \App\Models\Course::where('id',
+                                                        $assignment->assignment_description->courses_id)->get();
+                                                    @endphp
+                                                    <a href={{ url('/coursedesign-overview/'.$assignment->assignment_description->courses_id)}}>
+                                                        {{$course[0]->name}}
+                                                    </a>
+
+                                                </td>
 
                                                 <td>{{$assignment->assignment_description->startdate}}</td>
                                                 <td>{{$assignment->assignment_description->deadline}}</td>
@@ -209,7 +215,9 @@
                                             <td colspan="2">
                                                 <button type="button" class="btn btn-info btn-rounded"
                                                         data-toggle="modal"
-                                                        data-target="#create-assignment">
+                                                        data-target="#create-assignment"
+                                                        onclick="createAssignmentCleanDetails()"
+                                                >
                                                     {{ __('strings.AddNewAssignment') }}
                                                     {{--Add New Assignment--}}
                                                 </button>
@@ -272,7 +280,15 @@
             $("#assignment_id").val(assignment.id);
             console.log(assignment);
         }
-//Update assignment: getting values
+
+        function createAssignmentCleanDetails() {
+            $("#case").html("");
+            $("#number").html("");
+            $("#instructions").val("");
+            $("#assignment_id").val("");
+        }
+
+        //Update assignment: getting values
         function updateAssignment(assignment) {
             var  assignment = assignment;
             var startDate01 = formatDate(assignment.startdate);

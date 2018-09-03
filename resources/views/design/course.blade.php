@@ -172,9 +172,16 @@
                                                     {{--Update/Edit course--}}
                                                     <a href="{{ url('/update_course/'
                                                     .$course->course->id)}}" class="btn btn-info
-                                                     btn-circle btn-lg" onclick="selectedIntructors()">
+                                                     btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
+                                                    {{--<a href="{{ url('/update_course/'--}}
+                                                    {{--.$course->course->id)}}" class="btn btn-info--}}
+                                                     {{--btn-circle btn-lg" href="/" data-toggle="modal"--}}
+                                                       {{--data-target="#update-course"--}}
+                                                       {{--onclick="updateCourseDetails({{$course->course}})">--}}
+                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
+                                                    {{--</a>--}}
                                                     <button type="button" class="btn btn-info btn-circle
                                                     btn-lg" href="/" data-toggle="modal"
                                                             data-target="#confirm-delete-course"
@@ -223,6 +230,7 @@
     @include('design.modals.confirm-delete-course')
 
     <script>
+
         function copyCourse(course) {
             var course = course;
             var startDate01 = formatDate(course.startdate);
@@ -250,8 +258,8 @@
             $("#c_course_name").val("");
             $("#c_course_content").val("");
             $("#c_course_id").val("");
-            console.log(course)
         }
+
 
         //update a course
         function updateCourseDetails(course) {

@@ -56,7 +56,11 @@ Route::get('/announcements/draft', 'AssignmentAnnouncementController@getDraftAnn
 //==============================================================
 //End Comunications
 //==============================================================
+//delete a student
+Route::get('/update-student/{id}', 'StudentController@updateStudent')->middleware(['teacher']);
 
+//delete a teacher
+Route::get('/update-teacher/{id}', 'TeacherController@updateTeacher')->middleware(['teacher']);
 
 //==============================================================
 //Start Design
@@ -74,6 +78,8 @@ Route::get('/instructors', 'CourseController@getInstructors')->middleware(['teac
 
 Route::get('/course-details', 'CourseController@getCourseDetails')->middleware(['teacher']);
 
+//course details by id
+Route::get('/course-details/{id}', 'CourseController@getCourseDetails')->middleware(['teacher']);
 //get calendar
 Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
 
@@ -84,7 +90,8 @@ Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignm
 Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['teacher']);
 
 //update course
-//Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
+Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
+
 Route::get('/update_course/{id}', 'CourseController@updateCourseNew')->middleware(['teacher']);
 //delete a course
 Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
