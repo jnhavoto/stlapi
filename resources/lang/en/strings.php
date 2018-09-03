@@ -73,7 +73,7 @@ return [
     'Progress' => 'Progress',
     'CreateNewCourse' => 'Create New course',
     'UpdateCourse' => 'Update Course',
-    'Members' => 'Members',
+    'Members' => 'Instructors',
 
 
 //    Courses overview

@@ -74,7 +74,7 @@ return [
     'Progress' => 'Utveckling',
     'CreateNewCourse' => 'Skapa ny kurs',
     'UpdateCourse' => 'Redigera kurs',
-    'Members' => 'Medlemmar',
+    'Members' => 'Lärare',
 
 
 //    Courses overview
