@@ -140,7 +140,7 @@ return [
     'Inbox' => 'Inbox',
     'Sent' => 'Sent',
     'Draft' => 'Draft',
-    'Compose' => 'Compose',
+    'Compose' => 'Compose message',
     'UpdateField' => 'You can update any field',
     'AssignmentMaterial' => 'Assignment Material',
     'AddMaterial' => 'Add Material',

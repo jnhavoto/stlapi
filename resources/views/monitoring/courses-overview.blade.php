@@ -56,7 +56,6 @@
                                         <tr>
                                             <th> #</th>
                                             <th>{{ __('strings.CourseName') }} </th>
-                                            <th>{{ __('strings.CourseContent') }} </th>
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
                                             <th>{{ __('strings.Status') }}
@@ -127,8 +126,6 @@
                                             <th>#</th>
                                             {{--<th> {{ __('strings.AssignmentNumber') }} </th>--}}
                                             <th> {{ __('strings.AssignmentName') }} </th>
-                                            <th> {{ __('strings.Instructions') }} </th>
-                                            </th>
                                             <th> {{ __('strings.StartDate') }}</th>
                                             <th> {{ __('strings.EndDate') }} </th>
                                             <th> {{ __('strings.AvailableFrom') }}</th>

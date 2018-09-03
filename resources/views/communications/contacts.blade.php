@@ -63,9 +63,9 @@
                                             <th>{{ __('strings.Phone') }}</th>
                                             <th>{{ __('strings.Role') }}</th>
                                             {{--<th>Age</th>--}}
-                                            <th>{{ __('strings.Joiningdate') }}</th>
+                                            {{--<th>{{ __('strings.Joiningdate') }}</th>--}}
                                             {{--<th>Salery</th>--}}
-                                            <th>{{ __('strings.Action') }}</th>
+                                            {{--<th>{{ __('strings.Action') }}</th>--}}
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -84,18 +84,13 @@
                                                 <td>{{$student->user->email}}</td>
                                                 <td>{{$student->user->telephone}}</td>
                                                 <td><span class="label label-info">Student</span> </td>
-                                                {{--<td>23</td>--}}
-                                                <td>{{$student->user->created_at}}</td>
-                                                {{--<td>$1200</td>--}}
-                                                <td>
-                                                    <a href="{{ url('/update-student/'
-                                                    .$student->id)}}" class="btn btn-info
-                                                     btn-circle btn-lg">
-                                                        <i text-md-center class="ti-pencil-alt"></i>
-                                                    </a>
-
-                                                    {{--<button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>--}}
-                                                </td>
+                                                {{--<td>--}}
+                                                    {{--<a href="{{ url('/update-student/'--}}
+                                                    {{--.$student->id)}}" class="btn btn-info--}}
+                                                     {{--btn-circle btn-lg">--}}
+                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
+                                                    {{--</a>--}}
+                                                {{--</td>--}}
                                             </tr>
                                         @endforeach
                                         @foreach ($teachers as $teacher)
@@ -111,16 +106,13 @@
                                                 <td>{{$teacher->user->email}}</td>
                                                 <td>{{$teacher->user->telephone}}</td>
                                                 <td><span class="label label-success">Instructor</span> </td>
-                                                {{--<td>23</td>--}}
-                                                <td>{{$teacher->user->created_at}}</td>
-                                                {{--<td>$1200</td>--}}
-                                                <td>
-                                                    <a href="{{ url('/update-teacher/'
-                                                    .$teacher->id)}}" class="btn btn-info
-                                                     btn-circle btn-lg">
-                                                        <i text-md-center class="ti-pencil-alt"></i>
-                                                    </a>
-                                                </td>
+                                                {{--<td>--}}
+                                                    {{--<a href="{{ url('/update-teacher/'--}}
+                                                    {{--.$teacher->id)}}" class="btn btn-info--}}
+                                                     {{--btn-circle btn-lg">--}}
+                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
+                                                    {{--</a>--}}
+                                                {{--</td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -24,7 +24,7 @@ return [
         'Settings' => 'Inställningar',
         'account' => 'Konto',
         'my_profile'=>'Min profil',
-        'Chats'=> 'Diskussioner',
+        'Chats'=> 'Chats',
         'Logout' => 'Logga uy',
         'Home' => 'Hem',
         'Ongoing' => 'Pågående',
@@ -145,7 +145,7 @@ return [
     'Inbox' => 'Inkorgen',
     'Sent' => 'Skickat',
     'Draft' => 'Utkast',
-    'Compose' => 'Compose',
+    'Compose' => 'Skriv meddelande',
 //    Context unclear…’compose message’? If so, ‘skriv meddelande’
     'UpdateField' => 'Uppdatera fält',
     'AssignmentMaterial' => 'Material till uppgift',
