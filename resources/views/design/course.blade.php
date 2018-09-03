@@ -39,8 +39,8 @@
                                                 {{--Course Template List--}}
                                             </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings
-                                            .SearchCourse') }}"
+                                            <input type="text" id="demo-input-search2"
+                                                   placeholder="{{ __('strings.SearchCourses') }}"
                                                    class="form-control"></div>
                                     </div>
                                 </div>
@@ -108,8 +108,8 @@
                                             <h4 class="card-title m-t-10"> {{ __('strings.MyCList') }} </h4>
                                         </div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings
-                                            .SearchCourses') }}"
+                                            <input type="text" id="demo-input-search2"
+                                                   placeholder="{{ __('strings.SearchCourses') }}"
                                                    class="form-control">
                                         </div>
                                     </div>
