@@ -1,4 +1,4 @@
-<div id="create-assignment" class="modal fade in" tabindex="-1" role="dialog"
+<div id="create-assignmentFromCourseOverview" class="modal fade in" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -14,12 +14,10 @@
                 {{--=========================================================================--}}
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
-                <form class="form-horizontal  m-t-40"
-                      action="/create_assignment" method="post">
+                <form class="form-horizontal m-t-40"
+                      action="/create_assignmentFromCourseOverview" method="post">
                     {{csrf_field()}}
-
                     <div class="form-group">
-
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">{{ __('strings.AssignmentName') }}</label>
                             <input name="case" type="text" id="c_case" class="form-control">
@@ -55,16 +53,13 @@
 
                         </div>
                         <div class="col-md-12 m-b-20">
-                            <label class="control-label">{{ __('strings.SelectCourse') }}</label>
-
-                        <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
-                            @foreach($teacherCourses as  $course)
+                            <label class="control-label">{{ __('strings.CourseName') }}</label>
+                            <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
                                 <option
                                         name="selectTag"
-                                        value="{{$course->course->id}}">{{$course->course->name}}
+                                        value="{{$course->id}}">{{$course->name}}
                                 </option>
-                            @endforeach
-                        </select>
+                            </select>
                         </div>
                     </div>
                     {{--<input class="btn btn-primary" type="submit">--}}

@@ -273,12 +273,12 @@ class CourseController extends ModelController
 //            $submission = AssignmentSubmission::where('assignment_descriptions_id',5)->get();
             $submissions->push($submission);
         }
-
-        $teacherCourses = Teacher::all();
-//        return $submissions;
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
+//        return $teacherCourses;
 
         //get all students
-        return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
+        return view('design.coursedesign-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
             'teacherCourses' => $teacherCourses,
             'user' => Auth::user()]);

@@ -24,7 +24,7 @@
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            <!-- Start Page Content -->
+            <!-- Start Page: Course Templates -->
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- End of Course list -->
+            <!-- End of Course Templates list -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Start of My Course list -->
@@ -108,16 +108,6 @@
                                             <h4 class="card-title m-t-10"> {{ __('strings.MyCList') }} </h4>
                                         </div>
                                         <div>
-                                            {{--<tr>--}}
-                                                {{--<td colspan="2">--}}
-                                                    <button type="button" onclick="courseCleanDetails()" class="btn
-                                                btn-info btn-rounded"
-                                                            data-toggle="modal" data-target="#create-course">
-                                                        {{ __('strings.AddNewCourse') }}
-                                                        {{--Add New Course--}}
-                                                    </button>
-                                                {{--</td>--}}
-                                            {{--</tr>--}}
                                         </div>
 
                                         <div class="ml-auto">
@@ -125,6 +115,13 @@
                                                    placeholder="{{ __('strings.SearchCourses') }}"
                                                    class="form-control">
                                         </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" onclick="courseCleanDetails()" class="btn
+                                                btn-info btn-rounded"
+                                                data-toggle="modal" data-target="#create-course">
+                                            {{ __('strings.AddNewCourse') }}
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="table-responsive">

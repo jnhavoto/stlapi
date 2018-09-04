@@ -69,6 +69,7 @@ Route::get('/update-teacher/{id}', 'TeacherController@updateTeacher')->middlewar
 //get all Courses
 Route::get('/courses', 'CourseController@getCourses')->middleware(['teacher']);
 
+
 Route::get('/instructors/{id}', 'CourseController@getInstructorsByCourseId')->middleware(['teacher']);
 //get members of a course
 //Route::get('/courses/{id}', 'TeacherController@getCourseMembers')->middleware(['teacher']);
@@ -81,11 +82,6 @@ Route::get('/course-details', 'CourseController@getCourseDetails')->middleware([
 //course details by id
 Route::get('/course-details/{id}', 'CourseController@getCourseDetails')->middleware(['teacher']);
 //get calendar
-Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
-
-Route::get('/assignments', 'AssignmentDescriptionController@getAssignments')->middleware(['teacher']);
-
-Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignment')->middleware(['teacher']);
 
 Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['teacher']);
 
@@ -96,30 +92,44 @@ Route::get('/update_course/{id}', 'CourseController@updateCourseNew')->middlewar
 //delete a course
 Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
 
+//Individual course overview
+Route::get('/coursedesign-overview/{id}','CourseController@courseDesignOverview')->middleware(['teacher']);
+
+
+//ASSIGNMENTS
+Route::get('/assignments', 'AssignmentDescriptionController@getAssignments')->middleware(['teacher']);
+
+//get course template
+Route::get('/assignment-templates/{id}', 'AssignmentDescriptionController@getAssignmentTemplates')->middleware(['teacher']);
+
+Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignment')->middleware(['teacher']);
+
+Route::post('/create_assignmentFromTemplate', 'AssignmentDescriptionController@createAssignmentFromTemplate')
+    ->middleware(['teacher']);
+
+//create assignment From Course Overview
+Route::post('/create_assignmentFromCourseOverview', 'AssignmentDescriptionController@createAssignmentFromCourseOverview')->middleware(['teacher']);
+
 //delete an assignment
 Route::post('/delete-assignment', 'AssignmentDescriptionController@deleteAssignment')->middleware(['teacher']);
 
 //update assignment
 Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware(['teacher']);
 
-//Route::get('/update_assignment/{id}', function () {
-//    return view('design.update-assignment', ['user' => \Illuminate\Support\Facades\Auth::user()]);
-//})->middleware(['teacher']);
 //
 Route::get('/update_assignment/{id}','AssignmentDescriptionController@updateAssignment')->middleware(['teacher']);
-
-//
-//Route::get('/update-assignment/{course}', function ($course) {
-//    return view('design.update-assignment');
-//})->middleware(['teacher']);
 
 //update assignment by id
 Route::post('/update_assignment/{course}', 'AssignmentDescriptionController@updateAssignmentByID')->middleware(['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
 
-//Individual course overview
-Route::get('/coursedesign-overview/{id}','CourseController@courseDesignOverview')->middleware(['teacher']);
+
+
+
+//CALENDAR
+Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
+
 //==============================================================
 //End Design
 //==============================================================

@@ -1,4 +1,4 @@
-<div id="create-assignment" class="modal fade in" tabindex="-1" role="dialog"
+<div id="create-assignmentFromTemplate" class="modal fade in" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -6,33 +6,29 @@
                 <h4 class="modal-title" id="myModalLabel">
                     {{ __('strings.AddNewAssignment') }}
                 </h4>
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-hidden="true">×
-                </button>
             </div>
             <div class="modal-body">
                 {{--=========================================================================--}}
                 {{--============================= FORM  ====================================--}}
                 {{--=========================================================================--}}
-                <form class="form-horizontal  m-t-40"
-                      action="/create_assignment" method="post">
+                <form class="form-horizontal form-material"
+                      action="/create_assignmentFromTemplate" method="post">
                     {{csrf_field()}}
 
                     <div class="form-group">
-
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">{{ __('strings.AssignmentName') }}</label>
-                            <input name="case" type="text" id="c_case" class="form-control">
+                            <input name="case" type="text" id="ccase" class="form-control">
                         </div>
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">{{ __('strings.AssignmentNumber') }}</label>
-                            <input name="number" type="number" id="c_number"
+                            <input name="number" type="number" id="cnumber"
                                    class="form-control">
                         </div>
                         <div class="col-md-12 m-b-20">
                             <label
                                     class="control-label">{{ __('strings.Instructions') }}</label>
-                            <textarea name="instructions" type="textarea" id="c_instructions"
+                            <textarea name="instructions" type="textarea" id="cinstructions"
                                       class="form-control" rows="5"> </textarea>
                         </div>
 
@@ -56,15 +52,12 @@
                         </div>
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">{{ __('strings.SelectCourse') }}</label>
-
-                        <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
-                            @foreach($teacherCourses as  $course)
+                            <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
                                 <option
                                         name="selectTag"
-                                        value="{{$course->course->id}}">{{$course->course->name}}
+                                        value="{{$course->id}}">{{$course->name}}
                                 </option>
-                            @endforeach
-                        </select>
+                            </select>
                         </div>
                     </div>
                     {{--<input class="btn btn-primary" type="submit">--}}

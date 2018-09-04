@@ -7,6 +7,7 @@ use App\Models\AssignmentDescriptionsHasCourse;
 use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentSubmission;
 use App\Models\AssignmentTemplate;
+use App\Models\Course;
 use App\Models\GroupTeacher;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
@@ -103,42 +104,38 @@ class AssignmentDescriptionController extends ModelController
         //first get all assignments
         $assTemplates = AssignmentTemplate::all();
         //get the detailks of the teacher
-        $userID = Auth::user()->id;
-        $teacher = Teacher::Where('users_id', $userID)->first();
-
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //list of assignment where the current teacher is a member
         $teacherAssignment = AssignmentDescriptionsHasTeacher::with('assignment_description')->
             where('teachers_id',$teacher->id)->get();
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
-        //return $teacherAssignment;
-//        $course = \App\Models\Course::where('id',24)->get();
-//        return $course;
-        //getting the list of members where the teacher is part of
-//        $teachers_members = TeacherMember::Where('teachers_id', $teacher->id)->get();
-
-//        $assignmentTeacher = AssignmentDescriptionsHasTeacher::with('teacher')->where('teachers_id',$teacher->id)
-//            ->get();
-//        $teacher_assignments = collect();
-//        //getting teacher courses
-//        $teacherCourses = $teacher->courses;
-////        return $teachers_members[0];
-////
-//
-//        for ($j = 0; $j < count($teachers_members); $j++) {
-//
-//            $list = $teachers_members[$j]->group_teacher->assignment_descriptions;
-//            for ($i = 0; $i < count($list); $i++) {
-//                $teacher_assignments->push($list[$i]);
-////                return $assignments;
-//            }
-//        }
-
-
 //        return $courses;
         return view('design.assignment',
             ['assTemplates' => $assTemplates,
                 'teacherAssignment' => $teacherAssignment,
                 'teacherCourses' => $teacherCourses,
+                'user' => Auth::user
+                ()]);
+    }
+
+    //get assignment templates to use to create a new assignment
+    public function getAssignmentTemplates($id)
+    {
+        $course = Course::findOrFail($id);
+        //first get all assignments
+        $assTemplates = AssignmentTemplate::all();
+        //get the detailks of the teacher
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //list of assignment where the current teacher is a member
+        $teacherAssignment = AssignmentDescriptionsHasTeacher::with('assignment_description')->
+            where('teachers_id',$teacher->id)->get();
+        $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
+//        return $courses;
+        return view('design.assignment-templates',
+            ['assTemplates' => $assTemplates,
+                'teacherAssignment' => $teacherAssignment,
+                'teacherCourses' => $teacherCourses,
+                'course' => $course,
                 'user' => Auth::user
                 ()]);
     }
@@ -198,6 +195,124 @@ class AssignmentDescriptionController extends ModelController
         if ($assigment and $assignHasCourse and $assignHasTeacher) {
             DB::commit();
             return redirect('/assignments');
+        } else {
+            DB::rollBack();
+            return "Error when save Assignment Description";
+        }
+    }
+
+    public function createAssignmentFromTemplate(Request $request)
+    {
+        //get teacher ID: who logged in
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //Begin transaction
+        DB::beginTransaction();
+
+        ////createing group_teacher
+        $group_teacher = GroupTeacher::create(
+            [
+                'group_name' => 'Default Name',
+            ]
+        );
+
+
+        if (!$group_teacher) {
+            DB::rollBack();
+            return ['Error when save GroupTeacher'];
+        } else {
+            $assigment = AssignmentDescription::create(
+                [
+                    'case' => $request->case,
+                    'number' => $request->number,
+                    'instructions' => $request->instructions,
+                    'startdate' => $request->startdate,
+                    'deadline' => $request->deadline,
+                    'available_date' => $request->availabledate,
+                    'group_teachers_id' => $group_teacher->id,
+                    'courses_id' => $request->course_id,
+                ]
+            );
+
+            $assignHasCourse = AssignmentDescriptionsHasCourse::create(
+                [
+                    'assignment_descriptions_id' => $assigment->id,
+                    'courses_id' => $request->course_id,
+                ]
+            );
+
+            $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+
+            $assignHasTeacher = AssignmentDescriptionsHasTeacher::create(
+                [
+                    'assignment_descriptions_id' => $assigment->id,
+                    'teachers_id' => $teacher->id,
+                ]
+            );
+
+        }
+
+        if ($assigment and $assignHasCourse and $assignHasTeacher) {
+            DB::commit();
+            return redirect('/coursedesign-overview/'.$request->course_id);
+        } else {
+            DB::rollBack();
+            return "Error when save Assignment Description";
+        }
+    }
+
+    public function createAssignmentFromCourseOverview(Request $request)
+    {
+        //get teacher ID: who logged in
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //Begin transaction
+        DB::beginTransaction();
+
+        ////createing group_teacher
+        $group_teacher = GroupTeacher::create(
+            [
+                'group_name' => 'Default Name',
+            ]
+        );
+
+
+        if (!$group_teacher) {
+            DB::rollBack();
+            return ['Error when save GroupTeacher'];
+        } else {
+            $assigment = AssignmentDescription::create(
+                [
+                    'case' => $request->case,
+                    'number' => $request->number,
+                    'instructions' => $request->instructions,
+                    'startdate' => $request->startdate,
+                    'deadline' => $request->deadline,
+                    'available_date' => $request->availabledate,
+                    'group_teachers_id' => $group_teacher->id,
+                    'courses_id' => $request->course_id,
+                ]
+            );
+
+            $assignHasCourse = AssignmentDescriptionsHasCourse::create(
+                [
+                    'assignment_descriptions_id' => $assigment->id,
+                    'courses_id' => $request->course_id,
+                ]
+            );
+
+            $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+
+            $assignHasTeacher = AssignmentDescriptionsHasTeacher::create(
+                [
+                    'assignment_descriptions_id' => $assigment->id,
+                    'teachers_id' => $teacher->id,
+                ]
+            );
+
+        }
+
+        if ($assigment and $assignHasCourse and $assignHasTeacher) {
+            DB::commit();
+            return redirect('/coursedesign-overview/'.$request->course_id);
         } else {
             DB::rollBack();
             return "Error when save Assignment Description";

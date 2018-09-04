@@ -153,5 +153,9 @@ return [
     'SearchCourses' => 'Sök kurs',
     'SearchAssignments' => 'Sök uppgift',
 
+    //040918
+    'CreateFromTemplate' => 'Create From Template?',
+    'CreateInstruction' => 'To create a new Assignment select on in the Action list',
+
 
 ];

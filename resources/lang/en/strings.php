@@ -146,6 +146,8 @@ return [
     'AddMaterial' => 'Add Material',
     'SearchCourses' => 'search courses',
     'SearchAssignments' => 'search assignments',
+    'CreateFromTemplate' => 'Create From Template?',
+    'CreateInstruction' => 'To create a new Assignment select on in the Action list',
 
 
 

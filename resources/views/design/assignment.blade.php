@@ -101,7 +101,6 @@
                     <div class="card">
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
-
                             <div class="pl-4">
                                 <div class="right-page-header">
                                     <div class="d-flex">
@@ -111,8 +110,21 @@
                                                 {{--My Assignment List--}}
                                             </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search assignments"
-                                                   class="form-control"></div>
+                                            <input type="text" id="demo-input-search2"
+                                                   placeholder="{{ __('strings.SearchAssignments') }}"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <td colspan="2">
+                                            <button type="button" class="btn btn-info btn-rounded"
+                                                    data-toggle="modal"
+                                                    data-target="#create-assignment"
+                                                    onclick="createAssignmentCleanDetails()"
+                                            >
+                                                {{ __('strings.AddNewAssignment') }}
+                                            </button>
+                                        </td>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -212,19 +224,6 @@
                                         </tbody>
                                         <tfoot>
                                         <tr>
-                                            <td colspan="2">
-                                                <button type="button" class="btn btn-info btn-rounded"
-                                                        data-toggle="modal"
-                                                        data-target="#create-assignment"
-                                                        onclick="createAssignmentCleanDetails()"
-                                                >
-                                                    {{ __('strings.AddNewAssignment') }}
-                                                    {{--Add New Assignment--}}
-                                                </button>
-                                            </td>
-                                            {{--Calling create modal--}}
-                                            @include('design.modals.create-assignment')
-
                                             <td colspan="7">
                                                 <div class="text-right">
                                                     <ul class="pagination"></ul>
@@ -259,6 +258,7 @@
     @include('design.modals.copy-assignment')
     @include('design.modals.update-assignment')
     @include('design.modals.confirm-delete-assignment')
+    @include('design.modals.create-assignment')
 
 
 
