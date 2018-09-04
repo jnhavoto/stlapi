@@ -14,6 +14,7 @@ use App\Models\StudentsCourse;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\Models\TeacherMember;
+use App\Models\CourseMaterial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -206,6 +207,7 @@ class CourseController extends ModelController
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
         $course = Course::findOrFail($id);
+        $materials = $course->course_materials;
         //return $course;
         //get the list of all intructors
 //        §instructors =
@@ -240,11 +242,54 @@ class CourseController extends ModelController
         return view('design.update-course', [
                 'course' => $course,
                 'courseInstructors' => $courseInstructors,
-                'user' => Auth::user()
+                'user' => Auth::user(),
+                'materials' => $materials,
         ]);
 
     }
 
+    public function updateCourseById(Request $request, $id){
+        //get teacher ID: who logged in
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //get the course by id;
+        $course = Course::findOrFail($id);
+        //return $course;
+        //get all current instructors
+       // $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
+        //get the group_teachers_id of this course and delete them
+        TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
+        //remove all the OLD teachers
+
+        //return $course_teachers;
+        //get the current values and save them in the DB
+        $course->name = $request->name;
+        $course->course_content = $request->course_content;
+        $course->startdate = $request->startdate;
+        $course->available_date = $request->available_date;
+        $course->save();
+        if ($request->hasFile('material')) {
+            $coursematerial = new CourseMaterial;
+            $path = $request->material->store('public/courseMaterials');
+            $arrayy = explode("/",$path);
+            $coursematerial->path = "storage/courseMaterials/".$arrayy[2];
+            $coursematerial->courses_id = $course->id;
+            $coursematerial->save();
+            }
+        
+        //return $course;
+        $instructors = $request->instructors; //get instructors from the form
+
+        //recreate instructors
+        foreach ($instructors as $instructor) {
+            TeacherCourse::create(
+                [
+                    'teachers_id' => $instructor,
+                    'courses_id' => $course->id,
+                ]
+            );
+        }
+        return redirect('/courses');
+    }
     public function deleteCourse(Request $request)
     {
         //get teacher of this course
