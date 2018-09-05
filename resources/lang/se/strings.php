@@ -156,6 +156,7 @@ return [
     //040918
     'CreateFromTemplate' => 'Create From Template?',
     'CreateInstruction' => 'To create a new Assignment select on in the Action list',
+    'AddMaterial' => 'Add Material',
 
 
 ];

@@ -54,7 +54,7 @@
                                         <tr>
                                             <th> #</th>
                                             <th>{{ __('strings.CourseName') }} </th>
-                                            {{--<th>{{ __('strings.CourseContent') }} </th>--}}
+                                            <th>{{ __('strings.CourseContent') }} </th>
                                             <th>{{ __('strings.StartDate') }} </th>
                                             <th>{{ __('strings.AvailableFrom') }} </th>
                                             <th>{{ __('strings.Status') }}
@@ -62,7 +62,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($course as $course)
+                                        @foreach ($courses as $course)
                                             <tr>
                                                 <td> {{ $course->id}}</td>
                                                 <td>
@@ -154,7 +154,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($courseAssignments as $assignment)
+                                        @foreach ($assignments as $assignment)
                                             <tr>
                                                 <td> {{ $assignment->number }}</td>
                                                 <td>

@@ -226,7 +226,6 @@
                                             <div>
                                                 <h4>No Assignments</h4>
                                             </div>
-
                                         </div>
                                         @endif
                                 </div>
@@ -237,7 +236,45 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- .left-right-aside-column-->
+                        <div class="contact-page-aside">
+                            <div class="pl-4">
+                                <div class="right-page-header">
+                                    <div class="d-flex">
+                                        <div class="align-self-center">
+                                            <h4 class="card-title m-t-10">
+                                                {{ __('strings.CourseMaterial') }}
+                                                {{--Course Assignments--}}
+                                            </h4></div>
+
+                                    </div>
+                                    <div class="ml-auto">
+                                        <td colspan="2">
+                                            <button type="button" class="btn btn-info btn-rounded"
+                                                    data-toggle="modal"
+                                                    data-target="#confirm-createassignment"
+                                                    onclick="createAssignmentCleanDetails()"
+                                            >
+                                                {{ __('strings.AddCourseMaterial') }}
+                                            </button>
+                                        </td>
+                                    </div>
+                                </div>
+
+                                <!-- .left-aside-column-->
+                            </div>
+                            <!-- /.left-right-aside-column-->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
         {{--Showing Assignment Status--}}
     </div>
 

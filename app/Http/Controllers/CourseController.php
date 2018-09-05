@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
+use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
 
@@ -343,13 +344,24 @@ class CourseController extends ModelController
         return $instructors;
     }
 
+//    MONITORING
     public function coursesOverview()
     {
+        //get the current teacher info
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get all teacher courses
+        $courses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
+
+        //get all assignments
+        $assignments = AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
+            $teacher->id)->get();
+        //get all submissions
+//        $submissions =
         //get all teacher assignments
         return view('monitoring.courses-overview',
             [
-//                'courses' => $courses, 'courseAssignments' => $courseAssignemts,
+                'courses' => $courses,
+                'assignments' => $assignments,
 //            'submissions' => $submissions,
                 'user' => Auth::user()]);
     }
