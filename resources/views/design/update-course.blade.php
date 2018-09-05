@@ -66,52 +66,58 @@
                                     <select class="courseInstrutors" name="instructors[]" style="width: 100%"
                                             multiple="multiple"
                                     id="select-members">
-                                        {{--@foreach($courseInstructors as  $instructor)--}}
-                                            {{--<option--}}
-                                                    {{--selected="selected"--}}
-                                                    {{--name="selectTag"--}}
-                                                    {{--value="{{$instructor->teacher->id}}">--}}
-                                                {{--{{$instructor->teacher->user->first_name.' '.--}}
-                                                {{--$instructor->teacher->user->last_name}}--}}
-                                            {{--</option>--}}
-                                        {{--@endforeach--}}
                                     </select>
                                 </div>
                                 <div class="col-md-12 m-b-20">
                                     <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput"><i
-                                                    class="glyphicon glyphicon-file fileinput-exists"></i> <span
-                                                    class="fileinput-filename"></span>
-                                        </div>
-                                        <span class="input-group-addon btn btn-default btn-file"> <span
-                                                    class="fileinput-new">Select material</span> <span
-                                                    class="fileinput-exists">Change</span>
-                                            {{-- <input type="hidden"> --}}
-                                            <input type="file" name="material">
-                                        </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists"
-                                                   data-dismiss="fileinput">Remove
-                                        </a>
-                                    </div>
+                                    <hr>
 
-                                    {{--<div class="form-group" align-items-center>--}}
-                                        {{--<a type="submit" class="btn btn-success btn-rounded"--}}
-                                           {{--data-toggle="modal"--}}
-                                           {{--data-target="#addcoursematerial"--}}
-                                        {{-->--}}
-                                            {{--{{ __('strings.AddMaterial') }}--}}
-                                        {{--</a>--}}
-
-                                    {{--</div>--}}
                                     <div>
-                                        <h3>Material</h3>
-                                        @foreach ($materials as $material)
-                                            <a href="{{ asset($material->path) }}" 
-                                                download="{{ $material->path }}"> Download </a>
-                                        @endforeach
+                                        {{--<label for="form-file" class="btn-success btn-rounded">Upload a file--}}
+                                            <input type="file" name="material" id="form-file" class="hidden"
+                                                   {{--style="display:none"--}}
+                                            />
+                                        <button class="btn btn-info btn-sm" onclick="uploadfile()" > Upload
+                                            file</button>
+                                        {{--</label>--}}
+
+                                    </div>
+                                    <div>
+                                        {{--<h3>Material</h3>--}}
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
+                                    table-striped color-table muted-table" style="width: auto" >
+                                            <thead>
+                                            <tr>
+                                            <th >File name</th>
+                                            <th >Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($materials as $material)
+                                                    <tr>
+                                                        <td>{{$material->file_name}}</td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm
+                                                    " href="{{ asset($material->path) }}"
+                                                               download="{{ $material->path }}">
+                                                                <i text-md-center class="ti-download"> Download</i>
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm"
+                                                               href="/delete_course_file/{{$material->id}}"
+                                                            >
+                                                                <i text-md-center class="ti-trash">Delete</i> </a>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                 </div>
+                                <hr><hr>
                                 <div class="form-group" align-items-center>
                                     <button type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
                                     <a class="btn btn-default btn-rounded waves-effect btn-close"
@@ -126,74 +132,6 @@
         </div>
     </div>
 
-    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
-    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>--}}
-
-    <div id="addcoursematerial" class="modal fade in" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">
-                        {{ __('strings.AddCourseMaterial') }}
-                        {{--Create New Course--}}
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal form-material"
-                          action="/submit_course" method="post">
-                        {{csrf_field()}}
-                        <input type="hidden" id="c_course_id"  name="c_course_id" value="1">
-
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                            <div class="form-control" data-trigger="fileinput"><i
-                                        class="glyphicon glyphicon-file fileinput-exists"></i> <span
-                                        class="fileinput-filename"></span>
-                            </div>
-                            <span class="input-group-addon btn btn-default btn-file"> <span
-                                        class="fileinput-new">Select material</span>
-                                <span class="fileinput-exists">Change</span>
-                                {{-- <input type="hidden"> --}}
-                                <input type="file" name="material">
-                                        </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists"
-                                                   data-dismiss="fileinput">Remove
-                            </a>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success btn-rounded" onclick="submitCourse(1)"
-                                    href="/update_course/"
-                                    {{--data-dismiss="modal"--}}
-                            >
-                                {{ __('strings.Now') }}
-
-                                {{--Cancel--}}
-                            </button>
-                            <button type="button" class="btn btn-default btn-rounded waves-effect" onclick="submitCourse
-                        (0)">
-                                {{ __('strings.Later') }}
-
-                                {{--Submit--}}
-                            </button>
-
-                        </div>
-                        {{--<input class="btn btn-primary " type="submit">--}}
-                    </form>
-                    {{--=========================================================================--}}
-                    {{--============================= //FORM ====================================--}}
-                    {{--=========================================================================--}}
-
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
-
-
-
     <script>
 
         function selectedCourseID(course) {
@@ -201,6 +139,9 @@
             return course;
         }
 
+        function uploadfile() {
+            
+        }
         $(document).ready(function(){
 
             var course_id = selectedCourseID({{$course->id}});

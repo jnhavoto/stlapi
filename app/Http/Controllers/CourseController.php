@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
+use App\Models\AssignmentDescriptionsHasCourse;
 use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
@@ -268,10 +269,14 @@ class CourseController extends ModelController
         $course->startdate = $request->startdate;
         $course->available_date = $request->available_date;
         $course->save();
+
+
         if ($request->hasFile('material')) {
             $coursematerial = new CourseMaterial;
+            $file_name = $request->file('material')->getClientOriginalName();
             $path = $request->material->store('public/courseMaterials');
             $arrayy = explode("/",$path);
+            $coursematerial->file_name = $file_name;
             $coursematerial->path = "storage/courseMaterials/".$arrayy[2];
             $coursematerial->courses_id = $course->id;
             $coursematerial->save();
@@ -291,17 +296,33 @@ class CourseController extends ModelController
         }
         return redirect('/courses');
     }
+
+    public function deleteCourseFile($id)
+    {
+        $material = CourseMaterial::findOrFail($id);
+
+        $material->delete();
+
+        return redirect('/update_course/'.$material->courses_id);
+    }
+
     public function deleteCourse(Request $request)
     {
         //get teacher of this course
         $teachers = TeacherCourse::where('courses_id', $request->deletecourse_id)->get();
-        //delele these theachers
+        //delele courses of there teachers
         foreach ($teachers as $teacher) {
             $teacherCourse = TeacherCourse::find($teacher->id);
             $teacherCourse->delete();
         }
         //get the course and delete
         Course::where('id', $request->deletecourse_id)->get()->each->delete();
+        //Delete all assignment has courses
+        AssignmentDescriptionsHasCourse::where('courses_id',$request->deletecourse_id)->get()
+            ->each->delete();
+        //delete all assignments of this course
+        AssignmentDescription::where('courses_id',$request->deletecourse_id)->get()
+            ->each->delete();
         return redirect('courses'); //go back to course list
     }
 

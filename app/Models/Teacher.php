@@ -47,7 +47,8 @@ class Teacher extends Eloquent
 
 	public function assignment_descriptions()
 	{
-		return $this->belongsToMany(\App\Models\AssignmentDescription::class, 'assignment_descriptions_has_teachers', 'teachers_id', 'assignment_descriptions_id')
+		return $this->belongsToMany(\App\Models\AssignmentDescription::class, 'assignment_descriptions_has_teachers', 'teachers_id',
+            'assignment_descriptions_id')
 					->withPivot('id', 'deleted_at')
 					->withTimestamps();
 	}

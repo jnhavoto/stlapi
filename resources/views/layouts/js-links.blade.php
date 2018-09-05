@@ -41,6 +41,14 @@
 {{--<!-- Demo Js -->--}}
 {{--<script src="{{ asset('theme/js/demo.js') }}"></script>--}}
 {{--=======--}}
+
+{{--===========================--}}
+{{--DROPZONE--}}
+{{--===========================--}}
+
+<script src="{{ asset('js/dropzone.js') }}"></script>
+
+
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{ asset('theme/plugins/popper/popper.min.js') }}"></script>
 <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.min.js') }}"></script>

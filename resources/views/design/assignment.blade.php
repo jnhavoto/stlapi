@@ -147,32 +147,27 @@
                                         <tbody>
                                         @foreach ($teacherAssignment as $assignment)
                                             <tr>
-                                                {{--<td>{{$student->id}}</td>--}}
-                                                <td> {{ $assignment->assignment_description->number}}</td>
-                                                {{--<td> {{ $t_assignment->name}}</td>--}}
+                                                <td> {{ $assignment->number}}</td>
                                                 <td>
                                                     {{--list details of a course--}}
                                                     <a href="/" data-toggle="modal" data-target="#modalCourseDetails"
                                                        onclick="assignmentDetails({{$assignment}})">
-                                                        {{$assignment->assignment_description->case}}
+                                                        {{$assignment->case}}
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    @php
-                                                        $course = \App\Models\Course::where('id',
-                                                        $assignment->assignment_description->courses_id)->get();
-                                                    @endphp
-                                                    <a href={{ url('/coursedesign-overview/'.$assignment->assignment_description->courses_id)}}>
-                                                        {{$course[0]->name}}
+
+                                                    <a href={{ url('/coursedesign-overview/'.$assignment->courses_id)}}>
+                                                        {{$assignment->course->name}}
                                                     </a>
 
                                                 </td>
 
-                                                <td>{{$assignment->assignment_description->startdate}}</td>
-                                                <td>{{$assignment->assignment_description->deadline}}</td>
-                                                <td>{{$assignment->assignment_description->available_date}}</td>
+                                                <td>{{$assignment->startdate}}</td>
+                                                <td>{{$assignment->deadline}}</td>
+                                                <td>{{$assignment->available_date}}</td>
                                                 <td>
-                                                    @if($assignment->assignment_description->status == 0)
+                                                    @if($assignment->status == 0)
                                                         {{ __('strings.Active') }}
                                                         {{--Active--}}
                                                     @else
@@ -192,7 +187,7 @@
                                                         {{--Edit--}}
                                                     {{--</a>--}}
                                                     <a href="{{ url('/update_assignment/'
-                                                    .$assignment->assignment_description->id)}}" class="btn btn-info
+                                                    .$assignment->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
@@ -215,7 +210,7 @@
                                                             href="/"
                                                             data-toggle="modal"
                                                             data-target="#confirm-delete-assignment"
-                                                            onclick="deteleAssignment({{$assignment->assignment_description}})">
+                                                            onclick="deteleAssignment({{$assignment}})">
                                                         <i text-md-center class="ti-trash"></i>
                                                     </button>
                                                 </td>

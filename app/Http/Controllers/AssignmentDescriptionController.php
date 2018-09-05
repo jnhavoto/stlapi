@@ -106,10 +106,14 @@ class AssignmentDescriptionController extends ModelController
         //get the detailks of the teacher
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //list of assignment where the current teacher is a member
-        $teacherAssignment = AssignmentDescriptionsHasTeacher::with('assignment_description')->
-            where('teachers_id',$teacher->id)->get();
+        $teacherAssignment = $teacher->assignment_descriptions()->get();
+
+//            AssignmentDescriptionsHasTeacher::with('assignment_description')->
+//            where('teachers_id',$teacher->id)->get();
+
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
-//        return $courses;
+//        return $course;
+//        return $teacherAssignment;
         return view('design.assignment',
             ['assTemplates' => $assTemplates,
                 'teacherAssignment' => $teacherAssignment,

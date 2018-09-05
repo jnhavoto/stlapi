@@ -41,7 +41,8 @@
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2"
                                                    placeholder="{{ __('strings.SearchCourses') }}"
-                                                   class="form-control"></div>
+                                                   class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="table-responsive">

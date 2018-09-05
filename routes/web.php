@@ -92,6 +92,8 @@ Route::get('/update_course/{id}', 'CourseController@updateCourseNew')->middlewar
 Route::post('/updateCourse/{id}', 'CourseController@updateCourseById')->middleware(['teacher'])->name('update_Course');
 //delete a course
 Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
+//delete course material
+Route::get('/delete_course_file/{id}', 'CourseController@deleteCourseFile')->middleware(['teacher']);
 
 //Individual course overview
 Route::get('/coursedesign-overview/{id}','CourseController@courseDesignOverview')->middleware(['teacher']);
