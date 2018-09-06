@@ -1,14 +1,14 @@
 Dropzone.autoDiscover = false;
-var ficheiros = null;
-var hasFiles = false;
+var ficheiros = [];
+var contarFicheiros = 0;
 
-    // $("#submit-update-course").on("click", function(e) {
-    //
-    // if(hasFiles == false) {
-    //     alert('externo');
-    //     $('#form-update-course').submit();
-    // }
-    // });
+
+    $("#submit-update-course").on("click", function(e) {
+
+    if(contarFicheiros == 0) {
+        $('#form-update-course').submit();
+    }
+    });
 
 
 
@@ -27,11 +27,12 @@ var hasFiles = false;
             var myDropzoneImagem = this;
 
             this.on('addedfile', function (file) {
-                hasFiles = true;
+                contarFicheiros = myDropzoneImagem.files.length;
+
             });
 
             this.on('removedfile', function (file) {
-                hasFiles = false;
+                contarFicheiros = myDropzoneImagem.files.length;
             });
 
             this.on('success', function (file, response) {
@@ -55,12 +56,11 @@ var hasFiles = false;
             });
 
             $("#submit-update-course").on("click", function(e) {
-                alert('interno');
-                // if(myDropzoneImagem.files.length > 0){
-                    e.preventDefault();
-                    e.stopPropagation();
-                    myDropzoneImagem.processQueue();
-                // }
+                   if(contarFicheiros > 0){
+                       e.preventDefault();
+                       e.stopPropagation();
+                       myDropzoneImagem.processQueue();
+                   }
 
             });
         }

@@ -255,7 +255,7 @@ class CourseController extends ModelController
     }
 
     public function updateCourseById(Request $request, $id){
-        return $request->all();
+
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
@@ -276,16 +276,16 @@ class CourseController extends ModelController
         $course->save();
 
 
-        if ($request->hasFile('material')) {
-            $coursematerial = new CourseMaterial;
-            $file_name = $request->file('material')->getClientOriginalName();
-            $path = $request->material->store('public/courseMaterials');
-            $arrayy = explode("/",$path);
-            $coursematerial->file_name = $file_name;
-            $coursematerial->path = "storage/courseMaterials/".$arrayy[2];
-            $coursematerial->courses_id = $course->id;
-            $coursematerial->save();
-            }
+//        if ($request->hasFile('material')) {
+//            $coursematerial = new CourseMaterial;
+//            $file_name = $request->file('material')->getClientOriginalName();
+//            $path = $request->material->store('public/courseMaterials');
+//            $arrayy = explode("/",$path);
+//            $coursematerial->file_name = $file_name;
+//            $coursematerial->path = "storage/courseMaterials/".$arrayy[2];
+//            $coursematerial->courses_id = $course->id;
+//            $coursematerial->save();
+//            }
         
         //return $course;
         $instructors = $request->instructors; //get instructors from the form
@@ -299,6 +299,22 @@ class CourseController extends ModelController
                 ]
             );
         }
+
+
+        /**
+         * Associanting materials with an course
+         */
+        foreach ($request->all() as $chave => $valor){
+            if(strpos($chave, 'file') !== false){
+
+                CourseMaterial::create([
+                    'courses_id' => $id,
+                    'path' => $valor
+                ]);
+            }
+
+        }
+
         return redirect('/courses');
     }
 
