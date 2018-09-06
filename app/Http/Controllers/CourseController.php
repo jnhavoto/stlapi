@@ -18,9 +18,10 @@ use App\Models\TeacherCourse;
 use App\Models\TeacherMember;
 use App\Models\CourseMaterial;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+
 
 class CourseController extends ModelController
 {
@@ -170,6 +171,8 @@ class CourseController extends ModelController
 
     public function updateCourse(Request $request)
     {
+
+        return $request->all();
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
@@ -255,7 +258,7 @@ class CourseController extends ModelController
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
         $course = Course::findOrFail($id);
-        //return $course;
+//        return $course;
         //get all current instructors
        // $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
         //get the group_teachers_id of this course and delete them
@@ -394,9 +397,13 @@ class CourseController extends ModelController
         if ($request->hasFile('file')) {
             $file = $request->file('file');
 
-            $filename = time() . '' . $file->getClientOriginalName();
-            $file->move('gallery/imagens', $filename);
-            $filePath = 'gallery/imagens/' . '' . $filename;
+            $filePath = collect();
+            foreach ($file as $ficheiro){
+                $filename = time() . '' . $ficheiro->getClientOriginalName();
+                $ficheiro->move('gallery/imagens', $filename);
+                $filePath->push('gallery/imagens/' . '' . $filename);
+            }
+
         } else {
             return response(['Nao existe Ficheiro']);
         }
