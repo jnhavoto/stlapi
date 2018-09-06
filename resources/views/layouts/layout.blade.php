@@ -32,7 +32,9 @@
     <link href="{{ asset('theme/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet"/>
 
     {{--Dropzone--}}
-    <link href="{{ asset('css/dropzone.css')}}" rel="stylesheet"/>
+    {{--<link href="{{ asset('css/dropzone.css')}}" rel="stylesheet"/>--}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css" rel="stylesheet">
+
 
     {{--SELECT 2--}}
     <link href="{{ asset('css/select2.min.css')}}" rel="stylesheet"/>

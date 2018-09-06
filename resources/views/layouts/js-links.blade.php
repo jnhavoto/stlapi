@@ -47,6 +47,7 @@
 {{--===========================--}}
 
 <script src="{{ asset('js/dropzone.js') }}"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>--}}
 
 
 <!-- Bootstrap tether Core JavaScript -->
@@ -84,4 +85,7 @@
 <script src="{{ asset('js/select2.min.js')}}"></script>
 
 <script src="{{ asset('js/select2.js')}}"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>--}}
 
+
+<script type="text/javascript" src="{{ asset('js/course-dropzone.js')}}"></script>

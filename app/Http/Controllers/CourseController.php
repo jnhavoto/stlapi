@@ -386,4 +386,23 @@ class CourseController extends ModelController
 //            'submissions' => $submissions,
                 'user' => Auth::user()]);
     }
+
+
+    public function salvarImagem(Request $request)
+    {
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+
+            $filename = time() . '' . $file->getClientOriginalName();
+            $file->move('gallery/imagens', $filename);
+            $filePath = 'gallery/imagens/' . '' . $filename;
+        } else {
+            return response(['Nao existe Ficheiro']);
+        }
+
+        return ['imagem' => $filePath];
+    }
+
+
 }

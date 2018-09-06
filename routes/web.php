@@ -18,6 +18,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/salvar-imagens', 'CourseController@salvarImagem');
+
 //==============================================================
 //End Dashboard
 //==============================================================

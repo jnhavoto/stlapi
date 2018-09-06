@@ -136,8 +136,6 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="{{ asset('js/course-dropzone.js')}}"></script>
-
 
     <script>
 
