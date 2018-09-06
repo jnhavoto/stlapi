@@ -33,7 +33,7 @@
                             <h4 class="card-title">{{ __('strings.UpdateCourse') }} </h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
                             </h6>
-                            <form class="form-horizontal m-t-40" method="post" action="{{ route('update_Course', ['id'=>$course->id]) }}" enctype="multipart/form-data">
+                            <form id="form-update-course" class="form-horizontal m-t-40" method="post" action="{{ route('update_Course', ['id'=>$course->id]) }}" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="course_id" name="course_id" value="{{$course->id}}"/>
 
@@ -68,22 +68,25 @@
                                     id="select-members">
                                     </select>
                                 </div>
+                            </form>
+
                                 <div class="col-md-12 m-b-20">
                                     <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
                                     <hr>
 
-                                    <div>
-                                        {{--<label for="form-file" class="btn-success btn-rounded">Upload a file--}}
-                                            <input type="file" name="material" id="form-file" class="hidden"
-                                                   {{--style="display:none"--}}
-                                            />
-                                        <button class="btn btn-info btn-sm" onclick="uploadfile()" > Upload
-                                            file</button>
-                                        {{--</label>--}}
-
+                                    <div class="col-md-6">
+                                        <form id="file-input" class="dropzone">
+                                            <div class="fallback">
+                                                <input name="file" type="file" multiple />
+                                            </div>
+                                        </form>
                                     </div>
+
                                     <div>
                                         {{--<h3>Material</h3>--}}
+
+                                        @if($materials->count() > 0)
+
                                         <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
                                     table-striped color-table muted-table" style="width: auto" >
                                             <thead>
@@ -114,23 +117,27 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+
+                                            @endif
                                     </div>
 
                                 </div>
                                 <hr><hr>
                                 <div class="form-group" align-items-center>
-                                    <button type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
+                                    <button id="submit-update-course" type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
                                     <a class="btn btn-default btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="{{ asset('js/course-dropzone.js')}}"></script>
+
 
     <script>
 

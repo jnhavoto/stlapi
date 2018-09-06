@@ -31,6 +31,8 @@
     <link href="{{ asset('theme/plugins/footable/css/footable.core.css') }}" rel="stylesheet">
     <link href="{{ asset('theme/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet"/>
 
+    {{--Dropzone--}}
+    <link href="{{ asset('css/dropzone.css')}}" rel="stylesheet"/>
 
     {{--SELECT 2--}}
     <link href="{{ asset('css/select2.min.css')}}" rel="stylesheet"/>
