@@ -47,58 +47,19 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 {{--<li class="nav-small-cap">PERSONAL</li>--}}
-                <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                class="mdi mdi-gauge"></i><span class="hide-menu">
-                            {{ __('strings.Dashboard') }}
+
+                {{--<li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i--}}
+                                {{--class="mdi mdi-gauge"></i><span class="hide-menu">--}}
+                            {{--{{ __('strings.Dashboard') }}--}}
                             {{--Dashboard --}}
-                        </span></a>
-                    <ul aria-expanded="false" class="collapse">
+                        {{--</span></a>--}}
+                    {{--<ul aria-expanded="false" class="collapse">--}}
                         <li><a href="/">
                                 {{ __('strings.general_overview') }}
                                 {{--General Overview--}}
                             </a></li>
-                        <li><a href="index2.html"> {{ __('strings.Statistics') }}</a></li>
-                    </ul>
+                    {{--</ul>--}}
                 </li>
-                {{--<li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i--}}
-                                {{--class="mdi mdi-email"></i><span class="hide-menu">--}}
-                            {{--{{ __('strings.Activities') }}--}}
-                            {{--Activities--}}
-                        {{--</span></a>--}}
-                    {{--<ul aria-expanded="false" class="collapse">--}}
-                        {{--<li><a href="/courses">--}}
-                            {{--{{ __('strings.Courses') }}--}}
-                            {{--Courses--}}
-                        {{--</a></li>--}}
-                    {{--<li><a href="/assignments">--}}
-                            {{--{{ __('strings.Assignments') }}--}}
-                            {{--Assignments--}}
-                        {{--</a></li>--}}
-                    {{--<li><a href="#" class="has-arrow" aria-expanded="false">--}}
-                            {{--{{ __('strings.Submissions') }}--}}
-                            {{--Submissions--}}
-                        {{--</a>--}}
-                            {{--<ul aria-expanded="false" class="collapse">--}}
-                            {{--<li><a href="/assignment_submissions" >--}}
-                                    {{--{{ __('strings.Assignments') }}--}}
-                                    {{--Assignments--}}
-                                {{--</a></li>--}}
-                            {{--<li><a href="/selfass_submissions" >--}}
-                                    {{--{{ __('strings.Self_Assesssments') }}--}}
-                                    {{--Self-Assessments--}}
-                                {{--</a></li>--}}
-                            {{--<li><a href="/feedbacks" >--}}
-                                    {{--{{ __('strings.Feedbacks') }}--}}
-                                    {{--Feedbacks--}}
-                                {{--</a></li>--}}
-                        {{--</ul>--}}
-                        {{--</li>--}}
-                    {{--<li><a href="/calendar">--}}
-                            {{--{{ __('strings.Calendar') }}--}}
-                            {{--Calendar--}}
-                        {{--</a></li>--}}
-                {{--</ul>--}}
-            {{--</li>--}}
                 <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                 class="mdi mdi-email"></i><span class="hide-menu">
                             {{ __('strings.Design') }}

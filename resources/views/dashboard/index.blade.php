@@ -14,81 +14,6 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper">
-
-
-        <h1>Teste</h1>
-
-        {{--<div class="col-md-7">--}}
-            {{--<div class="ct-chart10">--}}
-
-            {{--</div>--}}
-        {{--</div>--}}
-
-
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-    {{--<aside class="left-sidebar">--}}
-    {{--<!-- Sidebar scroll-->--}}
-    {{--<div class="scroll-sidebar">--}}
-    {{--<!-- User profile -->--}}
-    {{--<div class="user-profile" style="background: url({{ asset('theme/images/background/user-info.jpg') }}) no-repeat;">--}}
-    {{--<!-- User profile image -->--}}
-    {{--<div class="profile-img"> <img src="{{ asset('theme/images/users/profile.jpg') }}" alt="user" />--}}
-    {{--</div>--}}
-    {{--<!-- User profile text-->--}}
-    {{--<div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe</a>--}}
-    {{--<div class="dropdown-menu animated flipInY"> <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a> <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>--}}
-    {{--<div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>--}}
-    {{--<div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a> </div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--<!-- End User profile text-->--}}
-    {{--<!-- Sidebar navigation-->--}}
-    {{--<nav class="sidebar-nav">--}}
-    {{--<ul id="sidebarnav">--}}
-    {{--<li class="nav-small-cap">PERSONAL</li>--}}
-    {{--<li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>--}}
-    {{--<ul aria-expanded="false" class="collapse">--}}
-    {{--<li><a href="index.html">Dashboard 1</a></li>--}}
-    {{--<li><a href="index2.html">Dashboard 2</a></li>--}}
-    {{--</ul>--}}
-    {{--</li>--}}
-    {{--<li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i--}}
-    {{--class="mdi mdi-email"></i><span class="hide-menu">Activities</span></a>--}}
-    {{--<ul aria-expanded="false" class="collapse">--}}
-    {{--<li><a href="/courses">Courses</a></li>--}}
-    {{--<li><a href="/assignments">Assignments </a></li>--}}
-    {{--<li><a href="/add-course">Add Course</a></li>--}}
-    {{--<li><a href="/add-assignment">Add Assignment</a></li>--}}
-    {{--</ul>--}}
-    {{--</li>--}}
-    {{--<li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i--}}
-    {{--class="mdi mdi-bullseye"></i><span class="hide-menu">Communications</span></a>--}}
-    {{--<ul aria-expanded="false" class="collapse">--}}
-    {{--<li><a href="/calendar">Calendar</a></li>--}}
-    {{--<li><a href="app-contact.html">Contacts</a></li>--}}
-    {{--<li><a href="app-email.html">Notifications</a></li>--}}
-    {{--<li><a href="app-chat.html">Chats</a></li>--}}
-    {{--</ul>--}}
-    {{--</li>--}}
-
-    {{--</ul>--}}
-    {{--</nav>--}}
-    {{--<!-- End Sidebar navigation -->--}}
-    {{--</div>--}}
-    {{--<!-- End Sidebar scroll-->--}}
-    {{--<!-- Bottom points-->--}}
-    {{--<div class="sidebar-footer">--}}
-    {{--<!-- item--><a href="#" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>--}}
-    {{--<!-- item--><a href="#" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>--}}
-    {{--<!-- item--><a href="#" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>--}}
-    {{--</div>--}}
-    {{--<!-- End Bottom points-->--}}
-    {{--</aside>--}}
-    <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -102,10 +27,10 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">   {{ __('strings.Dashboard') }} </h3>
+                        <h3 class="text-themecolor">   {{ __('strings.general_overview') }} </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('strings.Home') }} </a></li>
-                            <li class="breadcrumb-item active">{{ __('strings.Dashboard') }}</li>
+                            <li class="breadcrumb-item active">{{ __('strings.general_overview') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -117,11 +42,72 @@
                 <!-- ============================================================== -->
                 <!-- Row -->
                 <div class="row">
-                    {{--<div class="col-5">--}}
-                        {{--<h1>Teste</h1>--}}
-                        {{--<div class="ct-chart10"></div>--}}
-                    {{--</div>--}}
-                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- .left-right-aside-column-->
+                            <div class="contact-page-aside">
+
+                                <div class="pl-4">
+                                    <div class="right-page-header">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <h4 class="card-title m-t-10">
+                                                    {{ __('strings.CourseList') }}
+                                                    {{--My Assignment List--}}
+                                                </h4></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table info-table"
+                                               data-page-size="10">
+                                            <thead>
+                                            <tr>
+                                                <th> #</th>
+                                                <th>{{ __('strings.CourseName') }} </th>
+                                                <th>{{ __('strings.StartDate') }} </th>
+                                                <th>{{ __('strings.AvailableFrom') }} </th>
+                                                <th>{{ __('strings.Status') }}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{--@foreach ($courses as $course)--}}
+                                                {{--<tr>--}}
+                                                    {{--<td> {{ $course->course->id}}</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--<a href="/" data-toggle="modal"--}}
+                                                           {{--data-target="#modalAssCourseDetails">--}}
+                                                            {{--{{ $course->course->name }}--}}
+                                                        {{--</a>--}}
+
+                                                    {{--</td>--}}
+                                                    {{--<td> {{substr($course->course_content, 0, 45) }} </td>--}}
+                                                    {{--<td> {{ $course->course->startdate}}</td>--}}
+                                                    {{--<td> {{ $course->course->available_date}}</td>--}}
+                                                    {{--<td>--}}
+                                                        {{--@if($course->course->status == 0)--}}
+                                                            {{--{{ __('strings.Active') }}--}}
+                                                            {{--Active--}}
+                                                        {{--@else--}}
+                                                            {{--{{ __('strings.Disactive') }}--}}
+                                                            {{--Disactive--}}
+                                                        {{--@endif--}}
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@endforeach--}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- .left-aside-column-->
+                                </div>
+                                <!-- /.left-right-aside-column-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="card-body">
