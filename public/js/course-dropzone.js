@@ -2,13 +2,13 @@ Dropzone.autoDiscover = false;
 var ficheiros = null;
 var hasFiles = false;
 
-    $("#submit-update-course").on("click", function(e) {
-
-    if(hasFiles == false) {
-        alert('externo');
-        $('#form-update-course').submit();
-    }
-    });
+    // $("#submit-update-course").on("click", function(e) {
+    //
+    // if(hasFiles == false) {
+    //     alert('externo');
+    //     $('#form-update-course').submit();
+    // }
+    // });
 
 
 
@@ -37,19 +37,17 @@ var hasFiles = false;
             this.on('success', function (file, response) {
                 ficheiros = response['imagem'];
 
-                console.log(ficheiros.length);
                 ficheiros.forEach(function (file, indice) {
                     console.log(file);
 
                     $('<input />').attr('type', 'hidden')
-                        .attr('name'+indice, 'file')
+                        .attr('name', 'file'+(indice+1))
                         .attr('value', file)
                         .appendTo('#form-update-course');
                 });
 
-                // $('#form-update-course').submit();
+                $('#form-update-course').submit();
             });
-
 
 
             this.on('error', function (file, response) {
@@ -58,9 +56,12 @@ var hasFiles = false;
 
             $("#submit-update-course").on("click", function(e) {
                 alert('interno');
-                e.preventDefault();
-                e.stopPropagation();
-                myDropzoneImagem.processQueue();
+                // if(myDropzoneImagem.files.length > 0){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzoneImagem.processQueue();
+                // }
+
             });
         }
     });

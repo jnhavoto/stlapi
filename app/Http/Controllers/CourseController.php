@@ -208,6 +208,7 @@ class CourseController extends ModelController
 
     public function updateCourseNew($id)
     {
+
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
@@ -254,6 +255,7 @@ class CourseController extends ModelController
     }
 
     public function updateCourseById(Request $request, $id){
+        return $request->all();
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
@@ -400,8 +402,8 @@ class CourseController extends ModelController
             $filePath = collect();
             foreach ($file as $ficheiro){
                 $filename = time() . '' . $ficheiro->getClientOriginalName();
-                $ficheiro->move('gallery/imagens', $filename);
-                $filePath->push('gallery/imagens/' . '' . $filename);
+                $ficheiro->move('docs', $filename);
+                $filePath->push('docs/' . '' . $filename);
             }
 
         } else {
