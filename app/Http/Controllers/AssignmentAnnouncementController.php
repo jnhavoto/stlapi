@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentAnnouncement;
+use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\CourseAnnouncement;
 use App\Models\Teacher;
+use App\Models\TeacherCourse;
 use App\Models\TeacherMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -173,8 +175,7 @@ class AssignmentAnnouncementController  extends ModelController
         //get all announcements where the teacher/instructor is a mmember
         $inbox_announcements = collect();
 
-
-
+        $draft_announcements = collect();
 //        return $memberof;
         foreach ($memberof as $membership)
         {
@@ -234,6 +235,70 @@ class AssignmentAnnouncementController  extends ModelController
 
     }
 
+    public function composeAnnouncements(){
+        //get teacher id
+        $teacher = Teacher::where('users_id', Auth::user()->id)->first();
+
+        $memberof = TeacherMember::where('teachers_id','<>', $teacher->id)->get();
+        //get all announcements where the teacher/instructor is a mmember
+        $inbox_announcements = collect();
+
+        //get all teachers courses
+        $courseToAnnounce = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
+        //get all teachers' assignments
+        $assignToAnnounce = AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
+            $teacher->id)->get();
+
+        $draft_announcements = collect();
+
+//        return $memberof;
+//        foreach ($memberof as $membership)
+//        {
+//            $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
+//                $membership->id)
+//                ->get();
+//
+//            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+//                $membership->id)
+//                ->get();
+//
+//            if(count($announcementasmember) > 0){
+//                $draft_announcements ->push($announcementasmember);
+//            }
+//            if(count($course_announcementasmember) > 0){
+//                $draft_announcements ->push($course_announcementasmember);
+//            }
+//        }
+
+        return view('communications.compose-announcement', ['draft_announcements' => $draft_announcements, 'label' =>
+            'draft', 'count_inbox'
+        => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
+            'courseToAnnounce' => $courseToAnnounce,
+            'assignToAnnounce' => $assignToAnnounce,
+            'user'=>Auth::user()]);
+
+    }
+
+    public function submit_announcemnt(Request $request)
+    {
+
+        if($request->assignment_id != 0){
+
+        }elseif ($request->course_id != 0){
+            $announcemente = CourseAnnouncement::create(
+                [
+
+                ]
+            );
+        }
+
+
+
+
+        return $request;
+
+        return redirect('/announcements/inbox');
+    }
 
 
 }

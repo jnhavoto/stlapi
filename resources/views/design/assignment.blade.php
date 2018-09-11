@@ -72,11 +72,16 @@
                                                 </td>
                                                 <td>{{substr($assignment->instructions, 0, 45) }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-circle btn-lg m-r-5"
-                                                            href="/" data-toggle="modal" data-target="#create-assignment"
-                                                            onclick="createAssignmentFromTemplate({{$assignment}})">
-                                                        <i class="ti-clipboard"></i>
-                                                    </button>
+                                                    <a class="btn btn-info btn-circle btn-lg m-r-5"
+                                                            href="/createassignFirst/{{$assignment->id}}">
+                                                        <i text-md-center class="ti-clipboard"></i>
+                                                    </a>
+
+                                                    {{--<button type="button" class="btn btn-info btn-circle btn-lg m-r-5"--}}
+                                                            {{--href="/" data-toggle="modal" data-target="#create-assignment"--}}
+                                                            {{--onclick="createAssignmentFromTemplate({{$assignment}})">--}}
+                                                        {{--<i class="ti-clipboard"></i>--}}
+                                                    {{--</button>--}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -122,7 +127,7 @@
                                                     data-target="#create-assignment"
                                                     onclick="createAssignmentCleanDetails()"
                                             >
-                                                {{ __('strings.AddNewAssignment') }}
+                                                {{ __('strings.AddAssignment') }}
                                             </button>
                                         </td>
                                     </div>
@@ -149,9 +154,7 @@
                                             <tr>
                                                 <td> {{ $assignment->number}}</td>
                                                 <td>
-                                                    {{--list details of a course--}}
-                                                    <a href="/" data-toggle="modal" data-target="#modalCourseDetails"
-                                                       onclick="assignmentDetails({{$assignment}})">
+                                                    <a href="/assignmentdesign-overview/{{$assignment->id}}">
                                                         {{$assignment->case}}
                                                     </a>
                                                 </td>
@@ -186,23 +189,11 @@
                                                     {{--<a href="{{ url('/update_assignmentpage' . $problem->id . '/edit') }}" class="btn btn-xs btn-info pull-right">--}}
                                                         {{--Edit--}}
                                                     {{--</a>--}}
-                                                    <a href="{{ url('/update_assignment/'
+                                                    <a href="{{ url('/getupdate_assignment/'
                                                     .$assignment->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
-
-
-                                                    {{--<button class="btn btn-info btn-circle btn-lg"--}}
-                                                            {{--onclick="Location.href='{{url('update-assignment')}}'"--}}
-                                                            {{--href="/update-assignment/{{$assignment->assignment_description}}"--}}
-                                                            {{--data-toggle="modal"--}}
-                                                            {{--data-target="#update-assignment"--}}
-                                                            {{--data-cod="{{ $assignment->id }}"--}}
-                                                            {{--onclick="updateAssignment({{$assignment}})"--}}
-
-                                                    {{--> <i text-md-center class="ti-pencil-alt"></i>--}}
-
                                                     {{--</button>--}}
                                                     {{--Delete/Destroy the course--}}
                                                     <button type="button" class="btn btn-info btn-circle
@@ -246,8 +237,7 @@
     </div>
     <!--Modal for Assignment List-->
     @include('design.modals.assignment-details')
-    @include('design.modals.course-details')
-    <!--Modal for Assignment Course List-->
+        <!--Modal for Assignment Course List-->
     @include('design.modals.assignmentCourse-details')
     {{--Modal for copying an assignment--}}
     @include('design.modals.copy-assignment')
@@ -288,12 +278,13 @@
             var  assignment = assignment;
             var startDate01 = formatDate(assignment.startdate);
             var deadline01 = formatDate(assignment.deadline);
+            var availabledate01 = formatDate(assignment.available_date)
             $("#c_assignment_name").val(assignment.case);
             $("#c_assignment_number").val(assignment.number);
             $("#c_assignment_instructions").val(assignment.instructions);
             $("#c_assignment_startdate").val(startDate01);
             $("#c_assignment_enddate").val(deadline01);
-            $("#c_assignment_availabledate").val(assignment.available_date);
+            $("#c_assignment_availabledate").val(availabledate01);
             $("#assignment_id").val(assignment.id);
 
             console.log(assignment);

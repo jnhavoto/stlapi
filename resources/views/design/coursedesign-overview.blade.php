@@ -34,67 +34,60 @@
             <!-- Start of Assignment List -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-6 col-md-7">
                     <div class="card">
-                        <!-- .left-right-aside-column-->
-                        <div class="contact-page-aside">
-
-                            <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">
-                                                {{ __('strings.CourseDetails') }}
-                                                {{--My Assignment List--}}
-                                            </h4></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex flex-wrap">
+                                        <div>
+                                            <h3 class="card-title">{{ __('strings.CourseDetails') }}</h3>
+                                            {{--<h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>--}}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped color-table info-table"
-                                           data-page-size="10">
-                                        <thead>
-                                        <tr>
-                                            <th> #</th>
-                                            <th>{{ __('strings.CourseName') }} </th>
-                                            {{--<th>{{ __('strings.CourseContent') }} </th>--}}
-                                            <th>{{ __('strings.StartDate') }} </th>
-                                            <th>{{ __('strings.AvailableFrom') }} </th>
-                                            <th>{{ __('strings.Status') }}
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($course as $course)
-                                            <tr>
-                                                <td> {{ $course->id}}</td>
-                                                <td>
-                                                    <a href="/" data-toggle="modal"
-                                                       data-target="#modalAssCourseDetails">
-                                                        {{ $course->name }}
-                                                    </a>
-
-                                                </td>
-                                                {{--<td> {{substr($course->course_content, 0, 45) }} </td>--}}
-                                                <td> {{ $course->startdate}}</td>
-                                                <td> {{ $course->available_date}}</td>
-                                                <td>
-                                                    @if($course->status == 0)
-                                                        {{ __('strings.Active') }}
-                                                        {{--Active--}}
-                                                    @else
-                                                        {{ __('strings.Disactive') }}
-                                                        {{--Disactive--}}
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                <div class="col-12">
+                                    <div class="col-md-6 m-b-20">
+                                        <h4>{{ __('strings.CourseName') }}</h4>
+                                        <label> {{ $course->name }} </label>
+                                    </div>
+                                    <div>
+                                        <hr class="m-t-0 m-b-0">
+                                    </div>
+                                    <div class="col-md-4 m-b-20">
+                                        <h4 class="control-label">{{ __('strings.StartDate') }}</h4>
+                                        <label> {{ $course->startdate }} </label>
+                                    </div> <div>
+                                        <hr class="m-t-0 m-b-0">
+                                    </div>
+                                    <div class="col-md-4 m-b-20">
+                                        <h4 class="control-label">{{ __('strings.AvailableDate') }}</h4>
+                                        <label> {{$course->available_date }}</label>
+                                    </div>
+                                    <div>
+                                        <hr class="m-t-0 m-b-0">
+                                    </div>
+                                    <div class="col-md-6 m-b-20">
+                                        <h4 class="control-label">{{ __('strings.Members') }} </h4>
+                                        @foreach($courseMembers as $members)
+                                            <label>
+                                                {{$members->teacher->user->first_name .' '.$members->teacher->user->last_name }}
+                                            </label>
+                                            <br/>
                                         @endforeach
-                                        </tbody>
-                                    </table>
+                                    </div>
                                 </div>
-                                <!-- .left-aside-column-->
                             </div>
-                            <!-- /.left-right-aside-column-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"> {{ __('strings.Instructions') }} </h4>
+                            {{--<h6 class="card-subtitle">Different Devices Used to Visit</h6>--}}
+                            <label> {{$course->course_content }}</label>
                         </div>
                     </div>
                 </div>
@@ -133,13 +126,13 @@
                                                     data-target="#confirm-createassignment"
                                                     onclick="createAssignmentCleanDetails()"
                                             >
-                                                {{ __('strings.AddNewAssignment') }}
+                                                {{ __('strings.AddAssignment') }}
                                             </button>
                                         </td>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    @if(count($courseAssignments)!=0)
+                                    {{--@if(count($courseAssignments)!=0)--}}
                                     <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
                                     table-striped color-table muted-table"
                                            data-page-size="10">
@@ -162,19 +155,11 @@
                                             <tr>
                                                 <td> {{ $assignment->number }}</td>
                                                 <td>
-                                                    <a href="/" data-toggle="modal"
-                                                       data-target="#modalAssCourseDetails">
-                                                        {{ $assignment->case }}
+                                                    <a href="/assignmentdesign-overview/{{$assignment->id}}">
+                                                        {{$assignment->case}}
                                                     </a>
 
                                                 </td>
-                                                {{--<td>--}}
-                                                {{--<a href="/assignment_details">--}}
-                                                {{--<a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"--}}
-                                                {{--onclick="assignCourseDetails({{$t_assignment}})">--}}
-                                                {{--{{substr($assignment->instructions, 0, 45) }}--}}
-                                                {{--</a>--}}
-                                                {{--</td>--}}
                                                 <td>{{$assignment->startdate}}</td>
                                                 <td>{{$assignment->deadline}}</td>
                                                 <td>{{$assignment->available_date}}</td>
@@ -209,10 +194,6 @@
                                         </tbody>
                                         <tfoot>
                                         <tr>
-
-                                            {{--Calling create modal--}}
-                                            {{--@include('design.modals.create-assignment')--}}
-
                                             <td colspan="7">
                                                 <div class="text-right">
                                                     <ul class="pagination"></ul>
@@ -221,13 +202,13 @@
                                         </tr>
                                         </tfoot>
                                     </table>
-                                        @else
-                                        <div>
-                                            <div>
-                                                <h4>No Assignments</h4>
-                                            </div>
-                                        </div>
-                                        @endif
+                                        {{--@else--}}
+                                        {{--<div>--}}
+                                            {{--<div>--}}
+                                                {{--<h4>No Assignments</h4>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--@endif--}}
                                 </div>
                                 <!-- .left-aside-column-->
                             </div>
@@ -236,6 +217,54 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-12 m-b-20">
+                <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
+                <hr>
+
+                <div class="col-md-6">
+                    <form id="file-input" class="dropzone">
+                        <div class="fallback">
+                            <input name="file" type="file" multiple />
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    @if($materials->count() > 0)
+                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
+                                    table-striped color-table muted-table" style="width: auto" >
+                            <thead>
+                            <tr>
+                                <th >File name</th>
+                                <th >Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($materials as $material)
+                                <tr>
+                                    <td>{{$material->file_name}}</td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm
+                                                    " href="{{ asset($material->path) }}"
+                                           download="{{ $material->path }}">
+                                            <i text-md-center class="ti-download"> </i>
+                                        </a>
+                                        <a class="btn btn-danger btn-sm"
+                                           href="/delete_course_file/{{$material->id}}"
+                                        >
+                                            <i text-md-center class="ti-trash"> </i> </a>
+
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+                </div>
+            </div>
+            <hr><hr>
 
             <div class="row">
                 <div class="col-12">
@@ -248,17 +277,15 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">
                                                 {{ __('strings.CourseMaterial') }}
-                                                {{--Course Assignments--}}
-                                            </h4></div>
-
+                                            </h4>
+                                        </div>
                                     </div>
                                     <div class="ml-auto">
                                         <td colspan="2">
                                             <button type="button" class="btn btn-info btn-rounded"
                                                     data-toggle="modal"
                                                     data-target="#confirm-createassignment"
-                                                    onclick="createAssignmentCleanDetails()"
-                                            >
+                                                    onclick="createAssignmentCleanDetails()">
                                                 {{ __('strings.AddCourseMaterial') }}
                                             </button>
                                         </td>
@@ -322,58 +349,5 @@
             $("#assignment_id").val("");
         }
     </script>
-    {{--<!--Modal for Assignment List-->--}}
-    {{--@include('activities.modals.course-details')--}}
-    {{--<!--Modal for Assignment Course List-->--}}
-    {{--@include('activities.modals.assignmentCourse-details')--}}
-    {{--Modal for copying an assignment--}}
-    {{--@include('activities.modals.copy-assignment')--}}
-
-
-
-    {{--<script>--}}
-
-    {{--function assignDetails(assignment) {--}}
-    {{--var  assignment = assignment;--}}
-
-    {{--$("#case").html(assignment.case);--}}
-    {{--$("#number").html(assignment.number);--}}
-    {{--$("#instructions").html(assignment.instructions);--}}
-
-    {{--$("#c_assign_case").val(assignment.case);--}}
-    {{--$("#c_assign_number").val(assignment.number);--}}
-    {{--$("#c_assign_instructions").val(assignment.instructions);--}}
-    {{--$("#c_assign_id").val(assignment.id);--}}
-    {{--console.log(assignment);--}}
-    {{--}--}}
-
-    {{--function assignCourseDetails(assignment) {--}}
-    {{--var  assignment = assignment;--}}
-
-    {{--$("#case2").html(assignment.case);--}}
-    {{--$("#instructions2").html(assignment.instructions);--}}
-    {{--$("#coursename2").html(assignment.course.name);--}}
-    {{--$("#startdate2").html(assignment.startdate);--}}
-    {{--$("#duedate2").html(assignment.deadline);--}}
-    {{--$("#availabledate2").html(assignment.available_date);--}}
-    {{--//            console.log(assignment);--}}
-    {{--console.log(assignment);--}}
-    {{--console.log(assignment.teachers)--}}
-    {{--}--}}
-
-    {{--function courseDetails(assignment) {--}}
-    {{--var course = assignment;--}}
-    {{--$("#name").html(assignment.course.name);--}}
-    {{--$("#course_content").html(assignment.course.course_content);--}}
-    {{--$("#course_startdate").html(assignment.course.startdate);--}}
-    {{--$("#copy-button1").hide();--}}
-
-    {{--//--}}
-    {{--console.log(course)--}}
-    {{--}--}}
-
-
-    {{--</script>--}}
-
 
 @endsection

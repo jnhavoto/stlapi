@@ -33,7 +33,8 @@
                             <h4 class="card-title">{{ __('strings.UpdateCourse') }} </h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
                             </h6>
-                            <form id="form-update-course" class="form-horizontal m-t-40" method="post" action="{{ route('update_Course', ['id'=>$course->id]) }}" enctype="multipart/form-data">
+                            <form id="form-update-course" class="form-horizontal m-t-40" method="post"
+                                  action="{{ route('update_Course', ['id'=>$course->id]) }}" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="course_id" name="course_id" value="{{$course->id}}"/>
 
@@ -49,13 +50,13 @@
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.StartDate') }}</label>
-                                    <input name="startdate" type="date"
+                                    <input name="startdate" type="text"
                                            class="form-control" value="{{
                                     $course->startdate }}">
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.AvailableDate') }}</label>
-                                    <input name="availabledate" type="date"
+                                    <input name="availabledate" type="text"
                                            class="form-control" value="{{
                                     $course->available_date }}">
                                 </div>
@@ -74,6 +75,18 @@
                                     <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
                                     <hr>
 
+                                    {{--<div class="ml-auto">--}}
+                                        {{--<td colspan="2">--}}
+                                            {{--<button type="button" class="btn btn-info btn-rounded"--}}
+                                                    {{--data-toggle="modal"--}}
+                                                    {{--data-target="#addmaterials"--}}
+                                                    {{--onclick="createAssignmentCleanDetails()"--}}
+                                            {{-->--}}
+                                                {{--{{ __('strings.AddMaterial') }}--}}
+                                            {{--</button>--}}
+                                        {{--</td>--}}
+                                    {{--</div>--}}
+                                    <div class="row">
                                     <div class="col-md-6">
                                         <form id="file-input" class="dropzone">
                                             <div class="fallback">
@@ -81,21 +94,17 @@
                                             </div>
                                         </form>
                                     </div>
-
-                                    <div>
-                                        {{--<h3>Material</h3>--}}
-
+                                    <div class="col-md-6">
                                         @if($materials->count() > 0)
-
-                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
+                                            <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
                                     table-striped color-table muted-table" style="width: auto" >
-                                            <thead>
-                                            <tr>
-                                            <th >File name</th>
-                                            <th >Action</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
+                                                <thead>
+                                                <tr>
+                                                    <th >File name</th>
+                                                    <th >Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
                                                 @foreach ($materials as $material)
                                                     <tr>
                                                         <td>{{$material->file_name}}</td>
@@ -103,24 +112,22 @@
                                                             <a class="btn btn-info btn-sm
                                                     " href="{{ asset($material->path) }}"
                                                                download="{{ $material->path }}">
-                                                                <i text-md-center class="ti-download"> Download</i>
+                                                                <i text-md-center class="ti-download"> </i>
                                                             </a>
                                                             <a class="btn btn-danger btn-sm"
                                                                href="/delete_course_file/{{$material->id}}"
                                                             >
-                                                                <i text-md-center class="ti-trash">Delete</i> </a>
+                                                                <i text-md-center class="ti-trash"> </i> </a>
 
                                                         </td>
 
                                                     </tr>
-
                                                 @endforeach
-                                            </tbody>
-                                        </table>
-
-                                            @endif
+                                                </tbody>
+                                            </table>
+                                        @endif
                                     </div>
-
+                                </div>
                                 </div>
                                 <hr><hr>
                                 <div class="form-group" align-items-center>
@@ -136,6 +143,7 @@
         </div>
     </div>
 
+    @include('design.modals.addmaterials')
 
     <script>
 

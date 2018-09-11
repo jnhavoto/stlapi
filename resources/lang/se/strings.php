@@ -98,7 +98,6 @@ return [
     'UpdateAssignment' => 'Redigera uppgift',
 
     //Calendar
-    'Calendar' => 'Kalender',
     'DragDrop' => 'Drag och släpp',
 
 
@@ -106,7 +105,7 @@ return [
 
 //============== Monitoring ===================
 //==== Assignments
-    'Monitoring' => 'Övervakning',
+//    'Monitoring' => 'Övervakning',
     'AssignmentsOverview' => 'Uppgifter-översikt',
 //    'AssignmentOverview' => ‘Uppgift-översikt’, (Is this true? What is overview if there is only one item?)
 
@@ -140,7 +139,6 @@ return [
     'Role' => 'Role',
     'Joiningdate' => 'Deltagare sedan',
 //    I am not clear about the context for this)
-    'Action' => 'Action',
     'AllContacts' => 'Alla kontakter',
     'Inbox' => 'Inkorgen',
     'Sent' => 'Skickat',
@@ -156,7 +154,12 @@ return [
     //040918
     'CreateFromTemplate' => 'Create From Template?',
     'CreateInstruction' => 'To create a new Assignment select on in the Action list',
-    'AddMaterial' => 'Add Material',
-
-
+    'Upload' => 'Upload',
+    'AddAssignment' => 'Add Assignment',
+    'AssignmentDetails' => 'Assignment Details',
+    'Ratings' => 'Ratings',
+    'Attachment' => 'Attachment',
+    'ComposeNewMessage' => 'Compose New Message',
+    'Course' => 'Course',
+    'OR' => 'OR',
 ];

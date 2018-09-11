@@ -37,20 +37,18 @@
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">{{ __('strings.StartDate') }}</label>
-                            <input name="startdate" type="date"
+                            <input name="startdate" type="text"
                                    class="form-control" id="c_assignment_startdate">
                         </div>
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">{{ __('strings.EndDate') }} </label>
-                            <input name="deadline"
-                                   type="date" class="form-control" id="c_assignment_enddate">
+                            <input name="deadline" type="text" class="form-control" id="c_assignment_enddate">
                         </div>
 
                         <div class="col-md-12 m-b-20">
                             <label class="control-label">{{ __('strings.AvailableDate') }}</label>
-                            <input name="availabledate" type="date"
-                                   class="form-control" id="c_assignment_availabledate">
+                            <input name="availabledate" type="text" class="form-control" id="c_assignment_availabledate">
 
                         </div>
                         <div class="form-group">

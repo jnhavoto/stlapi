@@ -15,7 +15,7 @@
                         {{--Course Overview--}}
                     </h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">
+                        <li class="breadcrumb-item"><a href="/">
                                 {{ __('strings.Home') }}
                                 {{--Home--}}
                             </a></li>

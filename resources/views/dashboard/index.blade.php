@@ -29,7 +29,7 @@
                     <div class="col-md-5 col-8 align-self-center">
                         <h3 class="text-themecolor">   {{ __('strings.general_overview') }} </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('strings.Home') }} </a></li>
+                            <li class="breadcrumb-item"><a href="/">{{ __('strings.Home') }} </a></li>
                             <li class="breadcrumb-item active">{{ __('strings.general_overview') }}</li>
                         </ol>
                     </div>
@@ -63,8 +63,8 @@
                                                data-page-size="10">
                                             <thead>
                                             <tr>
-                                                <th> #</th>
                                                 <th>{{ __('strings.CourseName') }} </th>
+                                                <th> # {{ __('strings.Assignments') }} </th>
                                                 <th>{{ __('strings.StartDate') }} </th>
                                                 <th>{{ __('strings.AvailableFrom') }} </th>
                                                 <th>{{ __('strings.Status') }}
@@ -72,31 +72,147 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {{--@foreach ($courses as $course)--}}
-                                                {{--<tr>--}}
-                                                    {{--<td> {{ $course->course->id}}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--<a href="/" data-toggle="modal"--}}
-                                                           {{--data-target="#modalAssCourseDetails">--}}
-                                                            {{--{{ $course->course->name }}--}}
-                                                        {{--</a>--}}
-
-                                                    {{--</td>--}}
-                                                    {{--<td> {{substr($course->course_content, 0, 45) }} </td>--}}
-                                                    {{--<td> {{ $course->course->startdate}}</td>--}}
-                                                    {{--<td> {{ $course->course->available_date}}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--@if($course->course->status == 0)--}}
-                                                            {{--{{ __('strings.Active') }}--}}
-                                                            {{--Active--}}
-                                                        {{--@else--}}
-                                                            {{--{{ __('strings.Disactive') }}--}}
-                                                            {{--Disactive--}}
-                                                        {{--@endif--}}
-                                                    {{--</td>--}}
-                                                {{--</tr>--}}
-                                            {{--@endforeach--}}
+                                            @if(count($teacherCourses)!=0)
+                                            @foreach ($teacherCourses as $course)
+                                                <tr>
+                                                    <td>
+                                                        <a href="/" data-toggle="modal"
+                                                           data-target="#modalAssCourseDetails">
+                                                            {{ $course->course->name }}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $assignments =
+                                                            \App\Models\AssignmentDescriptionsHasCourse::where
+                                                            ('courses_id',$course->courses_id)->get();
+                                                        @endphp
+                                                        {{ count($assignments)}}
+                                                    </td>
+                                                    <td> {{ $course->course->startdate}}</td>
+                                                    <td> {{ $course->course->available_date}}</td>
+                                                    <td>
+                                                        @if($course->course->status == 0)
+                                                            {{ __('strings.Active') }}
+                                                        @else
+                                                            {{ __('strings.Disactive') }}
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                                @endif
                                             </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- .left-aside-column-->
+                                </div>
+                                <!-- /.left-right-aside-column-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- .left-right-aside-column-->
+                            <div class="contact-page-aside">
+                                <div class="pl-4">
+                                    <div class="right-page-header">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <h4 class="card-title m-t-10">
+                                                    {{ __('strings.MyAssignmentList') }}
+                                                    {{--My Assignment List--}}
+                                                </h4></div>
+                                            <div class="ml-auto">
+                                                <input type="text" id="demo-input-search2"
+                                                       placeholder="{{ __('strings.SearchAssignments') }}"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table muted-table"
+                                               data-page-size="10">
+                                            <thead>
+                                            <tr>
+                                                <th>{{ __('strings.AssignmentName') }} </th>
+                                                <th>{{ __('strings.CourseName') }} </th>
+                                                <th># {{ __('strings.Announcements') }} </th>
+                                                <th># {{ __('strings.Submissions') }} </th>
+                                                <th># {{ __('strings.Feedbacks') }} </th>
+                                                <th># {{ __('strings.Ratings') }} </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{--{{$assignmentsTeacher->count()}}--}}
+                                            @foreach ($assignmentsTeacher as $assignment)
+                                                <tr>
+                                                    <td>
+                                                        <a
+                                                                href="/assignmentdesign-overview/{{$assignment->assignment_descriptions_id}}">
+                                                            {{$assignment->assignment_description->case}}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href={{ url('/coursedesign-overview/'.$assignment->courses_id)}}>
+                                                            {{$assignment->assignment_description->course->name}}
+                                                        </a>
+                                                    </td>
+
+                                                    <td>
+                                                        @php
+                                                            $announcements=
+                                                            \App\Models\AssignmentAnnouncement::where
+                                                            ('assignment_descriptions_id',$assignment->assignment_descriptions_id)->get();
+                                                        @endphp
+                                                        {{ count($announcements)}}
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $submissions=
+                                                            \App\Models\AssignmentSubmission::where
+                                                            ('assignment_descriptions_id',$assignment->assignment_descriptions_id)->get();
+                                                        @endphp
+                                                        {{ count($submissions)}}
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $totalfeedbacks=0;
+                                                            foreach ($submissions as $submission)
+                                                            {
+                                                                $feedbacks=
+                                                            \App\Models\Feedback::where
+                                                            ('assignment_submissions_id',
+                                                            $submission->id)->get();
+                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
+                                                            }
+
+
+                                                        @endphp
+                                                        {{ $totalfeedbacks}}
+                                                    </td>
+                                                    <td>
+                                                        @if($assignment->status == 0)
+                                                            {{ __('strings.Active') }}
+                                                        @else
+                                                            {{ __('strings.Disactive') }}
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="7">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"></ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
                                     <!-- .left-aside-column-->

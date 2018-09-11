@@ -97,7 +97,6 @@ return [
     'UpdateAssignment' => 'Update Assignment',
 
     //Calendar
-    'Calendar' => 'Calendar',
     'DragDrop' => 'Drag and Drop Your Event',
 
 
@@ -105,7 +104,7 @@ return [
 
 //============== Monitoring ===================
 //==== Assignments
-    'Monitoring' => 'Monitoring',
+//    'Monitoring' => 'Monitoring',
     'AssignmentsOverview' => 'Assignments Overview',
     'AssignmentOverview' => 'Assignment Overview',
 
@@ -135,7 +134,6 @@ return [
     'Phone' => 'Phone',
     'Role' => 'Role',
     'Joiningdate' => 'Joining date',
-    'Action' => 'Action',
     'AllContacts' => 'All Contacts',
     'Inbox' => 'Inbox',
     'Sent' => 'Sent',
@@ -147,9 +145,18 @@ return [
     'SearchCourses' => 'search courses',
     'SearchAssignments' => 'search assignments',
     'CreateFromTemplate' => 'Create From Template?',
-    'AddMaterial' => 'Add Material',
     'CreateInstruction' => 'To create a new Assignment select on in the Action list',
 
 
-
+    'Upload' => 'Upload',
+    'AddAssignment' => 'Add Assignment',
+    'AssignmentDetails' => 'Assignment Details',
+    'Ratings' => 'Ratings',
+    'Attachment' => 'Attachment',
+    'ComposeNewMessage' => 'Compose New Message',
+    'Course' => 'Course',
+    'OR' => 'OR',
+    'Send' => 'Send',
+    'Save' => 'Save',
+    'Discard' => 'Discard',
 ];

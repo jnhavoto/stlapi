@@ -225,9 +225,6 @@
             <!-- ============================================================== -->
         </div>
     </div>
-
-    <!--Modal for course details-->
-    @include('design.modals.course-details')
     <!--Modal for copping a course-->
     @include('design.modals.create-course')
     @include('design.modals.update-course')

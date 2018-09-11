@@ -169,42 +169,42 @@ class CourseController extends ModelController
 
     }
 
-    public function updateCourse(Request $request)
-    {
-
-        return $request->all();
-        //get teacher ID: who logged in
-        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
-        //get the course by id;
-        $course = Course::find($request->course_id);
-        //return $course;
-        //get all current instructors
-        $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
-        //get the group_teachers_id of this course and delete them
-        TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
-        //remove all the OLD teachers
-
-        //return $course_teachers;
-        //get the current values and save them in the DB
-        $course->name = $request->name;
-        $course->course_content = $request->course_content;
-        $course->startdate = $request->startdate;
-        $course->available_date = $request->available_date;
-        $course->save();
-        //return $course;
-        $instructors = $request->instructors; //get instructors from the form
-
-        //recreate instructors
-        foreach ($instructors as $instructor) {
-            TeacherCourse::create(
-                [
-                    'teachers_id' => $instructor,
-                    'courses_id' => $course->id,
-                ]
-            );
-        }
-        return redirect('/courses');
-    }
+//    public function updateCourse(Request $request)
+//    {
+//
+//        return $request->all();
+//        //get teacher ID: who logged in
+//        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+//        //get the course by id;
+//        $course = Course::find($request->course_id);
+//        //return $course;
+//        //get all current instructors
+//        $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
+//        //get the group_teachers_id of this course and delete them
+//        TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
+//        //remove all the OLD teachers
+//
+//        //return $course_teachers;
+//        //get the current values and save them in the DB
+//        $course->name = $request->name;
+//        $course->course_content = $request->course_content;
+//        $course->startdate = $request->startdate;
+//        $course->available_date = $request->available_date;
+//        $course->save();
+//        //return $course;
+//        $instructors = $request->instructors; //get instructors from the form
+//
+//        //recreate instructors
+//        foreach ($instructors as $instructor) {
+//            TeacherCourse::create(
+//                [
+//                    'teachers_id' => $instructor,
+//                    'courses_id' => $course->id,
+//                ]
+//            );
+//        }
+//        return redirect('/courses');
+//    }
 
     public function updateCourseNew($id)
     {
@@ -252,6 +252,27 @@ class CourseController extends ModelController
                 'materials' => $materials,
         ]);
 
+    }
+
+    public function salvarImagem(Request $request)
+    {
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+
+            $filePath = collect();
+            foreach ($file as $ficheiro){
+                $filename = time() . '-a-' . $ficheiro->getClientOriginalName();
+
+                $ficheiro->move('docs', $filename );
+                $filePath->push('docs/' . '' . $filename );
+            }
+
+        } else {
+            return response(['Nao existe Ficheiro']);
+        }
+
+        return ['imagem' => $filePath];
     }
 
     public function updateCourseById(Request $request, $id){
@@ -309,7 +330,8 @@ class CourseController extends ModelController
 
                 CourseMaterial::create([
                     'courses_id' => $id,
-                    'path' => $valor
+                    'path' => $valor,
+                    'file_name' => explode('-a-', $valor)[1],
                 ]);
             }
 
@@ -350,7 +372,8 @@ class CourseController extends ModelController
     public function courseDesignOverview(Request $request)
     {
         //get course details
-        $course = Course::where('id', $request->id)->get();
+        $course = Course::where('id', $request->id)->first();
+//        return $course;
         //get all assignments of this course
         $courseAssignemts = AssignmentDescription::where('courses_id', $request->id)->get();
 //        get all submitted assignments of this course
@@ -363,12 +386,16 @@ class CourseController extends ModelController
         }
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
-//        return $teacherCourses;
-
+        //get all course members
+        $courseMembers = TeacherCourse::with('teacher')->where('courses_id',$course->id)->get();
+        //Return all course material
+        $material = CourseMaterial::where('courses_id',$request->id)->get();
         //get all students
         return view('design.coursedesign-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
             'teacherCourses' => $teacherCourses,
+            'materials' => $material,
+            'courseMembers' => $courseMembers,
             'user' => Auth::user()]);
 
     }
@@ -409,25 +436,7 @@ class CourseController extends ModelController
     }
 
 
-    public function salvarImagem(Request $request)
-    {
 
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-
-            $filePath = collect();
-            foreach ($file as $ficheiro){
-                $filename = time() . '' . $ficheiro->getClientOriginalName();
-                $ficheiro->move('docs', $filename);
-                $filePath->push('docs/' . '' . $filename);
-            }
-
-        } else {
-            return response(['Nao existe Ficheiro']);
-        }
-
-        return ['imagem' => $filePath];
-    }
 
 
 }

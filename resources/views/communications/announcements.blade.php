@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-xlg-2 col-lg-4 col-md-4">
                                 <div class="card-body inbox-panel">
-                                    <a href="app-compose.html"
+                                    <a href="/announcements/compose"
                                        class="btn btn-danger m-b-20 p-10 btn-block waves-effect waves-light">
                                         {{ __('strings.Compose') }}
                                     </a>
