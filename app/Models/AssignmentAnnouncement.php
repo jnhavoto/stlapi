@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 16 Aug 2018 11:04:27 +0000.
+ * Date: Thu, 13 Sep 2018 16:16:03 +0000.
  */
 
 namespace App\Models;
@@ -19,12 +19,15 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * @property int $status
- * @property \Carbon\Carbon $date
  * @property int $assignment_descriptions_id
  * @property int $teacher_members_id
+ * @property int $teachers_id
+ * @property \Carbon\Carbon $date
  * 
  * @property \App\Models\AssignmentDescription $assignment_description
  * @property \App\Models\TeacherMember $teacher_member
+ * @property \App\Models\Teacher $teacher
+ * @property \Illuminate\Database\Eloquent\Collection $materials
  * @property \Illuminate\Database\Eloquent\Collection $student_announcements_statuses
  *
  * @package App\Models
@@ -37,7 +40,8 @@ class AssignmentAnnouncement extends Eloquent
 	protected $casts = [
 		'status' => 'int',
 		'assignment_descriptions_id' => 'int',
-		'teacher_members_id' => 'int'
+		'teacher_members_id' => 'int',
+		'teachers_id' => 'int'
 	];
 
 	protected $dates = [
@@ -48,9 +52,10 @@ class AssignmentAnnouncement extends Eloquent
 		'message',
 		'subject',
 		'status',
-		'date',
 		'assignment_descriptions_id',
-		'teacher_members_id'
+		'teacher_members_id',
+		'teachers_id',
+		'date'
 	];
 
 	public function assignment_description()
@@ -63,14 +68,18 @@ class AssignmentAnnouncement extends Eloquent
 		return $this->belongsTo(\App\Models\TeacherMember::class, 'teacher_members_id');
 	}
 
+	public function teacher()
+	{
+		return $this->belongsTo(\App\Models\Teacher::class, 'teachers_id');
+	}
+
+	public function materials()
+	{
+		return $this->hasMany(\App\Models\Material::class);
+	}
+
 	public function student_announcements_statuses()
 	{
 		return $this->hasMany(\App\Models\StudentAnnouncementsStatus::class, 'assignment_notifications_id');
 	}
-
-    public function assignment_announcement_materials()
-    {
-        return $this->hasMany(\App\Models\Material::class, 'assignment_notifications_id');
-    }
-
 }

@@ -143,7 +143,7 @@ return [
     'Inbox' => 'Inkorgen',
     'Sent' => 'Skickat',
     'Draft' => 'Utkast',
-    'Compose' => 'Skriv meddelande',
+    'Compose' => 'Skriv',
 //    Context unclear…’compose message’? If so, ‘skriv meddelande’
     'UpdateField' => 'Uppdatera fält',
     'AssignmentMaterial' => 'Material till uppgift',

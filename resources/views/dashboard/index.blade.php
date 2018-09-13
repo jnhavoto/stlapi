@@ -229,6 +229,19 @@
 
                 <div class="row">
                     <!-- Column -->
+                    <div class="col-lg-12 col-xlg-3 col-md-5">
+                        <!-- Column -->
+                        <div class="card">
+                            <div class="card-body little-profile text-center">
+                                <h3 class="m-b-0">Notifications</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <!-- Column -->
                         <div class="card">

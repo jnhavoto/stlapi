@@ -34,7 +34,6 @@
                     </div>
 
                     <div class="tab-pane col-md-4 " role="tabpanel" id="assignment">
-
                         <label>{{ __('strings.Assignment') }}                   </label>
                         <select class="js-example-basic-multiple" name="assignment_id" style="width: 100%"
                                 id="select-assignment">
@@ -62,7 +61,7 @@
             <div class="col-md-12 m-b-20">
                 <label class="card-title"> {{ __('strings.Attachment') }}  </label>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <form id="file-input" class="dropzone">
                             <div class="fallback">
                                 <input name="file" type="file" multiple />

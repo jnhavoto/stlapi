@@ -245,7 +245,8 @@ $factory->define(\App\Models\AssignmentAnnouncement::class, function (Faker $fak
         'message' =>$faker->text(60),
         'subject' =>$faker->text(20),
         'status' => $faker->numberBetween(0,1),
-        'date' => $faker->date('Y-m-d')
+        'date' => $faker->date('Y-m-d'),
+        'teachers_id' => $faker->numberBetween(1, \App\Models\Teacher::all()->count()),
     ];
 });
 
@@ -499,6 +500,7 @@ $factory->define(\App\Models\CourseAnnouncement::class, function (Faker $faker) 
         'message'  =>  $faker->text(45),
         'subject'  =>  $faker->text(15),
         'status' => $faker->numberBetween(0,1),
+        'teacher_members_id'  => $faker->numberBetween(1,\App\Models\TeacherMember::all()->count()),
     ];
 });
 
