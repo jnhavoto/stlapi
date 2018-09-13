@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@index')->middleware(['teacher']);
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/salvar-imagens', 'CourseController@salvarImagem');
+Route::post('/save-files', 'CourseController@saveFiles');
 
 //==============================================================
 //End Dashboard
@@ -74,6 +74,16 @@ Route::get('/update-teacher/{id}', 'TeacherController@updateTeacher')->middlewar
 //get all Courses
 Route::get('/courses', 'CourseController@getCourses')->middleware(['teacher']);
 
+//create course from template
+Route::get('/course-getfromtemplate/{id}', 'CourseController@getCourseFromTemplate')->middleware
+(['teacher']);
+
+//create new course
+Route::get('/course-createnew', 'CourseController@newCourse')->middleware
+(['teacher']);
+
+Route::post('/course-createfromtemplate', 'CourseController@createCourseFromTemplate')
+    ->middleware(['teacher']);
 
 Route::get('/instructors/{id}', 'CourseController@getInstructorsByCourseId')->middleware(['teacher']);
 //get members of a course
@@ -92,8 +102,7 @@ Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['tea
 
 //update course
 //Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
-
-Route::get('/update_course/{id}', 'CourseController@updateCourseNew')->middleware(['teacher'])->name('updatecourse');
+Route::get('/coursetoupdate/{id}', 'CourseController@getCourseToUpdate')->middleware(['teacher'])->name('updatecourse');
 
 Route::post('/updateCourse/{id}', 'CourseController@updateCourseById')->middleware(['teacher'])->name('update_Course');
 //delete a course
@@ -113,7 +122,9 @@ Route::get('/assignment-templates/{id}', 'AssignmentDescriptionController@getAss
 
 Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignment')->middleware(['teacher']);
 
+//createassign
 Route::get('/createassignFirst/{id}', 'AssignmentDescriptionController@createAssign')->middleware(['teacher']);
+
 
 Route::post('/create_assignmentFromTemplate', 'AssignmentDescriptionController@createAssignmentFromTemplate')
     ->middleware(['teacher']);

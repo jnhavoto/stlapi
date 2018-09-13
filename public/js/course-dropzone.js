@@ -3,19 +3,19 @@ var ficheiros = [];
 var contarFicheiros = 0;
 
 
-    $("#submit-update-course").on("click", function(e) {
+    $("#submit-course").on("click", function(e) {
 
     if(contarFicheiros == 0) {
-        $('#form-update-course').submit();
+        $('#form-course').submit();
     }
     });
 
 
 
     var dropzoneImagem = $('#file-input').dropzone({
-        url: '/salvar-imagens',
+        url: '/save-files',
         autoProcessQueue: false,
-        dictDefaultMessage: "Adicione Um ficheiro",
+        dictDefaultMessage: "Add files",
         uploadMultiple: true,
         maxFilesize: 50,
         parallelUploads: 100,
@@ -49,7 +49,7 @@ var contarFicheiros = 0;
                         .appendTo('#form-update-course');
                 });
 
-                $('#form-update-course').submit();
+                $('#form-course').submit();
             });
 
 
@@ -57,7 +57,7 @@ var contarFicheiros = 0;
                 console.log(response);
             });
 
-            $("#submit-update-course").on("click", function(e) {
+            $("#submit-course").on("click", function(e) {
                    if(contarFicheiros > 0){
                        e.preventDefault();
                        e.stopPropagation();

@@ -67,4 +67,10 @@ class AssignmentAnnouncement extends Eloquent
 	{
 		return $this->hasMany(\App\Models\StudentAnnouncementsStatus::class, 'assignment_notifications_id');
 	}
+
+    public function assignment_announcement_materials()
+    {
+        return $this->hasMany(\App\Models\Material::class, 'assignment_notifications_id');
+    }
+
 }

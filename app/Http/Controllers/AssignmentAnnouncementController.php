@@ -40,7 +40,7 @@ class AssignmentAnnouncementController  extends ModelController
             $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
                 $membership->id)
                 ->get();
-            $other_announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
+            $other_announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teachers_id',
                 $membership->id)
                 ->get();
 //            $assignment_extended = TeacherMember::where('teachers_id', $teacherid->id)
@@ -77,7 +77,7 @@ class AssignmentAnnouncementController  extends ModelController
                 ->get();
 
             $course_announcementasmember = CourseAnnouncement::with('teacher_member')
-                ->where('teacher_members_id',$membership->id)
+                ->where('teachers_id',$membership->id)
                 ->where('id', $id->id)
                 ->get();
 
@@ -113,7 +113,7 @@ class AssignmentAnnouncementController  extends ModelController
                 $membership->id)
                 ->get();
 
-            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teachers_id',
                 $membership->id)
                 ->get();
 
@@ -124,7 +124,7 @@ class AssignmentAnnouncementController  extends ModelController
                 $inbox_announcements ->push($course_announcementasmember);
             }
         }
-        /* return $inbox_announcements; */
+        return $inbox_announcements;
 
         return view('communications.inbox', ['inbox_announcements' => $inbox_announcements, 'label' => 'inbox', 'count_inbox'
         => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
@@ -146,7 +146,7 @@ class AssignmentAnnouncementController  extends ModelController
                 $membership->id)
                 ->get();
 
-            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teachers_id',
                 $membership->id)
                 ->get();
 
@@ -183,7 +183,7 @@ class AssignmentAnnouncementController  extends ModelController
                 $membership->id)
                 ->get();
 
-            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teachers_id',
                 $membership->id)
                 ->get();
 
@@ -222,7 +222,7 @@ class AssignmentAnnouncementController  extends ModelController
                 $membership->id)
                 ->get();
 
-            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teachers_id',
                 $membership->id)
                 ->get();
 
@@ -250,25 +250,6 @@ class AssignmentAnnouncementController  extends ModelController
             $teacher->id)->get();
 
         $draft_announcements = collect();
-
-//        return $memberof;
-//        foreach ($memberof as $membership)
-//        {
-//            $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
-//                $membership->id)
-//                ->get();
-//
-//            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
-//                $membership->id)
-//                ->get();
-//
-//            if(count($announcementasmember) > 0){
-//                $draft_announcements ->push($announcementasmember);
-//            }
-//            if(count($course_announcementasmember) > 0){
-//                $draft_announcements ->push($course_announcementasmember);
-//            }
-//        }
 
         return view('communications.compose-announcement', ['draft_announcements' => $draft_announcements, 'label' =>
             'draft', 'count_inbox'

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentAnnouncement;
+use App\Models\AssignmentDescriptionsHasCourse;
 use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentSubmission;
 use App\Models\Feedback;
@@ -32,29 +33,28 @@ class HomeController extends Controller
     {
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
 //        return $teacher;
-        $assignments = AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
-        $teacher->id)->get();
-//        return $assignments;
 
-        //get announcements
-//        $announcements = AssignmentAnnouncement::where('assignment_descriptions_id',$assignments->id)->get();
-//
-//        //get submissions
-//        $submissions = AssignmentSubmission::where('assignment_descriptions_id',$assignments->id)->get();
-//        //get feedbacks
-//        $feedbacks = Feedback::where('assignment_descriptions_id',$assignments->id)->get();
-        //get ratings
-//        $ratings = Ratin
-
+        $assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
+//            AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
+//        $teacher->id)->get();
+       // return $assignTeacher;
 
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
 //        return $teacherCourses;
+        $countAssign = 0;
+        foreach ($teacherCourses as $course)
+        {
+            $counting = AssignmentDescriptionsHasCourse::where('courses_id',$course->courses_id)->get()->count();
+            $countAssign=$countAssign+$counting;
+        }
+
         return view('dashboard.index',[
             'teacherCourses'=>$teacherCourses,
+            'countAssign'=>$countAssign,
 //            'announcements'=>$announcements,
 //            'submissions'=>$submissions,
 //            'feedbacks'=>$feedbacks,
-            'assignmentsTeacher'=>$assignments,
+            'assignTeacher'=>$assignTeacher,
         'user' =>
             Auth::user()]);
     }

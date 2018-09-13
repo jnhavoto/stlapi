@@ -65,12 +65,16 @@
                                                 <td> {{$course->name}}  </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-circle btn-lg m-r-5"
-                                                            href="/" data-toggle="modal"
-                                                            data-target="#create-course"
-                                                            onclick="copyCourse({{$course}})">
-                                                        <i class="ti-clipboard"></i>
-                                                    </button>
+                                                    <a class="btn btn-info btn-circle btn-lg m-r-5"
+                                                       href="/course-getfromtemplate/{{$course->id}}">
+                                                        <i text-md-center class="ti-clipboard"></i>
+                                                    </a>
+                                                    {{--<button type="button" class="btn btn-info btn-circle btn-lg m-r-5"--}}
+                                                            {{--href="/" data-toggle="modal"--}}
+                                                            {{--data-target="#create-course"--}}
+                                                            {{--onclick="copyCourse({{$course}})">--}}
+                                                        {{--<i class="ti-clipboard"></i>--}}
+                                                    {{--</button>--}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -118,11 +122,15 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <button type="button" onclick="courseCleanDetails()" class="btn
-                                                btn-info btn-rounded"
-                                                data-toggle="modal" data-target="#create-course">
+                                        <a class="btn btn-info btn-rounded"
+                                           href="/course-createnew">
                                             {{ __('strings.AddNewCourse') }}
-                                        </button>
+                                        </a>
+                                        {{--<button type="button" onclick="courseCleanDetails()" class="btn--}}
+                                                {{--btn-info btn-rounded"--}}
+                                                {{--data-toggle="modal" data-target="#create-course">--}}
+                                            {{--{{ __('strings.AddNewCourse') }}--}}
+                                        {{--</button>--}}
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -183,7 +191,7 @@
                                                     <button type="button" class="btn btn-info btn-circle
                                                      btn-lg m-r-5"><i class="ti-key"></i></button>
                                                     {{--Update/Edit course--}}
-                                                    <a href="{{ url('/update_course/'
+                                                    <a href="{{ url('/coursetoupdate/'
                                                     .$course->course->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>

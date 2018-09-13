@@ -33,7 +33,7 @@
                             <h4 class="card-title">{{ __('strings.UpdateCourse') }} </h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
                             </h6>
-                            <form id="form-update-course" class="form-horizontal m-t-40" method="post"
+                            <form id="form-course" class="form-horizontal m-t-40" method="post"
                                   action="{{ route('update_Course', ['id'=>$course->id]) }}" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="course_id" name="course_id" value="{{$course->id}}"/>
@@ -73,7 +73,7 @@
 
                                 <div class="col-md-12 m-b-20">
                                     <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
-                                    <hr>
+                                    {{--<hr>--}}
 
                                     {{--<div class="ml-auto">--}}
                                         {{--<td colspan="2">--}}
@@ -87,51 +87,51 @@
                                         {{--</td>--}}
                                     {{--</div>--}}
                                     <div class="row">
-                                    <div class="col-md-6">
-                                        <form id="file-input" class="dropzone">
-                                            <div class="fallback">
-                                                <input name="file" type="file" multiple />
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-6">
-                                        @if($materials->count() > 0)
-                                            <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
-                                    table-striped color-table muted-table" style="width: auto" >
-                                                <thead>
-                                                <tr>
-                                                    <th >File name</th>
-                                                    <th >Action</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach ($materials as $material)
+                                        <div class="col-md-6">
+                                            <form id="file-input" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-6">
+                                            @if($materials->count() > 0)
+                                                <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
+                                        table-striped color-table muted-table" style="width: auto" >
+                                                    <thead>
                                                     <tr>
-                                                        <td>{{$material->file_name}}</td>
-                                                        <td>
-                                                            <a class="btn btn-info btn-sm
-                                                    " href="{{ asset($material->path) }}"
-                                                               download="{{ $material->path }}">
-                                                                <i text-md-center class="ti-download"> </i>
-                                                            </a>
-                                                            <a class="btn btn-danger btn-sm"
-                                                               href="/delete_course_file/{{$material->id}}"
-                                                            >
-                                                                <i text-md-center class="ti-trash"> </i> </a>
-
-                                                        </td>
-
+                                                        <th >File name</th>
+                                                        <th >Action</th>
                                                     </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        @endif
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach ($materials as $material)
+                                                        <tr>
+                                                            <td>{{$material->file_name}}</td>
+                                                            <td>
+                                                                <a class="btn btn-info btn-sm
+                                                        " href="{{ asset($material->path) }}"
+                                                                   download="{{ $material->path }}">
+                                                                    <i text-md-center class="ti-download"> </i>
+                                                                </a>
+                                                                <a class="btn btn-danger btn-sm"
+                                                                   href="/delete_course_file/{{$material->id}}"
+                                                                >
+                                                                    <i text-md-center class="ti-trash"> </i> </a>
+
+                                                            </td>
+
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                                 <hr><hr>
                                 <div class="form-group" align-items-center>
-                                    <button id="submit-update-course" type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
+                                    <button id="submit-course" type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
                                     <a class="btn btn-default btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>

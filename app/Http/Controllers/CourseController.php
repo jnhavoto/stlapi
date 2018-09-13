@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\CoursesTemplate;
 use App\Models\Department;
 use App\Models\GroupTeacher;
+use App\Models\Material;
 use App\Models\Student;
 use App\Models\StudentsCourse;
 use App\Models\Teacher;
@@ -72,9 +73,84 @@ class CourseController extends ModelController
         return $response;
     }
 
+
+
     public function submitCourse(Request $request)
     {
 
+    //get teacher ID: who logged in
+    $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+    //Begin transaction
+    DB::beginTransaction();
+
+    //get the department name from the user
+    $department = Department::Where('name', $request->name);
+    //create the course with content from the form
+    $course = Course::create(
+        [
+            'name' => $request->name,
+            'course_content' => $request->course_content,
+            'startdate' => $request->startdate,
+            'available_date' => $request->available_date,
+            //get the department id from the name the user chose in the form
+            'departments_id' => 1,
+        ]
+    );
+    //enrol all student on this course
+    $students = Student::all();
+    foreach ($students as $student) {
+        $student_course = StudentsCourse::create(
+            [
+                'students_id' => $student->id,
+                'courses_id' => $course->id,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'status' => 0,
+            ]
+        );
+    }
+    //createing group_teacher
+    $group_teacher = GroupTeacher::create(
+        [
+            'group_name' => 'Default Name',
+        ]
+    );
+    //adding instructors to the course
+    $instructors = $request->instructors;
+
+    foreach ($instructors as $instructor) {
+        $teacher_member = TeacherMember::create(
+            [
+                'group_teachers_id' => $group_teacher->id,
+                'teachers_id' => $instructor,
+//                    'teachers_id' => $instrutors[$i],
+            ]
+        );
+        $teacher_course = TeacherCourse::create(
+            [
+                'teachers_id' => $instructor,
+                'courses_id' => $course->id,
+            ]
+        );
+    }
+
+    if (!$teacher_member) {
+        return "Qualquer coisa";
+    } else
+
+        //check if course and tecaher_course have any error: if not, then write on the DB
+        if ($course and $teacher_course and $student_course) {
+            DB::commit();
+
+            if($request->submitNow == 0)
+                return redirect('/courses');
+            else
+                return redirect('/update_course/'.$course->id);
+        }
+}
+
+    public function createCourseFromTemplate(Request $request)
+    {
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //Begin transaction
@@ -89,7 +165,6 @@ class CourseController extends ModelController
                 'course_content' => $request->course_content,
                 'startdate' => $request->startdate,
                 'available_date' => $request->available_date,
-                //get the department id from the name the user chose in the form
                 'departments_id' => 1,
             ]
         );
@@ -139,11 +214,47 @@ class CourseController extends ModelController
             if ($course and $teacher_course and $student_course) {
                 DB::commit();
 
-               if($request->submitNow == 0)
-                    return redirect('/courses');
-               else
-                   return redirect('/update_course/'.$course->id);
+            //saving files
+                foreach ($request->all() as $chave => $valor){
+                    if(strpos($chave, 'file') !== false){
+
+                        Material::create([
+                            'courses_id' => $course->id,
+                            'path' => $valor,
+                            'file_name' => explode('-a-', $valor)[1],
+                        ]);
+                    }
+
+                }
+
+                return redirect('/courses');
             }
+    }
+
+    public function newCourse()
+    {
+        $instructors = Teacher::all();
+        //return $courseTemplate;
+        return view('design.course-createnew',
+            [
+                'instructors' => $instructors,
+                'user' => Auth::user()]);
+
+    }
+
+    public function getCourseFromTemplate($id)
+    {
+        //get the course template details
+        $courseTemplate = CoursesTemplate::where('id',$id)->first();
+        //return $teacherCourses;
+        //get all intructors
+        $instructors = Teacher::all();
+        //return $courseTemplate;
+        return view('design.course-createfromtemplate',
+            [
+                'courseTemplate' => $courseTemplate,
+                'instructors' => $instructors,
+                'user' => Auth::user()]);
     }
 
     public function courseOverview(Request $request)
@@ -169,82 +280,16 @@ class CourseController extends ModelController
 
     }
 
-//    public function updateCourse(Request $request)
-//    {
-//
-//        return $request->all();
-//        //get teacher ID: who logged in
-//        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
-//        //get the course by id;
-//        $course = Course::find($request->course_id);
-//        //return $course;
-//        //get all current instructors
-//        $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
-//        //get the group_teachers_id of this course and delete them
-//        TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
-//        //remove all the OLD teachers
-//
-//        //return $course_teachers;
-//        //get the current values and save them in the DB
-//        $course->name = $request->name;
-//        $course->course_content = $request->course_content;
-//        $course->startdate = $request->startdate;
-//        $course->available_date = $request->available_date;
-//        $course->save();
-//        //return $course;
-//        $instructors = $request->instructors; //get instructors from the form
-//
-//        //recreate instructors
-//        foreach ($instructors as $instructor) {
-//            TeacherCourse::create(
-//                [
-//                    'teachers_id' => $instructor,
-//                    'courses_id' => $course->id,
-//                ]
-//            );
-//        }
-//        return redirect('/courses');
-//    }
-
-    public function updateCourseNew($id)
+    public function getCourseToUpdate($id)
     {
-
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
         $course = Course::findOrFail($id);
-        $materials = $course->course_materials;
-        //return $course;
-        //get the list of all intructors
+        $materials = Material::where('courses_id',$id)->get();
 //        §instructors =
         $courseInstructors = TeacherCourse::with('teacher')->where('courses_id', '=', $id)->get();
-        //return $courseInstructors;
-        //get all current instructors
-//        $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
-//        //get the group_teachers_id of this course and delete them
-//        TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
-        //remove all the OLD teachers
 
-        //return $course_teachers;
-        //get the current values and save them in the DB
-//        $course->name = $request->name;
-//        $course->course_content = $request->course_content;
-//        $course->startdate = $request->startdate;
-//        $course->available_date = $request->available_date;
-//        $course->save();
-//        //return $course;
-//        $instructors = $request->instructors; //get instructors from the form
-//
-//        //recreate instructors
-//        foreach ($instructors as $instructor) {
-//            TeacherCourse::create(
-//                [
-//                    'teachers_id' => $instructor,
-//                    'courses_id' => $course->id,
-//                ]
-//            );
-//        }
-//
         return view('design.update-course', [
                 'course' => $course,
                 'courseInstructors' => $courseInstructors,
@@ -254,16 +299,14 @@ class CourseController extends ModelController
 
     }
 
-    public function salvarImagem(Request $request)
+    public function saveFiles(Request $request)
     {
-
         if ($request->hasFile('file')) {
             $file = $request->file('file');
 
             $filePath = collect();
             foreach ($file as $ficheiro){
                 $filename = time() . '-a-' . $ficheiro->getClientOriginalName();
-
                 $ficheiro->move('docs', $filename );
                 $filePath->push('docs/' . '' . $filename );
             }
@@ -281,14 +324,8 @@ class CourseController extends ModelController
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
         $course = Course::findOrFail($id);
-//        return $course;
-        //get all current instructors
-       // $courseInstructors = TeacherCourse::where('courses_id', '=', $request->course_id)->get();
         //get the group_teachers_id of this course and delete them
         TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
-        //remove all the OLD teachers
-
-        //return $course_teachers;
         //get the current values and save them in the DB
         $course->name = $request->name;
         $course->course_content = $request->course_content;
@@ -296,18 +333,6 @@ class CourseController extends ModelController
         $course->available_date = $request->available_date;
         $course->save();
 
-
-//        if ($request->hasFile('material')) {
-//            $coursematerial = new CourseMaterial;
-//            $file_name = $request->file('material')->getClientOriginalName();
-//            $path = $request->material->store('public/courseMaterials');
-//            $arrayy = explode("/",$path);
-//            $coursematerial->file_name = $file_name;
-//            $coursematerial->path = "storage/courseMaterials/".$arrayy[2];
-//            $coursematerial->courses_id = $course->id;
-//            $coursematerial->save();
-//            }
-        
         //return $course;
         $instructors = $request->instructors; //get instructors from the form
 
@@ -320,15 +345,13 @@ class CourseController extends ModelController
                 ]
             );
         }
-
-
         /**
          * Associanting materials with an course
          */
         foreach ($request->all() as $chave => $valor){
             if(strpos($chave, 'file') !== false){
 
-                CourseMaterial::create([
+                Material::create([
                     'courses_id' => $id,
                     'path' => $valor,
                     'file_name' => explode('-a-', $valor)[1],

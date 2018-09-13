@@ -495,11 +495,10 @@ $factory->define(\App\Models\Calendar::class, function (Faker $faker) use ($colo
 $factory->define(\App\Models\CourseAnnouncement::class, function (Faker $faker) use ($colors){
     return [
         'courses_id' => $faker->numberBetween(1,\App\Models\Course::all()->count()),
-        'teacher_members_id'  => $faker->numberBetween(1,\App\Models\TeacherMember::all()->count()),
+        'teachers_id'  => $faker->numberBetween(1,\App\Models\Teacher::all()->count()),
         'message'  =>  $faker->text(45),
         'subject'  =>  $faker->text(15),
         'status' => $faker->numberBetween(0,1),
-        'date' => $faker->date('Y-m-d'),
     ];
 });
 

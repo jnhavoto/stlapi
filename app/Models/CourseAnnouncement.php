@@ -55,4 +55,9 @@ class CourseAnnouncement extends Eloquent
 	{
 		return $this->belongsTo(\App\Models\TeacherMember::class, 'teacher_members_id');
 	}
+
+    public function course_announcemnt_materials()
+    {
+        return $this->hasMany(\App\Models\Material::class, 'course_announcements_id');
+    }
 }

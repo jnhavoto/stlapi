@@ -123,6 +123,8 @@ class AssignmentDescriptionController extends ModelController
         //list of assignment where the current teacher is a member
         $teacherAssignment = $teacher->assignment_descriptions()->get();
 
+        return $teacherAssignment;
+
 //            AssignmentDescriptionsHasTeacher::with('assignment_description')->
 //            where('teachers_id',$teacher->id)->get();
 

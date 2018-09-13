@@ -72,7 +72,7 @@ return [
     'LastUpdate' => 'Senast uppdaterad',
     'StudentName' => 'Deltagarnamn',
     'Progress' => 'Utveckling',
-    'CreateNewCourse' => 'Skapa ny kurs',
+    'CreateNewCourse' => 'Skapa kurs',
     'UpdateCourse' => 'Redigera kurs',
     'Members' => 'Lärare',
 
@@ -159,7 +159,8 @@ return [
     'AssignmentDetails' => 'Assignment Details',
     'Ratings' => 'Ratings',
     'Attachment' => 'Attachment',
-    'ComposeNewMessage' => 'Compose New Message',
+    'ComposeAnnouncemnt' => 'Skriv meddelande',
     'Course' => 'Course',
     'OR' => 'OR',
+    'AddFiles' => 'Lägg till material',
 ];

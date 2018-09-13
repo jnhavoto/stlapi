@@ -11,7 +11,7 @@
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">
-                        {{ __('strings.AssignmentDesign') }}
+                        {{ __('strings.CourseDesign') }}
                         {{--Assignments--}}
                     </h3>
                     <ol class="breadcrumb">
@@ -30,56 +30,32 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ __('strings.UpdateAssignment') }}</h4>
-                            <h6 class="card-subtitle">{{ __('strings.UpdateField') }} </h6>
-                            <form id="form_submitAssign" class="form-horizontal m-t-40" action="/create_assignment"
-                                  method="post" enctype="multipart/form-data">
+                            <h4 class="card-title">{{ __('strings.CreateNewCourse') }} </h4>
+                            <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
+                            </h6>
+                            <form id="form-course" class="form-horizontal m-t-40" method="post"
+                                  action="/course-createfromtemplate"
+                                  enctype="multipart/form-data">
                                 {{csrf_field()}}
-                                <input type="hidden" id="submitNow" name="submitNow" value="0"/>
+                                <input type="hidden" id="course_id" name="course_id" value="0"/>
+
                                 <div class="col-md-6 m-b-20">
-                                    <label>{{ __('strings.AssignmentName') }}</label>
-                                    <input name="case" type="text" class="form-control form-control-line"
-                                           value="{{ $assignment->case }}">
+                                    <label>{{ __('strings.CourseName') }}</label>
+                                    <input name="name" type="text" class="form-control form-control-line">
                                 </div>
                                 <div class="col-md-6 m-b-20">
-                                    <label class="control-label">{{ __('strings.AssignmentNumber') }}</label>
-                                    <input name="number" type="text" class="form-control form-control-line" value="{{
-                                    $assignment->number }}">
-                                </div>
-                                <div class="col-md-6 m-b-20">
-                                    <label>{{ __('strings.Instructions') }}</label>
-                                    <textarea name="instructions" class="form-control" rows="5"> {{
-                                    $assignment->instructions
-                                    }}</textarea>
+                                    <label class="control-label">{{ __('strings.CourseDescription') }}</label>
+                                    <textarea name="course_content" class="form-control" rows="5"> </textarea>
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.StartDate') }}</label>
                                     <input name="startdate" type="text"
-                                           class="form-control" placeholder="YYYY-MM-DD">
+                                           class="form-control" >
                                 </div>
-
-                                <div class="col-md-4 m-b-20">
-                                    <label class="control-label">{{ __('strings.EndDate') }}</label>
-                                    <input name="deadline"
-                                           type="text" class="form-control" placeholder="YYYY-MM-DD">
-                                </div>
-
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.AvailableDate') }}</label>
                                     <input name="availabledate" type="text"
-                                           class="form-control" placeholder="YYYY-MM-DD">
-                                </div>
-
-                                <div class="col-md-4 m-b-20">
-                                    <h4 class="card-title">{{ __('strings.SelectCourse') }} </h4>
-                                    <select class="js-example-basic-multiple" name="course_id" style="width: 100%">
-                                        @foreach($teacherCourses as $course)
-                                            <option
-                                                    name="selectTag"
-                                                    value="{{$course->course->id}}">{{$course->course->name}}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                           class="form-control" >
                                 </div>
 
                                 <div class="col-md-12 m-b-20">
@@ -105,18 +81,37 @@
                                         @endforeach
                                     </select>
                                 </div>
-
+                            </form>
+                                <div class="col-md-12 m-b-20">
+                                    <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <form id="file-input" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
                                 <div class="form-group" align-items-center>
-                                    <button type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
+                                    <button id="submit-course" type="submit" class="btn btn-success
+                                    btn-rounded"> {{ __('strings.Submit') }} </button>
                                     <a class="btn btn-default btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @include('design.modals.addmaterials')
+
+    <script>
+
+    </script>
 @endsection

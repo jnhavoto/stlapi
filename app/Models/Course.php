@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 23 Jul 2018 14:08:50 +0000.
+ * Date: Thu, 13 Sep 2018 04:00:16 +0000.
  */
 
 namespace App\Models;
@@ -17,6 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $name
  * @property string $course_content
  * @property \Carbon\Carbon $startdate
+ * @property \Carbon\Carbon $available_date
  * @property int $status
  * @property int $departments_id
  * @property \Carbon\Carbon $created_at
@@ -25,9 +26,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property \App\Models\Department $department
  * @property \Illuminate\Database\Eloquent\Collection $assignment_descriptions
- * @property \Illuminate\Database\Eloquent\Collection $course_materials
+ * @property \Illuminate\Database\Eloquent\Collection $course_announcements
+ * @property \Illuminate\Database\Eloquent\Collection $materials
  * @property \Illuminate\Database\Eloquent\Collection $students
  * @property \Illuminate\Database\Eloquent\Collection $teachers
+ * @property \Illuminate\Database\Eloquent\Collection $users_chats
  *
  * @package App\Models
  */
@@ -42,7 +45,7 @@ class Course extends Eloquent
 
 	protected $dates = [
 		'startdate',
-		'available_date',
+		'available_date'
 	];
 
 	protected $fillable = [
@@ -62,12 +65,18 @@ class Course extends Eloquent
 	public function assignment_descriptions()
 	{
 		return $this->belongsToMany(\App\Models\AssignmentDescription::class, 'assignment_descriptions_has_courses', 'courses_id', 'assignment_descriptions_id')
-					->withPivot('id');
+					->withPivot('id', 'deleted_at')
+					->withTimestamps();
 	}
 
-	public function course_materials()
+	public function course_announcements()
 	{
-		return $this->hasMany(\App\Models\CourseMaterial::class, 'courses_id');
+		return $this->hasMany(\App\Models\CourseAnnouncement::class, 'courses_id');
+	}
+
+	public function materials()
+	{
+		return $this->hasMany(\App\Models\Material::class, 'courses_id');
 	}
 
 	public function students()
@@ -84,6 +93,11 @@ class Course extends Eloquent
 					->withTimestamps();
 	}
 
+	public function users_chats()
+	{
+		return $this->hasMany(\App\Models\UsersChat::class, 'courses_id');
+	}
+
     public function getStartDateAttribute($startdate){
         $carbonated_date = Carbon::parse($startdate)->format('Y-m-d');
         return $carbonated_date;
@@ -93,5 +107,4 @@ class Course extends Eloquent
         $carbonated_date = Carbon::parse($available_date)->format('Y-m-d');
         return $carbonated_date;
     }
-
 }

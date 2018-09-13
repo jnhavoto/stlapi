@@ -3,7 +3,7 @@
 @section('announcements')
     <div class="col-xlg-10 col-lg-8 col-md-8">
         <div class="card-body">
-            <h3 class="card-title">{{ __('strings.ComposeNewMessage') }}</h3>
+            <h3 class="card-title">{{ __('strings.ComposeAnnouncement') }}</h3>
             <form id="form-compose-announcement" class="form-horizontal m-t-40" method="post"
                   action="/submit_announcement" enctype="multipart/form-data">
                 {{csrf_field()}}
@@ -59,11 +59,18 @@
                 </div>
             </form>
             <h4><i class="ti-link"></i> {{ __('strings.Attachment') }}</h4>
-            <form id="file-input-compose" class="dropzone">
-                <div class="fallback">
-                    <input name="file" type="file" multiple />
+            <div class="col-md-12 m-b-20">
+                <label class="card-title"> {{ __('strings.Attachment') }}  </label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="file-input" class="dropzone">
+                            <div class="fallback">
+                                <input name="file" type="file" multiple />
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
+            </div>
             <button id="submit-compose" type="submit" class="btn btn-success m-t-20"><i class="fa
             fa-envelope-o"></i>{{ __('strings.Send') }} </button>
             <button type="submit" class="btn btn-inverse m-t-20" href="/announcements/save"><i class="fa fa-times"></i>{{ __('strings.Save') }}
