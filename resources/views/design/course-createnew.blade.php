@@ -83,7 +83,7 @@
                                 </div>
                             </form>
                                 <div class="col-md-12 m-b-20">
-                                    <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
+                                    <label class="card-title"> {{ __('strings.Material') }}  </label>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <form id="file-input" class="dropzone">

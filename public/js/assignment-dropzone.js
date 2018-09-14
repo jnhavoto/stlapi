@@ -3,14 +3,12 @@ var ficheiros = [];
 var contarFicheiros = 0;
 
 
-    $("#submit-update-course").on("click", function(e) {
+    $("#submit-assignment").on("click", function(e) {
 
     if(contarFicheiros == 0) {
-        $('#form-update-course').submit();
+        $('#form-assignment').submit();
     }
     });
-
-
 
     var dropzoneImagem = $('#file-input').dropzone({
         url: '/salvar-imagens',
@@ -49,7 +47,7 @@ var contarFicheiros = 0;
                         .appendTo('#form-update-course');
                 });
 
-                $('#form-update-course').submit();
+                $('#form-assignment').submit();
             });
 
 
@@ -57,7 +55,7 @@ var contarFicheiros = 0;
                 console.log(response);
             });
 
-            $("#submit-update-course").on("click", function(e) {
+            $("#submit-assignment").on("click", function(e) {
                    if(contarFicheiros > 0){
                        e.preventDefault();
                        e.stopPropagation();

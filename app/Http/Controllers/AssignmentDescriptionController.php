@@ -103,15 +103,15 @@ class AssignmentDescriptionController extends ModelController
 //        }
     }
 
-    public function getAllAssignments(){
-        //get all existing assignments
-        $assignments = AssignmentDescription::all();
-        //get all existing teachers
-        $teachers = Teacher::all();
-        //pass values to the view
-        return view('activities.assignment',['assignments' => $assignments, 'teachers'=>$teachers, 'user' =>
-            Auth::user()]);
-    }
+//    public function getAllAssignments(){
+//        //get all existing assignments
+//        $assignments = AssignmentDescription::all();
+//        //get all existing teachers
+//        $teachers = Teacher::all();
+//        //pass values to the view
+//        return view('activities.assignment',['assignments' => $assignments, 'teachers'=>$teachers, 'user' =>
+//            Auth::user()]);
+//    }
 
     //get all assignments and teacher assignments
     public function getAssignments()
@@ -123,7 +123,7 @@ class AssignmentDescriptionController extends ModelController
         //list of assignment where the current teacher is a member
         $teacherAssignment = $teacher->assignment_descriptions()->get();
 
-        return $teacherAssignment;
+//        return $teacherAssignment;
 
 //            AssignmentDescriptionsHasTeacher::with('assignment_description')->
 //            where('teachers_id',$teacher->id)->get();
@@ -227,6 +227,17 @@ class AssignmentDescriptionController extends ModelController
 
         if ($assigment and $assignHasCourse and $assignHasTeacher) {
             DB::commit();
+            foreach ($request->all() as $chave => $valor){
+                if(strpos($chave, 'file') !== false){
+
+                    Material::create([
+                        'assignments_id' => $assigment->id,
+                        'path' => $valor,
+                        'file_name' => explode('-a-', $valor)[1],
+                    ]);
+                }
+
+            }
             return redirect('/assignments');
         } else {
             DB::rollBack();
@@ -293,7 +304,7 @@ class AssignmentDescriptionController extends ModelController
         }
     }
 
-    public function createAssign($id)
+    public function createassignfromtemplate($id)
     {
         //get teacher data
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
@@ -304,7 +315,7 @@ class AssignmentDescriptionController extends ModelController
         $instructors = Teacher::all();
         //get all teachers courses
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
-        return view('design.assignmentdesign',
+        return view('design.assignment-createfromtemplate',
             ['assignment' => $assignment,
                 'teacherCourses' => $teacherCourses,
             'instructors' => $instructors,
@@ -368,5 +379,24 @@ class AssignmentDescriptionController extends ModelController
             DB::rollBack();
             return "Error when save Assignment Description";
         }
+    }
+
+    public function saveFiles(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+
+            $filePath = collect();
+            foreach ($file as $ficheiro){
+                $filename = time() . '-a-' . $ficheiro->getClientOriginalName();
+                $ficheiro->move('docs', $filename );
+                $filePath->push('docs/' . '' . $filename );
+            }
+
+        } else {
+            return response(['Nao existe Ficheiro']);
+        }
+
+        return ['imagem' => $filePath];
     }
 }

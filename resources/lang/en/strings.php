@@ -160,4 +160,6 @@ return [
     'Save' => 'Save',
     'Discard' => 'Discard',
     'Add files' => 'Add files',
+    'CreateAssignment' => 'Create Assignment',
+    'Material' => 'Material',
 ];

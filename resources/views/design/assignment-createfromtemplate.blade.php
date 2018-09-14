@@ -30,9 +30,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ __('strings.UpdateAssignment') }}</h4>
+                            <h4 class="card-title">{{ __('strings.CreateAssignment') }}</h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }} </h6>
-                            <form id="form_submitAssign" class="form-horizontal m-t-40" action="/create_assignment"
+                            <form id="form-assignment" class="form-horizontal m-t-40" action="/create_assignment"
                                   method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="submitNow" name="submitNow" value="0"/>
@@ -106,8 +106,21 @@
                                     </select>
                                 </div>
 
+                                <div class="col-md-12 m-b-20">
+                                    <label class="card-title"> {{ __('strings.Material') }}  </label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <form id="file-input" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
                                 <div class="form-group" align-items-center>
-                                    <button type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
+                                    <button type="submit-assignment" class="btn btn-success btn-rounded">
+                                        {{ __('strings.Submit') }} </button>
                                     <a class="btn btn-default btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>

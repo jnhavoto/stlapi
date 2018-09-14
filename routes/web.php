@@ -20,8 +20,9 @@ Route::get('/', 'HomeController@index')->middleware(['teacher']);
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/save-files', 'CourseController@saveFiles');
+Route::post('/save-coursefiles', 'CourseController@saveFiles');
 
+Route::post('/save-assignfiles', 'AssignmentDescriptionController@saveFiles');
 //==============================================================
 //End Dashboard
 //==============================================================
@@ -123,7 +124,8 @@ Route::get('/assignment-templates/{id}', 'AssignmentDescriptionController@getAss
 Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignment')->middleware(['teacher']);
 
 //createassign
-Route::get('/createassignFirst/{id}', 'AssignmentDescriptionController@createAssign')->middleware(['teacher']);
+Route::get('/assignment-createfromtemplate/{id}', 'AssignmentDescriptionController@createassignfromtemplate')
+    ->middleware(['teacher']);
 
 
 Route::post('/create_assignmentFromTemplate', 'AssignmentDescriptionController@createAssignmentFromTemplate')

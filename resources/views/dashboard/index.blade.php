@@ -1,15 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-
-
-    {{--@include('dashboard.leftsidebar')--}}
-
-    {{--@include('dashboard.content-center')--}}
-
-    {{--@endsection --}}
-
-
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -38,15 +29,13 @@
                 <!-- End Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
-                <!-- Start Page Content -->
+                <!-- Start Course List Content -->
                 <!-- ============================================================== -->
-                <!-- Row -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <!-- .left-right-aside-column-->
                             <div class="contact-page-aside">
-
                                 <div class="pl-4">
                                     <div class="right-page-header">
                                         <div class="d-flex">
@@ -111,7 +100,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- ============================================================== -->
+                <!-- End Course List Content -->
+                <!-- ============================================================== -->
 
+                <!-- ============================================================== -->
+                <!-- Start Assignment List Content -->
+                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -140,7 +135,6 @@
                                             <tr>
                                                 <th>{{ __('strings.AssignmentName') }} </th>
                                                 <th>{{ __('strings.CourseName') }} </th>
-                                                <th># {{ __('strings.Announcements') }} </th>
                                                 <th># {{ __('strings.Submissions') }} </th>
                                                 <th># {{ __('strings.Feedbacks') }} </th>
                                                 <th># {{ __('strings.Ratings') }} </th>
@@ -159,6 +153,204 @@
                                                         {{--@php--}}
                                                             {{--$course = \App\Models\Course::where('id',--}}
                                                             {{--$assign->courses_id)->first();--}}
+                                                        {{--@endphp--}}
+                                                        <a href={{ url('/coursedesign-overview/'.$assign->courses_id)}}>
+                                                            {{$assign->course->name}}
+                                                        </a>
+                                                    </td>
+
+                                                    {{--<td>--}}
+                                                        {{--@php--}}
+                                                            {{--$announcements=--}}
+                                                            {{--\App\Models\AssignmentAnnouncement::where--}}
+                                                            {{--('assignment_descriptions_id',$assign->id)->get();--}}
+                                                        {{--@endphp--}}
+                                                        {{--{{ count($announcements)}}--}}
+                                                    {{--</td>--}}
+                                                    <td>
+                                                        @php
+                                                            $submissions=
+                                                            \App\Models\AssignmentSubmission::where
+                                                            ('assignment_descriptions_id',$assign->id)->get();
+                                                        @endphp
+                                                        {{ count($submissions)}}
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $totalfeedbacks=0;
+                                                            foreach ($submissions as $submission)
+                                                            {
+                                                                $feedbacks=
+                                                            \App\Models\Feedback::where
+                                                            ('assignment_submissions_id',
+                                                            $submission->id)->get();
+                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
+                                                            }
+
+
+                                                        @endphp
+                                                        {{ $totalfeedbacks}}
+                                                    </td>
+                                                    <td>
+                                                        Numbers!
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="7">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"></ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- .left-aside-column-->
+                                </div>
+                                <!-- /.left-right-aside-column-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Assignment List Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- .left-right-aside-column-->
+                            <div class="contact-page-aside">
+                                <div class="pl-4">
+                                    <div class="right-page-header">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <h4 class="card-title m-t-10">
+                                                    {{ __('strings.Notifications') }}
+                                                    {{--My Assignment List--}}
+                                                </h4></div>
+                                            <div class="ml-auto">
+                                                <input type="text" id="demo-input-search2"
+                                                       placeholder="{{ __('strings.SearchAssignments') }}"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table muted-table"
+                                               data-page-size="10">
+                                            <thead>
+                                            <tr>
+                                                <th>{{ __('strings.CourseName') }} </th>
+                                                <th>{{ __('strings.Total Announcements') }} </th>
+                                                <th> {{ __('strings.NewAnnouncements') }} </th>
+                                                <th>Total {{ __('strings.Chats') }} </th>
+                                                <th> {{ __('strings.NewChats') }} </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{--{{$assignmentsTeacher->count()}}--}}
+                                            @foreach ($assignTeacher as $assign)
+                                                <tr>
+                                                    <td>
+                                                        <a href="/assignmentdesign-overview/{{$assign->id}}">
+                                                            {{$assign->case}}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {{--@php--}}
+                                                        {{--$course = \App\Models\Course::where('id',--}}
+                                                        {{--$assign->courses_id)->first();--}}
+                                                        {{--@endphp--}}
+                                                        <a href={{ url('/coursedesign-overview/'.$assign->courses_id)}}>
+                                                            {{$assign->course->name}}
+                                                        </a>
+                                                    </td>
+
+                                                    <td>
+                                                        @php
+                                                            $announcements=
+                                                            \App\Models\AssignmentAnnouncement::where
+                                                            ('assignment_descriptions_id',$assign->id)->get();
+                                                        @endphp
+                                                        {{ count($announcements)}}
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $submissions=
+                                                            \App\Models\AssignmentSubmission::where
+                                                            ('assignment_descriptions_id',$assign->id)->get();
+                                                        @endphp
+                                                        {{ count($submissions)}}
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $totalfeedbacks=0;
+                                                            foreach ($submissions as $submission)
+                                                            {
+                                                                $feedbacks=
+                                                            \App\Models\Feedback::where
+                                                            ('assignment_submissions_id',
+                                                            $submission->id)->get();
+                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
+                                                            }
+
+
+                                                        @endphp
+                                                        {{ $totalfeedbacks}}
+                                                    </td>
+                                                    <td>
+                                                        @if($assign->status == 0)
+                                                            {{ __('strings.Active') }}
+                                                        @else
+                                                            {{ __('strings.Disactive') }}
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="7">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"></ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- .left-aside-column-->
+                                    <div class="table-responsive">
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table muted-table"
+                                               data-page-size="10">
+                                            <thead>
+                                            <tr>
+                                                <th>{{ __('strings.AssignmentName') }} </th>
+                                                <th>{{ __('strings.Total Announcements') }} </th>
+                                                <th> {{ __('strings.NewAnnouncements') }} </th>
+                                                <th>Total {{ __('strings.Chats') }} </th>
+                                                <th> {{ __('strings.NewChats') }} </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{--{{$assignmentsTeacher->count()}}--}}
+                                            @foreach ($assignTeacher as $assign)
+                                                <tr>
+                                                    <td>
+                                                        <a href="/assignmentdesign-overview/{{$assign->id}}">
+                                                            {{$assign->case}}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {{--@php--}}
+                                                        {{--$course = \App\Models\Course::where('id',--}}
+                                                        {{--$assign->courses_id)->first();--}}
                                                         {{--@endphp--}}
                                                         <a href={{ url('/coursedesign-overview/'.$assign->courses_id)}}>
                                                             {{$assign->course->name}}
@@ -221,20 +413,6 @@
                                     <!-- .left-aside-column-->
                                 </div>
                                 <!-- /.left-right-aside-column-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-12 col-xlg-3 col-md-5">
-                        <!-- Column -->
-                        <div class="card">
-                            <div class="card-body little-profile text-center">
-                                <h3 class="m-b-0">Notifications</h3>
-
                             </div>
                         </div>
                     </div>
