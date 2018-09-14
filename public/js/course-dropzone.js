@@ -13,7 +13,7 @@ var contarFicheiros = 0;
 
 
     var dropzoneImagem = $('#file-input').dropzone({
-        url: '/save-files',
+        url: '/save-coursefiles',
         autoProcessQueue: false,
         dictDefaultMessage: "Add files",
         uploadMultiple: true,
@@ -46,7 +46,7 @@ var contarFicheiros = 0;
                     $('<input />').attr('type', 'hidden')
                         .attr('name', 'file'+(indice+1))
                         .attr('value', file)
-                        .appendTo('#form-update-course');
+                        .appendTo('#form-course');
                 });
 
                 $('#form-course').submit();

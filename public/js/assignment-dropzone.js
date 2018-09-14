@@ -11,9 +11,9 @@ var contarFicheiros = 0;
     });
 
     var dropzoneImagem = $('#file-input').dropzone({
-        url: '/salvar-imagens',
+        url: '/save-assignfiles',
         autoProcessQueue: false,
-        dictDefaultMessage: "Adicione Um ficheiro",
+        dictDefaultMessage: "Add files",
         uploadMultiple: true,
         maxFilesize: 50,
         parallelUploads: 100,
