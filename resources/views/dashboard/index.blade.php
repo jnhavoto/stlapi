@@ -410,7 +410,9 @@
                                         <small>Assignments</small>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h3 class="m-b-0 font-light">100</h3>
+                                        <h3 class="m-b-0 font-light">
+                                            {{$assignChats->count()+$courseChats->count()+$courseAnnounc->count()+
+                                            $assignAnnounc->count()}}</h3>
                                         <small>Communications</small>
                                     </div>
                                 </div>

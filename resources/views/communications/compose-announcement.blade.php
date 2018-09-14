@@ -72,9 +72,9 @@
             </div>
             <button id="submit-compose" type="submit" class="btn btn-success m-t-20"><i class="fa
             fa-envelope-o"></i>{{ __('strings.Send') }} </button>
-            <button type="submit" class="btn btn-inverse m-t-20" href="/announcements/save"><i class="fa fa-times"></i>{{ __('strings.Save') }}
+            <button id="save-compose" type="submit" class="btn btn-inverse m-t-20" href="/announcements/save"><i
+                        class="fa fa-times"></i>{{ __('strings.Save') }}
             </button>
-            {{--<button class="btn btn-danger m-t-20" href="/announcements/inbox"><i class="fa fa-times"></i> {{ __('strings.Discard') }}</button>--}}
             <a class="btn btn-danger m-t-20"
                href="{{ url()->previous()}}"><i class="fa fa-times"></i>  {{ __('strings.Discard') }}
             </a>
