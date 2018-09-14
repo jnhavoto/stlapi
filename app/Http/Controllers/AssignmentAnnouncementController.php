@@ -125,9 +125,15 @@ class AssignmentAnnouncementController  extends ModelController
             }
         }
         /* return $inbox_announcements; */
-
+        $sentcount =0;
+        if(isset($course_announcementasmember)){
+            $sentcount = $course_announcementasmember->count();
+        }
+        if(isset($announcementasmember)){
+            $sentcount = $sentcount + $announcementasmember->count(); 
+        }
         return view('communications.inbox', ['inbox_announcements' => $inbox_announcements, 'label' => 'inbox', 'count_inbox'
-        => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
+        => $this->count_announcements('inbox'),'count_sent' => $sentcount,'count_draft' => $this->count_announcements('draft'),
             'user'=>Auth::user()]);
     }
 
@@ -143,11 +149,11 @@ class AssignmentAnnouncementController  extends ModelController
         foreach ($memberof as $membership)
         {
             $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)
+                $membership->id)->where('teachers_id', $teacherid->id)
                 ->get();
 
             $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)
+                $membership->id)->where('teachers_id', $teacherid->id)
                 ->get();
 
             if(count($announcementasmember) > 0){
@@ -159,11 +165,19 @@ class AssignmentAnnouncementController  extends ModelController
 
         }
 //        return $sent_announcements;
-
+        $sentcount =0;
+        if(isset($course_announcementasmember)){
+            $sentcount = $course_announcementasmember->count();
+        }
+        if(isset($announcementasmember)){
+            $sentcount = $sentcount + $announcementasmember->count(); 
+        }      
+       
         return view('communications.sent', ['sent_announcements' => $sent_announcements, 'label' => 'sent', 'count_inbox'
-        => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
+        => $this->count_announcements('inbox'),'count_sent' => $sentcount,'count_draft' => $this->count_announcements('draft'),
             'user'=>Auth::user()]);
-
+        //testing output
+        return $sent_announcements;
     }
 
     public function getDraftAnnouncements(){

@@ -142,6 +142,9 @@
                                             </thead>
                                             <tbody>
                                             {{--{{$assignmentsTeacher->count()}}--}}
+                                            @if ($assignTeacher->count() != 0)
+                                                
+                                            
                                             @foreach ($assignTeacher as $assign)
                                                 <tr>
                                                     <td>
@@ -196,6 +199,7 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                            @endif
                                             </tbody>
                                             <tfoot>
                                             <tr>
@@ -266,8 +270,8 @@
                                                         <td>
                                                             @php
                                                                 $courseAnnounc=
-                                                                \App\Models\AssignmentAnnouncement::where
-                                                                ('assignment_descriptions_id',$assign->id)->get();
+                                                                \App\Models\CourseAnnouncement::where
+                                                                ('courses_id',$course->id)->get();
                                                             @endphp
                                                             {{$courseAnnounc->count()}}
                                                         </td>
@@ -411,8 +415,9 @@
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <h3 class="m-b-0 font-light">
-                                            {{$assignChats->count()+$courseChats->count()+$courseAnnounc->count()+
-                                            $assignAnnounc->count()}}</h3>
+                                            {{-- {{$assignChats->count()+$courseChats->count()+$courseAnnounc->count()+
+                                            $assignAnnounc->count()}} --}}
+                                        </h3>
                                         <small>{{ __('strings.Communications') }}</small>
                                     </div>
                                 </div>
