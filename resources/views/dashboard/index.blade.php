@@ -231,7 +231,8 @@
                                                 <h4 class="card-title m-t-10">
                                                     {{ __('strings.Notifications') }}
                                                     {{--My Assignment List--}}
-                                                </h4></div>
+                                                </h4>
+                                            </div>
                                             <div class="ml-auto">
                                                 <input type="text" id="demo-input-search2"
                                                        placeholder="{{ __('strings.SearchAssignments') }}"
@@ -246,72 +247,57 @@
                                             <thead>
                                             <tr>
                                                 <th>{{ __('strings.CourseName') }} </th>
-                                                <th>{{ __('strings.Total Announcements') }} </th>
-                                                <th> {{ __('strings.NewAnnouncements') }} </th>
-                                                <th>Total {{ __('strings.Chats') }} </th>
-                                                <th> {{ __('strings.NewChats') }} </th>
+                                                <th>{{ __('strings.TotalAnnouncements') }} </th>
+                                                <th>{{ __('strings.NewAnnouncements') }} </th>
+                                                <th>{{ __('strings.TotalChats') }} </th>
+                                                <th>{{ __('strings.NewChats') }} </th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {{--{{$assignmentsTeacher->count()}}--}}
-                                            @foreach ($assignTeacher as $assign)
-                                                <tr>
-                                                    <td>
-                                                        <a href="/assignmentdesign-overview/{{$assign->id}}">
-                                                            {{$assign->case}}
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        {{--@php--}}
-                                                        {{--$course = \App\Models\Course::where('id',--}}
-                                                        {{--$assign->courses_id)->first();--}}
-                                                        {{--@endphp--}}
-                                                        <a href={{ url('/coursedesign-overview/'.$assign->courses_id)}}>
-                                                            {{$assign->course->name}}
-                                                        </a>
-                                                    </td>
-
-                                                    <td>
-                                                        @php
-                                                            $announcements=
-                                                            \App\Models\AssignmentAnnouncement::where
-                                                            ('assignment_descriptions_id',$assign->id)->get();
-                                                        @endphp
-                                                        {{ count($announcements)}}
-                                                    </td>
-                                                    <td>
-                                                        @php
-                                                            $submissions=
-                                                            \App\Models\AssignmentSubmission::where
-                                                            ('assignment_descriptions_id',$assign->id)->get();
-                                                        @endphp
-                                                        {{ count($submissions)}}
-                                                    </td>
-                                                    <td>
-                                                        @php
-                                                            $totalfeedbacks=0;
-                                                            foreach ($submissions as $submission)
-                                                            {
-                                                                $feedbacks=
-                                                            \App\Models\Feedback::where
-                                                            ('assignment_submissions_id',
-                                                            $submission->id)->get();
-                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
-                                                            }
-
-
-                                                        @endphp
-                                                        {{ $totalfeedbacks}}
-                                                    </td>
-                                                    <td>
-                                                        @if($assign->status == 0)
-                                                            {{ __('strings.Active') }}
-                                                        @else
-                                                            {{ __('strings.Disactive') }}
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                            @if(count($teacherCourses)!=0)
+                                                @foreach ($teacherCourses as $course)
+                                                    <tr>
+                                                        <td>
+                                                            <a href="/" data-toggle="modal"
+                                                               data-target="#modalAssCourseDetails">
+                                                                {{ $course->course->name }}
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $courseAnnounc=
+                                                                \App\Models\AssignmentAnnouncement::where
+                                                                ('assignment_descriptions_id',$assign->id)->get();
+                                                            @endphp
+                                                            {{$courseAnnounc->count()}}
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $courseNewAnnounc=
+                                                                \App\Models\CourseAnnouncement::where
+                                                                ('courses_id',$course->id)->get();
+                                                            @endphp
+                                                            {{$courseNewAnnounc->count()}}
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $courseChats=
+                                                                \App\Models\UsersChat::where
+                                                                ('courses_id',$course->id)->get();
+                                                            @endphp
+                                                            {{$courseChats->count()}}
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $courseNewChats=
+                                                                \App\Models\UsersChat::where
+                                                                ('courses_id',$course->id)->get();
+                                                            @endphp
+                                                            {{$courseNewChats->count()}}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                             </tbody>
                                             <tfoot>
                                             <tr>
@@ -332,10 +318,10 @@
                                             <thead>
                                             <tr>
                                                 <th>{{ __('strings.AssignmentName') }} </th>
-                                                <th>{{ __('strings.Total Announcements') }} </th>
-                                                <th> {{ __('strings.NewAnnouncements') }} </th>
-                                                <th>Total {{ __('strings.Chats') }} </th>
-                                                <th> {{ __('strings.NewChats') }} </th>
+                                                <th>{{ __('strings.TotalAnnouncements') }} </th>
+                                                <th>{{ __('strings.NewAnnouncements') }} </th>
+                                                <th>{{ __('strings.TotalChats') }} </th>
+                                                <th>{{ __('strings.NewChats') }} </th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -348,53 +334,36 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        {{--@php--}}
-                                                        {{--$course = \App\Models\Course::where('id',--}}
-                                                        {{--$assign->courses_id)->first();--}}
-                                                        {{--@endphp--}}
-                                                        <a href={{ url('/coursedesign-overview/'.$assign->courses_id)}}>
-                                                            {{$assign->course->name}}
-                                                        </a>
-                                                    </td>
-
-                                                    <td>
                                                         @php
-                                                            $announcements=
+                                                            $assignAnnounc =
                                                             \App\Models\AssignmentAnnouncement::where
                                                             ('assignment_descriptions_id',$assign->id)->get();
                                                         @endphp
-                                                        {{ count($announcements)}}
+                                                        {{ count($assignAnnounc)}}
                                                     </td>
                                                     <td>
                                                         @php
-                                                            $submissions=
-                                                            \App\Models\AssignmentSubmission::where
+                                                            $assignNewAnnounc =
+                                                            \App\Models\AssignmentAnnouncement::where
                                                             ('assignment_descriptions_id',$assign->id)->get();
                                                         @endphp
-                                                        {{ count($submissions)}}
+                                                        {{ count($assignNewAnnounc)}}
                                                     </td>
                                                     <td>
                                                         @php
-                                                            $totalfeedbacks=0;
-                                                            foreach ($submissions as $submission)
-                                                            {
-                                                                $feedbacks=
-                                                            \App\Models\Feedback::where
-                                                            ('assignment_submissions_id',
-                                                            $submission->id)->get();
-                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
-                                                            }
-
-
+                                                            $assignChats=
+                                                            \App\Models\UsersChat::where
+                                                            ('assignment_description_id',$assign->id)->get();
                                                         @endphp
-                                                        {{ $totalfeedbacks}}
+                                                        {{$assignChats->count()}}
                                                     </td>
                                                     <td>
-                                                        @if($assign->status == 0)
-                                                            {{ __('strings.Active') }}
-                                                        @else
-                                                            {{ __('strings.Disactive') }}
-                                                        @endif
+                                                        @php
+                                                            $assignNewChats=
+                                                            \App\Models\UsersChat::where
+                                                            ('assignment_description_id',$assign->id)->get();
+                                                        @endphp
+                                                        {{$assignNewChats->count()}}
                                                     </td>
                                                 </tr>
                                             @endforeach

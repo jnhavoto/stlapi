@@ -165,4 +165,7 @@ return [
     'Attachment' => 'Attachment',
     'AddAssignment' => 'Add Assignment',
     'Material' => 'Material',
-];
+    'TotalAnnouncements' => 'Total Announcements',
+    'NewAnnouncements' => 'New Announcements',
+    'TotalChats' => 'Total Chats',
+    'NewChats' => 'New Chats',];
