@@ -23,10 +23,10 @@ class CreateAssignmentDescriptionTable extends Migration {
 			$table->date('available_date')->nullable();
 			$table->integer('status')->default(0)->comment('0=active
 1=disactive');
+			$table->integer('courses_id')->unsigned()->index('fk_assignment_description_courses1_idx');
 			$table->integer('group_teachers_id')->index('fk_assignment_descriptions_group_teachers1_idx');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->integer('courses_id')->unsigned()->index('fk_assignment_description_courses1_idx');
 		});
 	}
 

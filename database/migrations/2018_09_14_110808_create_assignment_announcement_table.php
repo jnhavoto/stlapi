@@ -22,9 +22,10 @@ class CreateAssignmentAnnouncementTable extends Migration {
 			$table->integer('status')->nullable()->comment('0=saved
 1=sent
 ');
-			$table->date('date')->nullable();
 			$table->integer('assignment_descriptions_id')->unsigned()->index('fk_assignment_descriptions_has_teacher_members_assignment_d_idx');
 			$table->integer('teacher_members_id')->index('fk_assignment_descriptions_has_teacher_members_teacher_memb_idx');
+			$table->integer('teachers_id')->unsigned()->index('fk_assignment_announcement_teachers1_idx');
+			$table->date('date')->nullable();
 		});
 	}
 

@@ -16,15 +16,16 @@ class CreateCourseAnnouncementsTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->integer('courses_id')->unsigned()->index('fk_course_announcements_courses1_idx');
-			$table->integer('teacher_members_id')->index('fk_course_announcements_teacher_members1_idx');
 			$table->text('message', 65535)->nullable();
 			$table->string('subject', 45)->nullable();
-			$table->timestamps();
-			$table->softDeletes();
 			$table->integer('status')->nullable()->comment('0=saved
 1=sent
 ');
 			$table->date('date')->nullable();
+			$table->integer('teachers_id')->unsigned()->index('fk_course_announcements_teachers1_idx');
+			$table->integer('teacher_members_id')->index('fk_course_announcements_teacher_members1_idx');
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
