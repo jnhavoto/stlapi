@@ -168,4 +168,6 @@ return [
     'TotalAnnouncements' => 'Total Announcements',
     'NewAnnouncements' => 'New Announcements',
     'TotalChats' => 'Total Chats',
-    'NewChats' => 'New Chats',];
+    'NewChats' => 'New Chats',
+    'Instructor' => 'Instructor',
+];

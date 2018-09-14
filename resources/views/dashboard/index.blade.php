@@ -398,22 +398,22 @@
                                 <div class="pro-img"><img src="{{ asset('theme/images/users/4.jpg') }}" alt="user"/>
                                 </div>
                                 <h3 class="m-b-0">{{$user->first_name.' '.$user->last_name}}</h3>
-                                <p>Instructor</p>
+                                <p>{{ __('strings.Instructor') }}</p>
                                 {{--<a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Follow</a>--}}
                                 <div class="row text-center m-t-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <h3 class="m-b-0 font-light">{{$teacherCourses->count()}}</h3>
-                                        <small>Courses</small>
+                                        <small>{{ __('strings.Courses') }}</small>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <h3 class="m-b-0 font-light">{{$countAssign}}</h3>
-                                        <small>Assignments</small>
+                                        <small>{{ __('strings.Assignments') }}</small>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <h3 class="m-b-0 font-light">
                                             {{$assignChats->count()+$courseChats->count()+$courseAnnounc->count()+
                                             $assignAnnounc->count()}}</h3>
-                                        <small>Communications</small>
+                                        <small>{{ __('strings.Communications') }}</small>
                                     </div>
                                 </div>
                             </div>

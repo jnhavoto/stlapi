@@ -166,4 +166,5 @@ return [
     'NewAnnouncements' => 'New Announcements',
     'TotalChats' => 'Total Chats',
     'NewChats' => 'New Chats',
+    'Instructor' => 'Instructor',
 ];
