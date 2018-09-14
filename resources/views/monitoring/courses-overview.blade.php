@@ -132,6 +132,7 @@
                                             <th>#</th>
                                             {{--<th> {{ __('strings.AssignmentNumber') }} </th>--}}
                                             <th> {{ __('strings.AssignmentName') }} </th>
+                                            <th> {{ __('strings.Progress') }} </th>
                                             <th> {{ __('strings.StartDate') }}</th>
                                             <th> {{ __('strings.EndDate') }} </th>
                                             <th> {{ __('strings.AvailableFrom') }}</th>
@@ -149,13 +150,12 @@
                                                     </a>
 
                                                 </td>
-                                                {{--<td>--}}
-                                                {{--<a href="/assignment_details">--}}
-                                                {{--<a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"--}}
-                                                {{--onclick="assignCourseDetails({{$t_assignment}})">--}}
-                                                {{--{{substr($assignment->instructions, 0, 45) }}--}}
-                                                {{--</a>--}}
-                                                {{--</td>--}}
+                                                <td>
+                                                    <div class="progress progress-xs margin-vertical-10 ">
+                                                        <div class="progress-bar bg-danger" style="width: 35%; height:6px;"></div>
+                                                    </div>
+                                                </td>
+
                                                 <td>{{$assignment->assignment_description->startdate}}</td>
                                                 <td>{{$assignment->assignment_description->deadline}}</td>
                                                 <td>{{$assignment->assignment_description->available_date}}</td>
@@ -166,24 +166,24 @@
                                                         {{ __('strings.Disactive') }}
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
-                                                    <a href="{{ url('/update_assignment/'
-                                                    .$assignment->id)}}" class="btn btn-info
-                                                     btn-circle btn-lg">
-                                                        <i text-md-center class="ti-pencil-alt"></i>
-                                                    </a>
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                    btn-lg"
-                                                            href="/"
-                                                            data-toggle="modal"
-                                                            data-target="#confirm-delete-assignment"
+                                                {{--<td>--}}
+                                                    {{--<button type="button" class="btn btn-info btn-circle--}}
+                                                     {{--btn-lg m-r-5"><i class="ti-key"></i></button>--}}
+                                                    {{--<a href="{{ url('/update_assignment/'--}}
+                                                    {{--.$assignment->id)}}" class="btn btn-info--}}
+                                                     {{--btn-circle btn-lg">--}}
+                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
+                                                    {{--</a>--}}
+                                                    {{--<button type="button" class="btn btn-info btn-circle--}}
+                                                    {{--btn-lg"--}}
+                                                            {{--href="/"--}}
+                                                            {{--data-toggle="modal"--}}
+                                                            {{--data-target="#confirm-delete-assignment"--}}
                                                             {{--onclick="deteleAssignment({{$assignment->assignment_description}})"--}}
-                                                    >
-                                                        <i text-md-center class="ti-trash"></i>
-                                                    </button>
-                                                </td>
+                                                    {{-->--}}
+                                                        {{--<i text-md-center class="ti-trash"></i>--}}
+                                                    {{--</button>--}}
+                                                {{--</td>--}}
 
                                             </tr>
                                         @endforeach
@@ -294,63 +294,7 @@
                 {{--</div>--}}
             {{--</div>--}}
 
-            <div class="row">
-                <!-- Column -->
-                <div class="col-lg-8 col-md-7">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="d-flex flex-wrap">
-                                        <div>
-                                            <h3 class="card-title">  {{ __('strings.CoursesOverview') }}</h3>
-                                            <h6 class="card-subtitle">Finished vs Ongoing</h6> </div>
-                                        <div class="ml-auto">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <h6 class="text-muted text-success"><i class="fa fa-circle
-                                                    font-10 m-r-10 "></i>Finished</h6> </li>
-                                                <li>
-                                                    <h6 class="text-muted  text-info"><i class="fa fa-circle font-10
-                                                    m-r-10"></i>Ongoing</h6> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="amp-pxl" style="height: 360px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ __('strings.Courses') }}
-                                {{--All Assignments --}}
-                            </h3>
-                            <h6 class="card-subtitle">Different stages</h6>
-                            <div id="visitor" style="height:290px; width:100%;"></div>
-                        </div>
-                        <div>
-                            <hr class="m-t-0 m-b-0">
-                        </div>
-                        <div class="card-body text-center ">
-                            <ul class="list-inline m-b-0">
-                                <li>
-                                    <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10 "></i>Finihsed</h6> </li>
-                                <li>
-                                    <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10
-                                        m-r-10"></i>
-                                        {{ __('strings.Ongoing') }}
-                                        {{--Ongoing--}}
-                                    </h6> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         {{--Showing Assignment Status--}}
     </div>

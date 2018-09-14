@@ -412,7 +412,7 @@ class CourseController extends ModelController
         //get all course members
         $courseMembers = TeacherCourse::with('teacher')->where('courses_id',$course->id)->get();
         //Return all course material
-        $material = CourseMaterial::where('courses_id',$request->id)->get();
+        $material = Material::where('courses_id',$request->id)->get();
         //get all students
         return view('design.coursedesign-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,

@@ -167,4 +167,5 @@ return [
     'TotalChats' => 'Total Chats',
     'NewChats' => 'New Chats',
     'Instructor' => 'Instructor',
+    'SelectAssignment' => 'Select Assignment',
 ];
