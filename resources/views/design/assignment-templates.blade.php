@@ -101,7 +101,7 @@
 
     <!--Modal for Assignment List-->
     @include('design.modals.assignment-details')
-    @include('design.modals.course-details')
+    {{--@include('design.modals.course-details')--}}
     <!--Modal for Assignment Course List-->
     @include('design.modals.assignmentCourse-details')
     {{--Modal for copying an assignment--}}

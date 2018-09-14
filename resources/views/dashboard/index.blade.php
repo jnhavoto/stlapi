@@ -233,7 +233,7 @@
                                         <div class="d-flex">
                                             <div class="align-self-center">
                                                 <h4 class="card-title m-t-10">
-                                                    {{ __('strings.Notifications') }}
+                                                    {{ __('strings.Communications') }}
                                                     {{--My Assignment List--}}
                                                 </h4>
                                             </div>

@@ -13,10 +13,10 @@
                     <ul class="nav nav-tabs profile-tab" role="tablist">
                         <li class="nav-item" onclick="tabClicked('course')"> <a class="nav-link active"
                                                                                 data-toggle="tab" href="#course"
-                                                                                role="tab">Select Course</a> </li>
+                                                                                role="tab">{{ __('strings.SelectCourse') }}</a> </li>
                         <li class="nav-item" onclick="tabClicked('assignment')"> <a class="nav-link"
                                                                                     data-toggle="tab" href="#assignment"
-                                                                                    role="tab">Select Assignment</a> </li>
+                                                                                    role="tab">{{ __('strings.SelectAssignment') }}</a> </li>
                     </ul>
                 </div>
                 <div class="tab-content">
