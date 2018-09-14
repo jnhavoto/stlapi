@@ -264,11 +264,17 @@ class AssignmentAnnouncementController  extends ModelController
     {
 
         if($request->assignment_id != 0){
-
+           
+            
         }elseif ($request->course_id != 0){
             $announcemente = CourseAnnouncement::create(
                 [
-
+                    // 'courses_id' => $request->course_id,
+                    // 'status' => 1,
+                    // //getting the teacher
+                    // $teacher = Auth::user()->teacher();
+                    // 'teachers_id' => Auth::user();
+                    // 'teacher_members_id' => $currentInstructor,
                 ]
             );
         }

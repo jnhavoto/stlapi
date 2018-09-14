@@ -58,6 +58,7 @@ Route::get('/announcements/sent', 'AssignmentAnnouncementController@getSentAnnou
 Route::get('/announcements/draft', 'AssignmentAnnouncementController@getDraftAnnouncements')->middleware(['teacher']);
 Route::get('/announcements/compose', 'AssignmentAnnouncementController@composeAnnouncements')->middleware(['teacher']);
 Route::post('/submit_announcement', 'AssignmentAnnouncementController@submit_announcemnt')->middleware(['teacher']);
+Route::post('/announcements/save', 'AssignmentAnnouncementController@submit_announcemnt')->middleware(['teacher']);
 
 //==============================================================
 //End Comunications
