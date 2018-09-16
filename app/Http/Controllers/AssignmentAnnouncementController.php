@@ -110,11 +110,11 @@ class AssignmentAnnouncementController  extends ModelController
         foreach ($memberof as $membership)
         {
             $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)
+                $membership->id)->where('teachers_id', '<>', $teacherid->id)
                 ->get();
 
             $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)
+                $membership->id)->where('teachers_id', '<>', $teacherid->id)
                 ->get();
 
             if(count($announcementasmember) > 0){
@@ -125,15 +125,8 @@ class AssignmentAnnouncementController  extends ModelController
             }
         }
         /* return $inbox_announcements; */
-        $sentcount =0;
-        if(isset($course_announcementasmember)){
-            $sentcount = $course_announcementasmember->count();
-        }
-        if(isset($announcementasmember)){
-            $sentcount = $sentcount + $announcementasmember->count(); 
-        }
         return view('communications.inbox', ['inbox_announcements' => $inbox_announcements, 'label' => 'inbox', 'count_inbox'
-        => $this->count_announcements('inbox'),'count_sent' => $sentcount,'count_draft' => $this->count_announcements('draft'),
+        => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
             'user'=>Auth::user()]);
     }
 
@@ -149,11 +142,11 @@ class AssignmentAnnouncementController  extends ModelController
         foreach ($memberof as $membership)
         {
             $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)->where('teachers_id', $teacherid->id)
+                $membership->id)->where('teachers_id', $teacherid->id)->where('status', 1)
                 ->get();
 
             $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)->where('teachers_id', $teacherid->id)
+                $membership->id)->where('teachers_id', $teacherid->id)->where('status', 1)
                 ->get();
 
             if(count($announcementasmember) > 0){
@@ -164,20 +157,13 @@ class AssignmentAnnouncementController  extends ModelController
             }
 
         }
-//        return $sent_announcements;
-        $sentcount =0;
-        if(isset($course_announcementasmember)){
-            $sentcount = $course_announcementasmember->count();
-        }
-        if(isset($announcementasmember)){
-            $sentcount = $sentcount + $announcementasmember->count(); 
-        }      
+//        return $sent_announcements;     
        
         return view('communications.sent', ['sent_announcements' => $sent_announcements, 'label' => 'sent', 'count_inbox'
-        => $this->count_announcements('inbox'),'count_sent' => $sentcount,'count_draft' => $this->count_announcements('draft'),
+        => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
             'user'=>Auth::user()]);
         //testing output
-        return $sent_announcements;
+        // return $sent_announcements;
     }
 
     public function getDraftAnnouncements(){
@@ -219,27 +205,60 @@ class AssignmentAnnouncementController  extends ModelController
         $teacherid = Teacher::where('users_id', Auth::user()->id)->first();
 
         $count_annouc = 0;
-
-        if($type == 'inbox')
-            $memberof = TeacherMember::where('teachers_id','<>', $teacherid->id)->get();
-        elseif ($type == 'sent')
-            $memberof = TeacherMember::where('teachers_id', $teacherid->id)->get();
-        elseif ($type == 'draft')
-            $memberof = TeacherMember::where('teachers_id', $teacherid->id)->get();
+        $memberof = TeacherMember::where('teachers_id','<>', $teacherid->id)->get();
+        // unnecesary checks, the action is performed anyway (no matter if is for inbox, sent or draft)
+        // if($type == 'inbox')
+        //     $memberof = TeacherMember::where('teachers_id','<>', $teacherid->id)->get();
+        // elseif ($type == 'sent')
+        //     $memberof = TeacherMember::where('teachers_id', $teacherid->id)->get();
+        // elseif ($type == 'draft')
+        //     $memberof = TeacherMember::where('teachers_id', $teacherid->id)->get();
 
         //get all announcements where the teacher/instructor is a mmember
 
 //        return $memberof;
         foreach ($memberof as $membership)
         {
-            $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)
-                ->get();
+            //<--old code>
+            // $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
+            //     $membership->id)
+            //     ->get();
 
-            $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
-                $membership->id)
-                ->get();
+            // $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+            //     $membership->id)
+            //     ->get();
+            //</--old code>
+                //creating checks for counts
+                if($type == 'inbox'){
+                    $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
+                        $membership->id)->where('teachers_id', '<>', $teacherid->id)
+                        ->get();
 
+                    $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+                        $membership->id)->where('teachers_id', '<>', $teacherid->id)
+                        ->get();
+                }
+                   
+                elseif ($type == 'sent'){
+                    $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
+                        $membership->id)->where('teachers_id', $teacherid->id)->where('status', 1)
+                        ->get();
+
+                    $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+                        $membership->id)->where('teachers_id', $teacherid->id)->where('status', 1)
+                        ->get();
+                }
+                    
+                elseif ($type == 'draft'){
+                    $announcementasmember = AssignmentAnnouncement::with('teacher_member')->where('teacher_members_id',
+                        $membership->id)->where('teachers_id', $teacherid->id)->where('status', 0)
+                        ->get();
+
+                    $course_announcementasmember = CourseAnnouncement::with('teacher_member')->where('teacher_members_id',
+                        $membership->id)->where('teachers_id', $teacherid->id)->where('status', 0)
+                        ->get();
+                }
+                   
             if(count($announcementasmember) > 0 || count($course_announcementasmember) > 0){
                 $count_annouc += count($announcementasmember)+count($course_announcementasmember);
             }
