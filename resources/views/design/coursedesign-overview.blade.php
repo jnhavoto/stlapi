@@ -110,14 +110,12 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">
                                                 {{ __('strings.CourseAssignments') }}
-                                                {{--Course Assignments--}}
-                                            </h4></div>
-
+                                            </h4>
+                                        </div>
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="{{ __('strings.SearchAssignments') }}"
                                                    class="form-control">
                                         </div>
-
                                     </div>
                                     <div class="ml-auto">
                                         <td colspan="2">
@@ -202,13 +200,6 @@
                                         </tr>
                                         </tfoot>
                                     </table>
-                                        {{--@else--}}
-                                        {{--<div>--}}
-                                            {{--<div>--}}
-                                                {{--<h4>No Assignments</h4>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--@endif--}}
                                 </div>
                                 <!-- .left-aside-column-->
                             </div>
@@ -217,92 +208,83 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-12 m-b-20">
-                <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
-                <hr>
-
-                <div class="col-md-6">
-                    <form id="file-input" class="dropzone">
-                        <div class="fallback">
-                            <input name="file" type="file" multiple />
-                        </div>
-                    </form>
-                </div>
-
-                <div>
-                    @if($materials->count() > 0)
-                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
-                                    table-striped color-table muted-table" style="width: auto" >
-                            <thead>
-                            <tr>
-                                <th >File name</th>
-                                <th >Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($materials as $material)
-                                <tr>
-                                    <td>{{$material->file_name}}</td>
-                                    <td>
-                                        <a class="btn btn-info btn-sm
-                                                    " href="{{ asset($material->path) }}"
-                                           download="{{ $material->path }}">
-                                            <i text-md-center class="ti-download"> </i>
-                                        </a>
-                                        <a class="btn btn-danger btn-sm"
-                                           href="/delete_course_file/{{$material->id}}"
-                                        >
-                                            <i text-md-center class="ti-trash"> </i> </a>
-
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    @endif
-                </div>
-            </div>
-            <hr><hr>
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
+
                             <div class="pl-4">
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">
                                                 {{ __('strings.CourseMaterial') }}
+                                                {{--Course Assignments--}}
                                             </h4>
                                         </div>
                                     </div>
-                                    <div class="ml-auto">
-                                        <td colspan="2">
-                                            <button type="button" class="btn btn-info btn-rounded"
-                                                    data-toggle="modal"
-                                                    data-target="#confirm-createassignment"
-                                                    onclick="createAssignmentCleanDetails()">
-                                                {{ __('strings.AddCourseMaterial') }}
-                                            </button>
-                                        </td>
-                                    </div>
                                 </div>
 
-                                <!-- .left-aside-column-->
+                                <div class="table-responsive col-md-6" >
+                                    @if($materials->count() == 0)
+                                        <h5  class="card-title m-t-10">
+                                            {{ __('strings.NoMaterial') }}
+                                            {{--Course Assignments--}}
+                                        </h5>
+                                    @else
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                        color-table muted-table"
+                                               data-page-size="10">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ __('strings.FileName') }}</th>
+                                                    <th>{{ __('strings.Action') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($materials as $material)
+                                                    <tr>
+                                                        <td>{{$material->file_name}}</td>
+                                                        <td>
+                                                            <a class="btn btn-info
+                                                        " href="{{ asset($material->path) }}"
+                                                               download="{{ $material->path }}">
+                                                                <i text-md-center class="ti-download"> {{ __('strings.Download') }}</i>
+                                                            </a>
+                                                            <a class="btn btn-danger"
+                                                               href="/delete_course_file/{{$material->id}}"
+                                                            >
+                                                                <i text-md-center class="ti-trash"> {{ __('strings.Delete') }} </i> </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="7">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"></ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    @endif
+                                </div>
+                                {{--<div class="col-md-6">--}}
+                                    {{--<form id="file-input" class="dropzone">--}}
+                                        {{--<div class="fallback">--}}
+                                            {{--<input name="file" type="file" multiple/>--}}
+                                        {{--</div>--}}
+                                    {{--</form>--}}
+                                {{--</div>--}}
                             </div>
-                            <!-- /.left-right-aside-column-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        {{--Showing Assignment Status--}}
     </div>
 
     {{--Begin: Confirm Assignment Create in Course design--}}

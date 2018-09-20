@@ -236,7 +236,6 @@ class AssignmentDescriptionController extends ModelController
                         'file_name' => explode('-a-', $valor)[1],
                     ]);
                 }
-
             }
             return redirect('/assignments');
         } else {
@@ -247,18 +246,17 @@ class AssignmentDescriptionController extends ModelController
 
     public function createAssignmentFromTemplate(Request $request)
     {
+        return $request;
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //Begin transaction
         DB::beginTransaction();
-
-        ////createing group_teacher
+        //create group_teacher
         $group_teacher = GroupTeacher::create(
             [
                 'group_name' => 'Default Name',
             ]
         );
-
 
         if (!$group_teacher) {
             DB::rollBack();
@@ -292,11 +290,21 @@ class AssignmentDescriptionController extends ModelController
                     'teachers_id' => $teacher->id,
                 ]
             );
-
         }
 
         if ($assigment and $assignHasCourse and $assignHasTeacher) {
             DB::commit();
+            //saving files
+            foreach ($request->all() as $chave => $valor){
+                if(strpos($chave, 'file') !== false)
+                {
+                    Material::create([
+                        'assignments_id' => $assigment->id,
+                        'path' => $valor,
+                        'file_name' => explode('-a-', $valor)[1],
+                    ]);
+                }
+            }
             return redirect('/coursedesign-overview/'.$request->course_id);
         } else {
             DB::rollBack();
@@ -304,7 +312,7 @@ class AssignmentDescriptionController extends ModelController
         }
     }
 
-    public function createassignfromtemplate($id)
+    public function getassignfromtemplate($id)
     {
         //get teacher data
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
@@ -312,13 +320,13 @@ class AssignmentDescriptionController extends ModelController
         $assignment = AssignmentTemplate::findOrFail($id);
 
 //        return $assignment;
-        $instructors = Teacher::all();
+//        $courseInstructors = Teacher::all();
         //get all teachers courses
         $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
         return view('design.assignment-createfromtemplate',
             ['assignment' => $assignment,
                 'teacherCourses' => $teacherCourses,
-            'instructors' => $instructors,
+//            'courseInstructors' => $courseInstructors,
             'user' => Auth::user()]);
     }
 
@@ -394,9 +402,8 @@ class AssignmentDescriptionController extends ModelController
             }
 
         } else {
-            return response(['Nao existe Ficheiro']);
+            return response(['No Files']);
         }
-
         return ['imagem' => $filePath];
     }
 }

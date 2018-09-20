@@ -73,8 +73,6 @@ class CourseController extends ModelController
         return $response;
     }
 
-
-
     public function submitCourse(Request $request)
     {
 

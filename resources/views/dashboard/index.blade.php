@@ -195,7 +195,20 @@
                                                         {{ $totalfeedbacks}}
                                                     </td>
                                                     <td>
-                                                        Numbers!
+                                                        @php
+                                                            $totalfeedbacks=0;
+                                                            foreach ($submissions as $submission)
+                                                            {
+                                                                $feedbacks=
+                                                            \App\Models\Feedback::where
+                                                            ('assignment_submissions_id',
+                                                            $submission->id)->get();
+                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
+                                                            }
+
+
+                                                        @endphp
+
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -413,13 +426,12 @@
                                         <h3 class="m-b-0 font-light">{{$countAssign}}</h3>
                                         <small>{{ __('strings.Assignments') }}</small>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h3 class="m-b-0 font-light">
-                                            {{-- {{$assignChats->count()+$courseChats->count()+$courseAnnounc->count()+
-                                            $assignAnnounc->count()}} --}}
-                                        </h3>
-                                        <small>{{ __('strings.Communications') }}</small>
-                                    </div>
+                                    {{--<div class="col-lg-4 col-md-4 m-t-20">--}}
+                                        {{--<h3 class="m-b-0 font-light">--}}
+                                             {{--{{$assignChats->count()}}--}}
+                                        {{--</h3>--}}
+                                        {{--<small>{{ __('strings.Communications') }}</small>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
                         </div>
@@ -428,98 +440,29 @@
                         <div class="card">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs profile-tab" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home"
-                                                        role="tab">Activity</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile"
+                                                        role="tab">{{ __('strings.Profile') }}</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                                        {{ __('strings.Settings') }}</a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane active" id="home" role="tabpanel">
-                                    <div class="card-body">
-                                        <div class="profiletimeline">
-                                            {{--<div class="sl-item">--}}
-                                            {{--<div class="sl-left"> <img src="{{ asset('theme/images/users/1.jpg') }}" alt="user" class="img-circle"> </div>--}}
-                                            {{--<div class="sl-right">--}}
-                                            {{--<div><a href="#" class="link">Annika Anderson</a> <span--}}
-                                            {{--class="sl-date">5--}}
-                                            {{--minutes ago</span>--}}
-                                            {{--<p>Submitted an assignment <a href="#"> Assignment 3</a></p>--}}
-                                            {{--<div class="row">--}}
-                                            {{--<div class="col-lg-3 col-md-6 m-b-20"><img src="{{ asset('theme/images/big/img1.jpg') }}" alt="user" class="img-responsive radius"></div>--}}
-                                            {{--<div class="col-lg-3 col-md-6 m-b-20"><img src="{{ asset('theme/images/big/img2.jpg') }}" alt="user" class="img-responsive radius"></div>--}}
-                                            {{--<div class="col-lg-3 col-md-6 m-b-20"><img src="{{ asset('theme/images/big/img3.jpg') }}" alt="user" class="img-responsive radius"></div>--}}
-                                            {{--<div class="col-lg-3 col-md-6 m-b-20"><img src="{{ asset('theme/images/big/img4.jpg') }}" alt="user" class="img-responsive radius"></div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--<hr>--}}
-                                            {{--<div class="sl-item">--}}
-                                            {{--<div class="sl-left"> <img src="{{ asset('theme/images/users/2.jpg') }}" alt="user" class="img-circle"> </div>--}}
-                                            {{--<div class="sl-right">--}}
-                                            {{--<div> <a href="#" class="link">Annika Anderson</a> <span class="sl-date">5 minutes ago</span>--}}
-                                            {{--<div class="m-t-20 row">--}}
-                                            {{--<div class="col-md-3 col-xs-12"><img src="{{ asset('theme/images/big/img1.jpg') }}" alt="user" class="img-responsive radius"></div>--}}
-                                            {{--<div class="col-md-9 col-xs-12">--}}
-                                            {{--<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="#" class="btn btn-success"> Design weblayout</a></div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--<hr>--}}
-                                            <div class="sl-item">
-                                                <div class="sl-left"><img src="{{ asset('theme/images/users/3.jpg') }}"
-                                                                          alt="user" class="img-circle"></div>
-                                                <div class="sl-right">
-                                                    <div><a href="#" class="link">Annika Anderson</a> <span
-                                                                class="sl-date">5 minutes ago</span>
-                                                        <p class="m-t-10"> I am late submitting my feedback. Sorry! </p>
-                                                    </div>
-                                                    <div class="like-comm m-t-20"><a href="javascript:void(0)"
-                                                                                     class="link m-r-10">2 comment</a>
-                                                        <a href="javascript:void(0)" class="link m-r-10"><i
-                                                                    class="fa fa-heart text-danger"></i> 5 Love</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"><img src="{{ asset('theme/images/users/4.jpg') }}"
-                                                                          alt="user" class="img-circle"></div>
-                                                <div class="sl-right">
-                                                    <div><a href="#"
-                                                            class="link">{{$user->first_name.' '.$user->last_name}}</a>
-                                                        <span
-                                                                class="sl-date">5
-                                                            minutes ago</span>
-                                                        <blockquote class="m-t-10">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                            sed do eiusmod tempor incididunt
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <!--second tab-->
-                                <div class="tab-pane" id="profile" role="tabpanel">
+                                <div class="tab-pane active" id="profile" role="tabpanel">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-3 col-xs-6 b-r"><strong>Full Name</strong>
+                                            <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.Full_Name') }}</strong>
                                                 <br>
                                                 <p class="text-muted">{{$user->first_name.' '.$user->last_name}}</p>
                                             </div>
-                                            <div class="col-md-3 col-xs-6 b-r"><strong>Mobile</strong>
+                                            <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.Phone') }}</strong>
                                                 <br>
                                                 <p class="text-muted">{{$user->telephone}}</p>
                                             </div>
-                                            <div class="col-md-3 col-xs-6 b-r"><strong>Email</strong>
+                                            <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.Email') }}</strong>
                                                 <br>
                                                 <p class="text-muted">{{$user->email}}</p>
                                             </div>
@@ -571,57 +514,58 @@
                                 </div>
                                 <div class="tab-pane" id="settings" role="tabpanel">
                                     <div class="card-body">
-                                        <form class="form-horizontal form-material">
+                                        <form id="form-profile" class="form-horizontal m-t-40" method="post"
+                                              action="/update-profile">
+                                            {{csrf_field()}}
+                                            <input type="hidden" id="user_id" name="user_id" value="{{$user->id}}"/>
+
                                             <div class="form-group">
-                                                <label class="col-md-12">Full Name</label>
+                                                <label class="col-md-12">{{ __('strings.FirstName') }}</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="Ake Gronlund" class="form-control
+                                                    <input id="first_name" name="first_name" type="text"
+                                                           value="{{$user->first_name}}"
+                                                           class="form-control
                                                     form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Email</label>
+                                                <label class="col-md-12">{{ __('strings.LastName') }}</label>
                                                 <div class="col-md-12">
-                                                    <input type="email" placeholder="ake.gronlund@oru.se"
-                                                           class="form-control form-control-line" name="example-email"
-                                                           id="example-email">
+                                                    <input id="last_name" name="last_name" type="text"
+                                                           value="{{$user->last_name}}"
+                                                           class="form-control
+                                                    form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-12">Password</label>
+                                                <label for="example-email" class="col-md-12">{{ __('strings.Email')
+                                                }}</label>
                                                 <div class="col-md-12">
-                                                    <input type="password" value="password"
+                                                    <input type="email" value="{{$user->email}}"
+                                                           class="form-control form-control-line" name="email"
+                                                           id="email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">{{ __('strings.Password') }}</label>
+                                                <div class="col-md-12">
+                                                    <input id="password" type="password" value="password"
                                                            class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-12">Phone No</label>
+                                                <label class="col-md-12">{{ __('strings.Phone') }}</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="123 456 7890"
+                                                    <input id="telephone" name="telephone" type="text"
+                                                           value="{{$user->telephone}}"
                                                            class="form-control form-control-line">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Message</label>
-                                                <div class="col-md-12">
-                                                    <textarea rows="5"
-                                                              class="form-control form-control-line"></textarea>
-                                                </div>
-                                            </div>
-                                            {{--<div class="form-group">--}}
-                                            {{--<label class="col-sm-12">Select City</label>--}}
-                                            {{--<div class="col-sm-12">--}}
-                                            {{--<select class="form-control form-control-line">--}}
-                                            {{--<option>Orebro</option>--}}
-                                            {{--<option>Stockholm</option>--}}
-                                            {{--<option>Uppsala</option>--}}
-                                            {{--<option>Lund</option>--}}
-                                            {{--</select>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <button class="btn btn-success">Update Profile</button>
+                                                    <button id="submit-profile" type="submit" class="btn btn-success">
+                                                        {{ __('strings.UpdateProfile')
+                                                    }}</button>
                                                 </div>
                                             </div>
                                         </form>

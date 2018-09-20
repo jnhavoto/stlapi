@@ -9,8 +9,10 @@ use App\Models\AssignmentSubmission;
 use App\Models\Feedback;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -55,7 +57,37 @@ class HomeController extends Controller
 //            'submissions'=>$submissions,
 //            'feedbacks'=>$feedbacks,
             'assignTeacher'=>$assignTeacher,
-        'user' =>
-            Auth::user()]);
+        'user' => Auth::user()]);
+    }
+
+    public function updateProfile(Request $request)
+    {
+//        return $request
+        $userdata = User::where('id',$request->user_id)->first();
+
+        $userdata -> update([
+            'first_name' => $request->first_name,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'password' => $request->password,
+        ]);
+//        $userdata->save();
+////        $userdata -> message = $request->message;
+//
+//        $teacher = Teacher::where('users_id',Auth::user()->id)->first();
+//
+//        //
+//        $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
+//        //
+//        $countAssign = 0;
+//        foreach ($teacherCourses as $course)
+//        {
+//            $counting = AssignmentDescriptionsHasCourse::where('courses_id',$course->courses_id)->get()->count();
+//            $countAssign=$countAssign+$counting;
+//        }
+//        //
+//        $assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
+//        //
+        return redirect('/')->with('succes', 'Data has been successfully sent!');
     }
 }

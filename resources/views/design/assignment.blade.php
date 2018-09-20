@@ -73,7 +73,7 @@
                                                 <td>{{substr($assignment->instructions, 0, 45) }}</td>
                                                 <td>
                                                     <a class="btn btn-info btn-circle btn-lg m-r-5"
-                                                            href="/assignment-createfromtemplate/{{$assignment->id}}">
+                                                            href="/assignment-getfromtemplate/{{$assignment->id}}">
                                                         <i text-md-center class="ti-clipboard"></i>
                                                     </a>
 

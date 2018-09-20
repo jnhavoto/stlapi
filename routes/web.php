@@ -18,6 +18,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->middleware(['teacher']);
 
+//update profile
+Route::post('/update-profile', 'HomeController@updateProfile')->middleware(['teacher']);
+
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/save-coursefiles', 'CourseController@saveFiles');
@@ -125,7 +128,7 @@ Route::get('/assignment-templates/{id}', 'AssignmentDescriptionController@getAss
 Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignment')->middleware(['teacher']);
 
 //createassign
-Route::get('/assignment-createfromtemplate/{id}', 'AssignmentDescriptionController@createassignfromtemplate')
+Route::get('/assignment-getfromtemplate/{id}', 'AssignmentDescriptionController@getassignfromtemplate')
     ->middleware(['teacher']);
 
 

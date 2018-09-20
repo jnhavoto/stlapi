@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h4 class="card-title">{{ __('strings.CreateAssignment') }}</h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }} </h6>
-                            <form id="form-assignment" class="form-horizontal m-t-40" action="/create_assignment"
+                            <form id="form-assignment" class="form-horizontal m-t-40" action="/create_assignmentFromTemplate"
                                   method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="submitNow" name="submitNow" value="0"/>
@@ -82,50 +82,51 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-12 m-b-20">
-                                    <label class="control-label">
-                                        {{ __('strings.Instructors') }}
+                                {{--<div class="col-md-12 m-b-20">--}}
+                                    {{--<label class="control-label">--}}
+                                        {{--{{ __('strings.Instructors') }}--}}
                                         {{--Select Instructor(s)--}}
-                                    </label>
-                                    <select class="select-courses" name="instructors[]" multiple="multiple"
-                                            style="width: 100%">
-                                        @foreach($instructors as  $teacher)
-                                            @if($teacher->id == \Illuminate\Support\Facades\Auth::user()->teacher->id)
-                                                <option name="selectTag" value="{{$teacher->id}}" selected="selected">
-                                                    {{$teacher->user->first_name}}
-                                                    {{$teacher->user->last_name}}
-                                                </option>
-                                            @else
-                                                <option
-                                                        name="selectTag"
-                                                        value="{{$teacher->id}}">{{$teacher->user->first_name}}
-                                                    {{$teacher->user->last_name}}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
+                                    {{--</label>--}}
+                                    {{--<select class="select-courses" name="instructors[]" multiple="multiple"--}}
+                                            {{--style="width: 100%">--}}
+                                        {{--@foreach($courseInstructors as  $teacher)--}}
+                                            {{--@if($teacher->id == \Illuminate\Support\Facades\Auth::user()->teacher->id)--}}
+                                                {{--<option name="selectTag" value="{{$teacher->id}}" selected="selected">--}}
+                                                    {{--{{$teacher->user->first_name}}--}}
+                                                    {{--{{$teacher->user->last_name}}--}}
+                                                {{--</option>--}}
+                                            {{--@else--}}
+                                                {{--<option  name="selectTag" selected="selected"--}}
+                                                        {{--value="{{$teacher->id}}">{{$teacher->user->first_name}}--}}
+                                                    {{--{{$teacher->user->last_name}}--}}
+                                                {{--</option>--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
 
-                                <div class="col-md-12 m-b-20">
-                                    <label class="card-title"> {{ __('strings.Material') }}  </label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <form id="file-input" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple />
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
 
-                                <div class="form-group" align-items-center>
-                                    <button type="submit-assignment" class="btn btn-success btn-rounded">
-                                        {{ __('strings.Submit') }} </button>
-                                    <a class="btn btn-default btn-rounded waves-effect btn-close"
-                                       href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
-                                    </a>
-                                </div>
                             </form>
+                            <div class="col-md-12 m-b-20">
+                                <h4 class="card-title"> {{ __('strings.Material') }}  </h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form id="file-input" class="dropzone">
+                                            <div class="fallback">
+                                                <input name="file" type="file" multiple />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" align-items-center>
+                                <button id="submit-assignment" type="submit" class="btn btn-success btn-rounded">
+                                    {{ __('strings.Submit') }} </button>
+                                <a class="btn btn-default btn-rounded waves-effect btn-close"
+                                   href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

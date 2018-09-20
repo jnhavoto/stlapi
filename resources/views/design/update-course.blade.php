@@ -73,19 +73,6 @@
 
                                 <div class="col-md-12 m-b-20">
                                     <label class="card-title"> {{ __('strings.CourseMaterial') }}  </label>
-                                    {{--<hr>--}}
-
-                                    {{--<div class="ml-auto">--}}
-                                        {{--<td colspan="2">--}}
-                                            {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                                    {{--data-toggle="modal"--}}
-                                                    {{--data-target="#addmaterials"--}}
-                                                    {{--onclick="createAssignmentCleanDetails()"--}}
-                                            {{-->--}}
-                                                {{--{{ __('strings.AddMaterial') }}--}}
-                                            {{--</button>--}}
-                                        {{--</td>--}}
-                                    {{--</div>--}}
                                     <div class="row">
                                         <div class="col-md-6">
                                             <form id="file-input" class="dropzone">

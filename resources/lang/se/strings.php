@@ -173,8 +173,15 @@ return [
     'Send' => 'Skicka',
     'Save' => 'Spara',
     'Discard' => 'Avbryt',
-    'SelectCourse' => 'Välj kurs',
     'SelectAssignment' => 'Välj uppgift',
-
-
+    'Mobile' => 'Mobile',
+    'Password' => 'Password',
+    'Message' => 'Message',
+    'UpdateProfile' => 'Update Profile',
+    'FirstName' => 'First Name',
+    'LastName' => 'Last Name',
+    'NoMaterial' => 'No Material',
+    'FileName' => 'File Name',
+    'Download' => 'Download',
+    'Delete' => 'Delete',
 ];
