@@ -74,12 +74,10 @@
                                                 </td>
                                                 <td>{{substr($assignment->instructions, 0, 45) }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-circle btn-lg m-r-5"
-                                                            href="/" data-toggle="modal"
-                                                            data-target="#create-assignmentFromTemplate"
-                                                            onclick="createAssignmentFromTemplate({{$assignment}})">
-                                                        <i class="ti-clipboard"></i>
-                                                    </button>
+                                                    <a class="btn btn-info btn-circle btn-lg m-r-5"
+                                                       href="/assignment-getfromtemplate/{{$assignment->id}}">
+                                                        <i text-md-center class="ti-clipboard"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach

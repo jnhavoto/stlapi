@@ -3,7 +3,7 @@ var ficheiros = [];
 var contarFicheiros = 0;
 
 
-    $("#submit-assignment").on("click", function(e) {
+    $("#submit-updateassignment").on("click", function(e) {
 
     if(contarFicheiros == 0) {
         $('#form-assignment').submit();
@@ -44,7 +44,7 @@ var contarFicheiros = 0;
                     $('<input />').attr('type', 'hidden')
                         .attr('name', 'file'+(indice+1))
                         .attr('value', file)
-                        .appendTo('#form-assignment');
+                        .appendTo('#form-update-course');
                 });
 
                 $('#form-assignment').submit();
@@ -55,10 +55,8 @@ var contarFicheiros = 0;
                 console.log(response);
             });
 
-            $("#submit-assignment").on("click", function(e) {
-                console.log("Existem Ficheiros");
+            $("#submit-updateassignment").on("click", function(e) {
                    if(contarFicheiros > 0){
-
                        e.preventDefault();
                        e.stopPropagation();
                        myDropzoneImagem.processQueue();

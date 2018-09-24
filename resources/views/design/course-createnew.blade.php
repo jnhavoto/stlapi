@@ -35,7 +35,7 @@
                             </h6>
                             <form id="form-course" class="form-horizontal m-t-40" method="post"
                                   action="/course-createfromtemplate"
-                                  enctype="multipart/form-data">
+                                  enctype="multipart/form-data" data-toggle="validator" role="form">
                                 {{csrf_field()}}
                                 <input type="hidden" id="course_id" name="course_id" value="0"/>
 
@@ -114,4 +114,10 @@
     <script>
 
     </script>
+@endsection
+
+@section('dropzones')
+
+    <script type="text/javascript" src="{{ asset('js/course-dropzone.js')}}"></script>
+
 @endsection

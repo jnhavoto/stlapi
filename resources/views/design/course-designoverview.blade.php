@@ -153,7 +153,7 @@
                                             <tr>
                                                 <td> {{ $assignment->number }}</td>
                                                 <td>
-                                                    <a href="/assignmentdesign-overview/{{$assignment->id}}">
+                                                    <a href="/assignment-designoverview/{{$assignment->id}}">
                                                         {{$assignment->case}}
                                                     </a>
 
@@ -305,10 +305,8 @@
                             {{ __('strings.Yes') }}
                         </a>
                         <a  class="btn btn-warning btn-rounded"
-                            data-toggle="modal"
-                            data-target="#create-assignmentFromCourseOverview"
-                                data-dismiss="modal"
-                                >
+                            href="/assignment-getfromtemplate/{{$assignment->id}}"
+                        >
                             {{ __('strings.No') }}
                             {{--Cancel--}}
                         </a>

@@ -10,6 +10,7 @@ use App\Models\AssignmentSubmission;
 use App\Models\AssignmentTemplate;
 use App\Models\Course;
 use App\Models\GroupTeacher;
+use App\Models\Material;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\Models\TeacherMember;
@@ -81,6 +82,17 @@ class AssignmentDescriptionController extends ModelController
                 ]
             );
         }
+
+        foreach ($request->all() as $chave => $valor){
+            if(strpos($chave, 'file') !== false){
+
+                Material::create([
+                    'assignments_id' => $assignment->id,
+                    'path' => $valor,
+                    'file_name' => explode('-a-', $valor)[1],
+                ]);
+            }
+        }
         return redirect('/assignments');
     }
 
@@ -89,10 +101,11 @@ class AssignmentDescriptionController extends ModelController
         //get the current teacher
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
         //find and delete the link between the assignment and the teacher: current teacher
+
         $assignTeacher = AssignmentDescriptionsHasTeacher::
-                        where([['assignment_descriptions_id',$request->deleteassignment_id],['teachers_id','=',
-        $teacher->id]])
-                        ->get()->each->delete();
+            where('assignment_descriptions_id',$request->deleteassignment_id)->get()->each->delete();
+
+
         //find and delete the lilnk between the assignment and the course: current teacher
         $assignCourse = AssignmentDescriptionsHasCourse::where('assignment_descriptions_id', $request->deleteassignment_id)->get()->each->delete();
         //find and delete the assignment
@@ -103,15 +116,17 @@ class AssignmentDescriptionController extends ModelController
 //        }
     }
 
-//    public function getAllAssignments(){
-//        //get all existing assignments
-//        $assignments = AssignmentDescription::all();
-//        //get all existing teachers
-//        $teachers = Teacher::all();
-//        //pass values to the view
-//        return view('activities.assignment',['assignments' => $assignments, 'teachers'=>$teachers, 'user' =>
-//            Auth::user()]);
-//    }
+    public function getCreateAssignFromForm()
+    {
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
+//        return $course;
+//        return $teacherAssignment;
+        return view('design.assignment-createnew', [
+                'teacherCourses' => $teacherCourses,
+                'user' => Auth::user
+                ()]);
+    }
 
     //get all assignments and teacher assignments
     public function getAssignments()
@@ -166,10 +181,10 @@ class AssignmentDescriptionController extends ModelController
         $assignment = AssignmentDescription::findOrFail($id);
         $instructors = AssignmentDescriptionsHasTeacher::with('teacher')->where('assignment_descriptions_id',$id)
             ->get();
-        $material = AssignmentMaterial::where('assignment_description_id',$id)->get();
+        $material = Material::where('assignment_description_id',$id)->get();
 
 
-        return view('design.assignmentdesign-overview', ['assignment' => $assignment,
+        return view('design.assignment-designoverview', ['assignment' => $assignment,
             'instructors' => $instructors,
             'materials' => $material,
            'user' => Auth::user()]);
@@ -213,13 +228,15 @@ class AssignmentDescriptionController extends ModelController
                 ]
             );
 
-            $instructors = $request->instructors;
+           $courseTeacher = TeacherCourse::Where('courses_id', $request->course_id)->get();
+//            return $courseTeacher;
 
-            foreach ($instructors as $instructor) {
+            foreach ($courseTeacher as $instructor)
+            {
                 $assignHasTeacher = AssignmentDescriptionsHasTeacher::create(
                     [
                         'assignment_descriptions_id' => $assigment->id,
-                        'teachers_id' => $instructor,
+                        'teachers_id' => $instructor->teachers_id,
                     ]
                 );
             }
@@ -246,7 +263,7 @@ class AssignmentDescriptionController extends ModelController
 
     public function createAssignmentFromTemplate(Request $request)
     {
-        return $request;
+//        return $request;
         //get teacher ID: who logged in
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //Begin transaction
@@ -283,13 +300,19 @@ class AssignmentDescriptionController extends ModelController
             );
 
             $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+            $courseTeacher = TeacherCourse::Where('courses_id', $request->course_id)->get();
+//            return $courseTeacher;
 
-            $assignHasTeacher = AssignmentDescriptionsHasTeacher::create(
-                [
-                    'assignment_descriptions_id' => $assigment->id,
-                    'teachers_id' => $teacher->id,
-                ]
-            );
+            foreach ($courseTeacher as $instructor)
+            {
+                $assignHasTeacher = AssignmentDescriptionsHasTeacher::create(
+                    [
+                        'assignment_descriptions_id' => $assigment->id,
+                        'teachers_id' => $instructor->teachers_id,
+                    ]
+                );
+            }
+
         }
 
         if ($assigment and $assignHasCourse and $assignHasTeacher) {

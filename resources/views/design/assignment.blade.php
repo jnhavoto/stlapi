@@ -122,13 +122,12 @@
                                     </div>
                                     <div>
                                         <td colspan="2">
-                                            <button type="button" class="btn btn-info btn-rounded"
-                                                    data-toggle="modal"
-                                                    data-target="#create-assignment"
-                                                    onclick="createAssignmentCleanDetails()"
+                                            <a  class="btn btn-info btn-rounded"
+                                                href="/assignment-creategetform"
                                             >
                                                 {{ __('strings.AddAssignment') }}
-                                            </button>
+                                                {{--Cancel--}}
+                                            </a>
                                         </td>
                                     </div>
                                 </div>
@@ -154,13 +153,14 @@
                                             <tr>
                                                 <td> {{ $assignment->number}}</td>
                                                 <td>
-                                                    <a href="/assignmentdesign-overview/{{$assignment->id}}">
+                                                    <a href="/assignment-designoverview/{{$assignment->id}}">
                                                         {{$assignment->case}}
                                                     </a>
                                                 </td>
                                                 <td>
 
-                                                    <a href={{ url('/coursedesign-overview/'.$assignment->courses_id)}}>
+                                                    <a href={{ url('/course-designoverview/'
+                                                    .$assignment->courses_id)}}>
                                                         {{$assignment->course->name}}
                                                     </a>
 
@@ -189,7 +189,7 @@
                                                     {{--<a href="{{ url('/update_assignmentpage' . $problem->id . '/edit') }}" class="btn btn-xs btn-info pull-right">--}}
                                                         {{--Edit--}}
                                                     {{--</a>--}}
-                                                    <a href="{{ url('/getupdate_assignment/'
+                                                    <a href="{{ url('/update-assignment/'
                                                     .$assignment->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>

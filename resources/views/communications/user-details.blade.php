@@ -55,8 +55,8 @@
                     <div class="card"> <img class="card-img" src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/background/socialbg.jpg" alt="Card image">
                         <div class="card-img-overlay card-inverse social-profile d-flex ">
                             <div class="align-self-center"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/1.jpg" class="img-circle" width="100">
-                                <h4 class="card-title">{{$user->first_name.' '.$user->last_name}}</h4>
-                                <h6 class="card-subtitle">{{$user->email}}</h6>
+                                <h4 class="card-title">{{$userdata->first_name.' '.$userdata->last_name}}</h4>
+                                <h6 class="card-subtitle">{{$userdata->email}}</h6>
                                 {{--<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>--}}
                             </div>
                         </div>

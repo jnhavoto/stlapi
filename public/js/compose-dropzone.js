@@ -13,7 +13,7 @@ var contarFicheiros = 0;
 
 
     var dropzoneImagem = $('#file-input-compose').dropzone({
-        url: '/salvar-imagens',
+        url: '/save-announcfiles',
         autoProcessQueue: false,
         dictDefaultMessage: "Adicione Um ficheiro",
         uploadMultiple: true,

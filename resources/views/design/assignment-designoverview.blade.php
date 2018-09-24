@@ -108,21 +108,18 @@
             </div>
 
             <div class="col-md-12 m-b-20">
-                <label class="card-title"> {{ __('strings.AssignmentMaterial') }}  </label>
+                <h4 class="card-title"> {{ __('strings.AssignmentMaterial') }}  </h4>
                 <hr>
 
-                <div class="col-md-6">
-                    <form id="file-input" class="dropzone">
-                        <div class="fallback">
-                            <input name="file" type="file" multiple />
-                        </div>
-                    </form>
-                </div>
-
-                <div>
-                    @if($materials->count() > 0)
+                <div class="table-responsive col-md-6">
+                        @if($materials->count() == 0)
+                            <h5  class="card-title m-t-10">
+                                {{ __('strings.NoMaterial') }}
+                                {{--Course Assignments--}}
+                            </h5>
+                        @else
                         <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap
-                                    table-striped color-table muted-table" style="width: auto" >
+                                    color-table muted-table" style="width: auto" >
                             <thead>
                             <tr>
                                 <th >File name</th>

@@ -154,7 +154,7 @@
                                             <tr>
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/coursedesign-overview/{{$course->course->id}}">
+                                                    <a href="/course-designoverview/{{$course->course->id}}">
                                                         {{$course->course->name}}
                                                     </a>
                                                 </td>

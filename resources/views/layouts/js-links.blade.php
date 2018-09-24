@@ -88,5 +88,8 @@
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>--}}
 
 
-<script type="text/javascript" src="{{ asset('js/course-dropzone.js')}}"></script>
-<script type="text/javascript" src="{{ asset('js/compose-dropzone.js')}}"></script>
+{{--<script type="text/javascript" src="{{ asset('js/course-dropzone.js')}}"></script>--}}
+{{--<script type="text/javascript" src="{{ asset('js/compose-dropzone.js')}}"></script>--}}
+@yield('dropzones')
+
+

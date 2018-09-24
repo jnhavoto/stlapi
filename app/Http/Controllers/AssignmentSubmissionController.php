@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
 use App\Models\AssignmentSubmission;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,6 +58,24 @@ class AssignmentSubmissionController extends ModelController
         return view('activities.submission-details', ['sunvffv' => $submission, 'user'=>Auth::user()]);
 
     }
+
+    public function listSubmission($id)
+    {
+        $submissions = AssignmentSubmission::with('student')->where('assignment_descriptions_id', $id)->get();
+
+//       return $submissions;
+
+        return view('monitoring.submissions', ['submissions' => $submissions, 'user'=>Auth::user()]);
+    }
+
+    public function submissionDetails($id)
+    {
+        $submission = AssignmentSubmission::with('student')->where('id', $id)->first();
+//        return $submission;
+
+        return view('monitoring.submission-details', ['submission' => $submission, 'user'=>Auth::user()]);
+    }
+
 
 
 }

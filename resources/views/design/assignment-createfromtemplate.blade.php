@@ -32,8 +32,10 @@
                         <div class="card-body">
                             <h4 class="card-title">{{ __('strings.CreateAssignment') }}</h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }} </h6>
-                            <form id="form-assignment" class="form-horizontal m-t-40" action="/create_assignmentFromTemplate"
-                                  method="post" enctype="multipart/form-data">
+                            <form id="form-assignment" class="form-horizontal m-t-40"
+                                  method="post"
+                                  action="/create_assignmentFromTemplate"
+                                  enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="submitNow" name="submitNow" value="0"/>
                                 <div class="col-md-6 m-b-20">
@@ -123,7 +125,7 @@
                             <div class="form-group" align-items-center>
                                 <button id="submit-assignment" type="submit" class="btn btn-success btn-rounded">
                                     {{ __('strings.Submit') }} </button>
-                                <a class="btn btn-default btn-rounded waves-effect btn-close"
+                                <a class="btn btn-danger btn-rounded waves-effect btn-close"
                                    href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                 </a>
                             </div>
@@ -133,4 +135,12 @@
             </div>
         </div>
     </div>
+
+
+@endsection
+
+@section('dropzones')
+
+    <script type="text/javascript" src="{{ asset('js/assignment-dropzone.js')}}"></script>
+
 @endsection

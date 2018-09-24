@@ -67,11 +67,9 @@
                                             <tr>
                                                 <td> {{ $course->course->id}}</td>
                                                 <td>
-                                                    <a href="/" data-toggle="modal"
-                                                       data-target="#modalAssCourseDetails">
+                                                    <a href="/course-overview/{{$course->course->id}}" >
                                                         {{ $course->course->name }}
                                                     </a>
-
                                                 </td>
                                                 {{--<td> {{substr($course->course_content, 0, 45) }} </td>--}}
                                                 <td> {{ $course->course->startdate}}</td>
@@ -151,9 +149,20 @@
 
                                                 </td>
                                                 <td>
-                                                    <div class="progress progress-xs margin-vertical-10 ">
-                                                        <div class="progress-bar bg-danger" style="width: 35%; height:6px;"></div>
-                                                    </div>
+                                                    @php
+                                                        $countStudents = \App\Models\Student::all()->count();
+                                                        $countSubmissions=
+                                                        \App\Models\AssignmentSubmission::where
+                                                        ('assignment_descriptions_id',$assignment->id)->count();
+                                                        $progress = $countSubmissions*100/$countStudents;
+                                                    @endphp
+                                                    <a href="/list-submissions/{{$assignment->id}}">
+                                                        <div class="progress progress-xs margin-vertical-10 ">
+                                                            <div class="progress-bar bg-danger" style="width: {{$progress}}%;
+                                                                    height:12px;"></div>
+                                                        </div>
+                                                    </a>
+
                                                 </td>
 
                                                 <td>{{$assignment->assignment_description->startdate}}</td>

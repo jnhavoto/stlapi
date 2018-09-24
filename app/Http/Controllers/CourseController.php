@@ -255,13 +255,17 @@ class CourseController extends ModelController
                 'user' => Auth::user()]);
     }
 
-    public function courseOverview(Request $request)
+    public function courseOverview($id)
     {
+//        return $id;
         //get course details
-        $course = Course::where('id', $request->id)->get();
+        $course = Course::where('id', $id)->first();
         //get all assignments of this course
-        $courseAssignemts = AssignmentDescription::where('courses_id', $request->id)->get();
+        $courseAssignemts = AssignmentDescription::where('courses_id', $id)->get();
 //        get all submitted assignments of this course
+
+        $courseMembers = TeacherCourse::with('teacher')->where('courses_id',$course->id)->get();
+
         $submissions = collect();
 
         foreach ($courseAssignemts as $assignment) {
@@ -272,8 +276,9 @@ class CourseController extends ModelController
 //        return $submissions;
 
         //get all students
-        return view('monitoring.course-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
+        return view('monitoring.course-overview', ['course' => $course, 'courseAssignemts' => $courseAssignemts,
             'submissions' => $submissions,
+            'courseMembers' => $courseMembers,
             'user' => Auth::user()]);
 
     }
@@ -355,7 +360,6 @@ class CourseController extends ModelController
                     'file_name' => explode('-a-', $valor)[1],
                 ]);
             }
-
         }
 
         return redirect('/courses');
@@ -412,7 +416,7 @@ class CourseController extends ModelController
         //Return all course material
         $material = Material::where('courses_id',$request->id)->get();
         //get all students
-        return view('design.coursedesign-overview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
+        return view('design.course-designoverview', ['course' => $course, 'courseAssignments' => $courseAssignemts,
             'submissions' => $submissions,
             'teacherCourses' => $teacherCourses,
             'materials' => $material,

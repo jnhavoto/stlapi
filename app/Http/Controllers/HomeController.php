@@ -71,23 +71,8 @@ class HomeController extends Controller
             'telephone' => $request->telephone,
             'password' => $request->password,
         ]);
-//        $userdata->save();
-////        $userdata -> message = $request->message;
-//
-//        $teacher = Teacher::where('users_id',Auth::user()->id)->first();
-//
-//        //
-//        $teacherCourses = TeacherCourse::with('course')->where('teachers_id',$teacher->id)->get();
-//        //
-//        $countAssign = 0;
-//        foreach ($teacherCourses as $course)
-//        {
-//            $counting = AssignmentDescriptionsHasCourse::where('courses_id',$course->courses_id)->get()->count();
-//            $countAssign=$countAssign+$counting;
-//        }
-//        //
-//        $assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
-//        //
         return redirect('/')->with('succes', 'Data has been successfully sent!');
     }
+
+
 }

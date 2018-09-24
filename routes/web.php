@@ -37,13 +37,16 @@ Route::post('/save-assignfiles', 'AssignmentDescriptionController@saveFiles');
 
 Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
 
-Route::get('/contact-details/{id}', function ($id) {
-	return view('communications.contact-details', ['user' => \App\User::find($id)]);
+Route::get('/user-details/{id}', function ($id) {
+	return view('communications.user-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
+
 
 Route::get('/contact-details-other/{id}', function ($id) {
     return view('communications.contact-details-other', ['user' => \App\User::find($id)]);
 })->middleware(['teacher']);
+
+Route::post('/save-announcfiles', 'AssignmentAnnouncementController@saveFiles');
 
 //get Chats
 Route::get('/chats', 'ChatController@getAllChats')->middleware(['teacher']);
@@ -116,7 +119,7 @@ Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['tea
 Route::get('/delete_course_file/{id}', 'CourseController@deleteCourseFile')->middleware(['teacher']);
 
 //Individual course overview
-Route::get('/coursedesign-overview/{id}','CourseController@courseDesignOverview')->middleware(['teacher']);
+Route::get('/course-designoverview/{id}','CourseController@courseDesignOverview')->middleware(['teacher']);
 
 
 //ASSIGNMENTS
@@ -125,7 +128,8 @@ Route::get('/assignments', 'AssignmentDescriptionController@getAssignments')->mi
 //get course template
 Route::get('/assignment-templates/{id}', 'AssignmentDescriptionController@getAssignmentTemplates')->middleware(['teacher']);
 
-Route::post('/create_assignment', 'AssignmentDescriptionController@createAssignment')->middleware(['teacher']);
+Route::get('/assignment-creategetform', 'AssignmentDescriptionController@getCreateAssignFromForm')->middleware
+(['teacher']);
 
 //createassign
 Route::get('/assignment-getfromtemplate/{id}', 'AssignmentDescriptionController@getassignfromtemplate')
@@ -135,6 +139,9 @@ Route::get('/assignment-getfromtemplate/{id}', 'AssignmentDescriptionController@
 Route::post('/create_assignmentFromTemplate', 'AssignmentDescriptionController@createAssignmentFromTemplate')
     ->middleware(['teacher']);
 
+Route::post('/assignment-createfromform', 'AssignmentDescriptionController@createAssignment')
+    ->middleware(['teacher']);
+
 //create assignment From Course Overview
 Route::post('/create_assignmentFromCourseOverview', 'AssignmentDescriptionController@createAssignmentFromCourseOverview')->middleware(['teacher']);
 
@@ -142,7 +149,7 @@ Route::post('/create_assignmentFromCourseOverview', 'AssignmentDescriptionContro
 Route::post('/delete-assignment', 'AssignmentDescriptionController@deleteAssignment')->middleware(['teacher']);
 
 //
-Route::get('/getupdate_assignment/{id}','AssignmentDescriptionController@getUpdateAssignment')->middleware(['teacher']);
+Route::get('/update-assignment/{id}','AssignmentDescriptionController@getUpdateAssignment')->middleware(['teacher']);
 
 //update assignment by id
 Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware
@@ -151,7 +158,7 @@ Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignm
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
 
 //Individual course overview
-Route::get('/assignmentdesign-overview/{id}','AssignmentDescriptionController@assignmentDesignOverview')->middleware
+Route::get('/assignment-designoverview/{id}','AssignmentDescriptionController@assignmentDesignOverview')->middleware
 (['teacher']);
 
 
@@ -165,24 +172,28 @@ Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher'
 //==============================================================
 
 //==============================================================
-//Start Monitoring
+//Start MONITORING
 //==============================================================
+//General courses overview
+Route::get('/courses-overview','CourseController@coursesOverview')->middleware(['teacher']);
 
 //Individual course overview
 Route::get('/course-overview/{id}','CourseController@courseOverview')->middleware(['teacher']);
 
-//General courses overview
-Route::get('/courses-overview','CourseController@coursesOverview')->middleware(['teacher']);
 
 Route::get('/assignments-overview', 'TeacherController@getAssignmentsOverview')->middleware(['teacher']);
+Route::get('/list-submissions/{id}', 'AssignmentSubmissionController@listSubmission')->middleware(['teacher']);
+Route::get('/submission-details/{id}', 'AssignmentSubmissionController@submissionDetails')->middleware(['teacher']);
 
 //Feedback overview
-Route::get('/feedbacks-overview', 'TeacherController@getAllFeedbacks')->middleware(['teacher']);
+Route::get('/list-feedbacks/{id}', 'FeedbackController@getAllFeedbacks')->middleware(['teacher']);
 
 Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll')->middleware(['teacher']); //route to get all
-Route::get('/submission-details', function () {
+/*
+ * Route::get('/submission-details', function () {
     return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
+*/
 
 Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->middleware(['teacher']);
 //==============================================================

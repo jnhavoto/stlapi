@@ -1,6 +1,29 @@
 @extends('layouts.layout')
 
 @section('content')
+
+    <style>
+        /* unvisited link */
+        a:link {
+            color: red;
+        }
+
+        /* visited link */
+        a:visited {
+            color: green;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: hotpink;
+        }
+
+        /* selected link */
+        a:active {
+            color: blue;
+        }
+    </style>
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -135,6 +158,7 @@
                                             <tr>
                                                 <th>{{ __('strings.AssignmentName') }} </th>
                                                 <th>{{ __('strings.CourseName') }} </th>
+                                                {{--<th>{{ __('strings.Progress') }} </th>--}}
                                                 <th># {{ __('strings.Submissions') }} </th>
                                                 <th># {{ __('strings.Feedbacks') }} </th>
                                                 <th># {{ __('strings.Ratings') }} </th>
@@ -143,75 +167,89 @@
                                             <tbody>
                                             {{--{{$assignmentsTeacher->count()}}--}}
                                             @if ($assignTeacher->count() != 0)
-                                                
-                                            
-                                            @foreach ($assignTeacher as $assign)
-                                                <tr>
-                                                    <td>
-                                                        <a href="/assignmentdesign-overview/{{$assign->id}}">
-                                                            {{$assign->case}}
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        {{--@php--}}
-                                                            {{--$course = \App\Models\Course::where('id',--}}
-                                                            {{--$assign->courses_id)->first();--}}
-                                                        {{--@endphp--}}
-                                                        <a href={{ url('/coursedesign-overview/'.$assign->courses_id)}}>
-                                                            {{$assign->course->name}}
-                                                        </a>
-                                                    </td>
+                                                @foreach ($assignTeacher as $assign)
+                                                    <tr>
+                                                        <td>
+                                                            <a href="/assignment-designoverview/{{$assign->id}}">
+                                                                {{$assign->case}}
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            {{--@php--}}
+                                                                {{--$course = \App\Models\Course::where('id',--}}
+                                                                {{--$assign->courses_id)->first();--}}
+                                                            {{--@endphp--}}
+                                                            <a href={{ url('/course-designoverview/'
+                                                            .$assign->courses_id)}}>
+                                                                {{$assign->course->name}}
+                                                            </a>
+                                                        </td>
 
-                                                    {{--<td>--}}
-                                                        {{--@php--}}
-                                                            {{--$announcements=--}}
-                                                            {{--\App\Models\AssignmentAnnouncement::where--}}
-                                                            {{--('assignment_descriptions_id',$assign->id)->get();--}}
-                                                        {{--@endphp--}}
-                                                        {{--{{ count($announcements)}}--}}
-                                                    {{--</td>--}}
-                                                    <td>
+                                                        <td>
                                                         @php
-                                                            $submissions=
+                                                            $countStudents = \App\Models\Student::all()->count();
+                                                            $countSubmissions=
                                                             \App\Models\AssignmentSubmission::where
-                                                            ('assignment_descriptions_id',$assign->id)->get();
+                                                            ('assignment_descriptions_id',$assign->id)->count();
+                                                            $progress = $countSubmissions*100/$countStudents;
                                                         @endphp
-                                                        {{ count($submissions)}}
-                                                    </td>
-                                                    <td>
-                                                        @php
-                                                            $totalfeedbacks=0;
-                                                            foreach ($submissions as $submission)
-                                                            {
-                                                                $feedbacks=
-                                                            \App\Models\Feedback::where
-                                                            ('assignment_submissions_id',
-                                                            $submission->id)->get();
-                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
-                                                            }
+                                                        <a href="/list-submissions/{{$assign->id}}">
+                                                            <div class="progress progress-xs margin-vertical-10 ">
+                                                                <div class="progress-bar bg-danger" style="width: {{$progress}}%;
+                                                                        height:12px;"></div>
+                                                            </div>
+                                                        </a>
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $submissions=
+                                                                    \App\Models\AssignmentSubmission::where
+                                                                    ('assignment_descriptions_id',$assign->id)->get();
+                                                                    $countFeedbacks=0;
+                                                                    foreach ($submissions as $submission)
+                                                                    {
+                                                                        $feedbacks= \App\Models\Feedback::where
+                                                                        ('assignment_submissions_id',$submission->id)
+                                                                        ->get();
+                                                                        $countFeedbacks =
+                                                                        $countFeedbacks+$feedbacks->count();
+                                                                    }
+                                                                    $progressF = $countFeedbacks*100/($countStudents*3);
+                                                            @endphp
 
-
-                                                        @endphp
-                                                        {{ $totalfeedbacks}}
-                                                    </td>
-                                                    <td>
-                                                        @php
-                                                            $totalfeedbacks=0;
-                                                            foreach ($submissions as $submission)
-                                                            {
-                                                                $feedbacks=
-                                                            \App\Models\Feedback::where
-                                                            ('assignment_submissions_id',
-                                                            $submission->id)->get();
-                                                                $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
-                                                            }
-
-
-                                                        @endphp
-
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                            <a href="/list-feedbacks/{{$assign->id}}">
+                                                                <div class="progress progress-xs margin-vertical-10 ">
+                                                                    <div class="progress-bar bg-danger" style="width: {{$progressF}}%;
+                                                                            height:12px;"></div>
+                                                                </div>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $countRatings=0;
+                                                                    foreach ($submissions as $submission)
+                                                                    {
+                                                                        /*Get all feedbacks for this submission*/
+                                                                        $feedbacks=\App\Models\Feedback::where('assignment_submissions_id', $submission->id)->get();
+                                                                        foreach ($feedbacks as $feedback)
+                                                                        {
+                                                                            /*get all ratings for this feedback*/
+                                                                            $ratings = \App\Models\RatingFeedback::where
+                                                                            ('feedbacks_id',$feedbacks->id)->count();
+                                                                            $countRatings=$countRatings+$ratings;
+                                                                        }
+                                                                    }
+                                                                $progressR = $countRatings*100/($countStudents*3);
+                                                            @endphp
+                                                            <a href="/list-ratings/{{$assign->id}}">
+                                                                <div class="progress progress-xs margin-vertical-10 ">
+                                                                    <div class="progress-bar bg-danger" style="width: {{$progressR}}%;
+                                                                            height:12px;"></div>
+                                                                </div>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             @endif
                                             </tbody>
                                             <tfoot>
@@ -275,8 +313,7 @@
                                                 @foreach ($teacherCourses as $course)
                                                     <tr>
                                                         <td>
-                                                            <a href="/" data-toggle="modal"
-                                                               data-target="#modalAssCourseDetails">
+                                                            <a href="/course-overview/{{$course->course->id}}">
                                                                 {{ $course->course->name }}
                                                             </a>
                                                         </td>
@@ -294,7 +331,10 @@
                                                                 \App\Models\CourseAnnouncement::where
                                                                 ('courses_id',$course->id)->get();
                                                             @endphp
-                                                            {{$courseNewAnnounc->count()}}
+                                                            <a href="/announcements/inbox">
+                                                                {{$courseNewAnnounc->count()}}
+                                                            </a>
+
                                                         </td>
                                                         <td>
                                                             @php
@@ -310,7 +350,11 @@
                                                                 \App\Models\UsersChat::where
                                                                 ('courses_id',$course->id)->get();
                                                             @endphp
-                                                            {{$courseNewChats->count()}}
+
+                                                            <a href="/chats">
+                                                                {{$courseNewChats->count()}}
+                                                            </a>
+
                                                         </td>
                                                     </tr>
                                                 @endforeach

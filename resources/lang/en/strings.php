@@ -178,4 +178,16 @@ return [
     'FileName' => 'File Name',
     'Download' => 'Download',
     'Delete' => 'Delete',
+    'SubmissionDate' => 'Subission Date',
+
+    'SubmissionsList' => 'Submissions List',
+    'SubmissionDetails' => 'Submission Details',
+    'AssignmentSubmissionDetails' => 'Assignment Submission Details',
+    'Area' => 'Area',
+    'Grade' => 'Grade',
+    'NumberOfStudents' => 'Number Of Students',
+    'DatesOfLectures' => 'Dates Of Lectures',
+    'Purpose' => 'Purpose',
+    'PreviewText' => 'Preview Text',
+
 ];

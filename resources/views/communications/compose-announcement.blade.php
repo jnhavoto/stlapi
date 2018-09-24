@@ -11,18 +11,25 @@
                 <div class="card">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs profile-tab" role="tablist">
-                        <li class="nav-item" onclick="tabClicked('course')"> <a class="nav-link active"
-                                                                                data-toggle="tab" href="#course"
-                                                                                role="tab">{{ __('strings.SelectCourse') }}</a> </li>
-                        <li class="nav-item" onclick="tabClicked('assignment')"> <a class="nav-link"
-                                                                                    data-toggle="tab" href="#assignment"
-                                                                                    role="tab">{{ __('strings.SelectAssignment') }}</a> </li>
+                        <li class="nav-item" onclick="tabClicked('course')">
+                            <a class="nav-link active"
+                               data-toggle="tab" href="#course"
+                               role="tab">{{ __('strings.SelectCourse') }}
+                            </a>
+                        </li>
+                        <li class="nav-item" onclick="tabClicked('assignment')">
+                            <a class="nav-link"
+                               data-toggle="tab" href="#assignment"
+                               role="tab">{{ __('strings.SelectAssignment') }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane active col-md-4" role="tabpanel" id="course">
                         <label>{{ __('strings.Course') }}                   </label>
-                        <select class="js-example-basic-multiple" name="course_id" style="width: 100%" id="select-coruse">
+                        <select class="js-example-basic-multiple" name="course_id" style="width: 100%"
+                                id="select-coruse">
                             <option name="selectTag" value="0">Select an course</option>
                             @foreach($courseToAnnounce as $course)
                                 <option
@@ -52,8 +59,8 @@
                         <input class="form-control" placeholder="Subject:" name="subject">
                     </div>
                     <div class="form-group">
-                <textarea name="message" class="textarea_editor form-control" rows="15" placeholder="Enter text ..
-                ."></textarea>
+                <textarea name="message" class="textarea_editor form-control" rows="15"
+                          placeholder="Enter text ..."></textarea>
                     </div>
                 </div>
             </form>
@@ -61,22 +68,24 @@
             <div class="col-md-12 m-b-20">
                 <label class="card-title"> {{ __('strings.Attachment') }}  </label>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <form id="file-input" class="dropzone">
                             <div class="fallback">
-                                <input name="file" type="file" multiple />
+                                <input name="file" type="file" multiple/>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <button id="submit-compose" type="submit" class="btn btn-success m-t-20"><i class="fa
-            fa-envelope-o"></i>{{ __('strings.Send') }} </button>
-            <button id="save-compose" type="submit" class="btn btn-inverse m-t-20" href="/announcements/save"><i
-                        class="fa fa-times"></i>{{ __('strings.Save') }}
+            <button id="submit-compose" type="submit"
+                    class="btn btn-success m-t-20">
+                <i class="fa fa-envelope-o"></i>{{ __('strings.Send') }}
+            </button>
+            <button id="save-compose" type="submit" class="btn btn-inverse m-t-20" href="/announcements/save">
+                <i class="fa fa-times"></i>{{ __('strings.Save') }}
             </button>
             <a class="btn btn-danger m-t-20"
-               href="{{ url()->previous()}}"><i class="fa fa-times"></i>  {{ __('strings.Discard') }}
+               href="{{ url()->previous()}}"><i class="fa fa-times"></i> {{ __('strings.Discard') }}
             </a>
         </div>
     </div>
@@ -93,22 +102,21 @@
          */
         function tabClicked(tabName) {
 
-            var $selectAssignment = jQuery( '#select-assignment' );
-            var $selectCourse = jQuery( '#select-coruse' );
+            var $selectAssignment = jQuery('#select-assignment');
+            var $selectCourse = jQuery('#select-coruse');
 
-            if(tabName == 'course'){
-                $selectAssignment.select2( 'val', '0' );
-            }else{
-                $selectCourse.select2( 'val', '0' );
+            if (tabName == 'course') {
+                $selectAssignment.select2('val', '0');
+            } else {
+                $selectCourse.select2('val', '0');
             }
         }
 
 
-
         function announcementDetails(announcement) {
-            var  announcement = announcement;
+            var announcement = announcement;
             $("#subject").html(announcement.subject);
-            $("#sender").html(announcement.teacher_member.teacher.user.first_name+' '+announcement.teacher_member.teacher
+            $("#sender").html(announcement.teacher_member.teacher.user.first_name + ' ' + announcement.teacher_member.teacher
                 .user.last_name);
             $("#date").html(announcement.created_at);
             $("#message").html(announcement.message);
@@ -126,4 +134,10 @@
             return [year, month, day].join('-');
         }
     </script>
+@endsection
+
+@section('dropzones')
+
+    <script type="text/javascript" src="{{ asset('js/compose-dropzone.js')}}"></script>
+
 @endsection

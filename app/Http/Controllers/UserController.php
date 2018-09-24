@@ -72,6 +72,5 @@ class UserController extends  ModelController
         }
             
     }
-
 }
 

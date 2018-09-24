@@ -35,7 +35,7 @@
                             </h6>
                             <form id="form-course" class="form-horizontal m-t-40" method="post"
                                   action="/course-createfromtemplate"
-                                  enctype="multipart/form-data">
+                                  enctype="multipart/form-data" data-toggle="validator" role="form">
                                 {{csrf_field()}}
                                 <input type="hidden" id="course_id" name="course_id" value="0"/>
 
@@ -59,18 +59,6 @@
                                     <input name="availabledate" type="text"
                                            class="form-control" >
                                 </div>
-
-                                {{--<div class="col-md-4 m-b-20">--}}
-                                    {{--<h4 class="card-title">{{ __('strings.SelectCourse') }} </h4>--}}
-                                    {{--<select class="js-example-basic-multiple" name="course_id" style="width: 100%">--}}
-                                        {{--@foreach($teacherCourses as $course)--}}
-                                            {{--<option--}}
-                                                    {{--name="selectTag"--}}
-                                                    {{--value="{{$course->course->id}}">{{$course->course->name}}--}}
-                                            {{--</option>--}}
-                                        {{--@endforeach--}}
-                                    {{--</select>--}}
-                                {{--</div>--}}
 
                                 <div class="col-md-12 m-b-20">
                                     <label class="control-label">
@@ -96,7 +84,7 @@
                                     </select>
                                 </div>
                             </form>
-                                <div class="col-md-12 m-b-20">
+                            <div class="col-md-12 m-b-20">
                                     <label class="card-title"> {{ __('strings.Material') }}  </label>
                                     <div class="row">
                                     <div class="col-md-6">
@@ -107,15 +95,15 @@
                                         </form>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                                 <hr>
-                                <div class="form-group" align-items-center>
+                            <div class="form-group" align-items-center>
                                     <button id="submit-course" type="submit" class="btn btn-success
                                     btn-rounded"> {{ __('strings.Submit') }} </button>
-                                    <a class="btn btn-default btn-rounded waves-effect btn-close"
+                                    <a class="btn btn-danger btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -125,62 +113,10 @@
 
     @include('design.modals.addmaterials')
 
-    <script>
+@endsection
 
-        {{--function selectedCourseID(course) {--}}
-{{--//            $("#c_course_content").val(course.id);--}}
-            {{--return course;--}}
-        {{--}--}}
+@section('dropzones')
 
-        {{--function uploadfile() {--}}
-            {{----}}
-        {{--}--}}
-        {{--$(document).ready(function(){--}}
+    <script type="text/javascript" src="{{ asset('js/course-dropzone.js')}}"></script>
 
-            {{--var course_id = selectedCourseID({{$course->id}});--}}
-            {{--console.log(course_id);--}}
-            {{--$('.courseInstrutors').val("");--}}
-
-            {{--$('.courseInstrutors').select2({--}}
-                {{--ajax: {--}}
-                    {{--url: "/instructors",--}}
-                    {{--processResults: function (data) {--}}
-                        {{--// Transforms the top-level key of the response object from 'items' to 'results'--}}
-                        {{--return {--}}
-                            {{--results: $.map(data, function (item) {--}}
-{{--//                                console.log(item['user']['first_name']);--}}
-                                {{--return {--}}
-                                    {{--text: item.user.first_name + ' ' + item.user.last_name,--}}
-                                    {{--id: item.id,--}}
-                                {{--}--}}
-                            {{--})--}}
-                        {{--}--}}
-                    {{--}--}}
-                {{--}--}}
-            {{--});--}}
-
-{{--// Fetch the preselected item, and add to the control--}}
-            {{--var studentSelect = $('.courseInstrutors');--}}
-            {{--$.ajax({--}}
-                {{--type: 'GET',--}}
-                {{--url: "/instructors/" + course_id--}}
-             {{--}).then(function (data) {--}}
-                {{--$.map(data, function (item) {--}}
-                    {{--console.log(item);--}}
-                    {{--// create the option and append to Select2--}}
-                    {{--var option = new Option(item.user.first_name + ' ' + item.user.last_name, item['id'], true, true);--}}
-                    {{--studentSelect.append(option).trigger('change');--}}
-
-                    {{--// manually trigger the `select2:select` event--}}
-                    {{--studentSelect.trigger({--}}
-                        {{--type: 'select2:select',--}}
-                        {{--params: {--}}
-                            {{--data: item--}}
-                        {{--}--}}
-                    {{--});--}}
-                {{--})--}}
-            {{--});--}}
-
-        {{--});--}}
-    </script>
 @endsection

@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -128,4 +129,20 @@ class AssignmentSubmission extends Eloquent
 	{
 		return $this->hasMany(\App\Models\Feedback::class, 'assignment_submissions_id');
 	}
+
+    public function getStartDateOfLectureAttribute($start_date_of_lecture){
+        $carbonated_date = Carbon::parse($start_date_of_lecture)->format('Y-m-d');
+        return $carbonated_date;
+    }
+
+    public function getEndDateOfLectureAttribute($end_date_of_lecture){
+        $carbonated_date = Carbon::parse($end_date_of_lecture)->format('Y-m-d');
+        return $carbonated_date;
+    }
+
+    public function getSubmissionDateAttribute($submission_date){
+        $carbonated_date = Carbon::parse($submission_date)->format('Y-m-d');
+        return $carbonated_date;
+    }
+
 }

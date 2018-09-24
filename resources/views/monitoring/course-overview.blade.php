@@ -31,67 +31,59 @@
             <!-- Start of Assignment List -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-6 col-md-7">
                     <div class="card">
-                        <!-- .left-right-aside-column-->
-                        <div class="contact-page-aside">
-
-                            <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">
-                                                {{ __('strings.CourseDetails') }}
-                                                {{--My Assignment List--}}
-                                            </h4></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex flex-wrap">
+                                        <div>
+                                            <h3 class="card-title">{{ __('strings.CourseDetails') }}</h3>
+                                            {{--<h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>--}}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped color-table info-table"
-                                           data-page-size="10">
-                                        <thead>
-                                        <tr>
-                                            <th> #</th>
-                                            <th>{{ __('strings.CourseName') }} </th>
-                                            <th>{{ __('strings.CourseContent') }} </th>
-                                            <th>{{ __('strings.StartDate') }} </th>
-                                            <th>{{ __('strings.AvailableFrom') }} </th>
-                                            <th>{{ __('strings.Status') }}
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($courses as $course)
-                                            <tr>
-                                                <td> {{ $course->id}}</td>
-                                                <td>
-                                                    <a href="/" data-toggle="modal"
-                                                       data-target="#modalAssCourseDetails">
-                                                        {{ $course->name }}
-                                                    </a>
-
-                                                </td>
-                                                {{--<td> {{substr($course->course_content, 0, 45) }} </td>--}}
-                                                <td> {{ $course->startdate}}</td>
-                                                <td> {{ $course->available_date}}</td>
-                                                <td>
-                                                    @if($course->status == 0)
-                                                        {{ __('strings.Active') }}
-                                                        {{--Active--}}
-                                                    @else
-                                                        {{ __('strings.Disactive') }}
-                                                        {{--Disactive--}}
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                <div class="col-12">
+                                    <div class="col-md-6 m-b-20">
+                                        <h4>{{ __('strings.CourseName') }}</h4>
+                                        <label> {{ $course->name }} </label>
+                                    </div>
+                                    <div>
+                                        <hr class="m-t-0 m-b-0">
+                                    </div>
+                                    <div class="col-md-4 m-b-20">
+                                        <h4 class="control-label">{{ __('strings.StartDate') }}</h4>
+                                        <label> {{ $course->startdate }} </label>
+                                    </div> <div>
+                                        <hr class="m-t-0 m-b-0">
+                                    </div>
+                                    <div class="col-md-4 m-b-20">
+                                        <h4 class="control-label">{{ __('strings.AvailableDate') }}</h4>
+                                        <label> {{$course->available_date }}</label>
+                                    </div>
+                                    <div>
+                                        <hr class="m-t-0 m-b-0">
+                                    </div>
+                                    <div class="col-md-6 m-b-20">
+                                        <h4 class="control-label">{{ __('strings.Members') }} </h4>
+                                        @foreach($courseMembers as $members)
+                                            <label>
+                                                {{$members->teacher->user->first_name .' '.$members->teacher->user->last_name }}
+                                            </label>
+                                            <br/>
                                         @endforeach
-                                        </tbody>
-                                    </table>
+                                    </div>
                                 </div>
-                                <!-- .left-aside-column-->
                             </div>
-                            <!-- /.left-right-aside-column-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"> {{ __('strings.Instructions') }} </h4>
+                            {{--<h6 class="card-subtitle">Different Devices Used to Visit</h6>--}}
+                            <label> {{$course->course_content }}</label>
                         </div>
                     </div>
                 </div>
@@ -117,18 +109,6 @@
                                                 {{--Course Assignments--}}
                                             </h4></div>
                                         <div class="ml-auto">
-                                            <td colspan="2">
-                                                <button type="button" class="btn btn-info btn-rounded"
-                                                        data-toggle="modal"
-                                                        {{--data-target="#create-assignment"--}}
-                                                        {{--onclick="createAssignmentCleanDetails()"--}}
-                                                >
-                                                    {{ __('strings.AddNewAssignment') }}
-                                                    {{--Add New Assignment--}}
-                                                </button>
-                                            </td>
-                                        </div>
-                                        <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="{{ __('strings.SearchAssignments') }}"
                                                    class="form-control">
                                         </div>
@@ -142,19 +122,15 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            {{--<th> {{ __('strings.AssignmentNumber') }} </th>--}}
                                             <th> {{ __('strings.AssignmentName') }} </th>
-                                            {{--<th> {{ __('strings.Instructions') }} </th>--}}
-                                            {{--</th>--}}
-                                            <th> {{ __('strings.StartDate') }}</th>
-                                            <th> {{ __('strings.EndDate') }} </th>
-                                            <th> {{ __('strings.AvailableFrom') }}</th>
-                                            <th> {{ __('strings.Status') }} </th>
-                                            <th> {{ __('strings.Action') }} </th>
+                                            <th> {{ __('strings.Progress') }} </th>
+                                            <th> # {{ __('strings.Submissions') }}</th>
+                                            <th> # {{ __('strings.Feedbacks') }} </th>
+                                            <th> # {{ __('strings.Ratings') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($assignments as $assignment)
+                                        @foreach ($courseAssignemts as $assignment)
                                             <tr>
                                                 <td> {{ $assignment->number }}</td>
                                                 <td>
@@ -164,40 +140,44 @@
                                                     </a>
 
                                                 </td>
-                                                {{--<td>--}}
-                                                    {{--<a href="/assignment_details">--}}
-                                                    {{--<a href="/" data-toggle="modal" data-target="#modalAssCourseDetails"--}}
-                                                    {{--onclick="assignCourseDetails({{$t_assignment}})">--}}
-                                                    {{--{{substr($assignment->instructions, 0, 45) }}--}}
-                                                    {{--</a>--}}
-                                                {{--</td>--}}
-                                                <td>{{$assignment->startdate}}</td>
-                                                <td>{{$assignment->deadline}}</td>
-                                                <td>{{$assignment->available_date}}</td>
+
                                                 <td>
-                                                    @if($assignment->status == 0)
-                                                        {{ __('strings.Active') }}
-                                                    @else
-                                                        {{ __('strings.Disactive') }}
-                                                    @endif
+                                                    @php
+                                                        $countStudents = \App\Models\Student::all()->count();
+                                                        $countSubmissions=
+                                                        \App\Models\AssignmentSubmission::where
+                                                        ('assignment_descriptions_id',$assignment->id)->count();
+                                                        $progress = $countSubmissions*100/$countStudents;
+                                                    @endphp
+                                                    <div class="progress progress-xs margin-vertical-10 ">
+                                                        <div class="progress-bar bg-danger" style="width: {{$progress}}%;
+                                                        height:12px;"></div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
-                                                    <a href="{{ url('/update_assignment/'
-                                                    .$assignment->id)}}" class="btn btn-info
-                                                     btn-circle btn-lg">
-                                                        <i text-md-center class="ti-pencil-alt"></i>
-                                                    </a>
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                    btn-lg"
-                                                            href="/"
-                                                            data-toggle="modal"
-                                                            data-target="#confirm-delete-assignment"
-                                                            {{--onclick="deteleAssignment({{$assignment->assignment_description}})"--}}
-                                                    >
-                                                        <i text-md-center class="ti-trash"></i>
-                                                    </button>
+                                                    @php
+                                                        $submissions=
+                                                        \App\Models\AssignmentSubmission::where
+                                                        ('assignment_descriptions_id',$assignment->id)->get();
+                                                    @endphp
+                                                    {{ count($submissions)}}
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        $totalfeedbacks=0;
+                                                        foreach ($submissions as $submission)
+                                                        {
+                                                            $feedbacks=
+                                                        \App\Models\Feedback::where
+                                                        ('assignment_submissions_id',
+                                                        $submission->id)->get();
+                                                            $totalfeedbacks = count($feedbacks)+$totalfeedbacks;
+                                                        }
+                                                    @endphp
+                                                    {{ $totalfeedbacks}}
+                                                </td>
+                                                <td>
+
                                                 </td>
 
                                             </tr>

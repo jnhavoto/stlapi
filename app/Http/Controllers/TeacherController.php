@@ -115,12 +115,7 @@ class TeacherController extends ModelController
     }
 
 
-    public function getAllFeedbacks()
-    {
-        $feedbacks = Feedback::all();
-        return view('monitoring.feedbacks',['feedbacks' => $feedbacks,
-            'user' => Auth::user()]);
-    }
+
 
     public function updateTeacher($id)
     {
