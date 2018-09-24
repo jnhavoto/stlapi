@@ -118,7 +118,7 @@ class AssignmentAnnouncementController  extends ModelController
         if(count($courseAnnounces)!=0)
             $inbox_announcements->push($courseAnnounces);
 
-        /* return $inbox_announcements; */
+//        return $inbox_announcements;
         return view('communications.inbox', ['inbox_announcements' => $inbox_announcements, 'label' => 'inbox', 'count_inbox'
         => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
             'user'=>Auth::user()]);

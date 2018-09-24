@@ -193,6 +193,7 @@ return [
     'DatesOfLectures' => 'Datum',
     'Purpose' => 'Syfte',
     'PreviewText' => 'Förhandsgranska',
+    'Back' => 'Tillbaka',
 
 
 

@@ -10,7 +10,7 @@
 
         /* visited link */
         a:visited {
-            color: black;
+            color: purple;
         }
 
         /* mouse over link */
@@ -386,7 +386,9 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {{--{{$assignmentsTeacher->count()}}--}}
+                                            @php
+                                                $totalChats = 0; $totalAnnouncs = 0;
+                                            @endphp
                                             @foreach ($assignTeacher as $assign)
                                                 <tr>
                                                     <td>
@@ -398,33 +400,35 @@
                                                         @php
                                                             $assignAnnounc =
                                                             \App\Models\AssignmentAnnouncement::where
-                                                            ('assignment_descriptions_id',$assign->id)->get();
+                                                            ('assignment_descriptions_id',$assign->id)->count();
+                                                            $totalAnnouncs = $totalAnnouncs+$assignAnnounc;
                                                         @endphp
-                                                        {{ count($assignAnnounc)}}
+                                                        {{ $assignAnnounc}}
                                                     </td>
                                                     <td>
                                                         @php
                                                             $assignNewAnnounc =
                                                             \App\Models\AssignmentAnnouncement::where
-                                                            ('assignment_descriptions_id',$assign->id)->get();
+                                                            ('assignment_descriptions_id',$assign->id)->count();
                                                         @endphp
-                                                        {{ count($assignNewAnnounc)}}
+                                                        {{ $assignNewAnnounc}}
                                                     </td>
                                                     <td>
                                                         @php
                                                             $assignChats=
                                                             \App\Models\UsersChat::where
-                                                            ('assignment_description_id',$assign->id)->get();
+                                                            ('assignment_description_id',$assign->id)->count();
+                                                            $totalChats = $totalChats+$assignChats;
                                                         @endphp
-                                                        {{$assignChats->count()}}
+                                                        {{$assignChats}}
                                                     </td>
                                                     <td>
                                                         @php
                                                             $assignNewChats=
                                                             \App\Models\UsersChat::where
-                                                            ('assignment_description_id',$assign->id)->get();
+                                                            ('assignment_description_id',$assign->id)->count();
                                                         @endphp
-                                                        {{$assignNewChats->count()}}
+                                                        {{$assignNewChats}}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -462,7 +466,7 @@
                                 <p>{{ __('strings.Instructor') }}</p>
                                 {{--<a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Follow</a>--}}
                                 <div class="row text-center m-t-20">
-                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                    <div class="col-lg-3 col-md-4 m-t-20">
                                         <h3 class="m-b-0 font-light">{{$teacherCourses->count()}}</h3>
                                         <small>{{ __('strings.Courses') }}</small>
                                     </div>
@@ -470,12 +474,12 @@
                                         <h3 class="m-b-0 font-light">{{$countAssign}}</h3>
                                         <small>{{ __('strings.Assignments') }}</small>
                                     </div>
-                                    {{--<div class="col-lg-4 col-md-4 m-t-20">--}}
-                                        {{--<h3 class="m-b-0 font-light">--}}
-                                             {{--{{$assignChats->count()}}--}}
-                                        {{--</h3>--}}
-                                        {{--<small>{{ __('strings.Communications') }}</small>--}}
-                                    {{--</div>--}}
+                                    <div class="col-lg-5 col-md-4 m-t-20">
+                                        <h3 class="m-b-0 font-light">
+                                             {{$totalAnnouncs+$totalChats}}
+                                        </h3>
+                                        <small>{{ __('strings.Communications') }}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>

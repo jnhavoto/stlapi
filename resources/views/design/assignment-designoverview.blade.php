@@ -24,6 +24,11 @@
                         </li>
                         <li class="breadcrumb-item">   {{ __('strings.AssignmentDetails') }}
                         </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ url()->previous()}}">
+                                {{ __('strings.Back') }}
+                            </a>
+                        </li>
                     </ol>
                 </div>
             </div>

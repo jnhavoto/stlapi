@@ -189,5 +189,6 @@ return [
     'DatesOfLectures' => 'Dates Of Lectures',
     'Purpose' => 'Purpose',
     'PreviewText' => 'Preview Text',
+    'Back' => 'Back',
 
 ];

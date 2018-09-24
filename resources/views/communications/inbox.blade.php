@@ -1,6 +1,33 @@
 @extends('communications.announcements')
 
 @section('announcements')
+    {{--<style>--}}
+        {{--/* unvisited link */--}}
+        {{--a:link {--}}
+            {{--color: black;--}}
+            {{--font-weight: bold;--}}
+        {{--}--}}
+
+        {{--/* visited link */--}}
+        {{--a:visited {--}}
+            {{--color: black;--}}
+            {{--font-weight: normal;--}}
+
+        {{--}--}}
+
+        {{--/* mouse over link */--}}
+        {{--a:hover {--}}
+            {{--color: hotpink;--}}
+            {{--font-weight: normal;--}}
+        {{--}--}}
+
+        {{--/* selected link */--}}
+        {{--a:active {--}}
+            {{--color: blue;--}}
+            {{--font-weight: normal;--}}
+        {{--}--}}
+    {{--</style>--}}
+
     <div class="card-body p-t-0">
         <div class="card b-all shadow-none">
             <div class="inbox-center table-responsive">
@@ -11,17 +38,25 @@
                         @else
                             @foreach($inbox_announcements as $data)
                                 @foreach($data as $announcement)
-                                    <tr class="unread">
+                                    <tr class="unread" href="/announcements-details/{{$announcement->id}}">
+                                        @php
+                                            if($announcement->courses_id <> '')
+                                                $id = 'c'.$announcement->id;
+                                            else
+                                                $id = 'a'.$announcement->id;
+                                        @endphp
                                         <td style="width:40px">
                                             <div class="checkbox">
-                                                <input type="checkbox" id="checkbox0" value="check">
-                                                <label for="checkbox0"></label>
+                                                <input type="checkbox" id="{{$id}}" value="check">
+                                                <label for="{{$id}}"></label>
                                             </div>
+
+                                            {{$id}}
                                         </td>
                                         <td style="width:40px" class="hidden-xs-down"><i class="fa fa-star-o"></i></td>
                                         <td class="hidden-xs-down">
                                             @php
-                                                if($announcement->courses_id <> ' ')
+                                                if($announcement->courses_id == '')
                                                     $type = 'Assignment';
                                             @endphp
 
