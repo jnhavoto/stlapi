@@ -107,8 +107,7 @@ return [
 //==== Assignments
 //    'Monitoring' => 'Övervakning',
     'AssignmentsOverview' => 'Uppgifter-översikt',
-//    'AssignmentOverview' => ‘Uppgift-översikt’, (Is this true? What is overview if there is only one item?)
-
+    'AssignmentOverview' => 'Uppgift-översikt',
 
     //100818
     'CourseDescription' => 'Kursbeskrivning',
