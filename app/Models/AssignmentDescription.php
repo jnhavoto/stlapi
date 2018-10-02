@@ -69,6 +69,8 @@ class AssignmentDescription extends Eloquent
 		'group_teachers_id'
 	];
 
+	protected $with=['teachers'];
+
 	public function group_teacher()
 	{
 		return $this->belongsTo(\App\Models\GroupTeacher::class, 'group_teachers_id');
