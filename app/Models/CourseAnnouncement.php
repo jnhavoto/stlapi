@@ -34,6 +34,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class CourseAnnouncement extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+    protected $table = 'course_announcements';
 
 	protected $casts = [
 		'courses_id' => 'int',
@@ -55,6 +56,8 @@ class CourseAnnouncement extends Eloquent
 		'teachers_id',
 		'teacher_members_id'
 	];
+
+	protected $with = ['teacher'];
 
 	public function course()
 	{

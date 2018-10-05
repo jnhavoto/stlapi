@@ -25,10 +25,19 @@ Route::get('user/{id}/student/last-assignment-description', 'StudentController@g
  * AssignmentAnnouncement Routes
  */
 Route::get('assignment-announcements', 'AssignmentAnnouncementController@getAll'); //route to get all
-Route::get('assignment-announcements/{id}', 'AssignmentAnnouncementController@get'); //route to get a specific
+Route::get('assignment-announcement/{id}', 'AssignmentAnnouncementController@get'); //route to get a specific
 Route::post('assignment-announcement', 'AssignmentAnnouncementController@store'); //route to store
 Route::put('assignment-announcement/{id}', 'AssignmentAnnouncementController@update'); // route to update
 Route::delete('assignment-announcement/{id}', 'AssignmentAnnouncementController@destroy'); //route to delete
+
+/**
+ * CourseAnnouncement Routes
+ */
+Route::get('course-announcements', 'CourseAnnouncementController@getAll'); //route to get all
+Route::get('course-announcement/{id}', 'CourseAnnouncementController@get'); //route to get a specific
+Route::post('course-announcement', 'CourseAnnouncementController@store'); //route to store
+Route::put('course-announcement/{id}', 'CourseAnnouncementController@update'); // route to update
+Route::delete('course-announcement/{id}', 'CourseAnnouncementController@destroy'); //route to delete
 
 
 /**

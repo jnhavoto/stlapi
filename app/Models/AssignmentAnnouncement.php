@@ -58,6 +58,8 @@ class AssignmentAnnouncement extends Eloquent
 		'date'
 	];
 
+    protected $with=['teacher'];
+
 	public function assignment_description()
 	{
 		return $this->belongsTo(\App\Models\AssignmentDescription::class, 'assignment_descriptions_id');

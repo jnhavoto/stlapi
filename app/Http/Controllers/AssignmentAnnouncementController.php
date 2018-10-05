@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignmentAnnouncement;
 use App\Models\AssignmentDescriptionsHasTeacher;
-use App\Models\Course;
 use App\Models\CourseAnnouncement;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
