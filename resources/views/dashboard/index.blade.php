@@ -2,27 +2,27 @@
 
 @section('content')
 
-    <style>
-        /* unvisited link */
-        a:link {
-            color: blue;
-        }
+    {{--<style>--}}
+        {{--/* unvisited link */--}}
+        {{--a:link {--}}
+            {{--color: blue;--}}
+        {{--}--}}
 
-        /* visited link */
-        a:visited {
-            color: purple;
-        }
+        {{--/* visited link */--}}
+        {{--a:visited {--}}
+            {{--color: purple;--}}
+        {{--}--}}
 
-        /* mouse over link */
-        a:hover {
-            color: hotpink;
-        }
+        {{--/* mouse over link */--}}
+        {{--a:hover {--}}
+            {{--color: hotpink;--}}
+        {{--}--}}
 
-        /* selected link */
-        a:active {
-            color: blue;
-        }
-    </style>
+        {{--/* selected link */--}}
+        {{--a:active {--}}
+            {{--color: blue;--}}
+        {{--}--}}
+    {{--</style>--}}
 
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->

@@ -96,6 +96,7 @@ $telephone=['0735430430','0761258772','0730882913','0722220276','0721788074','07
 //        ];
 //    }
 //});
+
 $factory->define(\App\User::class, function (Faker $faker) {
         return [
             'first_name' => $faker->firstName,
