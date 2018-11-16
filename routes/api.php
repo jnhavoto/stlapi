@@ -30,12 +30,25 @@ Route::post('assignment-announcement', 'AssignmentAnnouncementController@store')
 Route::put('assignment-announcement/{id}', 'AssignmentAnnouncementController@update'); // route to update
 Route::delete('assignment-announcement/{id}', 'AssignmentAnnouncementController@destroy'); //route to delete
 
+
+/**
+ * Material Routes
+ */
+Route::get('material', 'MaterialController@getAll'); //route to get all
+Route::get('material/{assign_id}', 'MaterialController@getAssignmentMaterial'); //route to get all
+Route::get('material/{id}', 'MaterialController@get'); //route to get a specific
+Route::post('material', 'MaterialController@store'); //route to store
+Route::put('material/{id}', 'MaterialController@update'); // route to update
+Route::delete('material/{id}', 'MaterialController@destroy'); //route to delete
+
+
 /**
  * CourseAnnouncement Routes
  */
 Route::get('course-announcements', 'CourseAnnouncementController@getAll'); //route to get all
 Route::get('course-announcement/{id}', 'CourseAnnouncementController@get'); //route to get a specific
 Route::post('course-announcement', 'CourseAnnouncementController@store'); //route to store
+Route::post('update-courseReadStatus/{id}', 'CourseAnnouncementController@updateReadStatus'); //route to store
 Route::put('course-announcement/{id}', 'CourseAnnouncementController@update'); // route to update
 Route::delete('course-announcement/{id}', 'CourseAnnouncementController@destroy'); //route to delete
 
@@ -426,7 +439,3 @@ Route::get('workplace-tool-student/{id}', 'WorkplaceToolStudentController@get');
 Route::post('workplace-tool-student', 'WorkplaceToolStudentController@store'); //route to store
 Route::put('workplace-tool-student/{id}', 'WorkplaceToolStudentController@update'); // route to update
 Route::delete('workplace-tool-student/{id}', 'WorkplaceToolStudentController@destroy'); //route to delete
-
-
-
-

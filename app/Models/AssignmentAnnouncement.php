@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class AssignmentAnnouncement
- * 
+ *
  * @property int $id
  * @property string $message
  * @property string $subject
@@ -23,7 +23,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $teacher_members_id
  * @property int $teachers_id
  * @property \Carbon\Carbon $date
- * 
+ *
  * @property \App\Models\AssignmentDescription $assignment_description
  * @property \App\Models\TeacherMember $teacher_member
  * @property \App\Models\Teacher $teacher
@@ -39,6 +39,7 @@ class AssignmentAnnouncement extends Eloquent
 
 	protected $casts = [
 		'status' => 'int',
+		'readstatus' => 'int',
 		'assignment_descriptions_id' => 'int',
 		'teacher_members_id' => 'int',
 		'teachers_id' => 'int'
@@ -52,6 +53,7 @@ class AssignmentAnnouncement extends Eloquent
 		'message',
 		'subject',
 		'status',
+		'readstatus',
 		'assignment_descriptions_id',
 		'teacher_members_id',
 		'teachers_id',

@@ -11,9 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        factory(\App\Models\Department::class, 3)->create();
-//        factory(\App\Models\CoursesTemplate::class, 4)->create();
-//        factory(\App\Models\Course::class, 3)->create();
+        factory(\App\Models\Department::class, 3)->create();
+        factory(\App\Models\CoursesTemplate::class, 4)->create();
+        factory(\App\Models\Course::class, 3)->create();
         factory(\App\Models\City::class, 5)->create();
         factory(\App\Models\School::class, 5)->create();
         factory(\App\User::class, 2)->create();
@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 //        factory(\App\Models\Student::class, 1)->create();
 //        factory(\App\Models\TeacherCourse::class, 5)->create();
 //        factory(\App\Models\GroupTeacher::class, 3)->create();
-//        factory(\App\Models\AssignmentTemplate::class, 4)->create();
+        factory(\App\Models\AssignmentTemplate::class, 4)->create();
 //        factory(\App\Models\AssignmentDescription::class, 5)->create();
 //        factory(\App\Models\AssignmentDescriptionsHasCourse::class, 5)->create();
 //        factory(\App\Models\AssignmentDescriptionsHasTeacher::class, 3)->create();

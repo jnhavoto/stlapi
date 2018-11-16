@@ -60,11 +60,11 @@
                     </div>
                     <div class="form-group">
                 <textarea name="message" class="textarea_editor form-control" rows="15"
-                          placeholder="Enter text ..."></textarea>
+                          placeholder="Enter message ..."></textarea>
                     </div>
                 </div>
             </form>
-            <h4><i class="ti-link"></i> {{ __('strings.Attachment') }}</h4>
+            <!-- <h4><i class="ti-link"></i> {{ __('strings.Attachment') }}</h4>
             <div class="col-md-12 m-b-20">
                 <label class="card-title"> {{ __('strings.Attachment') }}  </label>
                 <div class="row">
@@ -76,7 +76,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <button id="submit-compose" type="submit"
                     class="btn btn-success m-t-20">
                 <i class="fa fa-envelope-o"></i>{{ __('strings.Send') }}

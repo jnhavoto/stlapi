@@ -33,11 +33,11 @@ class AssignmentSubmissionController extends ModelController
      */
     public function salvarOrUpdateAssignment(Request $request)
     {
-
+        //if assignment is to save then update
         if ($request->get('operation') == 'save') {
-            AssignmentDescription::find($request->get('assignment')['assignment_descriptions_id'])->update(['status' => 1]);
+            AssignmentDescription::find($request->get('assignment')['assignment_descriptions_id'])->update(['status' => 0]);
         }
-
+        //if the assignment is new then create
         if ($request->get('assignment')['id'] == null) {
             $assignemnt = AssignmentSubmission::create($request->get('assignment'));
         } else {

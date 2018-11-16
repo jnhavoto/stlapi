@@ -87,7 +87,7 @@ class AssignmentDescriptionController extends ModelController
             if(strpos($chave, 'file') !== false){
 
                 Material::create([
-                    'assignments_id' => $assignment->id,
+                    'assignment_description_id' => $assignment->id,
                     'path' => $valor,
                     'file_name' => explode('-a-', $valor)[1],
                 ]);
@@ -322,7 +322,7 @@ class AssignmentDescriptionController extends ModelController
                 if(strpos($chave, 'file') !== false)
                 {
                     Material::create([
-                        'assignments_id' => $assigment->id,
+                        'assignment_description_id' => $assigment->id,
                         'path' => $valor,
                         'file_name' => explode('-a-', $valor)[1],
                     ]);

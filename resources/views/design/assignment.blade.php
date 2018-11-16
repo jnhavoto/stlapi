@@ -60,6 +60,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @if($assTemplates->count() > 0)
                                         @foreach ($assTemplates as $assignment)
                                             <tr>
                                                 <td> {{ $assignment->number}}</td>
@@ -85,6 +86,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                            @endif
                                         </tbody>
 
                                     </table>

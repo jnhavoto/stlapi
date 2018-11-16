@@ -68,7 +68,7 @@ class AssignmentAnnouncementController  extends ModelController
         //get all announcements where the teacher/instructor is a mmember
         $inbox_announcements = collect();
         //return $memberof;
-        
+
         foreach ($memberof as $membership)
         {
             $announcementasmember = AssignmentAnnouncement::with('teacher_member')
@@ -88,11 +88,11 @@ class AssignmentAnnouncementController  extends ModelController
             if(count($course_announcementasmember) > 0){
                 $inbox_announcements ->push($course_announcementasmember);
             }
-        }        
+        }
         return $inbox_announcements;
         return view('communications.announcement-details', [
             'announcementDetails' => $announcementDetails,
-            'label' => 'inbox', 
+            'label' => 'inbox',
             'count_inbox' => $this->count_announcements('inbox'),
             'count_sent' => $this->count_announcements('sent'),
             'count_draft' => $this->count_announcements('draft'),
@@ -142,8 +142,8 @@ class AssignmentAnnouncementController  extends ModelController
         if(count($courseAnnounces)!=0)
             $sent_announcements->push($courseAnnounces);
 
-//        return $sent_announcements;     
-       
+//        return $sent_announcements;
+
         return view('communications.sent', ['sent_announcements' => $sent_announcements, 'label' => 'sent', 'count_inbox'
         => $this->count_announcements('inbox'),'count_sent' => $this->count_announcements('sent'),'count_draft' => $this->count_announcements('draft'),
             'user'=>Auth::user()]);
@@ -183,18 +183,18 @@ class AssignmentAnnouncementController  extends ModelController
                     $announcementasmember = AssignmentAnnouncement::where('teachers_id','<>',$teacherid->id)->where('status', 1)->get();
                     $course_announcementasmember = CourseAnnouncement::where('teachers_id','<>',$teacherid->id)->where('status', 1)->get();
                 }
-                   
+
                 elseif ($type == 'sent'){
                     $announcementasmember = AssignmentAnnouncement::where('teachers_id',$teacherid->id)->where('status', 1)->get();
                     $course_announcementasmember = CourseAnnouncement::where('teachers_id',$teacherid->id)->where('status', 1)->get();
                 }
-                    
+
                 elseif ($type == 'draft'){
                     $announcementasmember = AssignmentAnnouncement::where('teachers_id',$teacherid->id)->where('status', 0)->get();
                     $course_announcementasmember = CourseAnnouncement::where('teachers_id',$teacherid->id)
                         ->where('status', 0)->get();
                 }
-                   
+
             if(count($announcementasmember) > 0 || count($course_announcementasmember) > 0){
                 $count_annouc += count($announcementasmember)+count($course_announcementasmember);
             }
@@ -242,7 +242,6 @@ class AssignmentAnnouncementController  extends ModelController
                     'message' => $request->message,
                     'subject' => $request->subject,
                     'status' => 1,
-                    'date' => Carbon::now(),
                     'teachers_id' => $teacher->id,
                     'teacher_members_id' => $teacher->id,
                 ]
@@ -257,7 +256,6 @@ class AssignmentAnnouncementController  extends ModelController
                         'message' => $request->message,
                         'subject' => $request->subject,
                         'status' => 1,
-                        'date' => Carbon::now(),
                         'teachers_id' => $teacher->id,
                         'teacher_members_id' => $teacher->id,
                     ]
@@ -265,15 +263,15 @@ class AssignmentAnnouncementController  extends ModelController
 //            }
         }
 
-        foreach ($request->all() as $chave => $valor){
-            if(strpos($chave, 'file') !== false){
-                Material::create([
-                    'course_announcements_id' => $request->course_id,
-                    'path' => $valor,
-                    'file_name' => explode('-a-', $valor)[1],
-                ]);
-            }
-        }
+        // foreach ($request->all() as $chave => $valor){
+        //     if(strpos($chave, 'file') !== false){
+        //         Material::create([
+        //             'course_announcements_id' => $request->course_id,
+        //             'path' => $valor,
+        //             'file_name' => explode('-a-', $valor)[1],
+        //         ]);
+        //     }
+        // }
 
         return redirect('/announcements/sent');
     }
@@ -291,7 +289,7 @@ class AssignmentAnnouncementController  extends ModelController
             }
 
         } else {
-            return response(['Nao existe Ficheiro']);
+            return response(['No files']);
         }
 
         return ['imagem' => $filePath];

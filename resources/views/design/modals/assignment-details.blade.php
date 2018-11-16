@@ -28,17 +28,15 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div>
                         <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
                                 data-target="#copy-assignment" onclick="assignDetails({{$assignment}})"
                                 data-dismiss="modal" aria-hidden="true">Copy this
                             Assignment</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </div>
-
-
