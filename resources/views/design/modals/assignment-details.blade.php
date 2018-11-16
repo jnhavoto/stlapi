@@ -30,10 +30,10 @@
 
                 <div class="form-group">
                     <div>
-                        <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
+                        <!-- <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
                                 data-target="#copy-assignment" onclick="assignDetails({{$assignmenttemp}})"
-                                data-dismiss="modal" aria-hidden="true">Copy this
-                            Assignment</button>
+                                data-dismiss="modal" aria-hidden="true">Copy this Assignment
+                          </button> -->
                     </div>
                 </div>
             </div>
