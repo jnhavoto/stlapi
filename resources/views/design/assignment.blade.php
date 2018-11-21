@@ -241,8 +241,6 @@
     @include('design.modals.assignment-details')
         <!--Modal for Assignment Course List-->
     @include('design.modals.assignmentCourse-details')
-    {{--Modal for copying an assignment--}}
-    @include('design.modals.copy-assignment')
     @include('design.modals.update-assignment')
     @include('design.modals.confirm-delete-assignment')
     @include('design.modals.create-assignment')
