@@ -34,10 +34,10 @@
                                                             href="/assignment-getfromtemplate/{{$assignment->id}}">
                                                         <i text-md-center> Copy this Assignment</i>
                         </a> -->
-                        <button type="button" class="btn btn-info btn-rounded" 
+                        <!-- <button type="button" class="btn btn-info btn-rounded" 
                         href="/assignment-getfromtemplate/{{$assignment->id}}"
                                 aria-hidden="true">Copy this Assignment
-                        </button>
+                        </button> -->
 
                     </div>
                 </div>
