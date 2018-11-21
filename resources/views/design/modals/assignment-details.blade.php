@@ -30,10 +30,15 @@
 
                 <div class="form-group">
                     <div>
-                        <!-- <button type="button" class="btn btn-info btn-rounded" data-toggle="modal"
-                                data-target="#copy-assignment" onclick="assignDetails({{$assignmenttemp}})"
-                                data-dismiss="modal" aria-hidden="true">Copy this Assignment
-                          </button> -->
+                        <!-- <a class="btn btn-info btn-circle btn-lg m-r-5"
+                                                            href="/assignment-getfromtemplate/{{$assignment->id}}">
+                                                        <i text-md-center> Copy this Assignment</i>
+                        </a> -->
+                        <button type="button" class="btn btn-info btn-rounded" 
+                        href="/assignment-getfromtemplate/{{$assignment->id}}">
+                                aria-hidden="true">Copy this Assignment
+                        </button>
+
                     </div>
                 </div>
             </div>
