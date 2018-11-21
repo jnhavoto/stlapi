@@ -30,14 +30,8 @@
 
                 <div class="form-group">
                     <div>
-                        <!-- <a class="btn btn-info btn-circle btn-lg m-r-5"
-                                                            href="/assignment-getfromtemplate/{{$assignment->id}}">
-                                                        <i text-md-center> Copy this Assignment</i>
-                        </a> -->
-                        <!-- <button type="button" class="btn btn-info btn-rounded" 
-                        href="/assignment-getfromtemplate/{{$assignment->id}}"
-                                aria-hidden="true">Copy this Assignment
-                        </button> -->
+                        <button type="button" class="btn btn-info btn-rounded" aria-hidden="true">Copy this Assignment
+                        </button>
 
                     </div>
                 </div>
