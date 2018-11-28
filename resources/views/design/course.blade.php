@@ -188,8 +188,16 @@
                                                     @endphp
                                                     {{--@if($course->available_date > $currentdate)--}}
                                                     {{--Change course status: active vs disactive--}}
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
+
+                                                    <!-- <button type="button" class="btn btn-info btn-circle
+                                                     btn-lg m-r-5" ><i class="ti-key"></i></button> -->
+
+                                                     <a href="{{ url('/updatecoursestatus/'
+                                                    .$course->course->id)}}" class="btn btn-info
+                                                     btn-circle btn-lg">
+                                                        <i text-md-center class="ti-key"></i>
+                                                    </a>
+
                                                     {{--Update/Edit course--}}
                                                     <a href="{{ url('/coursetoupdate/'
                                                     .$course->course->id)}}" class="btn btn-info

@@ -461,6 +461,28 @@ class CourseController extends ModelController
     }
 
 
+    public function UpdadeCourseStatus($id){
+        //get the course       
+        $course = Course::findOrFail($id);
+        if($course->status == 0) {
+        $course->status = 1;
+        } else{
+            $course->status = 0;
+        }        
+        $course->save();
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        $teachers = Teacher::all();
+        $teacherCourses = TeacherCourse::with('course')->where('teachers_id', $teacher->id)->get();
+        $coursesTemplates = CoursesTemplate::all();
+//        return $teacherMembers;
+        return view('design.course',
+            ['coursesTemplates' => $coursesTemplates,
+                'teacherCourses' => $teacherCourses,
+                'teachers' => $teachers,
+                'user' => Auth::user()]);
+    }
+
+
 
 
 

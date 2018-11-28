@@ -112,6 +112,9 @@ Route::post('/submit_course', 'CourseController@submitCourse')->middleware(['tea
 //Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
 Route::get('/coursetoupdate/{id}', 'CourseController@getCourseToUpdate')->middleware(['teacher'])->name('updatecourse');
 
+//update course status
+Route::get('/updatecoursestatus/{id}', 'CourseController@UpdadeCourseStatus')->middleware(['teacher']);
+
 Route::post('/updateCourse/{id}', 'CourseController@updateCourseById')->middleware(['teacher'])->name('update_Course');
 //delete a course
 Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
