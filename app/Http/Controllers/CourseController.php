@@ -209,7 +209,8 @@ class CourseController extends ModelController
         } else
 
             //check if course and tecaher_course have any error: if not, then write on the DB
-            if ($course and $teacher_course and $student_course) {
+       //     if ($course and $teacher_course and $student_course) {
+        if ($course and $teacher_course) {
                 DB::commit();
 
             //saving files
