@@ -10,31 +10,36 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class FeedbackTypeAssignmentSubmission
+ * Class FeedbacksTodo
  * 
  * @property int $id
- * @property int $feedback_type_id
+ * @property int $status
+ * @property int $students_id
  * @property int $assignment_submissions_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
  * @property \App\Models\AssignmentSubmission $assignment_submission
- * @property \App\Models\FeedbackType $feedback_type
+ * @property \App\Models\Student $student
+ * @property \Illuminate\Database\Eloquent\Collection $feedback
  *
  * @package App\Models
  */
-class FeedbackTypeAssignmentSubmission extends Eloquent
+class FeedbacksTodo extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	protected $table = 'feedbacks_todo';
 
 	protected $casts = [
-		'feedback_type_id' => 'int',
+		'status' => 'int',
+		'students_id' => 'int',
 		'assignment_submissions_id' => 'int'
 	];
 
 	protected $fillable = [
-		'feedback_type_id',
+		'status',
+		'students_id',
 		'assignment_submissions_id'
 	];
 
@@ -43,8 +48,13 @@ class FeedbackTypeAssignmentSubmission extends Eloquent
 		return $this->belongsTo(\App\Models\AssignmentSubmission::class, 'assignment_submissions_id');
 	}
 
-	public function feedback_type()
+	public function student()
 	{
-		return $this->belongsTo(\App\Models\FeedbackType::class);
+		return $this->belongsTo(\App\Models\Student::class, 'students_id');
+	}
+
+	public function feedback()
+	{
+		return $this->hasMany(\App\Models\Feedback::class, 'feedbacks_todo_idfeedbacks_todo');
 	}
 }

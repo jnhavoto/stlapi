@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 23 Jul 2018 14:08:49 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
@@ -15,6 +15,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $assignment_descriptions_id
  * @property int $courses_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $deleted_at
  * 
  * @property \App\Models\AssignmentDescription $assignment_description
  * @property \App\Models\Course $course
@@ -23,7 +26,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class AssignmentDescriptionsHasCourse extends Eloquent
 {
-	public $timestamps = false;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
 		'assignment_descriptions_id' => 'int',

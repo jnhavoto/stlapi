@@ -2,12 +2,11 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 13 Sep 2018 04:00:16 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -25,6 +24,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $deleted_at
  * 
  * @property \App\Models\Department $department
+ * @property \Illuminate\Database\Eloquent\Collection $announcements
  * @property \Illuminate\Database\Eloquent\Collection $assignment_descriptions
  * @property \Illuminate\Database\Eloquent\Collection $course_announcements
  * @property \Illuminate\Database\Eloquent\Collection $materials
@@ -62,6 +62,11 @@ class Course extends Eloquent
 		return $this->belongsTo(\App\Models\Department::class, 'departments_id');
 	}
 
+	public function announcements()
+	{
+		return $this->hasMany(\App\Models\Announcement::class, 'courses_id');
+	}
+
 	public function assignment_descriptions()
 	{
 		return $this->belongsToMany(\App\Models\AssignmentDescription::class, 'assignment_descriptions_has_courses', 'courses_id', 'assignment_descriptions_id')
@@ -97,14 +102,4 @@ class Course extends Eloquent
 	{
 		return $this->hasMany(\App\Models\UsersChat::class, 'courses_id');
 	}
-
-    public function getStartDateAttribute($startdate){
-        $carbonated_date = Carbon::parse($startdate)->format('Y-m-d');
-        return $carbonated_date;
-    }
-
-    public function getAvailableDateAttribute($available_date){
-        $carbonated_date = Carbon::parse($available_date)->format('Y-m-d');
-        return $carbonated_date;
-    }
 }

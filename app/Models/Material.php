@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 11 Sep 2018 14:35:29 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
@@ -24,9 +24,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $deleted_at
  * 
  * @property \App\Models\Course $course
- * @property \App\Models\CourseAnnouncement $course_announcement
  * @property \App\Models\AssignmentAnnouncement $assignment_announcement
  * @property \App\Models\AssignmentDescription $assignment_description
+ * @property \App\Models\CourseAnnouncement $course_announcement
  *
  * @package App\Models
  */
@@ -55,18 +55,18 @@ class Material extends Eloquent
 		return $this->belongsTo(\App\Models\Course::class, 'courses_id');
 	}
 
-	public function course_announcement()
-	{
-		return $this->belongsTo(\App\Models\CourseAnnouncement::class, 'course_announcements_id');
-	}
-
 	public function assignment_announcement()
 	{
-		return $this->belongsTo(\App\Models\AssignmentAnnouncement::class,'assignment_announcements_id');
+		return $this->belongsTo(\App\Models\AssignmentAnnouncement::class);
 	}
 
 	public function assignment_description()
 	{
-		return $this->belongsTo(\App\Models\AssignmentDescription::class, 'assignment_descriptions_id');
+		return $this->belongsTo(\App\Models\AssignmentDescription::class);
+	}
+
+	public function course_announcement()
+	{
+		return $this->belongsTo(\App\Models\CourseAnnouncement::class, 'course_announcements_id');
 	}
 }

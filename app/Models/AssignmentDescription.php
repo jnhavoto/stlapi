@@ -2,12 +2,11 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 13 Sep 2018 03:52:59 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -26,10 +25,15 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
+ * @property int $students_id
+ * @property int $students_id1
  * 
  * @property \App\Models\GroupTeacher $group_teacher
  * @property \App\Models\Course $course
+ * @property \App\Models\Student $student
+ * @property \Illuminate\Database\Eloquent\Collection $announcements
  * @property \Illuminate\Database\Eloquent\Collection $assignment_announcements
+ * @property \Illuminate\Database\Eloquent\Collection $students
  * @property \Illuminate\Database\Eloquent\Collection $courses
  * @property \Illuminate\Database\Eloquent\Collection $teachers
  * @property \Illuminate\Database\Eloquent\Collection $assignment_submissions
@@ -48,7 +52,9 @@ class AssignmentDescription extends Eloquent
 		'number' => 'int',
 		'status' => 'int',
 		'courses_id' => 'int',
-		'group_teachers_id' => 'int'
+		'group_teachers_id' => 'int',
+		'students_id' => 'int',
+		'students_id1' => 'int'
 	];
 
 	protected $dates = [
@@ -66,10 +72,10 @@ class AssignmentDescription extends Eloquent
 		'available_date',
 		'status',
 		'courses_id',
-		'group_teachers_id'
+		'group_teachers_id',
+		'students_id',
+		'students_id1'
 	];
-
-	protected $with=['teachers'];
 
 	public function group_teacher()
 	{
@@ -81,9 +87,26 @@ class AssignmentDescription extends Eloquent
 		return $this->belongsTo(\App\Models\Course::class, 'courses_id');
 	}
 
+	public function student()
+	{
+		return $this->belongsTo(\App\Models\Student::class, 'students_id1');
+	}
+
+	public function announcements()
+	{
+		return $this->hasMany(\App\Models\Announcement::class);
+	}
+
 	public function assignment_announcements()
 	{
 		return $this->hasMany(\App\Models\AssignmentAnnouncement::class, 'assignment_descriptions_id');
+	}
+
+	public function students()
+	{
+		return $this->belongsToMany(\App\Models\Student::class, 'assignment_description_has_students', 'assignment_description_id', 'students_id')
+					->withPivot('id', 'status', 'deleted_at')
+					->withTimestamps();
 	}
 
 	public function courses()
@@ -121,17 +144,4 @@ class AssignmentDescription extends Eloquent
 	{
 		return $this->hasMany(\App\Models\UsersChat::class);
 	}
-
-    public function getDeadLineAttribute($deadline){
-        $carbonated_date = Carbon::parse($deadline)->format('Y-m-d');
-        return $carbonated_date;
-    }
-    public function getStartDateAttribute($startdate){
-        $carbonated_date = Carbon::parse($startdate)->format('Y-m-d');
-        return $carbonated_date;
-    }
-    public function getAvailableDateAttribute($available_date){
-        $carbonated_date = Carbon::parse($available_date)->format('Y-m-d');
-        return $carbonated_date;
-    }
 }

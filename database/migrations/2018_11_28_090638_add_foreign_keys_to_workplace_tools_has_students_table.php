@@ -14,8 +14,8 @@ class AddForeignKeysToWorkplaceToolsHasStudentsTable extends Migration {
 	{
 		Schema::table('workplace_tools_has_students', function(Blueprint $table)
 		{
-			$table->foreign('workplace_tools_id', 'fk_workplace_tools_has_students_workplace_tools1')->references('id')->on('workplace_tools')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('students_id', 'fk_workplace_tools_has_students_students1')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('workplace_tools_id', 'fk_workplace_tools_has_students_workplace_tools1')->references('id')->on('workplace_tools')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToWorkplaceToolsHasStudentsTable extends Migration {
 	{
 		Schema::table('workplace_tools_has_students', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_workplace_tools_has_students_workplace_tools1');
 			$table->dropForeign('fk_workplace_tools_has_students_students1');
+			$table->dropForeign('fk_workplace_tools_has_students_workplace_tools1');
 		});
 	}
 

@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Announcement;
+
+class AnnouncementsController extends ModelController
+{    
+    public function __construct() {
+        $this->object = new Announcement();
+        $this->objectName = 'announcment';
+        $this->objectNames = 'announcments';
+        $this->relactionships = [];
+    }
+
+    
+}

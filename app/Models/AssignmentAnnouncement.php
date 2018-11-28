@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 13 Sep 2018 16:16:03 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class AssignmentAnnouncement
- *
+ * 
  * @property int $id
  * @property string $message
  * @property string $subject
@@ -23,10 +23,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $teacher_members_id
  * @property int $teachers_id
  * @property \Carbon\Carbon $date
- *
+ * 
+ * @property \App\Models\Teacher $teacher
  * @property \App\Models\AssignmentDescription $assignment_description
  * @property \App\Models\TeacherMember $teacher_member
- * @property \App\Models\Teacher $teacher
  * @property \Illuminate\Database\Eloquent\Collection $materials
  * @property \Illuminate\Database\Eloquent\Collection $student_announcements_statuses
  *
@@ -39,7 +39,6 @@ class AssignmentAnnouncement extends Eloquent
 
 	protected $casts = [
 		'status' => 'int',
-		'readstatus' => 'int',
 		'assignment_descriptions_id' => 'int',
 		'teacher_members_id' => 'int',
 		'teachers_id' => 'int'
@@ -53,14 +52,16 @@ class AssignmentAnnouncement extends Eloquent
 		'message',
 		'subject',
 		'status',
-		'readstatus',
 		'assignment_descriptions_id',
 		'teacher_members_id',
 		'teachers_id',
 		'date'
 	];
 
-    protected $with=['teacher'];
+	public function teacher()
+	{
+		return $this->belongsTo(\App\Models\Teacher::class, 'teachers_id');
+	}
 
 	public function assignment_description()
 	{
@@ -70,11 +71,6 @@ class AssignmentAnnouncement extends Eloquent
 	public function teacher_member()
 	{
 		return $this->belongsTo(\App\Models\TeacherMember::class, 'teacher_members_id');
-	}
-
-	public function teacher()
-	{
-		return $this->belongsTo(\App\Models\Teacher::class, 'teachers_id');
 	}
 
 	public function materials()

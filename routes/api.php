@@ -30,6 +30,44 @@ Route::post('assignment-announcement', 'AssignmentAnnouncementController@store')
 Route::put('assignment-announcement/{id}', 'AssignmentAnnouncementController@update'); // route to update
 Route::delete('assignment-announcement/{id}', 'AssignmentAnnouncementController@destroy'); //route to delete
 
+/**
+ * Announcement Routes
+ */
+Route::get('announcement', 'AnnouncementsController@getAll'); //route to get all
+Route::get('announcement/{id}', 'AnnouncementsController@get'); //route to get a specific
+Route::post('announcement', 'AnnouncementsController@store'); //route to store
+Route::put('announcement/{id}', 'AnnouncementsController@update'); // route to update
+Route::delete('announcement/{id}', 'AnnouncementsController@destroy'); //route to delete
+
+
+/**
+ * AnnouncementHasStudent Routes
+ */
+Route::get('announcement-student', 'AnnouncementsHasStudentController@getAll'); //route to get all
+Route::get('announcement-student/{id}', 'AnnouncementsHasStudentController@get'); //route to get a specific
+Route::post('announcement-student', 'AnnouncementsHasStudentController@store'); //route to store
+Route::put('announcement-student/{id}', 'AnnouncementsHasStudentController@update'); // route to update
+Route::delete('announcement-student/{id}', 'AnnouncementsHasStudentController@destroy'); //route to delete
+
+/**
+ * AnnouncementHasTeacher Routes
+ */
+Route::get('announcement-teacher', 'AnnouncementsHasTeacherController@getAll'); //route to get all
+Route::get('announcement-teacher/{id}', 'AnnouncementsHasTeacherController@get'); //route to get a specific
+Route::post('announcement-teacher', 'AnnouncementsHasTeacherController@store'); //route to store
+Route::put('announcement-teacher/{id}', 'AnnouncementsHasTeacherController@update'); // route to update
+Route::delete('announcement-teacher/{id}', 'AnnouncementsHasTeacherController@destroy'); //route to delete
+
+
+/**
+ * AssignmenntDescriptionHasStudent Routes
+ */
+Route::get('assignment-description-student', 'AssignmenntDescriptionHasStudentController@getAll'); //route to get all
+Route::get('assignment-description-student/{id}', 'AssignmenntDescriptionHasStudentController@get'); //route to get a specific
+Route::post('assignment-description-student', 'AssignmenntDescriptionHasStudentController@store'); //route to store
+Route::put('assignment-description-student/{id}', 'AssignmenntDescriptionHasStudentController@update'); // route to update
+Route::delete('assignment-description-student/{id}', 'AssignmenntDescriptionHasStudentController@destroy'); //route to delete
+
 
 /**
  * Material Routes
@@ -151,6 +189,16 @@ Route::post('feedback', 'FeedbackController@store'); //route to store
 Route::put('feedback/{id}', 'FeedbackController@update'); // route to update
 Route::delete('feedback/{id}', 'FeedbackController@destroy'); //route to delete
 
+
+/**
+ * FeedbackTodo Routes
+ */
+Route::get('feedbacks-todo', 'FeedbacksTodoController@getAll'); //route to get all
+Route::get('feedbacks-todo/{id}', 'FeedbacksTodoController@getFeedbackForStudent');
+Route::get('feedbacks-todo/{id}', 'FeedbacksTodoController@get'); //route to get a specific
+Route::post('feedbacks-todo', 'FeedbacksTodoController@store'); //route to store
+Route::put('feedbacks-todo/{id}', 'FeedbacksTodoController@update'); // route to update
+Route::delete('feedbacks-todo/{id}', 'FeedbacksTodoController@destroy'); //route to delete
 
 /**
  * FeedbackMessage Routes

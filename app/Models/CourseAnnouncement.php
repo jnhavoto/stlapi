@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 13 Sep 2018 16:17:00 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
@@ -25,8 +25,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $deleted_at
  * 
  * @property \App\Models\Course $course
- * @property \App\Models\Teacher $teacher
  * @property \App\Models\TeacherMember $teacher_member
+ * @property \App\Models\Teacher $teacher
  * @property \Illuminate\Database\Eloquent\Collection $materials
  *
  * @package App\Models
@@ -34,7 +34,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class CourseAnnouncement extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-    protected $table = 'course_announcements';
 
 	protected $casts = [
 		'courses_id' => 'int',
@@ -57,21 +56,19 @@ class CourseAnnouncement extends Eloquent
 		'teacher_members_id'
 	];
 
-	protected $with = ['teacher'];
-
 	public function course()
 	{
 		return $this->belongsTo(\App\Models\Course::class, 'courses_id');
 	}
 
-	public function teacher()
-	{
-		return $this->belongsTo(\App\Models\Teacher::class, 'teachers_id');
-	}
-
 	public function teacher_member()
 	{
 		return $this->belongsTo(\App\Models\TeacherMember::class, 'teacher_members_id');
+	}
+
+	public function teacher()
+	{
+		return $this->belongsTo(\App\Models\Teacher::class, 'teachers_id');
 	}
 
 	public function materials()

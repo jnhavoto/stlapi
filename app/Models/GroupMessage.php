@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 23 Jul 2018 14:08:50 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
@@ -21,8 +21,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \App\Models\StudentMember $student_member
  * @property \App\Models\GroupsAssignmentDescription $groups_assignment_description
+ * @property \App\Models\StudentMember $student_member
  *
  * @package App\Models
  */
@@ -43,13 +43,13 @@ class GroupMessage extends Eloquent
 		'status'
 	];
 
-	public function student_member()
-	{
-		return $this->belongsTo(\App\Models\StudentMember::class, 'member_id');
-	}
-
 	public function groups_assignment_description()
 	{
 		return $this->belongsTo(\App\Models\GroupsAssignmentDescription::class, 'groups_assignment_descriptions_id');
+	}
+
+	public function student_member()
+	{
+		return $this->belongsTo(\App\Models\StudentMember::class, 'member_id');
 	}
 }

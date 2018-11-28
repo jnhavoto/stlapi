@@ -10,37 +10,40 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class DigitalToolsHasStudent
+ * Class AnnouncementsHasStudent
  * 
  * @property int $id
- * @property int $digital_tools_id
+ * @property int $announcements_id
  * @property int $students_id
+ * @property int $status
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \App\Models\DigitalTool $digital_tool
+ * @property \App\Models\Announcement $announcement
  * @property \App\Models\Student $student
  *
  * @package App\Models
  */
-class DigitalToolsHasStudent extends Eloquent
+class AnnouncementsHasStudent extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'digital_tools_id' => 'int',
-		'students_id' => 'int'
+		'announcements_id' => 'int',
+		'students_id' => 'int',
+		'status' => 'int'
 	];
 
 	protected $fillable = [
-		'digital_tools_id',
-		'students_id'
+		'announcements_id',
+		'students_id',
+		'status'
 	];
 
-	public function digital_tool()
+	public function announcement()
 	{
-		return $this->belongsTo(\App\Models\DigitalTool::class, 'digital_tools_id');
+		return $this->belongsTo(\App\Models\Announcement::class, 'announcements_id');
 	}
 
 	public function student()

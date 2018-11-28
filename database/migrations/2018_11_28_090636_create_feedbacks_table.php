@@ -25,6 +25,7 @@ class CreateFeedbacksTable extends Migration {
 			$table->integer('students_id')->unsigned()->index('fk_feedbacks_students1_idx');
 			$table->integer('assignment_submissions_id')->unsigned()->index('fk_feedbacks_assignment_submissions1_idx');
 			$table->integer('status')->nullable();
+			$table->integer('feedbacks_todo_idfeedbacks_todo')->index('fk_feedbacks_feedbacks_todo1_idx');
 		});
 	}
 

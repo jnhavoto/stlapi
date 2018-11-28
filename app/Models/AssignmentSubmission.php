@@ -2,12 +2,11 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 23 Jul 2018 14:08:50 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -43,11 +42,12 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \App\Models\Student $student
  * @property \App\Models\AssignmentDescription $assignment_description
+ * @property \App\Models\Student $student
  * @property \Illuminate\Database\Eloquent\Collection $media_types
  * @property \Illuminate\Database\Eloquent\Collection $feedback_types
  * @property \Illuminate\Database\Eloquent\Collection $feedback
+ * @property \Illuminate\Database\Eloquent\Collection $feedbacks_todos
  *
  * @package App\Models
  */
@@ -65,10 +65,7 @@ class AssignmentSubmission extends Eloquent
 		'assignment_descriptions_id' => 'int'
 	];
 
-    protected $with = ['assignment_description'];
-
-
-    protected $dates = [
+	protected $dates = [
 		'start_date_of_lecture',
 		'end_date_of_lecture',
 		'submission_date'
@@ -102,14 +99,14 @@ class AssignmentSubmission extends Eloquent
 		'assignment_descriptions_id'
 	];
 
-	public function student()
-	{
-		return $this->belongsTo(\App\Models\Student::class, 'students_id');
-	}
-
 	public function assignment_description()
 	{
 		return $this->belongsTo(\App\Models\AssignmentDescription::class, 'assignment_descriptions_id');
+	}
+
+	public function student()
+	{
+		return $this->belongsTo(\App\Models\Student::class, 'students_id');
 	}
 
 	public function media_types()
@@ -130,19 +127,8 @@ class AssignmentSubmission extends Eloquent
 		return $this->hasMany(\App\Models\Feedback::class, 'assignment_submissions_id');
 	}
 
-    public function getStartDateOfLectureAttribute($start_date_of_lecture){
-        $carbonated_date = Carbon::parse($start_date_of_lecture)->format('Y-m-d');
-        return $carbonated_date;
-    }
-
-    public function getEndDateOfLectureAttribute($end_date_of_lecture){
-        $carbonated_date = Carbon::parse($end_date_of_lecture)->format('Y-m-d');
-        return $carbonated_date;
-    }
-
-    public function getSubmissionDateAttribute($submission_date){
-        $carbonated_date = Carbon::parse($submission_date)->format('Y-m-d');
-        return $carbonated_date;
-    }
-
+	public function feedbacks_todos()
+	{
+		return $this->hasMany(\App\Models\FeedbacksTodo::class, 'assignment_submissions_id');
+	}
 }

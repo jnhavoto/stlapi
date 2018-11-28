@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 23 Jul 2018 14:08:50 +0000.
+ * Date: Wed, 28 Nov 2018 08:36:06 +0000.
  */
 
 namespace App\Models;
@@ -24,9 +24,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $students_id
  * @property int $assignment_submissions_id
  * @property int $status
+ * @property int $feedbacks_todo_idfeedbacks_todo
  * 
- * @property \App\Models\Student $student
  * @property \App\Models\AssignmentSubmission $assignment_submission
+ * @property \App\Models\FeedbacksTodo $feedbacks_todo
+ * @property \App\Models\Student $student
  * @property \Illuminate\Database\Eloquent\Collection $rating_feedbacks
  *
  * @package App\Models
@@ -39,7 +41,8 @@ class Feedback extends Eloquent
 	protected $casts = [
 		'students_id' => 'int',
 		'assignment_submissions_id' => 'int',
-		'status' => 'int'
+		'status' => 'int',
+		'feedbacks_todo_idfeedbacks_todo' => 'int'
 	];
 
 	protected $dates = [
@@ -54,17 +57,23 @@ class Feedback extends Eloquent
 		'feedback_date',
 		'students_id',
 		'assignment_submissions_id',
-		'status'
+		'status',
+		'feedbacks_todo_idfeedbacks_todo'
 	];
-
-	public function student()
-	{
-		return $this->belongsTo(\App\Models\Student::class, 'students_id');
-	}
 
 	public function assignment_submission()
 	{
 		return $this->belongsTo(\App\Models\AssignmentSubmission::class, 'assignment_submissions_id');
+	}
+
+	public function feedbacks_todo()
+	{
+		return $this->belongsTo(\App\Models\FeedbacksTodo::class, 'feedbacks_todo_idfeedbacks_todo');
+	}
+
+	public function student()
+	{
+		return $this->belongsTo(\App\Models\Student::class, 'students_id');
 	}
 
 	public function rating_feedbacks()

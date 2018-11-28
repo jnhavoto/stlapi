@@ -10,37 +10,40 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class AssignmentDescriptionsHasTeacher
+ * Class AnnouncementsHasTeacher
  * 
  * @property int $id
- * @property int $assignment_descriptions_id
+ * @property int $announcements_idannouncement
  * @property int $teachers_id
+ * @property int $status
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \App\Models\AssignmentDescription $assignment_description
+ * @property \App\Models\Announcement $announcement
  * @property \App\Models\Teacher $teacher
  *
  * @package App\Models
  */
-class AssignmentDescriptionsHasTeacher extends Eloquent
+class AnnouncementsHasTeacher extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'assignment_descriptions_id' => 'int',
-		'teachers_id' => 'int'
+		'announcements_idannouncement' => 'int',
+		'teachers_id' => 'int',
+		'status' => 'int'
 	];
 
 	protected $fillable = [
-		'assignment_descriptions_id',
-		'teachers_id'
+		'announcements_idannouncement',
+		'teachers_id',
+		'status'
 	];
 
-	public function assignment_description()
+	public function announcement()
 	{
-		return $this->belongsTo(\App\Models\AssignmentDescription::class, 'assignment_descriptions_id');
+		return $this->belongsTo(\App\Models\Announcement::class, 'announcements_idannouncement');
 	}
 
 	public function teacher()
