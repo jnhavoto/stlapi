@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 28 Nov 2018 08:36:06 +0000.
+ * Date: Sat, 08 Dec 2018 11:58:13 +0000.
  */
 
 namespace App\Models;
@@ -25,12 +25,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
- * @property int $students_id
- * @property int $students_id1
  * 
  * @property \App\Models\GroupTeacher $group_teacher
  * @property \App\Models\Course $course
- * @property \App\Models\Student $student
  * @property \Illuminate\Database\Eloquent\Collection $announcements
  * @property \Illuminate\Database\Eloquent\Collection $assignment_announcements
  * @property \Illuminate\Database\Eloquent\Collection $students
@@ -52,9 +49,7 @@ class AssignmentDescription extends Eloquent
 		'number' => 'int',
 		'status' => 'int',
 		'courses_id' => 'int',
-		'group_teachers_id' => 'int',
-		'students_id' => 'int',
-		'students_id1' => 'int'
+		'group_teachers_id' => 'int'
 	];
 
 	protected $dates = [
@@ -72,9 +67,7 @@ class AssignmentDescription extends Eloquent
 		'available_date',
 		'status',
 		'courses_id',
-		'group_teachers_id',
-		'students_id',
-		'students_id1'
+		'group_teachers_id'
 	];
 
 	public function group_teacher()
@@ -85,11 +78,6 @@ class AssignmentDescription extends Eloquent
 	public function course()
 	{
 		return $this->belongsTo(\App\Models\Course::class, 'courses_id');
-	}
-
-	public function student()
-	{
-		return $this->belongsTo(\App\Models\Student::class, 'students_id1');
 	}
 
 	public function announcements()

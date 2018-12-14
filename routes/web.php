@@ -90,8 +90,7 @@ Route::get('/course-getfromtemplate/{id}', 'CourseController@getCourseFromTempla
 Route::get('/course-createnew', 'CourseController@newCourse')->middleware
 (['teacher']);
 
-Route::post('/course-createfromtemplate', 'CourseController@createCourseFromTemplate')
-    ->middleware(['teacher']);
+Route::post('/course-createfromtemplate', 'CourseController@createCourseFromTemplate')->middleware(['teacher']);
 
 Route::get('/instructors/{id}', 'CourseController@getInstructorsByCourseId')->middleware(['teacher']);
 //get members of a course
@@ -116,6 +115,9 @@ Route::get('/coursetoupdate/{id}', 'CourseController@getCourseToUpdate')->middle
 Route::get('/updatecoursestatus/{id}', 'CourseController@UpdadeCourseStatus')->middleware(['teacher']);
 
 Route::post('/updateCourse/{id}', 'CourseController@updateCourseById')->middleware(['teacher'])->name('update_Course');
+
+Route::post('/update_course', 'CourseController@updateCourse')->middleware(['teacher']);
+
 //delete a course
 Route::post('/delete-course', 'CourseController@deleteCourse')->middleware(['teacher']);
 //delete course material

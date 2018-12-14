@@ -33,8 +33,8 @@
                             <h4 class="card-title">{{ __('strings.UpdateCourse') }} </h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
                             </h6>
-                            <form id="form-course" class="form-horizontal m-t-40" method="post"
-                                  action="{{ route('update_Course', ['id'=>$course->id]) }}" enctype="multipart/form-data">
+                            <form id="form-updatecourse" class="form-horizontal m-t-40"
+                                  action="/update_course" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="course_id" name="course_id" value="{{$course->id}}"/>
 
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.AvailableDate') }}</label>
-                                    <input name="availabledate" type="text"
+                                    <input name="available_date" type="text"
                                            class="form-control" value="{{
                                     $course->available_date }}">
                                 </div>
@@ -118,7 +118,7 @@
                                 </div>
                                 <hr><hr>
                                 <div class="form-group" align-items-center>
-                                    <button id="submit-course" type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
+                                    <button id="submit-updatecourse" type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
                                     <a class="btn btn-default btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>
@@ -131,6 +131,11 @@
     </div>
 
     @include('design.modals.addmaterials')
+@section('dropzones')
+
+    <script type="text/javascript" src="{{ asset('js/course-update.js')}}"></script>
+
+@endsection
 
     <script>
 

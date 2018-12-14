@@ -41,21 +41,21 @@
 
                                 <div class="col-md-6 m-b-20">
                                     <label>{{ __('strings.CourseName') }}</label>
-                                    <input name="name" type="text" class="form-control form-control-line">
+                                    <input name="name" type="text" class="form-control form-control-line" placeholder="Type here">
                                 </div>
                                 <div class="col-md-6 m-b-20">
                                     <label class="control-label">{{ __('strings.CourseDescription') }}</label>
-                                    <textarea name="course_content" class="form-control" rows="5"> </textarea>
+                                    <textarea name="course_content" class="form-control form-control-line" rows="5" placeholder="Type here"> </textarea>
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.StartDate') }}</label>
                                     <input name="startdate" type="text"
-                                           class="form-control" >
+                                           class="form-control" placeholder="YYYY-MM-DD">
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.AvailableDate') }}</label>
-                                    <input name="availabledate" type="text"
-                                           class="form-control" >
+                                    <input name="available_date" type="text"
+                                           class="form-control" placeholder="YYYY-MM-DD">
                                 </div>
 
                                 <div class="col-md-12 m-b-20">
@@ -98,7 +98,8 @@
                                 <div class="form-group" align-items-center>
                                     <button id="submit-course" type="submit" class="btn btn-success
                                     btn-rounded"> {{ __('strings.Submit') }} </button>
-                                    <a class="btn btn-default btn-rounded waves-effect btn-close"
+
+                                    <a class="btn btn-danger btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>
                                 </div>

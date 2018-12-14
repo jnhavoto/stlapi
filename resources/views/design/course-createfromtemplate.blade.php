@@ -52,12 +52,12 @@
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.StartDate') }}</label>
                                     <input name="startdate" type="text"
-                                           class="form-control" >
+                                           class="form-control" placeholder="YYYY-MM-DD">
                                 </div>
                                 <div class="col-md-4 m-b-20">
                                     <label class="control-label">{{ __('strings.AvailableDate') }}</label>
-                                    <input name="availabledate" type="text"
-                                           class="form-control" >
+                                    <input name="available_date" type="text"
+                                           class="form-control" placeholder="YYYY-MM-DD">
                                 </div>
 
                                 <div class="col-md-12 m-b-20">

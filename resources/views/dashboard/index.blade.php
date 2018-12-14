@@ -460,7 +460,7 @@
                             <img class="card-img-top" src="{{ asset('theme/images/background/profile-bg.jpg') }}"
                                  alt="Card image cap">
                             <div class="card-body little-profile text-center">
-                                <div class="pro-img"><img src="{{ asset('theme/images/users/4.jpg') }}" alt="user"/>
+                                <div class="pro-img"><img src="{{ asset('theme/images/users/profile.jpg') }}" alt="user"/>
                                 </div>
                                 <h3 class="m-b-0">{{$user->first_name.' '.$user->last_name}}</h3>
                                 <p>{{ __('strings.Instructor') }}</p>

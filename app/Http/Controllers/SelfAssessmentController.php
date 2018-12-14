@@ -15,4 +15,9 @@ class SelfAssessmentController extends ModelController
         $this->relactionships = [];
     }
 
+    public function showAllAssessments()
+    {
+        $assessments = SelfAssessment::all();
+    }
+
 }

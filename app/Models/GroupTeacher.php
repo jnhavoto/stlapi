@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 23 Jul 2018 14:08:50 +0000.
+ * Date: Sat, 08 Dec 2018 11:58:13 +0000.
  */
 
 namespace App\Models;
@@ -40,12 +40,4 @@ class GroupTeacher extends Eloquent
 	{
 		return $this->hasMany(\App\Models\TeacherMember::class, 'group_teachers_id');
 	}
-
-	public function teachers()
-	{
-		return $this->hasMany(\App\Models\Teacher::class, 'group_teachers_id', 'teachers_id');
-	}
-
-
-
 }

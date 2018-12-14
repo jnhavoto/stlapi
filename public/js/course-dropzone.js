@@ -3,67 +3,67 @@ var ficheiros = [];
 var contarFicheiros = 0;
 
 
-    $("#submit-course").on("click", function(e) {
+$("#submit-course").on("click", function(e) {
 
     if(contarFicheiros == 0) {
         $('#form-course').submit();
     }
-    });
+});
 
 
 
-    var dropzoneImagem = $('#file-input').dropzone({
-        url: '/save-coursefiles',
-        autoProcessQueue: false,
-        dictDefaultMessage: "Add files",
-        uploadMultiple: true,
-        maxFilesize: 50,
-        parallelUploads: 100,
-        dictFileSizeUnits: 'MB',
-        addRemoveLinks: true,
-        headers: {
-            'X-CSRF-Token': $("input[name=_token]").val()
-        },
+var dropzoneImagem = $('#file-input').dropzone({
+    url: '/save-coursefiles',
+    autoProcessQueue: false,
+    dictDefaultMessage: "Add files",
+    uploadMultiple: true,
+    maxFilesize: 50,
+    parallelUploads: 100,
+    dictFileSizeUnits: 'MB',
+    addRemoveLinks: true,
+    headers: {
+        'X-CSRF-Token': $("input[name=_token]").val()
+    },
 
-        init: function(){
-            var myDropzoneImagem = this;
+    init: function(){
+        var myDropzoneImagem = this;
 
-            this.on('addedfile', function (file) {
-                contarFicheiros = myDropzoneImagem.files.length;
+        this.on('addedfile', function (file) {
+            contarFicheiros = myDropzoneImagem.files.length;
 
+        });
+
+        this.on('removedfile', function (file) {
+            contarFicheiros = myDropzoneImagem.files.length;
+        });
+
+        this.on('success', function (file, response) {
+            ficheiros = response['imagem'];
+
+            ficheiros.forEach(function (file, indice) {
+                console.log(file);
+
+                $('<input />').attr('type', 'hidden')
+                    .attr('name', 'file'+(indice+1))
+                    .attr('value', file)
+                    .appendTo('#form-course');
             });
 
-            this.on('removedfile', function (file) {
-                contarFicheiros = myDropzoneImagem.files.length;
-            });
-
-            this.on('success', function (file, response) {
-                ficheiros = response['imagem'];
-
-                ficheiros.forEach(function (file, indice) {
-                    console.log(file);
-
-                    $('<input />').attr('type', 'hidden')
-                        .attr('name', 'file'+(indice+1))
-                        .attr('value', file)
-                        .appendTo('#form-course');
-                });
-
-                $('#form-course').submit();
-            });
+            $('#form-course').submit();
+        });
 
 
-            this.on('error', function (file, response) {
-                console.log(response);
-            });
+        this.on('error', function (file, response) {
+            console.log(response);
+        });
 
-            $("#submit-course").on("click", function(e) {
-                   if(contarFicheiros > 0){
-                       e.preventDefault();
-                       e.stopPropagation();
-                       myDropzoneImagem.processQueue();
-                   }
+        $("#submit-course").on("click", function(e) {
+            if(contarFicheiros > 0){
+                e.preventDefault();
+                e.stopPropagation();
+                myDropzoneImagem.processQueue();
+            }
 
-            });
-        }
-    });
+        });
+    }
+});

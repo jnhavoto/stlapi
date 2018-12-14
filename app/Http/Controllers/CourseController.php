@@ -94,8 +94,12 @@ class CourseController extends ModelController
             'departments_id' => 1,
         ]
     );
+    return $course;
     //enrol all student on this course
     $students = Student::all();
+
+    return $students;
+    
     foreach ($students as $student) {
         $student_course = StudentsCourse::create(
             [
@@ -105,8 +109,9 @@ class CourseController extends ModelController
                 'end_date' => $request->end_date,
                 'status' => 0,
             ]
-        );
+        );http://www8.cs.umu.se/kurser/TDBD10.old/EvaluationCriteria.html
     }
+    
     //createing group_teacher
     $group_teacher = GroupTeacher::create(
         [
@@ -137,14 +142,14 @@ class CourseController extends ModelController
     } else
 
         //check if course and tecaher_course have any error: if not, then write on the DB
-        if ($course and $teacher_course and $student_course) {
+        //if ($course and $teacher_course and $student_course) {
             DB::commit();
 
             if($request->submitNow == 0)
                 return redirect('/courses');
             else
                 return redirect('/update_course/'.$course->id);
-        }
+        //}
 }
 
     public function createCourseFromTemplate(Request $request)
@@ -168,6 +173,7 @@ class CourseController extends ModelController
         );
         //enrol all student on this course
         $students = Student::all();
+        //return $students;
         foreach ($students as $student) {
             $student_course = StudentsCourse::create(
                 [
@@ -179,6 +185,7 @@ class CourseController extends ModelController
                 ]
             );
         }
+        //return $student_course;
         //createing group_teacher
         $group_teacher = GroupTeacher::create(
             [
@@ -208,7 +215,7 @@ class CourseController extends ModelController
             return "Qualquer coisa";
         } else
 
-            //check if course and tecaher_course have any error: if not, then write on the DB
+            //check if course and teacher_course have any error: if not, then write on the DB
             if ($course and $teacher_course and $student_course) {
                 DB::commit();
 
@@ -321,12 +328,13 @@ class CourseController extends ModelController
         return ['imagem' => $filePath];
     }
 
-    public function updateCourseById(Request $request, $id){
+    public function updateCourse(Request $request){
 
         //get teacher ID: who logged in
-        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //return $request;
+        //$teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         //get the course by id;
-        $course = Course::findOrFail($id);
+        $course = Course::findOrFail($request->course_id);
         //get the group_teachers_id of this course and delete them
         TeacherCourse::where('courses_id', '=', $request->course_id)->get()->each->delete();
         //get the current values and save them in the DB

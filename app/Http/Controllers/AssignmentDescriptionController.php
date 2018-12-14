@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
+use App\Models\AssignmentDescriptionHasStudent;
 use App\Models\AssignmentDescriptionsHasCourse;
 use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentMaterial;
@@ -11,6 +12,7 @@ use App\Models\AssignmentTemplate;
 use App\Models\Course;
 use App\Models\GroupTeacher;
 use App\Models\Material;
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\Models\TeacherMember;
@@ -34,6 +36,8 @@ class AssignmentDescriptionController extends ModelController
         $lastAssignment = AssignmentDescription::orderBy('deadline','desc')->first();
         return response()->json(['lastAssignment'=>$lastAssignment]);
     }
+
+    //UPDATES OF ASSIGNMENT
 
     public function getUpdateAssignment($id){
         //get an assignment by id
@@ -302,6 +306,15 @@ class AssignmentDescriptionController extends ModelController
             $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
             $courseTeacher = TeacherCourse::Where('courses_id', $request->course_id)->get();
 //            return $courseTeacher;
+            $students = Student::all();
+            //fill AssignHasStudent
+            foreach ($students as $student)
+            {
+                $assignHasStudent = AssignmentDescriptionHasStudent::create([
+                   'assignment_description_id'=> $assigment->id,
+                    'students_id'=>$student->id,
+                ]);
+            }
 
             foreach ($courseTeacher as $instructor)
             {
@@ -315,7 +328,7 @@ class AssignmentDescriptionController extends ModelController
 
         }
 
-        if ($assigment and $assignHasCourse and $assignHasTeacher) {
+        if ($assigment and $assignHasCourse and $assignHasTeacher and $assignHasStudent) {
             DB::commit();
             //saving files
             foreach ($request->all() as $chave => $valor){

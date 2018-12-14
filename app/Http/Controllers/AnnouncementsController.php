@@ -9,8 +9,8 @@ class AnnouncementsController extends ModelController
 {    
     public function __construct() {
         $this->object = new Announcement();
-        $this->objectName = 'announcment';
-        $this->objectNames = 'announcments';
+        $this->objectName = 'announcement';
+        $this->objectNames = 'announcements';
         $this->relactionships = [];
     }
 
