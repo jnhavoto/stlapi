@@ -23,13 +23,16 @@ class AnnouncementsController extends ModelController
     {
         //get the details of the teacher
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+
         //get all teacher's assignment descriptions
         $assign_teacher = AssignmentDescriptionsHasTeacher::where('teachers_id',$teacher->id)->get();
+
         //get all teacher courses
         $course_teacher = TeacherCourse::where('teachers_id',$teacher->id)->get();
+
         //create na empty list of teacher announcments
         $teacher_announc = collect();
-        //return $assign_teacher;
+        
         foreach($assign_teacher as $assignteacher){
             $announc = Announcement::where('assignment_description_id',$assignteacher->assignment_descriptions_id)->get();
             $teacher_announc -> push($announc);
@@ -41,5 +44,80 @@ class AnnouncementsController extends ModelController
                 ()]);
 
     }
+
+    public function getAnnouncementsInbox(){
+        //get the details of the teacher
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+
+        //get all teacher's assignment descriptions
+        $assign_teacher = AssignmentDescriptionsHasTeacher::where('teachers_id',$teacher->id)->get();
+
+        //get all teacher courses
+        $course_teacher = TeacherCourse::where('teachers_id',$teacher->id)->get();
+
+        //create na empty list of teacher announcments
+        $teacher_announc = collect();
+
+        foreach($assign_teacher as $assignteacher){
+            $announc = Announcement::where('assignment_description_id',$assignteacher->assignment_descriptions_id)->where('status', 1)->get();
+            $teacher_announc -> push($announc);
+        }
+        return $teacher_announc;
+        return view('communications.announcements',
+            ['announcements' => $announces,
+                'user' => Auth::user
+                ()]);
+
+    }
+
+    public function getAnnouncementsOutbox(){
+        //get the details of the teacher
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+
+        //get all teacher's assignment descriptions
+        $assign_teacher = AssignmentDescriptionsHasTeacher::where('teachers_id',$teacher->id)->get();
+
+        //get all teacher courses
+        $course_teacher = TeacherCourse::where('teachers_id',$teacher->id)->get();
+
+        //create na empty list of teacher announcments
+        $teacher_announc = collect();
+
+        foreach($assign_teacher as $assignteacher){
+            $announc = Announcement::where('assignment_description_id',$assignteacher->assignment_descriptions_id)->where('status', 2)->get();
+            $teacher_announc -> push($announc);
+        }
+        return $teacher_announc;
+        return view('communications.announcements',
+            ['announcements' => $announces,
+                'user' => Auth::user
+                ()]);
+
+    }
+
+    public function getAnnouncementsDraft(){
+        //get the details of the teacher
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+
+        //get all teacher's assignment descriptions
+        $assign_teacher = AssignmentDescriptionsHasTeacher::where('teachers_id',$teacher->id)->get();
+
+        //get all teacher courses
+        $course_teacher = TeacherCourse::where('teachers_id',$teacher->id)->get();
+
+        //create na empty list of teacher announcments
+        $teacher_announc = collect();
+
+        foreach($assign_teacher as $assignteacher){
+            $announc = Announcement::where('assignment_description_id',$assignteacher->assignment_descriptions_id)->where('status', 0)->get();
+            $teacher_announc -> push($announc);
+        }
+        return $teacher_announc;
+        return view('communications.announcements',
+            ['announcements' => $announces,
+                'user' => Auth::user
+                ()]);
+
+            }
 
 }
