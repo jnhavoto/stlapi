@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnnouncementsHasTeacher;
+use App\Models\AssignmentDescriptionsHasTeacher;
+use App\Models\Teacher;
+use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
 use App\Models\Announcement;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementsController extends ModelController
 {    
@@ -14,5 +19,27 @@ class AnnouncementsController extends ModelController
         $this->relactionships = [];
     }
 
-    
+    public function getAnnouncements()
+    {
+        //get the details of the teacher
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //get all teacher's assignment descriptions
+        $assign_teacher = AssignmentDescriptionsHasTeacher::where('teachers_id',$teacher->id)->get();
+        //get all teacher courses
+        $course_teacher = TeacherCourse::where('teachers_id',$teacher->id)->get();
+        //create na empty list of teacher announcments
+        $teacher_announc = collect();
+        //return $assign_teacher;
+        foreach($assign_teacher as $assignteacher){
+            $announc = Announcement::where('assignment_description_id',$assignteacher->assignment_descriptions_id)->get();
+            $teacher_announc -> push($announc);
+        }
+        return $teacher_announc;
+        return view('communications.announcements',
+            ['announcements' => $announces,
+                'user' => Auth::user
+                ()]);
+
+    }
+
 }
