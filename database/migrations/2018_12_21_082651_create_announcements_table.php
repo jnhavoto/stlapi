@@ -15,11 +15,13 @@ class CreateAnnouncementsTable extends Migration {
 		Schema::create('announcements', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('courses_id')->nullable()->index('fk_announcement_courses1_idx');
-			$table->integer('assignment_description_id')->nullable()->index('fk_announcement_assignment_description1_idx');
+			$table->integer('courses_id')->unsigned()->nullable()->index('fk_announcement_courses1_idx');
+			$table->integer('assignment_description_id')->unsigned()->nullable()->index('fk_announcement_assignment_description1_idx');
 			$table->text('message', 65535)->nullable();
 			$table->string('subject', 45)->nullable();
-			$table->integer('status')->nullable();
+			$table->integer('status')->nullable()->comment('0 - Draft
+1 - InBox
+2 - OutBox');
 			$table->timestamps();
 			$table->softDeletes();
 		});
