@@ -207,5 +207,5 @@ return [
     'AddUser' => 'Add User',
     'UploadUsers' => 'Upload Users',
     'AssignmentTemplates' => 'Assignment Templates',
-    'AddTemplate' => 'Add Template',
+    'Telephone' => 'Telephone',
 ];

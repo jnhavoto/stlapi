@@ -11,7 +11,7 @@
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">
-                        {{ __('strings.CourseDesign') }}
+                        {{ __('strings.AddUser') }}
                         {{--Assignments--}}
                     </h3>
                     <ol class="breadcrumb">
@@ -20,7 +20,7 @@
                                 {{--Home--}}
                             </a></li>
                         <li class="breadcrumb-item active">
-                            {{ __('strings.Design') }}
+                            {{ __('strings.User') }}
                             {{--Activities--}}
                         </li>
                     </ol>
@@ -30,9 +30,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ __('strings.CreateNewCourse') }} </h4>
-                            <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
-                            </h6>
+                            <h4 class="card-title">{{ __('strings.CreateUser') }} </h4>
                             <form id="form-course" class="form-horizontal m-t-40" method="post"
                                   action="/submit_user"
                                   enctype="multipart/form-data" data-toggle="validator" role="form">
@@ -40,23 +38,22 @@
                                 <input type="hidden" id="course_id" name="user_id" value="0"/>
 
                                 <div class="col-md-6 m-b-20">
-                                    <label>{{ __('strings.CourseName') }}</label>
-                                    <input name="name" type="text" class="form-control form-control-line"
+                                    <label>{{ __('strings.FirstName') }}</label>
+                                    <input name="first_name" type="text" class="form-control form-control-line"
                                            >
                                 </div>
                                 <div class="col-md-6 m-b-20">
-                                    <label class="control-label">{{ __('strings.CourseDescription') }}</label>
-                                    <textarea name="course_content" class="form-control" rows="5"> </textarea>
+                                    <label>{{ __('strings.LastName') }}</label>
+                                    <input name="last_name" type="text" class="form-control form-control-line">
                                 </div>
-                                <div class="col-md-4 m-b-20">
-                                    <label class="control-label">{{ __('strings.StartDate') }}</label>
-                                    <input name="startdate" type="text"
-                                           class="form-control" placeholder="YYYY-MM-DD">
+                                <div class="col-md-6 m-b-20">
+                                    <label>{{ __('strings.Telephone') }}</label>
+                                    <input name="telephone" type="text" class="form-control form-control-line"
+                                    >
                                 </div>
-                                <div class="col-md-4 m-b-20">
-                                    <label class="control-label">{{ __('strings.AvailableDate') }}</label>
-                                    <input name="available_date" type="text"
-                                           class="form-control" placeholder="YYYY-MM-DD">
+                                <div class="col-md-6 m-b-20">
+                                    <label class="control-label">{{ __('strings.Email') }}</label>
+                                    <input name="email" type="email" class="form-control" rows="5">
                                 </div>
 
                                 <div class="col-md-12 m-b-20">
@@ -64,23 +61,12 @@
                                         {{ __('strings.Role') }}
                                         {{--Select Instructor(s)--}}
                                     </label>
-                                    {{--<select class="select-courses" name="instructors[]" multiple="multiple"--}}
-                                            {{--style="width: 100%">--}}
-                                        {{--@foreach($instructors as  $teacher)--}}
-                                            {{--@if($teacher->id == \Illuminate\Support\Facades\Auth::user()->teacher->id)--}}
-                                                {{--<option name="selectTag" value="{{$teacher->id}}" selected="selected">--}}
-                                                    {{--{{$teacher->user->first_name}}--}}
-                                                    {{--{{$teacher->user->last_name}}--}}
-                                                {{--</option>--}}
-                                            {{--@else--}}
-                                                {{--<option--}}
-                                                        {{--name="selectTag"--}}
-                                                        {{--value="{{$teacher->id}}">{{$teacher->user->first_name}}--}}
-                                                    {{--{{$teacher->user->last_name}}--}}
-                                                {{--</option>--}}
-                                            {{--@endif--}}
-                                        {{--@endforeach--}}
-                                    {{--</select>--}}
+                                    <select class="js-example-basic-single" name="user_type"
+                                            style="width: 100%">
+                                        <option value="AL">Administrator</option>
+                                        <option value="AL">Instructor</option>
+                                        <option value="WY">Student</option>
+                                    </select>
                                 </div>
                             </form>
                             <div class="form-group" align-items-center>

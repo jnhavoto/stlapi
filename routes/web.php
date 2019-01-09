@@ -243,6 +243,12 @@ Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);
 //submit assignment template
 Route::post('/submit_user', 'UserController@createUser')->middleware(['admin']);
 
+//import users
+Route::get('add_users', 'UserController@addUserForm')->middleware(['admin']);
+
+//submit imports
+Route::post('/import', 'UserController@createUser')->middleware(['admin']);
+
 
 Route::get('create_assigntemplate', 'AssignmentTemplateController@openCreteAssignTemplate')->middleware(['admin']);
 
