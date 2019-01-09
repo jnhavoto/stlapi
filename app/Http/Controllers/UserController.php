@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use JWTAuth;
 use Illuminate\Http\Request;
 
@@ -72,5 +73,22 @@ class UserController extends  ModelController
         }
             
     }
+
+    public function addUserForm()
+    {
+        return view('design.form_add_user', [
+            'user' => Auth::user
+            ()]);
+    }
+
+    public function createUser(Request $request)
+    {
+        return $request;
+
+        return view('design.form_add_user', [
+            'user' => Auth::user
+            ()]);
+    }
+
 }
 

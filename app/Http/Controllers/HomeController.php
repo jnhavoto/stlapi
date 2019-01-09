@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignmentAnnouncement;
+use App\Models\AssignmentDescription;
 use App\Models\AssignmentDescriptionsHasCourse;
 use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentSubmission;
+use App\Models\AssignmentTemplate;
 use App\Models\Feedback;
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\User;
@@ -72,6 +75,36 @@ class HomeController extends Controller
             'password' => $request->password,
         ]);
         return redirect('/')->with('succes', 'Data has been successfully sent!');
+    }
+
+    public function admin_index()
+    {
+        //List all assignments that have been created
+        $assignTemplates = AssignmentTemplate::all();
+        //List all assignment Descriptions
+        $assignments = AssignmentDescription::all();
+        //
+        $teacher = Teacher::where('users_id',Auth::user()->id)->first();
+
+        //students
+        $students = Student::all();
+
+        //instructors
+        $teachers = Teacher::all();
+
+
+        return view('dashboard.admin_index',[
+            'assignTemplates' => $assignTemplates,
+            'assignments' => $assignments,
+            'teachers' => $teachers, 'students' => $students,
+            'user' => Auth::user()
+        ]);
+    }
+
+    public function createAssignTemplete()
+    {
+
+        return view ('dashboard.admin_index');
     }
 
 

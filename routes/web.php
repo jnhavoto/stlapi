@@ -18,6 +18,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->middleware(['teacher']);
 
+Route::get('/admin', 'HomeController@admin_index')->middleware(['admin']);
+
 //update profile
 Route::post('/update-profile', 'HomeController@updateProfile')->middleware(['teacher']);
 
@@ -36,6 +38,8 @@ Route::post('/save-assignfiles', 'AssignmentDescriptionController@saveFiles');
 //==============================================================
 
 Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
+
+Route::get('/admin/users', 'TeacherController@admin_listContacts')->middleware(['admin']);
 
 Route::get('/user-details/{id}', function ($id) {
 	return view('communications.user-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
@@ -144,11 +148,19 @@ Route::get('/course-designoverview/{id}','CourseController@courseDesignOverview'
 //ASSIGNMENTS
 Route::get('/assignments', 'AssignmentDescriptionController@getAssignments')->middleware(['teacher']);
 
-//get course template
+//get assignment template
 Route::get('/assignment-templates/{id}', 'AssignmentDescriptionController@getAssignmentTemplates')->middleware(['teacher']);
 
-Route::get('/assignment-creategetform', 'AssignmentDescriptionController@getCreateAssignFromForm')->middleware
-(['teacher']);
+
+//Admin: get assignment templates
+Route::get('/admin_assignment_templates', 'AssignmentDescriptionController@admin_getAssignTemplates')->middleware(['admin']);
+
+//Admin: get course templates
+Route::get('/admin_course_templates', 'AssignmentDescriptionController@admin_getCourseTemplates')->middleware(['admin']);
+
+
+//
+Route::get('/assignment-creategetform', 'AssignmentDescriptionController@getCreateAssignFromForm')->middleware(['teacher']);
 
 //createassign
 Route::get('/assignment-getfromtemplate/{id}', 'AssignmentDescriptionController@getassignfromtemplate')
@@ -218,6 +230,35 @@ Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->mid
 //==============================================================
 //End Monitoring
 //==============================================================
+
+
+//==============================================================
+//Start Admin
+//==============================================================
+//show assoignment template form
+
+//add a user
+Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);
+
+//submit assignment template
+Route::post('/submit_user', 'UserController@createUser')->middleware(['admin']);
+
+
+Route::get('create_assigntemplate', 'AssignmentTemplateController@openCreteAssignTemplate')->middleware(['admin']);
+
+//show course template form
+Route::get('create_çcoursetemplate', 'AssignmentTemplateController@openCreteACourseTemplate')->middleware(['admin']);
+
+//submit assignment template
+Route::post('/create_assign_template', 'AssignmentTemplateController@createAssignTemplate')->middleware(['admin']);
+
+//submit course template
+Route::post('/create_course_template', 'AssignmentTemplateController@createCourseTemplate')->middleware(['admin']);
+
+
+//==============================================================
+//End Admin
+//==
 
 //==============================================================
 //Start App Translation

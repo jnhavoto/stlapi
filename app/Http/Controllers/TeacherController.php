@@ -17,6 +17,7 @@ use App\Models\StudentsCourse;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\Models\TeacherMember;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,17 @@ class TeacherController extends ModelController
         $students = Student::with('user')->get();
 
         return view('communications.contacts', ['teachers' => $teachers, 'students' => $students, 'user' => Auth::user()]);
+    }
+    public function admin_listContacts()
+    {
+        $teachers = Teacher::all();
+
+        $students = Student::all();
+
+        //get all users
+        $users = User::all();
+
+        return view('communications.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'user' => Auth::user()]);
     }
 
     public function getCourses()

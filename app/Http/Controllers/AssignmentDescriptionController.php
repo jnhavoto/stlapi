@@ -10,6 +10,7 @@ use App\Models\AssignmentMaterial;
 use App\Models\AssignmentSubmission;
 use App\Models\AssignmentTemplate;
 use App\Models\Course;
+use App\Models\CoursesTemplate;
 use App\Models\GroupTeacher;
 use App\Models\Material;
 use App\Models\Student;
@@ -179,6 +180,32 @@ class AssignmentDescriptionController extends ModelController
                 'user' => Auth::user
                 ()]);
     }
+
+//    Begin Admin
+    public function admin_getAssignTemplates()
+    {
+        //first get all assignments
+        $assTemplates = AssignmentTemplate::all();
+//        return $courses;
+        return view('design.admin_assign_templates',
+            ['assTemplates' => $assTemplates,
+                'user' => Auth::user()
+            ]);
+    }
+
+    public function admin_getCourseTemplates()
+    {
+        //first get all assignments
+        $courseTemplates = CoursesTemplate::all();
+//        return $courseTemplates;
+//        return $courses;
+        return view('design.admin_course_templates',
+            ['courseTemplates' => $courseTemplates,
+                'user' => Auth::user()
+            ]);
+    }
+
+    //END Admin
 
     public function assignmentDesignOverview($id)
     {

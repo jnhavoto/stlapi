@@ -20,6 +20,6 @@ class VerifyAuth
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

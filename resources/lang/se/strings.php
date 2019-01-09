@@ -195,6 +195,17 @@ return [
     'PreviewText' => 'Förhandsgranska',
     'Back' => 'Tillbaka',
 
-
-
+//Admin Area
+    'Users' => 'Users',
+    'Roles' => 'Roles',
+    'Permissions' => 'Permissions',
+    'Templates' => 'Templates',
+    'UsersDetails' => 'Users & Details',
+    'AllUsers' => 'All Users',
+    'Logs' => 'Logs',
+    'LastLogin' => 'Last Login',
+    'AddUser' => 'Add User',
+    'UploadUsers' => 'Upload Users',
+    'AssignmentTemplates' => 'Assignment Templates',
+    'AddTemplate' => 'Add Template',
 ];

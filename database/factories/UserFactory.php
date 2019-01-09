@@ -103,6 +103,7 @@ $factory->define(\App\User::class, function (Faker $faker) {
             'last_name' => $faker->lastName,
             'telephone' => $faker->phoneNumber,
             'email' => $faker->unique()->email,
+            'user_type' => $faker->numberBetween(1,3),
             'password' => '123456',
         ];
 });
@@ -151,7 +152,7 @@ $factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){
 
 $factory->define(\App\Models\Teacher::class, function (Faker $faker){
     return [
-        'users_id' => $faker->unique()->numberBetween(1, 6),
+        'users_id' => $faker->unique()->numberBetween(2, 6),
     ];
 });
 
