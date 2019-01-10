@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\Facades\File;
 //use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use JWTAuth;
 use Illuminate\Http\Request;
 //use Maatwebsite\Excel\Facades\Excel;
@@ -115,17 +117,24 @@ class UserController extends  ModelController
                 $path = $request->file->getRealPath();
                 $data = Excel::load($path, function($reader) {
                 })->get();
+
+//                return $data;
                 if(!empty($data) && $data->count()){
 
-                    foreach ($data as $key => $value) {
+                    foreach ($data as $key) {
+//                        return $key;
+                        $password = Hash::make('123456');
                         $insert[] = [
-                            'first_name' => $value->PE_Förnamn,
-                            'last_name' => $value->PE_Efternamn,
-                            'telephone' => $value->PE_Mobiltelefon,
-                            'email' => $value->PE_Epost,
+                            'first_name' => $key->pe_fornamn,
+                            'last_name' => $key->pe_efternamn,
+                            'telephone' => $key->pe_mobiltelefon,
+                            'email' => $key->pe_epost,
                             'user_type' => 3,
+                            'password' =>$password,
                         ];
                     }
+
+//                    return $insert;
 
                     if(!empty($insert)){
 
