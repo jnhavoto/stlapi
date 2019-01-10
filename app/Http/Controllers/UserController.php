@@ -127,8 +127,8 @@ class UserController extends  ModelController
                         $insert[] = [
                             'first_name' => $key->pe_fornamn,
                             'last_name' => $key->pe_efternamn,
-                            'telephone' => $key->pe_mobiltelefon,
-                            'email' => $key->pe_epost,
+                            'telephone' => $key->pe_mobiltelefon_for_sms,
+                            'email' => $key->pe_e_post,
                             'user_type' => 3,
                             'password' =>$password,
                         ];
