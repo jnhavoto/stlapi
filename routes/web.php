@@ -234,7 +234,7 @@ Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->mid
 //Start Admin
 //==============================================================
 //show all users
-Route::get('/admin/users', 'TeacherController@admin_listContacts')->middleware(['admin']);
+Route::get('/admin/users', 'UserController@admin_listContacts')->middleware(['admin']);
 
 //add a user
 Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);

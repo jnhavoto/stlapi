@@ -92,7 +92,7 @@ class HomeController extends Controller
         //instructors
         $teachers = Teacher::all();
         //
-        $users = User::all();
+        $users = User::paginate(15);
 
 
         return view('dashboard.admin_index',[

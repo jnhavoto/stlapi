@@ -77,7 +77,9 @@
                                     </td>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
+                                    table-striped color-table info-table"
+                                           data-page-size="10">
                                         <thead>
                                         <tr>
                                             <th>No</th>
@@ -129,6 +131,9 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        <div class="panel-heading" style="display:flex; justify-content:center;align-items:center;">
+                                            {{$users->links()}}
+                                        </div>
 
                                         {{--@foreach ($students as $student)--}}
                                             {{--<tr>--}}

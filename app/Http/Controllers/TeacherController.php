@@ -41,17 +41,7 @@ class TeacherController extends ModelController
 
         return view('communications.contacts', ['teachers' => $teachers, 'students' => $students, 'user' => Auth::user()]);
     }
-    public function admin_listContacts()
-    {
-        $teachers = Teacher::all();
 
-        $students = Student::all();
-
-        //get all users
-        $users = User::all();
-
-        return view('design.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'user' => Auth::user()]);
-    }
 
     public function getCourses()
     {

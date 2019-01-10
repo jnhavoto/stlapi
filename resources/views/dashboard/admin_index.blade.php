@@ -111,6 +111,9 @@
 
                                                 </tr>
                                             @endforeach
+                                            <div class="panel-heading" style="display:flex; justify-content:center;align-items:center;">
+                                                {{$users->links()}}
+                                            </div>
                                             </tbody>
                                         </table>
                                     </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use App\Models\Teacher;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\Facades\File;
@@ -157,5 +159,17 @@ class UserController extends  ModelController
         }
     }
 
+    public function admin_listContacts()
+    {
+        $teachers = Teacher::all();
+
+        $students = Student::all();
+
+        //get all users
+        $users = User::paginate(15);
+//
+
+        return view('design.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'user' => Auth::user()]);
+    }
 }
 
