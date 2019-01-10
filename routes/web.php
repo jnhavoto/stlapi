@@ -39,8 +39,6 @@ Route::post('/save-assignfiles', 'AssignmentDescriptionController@saveFiles');
 
 Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
 
-Route::get('/admin/users', 'TeacherController@admin_listContacts')->middleware(['admin']);
-
 Route::get('/user-details/{id}', function ($id) {
 	return view('communications.user-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
@@ -235,7 +233,8 @@ Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->mid
 //==============================================================
 //Start Admin
 //==============================================================
-//show assoignment template form
+//show all users
+Route::get('/admin/users', 'TeacherController@admin_listContacts')->middleware(['admin']);
 
 //add a user
 Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);
@@ -244,10 +243,10 @@ Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);
 Route::post('/submit_user', 'UserController@createUser')->middleware(['admin']);
 
 //import users
-Route::get('add_users', 'UserController@addUserForm')->middleware(['admin']);
+Route::get('upload_users', 'UserController@uploadUsersForm')->middleware(['admin']);
 
 //submit imports
-Route::post('/import', 'UserController@createUser')->middleware(['admin']);
+Route::post('/import', 'UserController@importUsers')->middleware(['admin']);
 
 
 Route::get('create_assigntemplate', 'AssignmentTemplateController@openCreteAssignTemplate')->middleware(['admin']);

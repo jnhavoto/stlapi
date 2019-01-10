@@ -54,7 +54,7 @@
                 {{--Dashboard --}}
                 {{--</span></a>--}}
                 {{--<ul aria-expanded="false" class="collapse">--}}
-                <li><a href="/">
+                <li><a href="/admin">
                         <i class="ti-dashboard"></i> {{ __('strings.Dashboard') }}
                         {{--General Overview--}}
                     </a></li>

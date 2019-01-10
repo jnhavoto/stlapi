@@ -64,7 +64,7 @@
                                         <div class="d-flex">
                                             <div class="align-self-center">
                                                 <h4 class="card-title m-t-10">
-                                                    {{ __('strings.AllUsers') }}
+                                                    {{ __('strings.Users') }}
                                                     {{--My Assignment List--}}
                                                 </h4></div>
                                         </div>
@@ -85,48 +85,29 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach ($students as $student)
+                                            @foreach ($users as $user)
                                                 <tr>
                                                     {{--<td>{{$student->id}}</td>--}}
-                                                    <td> {{ $loop->index + 1 }}</td>
+                                                    <td>  {{ $loop->index + 1 }}</td>
                                                     <td>
                                                         <a href="/contact-details">
                                                             {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                            {{$student->user->first_name.' '.$student->user->last_name}}
+                                                            {{$user->first_name.' '.$user->last_name}}
                                                         </a>
                                                     </td>
-                                                    <td>{{$student->user->email}}</td>
-                                                    <td>{{$student->user->telephone}}</td>
-                                                    <td><span class="label label-info">Student</span> </td>
-                                                    <td>
-                                                        <a href="{{ url('/update_user/'.$student->id)}}" class="btn btn-info
-                                                     btn-circle btn-lg">
-                                                            <i text-md-center class="ti-pencil-alt"></i>
-                                                        </a>
-                                                        <button type="button" class="btn btn-info btn-circle
-                                                    btn-lg"
-                                                                href="/"
-                                                                data-toggle="modal"
-                                                                data-target="#confirm-delete-assignment"
-                                                                onclick="deteleAssignment({{$student}})">
-                                                            <i text-md-center class="ti-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            @foreach ($teachers as $teacher)
-                                                <tr>
-                                                    <td>{{ $loop->index + count($students)+1}}</td>
-                                                    <td>
-                                                        <a href="/contact-details"><img src="{{asset
-                                                    ("theme/images/users/1.jpg")}}
-                                                                    " alt="user" class="img-circle" />
-                                                            {{$teacher->user->first_name.' '.$teacher->user->last_name}}
-                                                        </a>
-                                                    </td>
-                                                    <td>{{$teacher->user->email}}</td>
-                                                    <td>{{$teacher->user->telephone}}</td>
-                                                    <td><span class="label label-success">Instructor</span> </td>
+                                                    <td>{{$user->email}}</td>
+                                                    <td>{{$user->telephone}}</td>
+                                                    <td><span class="label label-info">
+                                                        @if($user->user_type==1)
+                                                                {{ __('strings.Administrator') }}
+                                                            @endif
+                                                            @if($user->user_type==2)
+                                                                {{ __('strings.Instructor') }}
+                                                            @endif
+                                                            @if($user->user_type==3)
+                                                                {{ __('strings.Student') }}
+                                                            @endif
+                                                    </span> </td>
 
                                                 </tr>
                                             @endforeach

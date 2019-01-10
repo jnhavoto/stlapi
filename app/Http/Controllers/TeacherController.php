@@ -50,7 +50,7 @@ class TeacherController extends ModelController
         //get all users
         $users = User::all();
 
-        return view('communications.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'user' => Auth::user()]);
+        return view('design.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'user' => Auth::user()]);
     }
 
     public function getCourses()

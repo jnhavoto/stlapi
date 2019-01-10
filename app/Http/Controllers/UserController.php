@@ -4,8 +4,15 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\File;
+//use Illuminate\Support\Facades\Session;
 use JWTAuth;
 use Illuminate\Http\Request;
+//use Maatwebsite\Excel\Facades\Excel;
+use Session;
+use Excel;
+use File;
+
 
 class UserController extends  ModelController
 {
@@ -86,8 +93,59 @@ class UserController extends  ModelController
         return $request;
 
         return view('design.form_add_user', [
-            'user' => Auth::user
-            ()]);
+            'user' => Auth::user()
+        ]);
+    }
+
+    public function uploadUsersForm()
+    {
+        return view('design.import-users',['user' => Auth::user()]);
+    }
+
+    public function importUsers(Request $request){
+        //validate the xls file
+        $this->validate($request, array(
+            'file'      => 'required'
+        ));
+
+        if($request->hasFile('file')){
+            $extension = File::extension($request->file->getClientOriginalName());
+            if ($extension == "xlsx" || $extension == "xls" || $extension == "csv") {
+
+                $path = $request->file->getRealPath();
+                $data = Excel::load($path, function($reader) {
+                })->get();
+                if(!empty($data) && $data->count()){
+
+                    foreach ($data as $key => $value) {
+                        $insert[] = [
+                            'first_name' => $value->PE_Förnamn,
+                            'last_name' => $value->PE_Efternamn,
+                            'telephone' => $value->PE_Mobiltelefon,
+                            'email' => $value->PE_Epost,
+                            'user_type' => 3,
+                        ];
+                    }
+
+                    if(!empty($insert)){
+
+                        $insertData = DB::table('users')->insert($insert);
+                        if ($insertData) {
+                            Session::flash('success', 'Your Data has successfully imported');
+                        }else {
+                            Session::flash('error', 'Error inserting the data..');
+                            return back();
+                        }
+                    }
+                }
+
+                return back();
+
+            }else {
+                Session::flash('error', 'File is a '.$extension.' file.!! Please upload a valid xls/csv file..!!');
+                return back();
+            }
+        }
     }
 
 }

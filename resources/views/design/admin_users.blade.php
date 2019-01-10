@@ -104,13 +104,13 @@
                                                 <td>{{$user->telephone}}</td>
                                                 <td><span class="label label-info">
                                                         @if($user->user_type==1)
-                                                            Administrator
+                                                            {{ __('strings.Administrator') }}
                                                         @endif
                                                         @if($user->user_type==2)
-                                                            Instructor
+                                                                {{ __('strings.Instructor') }}
                                                         @endif
                                                         @if($user->user_type==3)
-                                                            Student
+                                                                {{ __('strings.Student') }}
                                                         @endif
                                                     </span> </td>
                                                 <td>

@@ -91,12 +91,15 @@ class HomeController extends Controller
 
         //instructors
         $teachers = Teacher::all();
+        //
+        $users = User::all();
 
 
         return view('dashboard.admin_index',[
             'assignTemplates' => $assignTemplates,
             'assignments' => $assignments,
             'teachers' => $teachers, 'students' => $students,
+            'users' => $users,
             'user' => Auth::user()
         ]);
     }

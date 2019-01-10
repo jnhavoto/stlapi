@@ -205,6 +205,9 @@ return [
     'AssignmentTemplates' => 'Assignment Templates',
     'AddTemplate' => 'Add Template',
     'Telephone' => 'Telephone',
-
+    'Administrator' => 'Administrator',
+    'Student' => 'Participant',
+    'ImportUsers' => 'Import Users',
+    'ImportExcelCSV' => 'Import Excel/CSV',
 
 ];
