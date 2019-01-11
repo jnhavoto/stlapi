@@ -47,7 +47,7 @@ class LoginController extends Controller
             return '/admin';
         }
 
-        if (Auth::user()->teacher)
+        if (Auth::user()['user_type'] == 2)
             return '/';
 
         if (Auth::user()->student)
