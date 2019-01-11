@@ -36,7 +36,8 @@ class HomeController extends Controller
 //        return $teacher;
 
         //$assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
-        $assignTeacher = AssignmentDescriptionsHasTeacher::where('teachers_id',$teacher->id);
+        $assignTeacher = AssignmentDescriptionsHasTeacher::with('assignment_description')->
+        where('teachers_id',$teacher->id)->get();
 //            AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
 //        $teacher->id)->get();
        // return $assignTeacher;
