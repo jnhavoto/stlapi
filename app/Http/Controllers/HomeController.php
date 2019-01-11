@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignmentDescription;
 use App\Models\AssignmentDescriptionsHasCourse;
+use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentTemplate;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -34,7 +35,8 @@ class HomeController extends Controller
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
 //        return $teacher;
 
-        $assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
+        //$assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
+        $assignTeacher = AssignmentDescriptionsHasTeacher::where('teachers_id',$teacher->id);
 //            AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
 //        $teacher->id)->get();
        // return $assignTeacher;
