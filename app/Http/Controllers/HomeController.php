@@ -33,7 +33,7 @@ class HomeController extends Controller
     public function index()
     {
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
-        return $teacher;
+        return Auth::user()->id;
 //        return $teacher_id;
 
         //$assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
