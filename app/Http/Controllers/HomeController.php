@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AssignmentAnnouncement;
 use App\Models\AssignmentDescription;
 use App\Models\AssignmentDescriptionsHasCourse;
-use App\Models\AssignmentDescriptionsHasTeacher;
-use App\Models\AssignmentSubmission;
 use App\Models\AssignmentTemplate;
-use App\Models\Feedback;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {

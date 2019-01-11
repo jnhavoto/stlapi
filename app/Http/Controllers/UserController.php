@@ -171,5 +171,61 @@ class UserController extends  ModelController
 
         return view('design.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'user' => Auth::user()]);
     }
+
+    public function deleteUser($id)
+    {
+        //get details of the current user
+        $current_user = Auth::user();
+        //get user_type
+        $userdetails = User::findOrFail($id);
+        $user_type = $userdetails-> user_type;
+//        return $user_type;
+        //if the user is the current admin, then don't allow to delete, else
+        // if user_type = 2 then find the link with teacher table (if any) and delete, else
+        // if user_type = 3 then find the link with student table (if any) and delete
+        //if($user_type = 1 and )
+        if($user_type = 2)
+        {
+            $teacher_id = $id;
+            //find the teacher and delete
+            $teacher = Teacher::where('users_id', $teacher_id)->get();
+            if($teacher -> count() == 0)
+            {
+                //delete the user
+                User::where('id', $id)->get()->each->delete();
+            }
+            else
+            {
+                return 'trying to deleted';
+                //delete the student
+                Teacher::where('users_id', $id)->get()->each->delete();
+                return 'teacher deleted';
+                //delete the user
+                User::where('id', $id)->get()->each->delete();
+            }
+        }
+        if ($user_type = 3)
+        {
+            //find the student and delete
+            $student = Student::where('users_id', $id)->get();
+            if($student->count()==0)
+            {
+                //delete the user
+                User::where('id', $id)->get()->each->delete();
+            }
+            else
+            {
+                //delete the student
+                Student::where('users_id', $id)->get()->each->delete();
+                //delete the user
+                User::where('id', $id)->get()->each->delete();
+            }
+        }
+//        //get list of users after delete
+        $users = User::paginate(15);
+
+        return redirect('users');
+//        return view('design.admin_users', ['users' => $users, 'user' => Auth::user()]);
+    }
 }
 

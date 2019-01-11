@@ -18,8 +18,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->middleware(['teacher']);
 
-Route::get('/admin', 'HomeController@admin_index')->middleware(['admin']);
-
 //update profile
 Route::post('/update-profile', 'HomeController@updateProfile')->middleware(['teacher']);
 
@@ -233,8 +231,11 @@ Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->mid
 //==============================================================
 //Start Admin
 //==============================================================
+//first admin page
+Route::get('/admin', 'HomeController@admin_index')->middleware(['admin']);
+
 //show all users
-Route::get('/admin/users', 'UserController@admin_listContacts')->middleware(['admin']);
+Route::get('/users', 'UserController@admin_listContacts')->middleware(['admin']);
 
 //add a user
 Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);
@@ -249,10 +250,10 @@ Route::get('upload_users', 'UserController@uploadUsersForm')->middleware(['admin
 Route::post('/import', 'UserController@importUsers')->middleware(['admin']);
 
 
-Route::get('create_assigntemplate', 'AssignmentTemplateController@openCreteAssignTemplate')->middleware(['admin']);
+Route::get('/create_assigntemplate', 'AssignmentTemplateController@openCreteAssignTemplate')->middleware(['admin']);
 
 //show course template form
-Route::get('create_çcoursetemplate', 'AssignmentTemplateController@openCreteACourseTemplate')->middleware(['admin']);
+Route::get('/create_çcoursetemplate', 'AssignmentTemplateController@openCreteACourseTemplate')->middleware(['admin']);
 
 //submit assignment template
 Route::post('/create_assign_template', 'AssignmentTemplateController@createAssignTemplate')->middleware(['admin']);
@@ -260,6 +261,8 @@ Route::post('/create_assign_template', 'AssignmentTemplateController@createAssig
 //submit course template
 Route::post('/create_course_template', 'AssignmentTemplateController@createCourseTemplate')->middleware(['admin']);
 
+//delete user
+Route::get('/delete_user/{id}', 'UserController@deleteUser')->middleware(['admin']);
 
 //==============================================================
 //End Admin

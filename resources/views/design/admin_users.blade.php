@@ -120,14 +120,18 @@
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                    btn-lg"
-                                                            href="/"
-                                                            data-toggle="modal"
-                                                            data-target="#confirm-delete-assignment"
-                                                            onclick="deteleAssignment({{$user}})">
+                                                    <a href="{{ url('/delete_user/'.$user->id)}}" class="btn btn-info
+                                                     btn-circle btn-lg">
                                                         <i text-md-center class="ti-trash"></i>
-                                                    </button>
+                                                    </a>
+                                                    {{--<button type="button" class="btn btn-info btn-circle--}}
+                                                    {{--btn-lg"--}}
+                                                            {{--href="/"--}}
+                                                            {{--data-toggle="modal"--}}
+                                                            {{--data-target="#confirm-delete-assignment"--}}
+                                                            {{--onclick="deteleAssignment({{$user}})">--}}
+                                                        {{--<i text-md-center class="ti-trash"></i>--}}
+                                                    {{--</button>--}}
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -54,13 +54,13 @@
                 {{--Dashboard --}}
                 {{--</span></a>--}}
                 {{--<ul aria-expanded="false" class="collapse">--}}
-                <li><a href="/admin">
+                <li><a href="/dashboard">
                         <i class="ti-dashboard"></i> {{ __('strings.Dashboard') }}
                         {{--General Overview--}}
                     </a></li>
                 {{--</ul>--}}
                 </li>
-                <li><a href="/admin/users">
+                <li><a href="/users">
                         <i class="mdi mdi-account-multiple-outline"></i> {{ __('strings.UsersDetails') }}
                         {{--General Overview--}}
                     </a></li>

@@ -21,7 +21,7 @@ class AdminMiddleware
             if (Auth::user()['user_type'] == 1) {
                 return $next($request);
             }else
-            return 'Nao tem permissao para acessar essa pagina';
+            return 'You have no permissions to access this page.';
 
         }
 
