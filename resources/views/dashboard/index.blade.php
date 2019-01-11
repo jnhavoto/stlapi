@@ -171,7 +171,7 @@
                                                     <tr>
                                                         <td>
                                                             <a href="/assignment-designoverview/{{$assign->id}}">
-                                                                {{$assign->case}}
+                                                                {{$assign->assignment_description->case}}
                                                             </a>
                                                         </td>
                                                         <td>
@@ -179,10 +179,10 @@
                                                                 {{--$course = \App\Models\Course::where('id',--}}
                                                                 {{--$assign->courses_id)->first();--}}
                                                             {{--@endphp--}}
-                                                            <a href={{ url('/course-designoverview/'
-                                                            .$assign->courses_id)}}>
-                                                                {{$assign->course->name}}
-                                                            </a>
+                                                            {{--<a href={{ url('/course-designoverview/'--}}
+                                                            {{--.$assign->courses_id)}}>--}}
+                                                                {{--{{$assign->course->name}}--}}
+                                                            {{--</a>--}}
                                                         </td>
 
                                                         <td>
