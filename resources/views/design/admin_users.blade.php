@@ -59,14 +59,14 @@
                                     </div>
                                 </div>
                                 <div>
-                                    {{--<td colspan="2">--}}
-                                        {{--<a  class="btn btn-info btn-rounded"--}}
-                                            {{--href="/add_user"--}}
-                                        {{-->--}}
-                                            {{--{{ __('strings.AddUser') }}--}}
-                                            {{--Cancel--}}
-                                        {{--</a>--}}
-                                    {{--</td>--}}
+                                    <td colspan="2">
+                                        <a  class="btn btn-info btn-rounded"
+                                            href="/add_user"
+                                        >
+                                            {{ __('strings.AddUser') }}
+                                            Cancel
+                                        </a>
+                                    </td>
                                     <td colspan="2">
                                         <a  class="btn btn-info btn-rounded"
                                             href="/upload_users"
@@ -246,14 +246,14 @@
                                     </table>
                                 </div>
                                 <div>
-                                    {{--<td colspan="2">--}}
-                                        {{--<a  class="btn btn-info btn-rounded"--}}
-                                            {{--href="/add_user"--}}
-                                        {{-->--}}
-                                            {{--{{ __('strings.AddUser') }}--}}
-                                            {{--Cancel--}}
-                                        {{--</a>--}}
-                                    {{--</td>--}}
+                                    <td colspan="2">
+                                        <a  class="btn btn-info btn-rounded"
+                                            href="/add_user"
+                                        >
+                                            {{ __('strings.AddUser') }}
+                                            Cancel
+                                        </a>
+                                    </td>
                                     <td colspan="2">
                                         <a  class="btn btn-info btn-rounded"
                                             href="/upload_users"
