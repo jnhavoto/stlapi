@@ -277,9 +277,11 @@ Route::get('/user-details/{id}', 'UserController@showUserDetails')->middleware([
 //update user-details if admin or instructor
 Route::post('/updateUsers/{id}', 'UserController@updateUsers')->middleware(['admin']);
 
-Route::get('/admin-student-details/{id}', function ($id) {
-    return view('communications.student-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
-})->middleware(['admin']);
+//Route::get('/admin-student-details/{id}', function ($id) {
+//    return view('communications.student-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
+//})->middleware(['admin']);
+
+Route::get('/admin-student-details/{id}', 'UserController@showUserDetails')->middleware(['admin']);
 
 Route::get('/inst-student-details/{id}', function ($id) {
     return view('communications.student-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);

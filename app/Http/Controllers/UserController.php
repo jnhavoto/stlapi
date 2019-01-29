@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\School;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\UserType;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\Facades\File;
@@ -132,24 +135,47 @@ class UserController extends  ModelController
         ]);
     }
 
+
+
     public function showUserDetails($id)
     {
         $userdata = User::find($id);
 //        return $userdata;
         $userd = User::find($id);
         $user = \Illuminate\Support\Facades\Auth::user();
-        $schools = \App\Models\School::all();
-        $cities = \App\Models\City::all();
-        $usertypes = \App\Models\UserType::all();
+        $schools = School::all();
+        $cities = City::all();
+        $usertypes = UserType::all();
 
-        return view('communications.user-details',
-            [   'userdata' => $userdata,
-                'userd' => $userd,
-                'user' => $user,
-                'schools'=> $schools,
-                'cities' => $cities,
-                'usertypes'=> $usertypes,
-        ]);
+//        return $cities;
+
+        $usertype = $userdata->user_types_id;
+
+        //check if is a student
+        if($usertype == 3)
+        {
+            //getting details of the student
+            $student_details = Student::where('users_id',$id)->first();
+//            return $student_details;
+                return view('communications.student-details',
+                    [   'userdata' => $userdata,
+                        'userd' => $userd,
+                        'user' => $user,
+                        'schools'=> $schools,
+                        'cities' => $cities,
+                        'usertypes'=> $usertypes,
+                        'student_details' => $student_details,
+                    ]);
+        }
+        else
+            return view('communications.user-details',
+                [   'userdata' => $userdata,
+                    'userd' => $userd,
+                    'user' => $user,
+                    'schools'=> $schools,
+                    'cities' => $cities,
+                    'usertypes'=> $usertypes,
+            ]);
     }
 
 

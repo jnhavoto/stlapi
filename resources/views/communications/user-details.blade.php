@@ -51,19 +51,20 @@
             <!-- Row -->
             <div class="row">
                 <!-- Column -->
-                {{--<div class="col-lg-4 col-xlg-3 col-md-5">--}}
-                    {{--<div class="card"> <img class="card-img" src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/background/socialbg.jpg" alt="Card image">--}}
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="card">
                         {{--<div class="card-img-overlay card-inverse social-profile d-flex ">--}}
-                            {{--<div class="align-self-center"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/1.jpg" class="img-circle" width="100">--}}
-                                {{--<h4 class="card-title align-self-center">{{$userdata->first_name.' '.$userdata->last_name}}</h4>--}}
-                                {{--<h6 class="card-subtitle">{{$userdata->email}}</h6>--}}
-                                {{--<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>--}}
-                            {{--</div>--}}
+                        {{--<div class="card-img-top card-inverse social-profile d-flex ">--}}
+                        <img class="card-img-top" src="{{ asset('theme/images/users/person.png') }}" alt="Card image cap">
+                        {{--<div class="align-self-center profile-img"> <img src="{{ asset('theme/images/users/person.png') }}" clalign-self-center profile-imgass="img-circle" width="100">--}}
+                        <div class="card-body">
+                            <h4 class="card-title align-self-center">{{$userdata->first_name.' '.$userdata->last_name}}</h4>
+                            {{--<h6 class="card-subtitle">{{$userdata->email}}</h6>--}}
+                            {{--<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>--}}
+                        </div>
                         {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                <!-- Column -->
-                <!-- Column -->
+                    </div>
+                </div>
                 <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
                         <!-- Nav tabs -->

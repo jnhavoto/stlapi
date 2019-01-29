@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout_admin')
 @section('content')
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
@@ -30,27 +30,16 @@
                 <!-- Column -->
                 <div class="col-lg-4 col-xlg-3 col-md-5">
                     <div class="card">
-                        <div class="card-img-overlay card-inverse social-profile d-flex ">
-                            <div class="align-self-center"> <img src=".../theme/images/users/person.jpg" class="img-circle" width="100">
+                        {{--<div class="card-img-overlay card-inverse social-profile d-flex ">--}}
+                        {{--<div class="card-img-top card-inverse social-profile d-flex ">--}}
+                            <img class="card-img-top" src="{{ asset('theme/images/users/person.png') }}" alt="Card image cap">
+                            {{--<div class="align-self-center profile-img"> <img src="{{ asset('theme/images/users/person.png') }}" clalign-self-center profile-imgass="img-circle" width="100">--}}
+                            <div class="card-body">
                                 <h4 class="card-title align-self-center">{{$userdata->first_name.' '.$userdata->last_name}}</h4>
-                                <h6 class="card-subtitle">{{$userdata->email}}</h6>
+                                {{--<h6 class="card-subtitle">{{$userdata->email}}</h6>--}}
                                 {{--<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>--}}
                             </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body"> <small class="text-muted">Email address </small>
-                            <h6>{{$userdata->email}}</h6> <small class="text-muted p-t-30 db">Phone</small>
-                            <h6>{{$userdata->telephone}}</h6> <small class="text-muted p-t-30 db">Address</small>
-                            <h6> </h6>
-                            {{--<div class="map-box">--}}
-                                {{--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
-                            {{--</div> <small class="text-muted p-t-30 db">Social Profile</small>--}}
-                            {{--<br/>--}}
-                            {{--<button class="btn btn-circle btn-secondary"><i class="fab fa-facebook"></i></button>--}}
-                            {{--<button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>--}}
-                            {{--<button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>--}}
-                        </div>
+                        {{--</div>--}}
                     </div>
                 </div>
                 <!-- Column -->
@@ -137,87 +126,160 @@
                                             <br>
                                             <p class="text-muted">{{$userdata->email}}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6"> <strong>School</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>School</strong>
                                             <br>
                                             <p class="text-muted">{{$userdata->school->school_name}}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6"> <strong>Location</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>City</strong>
                                             <br>
                                             <p class="text-muted">{{$userdata->city->city_name}}</p>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p>
-                                    <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    <h4 class="font-medium m-t-30">Skill Set</h4>
-                                    <hr>
-                                    <h5 class="m-t-30">Wordpress <span class="pull-right">80%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5 class="m-t-30">HTML 5 <span class="pull-right">90%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5 class="m-t-30">jQuery <span class="pull-right">50%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5 class="m-t-30">Photoshop <span class="pull-right">70%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
+
+                                        @if($student_details != null)
+                                            {{--{{$student_details->technical_support}}--}}
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Teaching Grade</strong>
+                                                <br>
+                                                <p class="text-muted">{{$student_details->teaching_grade}}</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Years as Teacher</strong>
+                                                <br>
+                                                <p class="text-muted">{{$student_details->years_as_teacher}}</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Technical Support</strong>
+                                                <br>
+                                                <p class="text-muted">{{$student_details->technical_support}}</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6"> <strong>Student to Student Feedback</strong>
+                                                <br>
+                                                <p class="text-muted">{{$student_details->student_to_student_feedback_other}}</p>
+                                            </div>
+                                        @else
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Teaching Grade</strong>
+                                                <br>
+                                                <p class="text-muted">None</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Years as Teacher</strong>
+                                                <br>
+                                                <p class="text-muted">None</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Technical Support</strong>
+                                                <br>
+                                                <p class="text-muted">None</p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6"> <strong>Student to Student Feedback</strong>
+                                                <br>
+                                                <p class="text-muted">None</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="settings" role="tabpanel">
                                 <div class="card-body">
-                                    <form class="form-horizontal form-material">
+                                    <form id="user-form" class="form-horizontal form-material"
+                                          method="post"
+                                          action="/updateUsers/{{$userdata->id}}"
+                                          enctype="multipart/form-data">
+                                        {{csrf_field()}}
+                                        <input type="hidden" id="user_id" name="user_id" value="{{$userdata->id}}"/>
                                         <div class="form-group">
-                                            <label class="col-md-12">Full Name</label>
+                                            <label class="col-md-12">{{ __('strings.FirstName') }}</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                                                <input name="first_name" type="text" value="{{$userdata->first_name}}" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email" class="col-md-12">Email</label>
+                                            <label class="col-md-12">{{ __('strings.LastName') }}</label>
                                             <div class="col-md-12">
-                                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
+                                                <input name="last_name" type="text" value="{{$userdata->last_name}}" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Password</label>
+                                            <label for="example-email" class="col-md-12">{{ __('strings.Email') }}</label>
                                             <div class="col-md-12">
-                                                <input type="password" value="password" class="form-control form-control-line">
+                                                <input name="email" type="email" value="{{$userdata->email}}" class="form-control form-control-line" name="example-email" id="example-email">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Phone No</label>
+                                            <label class="col-md-12">{{ __('strings.Password') }}</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
+                                                <input name="password" type="password" value="password" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Message</label>
+                                            <label class="col-md-12">{{ __('strings.Mobile') }}</label>
                                             <div class="col-md-12">
-                                                <textarea rows="5" class="form-control form-control-line"></textarea>
+                                                <input name="telephone" type="text" value="{{$userdata->telephone}}" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-12">Select Country</label>
-                                            <div class="col-sm-12">
-                                                <select class="form-control form-control-line">
-                                                    <option>London</option>
-                                                    <option>India</option>
-                                                    <option>Usa</option>
-                                                    <option>Canada</option>
-                                                    <option>Thailand</option>
+                                            <label class="col-md-12">{{ __('strings.SelectRole') }}</label>
+                                            <div class="col-md-4 m-b-20">
+                                                <select class="js-example-basic-multiple" name="user_type_id" style="width: 100%">
+                                                    @foreach($usertypes as $user_type)
+                                                        @if($userdata->user_types_id == $user_type->id)
+                                                            <option
+                                                                    name="selectTag"
+                                                                    selected="selected"
+                                                                    value="{{$user_type->id}}">
+                                                                {{$user_type->name}}
+                                                            </option>
+                                                        @else
+                                                            <option
+                                                                    name="selectTag"
+                                                                    value="{{$user_type->id}}">
+                                                                {{$user_type->name}}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">{{ __('strings.SelectSchool') }}</label>
+                                            <div class="col-md-4 m-b-20">
+                                                <select class="js-example-basic-multiple" name="school_id" style="width: 100%">
+                                                    @foreach($schools as $school)
+                                                        @if($userdata->schools_id == $school->id)
+                                                            <option
+                                                                    name="selectTag"
+                                                                    selected="selected"
+                                                                    value="{{$school->id}}">{{$school->school_name}}
+                                                            </option>
+                                                        @else
+                                                            <option
+                                                                    name="selectTag"
+                                                                    value="{{$school->id}}">{{$school->school_name}}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12">{{ __('strings.SelectCity') }}</label>
+                                            <div class="col-md-4 m-b-20">
+                                                <select class="js-example-basic-multiple" name="city_id" style="width: 100%">
+                                                    @foreach($cities as $city)
+                                                        @if($userdata->cities_id == $city->id)
+                                                            <option
+                                                                    name="selectTag"
+                                                                    selected="selected"
+                                                                    value="{{$city->id}}">{{$city->city_name}}
+                                                            </option>
+                                                        @else
+                                                            <option
+                                                                    name="selectTag"
+                                                                    value="{{$city->id}}">{{$city->city_name}}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <button class="btn btn-success">Update Profile</button>
+                                                <button id="updateUser" type="submit" class="btn btn-success">{{ __('strings.UpdateProfile') }}</button>
                                             </div>
                                         </div>
                                     </form>
