@@ -43,13 +43,19 @@ class LoginController extends Controller
     public function redirectTo()
     {
 
-        if(Auth::user()['user_type'] == 1){
+        if(Auth::user()['user_types_id'] == 1){
+            $user = Auth::user();
+            $user->last_login = now();
+            $user->save();
+            //return $user->last_login;
             return '/admin';
         }
 
-        if (Auth::user()['user_type'] == 2)
-//            return 'something!';
+        if (Auth::user()['user_types_id'] == 2){
+            $user = Auth::user();
+            $user->last_login = now();
             return '/';
+        }
 
         if (Auth::user()->student)
             return '/login';

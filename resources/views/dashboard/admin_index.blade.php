@@ -75,12 +75,12 @@
                                                data-page-size="10">
                                             <thead>
                                             <tr>
-                                                <th>{{ __('strings.Number') }} </th>
+                                                <th> # </th>
                                                 <th>{{ __('strings.Name') }} </th>
                                                 <th>{{ __('strings.Email') }} </th>
                                                 <th>{{ __('strings.Phone') }} </th>
                                                 <th>{{ __('strings.Role') }} </th>
-                                                {{--<th>{{ __('strings.LastLogin') }} </th>--}}
+                                                <th>{{ __('strings.LastLogin') }} </th>
                                                 </th>
                                             </tr>
                                             </thead>
@@ -90,24 +90,39 @@
                                                     {{--<td>{{$student->id}}</td>--}}
                                                     <td>  {{ $loop->index + 1 }}</td>
                                                     <td>
-                                                        <a href="/contact-details">
+                                                        @if($user->user_types_id == 1 || $user->user_types_id == 2 )
+                                                            <a href="/user-details/{{$user->id}}">
+                                                                {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                                {{$user->first_name.' '.$user->last_name}}
+                                                            </a>
+                                                        @else
+                                                            <a href="/admin-student-details/{{$user->id}}">
+                                                                {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                                {{$user->first_name.' '.$user->last_name}}
+                                                            </a>
+                                                        @endif
+                                                            {{--@if($user == 1)--}}
+                                                                {{--<a href="/user-details/{{$user->id}}">--}}
+                                                                    {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                                    {{--{{$user->first_name.' '.$user->last_name}}--}}
+                                                                {{--</a>--}}
+                                                            {{--@endif--}}
+
+                                                        {{--<a href="/user-details/{{$user->id}}">--}}
                                                             {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                            {{$user->first_name.' '.$user->last_name}}
-                                                        </a>
+                                                            {{--{{$user->first_name.' '.$user->last_name}}--}}
+                                                        {{--</a>--}}
                                                     </td>
                                                     <td>{{$user->email}}</td>
                                                     <td>{{$user->telephone}}</td>
-                                                    <td><span class="label label-info">
-                                                        @if($user->user_type==1)
-                                                                {{ __('strings.Administrator') }}
-                                                            @endif
-                                                            @if($user->user_type==2)
-                                                                {{ __('strings.Instructor') }}
-                                                            @endif
-                                                            @if($user->user_type==3)
-                                                                {{ __('strings.Student') }}
-                                                            @endif
-                                                    </span> </td>
+                                                    <td>{{$user->user_type->name}} </td>
+                                                    <td>
+                                                        @if(empty($user->last_login))
+                                                            -
+                                                            @else
+                                                            {{$user->last_login}}
+                                                        @endif
+                                                    </td>
 
                                                 </tr>
                                             @endforeach
@@ -128,148 +143,75 @@
                 <!-- End Course List Content -->
                 <!-- ============================================================== -->
 
-                <!-- ============================================================== -->
-                <!-- Start Assignment List Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <!-- .left-right-aside-column-->
-                            <div class="contact-page-aside">
-                                <div class="pl-4">
-                                    <div class="right-page-header">
-                                        <div class="d-flex">
-                                            <div class="align-self-center">
-                                                <h4 class="card-title m-t-10">
-                                                    {{ __('strings.Logs') }}
+                {{--<!-- ============================================================== -->--}}
+                {{--<!-- Start Assignment List Content -->--}}
+                {{--<!-- ============================================================== -->--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col-12">--}}
+                        {{--<div class="card">--}}
+                            {{--<!-- .left-right-aside-column-->--}}
+                            {{--<div class="contact-page-aside">--}}
+                                {{--<div class="pl-4">--}}
+                                    {{--<div class="right-page-header">--}}
+                                        {{--<div class="d-flex">--}}
+                                            {{--<div class="align-self-center">--}}
+                                                {{--<h4 class="card-title m-t-10">--}}
+                                                    {{--{{ __('strings.Logs') }}--}}
                                                     {{--My Assignment List--}}
-                                                </h4></div>
-                                            <div class="ml-auto">
-                                                <input type="text" id="demo-input-search2"
-                                                       placeholder="{{ __('strings.SearchAssignments') }}"
-                                                       class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped color-table muted-table"
-                                               data-page-size="10">
-                                            <thead>
-                                            <tr>
-                                                {{--<th>{{ __('strings.') }} </th>--}}
-                                                <th>{{ __('strings.Email') }} </th>
-                                                <th>{{ __('strings.LastLogin') }} </th>
+                                                {{--</h4></div>--}}
+                                            {{--<div class="ml-auto">--}}
+                                                {{--<input type="text" id="demo-input-search2"--}}
+                                                       {{--placeholder="{{ __('strings.SearchUser') }}"--}}
+                                                       {{--class="form-control">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="table-responsive">--}}
+                                        {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list--}}
+                                    {{--table-striped color-table muted-table"--}}
+                                               {{--data-page-size="10">--}}
+                                            {{--<thead>--}}
+                                            {{--<tr>--}}
+                                                {{--<th> # </th>--}}
+                                                {{--<th>{{ __('strings.Name') }} </th>--}}
+                                                {{--<th>{{ __('strings.LastLogin') }} </th>--}}
                                                 {{--<th># {{ __('strings.Feedbacks') }} </th>--}}
                                                 {{--<th># {{ __('strings.Ratings') }} </th>--}}
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {{--{{$assignmentsTeacher->count()}}--}}
-                                            {{--@if ($assignTeacher->count() != 0)
-                                                @foreach ($assignTeacher as $assign)
-                                                    <tr>
-                                                        <td>
-                                                            <a href="/assignment-designoverview/{{$assign->id}}">
-                                                                {{$assign->case}}
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            --}}{{--@php--}}{{--
-                                                                --}}{{--$course = \App\Models\Course::where('id',--}}{{--
-                                                                --}}{{--$assign->courses_id)->first();--}}{{--
-                                                            --}}{{--@endphp--}}{{--
-                                                            <a href={{ url('/course-designoverview/'
-                                                            .$assign->courses_id)}}>
-                                                                {{$assign->course->name}}
-                                                            </a>
-                                                        </td>
+                                            {{--</tr>--}}
+                                            {{--</thead>--}}
+                                            {{--<tbody>--}}
+                                                {{--@foreach ($lastlogin_users as $loginuser)--}}
+                                                    {{--<tr>--}}
+                                                        {{--<td>  {{ $loop->index + 1 }}</td>--}}
+                                                        {{--<td>--}}
+                                                            {{--<a href="/user-details/{{$loginuser->id}}">--}}
+                                                                {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                                {{--{{$loginuser->first_name.' '.$loginuser->last_name}}--}}
+                                                            {{--</a>--}}
+                                                        {{--</td>--}}
+                                                        {{--<td>  {{$loginuser->last_login}}</td>--}}
 
-                                                        <td>
-                                                        @php
-                                                            $countStudents = \App\Models\Student::all()->count();
-                                                            $countSubmissions=
-                                                            \App\Models\AssignmentSubmission::where
-                                                            ('assignment_descriptions_id',$assign->id)->count();
-                                                            $progress = $countSubmissions*100/$countStudents;
-                                                        @endphp
-                                                        <a href="/list-submissions/{{$assign->id}}">
-                                                            <div class="progress progress-xs margin-vertical-10 ">
-                                                                <div class="progress-bar bg-danger" style="width: {{$progress}}%;
-                                                                        height:12px;"></div>
-                                                            </div>
-                                                        </a>
-                                                        </td>
-                                                        <td>
-                                                            @php
-                                                                $submissions=
-                                                                    \App\Models\AssignmentSubmission::where
-                                                                    ('assignment_descriptions_id',$assign->id)->get();
-                                                                    $countFeedbacks=0;
-                                                                    foreach ($submissions as $submission)
-                                                                    {
-                                                                        $feedbacks= \App\Models\Feedback::where
-                                                                        ('assignment_submissions_id',$submission->id)
-                                                                        ->get();
-                                                                        $countFeedbacks =
-                                                                        $countFeedbacks+$feedbacks->count();
-                                                                    }
-                                                                    $progressF = $countFeedbacks*100/($countStudents*3);
-                                                            @endphp
-
-                                                            <a href="/list-feedbacks/{{$assign->id}}">
-                                                                <div class="progress progress-xs margin-vertical-10 ">
-                                                                    <div class="progress-bar bg-danger" style="width: {{$progressF}}%;
-                                                                            height:12px;"></div>
-                                                                </div>
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            @php
-                                                                $countRatings=0;
-                                                                    foreach ($submissions as $submission)
-                                                                    {
-                                                                        /*Get all feedbacks for this submission*/
-                                                                        $feedbacks=\App\Models\Feedback::where('assignment_submissions_id', $submission->id)->get();
-                                                                        foreach ($feedbacks as $feedback)
-                                                                        {
-                                                                            /*get all ratings for this feedback*/
-                                                                            $ratings = \App\Models\RatingFeedback::where
-                                                                            ('feedbacks_id',$feedbacks->id)->count();
-                                                                            $countRatings=$countRatings+$ratings;
-                                                                        }
-                                                                    }
-                                                                $progressR = $countRatings*100/($countStudents*3);
-                                                            @endphp
-                                                            <a href="/list-ratings/{{$assign->id}}">
-                                                                <div class="progress progress-xs margin-vertical-10 ">
-                                                                    <div class="progress-bar bg-danger" style="width: {{$progressR}}%;
-                                                                            height:12px;"></div>
-                                                                </div>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif--}}
-                                            </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <td colspan="7">
-                                                    <div class="text-right">
-                                                        <ul class="pagination"></ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!-- .left-aside-column-->
-                                </div>
-                                <!-- /.left-right-aside-column-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                                    {{--</tr>--}}
+                                                {{--@endforeach--}}
+                                            {{--</tbody>--}}
+                                            {{--<tfoot>--}}
+                                            {{--<tr>--}}
+                                                {{--<td colspan="7">--}}
+                                                    {{--<div class="text-right">--}}
+                                                        {{--<ul class="pagination"></ul>--}}
+                                                    {{--</div>--}}
+                                                {{--</td>--}}
+                                            {{--</tr>--}}
+                                            {{--</tfoot>--}}
+                                        {{--</table>--}}
+                                    {{--</div>--}}
+                                    {{--<!-- .left-aside-column-->--}}
+                                {{--</div>--}}
+                                {{--<!-- /.left-right-aside-column-->--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

@@ -63,8 +63,8 @@ class Student extends Eloquent
 		'student_to_student_feedback',
 		'student_to_student_feedback_other',
 		'users_id',
-		'schools_id',
-		'cities_id'
+//		'schools_id',
+//		'cities_id'
 	];
 
     protected $with = ['user', 'school', 'city', 'assignment_submissions', 'digital_tools', 'tech_uses','student_notification_statuses',

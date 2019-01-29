@@ -209,5 +209,18 @@ return [
     'Student' => 'Participant',
     'ImportUsers' => 'Import Users',
     'ImportExcelCSV' => 'Import Excel/CSV',
+    'SearchUser' => 'Search User',
+
+
+    'SelectRole' => 'Select Role',
+    'SelectSchool' => 'Select School',
+    'SelectCity<' => 'Select City',
+    'UpdateProfile<' => 'Update Profile',
+    'FullName<' => 'Full Name',
+    'School<' => 'School',
+    'City<' => 'School',
+    'UserDetails<' => 'User Details',
+
+
 
 ];

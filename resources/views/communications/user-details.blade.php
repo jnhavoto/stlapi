@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout_admin')
 @section('content')
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
@@ -12,10 +12,10 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+                    <h3 class="text-themecolor m-b-0 m-t-0">{{ __('strings.UserDetails') }}</h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('strings.Home') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('strings.UserDetails') }}</li>
                     </ol>
                 </div>
                 {{--<div class="col-md-7 col-4 align-self-center">--}}
@@ -51,192 +51,174 @@
             <!-- Row -->
             <div class="row">
                 <!-- Column -->
-                <div class="col-lg-4 col-xlg-3 col-md-5">
-                    <div class="card"> <img class="card-img" src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/background/socialbg.jpg" alt="Card image">
-                        <div class="card-img-overlay card-inverse social-profile d-flex ">
-                            <div class="align-self-center"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/1.jpg" class="img-circle" width="100">
-                                <h4 class="card-title">{{$userdata->first_name.' '.$userdata->last_name}}</h4>
-                                <h6 class="card-subtitle">{{$userdata->email}}</h6>
+                {{--<div class="col-lg-4 col-xlg-3 col-md-5">--}}
+                    {{--<div class="card"> <img class="card-img" src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/background/socialbg.jpg" alt="Card image">--}}
+                        {{--<div class="card-img-overlay card-inverse social-profile d-flex ">--}}
+                            {{--<div class="align-self-center"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/1.jpg" class="img-circle" width="100">--}}
+                                {{--<h4 class="card-title align-self-center">{{$userdata->first_name.' '.$userdata->last_name}}</h4>--}}
+                                {{--<h6 class="card-subtitle">{{$userdata->email}}</h6>--}}
                                 {{--<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt </p>--}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body"> <small class="text-muted">Email address </small>
-                            <h6>hannagover@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
-                            <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
-                            <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
-                            <div class="map-box">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            </div> <small class="text-muted p-t-30 db">Social Profile</small>
-                            <br/>
-                            <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook"></i></button>
-                            <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
-                            <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
-                        </div>
-                    </div>
-                </div>
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <!-- Column -->
                 <!-- Column -->
                 <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs profile-tab" role="tablist">
-                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Timeline</a> </li>
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a> </li>
+                            {{--<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Timeline</a> </li>--}}
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">{{ __('strings.Profile') }}</a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">{{ __('strings.Settings') }}</a> </li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="home" role="tabpanel">
-                                <div class="card-body">
-                                    <div class="profiletimeline">
-                                        <div class="sl-item">
-                                            <div class="sl-left"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/1.jpg" alt="user" class="img-circle" /> </div>
-                                            <div class="sl-right">
-                                                <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                    <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                                    <div class="row">
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/big/img1.jpg" class="img-responsive radius" /></div>
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/big/img2.jpg" class="img-responsive radius" /></div>
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/big/img3.jpg" class="img-responsive radius" /></div>
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/big/img4.jpg" class="img-responsive radius" /></div>
-                                                    </div>
-                                                    <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="sl-item">
-                                            <div class="sl-left"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/2.jpg" alt="user" class="img-circle" /> </div>
-                                            <div class="sl-right">
-                                                <div> <a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                    <div class="m-t-20 row">
-                                                        <div class="col-md-3 col-xs-12"><img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/big/img1.jpg" alt="user" class="img-responsive radius" /></div>
-                                                        <div class="col-md-9 col-xs-12">
-                                                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="#" class="btn btn-success"> Design weblayout</a></div>
-                                                    </div>
-                                                    <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="sl-item">
-                                            <div class="sl-left"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/3.jpg" alt="user" class="img-circle" /> </div>
-                                            <div class="sl-right">
-                                                <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                    <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
-                                                </div>
-                                                <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="sl-item">
-                                            <div class="sl-left"> <img src="https://wrappixel.com/demos/admin-templates/material-pro/assets/images/users/4.jpg" alt="user" class="img-circle" /> </div>
-                                            <div class="sl-right">
-                                                <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                    <blockquote class="m-t-10">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                                    </blockquote>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <!--second tab-->
-                            <div class="tab-pane" id="profile" role="tabpanel">
+                            <div class="tab-pane active" id="profile" role="tabpanel">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>{{ __('strings.FullName') }}</strong>
                                             <br>
-                                            <p class="text-muted">Johnathan Deo</p>
+                                            <p class="text-muted">{{$userdata->first_name.' '.$userdata->last_name}}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>{{ __('strings.Role') }}</strong>
                                             <br>
-                                            <p class="text-muted">(123) 456 7890</p>
+                                            <p class="text-muted">{{$userdata->user_type->name}}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>{{ __('strings.Mobile') }}</strong>
                                             <br>
-                                            <p class="text-muted">johnathan@admin.com</p>
+                                            <p class="text-muted">{{$userdata->telephone}}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6"> <strong>Location</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>{{ __('strings.Email') }}</strong>
                                             <br>
-                                            <p class="text-muted">London</p>
+                                            <p class="text-muted">{{$userdata->email}}</p>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p>
-                                    <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    <h4 class="font-medium m-t-30">Skill Set</h4>
-                                    <hr>
-                                    <h5 class="m-t-30">Wordpress <span class="pull-right">80%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5 class="m-t-30">HTML 5 <span class="pull-right">90%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5 class="m-t-30">jQuery <span class="pull-right">50%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5 class="m-t-30">Photoshop <span class="pull-right">70%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
+                                        <div class="col-md-3 col-xs-6"> <strong>{{ __('strings.School') }}</strong>
+                                            <br>
+                                            @if($userdata->school != null)
+                                                <p class="text-muted">{{$userdata->school->school_name}}</p>
+                                            @else
+                                                <p class="text-muted">{{ __('strings.None') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-3 col-xs-6"> <strong>{{ __('strings.City') }}</strong>
+                                            <br>
+                                            @if($userdata->city != null)
+                                                <p class="text-muted">{{$userdata->city->city_name}}</p>
+                                            @else
+                                                <p class="text-muted">{{ __('strings.None') }}</p>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="settings" role="tabpanel">
                                 <div class="card-body">
-                                    <form class="form-horizontal form-material">
+                                    <form id="user-form" class="form-horizontal form-material"
+                                          method="post"
+                                          action="/updateUsers/{{$userdata->id}}"
+                                          enctype="multipart/form-data">
+                                        {{csrf_field()}}
+                                        <input type="hidden" id="user_id" name="user_id" value="{{$userdata->id}}"/>
                                         <div class="form-group">
-                                            <label class="col-md-12">Full Name</label>
+                                            <label class="col-md-12">{{ __('strings.FirstName') }}</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                                                <input name="first_name" type="text" value="{{$userdata->first_name}}" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email" class="col-md-12">Email</label>
+                                            <label class="col-md-12">{{ __('strings.LastName') }}</label>
                                             <div class="col-md-12">
-                                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
+                                                <input name="last_name" type="text" value="{{$userdata->last_name}}" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Password</label>
+                                            <label for="example-email" class="col-md-12">{{ __('strings.Email') }}</label>
                                             <div class="col-md-12">
-                                                <input type="password" value="password" class="form-control form-control-line">
+                                                <input name="email" type="email" value="{{$userdata->email}}" class="form-control form-control-line" name="example-email" id="example-email">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Phone No</label>
+                                            <label class="col-md-12">{{ __('strings.Password') }}</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
+                                                <input name="password" type="password" value="password" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-12">Message</label>
+                                            <label class="col-md-12">{{ __('strings.Mobile') }}</label>
                                             <div class="col-md-12">
-                                                <textarea rows="5" class="form-control form-control-line"></textarea>
+                                                <input name="telephone" type="text" value="{{$userdata->telephone}}" class="form-control form-control-line">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-12">Select Country</label>
-                                            <div class="col-sm-12">
-                                                <select class="form-control form-control-line">
-                                                    <option>London</option>
-                                                    <option>India</option>
-                                                    <option>Usa</option>
-                                                    <option>Canada</option>
-                                                    <option>Thailand</option>
+                                            <label class="col-md-12">{{ __('strings.SelectRole') }}</label>
+                                            <div class="col-md-4 m-b-20">
+                                                <select class="js-example-basic-multiple" name="user_type_id" style="width: 100%">
+                                                    @foreach($usertypes as $user_type)
+                                                        @if($userdata->user_types_id == $user_type->id)
+                                                            <option
+                                                                    name="selectTag"
+                                                                    selected="selected"
+                                                                    value="{{$user_type->id}}">
+                                                                    {{$user_type->name}}
+                                                            </option>
+                                                        @else
+                                                            <option
+                                                                    name="selectTag"
+                                                                    value="{{$user_type->id}}">
+                                                                {{$user_type->name}}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">{{ __('strings.SelectSchool') }}</label>
+                                            <div class="col-md-4 m-b-20">
+                                                <select class="js-example-basic-multiple" name="school_id" style="width: 100%">
+                                                    @foreach($schools as $school)
+                                                        @if($userdata->schools_id == $school->id)
+                                                            <option
+                                                                    name="selectTag"
+                                                                    selected="selected"
+                                                                    value="{{$school->id}}">{{$school->school_name}}
+                                                            </option>
+                                                        @else
+                                                            <option
+                                                                    name="selectTag"
+                                                                    value="{{$school->id}}">{{$school->school_name}}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12">{{ __('strings.SelectCity') }}</label>
+                                            <div class="col-md-4 m-b-20">
+                                                <select class="js-example-basic-multiple" name="city_id" style="width: 100%">
+                                                    @foreach($cities as $city)
+                                                        @if($userdata->cities_id == $city->id)
+                                                            <option
+                                                                    name="selectTag"
+                                                                    selected="selected"
+                                                                    value="{{$city->id}}">{{$city->city_name}}
+                                                            </option>
+                                                        @else
+                                                            <option
+                                                                    name="selectTag"
+                                                                    value="{{$city->id}}">{{$city->city_name}}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <button class="btn btn-success">Update Profile</button>
+                                                <button id="updateUser" type="submit" class="btn btn-success">{{ __('strings.UpdateProfile') }}</button>
                                             </div>
                                         </div>
                                     </form>
@@ -316,7 +298,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-            © 2018 Material Pro Admin by wrappixel.com
+            © 2019 STL App by ORU
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

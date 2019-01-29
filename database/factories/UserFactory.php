@@ -65,7 +65,7 @@ $factory->define(\App\Models\School::class, function (Faker $faker) use ($school
     ];
 });
 
-//arry of names
+//array of names
 $firstnames=['Martin','Anneli','Pia','Camilla','Anita','Anne','Annette','Peggy','Anna', 'Åke',
     'Agélii','Lisen','Susanna','Catherine'];
 //array of last names
@@ -97,14 +97,25 @@ $telephone=['0735430430','0761258772','0730882913','0722220276','0721788074','07
 //    }
 //});
 
+//feeding the DB
+$usertypes=['Adminstrator','Instructor','Participant'];
+$factory->define(\App\Models\UserType::class, function (Faker $faker) use ($usertypes){
+        return [
+            'name' => $faker->randomElement($usertypes),
+            ];
+
+});
+
 $factory->define(\App\User::class, function (Faker $faker) {
         return [
             'first_name' => $faker->firstName,
             'last_name' => $faker->lastName,
             'telephone' => $faker->phoneNumber,
             'email' => $faker->unique()->email,
-            'user_type' => $faker->numberBetween(1,3),
+            'user_types_id' => $faker->numberBetween(1,\App\Models\UserType::all()->count()),
             'password' => '123456',
+            'schools_id'=> $faker->numberBetween(1, \App\Models\School::all()->count()),
+            'cities_id'=> $faker->numberBetween(1, \App\Models\City::all()->count()),
         ];
 });
 
@@ -131,6 +142,8 @@ $factory->define(\App\Models\AssignmentTemplate::class, function (Faker $faker){
         'instructions' => $faker->text,
     ];
 });
+
+
 
 //
 $factory->define(\App\Models\AssignmentDescriptionsHasCourse::class, function (Faker $faker){

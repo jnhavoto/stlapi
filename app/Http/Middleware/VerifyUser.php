@@ -22,7 +22,7 @@ class VerifyUser
 //            if (Auth::user()->teacher) {
 //                return $next($request);
 //            }
-            if (Auth::user()['user_type'] == 2) {
+            if (Auth::user()['user_types_id'] == 2) {
 //                return 'verified!';
                 return $next($request);
             }

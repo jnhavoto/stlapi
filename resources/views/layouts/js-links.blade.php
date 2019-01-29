@@ -1,6 +1,6 @@
 {{--<<<<<<< HEAD--}}
 {{--<!-- Jquery Core Js -->--}}
-{{--<script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>--}}
+<script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
 
 {{--<!-- Bootstrap Core Js -->--}}
 {{--<script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>--}}
@@ -87,9 +87,12 @@
 <script src="{{ asset('js/select2.js')}}"></script>
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>--}}
 
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
 {{--<script type="text/javascript" src="{{ asset('js/course-create.js')}}"></script>--}}
 {{--<script type="text/javascript" src="{{ asset('js/compose-dropzone.js')}}"></script>--}}
+
 @yield('dropzones')
 
 

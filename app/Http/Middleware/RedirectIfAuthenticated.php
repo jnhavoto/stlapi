@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -20,13 +21,11 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             return 'here';
 
-            if(Auth::user()['user_type'] == 1){
-//                return 'admin';
+            if(Auth::user()['user_types_id'] == 1){
                 return redirect('/admin');
             }
 
-            if (Auth::user()['user_type'== 2]){
-//                return 'instructor';
+            if (Auth::user()['user_types_id'== 2]){
                 return redirect('/');
             }
 

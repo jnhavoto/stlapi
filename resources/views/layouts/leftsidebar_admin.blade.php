@@ -10,7 +10,8 @@
             <!-- User profile text-->
             <div class="profile-text"><a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown"
                                          role="button" aria-haspopup="true" aria-expanded="true">{{
-                                          $user->first_name.' '.$user->last_name}}</a>
+                                          $userd->first_name.' '.$userd->last_name
+                                          }}</a>
                 <div class="dropdown-menu animated flipInY">
                     <a href="#" class="dropdown-item"><i class="ti-user"></i>
                         {{ __('strings.my_profile') }}
@@ -66,26 +67,6 @@
                     </a></li>
                 {{--</ul>--}}
                 </li>
-                {{--<li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i--}}
-                                {{--class="mdi mdi-account-multiple-outline"></i><span class="hide-menu">--}}
-                            {{--{{ __('strings.UsersDetails') }}--}}
-                            {{--Activities--}}
-                        {{--</span></a>--}}
-                    {{--<ul aria-expanded="false" class="collapse">--}}
-                        {{--<li><a href="/admin/users">--}}
-                                {{--<i class="mdi mdi-account-multiple"></i> {{ __('strings.Users') }}--}}
-                                {{--Courses--}}
-                            {{--</a></li>--}}
-                        {{--<li><a href="/admin/roles">--}}
-                                {{--<i class="mdi mdi-account-card-details"></i> {{ __('strings.Roles') }}--}}
-                                {{--Assignments--}}
-                            {{--</a></li>--}}
-                        {{--<li><a href="/admin/permissions">--}}
-                                {{--<i class="mdi mdi-account-alert"></i> {{ __('strings.Permissions') }}--}}
-                                {{--Calendar--}}
-                            {{--</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
                 <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                 class="mdi mdi-book-multiple-variant"></i><span class="hide-menu">
                             {{ __('strings.Templates') }}

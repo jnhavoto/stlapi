@@ -34,7 +34,8 @@ class HomeController extends Controller
     {
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
 //        return Auth::user()->id;
-//        return $teacher_id;
+        //update the last_login date
+
 
         $assignTeacher = $teacherAssignment = $teacher->assignment_descriptions()->get();
 //        $assignTeacher = AssignmentDescriptionsHasTeacher::with('assignment_description')->
@@ -79,6 +80,9 @@ class HomeController extends Controller
 
     public function admin_index()
     {
+        //get details of logged user:
+        $user = Auth::user();
+//        return $user;
         //List all assignments that have been created
         $assignTemplates = AssignmentTemplate::all();
         //List all assignment Descriptions
@@ -94,13 +98,15 @@ class HomeController extends Controller
         //
         $users = User::paginate(15);
 
+        $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
 
         return view('dashboard.admin_index',[
             'assignTemplates' => $assignTemplates,
             'assignments' => $assignments,
             'teachers' => $teachers, 'students' => $students,
             'users' => $users,
-            'user' => Auth::user()
+            'lastlogin_users' => $login_users,
+            'userd' => $user,
         ]);
     }
 

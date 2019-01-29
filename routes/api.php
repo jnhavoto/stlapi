@@ -438,8 +438,8 @@ Route::post('user/login', 'UserController@login');
 Route::post('user/logout', 'UserController@logout');
 Route::post('get-user-token/{token}', 'UserController@getUserFromToken');
 Route::get('users', 'UserController@getAll'); //route to get all
-Route::get('users', 'UserController@getAll'); //route to get all
-Route::get('users', 'UserController@getAll'); //route to get all
+//Route::get('users', 'UserController@getAll'); //route to get all
+//Route::get('users', 'UserController@getAll'); //route to get all
 Route::get('user/{id}', 'UserController@get'); //route to get a specific
 Route::post('user', 'UserController@store'); //route to store
 Route::put('user/{id}', 'UserController@update'); // route to update

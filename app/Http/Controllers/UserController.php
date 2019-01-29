@@ -94,14 +94,67 @@ class UserController extends  ModelController
 
     public function createUser(Request $request)
     {
-        return $request;
+//        return $request;
 
         return view('design.form_add_user', [
             'user' => Auth::user()
         ]);
     }
 
-    public function uploadUsersForm()
+    public function updateUsers(Request $request)
+    {
+        $userd = Auth::user();
+        $user = User::find($request->user_id);
+//        return $request;
+        $pass = Hash::make($request->password);
+        //do updates and save
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->telephone = $request->telephone;
+        $user->email = $request->email;
+        $user->password = $pass;
+        $user->user_types_id = $request->user_type_id;
+        $user->schools_id = $request->school_id;
+        $user->cities_id = $request->city_id;
+        $user->save();
+
+        //get the updated data
+        $user = User::find($request->user_id);
+
+        $users = User::paginate(15);
+
+        $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
+
+        return view('dashboard.admin_index', [
+            'users' => $users,
+            'lastlogin_users' => $login_users,
+            'userd' => $userd,
+        ]);
+    }
+
+    public function showUserDetails($id)
+    {
+        $userdata = User::find($id);
+//        return $userdata;
+        $userd = User::find($id);
+        $user = \Illuminate\Support\Facades\Auth::user();
+        $schools = \App\Models\School::all();
+        $cities = \App\Models\City::all();
+        $usertypes = \App\Models\UserType::all();
+
+        return view('communications.user-details',
+            [   'userdata' => $userdata,
+                'userd' => $userd,
+                'user' => $user,
+                'schools'=> $schools,
+                'cities' => $cities,
+                'usertypes'=> $usertypes,
+        ]);
+    }
+
+
+
+        public function uploadUsersForm()
     {
         return view('design.import-users',['user' => Auth::user()]);
     }

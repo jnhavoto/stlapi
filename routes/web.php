@@ -41,7 +41,6 @@ Route::get('/user-details/{id}', function ($id) {
 	return view('communications.user-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
 
-
 Route::get('/contact-details-other/{id}', function ($id) {
     return view('communications.contact-details-other', ['user' => \App\User::find($id)]);
 })->middleware(['teacher']);
@@ -240,7 +239,7 @@ Route::get('/users', 'UserController@admin_listContacts')->middleware(['admin'])
 //add a user
 Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);
 
-//submit assignment template
+//submit assAdminstratorignment template
 Route::post('/submit_user', 'UserController@createUser')->middleware(['admin']);
 
 //import users
@@ -264,6 +263,27 @@ Route::post('/create_course_template', 'AssignmentTemplateController@createCours
 //delete user
 Route::get('/delete_user/{id}', 'UserController@deleteUser')->middleware(['admin']);
 
+//show user details if admin or instructor
+//Route::get('/user-details/{id}', function ($id) {
+//    return view('communications.user-details',
+//        ['userdata' => \App\User::find($id), 'userd' => \App\User::find($id),
+//        'user' => \Illuminate\Support\Facades\Auth::user(),
+//        'schools'=> \App\Models\School::all(), 'cities'=>\App\Models\City::all(),
+//            'usertypes'=>\App\Models\UserType::all()]);
+//})->middleware(['admin']);
+
+Route::get('/user-details/{id}', 'UserController@showUserDetails')->middleware(['admin']);
+
+//update user-details if admin or instructor
+Route::post('/updateUsers/{id}', 'UserController@updateUsers')->middleware(['admin']);
+
+Route::get('/admin-student-details/{id}', function ($id) {
+    return view('communications.student-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
+})->middleware(['admin']);
+
+Route::get('/inst-student-details/{id}', function ($id) {
+    return view('communications.student-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
+})->middleware(['teacher']);
 //==============================================================
 //End Admin
 //==
