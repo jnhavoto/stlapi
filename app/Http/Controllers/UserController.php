@@ -248,7 +248,7 @@ class UserController extends  ModelController
         $users = User::paginate(15);
 //
 
-        return view('design.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'user' => Auth::user()]);
+        return view('design.admin_users', ['teachers' => $teachers, 'students' => $students, 'users' => $users, 'userd' => Auth::user(), 'user' => Auth::user()]);
     }
 
     public function deleteUser($id)

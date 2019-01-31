@@ -104,17 +104,20 @@
                                                 </td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->telephone}}</td>
-                                                <td><span class="label label-info">
-                                                        @if($user->user_type==1)
-                                                            {{ __('strings.Administrator') }}
-                                                        @endif
-                                                        @if($user->user_type==2)
-                                                                {{ __('strings.Instructor') }}
-                                                        @endif
-                                                        @if($user->user_type==3)
-                                                                {{ __('strings.Student') }}
-                                                        @endif
-                                                    </span> </td>
+                                                <td>{{$user->user_type->name}}
+                                                    {{--<span class="label label-info">--}}
+                                                        {{----}}
+                                                        {{--@if($user->user_type==1)--}}
+                                                            {{--{{ __('strings.Administrator') }}--}}
+                                                        {{--@endif--}}
+                                                        {{--@if($user->user_type==2)--}}
+                                                                {{--{{ __('strings.Instructor') }}--}}
+                                                        {{--@endif--}}
+                                                        {{--@if($user->user_type==3)--}}
+                                                                {{--{{ __('strings.Student') }}--}}
+                                                        {{--@endif--}}
+                                                    {{--</span> --}}
+                                                </td>
                                                 <td>
                                                     <a href="{{ url('/update_user/'.$user->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">

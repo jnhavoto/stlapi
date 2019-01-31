@@ -233,6 +233,8 @@ Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->mid
 //first admin page
 Route::get('/admin', 'HomeController@admin_index')->middleware(['admin']);
 
+Route::get('/dashboard', 'HomeController@admin_index')->middleware(['admin']);
+
 //show all users
 Route::get('/users', 'UserController@admin_listContacts')->middleware(['admin']);
 
