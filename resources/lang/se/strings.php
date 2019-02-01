@@ -28,7 +28,7 @@ return [
         'Logout' => 'Logga uy',
         'Home' => 'Hem',
         'Ongoing' => 'Pågående',
-        'Late' => 'Försenad',// or ‘försenade’ in plural
+        'Late' => 'Försenad',// or ‘försenade' in plural
 
 //    Left side menu
     'Courses' => 'Kurser',
@@ -120,7 +120,7 @@ return [
 
     'AddCourseMaterial' => 'Lägg till kursmaterial',
     'AddAssignmentMaterial' => 'Lägg till material till uppgift',
-//    OR just ‘lägg till material’ depending on context
+//    OR just ‘lägg till material' depending on context
     'Now' => 'Nu',
     'Later' => 'Senare',
     'AddNewEvent' => 'Lägg till händelse',
@@ -134,7 +134,7 @@ return [
     'Name' => 'Namn',
     'Email' => 'Epost',
     'Phone' => 'Telefon',
-//    OR just ‘tel’
+//    OR just ‘tel'
     'Role' => 'Role',
     'Joiningdate' => 'Deltagare sedan',
 //    I am not clear about the context for this)
@@ -143,7 +143,7 @@ return [
     'Sent' => 'Skickat',
     'Draft' => 'Utkast',
     'Compose' => 'Skriv',
-//    Context unclear…’compose message’? If so, ‘skriv meddelande’
+//    Context unclear…'compose message'? If so, ‘skriv meddelande'
     'UpdateField' => 'Uppdatera fält',
     'AssignmentMaterial' => 'Material till uppgift',
     'AddMaterial' => 'Lägg till kursmaterial',
@@ -214,13 +214,12 @@ return [
     'ImportUsers' => 'Importera användare',
     'ImportExcelCSV' => 'Importera Excel/CSV',
 
-    'SearchUser' => 'Search User',
-    'SelectRole' => 'Select Role',
-    'SelectSchool' => 'Select School',
-    'SelectCity' => 'Select City',
-    'FullName' => 'Full Name',
-    'School' => 'School',
-    'City' => 'School',
-    'UserDetails' => 'User Details',
-    'UpdateFields' => 'Update Fields',
+    'SelectRole' => 'Välj roll',
+    'SelectSchool' => 'Välj skola',
+    'SelectCity<' => 'Välj stad',
+    'FullName' => 'För- och efternamn',
+    'School' => 'Skola',
+    'City' => 'Kommun',
+    'UserDetails' => 'Användardata',
+    'UpdateFields' => 'Uppdatera fält'
 ];
