@@ -33,10 +33,16 @@
                             <h4 class="card-title">{{ __('strings.CreateNewCourse') }} </h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }}
                             </h6>
-                            <form id="form-course" class="form-horizontal m-t-40" method="post"
+                            <form id="form-course" class="form-horizontal m-t-40"
+                                  method="post"
                                   action="/create_course_template"
-                                  enctype="multipart/form-data" data-toggle="validator" role="form">
+                                  enctype="multipart/form-data">
                                 {{csrf_field()}}
+
+                                  {{--method="post"--}}
+                                  {{--action="/create_course_template"--}}
+                                  {{--enctype="multipart/form-data" data-toggle="validator" role="form">--}}
+                                {{--{{csrf_field()}}--}}
                                 <input type="hidden" id="course_id" name="course_id" value="0"/>
 
                                 <div class="col-md-6 m-b-20">

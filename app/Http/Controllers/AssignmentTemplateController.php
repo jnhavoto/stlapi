@@ -25,16 +25,17 @@ class AssignmentTemplateController extends ModelController
     public function openCreteAssignTemplate()
     {
         return view('design.form_assign_template', [
-            'user' => Auth::user
-            ()]);
+            'user' => Auth::user(),
+            'userd' => Auth::user(),
+            ]);
 
     }
 
     public function openCreteACourseTemplate()
     {
         return view('design.form_course_template', [
-            'user' => Auth::user
-            ()]);
+            'user' => Auth::user(),
+            'userd' => Auth::user(),]);
 
     }
 

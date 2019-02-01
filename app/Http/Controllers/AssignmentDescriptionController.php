@@ -189,6 +189,7 @@ class AssignmentDescriptionController extends ModelController
 //        return $courses;
         return view('design.admin_assign_templates',
             ['assTemplates' => $assTemplates,
+                'userd' => Auth::user(),
                 'user' => Auth::user()
             ]);
     }
@@ -201,6 +202,7 @@ class AssignmentDescriptionController extends ModelController
 //        return $courses;
         return view('design.admin_course_templates',
             ['courseTemplates' => $courseTemplates,
+                'userd' => Auth::user(),
                 'user' => Auth::user()
             ]);
     }
