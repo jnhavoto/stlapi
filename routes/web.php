@@ -276,14 +276,18 @@ Route::get('/delete_user/{id}', 'UserController@deleteUser')->middleware(['admin
 
 Route::get('/user-details/{id}', 'UserController@showUserDetails')->middleware(['admin']);
 
+Route::get('/update-user/{id}', 'UserController@updateUserForm')->middleware(['admin']);
+
 //update user-details if admin or instructor
-Route::post('/updateUsers/{id}', 'UserController@updateUsers')->middleware(['admin']);
+Route::post('/update-userdata/{id}', 'UserController@updateUsers')->middleware(['admin']);
+
+Route::post('/update-userdata1/{id}', 'UserController@updateUsers1')->middleware(['admin']);
 
 //Route::get('/admin-student-details/{id}', function ($id) {
 //    return view('communications.student-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
 //})->middleware(['admin']);
 
-Route::get('/admin-student-details/{id}', 'UserController@showUserDetails')->middleware(['admin']);
+//Route::get('/admin-student-details/{id}', 'UserController@showUserDetails')->middleware(['admin']);
 
 Route::get('/inst-student-details/{id}', function ($id) {
     return view('communications.student-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);

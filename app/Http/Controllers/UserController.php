@@ -95,6 +95,34 @@ class UserController extends  ModelController
             ()]);
     }
 
+    public function updateUserForm($id)
+    {
+        $userdata = User::find($id);
+//        return $userdata;
+        $userd = User::find($id);
+        $user = \Illuminate\Support\Facades\Auth::user();
+        $schools = School::all();
+        $cities = City::all();
+        $usertypes = UserType::all();
+
+//        return $userdata;
+
+        $usertype = $userdata->user_types_id;
+
+        //check if is a student
+        $student_details = Student::where('users_id',$id)->first();
+//      return $student_details;
+        return view('design.update-user',
+            [   'userdata' => $userdata,
+                'userd' => $userd,
+                'user' => $user,
+                'schools'=> $schools,
+                'cities' => $cities,
+                'usertypes'=> $usertypes,
+                'student_details' => $student_details,
+            ]);
+    }
+
     public function createUser(Request $request)
     {
 //        return $request;
@@ -128,6 +156,7 @@ class UserController extends  ModelController
 
         $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
 
+
         return view('dashboard.admin_index', [
             'users' => $users,
             'lastlogin_users' => $login_users,
@@ -135,6 +164,36 @@ class UserController extends  ModelController
         ]);
     }
 
+    public function updateUsers1(Request $request)
+    {
+        $userd = Auth::user();
+        $user = User::find($request->user_id);
+//        return $request;
+        $pass = Hash::make($request->password);
+        //do updates and save
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->telephone = $request->telephone;
+        $user->email = $request->email;
+        $user->password = $pass;
+        $user->user_types_id = $request->user_type_id;
+        $user->schools_id = $request->school_id;
+        $user->cities_id = $request->city_id;
+        $user->save();
+
+        //get the updated data
+        $user = User::find($request->user_id);
+
+        $users = User::paginate(15);
+
+        $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
+
+        return view('design.admin_users', [
+            'users' => $users,
+            'lastlogin_users' => $login_users,
+            'userd' => $userd,
+        ]);
+    }
 
 
     public function showUserDetails($id)
@@ -147,34 +206,21 @@ class UserController extends  ModelController
         $cities = City::all();
         $usertypes = UserType::all();
 
-//        return $cities;
+//        return $userdata;
 
         $usertype = $userdata->user_types_id;
 
         //check if is a student
-        if($usertype == 3)
-        {
-            //getting details of the student
-            $student_details = Student::where('users_id',$id)->first();
-//            return $student_details;
-                return view('communications.student-details',
-                    [   'userdata' => $userdata,
-                        'userd' => $userd,
-                        'user' => $user,
-                        'schools'=> $schools,
-                        'cities' => $cities,
-                        'usertypes'=> $usertypes,
-                        'student_details' => $student_details,
-                    ]);
-        }
-        else
-            return view('communications.user-details',
-                [   'userdata' => $userdata,
-                    'userd' => $userd,
-                    'user' => $user,
-                    'schools'=> $schools,
-                    'cities' => $cities,
-                    'usertypes'=> $usertypes,
+        $student_details = Student::where('users_id',$id)->first();
+//      return $student_details;
+        return view('communications.user-details',
+            [   'userdata' => $userdata,
+                'userd' => $userd,
+                'user' => $user,
+                'schools'=> $schools,
+                'cities' => $cities,
+                'usertypes'=> $usertypes,
+                'student_details' => $student_details,
             ]);
     }
 
@@ -257,7 +303,7 @@ class UserController extends  ModelController
         $current_user = Auth::user();
         //get user_type
         $userdetails = User::findOrFail($id);
-        $user_type = $userdetails-> user_type;
+        $user_type = $userdetails-> user_types_id;
 //        return $user_type;
         //if the user is the current admin, then don't allow to delete, else
         // if user_type = 2 then find the link with teacher table (if any) and delete, else

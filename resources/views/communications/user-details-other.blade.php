@@ -111,48 +111,6 @@
                                                 <p class="text-muted">{{ __('strings.None') }}</p>
                                             @endif
                                         </div>
-
-                                        @if($userdata->user_types_id == 3)
-                                            @if($student_details != null)
-                                                {{--{{$student_details->technical_support}}--}}
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Technical Support</strong>
-                                                    <br>
-                                                    <p class="text-muted">{{$student_details->technical_support}}</p>
-                                                </div><div class="col-md-3 col-xs-6 b-r"> <strong>Teaching Grade</strong>
-                                                    <br>
-                                                    <p class="text-muted">{{$student_details->teaching_grade}}</p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Years as Teacher</strong>
-                                                    <br>
-                                                    <p class="text-muted">{{$student_details->years_as_teacher}}</p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Technical Support</strong>
-                                                    <br>
-                                                    <p class="text-muted">{{$student_details->technical_support}}</p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6"> <strong>Student to Student Feedback</strong>
-                                                    <br>
-                                                    <p class="text-muted">{{$student_details->student_to_student_feedback_other}}</p>
-                                                </div>
-                                            @else
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Teaching Grade</strong>
-                                                    <br>
-                                                    <p class="text-muted">None</p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Years as Teacher</strong>
-                                                    <br>
-                                                    <p class="text-muted">None</p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6 b-r"> <strong>Technical Support</strong>
-                                                    <br>
-                                                    <p class="text-muted">None</p>
-                                                </div>
-                                                <div class="col-md-3 col-xs-6"> <strong>Student to Student Feedback</strong>
-                                                    <br>
-                                                    <p class="text-muted">None</p>
-                                                </div>
-                                            @endif
-                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +118,7 @@
                                 <div class="card-body">
                                     <form id="user-form" class="form-horizontal form-material"
                                           method="post"
-                                          action="/update-userdata/{{$userdata->id}}"
+                                          action="/updateUsers/{{$userdata->id}}"
                                           enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <input type="hidden" id="user_id" name="user_id" value="{{$userdata->id}}"/>

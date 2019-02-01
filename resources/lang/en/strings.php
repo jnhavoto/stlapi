@@ -215,11 +215,11 @@ return [
     'SelectRole' => 'Select Role',
     'SelectSchool' => 'Select School',
     'SelectCity<' => 'Select City',
-    'UpdateProfile<' => 'Update Profile',
-    'FullName<' => 'Full Name',
-    'School<' => 'School',
-    'City<' => 'School',
-    'UserDetails<' => 'User Details',
+    'FullName' => 'Full Name',
+    'School' => 'School',
+    'City' => 'School',
+    'UserDetails' => 'User Details',
+    'UpdateFields' => 'Update Fields',
 
 
 

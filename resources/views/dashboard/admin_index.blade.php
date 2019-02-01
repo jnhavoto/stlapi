@@ -90,17 +90,21 @@
                                                     {{--<td>{{$student->id}}</td>--}}
                                                     <td>  {{ $loop->index + 1 }}</td>
                                                     <td>
-                                                        @if($user->user_types_id == 1 || $user->user_types_id == 2 )
-                                                            <a href="/user-details/{{$user->id}}">
+                                                        <a href="/user-details/{{$user->id}}">
+                                                            {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                            {{$user->first_name.' '.$user->last_name}}
+                                                        </a>
+                                                        {{--@if($user->user_types_id == 1 || $user->user_types_id == 2 )--}}
+                                                            {{--<a href="/user-details/{{$user->id}}">--}}
                                                                 {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                                {{$user->first_name.' '.$user->last_name}}
-                                                            </a>
-                                                        @else
-                                                            <a href="/admin-student-details/{{$user->id}}">
+                                                                {{--{{$user->first_name.' '.$user->last_name}}--}}
+                                                            {{--</a>--}}
+                                                        {{--@else--}}
+                                                            {{--<a href="/admin-student-details/{{$user->id}}">--}}
                                                                 {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                                {{$user->first_name.' '.$user->last_name}}
-                                                            </a>
-                                                        @endif
+                                                                {{--{{$user->first_name.' '.$user->last_name}}--}}
+                                                            {{--</a>--}}
+                                                        {{--@endif--}}
                                                             {{--@if($user == 1)--}}
                                                                 {{--<a href="/user-details/{{$user->id}}">--}}
                                                                     {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}

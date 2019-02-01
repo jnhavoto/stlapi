@@ -97,10 +97,21 @@
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td>  {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/contact-details">
+                                                    <a href="/user-details/{{$user->id}}">
                                                         {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
                                                         {{$user->first_name.' '.$user->last_name}}
                                                     </a>
+                                                    {{--@if($user->user_types_id == 1 || $user->user_types_id == 2 )--}}
+                                                        {{--<a href="/user-details/{{$user->id}}">--}}
+                                                            {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                            {{--{{$user->first_name.' '.$user->last_name}}--}}
+                                                        {{--</a>--}}
+                                                    {{--@else--}}
+                                                        {{--<a href="/admin-student-details/{{$user->id}}">--}}
+                                                            {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                            {{--{{$user->first_name.' '.$user->last_name}}--}}
+                                                        {{--</a>--}}
+                                                    {{--@endif--}}
                                                 </td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->telephone}}</td>
@@ -119,22 +130,14 @@
                                                     {{--</span> --}}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ url('/update_user/'.$user->id)}}" class="btn btn-info
+                                                    <a href="{{ url('/update-user/'.$user->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
-                                                    <a href="{{ url('/delete_user/'.$user->id)}}" class="btn btn-info
-                                                     btn-circle btn-lg">
-                                                        <i text-md-center class="ti-trash"></i>
-                                                    </a>
-                                                    {{--<button type="button" class="btn btn-info btn-circle--}}
-                                                    {{--btn-lg"--}}
-                                                            {{--href="/"--}}
-                                                            {{--data-toggle="modal"--}}
-                                                            {{--data-target="#confirm-delete-assignment"--}}
-                                                            {{--onclick="deteleAssignment({{$user}})">--}}
+                                                    {{--<a href="{{ url('/delete_user/'.$user->id)}}" class="btn btn-info--}}
+                                                     {{--btn-circle btn-lg">--}}
                                                         {{--<i text-md-center class="ti-trash"></i>--}}
-                                                    {{--</button>--}}
+                                                    {{--</a>--}}
                                                 </td>
                                             </tr>
                                         @endforeach
