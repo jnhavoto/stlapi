@@ -251,16 +251,19 @@ Route::get('upload_users', 'UserController@uploadUsersForm')->middleware(['admin
 Route::post('/import', 'UserController@importUsers')->middleware(['admin']);
 
 
-Route::get('/create_assigntemplate', 'AssignmentTemplateController@openCreteAssignTemplate')->middleware(['admin']);
-
-//show course template form
-Route::get('/create_çcoursetemplate', 'AssignmentTemplateController@openCreteACourseTemplate')->middleware(['admin']);
+Route::get('/assigntemplate-form', 'AssignmentTemplateController@openCreteAssignTemplate')->middleware(['admin']);
 
 //submit assignment template
 Route::post('/create_assign_template', 'AssignmentTemplateController@createAssignTemplate')->middleware(['admin']);
 
+//show course template form
+Route::get('/coursetemplate-form', 'CourseTemplateController@openCreteACourseTemplate')->middleware(['admin']);
+
+//update course template
+Route::get('/update-coursetemplate-form/{id}', 'CourseTemplateController@openUpdateACourseTemplate')->middleware(['admin']);
+
 //submit course template
-Route::post('/create_course_template', 'AssignmentTemplateController@createCourseTemplate')->middleware(['admin']);
+Route::post('/create-course-template', 'CourseTemplateController@createCourseTemplate')->middleware(['admin']);
 
 //delete user
 Route::get('/delete_user/{id}', 'UserController@deleteUser')->middleware(['admin']);

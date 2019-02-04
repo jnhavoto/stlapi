@@ -65,7 +65,7 @@
                                                 <td> {{$course->name}}  </td>
                                                 <td>{{substr($course->course_content, 0, 45) }}</td>
                                                 <td>
-                                                    <a href="{{ url('/edit_template/'.$course->id)}}" class="btn btn-info
+                                                    <a href="{{ url('/update-coursetemplate-form/'.$course->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
@@ -97,7 +97,7 @@
                     </div>
                     <div>
                         <a class="btn btn-info btn-rounded"
-                           href="/create_çcoursetemplate">
+                           href="/coursetemplate-form">
                             {{ __('strings.AddTemplate') }}
                         </a>
                         {{--<button type="button" onclick="courseCleanDetails()" class="btn--}}

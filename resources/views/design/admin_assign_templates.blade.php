@@ -100,7 +100,7 @@
                     </div>
                     <div>
                         <a class="btn btn-info btn-rounded"
-                           href="/create_assigntemplate">
+                           href="/assigntemplate-form">
                             {{ __('strings.AddTemplate') }}
                         </a>
                         {{--<button type="button" onclick="courseCleanDetails()" class="btn--}}

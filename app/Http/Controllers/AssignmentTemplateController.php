@@ -31,13 +31,7 @@ class AssignmentTemplateController extends ModelController
 
     }
 
-    public function openCreteACourseTemplate()
-    {
-        return view('design.form_course_template', [
-            'user' => Auth::user(),
-            'userd' => Auth::user(),]);
 
-    }
 
 
     public function createAssignTemplate(Request $request)
@@ -57,20 +51,5 @@ class AssignmentTemplateController extends ModelController
 
     }
 
-    public function createCourseTemplate(Request $request)
-    {
-        return $request;
-        DB::beginTransaction();
-        //create group_teacher
-       $assign_template = AssignmentTemplate::create(
-                [
-                    'name' => $request->name,
-                    'course_content' => $request->course_content,
-                ]
-            );
-        DB::commit();
-        return redirect('/admin_assignment_templates');
 
-
-    }
 }

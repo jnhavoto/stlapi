@@ -41,12 +41,14 @@
                                 <input type="hidden" id="course_id" name="course_id" value="0"/>
                                 <div class="col-md-6 m-b-20">
                                     <label>{{ __('strings.CourseName') }}</label>
-                                    <input name="name" type="text" class="form-control form-control-line" placeholder="Type here">
+                                    <input name="name" type="text" class="form-control form-control-line" value="{{$coursetemplate->name}}">
                                 </div>
                                 <div class="col-md-6 m-b-20">
                                     <label class="control-label">{{ __('strings.CourseDescription') }}</label>
-                                    <textarea name="course_content" class="form-control form-control-line" rows="5" placeholder="Type here"> </textarea>
+                                    <textarea name="course_content" class="form-control form-control-line" rows="5"
+                                              value="{{$coursetemplate->course_content}}"> </textarea>
                                 </div>
+                                {{--Clicl to Update or Cancel--}}
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <button id="createtemplate" type="submit" class="btn btn-success btn-rounded">{{ __('strings.Submit') }}</button>
