@@ -7,7 +7,6 @@ use App\Models\AssignmentDescriptionsHasCourse;
 use App\Models\AssignmentDescriptionsHasTeacher;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
-
 use App\Models\CoursesTemplate;
 use App\Models\Department;
 use App\Models\GroupTeacher;
@@ -489,8 +488,5 @@ class CourseController extends ModelController
                 'user' => Auth::user()]);
     }
 
-
-
-
-
+    
 }

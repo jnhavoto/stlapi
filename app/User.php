@@ -5,6 +5,7 @@ namespace App;
 use App\Models\UserType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticateble;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticateble
 {
@@ -38,7 +39,7 @@ class User extends Authenticateble
 
 
     public function setPasswordAttribute($password) {
-        $this->attributes['password'] = bcrypt($password);
+        $this->attributes['password'] = Hash::make($password);
     }
 
     public function school()

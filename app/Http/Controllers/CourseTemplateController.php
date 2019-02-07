@@ -51,6 +51,4 @@ class CourseTemplateController extends ModelController
         return redirect('/admin_course_templates');
     }
 
-
-
 }
