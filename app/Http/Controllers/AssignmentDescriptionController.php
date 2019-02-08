@@ -107,14 +107,13 @@ class AssignmentDescriptionController extends ModelController
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
         //find and delete the link between the assignment and the teacher: current teacher
 
-        $assignTeacher = AssignmentDescriptionsHasTeacher::
-            where('assignment_descriptions_id',$request->deleteassignment_id)->get()->each->delete();
+        AssignmentDescriptionsHasTeacher::where('assignment_descriptions_id',$request->deleteassignment_id)->get()->each->delete();
 
 
         //find and delete the lilnk between the assignment and the course: current teacher
-        $assignCourse = AssignmentDescriptionsHasCourse::where('assignment_descriptions_id', $request->deleteassignment_id)->get()->each->delete();
+        AssignmentDescriptionsHasCourse::where('assignment_descriptions_id', $request->deleteassignment_id)->get()->each->delete();
         //find and delete the assignment
-        $assignment = AssignmentDescription::where('id', $request->deleteassignment_id)->get()->each->delete();
+        AssignmentDescription::where('id', $request->deleteassignment_id)->get()->each->delete();
         //Verify if all deletes happened
 //        if(!$assignTeacher and $assignCourse and $assignment){
             return redirect('assignments'); //go back to course list

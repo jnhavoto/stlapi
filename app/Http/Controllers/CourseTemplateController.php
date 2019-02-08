@@ -51,4 +51,26 @@ class CourseTemplateController extends ModelController
         return redirect('/admin_course_templates');
     }
 
+    public function updateCourseTemplate(Request $request)
+    {
+
+        $course_template = CoursesTemplate::find($request->ctemplate_id);
+//       return $course_template;
+        //do updates and save
+        $course_template->name = $request->name;
+        $course_template->course_content = $request->course_content;
+        $course_template->save();
+
+        return redirect('/admin_course_templates');
+    }
+
+    public function deleteCourseTemplate($id)
+    {
+//return CoursesTemplate::where('id', $id)->get();
+        CoursesTemplate::where('id', $id)->get()->each->delete();
+
+        return redirect('/admin_course_templates');
+    }
+
+
 }

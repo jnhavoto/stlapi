@@ -265,6 +265,10 @@ Route::get('/update-coursetemplate-form/{id}', 'CourseTemplateController@openUpd
 //submit course template
 Route::post('/create-course-template', 'CourseTemplateController@createCourseTemplate')->middleware(['admin']);
 
+Route::post('/update-course-template', 'CourseTemplateController@updateCourseTemplate')->middleware(['admin']);
+
+Route::get('/delete-coursetemplate/{id}', 'CourseTemplateController@deleteCourseTemplate')->middleware(['admin']);
+
 //delete user
 Route::get('/delete_user/{id}', 'UserController@deleteUser')->middleware(['admin']);
 

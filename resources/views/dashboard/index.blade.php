@@ -171,7 +171,7 @@
                                                     <tr>
                                                         <td>
                                                             <a href="/assignment-designoverview/{{$assign->id}}">
-                                                                {{$assign->assignment_description->case}}
+                                                                {{$assign->case}}
                                                             </a>
                                                         </td>
                                                         <td>

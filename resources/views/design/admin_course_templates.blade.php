@@ -63,20 +63,17 @@
                                             <tr>
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td> {{$course->name}}  </td>
-                                                <td>{{substr($course->course_content, 0, 45) }}</td>
+                                                {{--<td>{{substr($course->course_content, 0, 45) }}</td>--}}
+                                                <td>{{ str_limit($course->course_content, $limit = 100, $end = ' ...') }}</td>
                                                 <td>
                                                     <a href="{{ url('/update-coursetemplate-form/'.$course->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                    btn-lg"
-                                                            href="/"
-                                                            data-toggle="modal"
-                                                            data-target="#confirm-delete-assignment"
-                                                            onclick="deteleAssignment({{$user}})">
+                                                    <a href="{{ url('/delete-coursetemplate/'.$course->id)}}" class="btn btn-info
+                                                     btn-circle btn-lg">
                                                         <i text-md-center class="ti-trash"></i>
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
