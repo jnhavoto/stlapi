@@ -19,7 +19,7 @@ class CourseAnnouncementController extends ModelController
       $courseannouncment = CourseAnnouncement::find($request->id);
       $courseannouncment->readstatus = 1;
       $courseannouncment->update();
-      return response->JSON(["updateStatus"=>200]);
+      return response()->JSON(["updateStatus"=>200]);
     }
 
 }
