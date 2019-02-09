@@ -214,7 +214,7 @@ return [
 
     'SelectRole' => 'Select Role',
     'SelectSchool' => 'Select School',
-    'SelectCity<' => 'Select City',
+    'SelectCity' => 'Select City',
     'FullName' => 'Full Name',
     'School' => 'School',
     'City' => 'School',

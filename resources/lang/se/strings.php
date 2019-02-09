@@ -216,7 +216,7 @@ return [
 
     'SelectRole' => 'Välj roll',
     'SelectSchool' => 'Välj skola',
-    'SelectCity<' => 'Välj stad',
+    'SelectCity' => 'Välj stad',
     'FullName' => 'För- och efternamn',
     'School' => 'Skola',
     'City' => 'Kommun',

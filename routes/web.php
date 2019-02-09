@@ -212,17 +212,21 @@ Route::get('/assignments-overview', 'TeacherController@getAssignmentsOverview')-
 Route::get('/list-submissions/{id}', 'AssignmentSubmissionController@listSubmission')->middleware(['teacher']);
 Route::get('/submission-details/{id}', 'AssignmentSubmissionController@submissionDetails')->middleware(['teacher']);
 
-//Feedback overview
-Route::get('/list-feedbacks/{id}', 'FeedbackController@getAllFeedbacks')->middleware(['teacher']);
-
 Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll')->middleware(['teacher']); //route to get all
 /*
  * Route::get('/submission-details', function () {
     return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
 */
-
 Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->middleware(['teacher']);
+
+Route::get('/selfassessments-overview','CourseController@coursesOverview')->middleware(['teacher']);
+
+//Feedback overview
+Route::get('/list-feedbacks/{id}', 'FeedbackController@getAllFeedbacks')->middleware(['teacher']);
+
+Route::get('/feedbacks-overview', 'FeedbackController@getAllFeedbacks')->middleware(['teacher']);
+
 //==============================================================
 //End Monitoring
 //==============================================================
