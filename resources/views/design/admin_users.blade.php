@@ -64,7 +64,6 @@
                                             href="/add_user"
                                         >
                                             {{ __('strings.AddUser') }}
-                                            Cancel
                                         </a>
                                     </td>
                                     <td colspan="2">
@@ -131,7 +130,6 @@
                                             href="/add_user"
                                         >
                                             {{ __('strings.AddUser') }}
-                                            Cancel
                                         </a>
                                     </td>
                                     <td colspan="2">
