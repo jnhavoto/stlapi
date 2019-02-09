@@ -30,7 +30,7 @@
                             <h4 class="card-title">{{ __('strings.UpdateAssignment') }}</h4>
                             <h6 class="card-subtitle">{{ __('strings.UpdateField') }} </h6>
                             <form id="form-updateAssign" class="form-horizontal m-t-40"
-                                  action="/update_assignment"
+                                  action="/edit_assignment"
                                   method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" id="assignment_id" name="assignment_id" value="{{$assignment->id}}"/>

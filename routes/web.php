@@ -178,7 +178,7 @@ Route::post('/delete-assignment', 'AssignmentDescriptionController@deleteAssignm
 Route::get('/update-assignment/{id}','AssignmentDescriptionController@getUpdateAssignment')->middleware(['teacher']);
 
 //update assignment by id
-Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware
+Route::post('/edit_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware
 (['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);
