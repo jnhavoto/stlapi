@@ -139,6 +139,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach ($assignments as $assignment)
+                                            @if($assignment->assignment_description != null)
                                             <tr>
                                                 <td> {{ $assignment->assignment_description->number }}</td>
                                                 <td>
@@ -195,6 +196,7 @@
                                                 {{--</td>--}}
 
                                             </tr>
+                                            @endif
                                         @endforeach
                                         </tbody>
                                     </table>
