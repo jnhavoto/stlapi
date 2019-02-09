@@ -127,7 +127,7 @@
 
                             <div class="form-group" align-items-center>
                                 <button id="submit-assignment" type="submit" class="btn btn-success btn-rounded">
-                                    {{ __('strings.Submit') }} </button>
+                                    {{ __('strings.Save') }} </button>
                                 <a class="btn btn-danger btn-rounded waves-effect btn-close"
                                    href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                 </a>
