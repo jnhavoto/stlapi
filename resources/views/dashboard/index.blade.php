@@ -87,10 +87,8 @@
                                             @if(count($teacherCourses)!=0)
                                                 @foreach ($teacherCourses as $course)
                                                     <tr>
-                                                        <td>
-                                                            <a href="/" data-toggle="modal"
-                                                               data-target="#modalAssCourseDetails">
-                                                                {{ $course->course->name }}
+                                                        <td> <a href="/course-designoverview/{{$course->id}}">
+                                                                {{$course->course->name}}
                                                             </a>
                                                         </td>
                                                         <td>
