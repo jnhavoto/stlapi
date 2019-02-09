@@ -81,7 +81,7 @@
                                                 <th>{{ __('strings.AvailableFrom') }} </th>
                                                 <th>{{ __('strings.Status') }}
                                                 </th>
-                                            </tr>
+                                            </tr>course-designoverview
                                             </thead>
                                             <tbody>
                                             @if(count($teacherCourses)!=0)

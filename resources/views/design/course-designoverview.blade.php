@@ -300,12 +300,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <a href="{{ url('/assignment-templates/'.$course->id)}}"
+                        <a href="/assignments"
                            class="btn btn-success btn-rounded">
                             {{ __('strings.Yes') }}
                         </a>
                         <a  class="btn btn-warning btn-rounded"
-                            href="/assignment-getfromtemplate/{{$assignment->id}}"
+                            href="/assignment-creategetform"
                         >
                             {{ __('strings.No') }}
                             {{--Cancel--}}
