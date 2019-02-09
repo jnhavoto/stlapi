@@ -92,7 +92,7 @@ class UserController extends  ModelController
     public function addUserForm()
     {
         return view('design.form_add_user', [
-            'user' => Auth::user
+            'user' => Auth::user(), 'userd' => Auth::user()
             ()]);
     }
 
@@ -229,7 +229,7 @@ class UserController extends  ModelController
 
         public function uploadUsersForm()
     {
-        return view('design.import-users',['user' => Auth::user()]);
+        return view('design.import-users',['user' => Auth::user(), 'userd' => Auth::user()]);
     }
 
     public function importUsers(Request $request){
@@ -257,7 +257,7 @@ class UserController extends  ModelController
                             'last_name' => $key->pe_efternamn,
                             'telephone' => $key->pe_mobiltelefon_for_sms,
                             'email' => $key->pe_e_post,
-                            'user_type' => 3,
+                            'user_types_id' => 3,
                             'password' =>$password,
                         ];
                     }
