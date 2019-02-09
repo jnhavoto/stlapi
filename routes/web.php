@@ -208,6 +208,7 @@ Route::get('/course-overview/{id}','CourseController@courseOverview')->middlewar
 
 
 Route::get('/assignments-overview', 'TeacherController@getAssignmentsOverview')->middleware(['teacher']);
+
 Route::get('/list-submissions/{id}', 'AssignmentSubmissionController@listSubmission')->middleware(['teacher']);
 Route::get('/submission-details/{id}', 'AssignmentSubmissionController@submissionDetails')->middleware(['teacher']);
 

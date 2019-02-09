@@ -143,11 +143,10 @@
                                             <tr>
                                                 <td> {{ $assignment->assignment_description->number }}</td>
                                                 <td>
-                                                    <a href="/" data-toggle="modal"
-                                                       data-target="#modalAssCourseDetails">
-                                                        {{ $assignment->assignment_description->case }}
+                                                    <a href="/assignment-designoverview/{{$assignment->id}}">
+                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                        {{$assignment->assignment_description->case}}
                                                     </a>
-
                                                 </td>
                                                 <td>
                                                     @php
