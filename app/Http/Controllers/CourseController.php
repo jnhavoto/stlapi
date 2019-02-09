@@ -455,7 +455,7 @@ class CourseController extends ModelController
         //get all assignments
         $assignments = AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
             $teacher->id)->get();
-        return $assignments;
+//        return $assignments;
         //get all submissions
 //        $submissions =
         //get all teacher assignments
