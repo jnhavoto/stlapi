@@ -256,6 +256,12 @@ Route::get('/assigntemplate-form', 'AssignmentTemplateController@openCreteAssign
 //submit assignment template
 Route::post('/create_assign_template', 'AssignmentTemplateController@createAssignTemplate')->middleware(['admin']);
 
+Route::get('/edit-assigntemplate-form/{id}', 'AssignmentTemplateController@editAssignTemplateForm')->middleware(['admin']);
+
+Route::post('/edit-assign-template', 'AssignmentTemplateController@editAssignTemplate')->middleware(['admin']);
+
+Route::get('/delete-assign-template/{id}', 'AssignmentTemplateController@deleteAssignTemplate')->middleware(['admin']);
+
 //show course template form
 Route::get('/coursetemplate-form', 'CourseTemplateController@openCreteACourseTemplate')->middleware(['admin']);
 
@@ -271,6 +277,7 @@ Route::get('/delete-coursetemplate/{id}', 'CourseTemplateController@deleteCourse
 
 //delete user
 Route::get('/delete_user/{id}', 'UserController@deleteUser')->middleware(['admin']);
+
 
 //show user details if admin or instructor
 //Route::get('/user-details/{id}', function ($id) {

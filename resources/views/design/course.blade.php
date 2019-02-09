@@ -63,7 +63,7 @@
                                             <tr>
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td> {{$course->name}}  </td>
-                                                <td>{{substr($course->course_content, 0, 45) }}</td>
+                                                <td>{{ str_limit($course->course_content, $limit = 100, $end = ' ...') }}</td>
                                                 <td>
                                                     <a class="btn btn-info btn-circle btn-lg m-r-5"
                                                        href="/course-getfromtemplate/{{$course->id}}">

@@ -65,27 +65,19 @@
                                         @foreach ($assTemplates as $assignment)
                                             <tr>
                                                 <td> {{ $assignment->number}}</td>
-                                                <td>
-                                                    {{--<a href="/assignment_details">--}}
-                                                    <a href="/" data-toggle="modal" data-target="#modalsAssDetails"
-                                                       onclick="showAssignmentDetails({{$assignment}})">
-                                                        {{$assignment->case}}
-                                                    </a>
+                                                <td> <a href="/show-assignment-details/{{$assignment->id}}">{{$assignment->case}} </a>
                                                 </td>
-                                                <td>{{substr($assignment->instructions, 0, 45) }}</td>
+                                                <td>{{ str_limit($assignment->instructions, $limit = 100, $end = ' ...') }}</td>
                                                 <td>
-                                                    <a href="{{ url('/edit_template/'.$assignment->id)}}" class="btn btn-info
+                                                    <a href="{{ url('/edit-assigntemplate-form/'.$assignment->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
-                                                    <button type="button" class="btn btn-info btn-circle
-                                                    btn-lg"
-                                                            href="/"
-                                                            data-toggle="modal"
-                                                            data-target="#confirm-delete-assignment"
-                                                            onclick="deteleAssignment({{$user}})">
+
+                                                    <a href="{{ url('/delete-assign-template/'.$assignment->id)}}" class="btn btn-info
+                                                     btn-circle btn-lg">
                                                         <i text-md-center class="ti-trash"></i>
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -103,11 +95,6 @@
                            href="/assigntemplate-form">
                             {{ __('strings.AddTemplate') }}
                         </a>
-                        {{--<button type="button" onclick="courseCleanDetails()" class="btn--}}
-                        {{--btn-info btn-rounded"--}}
-                        {{--data-toggle="modal" data-target="#create-course">--}}
-                        {{--{{ __('strings.AddNewCourse') }}--}}
-                        {{--</button>--}}
                     </div>
                 </div>
             </div>
@@ -116,91 +103,91 @@
          </div>
     </div>
 
-    <script>
-        //show details in the modals.assignment-details
-        function showAssignmentDetails(assignment) {
-            var  assignment = assignment;
-            $("#case").html(assignment.case);
-            $("#number").html(assignment.number);
-            $("#instructions").html(assignment.instructions);
-        }
+    {{--<script>--}}
+        {{--//show details in the modals.assignment-details--}}
+        {{--function showAssignmentDetails(assignment) {--}}
+            {{--var  assignment = assignment;--}}
+            {{--$("#case").html(assignment.case);--}}
+            {{--$("#number").html(assignment.number);--}}
+            {{--$("#instructions").html(assignment.instructions);--}}
+        {{--}--}}
 
-        //show copied details in the modals.copy-assignment
-        function createAssignmentFromTemplate(assignment) {
-            var  assignment = assignment;
-            $("#ccase").val(assignment.case);
-            $("#cnumber").val(assignment.number);
-            $("#cinstructions").html(assignment.instructions);
-            $("#assignment_id").val(assignment.id);
-            console.log(assignment);
-        }
+        {{--//show copied details in the modals.copy-assignment--}}
+        {{--function createAssignmentFromTemplate(assignment) {--}}
+            {{--var  assignment = assignment;--}}
+            {{--$("#ccase").val(assignment.case);--}}
+            {{--$("#cnumber").val(assignment.number);--}}
+            {{--$("#cinstructions").html(assignment.instructions);--}}
+            {{--$("#assignment_id").val(assignment.id);--}}
+            {{--console.log(assignment);--}}
+        {{--}--}}
 
-        function createAssignmentCleanDetails() {
-            $("#case").html("");
-            $("#number").html("");
-            $("#instructions").val("");
-            $("#assignment_id").val("");
-        }
+        {{--function createAssignmentCleanDetails() {--}}
+            {{--$("#case").html("");--}}
+            {{--$("#number").html("");--}}
+            {{--$("#instructions").val("");--}}
+            {{--$("#assignment_id").val("");--}}
+        {{--}--}}
 
-        //Update assignment: getting values
-        function updateAssignment(assignment) {
-            var  assignment = assignment;
-            var startDate01 = formatDate(assignment.startdate);
-            var deadline01 = formatDate(assignment.deadline);
-            $("#c_assignment_name").val(assignment.case);
-            $("#c_assignment_number").val(assignment.number);
-            $("#c_assignment_instructions").val(assignment.instructions);
-            $("#c_assignment_startdate").val(startDate01);
-            $("#c_assignment_enddate").val(deadline01);
-            $("#c_assignment_availabledate").val(assignment.available_date);
-            $("#assignment_id").val(assignment.id);
+        {{--//Update assignment: getting values--}}
+        {{--function updateAssignment(assignment) {--}}
+            {{--var  assignment = assignment;--}}
+            {{--var startDate01 = formatDate(assignment.startdate);--}}
+            {{--var deadline01 = formatDate(assignment.deadline);--}}
+            {{--$("#c_assignment_name").val(assignment.case);--}}
+            {{--$("#c_assignment_number").val(assignment.number);--}}
+            {{--$("#c_assignment_instructions").val(assignment.instructions);--}}
+            {{--$("#c_assignment_startdate").val(startDate01);--}}
+            {{--$("#c_assignment_enddate").val(deadline01);--}}
+            {{--$("#c_assignment_availabledate").val(assignment.available_date);--}}
+            {{--$("#assignment_id").val(assignment.id);--}}
 
-            console.log(assignment);
-        }
+            {{--console.log(assignment);--}}
+        {{--}--}}
 
-        function assignCourseDetails(assignment) {
-            var  assignment = assignment;
+        {{--function assignCourseDetails(assignment) {--}}
+            {{--var  assignment = assignment;--}}
 
-            $("#case2").html(assignment.case);
-            $("#instructions2").html(assignment.instructions);
-            $("#coursename2").html(assignment.course.name);
-            $("#startdate2").html(assignment.startdate);
-            $("#duedate2").html(assignment.deadline);
-            $("#availabledate2").html(assignment.available_date);
-//            console.log(assignment);
-            console.log(assignment);
-            console.log(assignment.teachers)
-        }
+            {{--$("#case2").html(assignment.case);--}}
+            {{--$("#instructions2").html(assignment.instructions);--}}
+            {{--$("#coursename2").html(assignment.course.name);--}}
+            {{--$("#startdate2").html(assignment.startdate);--}}
+            {{--$("#duedate2").html(assignment.deadline);--}}
+            {{--$("#availabledate2").html(assignment.available_date);--}}
+{{--//            console.log(assignment);--}}
+            {{--console.log(assignment);--}}
+            {{--console.log(assignment.teachers)--}}
+        {{--}--}}
 
-        function courseDetails(assignment) {
-            var course = assignment;
-            $("#name").html(assignment.course.name);
-            $("#course_content").html(assignment.course.course_content);
-            $("#course_startdate").html(assignment.course.startdate);
-            $("#copy-button1").hide();
-            console.log(course)
-        }
+        {{--function courseDetails(assignment) {--}}
+            {{--var course = assignment;--}}
+            {{--$("#name").html(assignment.course.name);--}}
+            {{--$("#course_content").html(assignment.course.course_content);--}}
+            {{--$("#course_startdate").html(assignment.course.startdate);--}}
+            {{--$("#copy-button1").hide();--}}
+            {{--console.log(course)--}}
+        {{--}--}}
 
-        function deteleAssignment(assignment) {
-            var assignment = assignment;
-            $("#deleteassignment_id").val(assignment.id);
-            console.log(assignment.id)
-        }
+        {{--function deteleAssignment(assignment) {--}}
+            {{--var assignment = assignment;--}}
+            {{--$("#deleteassignment_id").val(assignment.id);--}}
+            {{--console.log(assignment.id)--}}
+        {{--}--}}
 
 
-        function formatDate(date) {
-            var d = new Date(date),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
-            if (month.length < 2) month = '0' + month;
-            if (day.length < 2) day = '0' + day;
+        {{--function formatDate(date) {--}}
+            {{--var d = new Date(date),--}}
+                {{--month = '' + (d.getMonth() + 1),--}}
+                {{--day = '' + d.getDate(),--}}
+                {{--year = d.getFullYear();--}}
+            {{--if (month.length < 2) month = '0' + month;--}}
+            {{--if (day.length < 2) day = '0' + day;--}}
 
-            return [year, month, day].join('-');
-        }
-        
+            {{--return [year, month, day].join('-');--}}
+        {{--}--}}
+        {{----}}
 
-    </script>
+    {{--</script>--}}
 
 
 @endsection

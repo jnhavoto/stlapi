@@ -31,9 +31,6 @@ class AssignmentTemplateController extends ModelController
 
     }
 
-
-
-
     public function createAssignTemplate(Request $request)
     {
         DB::beginTransaction();
@@ -47,9 +44,37 @@ class AssignmentTemplateController extends ModelController
             );
         DB::commit();
         return redirect('/admin_assignment_templates');
-
-
     }
+
+    public function editAssignTemplateForm($id)
+    {
+//        return AssignmentTemplate::findOrFail($id);
+        return view('design.edit-assign-template', [
+            'user' => Auth::user(),
+            'userd' => Auth::user(),
+            'assigntemplate' => AssignmentTemplate::findOrFail($id),
+        ]);
+    }
+
+    public function editAssignTemplate(Request $request)
+    {
+        $assign_template = AssignmentTemplate::find($request->assigntemplate_id);
+        $assign_template->number = $request->number;
+        $assign_template->case = $request->case;
+        $assign_template->instructions = $request->instructions;
+        $assign_template->save();
+
+        return redirect('/admin_assignment_templates');
+    }
+
+    public function deleteAssignTemplate($id)
+    {
+//return CoursesTemplate::where('id', $id)->get();
+        AssignmentTemplate::where('id', $id)->get()->each->delete();
+
+        return redirect('/admin_assignment_templates');
+    }
+
 
 
 }

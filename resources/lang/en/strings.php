@@ -222,5 +222,7 @@ return [
     'UpdateFields' => 'Update Fields',
 
 
+    'EditAssignment' => 'Edit Assignment',
+
 
 ];

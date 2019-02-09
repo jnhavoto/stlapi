@@ -221,5 +221,7 @@ return [
     'School' => 'Skola',
     'City' => 'Kommun',
     'UserDetails' => 'Användardata',
-    'UpdateFields' => 'Uppdatera fält'
+    'UpdateFields' => 'Uppdatera fält',
+
+    'EditAssignment' => 'Edit Assignment',
 ];

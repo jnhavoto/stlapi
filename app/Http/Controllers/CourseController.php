@@ -361,7 +361,7 @@ class CourseController extends ModelController
             if(strpos($chave, 'file') !== false){
 
                 Material::create([
-                    'courses_id' => $id,
+                    'courses_id' => $course->id,
                     'path' => $valor,
                     'file_name' => explode('-a-', $valor)[1],
                 ]);

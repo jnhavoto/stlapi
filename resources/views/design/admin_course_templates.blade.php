@@ -62,7 +62,7 @@
                                         @foreach ($courseTemplates as $course)
                                             <tr>
                                                 <td> {{ $loop->index + 1 }}</td>
-                                                <td> {{$course->name}}  </td>
+                                                <td> <a href="/show-assignment-details/{{$course->id}}">{{$course->name}} </a> </td>
                                                 {{--<td>{{substr($course->course_content, 0, 45) }}</td>--}}
                                                 <td>{{ str_limit($course->course_content, $limit = 100, $end = ' ...') }}</td>
                                                 <td>

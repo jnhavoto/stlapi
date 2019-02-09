@@ -369,7 +369,7 @@ class AssignmentDescriptionController extends ModelController
                     ]);
                 }
             }
-            return redirect('/course-designoverview/'.$request->course_id);
+            return redirect('/assignment-designoverview/'.$request->course_id);
         } else {
             DB::rollBack();
             return "Error when save Assignment Description";

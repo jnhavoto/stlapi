@@ -101,33 +101,10 @@
                                                         {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
                                                         {{$user->first_name.' '.$user->last_name}}
                                                     </a>
-                                                    {{--@if($user->user_types_id == 1 || $user->user_types_id == 2 )--}}
-                                                        {{--<a href="/user-details/{{$user->id}}">--}}
-                                                            {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                            {{--{{$user->first_name.' '.$user->last_name}}--}}
-                                                        {{--</a>--}}
-                                                    {{--@else--}}
-                                                        {{--<a href="/admin-student-details/{{$user->id}}">--}}
-                                                            {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                            {{--{{$user->first_name.' '.$user->last_name}}--}}
-                                                        {{--</a>--}}
-                                                    {{--@endif--}}
                                                 </td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->telephone}}</td>
                                                 <td>{{$user->user_type->name}}
-                                                    {{--<span class="label label-info">--}}
-                                                        {{----}}
-                                                        {{--@if($user->user_type==1)--}}
-                                                            {{--{{ __('strings.Administrator') }}--}}
-                                                        {{--@endif--}}
-                                                        {{--@if($user->user_type==2)--}}
-                                                                {{--{{ __('strings.Instructor') }}--}}
-                                                        {{--@endif--}}
-                                                        {{--@if($user->user_type==3)--}}
-                                                                {{--{{ __('strings.Student') }}--}}
-                                                        {{--@endif--}}
-                                                    {{--</span> --}}
                                                 </td>
                                                 <td>
                                                     <a href="{{ url('/update-user/'.$user->id)}}" class="btn btn-info
@@ -145,110 +122,7 @@
                                             {{$users->links()}}
                                         </div>
 
-                                        {{--@foreach ($students as $student)--}}
-                                            {{--<tr>--}}
-                                                {{--<td>{{$student->id}}</td>--}}
-                                                {{--<td> {{ $loop->index + 1 }}</td>--}}
-                                                {{--<td>--}}
-                                                    {{--<a href="/contact-details">--}}
-                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                        {{--{{$student->user->first_name.' '.$student->user->last_name}}--}}
-                                                    {{--</a>--}}
-                                                {{--</td>--}}
-                                                {{--<td>{{$student->user->email}}</td>--}}
-                                                {{--<td>{{$student->user->telephone}}</td>--}}
-                                                {{--<td><span class="label label-info">Student</span> </td>--}}
-                                                {{--<td>--}}
-                                                    {{--<a href="{{ url('/update_user/'.$student->id)}}" class="btn btn-info--}}
-                                                     {{--btn-circle btn-lg">--}}
-                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
-                                                    {{--</a>--}}
-                                                    {{--<button type="button" class="btn btn-info btn-circle--}}
-                                                    {{--btn-lg"--}}
-                                                            {{--href="/"--}}
-                                                            {{--data-toggle="modal"--}}
-                                                            {{--data-target="#confirm-delete-assignment"--}}
-                                                            {{--onclick="deteleAssignment({{$student}})">--}}
-                                                        {{--<i text-md-center class="ti-trash"></i>--}}
-                                                    {{--</button>--}}
-                                                {{--</td>--}}
-                                            {{--</tr>--}}
-                                        {{--@endforeach--}}
-                                        {{--@foreach ($teachers as $teacher)--}}
-                                            {{--<tr>--}}
-                                                {{--<td>{{ $loop->index + count($students)+1}}</td>--}}
-                                                {{--<td>--}}
-                                                    {{--<a href="/contact-details"><img src="{{asset--}}
-                                                    {{--("theme/images/users/1.jpg")}}--}}
-                                                                {{--" alt="user" class="img-circle" />--}}
-                                                        {{--{{$teacher->user->first_name.' '.$teacher->user->last_name}}--}}
-                                                    {{--</a>--}}
-                                                {{--</td>--}}
-                                                {{--<td>{{$teacher->user->email}}</td>--}}
-                                                {{--<td>{{$teacher->user->telephone}}</td>--}}
-                                                {{--<td><span class="label label-success">Instructor</span> </td>--}}
-                                                {{--<td>--}}
-                                                    {{--<a href="{{ url('/update-teacher/'--}}
-                                                    {{--.$teacher->id)}}" class="btn btn-info--}}
-                                                     {{--btn-circle btn-lg">--}}
-                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
-                                                    {{--</a>--}}
-                                                {{--</td>--}}
-                                            {{--</tr>--}}
-                                        {{--@endforeach--}}
-                                        </tbody>
-                                        {{--<tfoot>--}}
-                                        {{--<tr>--}}
-                                            {{--<td colspan="2">--}}
-                                                {{--<button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="#add-contact">Add New Contact</button>--}}
-                                            {{--</td>--}}
-                                            {{--<div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
-                                                {{--<div class="modal-dialog">--}}
-                                                    {{--<div class="modal-content">--}}
-                                                        {{--<div class="modal-header">--}}
-                                                            {{--<h4 class="modal-title" id="myModalLabel">Add New Contact</h4>--}}
-                                                            {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
-                                                        {{--</div>--}}
-                                                        {{--<div class="modal-body">--}}
-                                                            {{--<from class="form-horizontal form-material">--}}
-                                                                {{--<div class="form-group">--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<input type="text" class="form-control" placeholder="Type name"> </div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<input type="text" class="form-control" placeholder="Email"> </div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<input type="text" class="form-control" placeholder="Phone"> </div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<input type="text" class="form-control" placeholder="Designation"> </div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<input type="text" class="form-control" placeholder="Age"> </div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<input type="text" class="form-control" placeholder="Date of joining"> </div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<input type="text" class="form-control" placeholder="Salary"> </div>--}}
-                                                                    {{--<div class="col-md-12 m-b-20">--}}
-                                                                        {{--<div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Upload Contact Image</span>--}}
-                                                                            {{--<input type="file" class="upload"> </div>--}}
-                                                                    {{--</div>--}}
-                                                                {{--</div>--}}
-                                                            {{--</from>--}}
-                                                        {{--</div>--}}
-                                                        {{--<div class="modal-footer">--}}
-                                                            {{--<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>--}}
-                                                            {{--<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>--}}
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-                                                    {{--<!-- /.modal-content -->--}}
-                                                {{--</div>--}}
-                                                {{--<!-- /.modal-dialog -->--}}
-                                            {{--</div>--}}
-                                            {{--<td colspan="7">--}}
-                                                {{--<div class="text-right">--}}
-                                                    {{--<ul class="pagination"> </ul>--}}
-                                                {{--</div>--}}
-                                            {{--</td>--}}
-                                        {{--</tr>--}}
-                                        {{--</tfoot>--}}
+
                                     </table>
                                 </div>
                                 <div>
