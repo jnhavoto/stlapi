@@ -223,6 +223,7 @@ return [
 
 
     'EditAssignment' => 'Edit Assignment',
-
+    'EditFields' => 'Edit Fields',
+    'UserInfo' => 'User Info',
 
 ];

@@ -224,4 +224,6 @@ return [
     'UpdateFields' => 'Uppdatera fält',
 
     'EditAssignment' => 'Edit Assignment',
+    'EditFields' => 'Edit Fields',
+    'UserInfo' => 'User Info',
 ];

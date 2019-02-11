@@ -15,11 +15,11 @@ class CreateStudentsTable extends Migration {
 		Schema::create('students', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('teaching_grade')->unsigned();
-			$table->integer('years_as_teacher')->unsigned();
-			$table->boolean('technical_support');
-			$table->boolean('student_to_student_feedback');
-			$table->text('student_to_student_feedback_other', 65535);
+			$table->integer('teaching_grade')->unsigned()->nullable();
+			$table->integer('years_as_teacher')->unsigned()->nullable();
+			$table->boolean('technical_support')->nullable();
+			$table->boolean('student_to_student_feedback')->nullable();
+			$table->text('student_to_student_feedback_other', 65535)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 			$table->integer('users_id')->unsigned()->index('fk_students_users1_idx');

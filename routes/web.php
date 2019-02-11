@@ -247,7 +247,7 @@ Route::get('/users', 'UserController@admin_listContacts')->middleware(['admin'])
 Route::get('add_user', 'UserController@addUserForm')->middleware(['admin']);
 
 //submit assAdminstratorignment template
-Route::post('/submit_user', 'UserController@createUser')->middleware(['admin']);
+Route::post('/create_user', 'UserController@createUser')->middleware(['admin']);
 
 //import users
 Route::get('upload_users', 'UserController@uploadUsersForm')->middleware(['admin']);

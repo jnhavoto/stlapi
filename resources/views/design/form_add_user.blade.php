@@ -28,54 +28,123 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.AddUser') }}</h4>
+                        </div>
                         <div class="card-body">
-                            <h4 class="card-title">{{ __('strings.CreateUser') }} </h4>
-                            <form id="form-course" class="form-horizontal m-t-40" method="post"
-                                  action="/submit_user"
+                            <form id="form-course"
+                                  method="post"
+                                  action="/create_user"
                                   enctype="multipart/form-data" data-toggle="validator" role="form">
                                 {{csrf_field()}}
                                 <input type="hidden" id="course_id" name="user_id" value="0"/>
+                                <div class="form-body">
+                                    <h3 class="card-title">{{ __('strings.UserInfo') }}</h3>
+                                    <hr>
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{ __('strings.FirstName') }}</label>
+                                                <input type="text" name="first_name" id="firstName"
+                                                       class="form-control">
+                                                <small class="form-control-feedback"> Write user first name</small>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{ __('strings.LastName') }}</label>
+                                                <input type="text" name="last_name" id="last_name" class="form-control">
+                                                <small class="form-control-feedback"> Write user last name</small>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
 
-                                <div class="col-md-6 m-b-20">
-                                    <label>{{ __('strings.FirstName') }}</label>
-                                    <input name="first_name" type="text" class="form-control form-control-line"
-                                           >
-                                </div>
-                                <div class="col-md-6 m-b-20">
-                                    <label>{{ __('strings.LastName') }}</label>
-                                    <input name="last_name" type="text" class="form-control form-control-line">
-                                </div>
-                                <div class="col-md-6 m-b-20">
-                                    <label>{{ __('strings.Telephone') }}</label>
-                                    <input name="telephone" type="text" class="form-control form-control-line"
-                                    >
-                                </div>
-                                <div class="col-md-6 m-b-20">
-                                    <label class="control-label">{{ __('strings.Email') }}</label>
-                                    <input name="email" type="email" class="form-control" rows="5">
-                                </div>
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{ __('strings.Telephone') }}</label>
+                                                <input type="text" name="telephone" id="telephone"
+                                                       class="form-control">
+                                                <small class="form-control-feedback"> Write user telephone number
+                                                </small>
+                                            </div>
+                                        </div>
 
-                                <div class="col-md-12 m-b-20">
-                                    <label class="control-label">
-                                        {{ __('strings.Role') }}
-                                        {{--Select Instructor(s)--}}
-                                    </label>
-                                    <select class="js-example-basic-single" name="user_type"
-                                            style="width: 100%">
-                                        <option value="AL">Administrator</option>
-                                        <option value="AL">Instructor</option>
-                                        <option value="WY">Student</option>
-                                    </select>
+                                        <div class="col-md-6">
+                                            <label class="control-label"> {{ __('strings.Role') }} </label>
+                                            <select class="js-example-basic-multiple" name="user_types_id"
+                                                    style="width: 100%">
+                                                @foreach($usertypes as $user_type)
+                                                    <option
+                                                            name="selectTag"
+                                                            value="{{$user_type->id}}">
+                                                        {{$user_type->name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{ __('strings.Email') }}</label>
+                                                <input type="text" name="email" id="enmail" class="form-control">
+                                                <small class="form-control-feedback"> Write user email</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{ __('strings.Password') }}</label>
+                                                <input type="password" name="password" id="password"
+                                                       class="form-control">
+                                                <small class="form-control-feedback"> Write user password</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <label class="control-label">{{ __('strings.School') }}</label>
+                                            <select class="js-example-basic-multiple" name="school_id"
+                                                    style="width: 100%">
+                                                @foreach($schools as $school)
+                                                    <option
+                                                            name="selectTag"
+                                                            selected="selected"
+                                                            value="{{$school->id}}">{{$school->school_name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">{{ __('strings.City') }}</label>
+                                            <select class="js-example-basic-multiple" name="city_id"
+                                                    style="width: 100%">
+                                                @foreach($cities as $city)
+                                                    <option
+                                                            name="selectTag"
+                                                            selected="selected"
+                                                            value="{{$city->id}}">{{$city->city_name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group" align-items-center>
+                                        <button id="submit-course" type="submit" class="btn btn-success
+                                        btn-rounded"> {{ __('strings.Save') }} </button>
+                                        <a class="btn btn-danger btn-rounded waves-effect btn-close"
+                                           href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
+                                        </a>
+                                    </div>
                                 </div>
                             </form>
-                            <div class="form-group" align-items-center>
-                                    <button id="submit-course" type="submit" class="btn btn-success
-                                    btn-rounded"> {{ __('strings.Submit') }} </button>
-                                    <a class="btn btn-danger btn-rounded waves-effect btn-close"
-                                       href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
-                                    </a>
-                            </div>
                         </div>
                     </div>
                 </div>

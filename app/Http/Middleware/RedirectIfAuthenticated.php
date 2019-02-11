@@ -29,9 +29,12 @@ class RedirectIfAuthenticated
                 return redirect('/');
             }
 
-                        if (Auth::user()->student)
+            if (Auth::user()->student)
                 return redirect('/login');
 
+            if (Auth::guard($guard)->check()) {
+                return redirect('/');
+            }
         }
 
         return $next($request);

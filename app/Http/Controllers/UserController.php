@@ -89,12 +89,6 @@ class UserController extends  ModelController
             
     }
 
-    public function addUserForm()
-    {
-        return view('design.form_add_user', [
-            'user' => Auth::user(), 'userd' => Auth::user()
-            ()]);
-    }
 
     public function updateUserForm($id)
     {
@@ -124,13 +118,35 @@ class UserController extends  ModelController
             ]);
     }
 
+    public function addUserForm()
+    {
+        return view('design.form_add_user',
+            [
+                'user' => Auth::user(),
+                'userd' => Auth::user(),
+                'usertypes'=>UserType::all(),
+                'schools' => School::all(),
+                'cities' => City::all(),
+            ]);
+    }
+
     public function createUser(Request $request)
     {
 //        return $request;
-
-        return view('design.form_add_user', [
-            'user' => Auth::user()
-        ]);
+        $pass = Hash::make($request->password);
+        User::create(
+            [
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'telephone' => $request->telephone,
+                'email' => $request->email,
+                'password' => $pass,
+                'user_types_id' => $request->user_types_id,
+                'school_id' => $request->school_id,
+                'city_id' => $request->city_id,
+            ]);
+        return redirect('users');
+//        return view('design.form_add_user', ['user' => Auth::user(), 'userd' => Auth::user()]);
     }
 
     public function updateUsers(Request $request)
@@ -149,14 +165,10 @@ class UserController extends  ModelController
         $user->schools_id = $request->school_id;
         $user->cities_id = $request->city_id;
         $user->save();
-
         //get the updated data
         $user = User::find($request->user_id);
-
         $users = User::paginate(15);
-
         $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
-
 
         return view('dashboard.admin_index', [
             'users' => $users,
@@ -238,21 +250,26 @@ class UserController extends  ModelController
             'file'      => 'required'
         ));
 
-        if($request->hasFile('file')){
+        if($request->hasFile('file'))
+        {
             $extension = File::extension($request->file->getClientOriginalName());
-            if ($extension == "xlsx" || $extension == "xls" || $extension == "csv") {
-
+            if ($extension == "xlsx" || $extension == "xls" || $extension == "csv")
+            {
                 $path = $request->file->getRealPath();
                 $data = Excel::load($path, function($reader) {
                 })->get();
-
 //                return $data;
-                if(!empty($data) && $data->count()){
-
-                    foreach ($data as $key) {
-//                        return $key;
+                if(!empty($data) && $data->count())
+                {
+                    //get all user data
+//                    $existing_users = User::all();
+//                    $existing_schools = School::all();
+//                    $existing_cities = City::all();
+                    $new_entries = 0;
+                    foreach ($data as $key)
+                    {
                         $password = Hash::make('123456');
-                        $insert[] = [
+                        $insert_users[] = [
                             'first_name' => $key->pe_fornamn,
                             'last_name' => $key->pe_efternamn,
                             'telephone' => $key->pe_mobiltelefon_for_sms,
@@ -260,20 +277,181 @@ class UserController extends  ModelController
                             'user_types_id' => 3,
                             'password' =>$password,
                         ];
+//                        $school_city[] =[
+//                            'school_name' => $key-> pe_skola,
+//                            'city_name' => $key->pe_kommun,
+//                        ];
+
+                        $find_city = City::where('city_name',$key-> pe_kommun);
+
+                        if($find_city->count() == 0)
+                        {
+                            $new_city = City::create(
+                                [
+                                    'city_name' => $key-> pe_kommun,
+                                ]);
+                        }
+                        else
+                            $new_city = $find_city->first();
+
+                        $find_school = School::where('school_name',$key-> pe_skola);
+                        if($find_school->count() == 0)
+                        {
+                            $new_school = School::create(
+                                [
+                                    'school_name' => $key-> pe_skola,
+                                    'cities_id' => $new_city->id,
+                                ]);
+//                            return 'New school saved';
+                        }
+                        else
+                        {
+                            $new_school = $find_school->first();
+//                            return 'not new school';
+                        }
+
+                        $new_user = User::where('email',$key->email);
+                        if (User::where('email',$key->email)->count() == 0)
+                        {
+                            $user = User::create(
+                                [
+                                    'first_name' => $key->pe_fornamn,
+                                    'last_name' => $key->pe_efternamn,
+                                    'telephone' => $key->pe_mobiltelefon_for_sms,
+                                    'email' => $key->pe_e_post,
+                                    'user_types_id' => 3,
+                                    'password' => $password,
+                                    'schools_id' => $new_school->id,
+                                    'cities_id' => $new_city->id,
+                                ]);
+                            Student::create(
+                                [
+                                    'users_id' => $user->id,
+                                    'schools_id' => $new_school->id,
+                                    'cities_id' => $new_city->id,
+                                ]
+                            );
+                            $new_entries = $new_entries + 1;
+                            return 'New user ' + ' ' + $new_entries;
+                        }
+                        else
+                        {
+                            if(Student::where('users_id',$new_user->id)->count() != 0)
+                            {
+                                if($new_user->student->updated_at == null)
+                                    if ($new_user->updated_at == null)
+                                    {
+                                        Student::where('users_id',$new_user->id)->each()->delete();
+                                        $new_user->each()->delete();
+                                        $user = User::create(
+                                            [
+                                                'first_name' => $key->pe_fornamn,
+                                                'last_name' => $key->pe_efternamn,
+                                                'telephone' => $key->pe_mobiltelefon_for_sms,
+                                                'email' => $key->pe_e_post,
+                                                'user_types_id' => 3,
+                                                'password' => $password,
+                                                'schools_id' => $new_school->id,
+                                                'cities_id' => $new_city->id,
+                                            ]);
+                                        Student::create(
+                                            [
+                                                'users_id' => $user->id,
+                                                'schools_id' => $new_school->id,
+                                                'cities_id' => $new_city->id,
+                                            ]
+                                        );
+                                        $new_entries = $new_entries + 1;
+                                        return 'User existed and deleted';
+                                    }
+
+                            }
+                        }
+
+
                     }
 
 //                    return $insert;
+//                    if(!empty($insert_users)){
+//
+//                        //start by importing school names
+//                        $existing_schools = School::all();
+//
+//                        foreach ($schools_cities as $school_city)
+//                        {
+//                            $found = School::findOrFail($school_city->school_name);
+//                            return $found;
+//                            if ($found == null) {
+//                                School::create(
+//                                    [
+//                                        'school_name' => $school_city->school_name,
+//                                    ]);
+//                                City::create(
+//                                    [
+//                                        'city_name' => $school_city->city_name
+//                                    ]
+//                                );
+//                            }
+//                                DB::table('schools')->insert($insert_schools);
+//                                foreach ($existing_schools as $existing_school)
+//                                    if ($school_city->school_name != $existing_school->school_name)
+//                                    {
+//
+//                                    }
+//                        }
+//
+//                        $insertData_schools = DB::table('schools')->insert($insert_schools);
 
-                    if(!empty($insert)){
 
-                        $insertData = DB::table('users')->insert($insert);
-                        if ($insertData) {
+
+
+                        //check if users in the excel file are the same in the DB
+                        //check if the set of new users in larger/smaller than the existing DB
+                        //remove users than are in the DB but not in the Excel
+                        //add users that are in the Excel file but not in the DB
+//find users that are inthe DB and in the new set
+                        //remove all users that are in the DB but not in the sew set
+                        //for users in the DB that are also new check if data has been updated
+//                        foreach ($insert_users as $insert_user)
+//                            foreach ($existing_users as $existing_user)
+//                            {
+//                                if($insert_user->email != $existing_user->email)
+//                                {
+//
+//                                }
+//                            }
+
+//                        $insertData_users = DB::table('users')->insert($insert_users);
+//
+//
+//                        $insertData_cities = DB::table('users')->insert($insert_users);
+//
+//                        //get all data from Students
+//                        $students = Student::all();
+//                        //get all Users
+//                        $users = User::all();
+////                        return $users;
+//                        foreach ($users as $user)
+//                        {
+//                            foreach ($students as $student)
+//                            {
+//                                if($user->user_types_id == 3 and $user->id != $student->users_id)
+//                                {
+//                                    Student::create(
+//                                        [
+//                                            'users_id' => $user->id,
+//                                        ]
+//                                    );
+//                                }
+//                            }
+//                        }
+                        if ($new_entries != 0) {
                             Session::flash('success', 'Your Data has successfully imported');
                         }else {
                             Session::flash('error', 'Error inserting the data..');
                             return back();
                         }
-                    }
+//                    }
                 }
 
                 return back();
