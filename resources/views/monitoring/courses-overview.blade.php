@@ -34,19 +34,21 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <!-- .left-right-aside-column-->
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.CourseList') }}</h4>
+                        </div>    <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
                             <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">
-                                                {{ __('strings.CourseList') }}
+                                {{--<div class="right-page-header">--}}
+                                    {{--<div class="d-flex">--}}
+                                        {{--<div class="align-self-center">--}}
+                                            {{--<h4 class="card-title m-t-10">--}}
+                                                {{--{{ __('strings.CourseList') }}--}}
                                                 {{--My Assignment List--}}
-                                            </h4></div>
-                                    </div>
-                                </div>
+                                            {{--</h4></div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="table-responsive">
                                     <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
                                     table-striped color-table info-table"

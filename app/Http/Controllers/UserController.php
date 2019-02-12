@@ -146,8 +146,8 @@ class UserController extends ModelController
                 'email' => $request->email,
                 'password' => $pass,
                 'user_types_id' => $request->user_types_id,
-                'school_id' => $request->school_id,
-                'city_id' => $request->city_id,
+                'schools_id' => $request->school_id,
+                'cities_id' => $request->city_id,
             ]);
         return redirect('users');
 //        return view('design.form_add_user', ['user' => Auth::user(), 'userd' => Auth::user()]);
@@ -232,7 +232,7 @@ class UserController extends ModelController
 //      return $student_details;
         return view('communications.user-details',
             ['userdata' => $userdata,
-                'userd' => $userd,
+                'userd' => Auth::user(),
                 'user' => $user,
                 'schools' => $schools,
                 'cities' => $cities,
