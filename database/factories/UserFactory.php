@@ -165,7 +165,7 @@ $factory->define(\App\Models\TeacherCourse::class, function (Faker $faker){
 
 $factory->define(\App\Models\Teacher::class, function (Faker $faker){
     return [
-        'users_id' => $faker->unique()->numberBetween(2, 6),
+        'users_id' => $faker->numberBetween(1, \App\User::all()->count()),
     ];
 });
 
@@ -240,8 +240,8 @@ $factory->define(\App\Models\Student::class, function (Faker $faker){
         'student_to_student_feedback' => $faker->boolean(50),
         'student_to_student_feedback_other' => $faker->text(30),
         'users_id'=> $faker->unique()->numberBetween(1, \App\User::all()->count()),
-        'schools_id'=> $faker->numberBetween(1, \App\Models\School::all()->count()),
-        'cities_id'=> $faker->numberBetween(1, \App\Models\City::all()->count()),
+//        'schools_id'=> $faker->numberBetween(1, \App\Models\School::all()->count()),
+//        'cities_id'=> $faker->numberBetween(1, \App\Models\City::all()->count()),
 /*        'digital_tools' => $faker->text(30),
         'workplace_tools' => $faker->boolean,
         'workplace_tools_othe' => $faker->text(30),
