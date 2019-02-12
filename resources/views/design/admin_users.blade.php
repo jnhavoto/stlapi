@@ -106,6 +106,9 @@
                                                 <td>{{$user->user_type->name}}
                                                 </td>
                                                 <td>
+                                                    <button type="button" class="btn btn-info btn-circle
+                                                     btn-lg m-r-5"><i class="ti-key"></i></button>
+
                                                     <a href="{{ url('/update-user/'.$user->id)}}" class="btn btn-info
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
