@@ -222,6 +222,8 @@ return [
     'City' => 'Kommun',
     'UserDetails' => 'Användardata',
     'UpdateFields' => 'Uppdatera fält',
+    'searchusers' => 'Sök Användare',
+
 
     'EditAssignment' => 'Edit Assignment',
     'EditFields' => 'Edit Fields',

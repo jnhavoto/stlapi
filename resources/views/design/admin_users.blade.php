@@ -10,10 +10,10 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor m-b-0 m-t-0">{{ __('strings.Contacts') }}</h3>
+                    <h3 class="text-themecolor m-b-0 m-t-0">{{ __('strings.Users') }}</h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('strings.Home') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('strings.Communications') }}</li>
+                        <li class="breadcrumb-item active">{{ __('strings.UserDetais') }}</li>
                     </ol>
                 </div>
 
@@ -55,7 +55,7 @@
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">{{ __('strings.ContactsList') }} </h4></div>
                                         <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings.searchcontacts') }}search contacts" class="form-control"> </div>
+                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings.searchusers') }}" class="form-control"> </div>
                                     </div>
                                 </div>
                                 <div>
