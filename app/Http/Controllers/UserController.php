@@ -353,7 +353,8 @@ class UserController extends ModelController
                         }
                     }
                     if ($new_entries != 0) {
-                        Session::flash('success', 'Your Data has successfully imported');
+                        return redirect('users');
+//                        Session::flash('success', 'Your Data has successfully imported');
                     } else {
                         Session::flash('error', 'No Data was inserted');
                         return back();
