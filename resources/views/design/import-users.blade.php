@@ -71,8 +71,18 @@
                                 <form action="/import" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     Choose your xls/csv File : <input type="file" name="file" class="form-control">
-
-                                    <input type="submit" class="btn btn-primary btn-lg" style="margin-top: 3%">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <button id="importusers" type="submit"
+                                                            class="btn btn-success">{{ __('strings.Upload') }}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--<button id="importUsers" type="submit" class="btn btn-success">{{ __('strings.Save') }}</button>--}}
+                                    {{--<input type="submit" class="btn btn-primary btn-lg" style="margin-top: 3%">--}}
                                 </form>
 
                             </div>
