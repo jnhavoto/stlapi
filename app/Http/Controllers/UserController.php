@@ -272,30 +272,43 @@ class UserController extends ModelController
                             'user_types_id' => 3,
                             'password' => $password,
                         ];
-
-                        $find_city = City::where('city_name', $key->pe_kommun);
-                        if ($find_city->count() == 0) {
+                        if ($key->pe_kommun == null) {
                             $new_city = City::create(
                                 [
-                                    'city_name' => $key->pe_kommun,
+                                    'city_name' => 'Ange kommun',
                                 ]);
-                        } else
-                            $new_city = $find_city->first();
+                        } else {
+                            $find_city = City::where('city_name', $key->pe_kommun);
+                            if ($find_city->count() == 0) {
+                                $new_city = City::create(
+                                    [
+                                        'city_name' => $key->pe_kommun,
+                                    ]);
+                            } else
+                                $new_city = $find_city->first();
+                        }
 
-                        $find_school = School::where('school_name', $key->pe_skola);
-                        if ($find_school->count() == 0) {
+                        if ($key->pe_skola == null) {
                             $new_school = School::create(
                                 [
-                                    'school_name' => $key->pe_skola,
+                                    'school_name' => 'Ange skola',
                                     'cities_id' => $new_city->id,
                                 ]);
                         } else {
-                            $new_school = $find_school->first();
+                            $find_school = School::where('school_name', $key->pe_skola);
+                            if ($find_school->count() == 0) {
+                                $new_school = School::create(
+                                    [
+                                        'school_name' => $key->pe_skola,
+                                        'cities_id' => $new_city->id,
+                                    ]);
+                            } else {
+                                $new_school = $find_school->first();
+                            }
                         }
 
                         $new_user = User::where('email', $key->pe_e_post)->first();
-                        if (User::where('email', $key->pe_e_post)->count() == 0)
-                        {
+                        if (User::where('email', $key->pe_e_post)->count() == 0) {
                             $user = User::create(
                                 [
                                     'first_name' => $key->pe_fornamn,
@@ -320,7 +333,7 @@ class UserController extends ModelController
                             if ($student->count() != 0) {
 //                                return $student;
                                 if ($student->first()->teaching_grade == null)
-                                    if ($new_user-> last_login == null) {
+                                    if ($new_user->last_login == null) {
 //                                        return Student::where('users_id', $new_user->id)->first();
 //                                        Student::where('users_id', $new_user->id)->delete();
                                         $new_user->first_name = $key->pe_fornamn;
