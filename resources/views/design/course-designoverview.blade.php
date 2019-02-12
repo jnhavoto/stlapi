@@ -35,17 +35,20 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-lg-6 col-md-7">
-                    <div class="card">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.CourseDetails') }}</h4>
+                        </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="d-flex flex-wrap">
-                                        <div>
-                                            <h3 class="card-title">{{ __('strings.CourseDetails') }}</h3>
+                                {{--<div class="col-12">--}}
+                                    {{--<div class="d-flex flex-wrap">--}}
+                                        {{--<div>--}}
+                                            {{--<h3 class="card-title">{{ __('strings.CourseDetails') }}</h3>--}}
                                             {{--<h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>--}}
-                                        </div>
-                                    </div>
-                                </div>
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="col-12">
                                     <div class="col-md-6 m-b-20">
                                         <h4>{{ __('strings.CourseName') }}</h4>
@@ -100,18 +103,21 @@
 
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.CourseAssignments') }}</h4>
+                        </div>
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
 
                             <div class="pl-4">
                                 <div class="right-page-header">
                                     <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">
-                                                {{ __('strings.CourseAssignments') }}
-                                            </h4>
-                                        </div>
+                                        {{--<div class="align-self-center">--}}
+                                            {{--<h4 class="card-title m-t-10">--}}
+                                                {{--{{ __('strings.CourseAssignments') }}--}}
+                                            {{--</h4>--}}
+                                        {{--</div>--}}
                                         <div class="ml-auto">
                                             <input type="text" id="demo-input-search2" placeholder="{{ __('strings.SearchAssignments') }}"
                                                    class="form-control">
@@ -210,21 +216,23 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <!-- .left-right-aside-column-->
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.CourseMaterial') }}</h4>
+                        </div>
                         <div class="contact-page-aside">
 
                             <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">
-                                                {{ __('strings.CourseMaterial') }}
+                                {{--<div class="right-page-header">--}}
+                                    {{--<div class="d-flex">--}}
+                                        {{--<div class="align-self-center">--}}
+                                            {{--<h4 class="card-title m-t-10">--}}
+                                                {{--{{ __('strings.CourseMaterial') }}--}}
                                                 {{--Course Assignments--}}
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
+                                            {{--</h4>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
                                 <div class="table-responsive col-md-6" >
                                     @if($materials->count() == 0)

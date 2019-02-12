@@ -26,9 +26,6 @@ class User extends Authenticateble
 
     protected $with = ['school', 'city', 'user_type'];
 
-
-
-// ==========================
     public function student(){
         return $this->hasOne('App\Models\Student', 'users_id');
     }

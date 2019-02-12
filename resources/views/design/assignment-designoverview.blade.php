@@ -40,17 +40,13 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-lg-6 col-md-7">
-                    <div class="card">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.AssignmentDetails') }}</h4>
+                        </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="d-flex flex-wrap">
-                                        <div>
-                                            <h3 class="card-title">{{ __('strings.AssignmentDetails') }}</h3>
-                                            {{--<h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>--}}
-                                        </div>
-                                    </div>
-                                </div>
+                                {{----}}
                                 <div class="col-12">
                                     <div class="col-md-6 m-b-20">
                                         <h4>{{ __('strings.AssignmentName') }}</h4>
@@ -112,9 +108,19 @@
                 </div>
             </div>
 
-            <div class="col-md-12 m-b-20">
-                <h4 class="card-title"> {{ __('strings.AssignmentMaterial') }}  </h4>
-                <hr>
+            <div class="row">
+                <div class="col-lg-6 col-md-7">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.AssignmentMaterial') }}</h4>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+                        {{--<div class="col-md-12 m-b-20">--}}
+                {{--<h4 class="card-title"> {{ __('strings.AssignmentMaterial') }}  </h4>--}}
+                {{--<hr>--}}
 
                 <div class="table-responsive col-md-6">
                         @if($materials->count() == 0)

@@ -102,4 +102,6 @@ class Course extends Eloquent
 	{
 		return $this->hasMany(\App\Models\UsersChat::class, 'courses_id');
 	}
+
+
 }

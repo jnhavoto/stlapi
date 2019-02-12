@@ -416,11 +416,9 @@ class UserController extends ModelController
                 User::where('id', $id)->get()->each->delete();
             }
         }
-//        //get list of users after delete
-        $users = User::paginate(15);
 
+        $users = User::paginate(15);
         return redirect('users');
-//        return view('design.admin_users', ['users' => $users, 'user' => Auth::user()]);
     }
 }
 
