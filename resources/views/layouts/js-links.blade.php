@@ -1,54 +1,6 @@
-{{--<<<<<<< HEAD--}}
-{{--<!-- Jquery Core Js -->--}}
 <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
 
-{{--<!-- Bootstrap Core Js -->--}}
-{{--<script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>--}}
-
-{{--<!-- Select Plugin Js -->--}}
-{{--<script src="{{ asset('theme/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>--}}
-
-{{--<!-- Slimscroll Plugin Js -->--}}
-{{--<script src="{{ asset('theme/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>--}}
-
-{{--<!-- Waves Effect Plugin Js -->--}}
-{{--<script src="{{ asset('theme/plugins/node-waves/waves.js') }}"></script>--}}
-
-{{--<!-- Jquery CountTo Plugin Js -->--}}
-{{--<script src="{{ asset('theme/plugins/jquery-countto/jquery.countTo.js') }}"></script>--}}
-
-{{--<!-- Morris Plugin Js -->--}}
-{{--<script src="{{ asset('theme/plugins/raphael/raphael.min.js') }}"></script>--}}
-{{--<script src="{{ asset('theme/plugins/morrisjs/morris.js') }}"></script>--}}
-
-{{--<!-- ChartJs -->--}}
-{{--<script src="{{ asset('theme/plugins/chartjs/Chart.bundle.js') }}"></script>--}}
-
-{{--<!-- Flot Charts Plugin Js -->--}}
-{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.js') }}"></script>--}}
-{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.resize.js') }}"></script>--}}
-{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.pie.js') }}"></script>--}}
-{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.categories.js') }}"></script>--}}
-{{--<script src="{{ asset('theme/plugins/flot-charts/jquery.flot.time.js') }}"></script>--}}
-
-{{--<!-- Sparkline Chart Plugin Js -->--}}
-{{--<script src="{{ asset('theme/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>--}}
-
-{{--<!-- Custom Js -->--}}
-{{--<script src="{{ asset('theme/js/admin.js') }}"></script>--}}
-{{--<script src="{{ asset('theme/js/pages/index.js') }}"></script>--}}
-
-{{--<!-- Demo Js -->--}}
-{{--<script src="{{ asset('theme/js/demo.js') }}"></script>--}}
-{{--=======--}}
-
-{{--===========================--}}
-{{--DROPZONE--}}
-{{--===========================--}}
-
 <script src="{{ asset('js/dropzone.js') }}"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>--}}
-
 
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{ asset('theme/plugins/popper/popper.min.js') }}"></script>
@@ -90,8 +42,8 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-{{--<script type="text/javascript" src="{{ asset('js/course-create.js')}}"></script>--}}
-{{--<script type="text/javascript" src="{{ asset('js/compose-dropzone.js')}}"></script>--}}
+<!-- This is data table -->
+<script src="{{ asset('theme/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 
 @yield('dropzones')
 

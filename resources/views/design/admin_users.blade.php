@@ -12,8 +12,8 @@
                 <div class="col-md-5 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">{{ __('strings.Users') }}</h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('strings.Home') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('strings.UserDetais') }}</li>
+                        <li class="breadcrumb-item"><a href="/users">{{ __('strings.Home') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('strings.UserList') }}</li>
                     </ol>
                 </div>
 
@@ -27,59 +27,45 @@
             <div class="row">
 
                 <div class="col-12">
+                    <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">{{ __('strings.UserList') }}</h4>
+                    </div>    <!-- .left-right-aside-column-->
 
+                    @include('design.flash-message')
 
-                    <div class="card">
-                        <!-- .left-right-aside-column-->
+                    <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
-                            <!-- .left-aside-column-->
-                            {{--<div class="left-aside">--}}
-                                {{--<ul class="list-style-none">--}}
-                                    {{--<li class="box-label"><a href="javascript:void(0)">{{ __('strings.AllContacts') }} <span>--}}
-                                           {{--{{ count($students)+count($teachers)}} </span></a></li>--}}
-                                    {{--<li class="divider"></li>--}}
-                                    {{--<li><a href="javascript:void(0)">{{ __('strings.Participants') }} <span>{{ count--}}
-                                    {{--($students)--}}
-                                    {{--}}</span></a></li>--}}
-                                    {{--<li><a href="javascript:void(0)">{{ __('strings.Instructors') }} <span>{{ count--}}
-                                    {{--($teachers)--}}
-                                    {{--}}</span></a></li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                            <!-- /.left-aside-column-->
-                            {{--<div class="right-aside">--}}
                             <div class="pl-4">
-
                                 <div class="right-page-header">
                                     <div class="d-flex">
                                         <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">{{ __('strings.ContactsList') }} </h4></div>
-                                        <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings.searchusers') }}" class="form-control"> </div>
+                                            {{--<div>--}}
+                                                <td colspan="2">
+                                                    <a  class="btn btn-info btn-rounded"
+                                                        href="/add_user"
+                                                    >
+                                                        {{ __('strings.AddUser') }}
+                                                    </a>
+                                                </td>
+                                                <td colspan="2">
+                                                    <a  class="btn btn-info btn-rounded"
+                                                        href="/upload_users"
+                                                    >
+                                                        {{ __('strings.UploadUsers') }}
+                                                        {{--Cancel--}}
+                                                    </a>
+                                                </td>
+                                            {{--</div>--}}
+                                        </div>
+                                        {{--<div class="ml-auto">--}}
+                                            {{--<input type="text" id="demo-input-search2" placeholder="{{ __('strings.searchusers') }}" class="form-control"> --}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
-                                <div>
-                                    <td colspan="2">
-                                        <a  class="btn btn-info btn-rounded"
-                                            href="/add_user"
-                                        >
-                                            {{ __('strings.AddUser') }}
-                                        </a>
-                                    </td>
-                                    <td colspan="2">
-                                        <a  class="btn btn-info btn-rounded"
-                                            href="/upload_users"
-                                        >
-                                            {{ __('strings.UploadUsers') }}
-                                            {{--Cancel--}}
-                                        </a>
-                                    </td>
-                                </div>
-                                <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped color-table info-table"
-                                           data-page-size="10">
-                                        <thead>
+                                <div class="table-responsive m-t-40">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                    <thead>
                                         <tr>
                                             <th>No</th>
                                             <th>{{ __('strings.Name') }}</th>
@@ -113,18 +99,9 @@
                                                      btn-circle btn-lg">
                                                         <i text-md-center class="ti-pencil-alt"></i>
                                                     </a>
-                                                    {{--<a href="{{ url('/delete_user/'.$user->id)}}" class="btn btn-info--}}
-                                                     {{--btn-circle btn-lg">--}}
-                                                        {{--<i text-md-center class="ti-trash"></i>--}}
-                                                    {{--</a>--}}
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        <div class="panel-heading" style="display:flex; justify-content:center;align-items:center;">
-                                            {{$users->links()}}
-                                        </div>
-
-
                                     </table>
                                 </div>
                                 <div>
@@ -157,5 +134,54 @@
             </div>
         </div>
     </div>
+
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+                $(document).ready(function () {
+                    var table = $('#example').DataTable({
+                        "columnDefs": [{
+                            "visible": false,
+                            "targets": 2
+                        }],
+                        "order": [
+                            [2, 'asc']
+                        ],
+                        "displayLength": 25,
+                        "drawCallback": function (settings) {
+                            var api = this.api();
+                            var rows = api.rows({
+                                page: 'current'
+                            }).nodes();
+                            var last = null;
+                            api.column(2, {
+                                page: 'current'
+                            }).data().each(function (group, i) {
+                                if (last !== group) {
+                                    $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                    last = group;
+                                }
+                            });
+                        }
+                    });
+                    // Order by the grouping
+                    $('#example tbody').on('click', 'tr.group', function () {
+                        var currentOrder = table.order()[0];
+                        if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                            table.order([2, 'desc']).draw();
+                        } else {
+                            table.order([2, 'asc']).draw();
+                        }
+                    });
+                });
+            });
+            $('#example23').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+        </script>
 
 @endsection

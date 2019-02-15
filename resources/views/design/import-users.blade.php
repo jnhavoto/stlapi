@@ -78,6 +78,11 @@
                                                     <button id="importusers" type="submit"
                                                             class="btn btn-success">{{ __('strings.Upload') }}</button>
                                                 </div>
+                                                @if(session()->has('message'))
+                                                    <div class="alert alert-success">
+                                                        {{ session()->get('message') }}
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -94,5 +99,4 @@
             <!-- End of Assignment List -->
          </div>
     </div>
-
 @endsection

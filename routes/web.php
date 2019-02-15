@@ -297,6 +297,9 @@ Route::get('/user-details/{id}', 'UserController@showUserDetails')->middleware([
 
 Route::get('/update-user/{id}', 'UserController@updateUserForm')->middleware(['admin']);
 
+Route::post('/search_data', 'UserController@search_data')->middleware(['admin']);
+
+
 //update user-details if admin or instructor
 Route::post('/update-userdata/{id}', 'UserController@updateUsers')->middleware(['admin']);
 

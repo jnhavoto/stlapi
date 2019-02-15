@@ -210,6 +210,7 @@ return [
     'ImportUsers' => 'Import Users',
     'ImportExcelCSV' => 'Import Excel/CSV',
     'SearchUser' => 'Search User',
+    'searchusers' => 'Search Users',
 
 
     'SelectRole' => 'Select Role',
@@ -225,5 +226,5 @@ return [
     'EditAssignment' => 'Edit Assignment',
     'EditFields' => 'Edit Fields',
     'UserInfo' => 'User Info',
-
+    'UserList' => 'User List',
 ];

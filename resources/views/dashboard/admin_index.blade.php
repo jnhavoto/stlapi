@@ -1,329 +1,143 @@
 @extends('layouts.layout_admin')
-
 @section('content')
-
-    {{--<style>--}}
-        {{--/* unvisited link */--}}
-        {{--a:link {--}}
-            {{--color: blue;--}}
-        {{--}--}}
-
-        {{--/* visited link */--}}
-        {{--a:visited {--}}
-            {{--color: purple;--}}
-        {{--}--}}
-
-        {{--/* mouse over link */--}}
-        {{--a:hover {--}}
-            {{--color: hotpink;--}}
-        {{--}--}}
-
-        {{--/* selected link */--}}
-        {{--a:active {--}}
-            {{--color: blue;--}}
-        {{--}--}}
-    {{--</style>--}}
-
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <div id="main-wrapper">
+    <div class="page-wrapper">
         <!-- ============================================================== -->
-        <!-- Page wrapper  -->
+        <!-- Container fluid  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="container-fluid">
             <!-- ============================================================== -->
-            <!-- Container fluid  -->
+            <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">   {{ __('strings.general_overview') }} </h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">{{ __('strings.Home') }} </a></li>
-                            <li class="breadcrumb-item active">{{ __('strings.Dashboard') }}</li>
-                        </ol>
-                    </div>
+            <div class="row page-titles">
+                <div class="col-md-5 col-8 align-self-center">
+                    <h3 class="text-themecolor m-b-0 m-t-0">{{ __('strings.Users') }}</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('strings.Home') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('strings.UserDetais') }}</li>
+                    </ol>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Start Course List Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <!-- .left-right-aside-column-->
-                            <div class="contact-page-aside">
-                                <div class="pl-4">
-                                    <div class="right-page-header">
-                                        <div class="d-flex">
-                                            <div class="align-self-center">
-                                                <h4 class="card-title m-t-10">
-                                                    {{ __('strings.Users') }}
-                                                    {{--My Assignment List--}}
-                                                </h4></div>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list
-                                    table-striped color-table info-table"
-                                               data-page-size="10">
-                                            <thead>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.UserList') }}</h4>
+                        </div>    <!-- .left-right-aside-column-->
+                        <!-- .left-right-aside-column-->
+                        <div class="contact-page-aside">
+                            <div class="pl-4">
+                                {{--<div class="right-page-header">--}}
+                                {{--<div class="d-flex">--}}
+                                {{--<div class="align-self-center">--}}
+                                {{--<h4 class="card-title m-t-10">{{ __('strings.ContactsList') }} </h4></div>--}}
+                                {{--<div class="ml-auto">--}}
+                                {{--<input type="text" id="demo-input-search2" placeholder="{{ __('strings.searchusers') }}" class="form-control"> --}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                <div class="table-responsive m-t-40">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th> #</th>
+                                            <th>{{ __('strings.Name') }} </th>
+                                            <th>{{ __('strings.Email') }} </th>
+                                            <th>{{ __('strings.Phone') }} </th>
+                                            <th>{{ __('strings.Role') }} </th>
+                                            <th>{{ __('strings.LastLogin') }} </th>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($users as $user)
                                             <tr>
-                                                <th> # </th>
-                                                <th>{{ __('strings.Name') }} </th>
-                                                <th>{{ __('strings.Email') }} </th>
-                                                <th>{{ __('strings.Phone') }} </th>
-                                                <th>{{ __('strings.Role') }} </th>
-                                                <th>{{ __('strings.LastLogin') }} </th>
-                                                </th>
+                                                {{--<td>{{$student->id}}</td>--}}
+                                                <td>  {{ $loop->index + 1 }}</td>
+                                                <td>
+                                                    <a href="/user-details/{{$user->id}}">
+                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
+                                                        {{$user->first_name.' '.$user->last_name}}
+                                                    </a>
+                                                </td>
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$user->telephone}}</td>
+                                                <td>{{$user->user_type->name}} </td>
+                                                <td>
+                                                    @if(empty($user->last_login))
+                                                        -
+                                                    @else
+                                                        {{$user->last_login}}
+                                                    @endif
+                                                </td>
+
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach ($users as $user)
-                                                <tr>
-                                                    {{--<td>{{$student->id}}</td>--}}
-                                                    <td>  {{ $loop->index + 1 }}</td>
-                                                    <td>
-                                                        <a href="/user-details/{{$user->id}}">
-                                                            {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                            {{$user->first_name.' '.$user->last_name}}
-                                                        </a>
-                                                        {{--@if($user->user_types_id == 1 || $user->user_types_id == 2 )--}}
-                                                            {{--<a href="/user-details/{{$user->id}}">--}}
-                                                                {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                                {{--{{$user->first_name.' '.$user->last_name}}--}}
-                                                            {{--</a>--}}
-                                                        {{--@else--}}
-                                                            {{--<a href="/admin-student-details/{{$user->id}}">--}}
-                                                                {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                                {{--{{$user->first_name.' '.$user->last_name}}--}}
-                                                            {{--</a>--}}
-                                                        {{--@endif--}}
-                                                            {{--@if($user == 1)--}}
-                                                                {{--<a href="/user-details/{{$user->id}}">--}}
-                                                                    {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                                    {{--{{$user->first_name.' '.$user->last_name}}--}}
-                                                                {{--</a>--}}
-                                                            {{--@endif--}}
-
-                                                        {{--<a href="/user-details/{{$user->id}}">--}}
-                                                            {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                            {{--{{$user->first_name.' '.$user->last_name}}--}}
-                                                        {{--</a>--}}
-                                                    </td>
-                                                    <td>{{$user->email}}</td>
-                                                    <td>{{$user->telephone}}</td>
-                                                    <td>{{$user->user_type->name}} </td>
-                                                    <td>
-                                                        @if(empty($user->last_login))
-                                                            -
-                                                            @else
-                                                            {{$user->last_login}}
-                                                        @endif
-                                                    </td>
-
-                                                </tr>
-                                            @endforeach
-                                            <div class="panel-heading" style="display:flex; justify-content:center;align-items:center;">
-                                                {{$users->links()}}
-                                            </div>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- .left-aside-column-->
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <!-- /.left-right-aside-column-->
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Course List Content -->
-                <!-- ============================================================== -->
-
-                {{--<!-- ============================================================== -->--}}
-                {{--<!-- Start Assignment List Content -->--}}
-                {{--<!-- ============================================================== -->--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-12">--}}
-                        {{--<div class="card">--}}
-                            {{--<!-- .left-right-aside-column-->--}}
-                            {{--<div class="contact-page-aside">--}}
-                                {{--<div class="pl-4">--}}
-                                    {{--<div class="right-page-header">--}}
-                                        {{--<div class="d-flex">--}}
-                                            {{--<div class="align-self-center">--}}
-                                                {{--<h4 class="card-title m-t-10">--}}
-                                                    {{--{{ __('strings.Logs') }}--}}
-                                                    {{--My Assignment List--}}
-                                                {{--</h4></div>--}}
-                                            {{--<div class="ml-auto">--}}
-                                                {{--<input type="text" id="demo-input-search2"--}}
-                                                       {{--placeholder="{{ __('strings.SearchUser') }}"--}}
-                                                       {{--class="form-control">--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="table-responsive">--}}
-                                        {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list--}}
-                                    {{--table-striped color-table muted-table"--}}
-                                               {{--data-page-size="10">--}}
-                                            {{--<thead>--}}
-                                            {{--<tr>--}}
-                                                {{--<th> # </th>--}}
-                                                {{--<th>{{ __('strings.Name') }} </th>--}}
-                                                {{--<th>{{ __('strings.LastLogin') }} </th>--}}
-                                                {{--<th># {{ __('strings.Feedbacks') }} </th>--}}
-                                                {{--<th># {{ __('strings.Ratings') }} </th>--}}
-                                            {{--</tr>--}}
-                                            {{--</thead>--}}
-                                            {{--<tbody>--}}
-                                                {{--@foreach ($lastlogin_users as $loginuser)--}}
-                                                    {{--<tr>--}}
-                                                        {{--<td>  {{ $loop->index + 1 }}</td>--}}
-                                                        {{--<td>--}}
-                                                            {{--<a href="/user-details/{{$loginuser->id}}">--}}
-                                                                {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user" class="img-circle" />--}}
-                                                                {{--{{$loginuser->first_name.' '.$loginuser->last_name}}--}}
-                                                            {{--</a>--}}
-                                                        {{--</td>--}}
-                                                        {{--<td>  {{$loginuser->last_login}}</td>--}}
-
-                                                    {{--</tr>--}}
-                                                {{--@endforeach--}}
-                                            {{--</tbody>--}}
-                                            {{--<tfoot>--}}
-                                            {{--<tr>--}}
-                                                {{--<td colspan="7">--}}
-                                                    {{--<div class="text-right">--}}
-                                                        {{--<ul class="pagination"></ul>--}}
-                                                    {{--</div>--}}
-                                                {{--</td>--}}
-                                            {{--</tr>--}}
-                                            {{--</tfoot>--}}
-                                        {{--</table>--}}
-                                    {{--</div>--}}
-                                    {{--<!-- .left-aside-column-->--}}
-                                {{--</div>--}}
-                                {{--<!-- /.left-right-aside-column-->--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <div class="right-sidebar">
-                    <div class="slimscrollright">
-                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span>
-                        </div>
-                        <div class="r-panel-body">
-                            <ul id="themecolors" class="m-t-20">
-                                <li><b>With Light sidebar</b></li>
-                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
-                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
-                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
-                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
-                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
-                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
-                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
-                                <li><a href="javascript:void(0)" data-theme="default-dark"
-                                       class="default-dark-theme">7</a></li>
-                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a>
-                                </li>
-                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
-                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a>
-                                </li>
-                                <li><a href="javascript:void(0)" data-theme="purple-dark"
-                                       class="purple-dark-theme">11</a></li>
-                                <li><a href="javascript:void(0)" data-theme="megna-dark"
-                                       class="megna-dark-theme ">12</a></li>
-                            </ul>
-                            <ul class="m-t-20 chatonline">
-                                <li><b>Chat option</b></li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/1.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>Varun Dhavan <small
-                                                    class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/2.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small
-                                                    class="text-warning">Away</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/3.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small
-                                                    class="text-danger">Busy</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/4.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>Arijit Sinh <small
-                                                    class="text-muted">Offline</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/5.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>Govinda Star <small
-                                                    class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/6.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>John Abraham<small
-                                                    class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/7.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>Hritik Roshan<small
-                                                    class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="{{ asset('theme/images/users/8.jpg') }}"
-                                                                      alt="user-img" class="img-circle"> <span>Pwandeep rajan <small
-                                                    class="text-success">online</small></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-        {{--<footer class="footer"> © 2018 Material Pro Admin by wrappixel.com </footer>--}}
-        <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
 
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+                $(document).ready(function () {
+                    var table = $('#example').DataTable({
+                        "columnDefs": [{
+                            "visible": false,
+                            "targets": 2
+                        }],
+                        "order": [
+                            [2, 'asc']
+                        ],
+                        "displayLength": 25,
+                        "drawCallback": function (settings) {
+                            var api = this.api();
+                            var rows = api.rows({
+                                page: 'current'
+                            }).nodes();
+                            var last = null;
+                            api.column(2, {
+                                page: 'current'
+                            }).data().each(function (group, i) {
+                                if (last !== group) {
+                                    $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                    last = group;
+                                }
+                            });
+                        }
+                    });
+                    // Order by the grouping
+                    $('#example tbody').on('click', 'tr.group', function () {
+                        var currentOrder = table.order()[0];
+                        if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                            table.order([2, 'desc']).draw();
+                        } else {
+                            table.order([2, 'asc']).draw();
+                        }
+                    });
+                });
+            });
+            $('#example23').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
 
+        </script>
 
-
-    <script>
-
-
-    </script>
 @endsection
-

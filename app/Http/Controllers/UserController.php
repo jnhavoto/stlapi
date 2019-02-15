@@ -93,7 +93,6 @@ class UserController extends ModelController
 
     }
 
-
     public function updateUserForm($id)
     {
         $userdata = User::find($id);
@@ -169,6 +168,10 @@ class UserController extends ModelController
         $user->schools_id = $request->school_id;
         $user->cities_id = $request->city_id;
         $user->save();
+//        if($request->user_type_id == 2)
+//        {
+//
+//        }
         //get the updated data
         $user = User::find($request->user_id);
         $users = User::paginate(15);
@@ -212,7 +215,6 @@ class UserController extends ModelController
         ]);
     }
 
-
     public function showUserDetails($id)
     {
         $userdata = User::find($id);
@@ -240,7 +242,6 @@ class UserController extends ModelController
                 'student_details' => $student_details,
             ]);
     }
-
 
     public function uploadUsersForm()
     {
@@ -353,11 +354,12 @@ class UserController extends ModelController
                         }
                     }
                     if ($new_entries != 0) {
-                        return redirect('users');
+                        return redirect('/users')->with('success','Your Data was successfully imported!');
 //                        Session::flash('success', 'Your Data has successfully imported');
                     } else {
-                        Session::flash('error', 'No Data was inserted');
-                        return back();
+                        return redirect('/users')->with('warning','No Data was inserted');
+//                        Session::flash('error', 'No Data was inserted');
+//                        return back();
                     }
 //                    }
                 }
@@ -365,8 +367,8 @@ class UserController extends ModelController
                 return back();
 
             } else {
-                Session::flash('error', 'File is a ' . $extension . ' file.!! Please upload a valid xls/csv file..!!');
-                return back();
+//                Session::flash('error', 'File is a ' . $extension . ' file.!! Please upload a valid xls/csv file..!!');
+                return redirect()->back()->with('error','File is a ' . $extension . ' file.!! Please upload a valid xls/csv file..!!');
             }
         }
     }
@@ -374,12 +376,12 @@ class UserController extends ModelController
     public function admin_listContacts()
     {
         $teachers = Teacher::all();
-
         $students = Student::all();
+        $users = User::paginate(20);
 
-        //get all users
-        $users = User::paginate(15);
-//
+//        $offices = User::where('name','like','%'.$search.'%')
+//            ->orderBy('name')
+//            ->paginate(20);
 
         return view('design.admin_users',
             ['teachers' => $teachers,
@@ -388,6 +390,24 @@ class UserController extends ModelController
                 'userd' => Auth::user(),
                 'user' => Auth::user()]);
     }
+
+    public function search_data(Request $request)
+    {
+//        return $request;
+        $users = User::where('first_name','like','%'.$request->searchwords.'%')
+            ->orderBy('first_name')
+            ->paginate(20);
+
+        return view('design.admin_users',
+            [
+                'teachers' => Teacher::all(),
+                'students' => Student::all(),
+                'users' => $users,
+                'userd' => Auth::user(),
+                'user' => Auth::user()
+            ]);
+    }
+
 
     public function deleteUser($id)
     {
@@ -434,5 +454,6 @@ class UserController extends ModelController
         $users = User::paginate(15);
         return redirect('users');
     }
+
 }
 
