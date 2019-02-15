@@ -229,4 +229,5 @@ return [
     'EditFields' => 'Edit Fields',
     'UserInfo' => 'User Info',
     'UserList' => 'User List',
+    'UserMessage' => 'You can create a New User and Upload Users',
 ];

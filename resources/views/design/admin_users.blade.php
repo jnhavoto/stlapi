@@ -31,7 +31,9 @@
                     <div class="card-header">
                         <h4 class="m-b-0 text-white">{{ __('strings.UserList') }}</h4>
                     </div>    <!-- .left-right-aside-column-->
-
+                        <div class="sub-card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.UserMessage') }}</h4>
+                        </div>    <!-- .left-right-aside-column-->
                     @include('design.flash-message')
 
                     <!-- .left-right-aside-column-->

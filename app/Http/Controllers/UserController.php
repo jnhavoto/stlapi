@@ -408,7 +408,6 @@ class UserController extends ModelController
             ]);
     }
 
-
     public function deleteUser($id)
     {
         //get details of the current user
