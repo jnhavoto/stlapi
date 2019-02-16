@@ -102,12 +102,6 @@ class UserController extends ModelController
         $schools = School::all();
         $cities = City::all();
         $usertypes = UserType::all();
-
-//        return $userdata;
-
-        $usertype = $userdata->user_types_id;
-
-        //check if is a student
         $student_details = Student::where('users_id', $id)->first();
 //      return $student_details;
         return view('design.update-user',
@@ -137,19 +131,35 @@ class UserController extends ModelController
     {
 //        return $request;
         $pass = Hash::make($request->password);
-        User::create(
-            [
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'telephone' => $request->telephone,
-                'email' => $request->email,
-                'password' => $pass,
-                'user_types_id' => $request->user_types_id,
-                'schools_id' => $request->school_id,
-                'cities_id' => $request->city_id,
-            ]);
-        return redirect('users');
-//        return view('design.form_add_user', ['user' => Auth::user(), 'userd' => Auth::user()]);
+        //verify if the user of that email exists
+        if (count(User::where('email', $request->email)->get())==0) {
+            $newUser = User::create(
+                [
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'telephone' => $request->telephone,
+                    'email' => $request->email,
+                    'password' => $pass,
+                    'user_types_id' => $request->user_types_id,
+                    'schools_id' => $request->school_id,
+                    'cities_id' => $request->city_id,
+                ]);
+            if ($request->user_types_id == 2) {
+                Teacher::create(
+                    [
+                        'users_id' => $newUser->id,
+                    ]);
+            }
+            if ($request->user_types_id == 3) {
+                Student::create(
+                    [
+                        'users_id' => $newUser->id,
+                    ]);
+            }
+            return redirect('users')->with('success', 'The user was created successfuly!');
+        }
+        else
+            return redirect('users')->with('warning', 'A user with email '.$request->email.' exists!');
     }
 
     public function updateUsers(Request $request)
@@ -174,7 +184,7 @@ class UserController extends ModelController
 //        }
         //get the updated data
         $user = User::find($request->user_id);
-        $users = User::paginate(15);
+        $users = User::all();
         $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
 
         return view('dashboard.admin_index', [
@@ -204,7 +214,7 @@ class UserController extends ModelController
         //get the updated data
         $user = User::find($request->user_id);
 
-        $users = User::paginate(15);
+        $users = User::all();
 
         $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
 
@@ -218,17 +228,10 @@ class UserController extends ModelController
     public function showUserDetails($id)
     {
         $userdata = User::find($id);
-//        return $userdata;
-        $userd = User::find($id);
         $user = \Illuminate\Support\Facades\Auth::user();
         $schools = School::all();
         $cities = City::all();
         $usertypes = UserType::all();
-
-//        return $userdata;
-
-        $usertype = $userdata->user_types_id;
-
         //check if is a student
         $student_details = Student::where('users_id', $id)->first();
 //      return $student_details;
@@ -236,6 +239,24 @@ class UserController extends ModelController
             ['userdata' => $userdata,
                 'userd' => Auth::user(),
                 'user' => $user,
+                'schools' => $schools,
+                'cities' => $cities,
+                'usertypes' => $usertypes,
+                'student_details' => $student_details,
+            ]);
+    }
+
+    public function showContactDetails($id)
+    {
+        $userdata = User::find($id);
+        $schools = School::all();
+        $cities = City::all();
+        $usertypes = UserType::all();
+        $student_details = Student::where('users_id', $id)->first();
+//      return $student_details;
+        return view('communications.contact-details',
+            ['userdata' => $userdata,
+                'user' => Auth::user(),
                 'schools' => $schools,
                 'cities' => $cities,
                 'usertypes' => $usertypes,
@@ -327,7 +348,6 @@ class UserController extends ModelController
                                 ]
                             );
                             $new_entries = $new_entries + 1;
-//                            return 'New user ';
                         } else {
                             $student = Student::where('users_id', $new_user->id);
 //                            return $student->count();
@@ -352,12 +372,13 @@ class UserController extends ModelController
                             }
 
                         }
+//                        return $new_entries;
                     }
                     if ($new_entries != 0) {
-                        return redirect('/users')->with('success','Your Data was successfully imported!');
+                        return redirect('/users')->with('success', 'Your Data was successfully imported!');
 //                        Session::flash('success', 'Your Data has successfully imported');
                     } else {
-                        return redirect('/users')->with('warning','No Data was inserted');
+                        return redirect('/users')->with('warning', 'No Data was inserted');
 //                        Session::flash('error', 'No Data was inserted');
 //                        return back();
                     }
@@ -368,7 +389,7 @@ class UserController extends ModelController
 
             } else {
 //                Session::flash('error', 'File is a ' . $extension . ' file.!! Please upload a valid xls/csv file..!!');
-                return redirect()->back()->with('error','File is a ' . $extension . ' file.!! Please upload a valid xls/csv file..!!');
+                return redirect()->back()->with('error', 'File is a ' . $extension . ' file.!! Please upload a valid xls/csv file..!!');
             }
         }
     }
@@ -377,11 +398,7 @@ class UserController extends ModelController
     {
         $teachers = Teacher::all();
         $students = Student::all();
-        $users = User::paginate(20);
-
-//        $offices = User::where('name','like','%'.$search.'%')
-//            ->orderBy('name')
-//            ->paginate(20);
+        $users = User::all();
 
         return view('design.admin_users',
             ['teachers' => $teachers,
@@ -391,10 +408,28 @@ class UserController extends ModelController
                 'user' => Auth::user()]);
     }
 
+    public function listContacts()
+    {
+//        return Auth::user();
+
+        $users = User::where('user_types_id', '!=', 1)->get();
+
+        $numberParticipants = User::where('user_types_id', 3)->get();
+        $numberInstructors = User::where('user_types_id', 2)->get();
+
+        return view('communications.contacts',
+            [
+                'numParticipants' => $numberParticipants,
+                'numInstructors' => $numberInstructors,
+                'users' => $users,
+                'user' => Auth::user()
+            ]);
+    }
+
     public function search_data(Request $request)
     {
 //        return $request;
-        $users = User::where('first_name','like','%'.$request->searchwords.'%')
+        $users = User::where('first_name', 'like', '%' . $request->searchwords . '%')
             ->orderBy('first_name')
             ->paginate(20);
 
@@ -450,7 +485,7 @@ class UserController extends ModelController
             }
         }
 
-        $users = User::paginate(15);
+        $users = User::all();
         return redirect('users');
     }
 

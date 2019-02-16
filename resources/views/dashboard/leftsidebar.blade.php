@@ -3,16 +3,14 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="{{ asset('theme/images/user.png') }}" width="48" height="48" alt="User"/>
+            <img src="{{ asset('theme/images/users/person.png') }}" width="48" height="48" alt="User"/>
         </div>
         <div class="info-container">
             <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{$user->first_name.' '.$user->last_name}}
-                {{--José Nhavoto--}}
             </div>
             <div class="email">
                 {{$user->email}}
-                {{--jnhavoto@gmail.com--}}
             </div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>

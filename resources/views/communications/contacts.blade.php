@@ -33,13 +33,13 @@
                             <div class="left-aside">
                                 <ul class="list-style-none">
                                     <li class="box-label"><a href="javascript:void(0)">{{ __('strings.AllContacts') }} <span>
-                                           {{ count($students)+count($teachers)}} </span></a></li>
+                                           {{ count($users)}} </span></a></li>
                                     <li class="divider"></li>
-                                    <li><a href="javascript:void(0)">{{ __('strings.Participants') }} <span>{{ count
-                                    ($students)
-                                    }}</span></a></li>
+                                    <li><a href="javascript:void(0)">{{ __('strings.Participants') }} <span>
+                                               {{ count($numParticipants)}}
+                                            </span></a></li>
                                     <li><a href="javascript:void(0)">{{ __('strings.Instructors') }} <span>{{ count
-                                    ($teachers)
+                                    ($numInstructors)
                                     }}</span></a></li>
                                 </ul>
                             </div>
@@ -49,12 +49,13 @@
                                     <div class="d-flex">
                                         <div class="align-self-center">
                                             <h4 class="card-title m-t-10">{{ __('strings.ContactsList') }} </h4></div>
-                                        <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="{{ __('strings.searchcontacts') }}search contacts" class="form-control"> </div>
+                                        {{--<div class="ml-auto">--}}
+                                            {{--<input type="text" id="demo-input-search2" placeholder="{{ __('strings.searchcontacts') }}search contacts" class="form-control"> --}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                                <div class="table-responsive m-t-40">
+                                    <table id="myTable" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
                                         <thead>
                                         <tr>
                                             <th>No</th>
@@ -70,49 +71,20 @@
                                         </thead>
                                         <tbody>
 
-                                        @foreach ($students as $student)
+                                        @foreach ($users as $user)
                                             <tr>
                                                 {{--<td>{{$student->id}}</td>--}}
                                                 <td> {{ $loop->index + 1 }}</td>
                                                 <td>
-                                                    <a href="/contact-details"><img src="{{asset
+                                                    <a href="/contact-details/{{$user->id}}"><img src="{{asset
                                                     ("theme/images/users/1.jpg")}}
                                                     " alt="user" class="img-circle" />
-                                                        {{$student->user->first_name.' '.$student->user->last_name}}
+                                                        {{$user->first_name.' '.$user->last_name}}
                                                     </a>
                                                 </td>
-                                                <td>{{$student->user->email}}</td>
-                                                <td>{{$student->user->telephone}}</td>
-                                                <td><span class="label label-info">Student</span> </td>
-                                                {{--<td>--}}
-                                                    {{--<a href="{{ url('/update-student/'--}}
-                                                    {{--.$student->id)}}" class="btn btn-info--}}
-                                                     {{--btn-circle btn-lg">--}}
-                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
-                                                    {{--</a>--}}
-                                                {{--</td>--}}
-                                            </tr>
-                                        @endforeach
-                                        @foreach ($teachers as $teacher)
-                                            <tr>
-                                                <td>{{ $loop->index + count($students)+1}}</td>
-                                                <td>
-                                                    <a href="/contact-details"><img src="{{asset
-                                                    ("theme/images/users/1.jpg")}}
-                                                                " alt="user" class="img-circle" />
-                                                        {{$teacher->user->first_name.' '.$teacher->user->last_name}}
-                                                    </a>
-                                                </td>
-                                                <td>{{$teacher->user->email}}</td>
-                                                <td>{{$teacher->user->telephone}}</td>
-                                                <td><span class="label label-success">Instructor</span> </td>
-                                                {{--<td>--}}
-                                                    {{--<a href="{{ url('/update-teacher/'--}}
-                                                    {{--.$teacher->id)}}" class="btn btn-info--}}
-                                                     {{--btn-circle btn-lg">--}}
-                                                        {{--<i text-md-center class="ti-pencil-alt"></i>--}}
-                                                    {{--</a>--}}
-                                                {{--</td>--}}
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$user->telephone}}</td>
+                                                <td><span class="label label-info">{{$user->user_type->name}}</span> </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -179,5 +151,7 @@
             </div>
         </div>
     </div>
+
+
 
 @endsection

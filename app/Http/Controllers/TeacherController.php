@@ -33,16 +33,6 @@ class TeacherController extends ModelController
         $this->relactionships = [];
     }
 
-    public function listContacts()
-    {
-        $teachers = Teacher::with('user')->get();
-
-        $students = Student::with('user')->get();
-
-        return view('communications.contacts', ['teachers' => $teachers, 'students' => $students, 'user' => Auth::user()]);
-    }
-
-
     public function getCourses()
     {
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
@@ -61,6 +51,24 @@ class TeacherController extends ModelController
 //    Assignments Overview
     public function getAssignmentsOverview()
     {
+        $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
+        //get all assignments of a tecaher
+        $teacherAssigns = AssignmentDescriptionsHasTeacher::Where('teachers_id',$teacher->id)->get();
+//        return $teacherAssigns;
+        $submissions = collect();
+//        return $teacherAssigns->count();
+        foreach ($teacherAssigns as $assign)
+        {
+            $data = AssignmentSubmission::where('assignment_descriptions_id',$assign->assignment_descriptions_id)->first();
+            if ($data)
+                $submissions ->push(AssignmentSubmission::where('assignment_descriptions_id',$assign->assignment_descriptions_id)->first());
+        }
+//        return $submissions;
+//        foreach ($submissions as $submission)
+//            return $submission->assignment_descriptions_id;
+
+        //get all submission of all Teacher Assignments
+
         //first get all assignments
         $teacher = Teacher::Where('users_id', Auth::user()->id)->first();
         $teachers = Teacher::all();
@@ -90,6 +98,7 @@ class TeacherController extends ModelController
                 'teacher_assignments' => $teacher_assignments,
                 'teachers' => $teachers,
                 'teacherCourses' => $teacherCourses,
+                'submissions' => $submissions,
                 'user' => Auth::user()
             ]);
     }

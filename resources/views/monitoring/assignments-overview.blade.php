@@ -28,6 +28,43 @@
             <!-- ============================================================== -->
             <!-- Start Assignment List -->
             <!-- ============================================================== -->
+            <div class="card card-outline-info">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">{{ __('strings.AssignmentSubmissions') }}</h4>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title"> </h4>
+                    <h6 class="card-subtitle">List of assignment submissions per student</h6>
+                    <div class="table-responsive m-t-40">
+                        <table id="myTable" class="table m-t-30 table-hover no-wrap contact-list">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Assignment Name</th>
+                                <th>Participant Name</th>
+                                <th>Submission Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($submissions as $submission)
+                                @php
+                                    $assign = \App\Models\AssignmentDescription::where('id',$submission['assignment_descriptions_id'])->first();
+                                    $student = \App\Models\Student::where('id',$submission['students_id'])->first();
+                                    $studentDetails = \App\User::where('id',$student['users_id'])->first();
+                                @endphp
+                                <tr>
+{{--                                    <td>Number of items {{$submissions->count() }}</td>--}}
+                                    <td>{{ $assign['number'] }}</td>
+                                    <td>{{ $assign['case'] }}</td>
+                                    <td>{{ $studentDetails['first_name'].' '.$studentDetails['last_name']}}</td>
+                                    <td>{{ $submission['submission_date'] }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -127,322 +164,6 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Assignment List -->
-            <!-- ============================================================== -->
-
-            <!-- ============================================================== -->
-            <!-- Start of Assignment List -->
-            <!-- ============================================================== -->
-            {{--<div class="row">--}}
-                {{--<div class="col-12">--}}
-                    {{--<div class="card">--}}
-                        {{--<!-- .left-right-aside-column-->--}}
-                        {{--<div class="contact-page-aside">--}}
-
-                            {{--<div class="pl-4">--}}
-                                {{--<div class="right-page-header">--}}
-                                    {{--<div class="d-flex">--}}
-                                        {{--<div class="align-self-center">--}}
-                                            {{--<h4 class="card-title m-t-10">Assignment Submissions List </h4></div>--}}
-                                        {{--<div class="ml-auto">--}}
-                                            {{--<input type="text" id="demo-input-search2" placeholder="search assignments"--}}
-                                                   {{--class="form-control"></div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="table-responsive">--}}
-                                    {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"--}}
-                                           {{--data-page-size="10">--}}
-                                        {{--<thead>--}}
-                                        {{--<tr>--}}
-                                            {{--<th>No</th>--}}
-                                            {{--<th>Student name</th>--}}
-                                            {{--<th>Assignment name</th>--}}
-                                            {{--<th>Submission Date</th>--}}
-                                            {{--<th>Action</th>--}}
-                                        {{--</tr>--}}
-                                        {{--</thead>--}}
-                                        {{--<tbody>--}}
-                                        {{--@foreach ($assSubmissions as $submission)--}}
-                                            {{--@if($submission->status == 1)--}}
-                                                {{--<tr>--}}
-                                                    {{--<td> {{ $assignment->students_id}}</td>--}}
-                                                    {{--<td> {{ $loop->index + 1 }}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"--}}
-                                                             {{--class="img-circle"/> <a href="/contact-details"--}}
-                                                                                     {{--onclick="submissionDetails({{$submission}})">--}}
-
-                                                            {{--@php--}}
-                                                                {{--$student = \App\Models\Student::find--}}
-                                                                {{--($submission->students_id);--}}
-                                                            {{--@endphp--}}
-
-                                                            {{--{{  $student->user->first_name }}--}}
-                                                            {{--{{  $student ->user->last_name }}--}}
-
-                                                        {{--</a>--}}
-                                                    {{--</td>--}}
-                                                    {{--<td>--}}
-{{--                                                        <a href="/sub-details/{{$submission}}">--}}
-                                                            {{--<a href="/sub-details/{{$submission->id}}">--}}
-                                                        {{--<a href="/" data-toggle="modal"--}}
-                                                           {{--data-target="#modalsSubmissionDetails"--}}
-{{--                                                           onclick="submissionDetails({{$submission}})">--}}
-                                                            {{--{{$submission->assignment_description->case}}--}}
-                                                        {{--</a>--}}
-                                                        {{--<a href="/submission-details"--}}
-                                                           {{--onclick="submissionDetails({{$submission}})">--}}
-                                                            {{--{{$submission->assignment_description->case}}--}}
-                                                        {{--</a>--}}
-                                                    {{--</td>--}}
-                                                    {{--<td>{{$submission->submission_date}}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--<div class="progress-bar bg-success" role="progressbar"--}}
-                                                             {{--style="width: 85%; height: 6px;" aria-valuenow="25"--}}
-                                                             {{--aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                                    {{--</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--{{$submission->submission_date}}--}}
-                                                    {{--</td>--}}
-                                                    {{--<td> <a href="/" data-toggle="modal"--}}
-                                                            {{--data-target="#modalsSubmissionDetails"--}}
-                                                            {{--onclick="submissionDetails({{$submission}})"> View--}}
-                                                        {{--</a>--}}
-                                                    {{--</td>--}}
-                                                {{--</tr>--}}
-                                            {{--@endif--}}
-                                        {{--@endforeach--}}
-                                        {{--</tbody>--}}
-                                        {{--<tfoot>--}}
-                                        {{--<td colspan="7">--}}
-                                            {{--<div class="text-right">--}}
-                                                {{--<ul class="pagination"></ul>--}}
-                                            {{--</div>--}}
-                                        {{--</td>--}}
-                                        {{--</tr>--}}
-                                        {{--</tfoot>--}}
-                                    {{--</table>--}}
-                                {{--</div>--}}
-                                {{--<!-- .left-aside-column-->--}}
-                            {{--</div>--}}
-                            {{--<!-- /.left-right-aside-column-->--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            <!-- ============================================================== -->
-            <!-- End of Assignment List -->
-            <!-- ============================================================== -->
-            <!-- Start Assignment Course List Content -->
-            <!-- ============================================================== -->
-            {{--<div class="row">--}}
-                {{--<div class="col-12">--}}
-                    {{--<div class="card">--}}
-                        {{--<!-- .left-right-aside-column-->--}}
-                        {{--<div class="contact-page-aside">--}}
-
-                            {{--<div class="pl-4">--}}
-                                {{--<div class="right-page-header">--}}
-                                    {{--<div class="d-flex">--}}
-                                        {{--<div class="align-self-center">--}}
-                                            {{--<h4 class="card-title m-t-10">Students Progress </h4></div>--}}
-                                        {{--<div class="ml-auto">--}}
-                                            {{--<input type="text" id="demo-input-search2" placeholder="search assignments"--}}
-                                                   {{--class="form-control"></div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="table-responsive">--}}
-                                    {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list--}}
-                                    {{--table-striped"--}}
-                                           {{--data-page-size="10">--}}
-                                        {{--<thead>--}}
-                                        {{--<tr>--}}
-                                            {{--<th>No</th>--}}
-                                            {{--<th>Student name</th>--}}
-                                            {{--<th>Assignment name</th>--}}
-                                            {{--<th>Progress</th>--}}
-                                            {{--<th>Last update</th>--}}
-                                        {{--</tr>--}}
-                                        {{--</thead>--}}
-                                        {{--<tbody>--}}
-                                        {{--@foreach ($assSubmissions as $submission)--}}
-                                            {{--@if($submission->status != 1)--}}
-                                                {{--<tr>--}}
-                                                    {{--<td> {{ $assignment->students_id}}</td>--}}
-                                                    {{--<td> {{ $loop->index + 1 }}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--<img src="{{asset ("theme/images/users/1.jpg")}} " alt="user"--}}
-                                                             {{--class="img-circle"/> <a href="/contact-details"--}}
-                                                                                     {{--onclick="submissionDetails({{$submission}})">--}}
-                                                            {{--@php--}}
-                                                                {{--$student = \App\Models\Student::find--}}
-                                                                {{--($submission->students_id);--}}
-                                                            {{--@endphp--}}
-
-                                                            {{--{{  $student->user->first_name }}--}}
-                                                            {{--{{  $student ->user->last_name }}--}}
-
-                                                        {{--</a>--}}
-                                                    {{--</td>--}}
-
-                                                    {{--<td>--}}
-                                                        {{--<a href="/assignment_details">--}}
-                                                        {{--<a href="/" data-toggle="modal" data-target="#modalsAssDetails"--}}
-                                                           {{--onclick="submissionDetails({{$submission}})">--}}
-                                                            {{--{{$submission->assignment_description->case}}--}}
-                                                        {{--</a>--}}
-                                                    {{--</td>--}}
-
-                                                    {{--<td>{{$submission->submission_date}}</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--<div class="progress-bar bg-success" role="progressbar"--}}
-                                                             {{--style="width: 85%; height: 6px;" aria-valuenow="25"--}}
-                                                             {{--aria-valuemin="0" aria-valuemax="100"></div>--}}
-                                                        {{--<div class="progress">--}}
-                                                            {{--<div class="progress-bar bg-success" role="progressbar"--}}
-                                                                 {{--aria-valuenow="40" aria-valuemin="0"--}}
-                                                                 {{--aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>--}}
-                                                            {{--<div class="progress progress-xs margin-vertical-10 ">--}}
-                                                                {{--<div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>--}}
-                                                            {{--</div>--}}
-                                                        {{--</div>--}}
-                                                    {{--</td>--}}
-                                                    {{--<td>--}}
-                                                        {{--{{$submission->updated_at}}--}}
-                                                    {{--</td>--}}
-                                                {{--</tr>--}}
-                                            {{--@endif--}}
-                                        {{--@endforeach--}}
-
-                                        {{--</tbody>--}}
-                                        {{--<tfoot>--}}
-                                        {{--<tr>--}}
-                                        {{--<td colspan="2">--}}
-                                        {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                        {{--data-toggle="modal" data-target="#add-new-assignment">Add New--}}
-                                        {{--Assignment--}}
-                                        {{--</button>--}}
-                                        {{--</td>--}}
-
-
-                                        {{--<div id="add-new-assignment" class="modal fade in" tabindex="-1" role="dialog"--}}
-                                        {{--aria-labelledby="myModalLabel" aria-hidden="true">--}}
-                                        {{--<div class="modal-dialog">--}}
-                                        {{--<div class="modal-content">--}}
-                                        {{--<div class="modal-header">--}}
-                                        {{--<h4 class="modal-title" id="myModalLabel">Add New--}}
-                                        {{--Assignment</h4>--}}
-                                        {{--<button type="button" class="close" data-dismiss="modal"--}}
-                                        {{--aria-hidden="true">×--}}
-                                        {{--</button>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="modal-body">--}}
-
-                                        {{--=========================================================================--}}
-                                        {{--============================= FORM  ====================================--}}
-                                        {{--=========================================================================--}}
-                                        {{--<form class="form-horizontal form-material"--}}
-                                        {{--action="/submit_assignment" method="post">--}}
-
-                                        {{--{{csrf_field()}}--}}
-
-                                        {{--<div class="form-group">--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Assignment--}}
-                                        {{--name</label>--}}
-                                        {{--<input name="case" type="text"--}}
-                                        {{--class="form-control">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Assignment--}}
-                                        {{--number</label>--}}
-                                        {{--<input name="number" type="number"--}}
-                                        {{--class="form-control">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label--}}
-                                        {{--class="control-label">Instructions</label>--}}
-                                        {{--<input name="instructions" type="textarea"--}}
-                                        {{--class="form-control" rows="3">--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Start date</label>--}}
-                                        {{--<input name="startdate" type="date"--}}
-                                        {{--class="form-control">--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">End date</label>--}}
-                                        {{--<input name="deadline"--}}
-                                        {{--type="date" class="form-control">--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<label class="control-label">Available--}}
-                                        {{--date</label>--}}
-                                        {{--<input name="availabledate" type="date"--}}
-                                        {{--class="form-control">--}}
-
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                        {{--<div class="col-md-12 m-b-20">--}}
-                                        {{--<h4 class="control-label">Select course  </h4>--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">--}}
-                                        {{--@foreach($courses as  $course)--}}
-                                        {{--<option--}}
-                                        {{--name="id"--}}
-                                        {{--value="{{$course->id}}">{{$course->name}}</option>--}}
-                                        {{--@endforeach--}}
-                                        {{--</select>--}}
-
-                                        {{--</div>--}}
-                                        {{--<input class="btn btn-primary" type="submit">--}}
-                                        {{--<div class="form-group">--}}
-                                        {{--<div>--}}
-                                        {{--<button type="submit" class="btn--}}
-                                        {{--btn-success btn-rounded">Submit</button>--}}
-                                        {{--<button type="button" class="btn btn-default--}}
-                                        {{--btn-rounded waves-effect"--}}
-                                        {{--data-dismiss="modal">Cancel--}}
-                                        {{--</button>--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--</form>--}}
-                                        {{--=========================================================================--}}
-                                        {{--============================= //FORM ====================================--}}
-                                        {{--=========================================================================--}}
-                                        {{--</div>--}}
-                                        {{--<div class="modal-footer">--}}
-
-                                        {{--<button type="button" class="btn btn-default waves-effect"--}}
-                                        {{--data-dismiss="modal">Cancel--}}
-                                        {{--</button>--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<!-- /.modal-content -->--}}
-                                        {{--</div>--}}
-                                        {{--<!-- /.modal-dialog -->--}}
-                                        {{--</div>--}}
-                                        {{--<td colspan="7">--}}
-                                            {{--<div class="text-right">--}}
-                                                {{--<ul class="pagination"></ul>--}}
-                                            {{--</div>--}}
-                                        {{--</td>--}}
-                                        {{--</tr>--}}
-                                        {{--</tfoot>--}}
-                                    {{--</table>--}}
-                                {{--</div>--}}
-                                {{--<!-- .left-aside-column-->--}}
-                            {{--</div>--}}
-                            {{--<!-- /.left-right-aside-column-->--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 
             <!-- ============================================================== -->
             <!-- Start General Overview -->
@@ -527,7 +248,6 @@
 
 
     <script>
-
         function submissionDetails(submission) {
             var  submission = submission;
             $("#area").html(submission.area);
@@ -538,8 +258,5 @@
             $("#porpose").html(submission.purpose);
             console.log(submission);
         }
-
     </script>
-
-
 @endsection

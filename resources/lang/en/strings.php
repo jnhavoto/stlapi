@@ -92,7 +92,6 @@ return [
     'EndDate' => 'End Date',
     'AvailableDate' => 'Available Date',
     'SelectCourse' => 'Select Course',
-    'MyAssignmentList' => 'My Assignment',
     'AssignmentDesign' => 'Assignment Design',
     'UpdateAssignment' => 'Update Assignment',
 
@@ -228,4 +227,10 @@ return [
     'UserInfo' => 'User Info',
     'UserList' => 'User List',
     'UserMessage' => 'You can create a New User and Upload Users',
+    'TeachingGrade' => 'Teaching Grade',
+    'TechnicalSupport' => 'Technical Support',
+    'YearsAsTeacher' => 'Years as Teacher',
+    'StudenttoStudentFeedback' => 'Student to Student Feedback',
+    'MyAssignmentList' => 'My Assignments',
+    'AssignmentSubmissions' => 'Assignment Submissions',
 ];

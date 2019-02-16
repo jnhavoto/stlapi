@@ -96,7 +96,7 @@ class HomeController extends Controller
         //instructors
         $teachers = Teacher::all();
         //
-        $users = User::paginate(15);
+        $users = User::all();
 
         $login_users = User::whereNotNull('last_login')->orderBy('last_login')->get();
 

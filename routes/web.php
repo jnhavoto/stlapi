@@ -35,7 +35,7 @@ Route::post('/save-assignfiles', 'AssignmentDescriptionController@saveFiles');
 //Start Comunications
 //==============================================================
 
-Route::get('/contacts', 'TeacherController@listContacts')->middleware(['teacher']);
+Route::get('/contacts', 'UserController@listContacts')->middleware(['teacher']);
 
 Route::get('/user-details/{id}', function ($id) {
 	return view('communications.user-details', ['userdata' => \App\User::find($id), 'user' => \Illuminate\Support\Facades\Auth::user()]);
@@ -187,7 +187,7 @@ Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware
 Route::get('/assignment-designoverview/{id}','AssignmentDescriptionController@assignmentDesignOverview')->middleware
 (['teacher']);
 
-
+Route::get('/contact-details/{id}', 'UserController@showContactDetails')->middleware(['teacher']);
 
 
 //CALENDAR
