@@ -20,4 +20,9 @@ class SelfAssessmentController extends ModelController
         $assessments = SelfAssessment::all();
     }
 
+    public function showSelfAssessments()
+    {
+        $assessments = SelfAssessment::all();
+    }
+
 }

@@ -24,23 +24,15 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.ParticipantFeedbacks') }}</h4>
+                        </div>
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
-
                             <div class="pl-4">
-                                <div class="right-page-header">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h4 class="card-title m-t-10">Feedback List </h4></div>
-                                        <div class="ml-auto">
-                                            <input type="text" id="demo-input-search2" placeholder="search contacts"
-                                                   class="form-control"></div>
-                                    </div>
-                                </div>
-                                <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list"
-                                           data-page-size="10">
+                                <div class="table-responsive m-t-40">
+                                    <table id="myTable" class="table m-t-30 table-hover no-wrap contact-list">
                                         <thead>
                                         <tr>
                                             <th>No</th>

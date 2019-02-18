@@ -34,82 +34,76 @@
             <!-- Start of Assignment List -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-lg-6 col-md-7">
-                    <div class="card">
+                <div class="col-lg-12 col-md-7">
+                    <div class="card card-outline-info">
+                        <div class="card-header">
+                            <h4 class="m-b-0 text-white">{{ __('strings.AssignmentSubmissionDetails') }}</h4>
+                        </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="d-flex flex-wrap">
-                                        <div>
-                                            <h3 class="card-title">{{ __('strings.AssignmentSubmissionDetails') }}</h3>
-                                            {{--<h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>--}}
-                                        </div>
-                                    </div>
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.FullName') }}</strong>
+                                    <br>
+                                    <a href="/submission-details/participant-details/{{$submission->student->user->id}}" >
+                                        {{$submission->student->user->first_name.' '.$submission->student->user->last_name}}
+                                    </a>
                                 </div>
-                                <div class="col-12">
-                                    <div class="col-md-6 m-b-20">
-
-                                        <a href="/user-details/{{$submission->student->user->id}}" >
-                                            <h5 text-md-center class="ti-user">
-                                            </h5>
-                                            {{
-                                            $submission->student->user->first_name.' '.$submission->student->user->last_name}}
-                                        </a>
-
-                                    </div>
-                                    {{--<div>--}}
-                                        {{--<hr class="m-t-0 m-b-0">--}}
-                                    {{--</div>--}}
-                                    <div class="col-md-6 m-b-20">
-                                        <h5 text-md-center class="ti-calendar"> Submission: </h5>
-                                        {{$submission->submission_date}}
-                                    </div>
-
-                                    <div class="col-md-12 m-b-20">
-                                        <h5 class="control-label">{{ __('strings.AssignmentName') }}: </h5>
-                                        {{$submission->assignment_description->case}}
-                                    </div>
-                                    {{--<div>--}}
-                                        {{--<hr class="m-t-0 m-b-0">--}}
-                                    {{--</div>--}}
-                                    <div class="col-md-12 m-b-20">
-                                        <h5 class="control-label">{{ __('strings.Area') }}: </h5> {{$submission->area}}
-                                    </div>
-                                    <div class="col-md-6 m-b-20">
-                                        <h5 class="control-label">{{ __('strings.Grade') }}: </h5>
-                                        {{$submission->grade}}
-                                    </div>
-                                    <div class="col-md-12 m-b-20">
-                                        <h5 class="control-label">{{ __('strings.NumberOfStudents') }}: </h5>
-                                        {{$submission->number_of_students}}
-                                    </div>
-                                    <div class="col-md-12 m-b-20">
-                                        <h5 class="control-label">{{ __('strings.DatesOfLectures') }}: </h5>
-                                        {{$submission->start_date_of_lecture. ' - '.$submission->end_date_of_lecture}}
-                                    </div>
-
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.AssignmentName') }}</strong>
+                                    <br>
+                                    <p class="text-muted">{{$submission->assignment_description->case}}</p>
                                 </div>
-                            </div>
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.SubmissionDate') }}</strong>
+                                    <br>
+                                    <p class="text-muted">{{$submission->submission_date}}</p>
+                                </div>
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.Area') }}</strong>
+                                    <br>
+                                    <p class="text-muted">{{$submission->area}}</p>
+                                </div>
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.Grade') }}</strong>
+                                    <br>
+                                    @if($submission->grade != null)
+                                        <p class="text-muted">{{$submission->grade}}</p>
+                                    @else
+                                        <p class="text-muted">{{ __('strings.None') }}</p>
+                                    @endif
+                                </div>
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.NumberOfStudents') }}</strong>
+                                    <br>
+                                    @if($submission->number_of_students != null)
+                                        <p class="text-muted">{{$submission->number_of_students}}</p>
+                                    @else
+                                        <p class="text-muted">{{ __('strings.None') }}</p>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.DatesOfLectures') }}</strong>
+                                    <br>
+                                    {{--@if($submission->number_of_students != null)--}}
+                                        <p class="text-muted">{{$submission->start_date_of_lecture. ' - '.$submission->end_date_of_lecture}}</p>
+                                    {{--@else--}}
+                                        {{--<p class="text-muted">{{ __('strings.None') }}</p>--}}
+                                    {{--@endif--}}
+                                </div>
+
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.Purpose') }}</strong>
+                                    <br>
+                                    <p class="text-muted">{{$submission->purpose}}</p>
+                                </div>
+
+                                <div class="col-md-3 col-xs-6 b-r"><strong>{{ __('strings.CurriculumRequirement') }}</strong>
+                                    <br>
+                                    <p class="text-muted">{{$submission->curriculum_requirement}}</p>
+                                </div>
+
+                                <div class="col-md-3 col-xs-6"><strong>{{ __('strings.PreviewText') }}</strong>
+                                    <br>
+                                    <p class="text-muted">{{$submission->preview_text}}</p>
+                                </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ __('strings.Purpose') }} </h5>
-                            {{$submission->purpose}}
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ __('strings.CurriculumRequirement') }} </h5>
-                            {{$submission->curriculum_requirement}}
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ __('strings.PreviewText') }} </h5>
-                            {{$submission->preview_text}}
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
             <!-- ============================================================== -->

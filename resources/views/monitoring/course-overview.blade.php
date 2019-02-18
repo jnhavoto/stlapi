@@ -208,99 +208,44 @@
         {{--<!-- ============================================================== -->--}}
         <!-- End of Assignment - Courst List -->
             <!-- ============================================================== -->
-
-            {{--<div class="row">--}}
-                {{--<div class="col-12">--}}
-                    {{--<div class="card">--}}
-                        {{--<!-- .left-right-aside-column-->--}}
-                        {{--<div class="contact-page-aside">--}}
-
-                            {{--<div class="pl-4">--}}
-                                {{--<div class="right-page-header">--}}
-                                    {{--<div class="d-flex">--}}
-                                        {{--<div class="align-self-center">--}}
-                                            {{--<h4 class="card-title m-t-10">--}}
-                                                {{--{{ __('strings.AssignmentProgress') }}--}}
-                                                {{--Course Assignments--}}
-                                            {{--</h4></div>--}}
-                                        {{--<div class="ml-auto">--}}
-                                            {{--<input type="text" id="demo-input-search2" placeholder="search assignments"--}}
-                                                   {{--class="form-control"></div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="table-responsive">--}}
-                                    {{--@if(count($submissions)==0)--}}
-
-                                        {{--<h1>Test</h1>--}}
-                                    {{--@else--}}
-
-                                        {{--=======================ELSE====================--}}
-
-                                        {{--<table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list--}}
-                                    {{--table-striped color-table success-table"--}}
-                                               {{--data-page-size="10">--}}
-                                            {{--<thead>--}}
-                                            {{--<tr>--}}
-                                                {{--<th> {{ __('strings.StudentName') }} </th>--}}
-                                                {{--<th>{{ __('strings.AssignmentNumber') }}</th>--}}
-                                                {{--<th> {{ __('strings.Progress') }} </th>--}}
-                                                {{--</th>--}}
-                                                {{--<th> {{ __('strings.LastUpdate') }}</th>--}}
-                                            {{--</tr>--}}
-                                            {{--</thead>--}}
-                                            {{--<tbody>--}}
-                                            {{--@foreach ($submissions as $submission)--}}
-                                                {{--<tr>--}}
-                                                    {{--<td> {{ $submission->area }}</td>--}}
-                                                    {{--<td> {{ $submission->grade }}</td>--}}
-                                                {{--<td>{{$assignment->startdate}}</td>--}}
-                                                {{--<td>{{$assignment->deadline}}</td>--}}
-                                                {{--<td>{{$assignment->available_date}}</td>--}}
-                                                {{--<td>--}}
-                                                    {{--@if($assignment->status == 0)--}}
-                                                        {{--{{ __('strings.Active') }}--}}
-                                                    {{--@else--}}
-                                                        {{--{{ __('strings.Disactive') }}--}}
-                                                    {{--@endif--}}
-                                                {{--</td>--}}
-                                                {{--</tr>--}}
-                                            {{--@endforeach--}}
-                                            {{--</tbody>--}}
-                                            {{--<tfoot>--}}
-                                            {{--<tr>--}}
-                                            {{--<td colspan="2">--}}
-                                            {{--<button type="button" class="btn btn-info btn-rounded"--}}
-                                            {{--data-toggle="modal" data-target="#create-assignment">--}}
-                                            {{--{{ __('strings.AddnewAssignment') }}--}}
-                                            {{--</button>--}}
-                                            {{--</td>--}}
-                                            {{--Calling create modal--}}
-                                            {{--@include('activities.modals.create-assignment')--}}
-
-                                            {{--<td colspan="7">--}}
-                                            {{--<div class="text-right">--}}
-                                            {{--<ul class="pagination"></ul>--}}
-                                            {{--</div>--}}
-                                            {{--</td>--}}
-                                            {{--</tr>--}}
-                                            {{--</tfoot>--}}
-                                        {{--</table>--}}
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ __('strings.Courses') }}
+                                {{--All Assignments --}}
+                            </h3>
+                            <h6 class="card-subtitle">Different stages</h6>
+                            <div id="visitor" style="height:290px; width:100%;"></div>
+                        </div>
+                        <div>
+                            <hr class="m-t-0 m-b-0">
+                        </div>
+                        <div class="card-body text-center ">
+                            <ul class="list-inline m-b-0">
+                                <li>
+                                    <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10 "></i>Finihsed</h6>
+                                </li>
+                                <li>
+                                    <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10
+                                        m-r-10"></i>
+                                        {{ __('strings.Ongoing') }}
+                                        {{--Ongoing--}}
+                                    </h6>
+                                </li>
+                                <li>
+                                    <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10
+                                        m-r-10"></i>
+                                        {{ __('strings.Late') }}
+                                    </h6>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-                                        {{--====================================================--}}
-
-
-                                    {{--@endif--}}
-
-
-                                {{--</div>--}}
-                                {{--<!-- .left-aside-column-->--}}
-                            {{--</div>--}}
-                            {{--<!-- /.left-right-aside-column-->--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
         </div>
         {{--Showing Assignment Status--}}
     </div>

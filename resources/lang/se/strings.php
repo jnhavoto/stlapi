@@ -232,4 +232,8 @@ return [
     'None' => 'None',
     'UserMessage' => 'You can create a New User and Upload Users',
     'AssignmentSubmissions' => 'Assignment Submissions',
+    'CurriculumRequirement' => 'Curriculum Requirement',
+    'ParticipantFeedbacks' => 'Participant Feedbacks',
+    'AssignmentFeedbacks' => 'Assignment Feedbacks',
+
 ];

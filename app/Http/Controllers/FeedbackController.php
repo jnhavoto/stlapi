@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends ModelController
 {
@@ -30,13 +31,12 @@ class FeedbackController extends ModelController
         return ['feedbacks' => $feedbacks];
     }
 
-//    public function getAllFeedbacks($id)
-//    {
-//        $feedbacks= \App\Models\Feedback::where('assignment_submissions_id',$id)->get();
-//        $submission =
-//        $feedbacks = Feedback::where(''$id);
-//        return view('monitoring.feedbacks',['feedbacks' => $feedbacks,
-//            'user' => Auth::user()]);
-//    }
+    public function getAllFeedbacks()
+    {
+        $feedbacks=Feedback::with('student')->get();
+        return $feedbacks;
+        return view('monitoring.feedbacks-overview',['feedbacks' => $feedbacks,
+            'user' => Auth::user()]);
+    }
 
 }

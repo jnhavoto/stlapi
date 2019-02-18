@@ -30,7 +30,7 @@
                     <div class="card card-outline-info">
                         <div class="card-header">
                             <h4 class="m-b-0 text-white">{{ __('strings.UserList') }}</h4>
-                        </div>    <!-- .left-right-aside-column-->
+                        </div>
                         <!-- .left-right-aside-column-->
                         <div class="contact-page-aside">
                             <div class="pl-4">

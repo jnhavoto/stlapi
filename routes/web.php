@@ -189,6 +189,8 @@ Route::get('/assignment-designoverview/{id}','AssignmentDescriptionController@as
 
 Route::get('/contact-details/{id}', 'UserController@showContactDetails')->middleware(['teacher']);
 
+Route::get('/submission-details/participant-details/{id}', 'UserController@showContactDetails')->middleware(['teacher']);
+
 
 //CALENDAR
 Route::get('/calendar', 'CalendarController@getCalendar')->middleware(['teacher']);
@@ -218,9 +220,9 @@ Route::get('assignment-submissions', 'AssignmentSubmissionController@getAll')->m
     return view('activities.submission-details', ['user' => \Illuminate\Support\Facades\Auth::user()]);
 })->middleware(['teacher']);
 */
-Route::get('/sub-details/{id}','AssignmentSubmissionController@subDetails')->middleware(['teacher']);
+Route::get('/submission-details/{id}','AssignmentSubmissionController@submissionDetails')->middleware(['teacher']);
 
-Route::get('/selfassessments-overview','CourseController@coursesOverview')->middleware(['teacher']);
+Route::get('/selfassessments-overview','SelfAssessmentController@showSelfAssessments')->middleware(['teacher']);
 
 //Feedback overview
 Route::get('/list-feedbacks/{id}', 'FeedbackController@getAllFeedbacks')->middleware(['teacher']);

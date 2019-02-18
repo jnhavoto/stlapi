@@ -233,4 +233,8 @@ return [
     'StudenttoStudentFeedback' => 'Student to Student Feedback',
     'MyAssignmentList' => 'My Assignments',
     'AssignmentSubmissions' => 'Assignment Submissions',
+    'CurriculumRequirement' => 'Curriculum Requirement',
+    'ParticipantFeedbacks' => 'Participant Feedbacks',
+    'AssignmentFeedbacks' => 'Assignment Feedbacks',
+
 ];

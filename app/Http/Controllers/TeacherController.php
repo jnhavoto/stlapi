@@ -59,9 +59,12 @@ class TeacherController extends ModelController
 //        return $teacherAssigns->count();
         foreach ($teacherAssigns as $assign)
         {
-            $data = AssignmentSubmission::where('assignment_descriptions_id',$assign->assignment_descriptions_id)->first();
-            if ($data)
-                $submissions ->push(AssignmentSubmission::where('assignment_descriptions_id',$assign->assignment_descriptions_id)->first());
+            $getdata = AssignmentSubmission::where('assignment_descriptions_id',$assign->assignment_descriptions_id)->get();
+//            return $data;
+//            if ($data)
+//            $submissions ->push(AssignmentSubmission::where('assignment_descriptions_id',$assign['assignment_descriptions_id'])->get());
+            foreach ($getdata as $data)
+                $submissions -> push($data);
         }
 //        return $submissions;
 //        foreach ($submissions as $submission)
