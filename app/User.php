@@ -36,7 +36,7 @@ class User extends Authenticateble
 
 
     public function setPasswordAttribute($password) {
-        $this->attributes['password'] = Hash::make($password);
+        $this->attributes['password'] = bcrypt($password);
     }
 
     public function school()

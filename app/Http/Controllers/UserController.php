@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Session;
 use Excel;
 use File;
+use App\Http\Requests;
 
 
 class UserController extends ModelController
@@ -33,9 +34,19 @@ class UserController extends ModelController
         $this->relactionships = [];
     }
 
+    public function rules(Request $request)
+    {
+        return validate($request, [
+            'first_name' => 'required',
+            'password' => 'required',
+            'email' => 'unique',
+        ]);
+
+    }
 
     public function login(Request $request)
     {
+//return $request;
 
         $this->validate($request, [
             'email' => 'required',
@@ -130,7 +141,10 @@ class UserController extends ModelController
     public function createUser(Request $request)
     {
 //        return $request;
-        $pass = Hash::make($request->password);
+        $this->rules($request);
+
+        $pass = bcrypt($request->password);
+//        return $pass;
         //verify if the user of that email exists
         if (count(User::where('email', $request->email)->get())==0) {
             $newUser = User::create(
@@ -139,11 +153,12 @@ class UserController extends ModelController
                     'last_name' => $request->last_name,
                     'telephone' => $request->telephone,
                     'email' => $request->email,
-                    'password' => $pass,
+                    'password' => bcrypt($request->password),
                     'user_types_id' => $request->user_types_id,
                     'schools_id' => $request->school_id,
                     'cities_id' => $request->city_id,
                 ]);
+            return $pass;
             if ($request->user_types_id == 2) {
                 Teacher::create(
                     [

@@ -81,7 +81,7 @@
                                                 <th>{{ __('strings.AvailableFrom') }} </th>
                                                 <th>{{ __('strings.Status') }}
                                                 </th>
-                                            </tr>course-designoverview
+                                            </tr>
                                             </thead>
                                             <tbody>
                                             @if(count($teacherCourses)!=0)
@@ -100,7 +100,7 @@
                                                             {{ count($countAssignments)}}
                                                         </td>
                                                         <td> {{ $course->course->startdate}}</td>
-                                                        <td> {{ $course->course->available_date}}</td>
+                                                        <td> {{ date('d-m-Y', strtotime($course->course->available_date))}}</td>
                                                         <td>
                                                             @if($course->course->status == 0)
                                                                 {{ __('strings.Active') }}
