@@ -134,16 +134,18 @@ class AssignmentDescription extends Eloquent
 		return $this->hasMany(\App\Models\UsersChat::class);
 	}
 
-    public function setStartDateAttribute( $value ) {
-        $this->attributes['startdate'] = (new Carbon($value))->format('Y-m-d');
+    public function setStartDateAttribute( $value )
+    {
+
+        $this->attributes['startdate'] = Carbon::parse($value)->format('Y-m-d');
     }
 
     public function setDeadLineAttribute( $value ) {
-        $this->attributes['deadline'] = (new Carbon($value))->format('Y-m-d');
+        $this->attributes['deadline'] = Carbon::parse($value)->format('Y-m-d');
     }
 
     public function setAvailableDateAttribute( $value ) {
-        $this->attributes['available_date'] = (new Carbon($value))->format('Y-m-d');
+        $this->attributes['available_date'] = Carbon::parse($value)->format('Y-m-d');
     }
 
 }
