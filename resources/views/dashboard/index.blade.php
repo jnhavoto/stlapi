@@ -99,8 +99,8 @@
                                                             @endphp
                                                             {{ count($countAssignments)}}
                                                         </td>
-                                                        <td> {{ $course->course->startdate}}</td>
-                                                        <td> {{ date('d-m-Y', strtotime($course->course->available_date))}}</td>
+                                                        <td> {{ date('Y-m-d', strtotime($course->course->startdate))}} </td>
+                                                        <td> {{ date('Y-m-d', strtotime($course->course->available_date))}}</td>
                                                         <td>
                                                             @if($course->course->status == 0)
                                                                 {{ __('strings.Active') }}
