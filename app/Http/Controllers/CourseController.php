@@ -214,7 +214,7 @@ class CourseController extends ModelController
             return "Qualquer coisa";
         } else
             //check if course and teacher_course have any error: if not, then write on the DB
-            if ($course and $teacher_course and $student_course) {
+            if ($course) {
                 DB::commit();
 
             //saving files

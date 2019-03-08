@@ -15,4 +15,11 @@ class AssignmentDescriptionTeacherController  extends ModelController
         $this->relactionships = [];
     }
 
+    public function getInstructors ($id)
+    {
+        $assignment_instructors = AssignmentDescriptionsHasTeacher::with('teacher')->where('assignment_descriptions_id',$id)->get();
+        return ['assignment-instructors' => $assignment_instructors];
+    }
+
+
 }

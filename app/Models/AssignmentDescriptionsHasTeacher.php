@@ -38,6 +38,7 @@ class AssignmentDescriptionsHasTeacher extends Eloquent
 		'teachers_id'
 	];
 
+
 	public function assignment_description()
 	{
 		return $this->belongsTo(\App\Models\AssignmentDescription::class, 'assignment_descriptions_id');

@@ -17,8 +17,7 @@ class CreateAnnouncementsHasStudentsTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('announcements_id')->index('fk_announcements_has_students_announcements1_idx');
 			$table->integer('students_id')->unsigned()->index('fk_announcements_has_students_students1_idx');
-			$table->integer('status')->nullable()->comment('0=unread
-1=read');
+			$table->integer('status')->nullable()->comment('0=unread, 1=read');
 			$table->timestamps();
 			$table->softDeletes();
 		});

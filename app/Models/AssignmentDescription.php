@@ -59,6 +59,11 @@ class AssignmentDescription extends Eloquent
 		'available_date'
 	];
 
+    public function getDates()
+    {
+        return ['startdate', 'deadline', 'available_date'];
+    }
+
 	protected $fillable = [
 		'case',
 		'number',
@@ -134,18 +139,29 @@ class AssignmentDescription extends Eloquent
 		return $this->hasMany(\App\Models\UsersChat::class);
 	}
 
-    public function setStartDateAttribute( $value )
-    {
+//    public function setStartDateAttribute( $value)
+//    {
+//        $date = new Carbon($value);
+//        return $date->format('Y-m-d');
+////        $this->attributes['startdate'] = Carbon::parse($date)->format('Y-m-d');
+//    }
 
-        $this->attributes['startdate'] = Carbon::parse($value)->format('Y-m-d');
-    }
+//    public function setStartDateAttribute($value)
+//    {
+//        $this->attributes['startdate'] = Carbon::parse($value)->format('Y-m-d');
+//    }
 
-    public function setDeadLineAttribute( $value ) {
-        $this->attributes['deadline'] = Carbon::parse($value)->format('Y-m-d');
-    }
-
-    public function setAvailableDateAttribute( $value ) {
-        $this->attributes['available_date'] = Carbon::parse($value)->format('Y-m-d');
-    }
+//    public function setStartDateAttribute($value)
+//    {
+//        $this->attributes['startdate'] = \Carbon\Carbon::createFromFormat('Y-m-d', $value)->toDateTimeString();
+//    }
+//
+//    public function setDeadLineAttribute( $date ) {
+//        $this->attributes['deadline'] = Carbon::parse($date)->format('Y-m-d');
+//    }
+//
+//    public function setAvailableDateAttribute( $date ) {
+//        $this->attributes['available_date'] = Carbon::parse($date)->format('Y-m-d');
+//    }
 
 }

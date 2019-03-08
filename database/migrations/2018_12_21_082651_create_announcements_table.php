@@ -19,9 +19,8 @@ class CreateAnnouncementsTable extends Migration {
 			$table->integer('assignment_description_id')->unsigned()->nullable()->index('fk_announcement_assignment_description1_idx');
 			$table->text('message', 65535)->nullable();
 			$table->string('subject', 45)->nullable();
-			$table->integer('status')->nullable()->comment('0 - Draft
-1 - InBox
-2 - OutBox');
+			$table->integer('status')->nullable()->comment('0=Draft, 1=InBox, 2=OutBox');
+			$table->integer('sender')->nullable()->comment('instructor_id');
 			$table->timestamps();
 			$table->softDeletes();
 		});

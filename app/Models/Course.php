@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -103,5 +104,19 @@ class Course extends Eloquent
 		return $this->hasMany(\App\Models\UsersChat::class, 'courses_id');
 	}
 
+    public function setStartDateAttribute( $date )
+    {
+
+        $this->attributes['startdate'] = Carbon::parse($date)->format('Y-m-d');
+    }
+
+    public function setAvailableDateAttribute( $date ) {
+        $this->attributes['available_date'] = Carbon::parse($date)->format('Y-m-d');
+    }
+
+//    public function getPublishedAtAttribute($date)
+//    {
+//        return $this->attributes['published_at'] = Carbon::parse($date)->diffForHumans();
+//    }
 
 }

@@ -3,14 +3,12 @@ var ficheiros = [];
 var contarFicheiros = 0;
 
 
-    $("#submit-compose").on("click", function(e) {
+    $("#send-announcement").on("click", function(e) {
 
     if(contarFicheiros == 0) {
         $('#form-compose-announcement').submit();
     }
     });
-
-
 
     var dropzoneImagem = $('#file-input-compose').dropzone({
         url: '/save-announcfiles',
@@ -57,7 +55,7 @@ var contarFicheiros = 0;
                 console.log(response);
             });
 
-            $("#submit-compose").on("click", function(e) {
+            $("#send-announcement").on("click", function(e) {
                    if(contarFicheiros > 0){
                        e.preventDefault();
                        e.stopPropagation();

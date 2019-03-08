@@ -118,7 +118,7 @@
                                 </div>
                                 <hr><hr>
                                 <div class="form-group" align-items-center>
-                                    <button id="submit-updatecourse" type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Submit') }} </button>
+                                    <button id="submit-updatecourse" type="submit" class="btn btn-success btn-rounded"> {{ __('strings.Save') }} </button>
                                     <a class="btn btn-default btn-rounded waves-effect btn-close"
                                        href="{{ url()->previous()}}"> {{ __('strings.Cancel') }}
                                     </a>

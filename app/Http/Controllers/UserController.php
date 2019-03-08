@@ -21,6 +21,7 @@ use Session;
 use Excel;
 use File;
 use App\Http\Requests;
+use ValidateRequests;
 
 
 class UserController extends ModelController
@@ -34,15 +35,15 @@ class UserController extends ModelController
         $this->relactionships = [];
     }
 
-    public function rules(Request $request)
-    {
-        return validate($request, [
-            'first_name' => 'required',
-            'password' => 'required',
-            'email' => 'unique',
-        ]);
-
-    }
+//    public function rules(Request $request)
+//    {
+//        return validate($request, [
+//            'first_name' => 'required',
+//            'password' => 'required',
+//            'email' => 'unique',
+//        ]);
+//
+//    }
 
     public function login(Request $request)
     {
@@ -141,7 +142,7 @@ class UserController extends ModelController
     public function createUser(Request $request)
     {
 //        return $request;
-        $this->rules($request);
+//        $this->rules($request);
 
         $pass = bcrypt($request->password);
 //        return $pass;
@@ -158,7 +159,7 @@ class UserController extends ModelController
                     'schools_id' => $request->school_id,
                     'cities_id' => $request->city_id,
                 ]);
-            return $pass;
+//            return $pass;
             if ($request->user_types_id == 2) {
                 Teacher::create(
                     [

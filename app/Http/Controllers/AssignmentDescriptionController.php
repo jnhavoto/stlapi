@@ -64,8 +64,12 @@ class AssignmentDescriptionController extends ModelController
     public function updateAssignment(Request $request)
     {
         //get the current assignment
+//        return $request;
+//        $getCurrentInstructors = AssignmentDescriptionsHasTeacher::where('assignment_descriptions_id',$request->assignment_id)->get();
+//        return $getCurrentInstructors;s
+
+//        return $request->instructors;
         $assignment = AssignmentDescription::find($request->assignment_id);
-        //do updates and save
         $assignment->case = $request->case;
         $assignment->number = $request->number;
         $assignment->instructions = $request->instructions;
@@ -75,6 +79,23 @@ class AssignmentDescriptionController extends ModelController
         $assignment->courses_id = $request->course_id;
         $assignment->save();
         //delete each old instructor
+        //check if instructors have been changed and update if necessary
+
+//        foreach ($request->instructors as $instructor)
+//            foreach ($getCurrentInstructors as $currentInstructor)
+//            {
+//                $found = count(AssignmentDescriptionsHasTeacher::where('teachers_id', $instructor)->get());
+//                if($found == 0)
+//                {
+//                    AssignmentDescriptionsHasTeacher::create(
+//                        [
+//                            'assignment_descriptions_id' => $assignment->id,
+//                            'teachers_id' => $currentInstructor,
+//                        ]
+//                    );
+//                }
+//            }
+
         AssignmentDescriptionsHasTeacher::where('assignment_descriptions_id',$request->assignment_id)
             ->get()->each->delete();
         //save current instructors
@@ -87,7 +108,7 @@ class AssignmentDescriptionController extends ModelController
                 ]
             );
         }
-
+//        return "here i am";
         foreach ($request->all() as $chave => $valor){
             if(strpos($chave, 'file') !== false){
 
@@ -274,7 +295,7 @@ class AssignmentDescriptionController extends ModelController
             }
         }
 
-        if ($assigment and $assignHasCourse and $assignHasTeacher) {
+        if ($assigment) {
             DB::commit();
             foreach ($request->all() as $chave => $valor){
                 if(strpos($chave, 'file') !== false){
@@ -356,7 +377,7 @@ class AssignmentDescriptionController extends ModelController
 
         }
 
-        if ($assigment and $assignHasCourse and $assignHasTeacher and $assignHasStudent) {
+        if ($assigment) {
             DB::commit();
             //saving files
             foreach ($request->all() as $chave => $valor){

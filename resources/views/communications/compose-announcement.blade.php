@@ -5,9 +5,10 @@
         <div class="card-body">
             <h3 class="card-title">{{ __('strings.ComposeAnnouncement') }}</h3>
             <form id="form-compose-announcement" class="form-horizontal m-t-40" method="post"
-                  action="/submit_announcement" enctype="multipart/form-data">
+                  action="/send-announcement" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <input type="hidden" id="announcemnt_id" name="announcemnt_id" value="0"/>
+                <input type="hidden" id="sender_id" name="sender_id" value="0"/>
                 <div class="card">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs profile-tab" role="tablist">
@@ -15,6 +16,7 @@
                             <a class="nav-link active"
                                data-toggle="tab" href="#course"
                                role="tab">{{ __('strings.SelectCourse') }}
+                            </a>
                             </a>
                         </li>
                         <li class="nav-item" onclick="tabClicked('assignment')">
@@ -30,7 +32,7 @@
                         <label>{{ __('strings.Course') }}                   </label>
                         <select class="js-example-basic-multiple" name="course_id" style="width: 100%"
                                 id="select-coruse">
-                            <option name="selectTag" value="0">Select an course</option>
+                            <option name="selectTag" value="0">{{ __('strings.SelectCourse') }}</option>
                             @foreach($courseToAnnounce as $course)
                                 <option
                                         name="selectTag"
@@ -44,7 +46,7 @@
                         <label>{{ __('strings.Assignment') }}                   </label>
                         <select class="js-example-basic-multiple" name="assignment_id" style="width: 100%"
                                 id="select-assignment">
-                            <option name="selectTag" value="0">Select an Assignment</option>
+                            <option name="selectTag" value="0">{{ __('strings.SelectAssignment') }}</option>
                             @foreach($assignToAnnounce as $assign)
                                 <option
                                         name="selectTag"
@@ -77,7 +79,7 @@
                     </div>
                 </div>
             </div> -->
-            <button id="submit-compose" type="submit"
+            <button id="send-announcement" type="submit"
                     class="btn btn-success m-t-20">
                 <i class="fa fa-envelope-o"></i>{{ __('strings.Send') }}
             </button>

@@ -33,11 +33,12 @@ Route::delete('assignment-announcement/{id}', 'AssignmentAnnouncementController@
 /**
  * Announcement Routes
  */
-Route::get('announcement', 'AnnouncementsController@getAll'); //route to get all
-Route::get('announcement/{id}', 'AnnouncementsController@get'); //route to get a specific
-Route::post('announcement', 'AnnouncementsController@store'); //route to store
-Route::put('announcement/{id}', 'AnnouncementsController@update'); // route to update
-Route::delete('announcement/{id}', 'AnnouncementsController@destroy'); //route to delete
+Route::get('announcements', 'AnnouncementsController@getAll'); //route to get all
+Route::get('announcements/{id}', 'AnnouncementsController@get'); //route to get a specific
+Route::get('announcement-byassignment-id/{id}', 'AnnouncementsController@getAnnouncementByAssignId'); //route to get a specific
+Route::post('announcements', 'AnnouncementsController@store'); //route to store
+Route::put('announcements/{id}', 'AnnouncementsController@update'); // route to update
+Route::delete('announcements/{id}', 'AnnouncementsController@destroy'); //route to delete
 
 
 /**
@@ -108,6 +109,7 @@ Route::delete('assignment-description/{id}', 'AssignmentDescriptionController@de
 Route::get('assignment-descriptions-teachers', 'AssignmentDescriptionTeacherController@getAll'); //route to get all
 Route::get('last-assignment-descriptions-teachers', 'AssignmentDescriptionTeacherController@getByDeadline'); //route to get all
 Route::get('assignment-description-teachers/{id}', 'AssignmentDescriptionTeacherController@get'); //route to get a specific
+Route::get('assignment-description-teachers-byassignid/{id}', 'AssignmentDescriptionTeacherController@getInstructors');
 Route::post('assignment-description-teacher', 'AssignmentDescriptionTeacherController@store'); //route to store
 Route::put('assignment-description-teachers/{id}', 'AssignmentDescriptionTeacherController@update'); // route to update
 Route::delete('assignment-description-teachers/{id}', 'AssignmentDescriptionTeacherController@destroy'); //route to delete

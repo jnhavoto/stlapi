@@ -44,7 +44,8 @@ class Announcement extends Eloquent
 		'assignment_description_id',
 		'message',
 		'subject',
-		'status'
+		'status',
+        'sender'
 	];
 
 	public function assignment_description()

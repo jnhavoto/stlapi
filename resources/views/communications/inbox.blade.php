@@ -62,14 +62,14 @@
 
                                             <!-- <a href="/announcements-details, $parameters = ['announcID'=>$announcement->id,'eventType'=>$type]"> -->
                                             <a href="/announcements-details/{{$announcement->id}}">
-                                                           {{$announcement->teacher_member->teacher
-                                                        ->user->first_name.' '.$announcement->teacher_member->teacher
+                                                           {{$announcement->teacher
+                                                        ->user->first_name.' '.$announcement->teacher
                                                         ->user->last_name}} {{$type}}
                                             </a>
                                             <!-- <a href="/" data-toggle="modal" data-target="#announcement-details"
                                                            onclick="announcementDetails({{$announcement}})">
-                                                           {{$announcement->teacher_member->teacher
-                                                        ->user->first_name.' '.$announcement->teacher_member->teacher
+                                                           {{$announcement->teacher
+                                                        ->user->first_name.' '.$announcement->teacher
                                                         ->user->last_name}}
                                             </a> -->
                                         </td>

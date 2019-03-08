@@ -173,22 +173,21 @@
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            {{--@php--}}
-                                                                {{--$course = \App\Models\Course::where('id',--}}
-                                                                {{--$assign->courses_id)->first();--}}
-                                                            {{--@endphp--}}
-                                                            {{--<a href={{ url('/course-designoverview/'--}}
-                                                            {{--.$assign->courses_id)}}>--}}
-                                                                {{--{{$assign->course->name}}--}}
-                                                            {{--</a>--}}
+                                                            @php
+                                                                $course = \App\Models\Course::where('id',
+                                                                $assign->courses_id)->first();
+                                                            @endphp
+                                                            <a href={{ url('/course-designoverview/'
+                                                            .$assign->courses_id)}}>
+                                                                {{$assign->course->name}}
+                                                            </a>
                                                         </td>
 
                                                         <td>
                                                         @php
                                                             $countStudents = \App\Models\Student::all()->count();
                                                             $countSubmissions=
-                                                            \App\Models\AssignmentSubmission::where
-                                                            ('assignment_descriptions_id',$assign->id)->count();
+                                                            \App\Models\AssignmentSubmission::where('assignment_descriptions_id',$assign->id)->count();
                                                             $progress = $countSubmissions*100/$countStudents;
                                                         @endphp
                                                         <a href="/list-submissions/{{$assign->id}}">
@@ -232,8 +231,7 @@
                                                                         foreach ($feedbacks as $feedback)
                                                                         {
                                                                             /*get all ratings for this feedback*/
-                                                                            $ratings = \App\Models\RatingFeedback::where
-                                                                            ('feedbacks_id',$feedbacks->id)->count();
+                                                                            $ratings = \App\Models\RatingFeedback::where('feedbacks_id',$feedback->id)->count();
                                                                             $countRatings=$countRatings+$ratings;
                                                                         }
                                                                     }

@@ -44,7 +44,7 @@ var contarFicheiros = 0;
                     $('<input />').attr('type', 'hidden')
                         .attr('name', 'file'+(indice+1))
                         .attr('value', file)
-                        .appendTo('#form-update-course');
+                        .appendTo('#form-update-assignment');
                 });
 
                 $('#form-assignment').submit();

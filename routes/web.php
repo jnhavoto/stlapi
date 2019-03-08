@@ -72,12 +72,12 @@ Route::get('/announcements-details/{id}', 'AssignmentAnnouncementController@getA
 /* Route::get('announcdetails/{announcID}/types/{type}', 
     ['as'=> 'announcements-details', 
     'uses' =>'AssignmentAnnouncementController@getAnnouncementDetails'])->middleware(['teacher']); */
-Route::get('/announcements/inbox', 'AssignmentAnnouncementController@getInboxAnnouncements')->middleware(['teacher']);
-Route::get('/announcements/sent', 'AssignmentAnnouncementController@getSentAnnouncements')->middleware(['teacher']);
-Route::get('/announcements/draft', 'AssignmentAnnouncementController@getDraftAnnouncements')->middleware(['teacher']);
-Route::get('/announcements/compose', 'AssignmentAnnouncementController@composeAnnouncements')->middleware(['teacher']);
-Route::post('/submit_announcement', 'AssignmentAnnouncementController@submit_announcemnt')->middleware(['teacher']);
-Route::post('/announcements/save', 'AssignmentAnnouncementController@submit_announcemnt')->middleware(['teacher']);
+Route::get('/announcements/inbox', 'AnnouncementsController@getInboxAnnouncements')->middleware(['teacher']);
+Route::get('/announcements/sent', 'AnnouncementsController@getSentAnnouncements')->middleware(['teacher']);
+Route::get('/announcements/draft', 'AnnouncementsController@getDraftAnnouncements')->middleware(['teacher']);
+Route::get('/announcements/compose', 'AnnouncementsController@composeAnnouncements')->middleware(['teacher']);
+Route::post('/send-announcement', 'AnnouncementsController@sendAnnouncemntByTeacher')->middleware(['teacher']);
+Route::post('/announcements/save', 'AnnouncementsController@submit_announcemnt')->middleware(['teacher']);
 
 //==============================================================
 //End Comunications
@@ -178,7 +178,7 @@ Route::post('/delete-assignment', 'AssignmentDescriptionController@deleteAssignm
 Route::get('/update-assignment/{id}','AssignmentDescriptionController@getUpdateAssignment')->middleware(['teacher']);
 
 //update assignment by id
-Route::post('/edit_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware
+Route::post('/update_assignment', 'AssignmentDescriptionController@updateAssignment')->middleware
 (['teacher']);
 
 Route::post('/assignment_details', 'TeacherController@submitCourse')->middleware(['teacher']);

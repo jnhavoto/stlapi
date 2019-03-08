@@ -32,6 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        return Auth::user();
         $teacher = Teacher::where('users_id',Auth::user()->id)->first();
 //        return $teacher;
         //update the last_login date
@@ -39,7 +40,7 @@ class HomeController extends Controller
         $assignTeacher = $teacher->assignment_descriptions()->get();
 //        return $assignTeacher;
 //        $assignTeacher = AssignmentDescriptionsHasTeacher::with('assignment_description')->
-//        where('teachers_id', $teacher_id)->get();
+//        where('teachers_id', $teacher->id)->get();
 //        return $assignTeacher;
 //            AssignmentDescriptionsHasTeacher::with('assignment_description')->where('teachers_id',
 //        $teacher->id)->get();
