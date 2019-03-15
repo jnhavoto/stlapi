@@ -98,6 +98,7 @@ Route::delete('course-announcement/{id}', 'CourseAnnouncementController@destroy'
 Route::get('assignment-descriptions', 'AssignmentDescriptionController@getAll'); //route to get all
 Route::get('last-assignment-descriptions', 'AssignmentDescriptionController@getByDeadline'); //route to get all
 Route::get('assignment-description/{id}', 'AssignmentDescriptionController@get'); //route to get a specific
+Route::get('assignment-descriptionbyid/{id}', 'AssignmentDescriptionController@getAssignmentDesc'); //route to get a specific
 Route::post('assignment-description', 'AssignmentDescriptionController@store'); //route to store
 Route::put('assignment-description/{id}', 'AssignmentDescriptionController@update'); // route to update
 Route::delete('assignment-description/{id}', 'AssignmentDescriptionController@destroy'); //route to delete

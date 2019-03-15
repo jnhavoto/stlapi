@@ -23,6 +23,15 @@ class AssignmentSubmissionController extends ModelController
     public function getAssignmentSubmition($student_id, $assignment_desc_id)
     {
         $assignment_sub = AssignmentSubmission::where('assignment_descriptions_id', '=', $assignment_desc_id)->where('students_id', '=', $student_id)->first();
+        if($assignment_sub == null)
+        {
+            $assignment_sub = AssignmentSubmission::create(
+                [
+                    'assignment_descriptions_id' => $assignment_desc_id,
+                    'students_id' => $student_id,
+                ]
+            );
+        }
         return ['assignment_submition' => $assignment_sub];
     }
 
@@ -40,7 +49,8 @@ class AssignmentSubmissionController extends ModelController
         //if the assignment is new then create
         if ($request->get('assignment')['id'] == null) {
             $assignemnt = AssignmentSubmission::create($request->get('assignment'));
-        } else {
+        }
+        else {
             $assignemnt = AssignmentSubmission::find($request->get('assignment')['id'])->update($request->get('assignment'));
         }
 

@@ -40,6 +40,12 @@ class AssignmentDescriptionController extends ModelController
 
     //UPDATES OF ASSIGNMENT
 
+    public function getAssignmentDesc($id)
+    {
+        $assignmentdesc = AssignmentDescription::where('id',$id)->first();
+        return ['assignmentdesc' => $assignmentdesc];
+    }
+
     public function getUpdateAssignment($id){
         //get an assignment by id
         $assignment = AssignmentDescription::findOrFail($id);
